@@ -1,0 +1,50 @@
+name: Update WAProto
+
+on:
+  schedule:
+    - cron: "10 1 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-proto:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20.x
+
+      - name: Install packages
+        run: npm install
+
+      - name: Extract proto definitions
+        id: wa_proto_info
+        run: |
+          node index.js > ../wa-logs.txt
+          WA_VERSION=$(cat ../wa-logs.txt | perl -n -e'/Current version\: (.+)/ && print $1')
+          echo "wa_version=$WA_VERSION" >> $GITHUB_OUTPUT
+
+      - name: Generate static JS from .proto
+        run: node gen.js
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add proto/
+
+          if git diff --cached --quiet; then
+            echo "No changes detected, nothing to commit."
+            exit 0
+          fi
+
+          git commit -m "chore: updated proto to v${{ steps.wa_proto_info.outputs.wa_version }}"
+          git push origin HEAD:${{ github.ref_name }}
