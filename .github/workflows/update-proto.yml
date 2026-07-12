@@ -32,7 +32,7 @@ jobs:
           echo "wa_version=$WA_VERSION" >> $GITHUB_OUTPUT
 
       - name: Generate static JS from .proto
-        run: node gen.js
+        run: npm run generate
 
       - name: Commit and push
         run: |
