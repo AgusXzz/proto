@@ -83,12 +83,12 @@ function resolveMessageOrEnumRef({
 
    if (refNode.type !== 'MemberExpression') return undefined;
 
-   const crossRef = crossRefs.find(
-      (r) =>
-         r.alias === refNode?.object?.name ||
-         refNode?.object?.left?.name ||
-         refNode?.object?.callee?.name
-   );
+   const objectAlias =
+      refNode?.object?.name ||
+      refNode?.object?.left?.name ||
+      refNode?.object?.callee?.name;
+
+   const crossRef = crossRefs.find((r) => r.alias === objectAlias);
 
    if (refNode?.property?.name?.includes('Spec')) {
       return rename(refNode.property.name);
