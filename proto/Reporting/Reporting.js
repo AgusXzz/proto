@@ -155,7 +155,7 @@ export const Reporting = $root.Reporting = (() => {
                             case 2:
                                 if (u !== 2)
                                     break;
-                                v = $root.Reporting.Field.decode(r, r.uint32(), $undefined, q + 1);
+                                v = $root.Reporting.Field.decode(r, r.uint32(), $undefined, q + 1, v);
                                 continue;
                             }
                             r.skipType(u, q, t2);
@@ -341,7 +341,7 @@ export const Reporting = $root.Reporting = (() => {
                             case 2:
                                 if (u !== 2)
                                     break;
-                                v = $root.Reporting.Field.decode(r, r.uint32(), $undefined, q + 1);
+                                v = $root.Reporting.Field.decode(r, r.uint32(), $undefined, q + 1, v);
                                 continue;
                             }
                             r.skipType(u, q, t2);
