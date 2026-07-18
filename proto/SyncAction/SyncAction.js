@@ -712,6 +712,7 @@ export const SyncAction = $root.SyncAction = (() => {
         SyncActionValue.prototype.coexV2VersionAction = null;
         SyncActionValue.prototype.wasaRootSecretAction = null;
         SyncActionValue.prototype.bubbleLockMessageAction = null;
+        SyncActionValue.prototype.labelSublistAction = null;
 
         SyncActionValue.create = function(properties) {
             return new SyncActionValue(properties);
@@ -886,6 +887,8 @@ export const SyncAction = $root.SyncAction = (() => {
                 $root.SyncAction.SyncActionValue.WASARootSecretAction.encode(m.wasaRootSecretAction, w.uint32(714).fork(), q + 1).ldelim();
             if (m.bubbleLockMessageAction != null && $Object.hasOwnProperty.call(m, "bubbleLockMessageAction"))
                 $root.SyncAction.SyncActionValue.BubbleLockMessageAction.encode(m.bubbleLockMessageAction, w.uint32(722).fork(), q + 1).ldelim();
+            if (m.labelSublistAction != null && $Object.hasOwnProperty.call(m, "labelSublistAction"))
+                $root.SyncAction.SyncActionValue.LabelSublistAction.encode(m.labelSublistAction, w.uint32(730).fork(), q + 1).ldelim();
             if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                 for (var i = 0; i < m.$unknowns.length; ++i)
                     w.raw(m.$unknowns[i]);
@@ -1395,6 +1398,12 @@ export const SyncAction = $root.SyncAction = (() => {
                         m.bubbleLockMessageAction = $root.SyncAction.SyncActionValue.BubbleLockMessageAction.decode(r, r.uint32(), $undefined, q + 1, m.bubbleLockMessageAction);
                         continue;
                     }
+                case 91: {
+                        if (u !== 2)
+                            break;
+                        m.labelSublistAction = $root.SyncAction.SyncActionValue.LabelSublistAction.decode(r, r.uint32(), $undefined, q + 1, m.labelSublistAction);
+                        continue;
+                    }
                 }
                 r.skipType(u, q, t);
                 if (!r.discardUnknown) {
@@ -1827,6 +1836,11 @@ export const SyncAction = $root.SyncAction = (() => {
                     throw $TypeError(".SyncAction.SyncActionValue.bubbleLockMessageAction: object expected");
                 m.bubbleLockMessageAction = $root.SyncAction.SyncActionValue.BubbleLockMessageAction.fromObject(d.bubbleLockMessageAction, q + 1);
             }
+            if (d.labelSublistAction != null) {
+                if (!$util.isObject(d.labelSublistAction))
+                    throw $TypeError(".SyncAction.SyncActionValue.labelSublistAction: object expected");
+                m.labelSublistAction = $root.SyncAction.SyncActionValue.LabelSublistAction.fromObject(d.labelSublistAction, q + 1);
+            }
             return m;
         };
 
@@ -1924,6 +1938,7 @@ export const SyncAction = $root.SyncAction = (() => {
                 d.coexV2VersionAction = null;
                 d.wasaRootSecretAction = null;
                 d.bubbleLockMessageAction = null;
+                d.labelSublistAction = null;
             }
             if (m.timestamp != null && $Object.hasOwnProperty.call(m, "timestamp")) {
                 if (typeof $BigInt !== "undefined" && o.longs === $BigInt)
@@ -2172,6 +2187,9 @@ export const SyncAction = $root.SyncAction = (() => {
             }
             if (m.bubbleLockMessageAction != null && $Object.hasOwnProperty.call(m, "bubbleLockMessageAction")) {
                 d.bubbleLockMessageAction = $root.SyncAction.SyncActionValue.BubbleLockMessageAction.toObject(m.bubbleLockMessageAction, o, q + 1);
+            }
+            if (m.labelSublistAction != null && $Object.hasOwnProperty.call(m, "labelSublistAction")) {
+                d.labelSublistAction = $root.SyncAction.SyncActionValue.LabelSublistAction.toObject(m.labelSublistAction, o, q + 1);
             }
             return d;
         };
@@ -7685,6 +7703,117 @@ export const SyncAction = $root.SyncAction = (() => {
             };
 
             return LabelReorderingAction;
+        })();
+
+        SyncActionValue.LabelSublistAction = (function() {
+
+            const LabelSublistAction = function (p) {
+                if (p)
+                    for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                        if (p[ks[i]] != null && ks[i] !== "__proto__")
+                            this[ks[i]] = p[ks[i]];
+            };
+
+            LabelSublistAction.prototype.subListId = 0;
+
+            LabelSublistAction.create = function(properties) {
+                return new LabelSublistAction(properties);
+            };
+
+            LabelSublistAction.encode = function (m, w, q) {
+                if (!w)
+                    w = $Writer.create();
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                if (m.subListId != null && $Object.hasOwnProperty.call(m, "subListId"))
+                    w.uint32(8).int32(m.subListId);
+                if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                    for (var i = 0; i < m.$unknowns.length; ++i)
+                        w.raw(m.$unknowns[i]);
+                return w;
+            };
+
+            LabelSublistAction.decode = function (r, l, z, q, g) {
+                if (!(r instanceof $Reader))
+                    r = $Reader.create(r);
+                if (q === $undefined)
+                    q = 0;
+                if (q > $Reader.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.LabelSublistAction();
+                while (r.pos < c) {
+                    var s = r.pos;
+                    var t = r.tag();
+                    if (t === z) {
+                        z = $undefined;
+                        break;
+                    }
+                    var u = t & 7;
+                    switch (t >>>= 3) {
+                    case 1: {
+                            if (u !== 0)
+                                break;
+                            m.subListId = r.int32();
+                            continue;
+                        }
+                    }
+                    r.skipType(u, q, t);
+                    if (!r.discardUnknown) {
+                        $util.makeProp(m, "$unknowns", false);
+                        (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                    }
+                }
+                if (z !== $undefined)
+                    throw $Error("missing end group");
+                return m;
+            };
+
+            LabelSublistAction.fromObject = function (d, q) {
+                if (d instanceof $root.SyncAction.SyncActionValue.LabelSublistAction)
+                    return d;
+                if (!$util.isObject(d))
+                    throw $TypeError(".SyncAction.SyncActionValue.LabelSublistAction: object expected");
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var m = new $root.SyncAction.SyncActionValue.LabelSublistAction();
+                if (d.subListId != null) {
+                    m.subListId = d.subListId | 0;
+                }
+                return m;
+            };
+
+            LabelSublistAction.toObject = function (m, o, q) {
+                if (!o)
+                    o = {};
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var d = {};
+                if (o.defaults) {
+                    d.subListId = 0;
+                }
+                if (m.subListId != null && $Object.hasOwnProperty.call(m, "subListId")) {
+                    d.subListId = m.subListId;
+                }
+                return d;
+            };
+
+            LabelSublistAction.prototype.toJSON = function() {
+                return LabelSublistAction.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            LabelSublistAction.getTypeUrl = function(prefix) {
+                if (prefix === $undefined)
+                    prefix = "type.googleapis.com";
+                return prefix + "/SyncAction.SyncActionValue.LabelSublistAction";
+            };
+
+            return LabelSublistAction;
         })();
 
         SyncActionValue.LidContactAction = (function() {
@@ -15602,6 +15731,7 @@ export const SyncAction = $root.SyncAction = (() => {
                 RootSecretEntry.prototype.id = "";
                 RootSecretEntry.prototype.rootSecret = $util.newBuffer([]);
                 RootSecretEntry.prototype.epoch = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+                RootSecretEntry.prototype.status = 0;
 
                 RootSecretEntry.create = function(properties) {
                     return new RootSecretEntry(properties);
@@ -15620,6 +15750,8 @@ export const SyncAction = $root.SyncAction = (() => {
                         w.uint32(18).bytes(m.rootSecret);
                     if (m.epoch != null && $Object.hasOwnProperty.call(m, "epoch"))
                         w.uint32(24).int64(m.epoch);
+                    if (m.status != null && $Object.hasOwnProperty.call(m, "status"))
+                        w.uint32(32).int32(m.status);
                     if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                         for (var i = 0; i < m.$unknowns.length; ++i)
                             w.raw(m.$unknowns[i]);
@@ -15633,7 +15765,7 @@ export const SyncAction = $root.SyncAction = (() => {
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.WASARootSecretAction.RootSecretEntry();
+                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.WASARootSecretAction.RootSecretEntry(), v;
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -15659,6 +15791,18 @@ export const SyncAction = $root.SyncAction = (() => {
                                 if (u !== 0)
                                     break;
                                 m.epoch = r.int64();
+                                continue;
+                            }
+                        case 4: {
+                                if (u !== 0)
+                                    break;
+                                v = r.int32();
+                                if ($root.SyncAction.SyncActionValue.WASARootSecretAction.RootSecretEntry.Status[v] !== $undefined) {
+                                    m.status = v;
+                                } else if (!r.discardUnknown) {
+                                    $util.makeProp(m, "$unknowns", false);
+                                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                                }
                                 continue;
                             }
                         }
@@ -15702,6 +15846,17 @@ export const SyncAction = $root.SyncAction = (() => {
                         else if (typeof d.epoch === "object")
                             m.epoch = new $util.LongBits(d.epoch.low >>> 0, d.epoch.high >>> 0).toNumber();
                     }
+                    switch (d.status) {
+                    case "INACTIVE":
+                    case 0:
+                        m.status = 0;
+                        break;
+                    case "ACTIVE":
+                    case 1:
+                        m.status = 1;
+                        break;
+                    default:
+                    }
                     return m;
                 };
 
@@ -15727,6 +15882,7 @@ export const SyncAction = $root.SyncAction = (() => {
                             d.epoch = o.longs === $String ? n.toString() : o.longs === $Number ? n.toNumber() : typeof $BigInt !== "undefined" && o.longs === $BigInt ? n.toBigInt() : n;
                         } else
                             d.epoch = o.longs === $String ? "0" : typeof $BigInt !== "undefined" && o.longs === $BigInt ? $BigInt("0") : 0;
+                        d.status = o.enums === $String ? "INACTIVE" : 0;
                     }
                     if (m.id != null && $Object.hasOwnProperty.call(m, "id")) {
                         d.id = m.id;
@@ -15742,6 +15898,9 @@ export const SyncAction = $root.SyncAction = (() => {
                         else
                             d.epoch = o.longs === String ? longToString(m.epoch) : o.longs === Number ? longToNumber(m.epoch) : m.epoch;
                     }
+                    if (m.status != null && $Object.hasOwnProperty.call(m, "status")) {
+                        d.status = o.enums === $String ? $root.SyncAction.SyncActionValue.WASARootSecretAction.RootSecretEntry.Status[m.status] === $undefined ? m.status : $root.SyncAction.SyncActionValue.WASARootSecretAction.RootSecretEntry.Status[m.status] : m.status;
+                    }
                     return d;
                 };
 
@@ -15754,6 +15913,13 @@ export const SyncAction = $root.SyncAction = (() => {
                         prefix = "type.googleapis.com";
                     return prefix + "/SyncAction.SyncActionValue.WASARootSecretAction.RootSecretEntry";
                 };
+
+                RootSecretEntry.Status = (function() {
+                    const valuesById = $Object.create(null), values = $Object.create(valuesById);
+                    values[valuesById[0] = "INACTIVE"] = 0;
+                    values[valuesById[1] = "ACTIVE"] = 1;
+                    return values;
+                })();
 
                 return RootSecretEntry;
             })();
@@ -16909,6 +17075,7 @@ export const SyncAction = $root.SyncAction = (() => {
         values[valuesById[88] = "COEX_V2_VERSION_ACTION"] = 88;
         values[valuesById[89] = "WASA_ROOT_SECRET_ACTION"] = 89;
         values[valuesById[90] = "BUBBLE_LOCK_MESSAGE_ACTION"] = 90;
+        values[valuesById[91] = "LABEL_SUBLIST_ACTION"] = 91;
         values[valuesById[10001] = "SHARE_OWN_PN"] = 10001;
         values[valuesById[10002] = "BUSINESS_BROADCAST_ACTION"] = 10002;
         values[valuesById[10003] = "AI_THREAD_DELETE_ACTION"] = 10003;

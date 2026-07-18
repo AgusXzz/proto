@@ -4856,6 +4856,10 @@ export const AICommon = $root.AICommon = (() => {
             case 56:
                 m.botEntryPointOrigin = 56;
                 break;
+            case "CONTACTS_TAB":
+            case 57:
+                m.botEntryPointOrigin = 57;
+                break;
             default:
             }
             if (d.forwardScore != null) {
@@ -14820,6 +14824,10 @@ export const AICommon = $root.AICommon = (() => {
             case 56:
                 m.destinationEntryPoint = 56;
                 break;
+            case "CONTACTS_TAB":
+            case 57:
+                m.destinationEntryPoint = 57;
+                break;
             default:
             }
             switch (d.threadOrigin) {
@@ -17148,6 +17156,7 @@ export const AICommon = $root.AICommon = (() => {
         values[valuesById[54] = "GROUP_MEMBER"] = 54;
         values[valuesById[55] = "CHATLIST_SEARCH"] = 55;
         values[valuesById[56] = "NEW_CHAT_LIST"] = 56;
+        values[valuesById[57] = "CONTACTS_TAB"] = 57;
         return values;
     })();
 

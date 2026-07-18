@@ -16666,6 +16666,7 @@ export const E2E = $root.E2E = (() => {
             Call.prototype.deeplinkPayload = "";
             Call.prototype.messageContextInfo = null;
             Call.prototype.callEntryPoint = 0;
+            Call.prototype.callReason = "";
 
             Call.create = function(properties) {
                 return new Call(properties);
@@ -16700,6 +16701,8 @@ export const E2E = $root.E2E = (() => {
                     $root.E2E.MessageContextInfo.encode(m.messageContextInfo, w.uint32(82).fork(), q + 1).ldelim();
                 if (m.callEntryPoint != null && $Object.hasOwnProperty.call(m, "callEntryPoint"))
                     w.uint32(88).uint32(m.callEntryPoint);
+                if (m.callReason != null && $Object.hasOwnProperty.call(m, "callReason"))
+                    w.uint32(98).string(m.callReason);
                 if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                     for (var i = 0; i < m.$unknowns.length; ++i)
                         w.raw(m.$unknowns[i]);
@@ -16789,6 +16792,12 @@ export const E2E = $root.E2E = (() => {
                             m.callEntryPoint = r.uint32();
                             continue;
                         }
+                    case 12: {
+                            if (u !== 2)
+                                break;
+                            m.callReason = r.string();
+                            continue;
+                        }
                     }
                     r.skipType(u, q, t);
                     if (!r.discardUnknown) {
@@ -16857,6 +16866,9 @@ export const E2E = $root.E2E = (() => {
                 if (d.callEntryPoint != null) {
                     m.callEntryPoint = d.callEntryPoint >>> 0;
                 }
+                if (d.callReason != null) {
+                    m.callReason = $String(d.callReason);
+                }
                 return m;
             };
 
@@ -16898,6 +16910,7 @@ export const E2E = $root.E2E = (() => {
                     d.deeplinkPayload = "";
                     d.messageContextInfo = null;
                     d.callEntryPoint = 0;
+                    d.callReason = "";
                 }
                 if (m.callKey != null && $Object.hasOwnProperty.call(m, "callKey")) {
                     d.callKey = o.bytes === $String ? $util.base64.encode(m.callKey, 0, m.callKey.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.callKey) : m.callKey;
@@ -16931,6 +16944,9 @@ export const E2E = $root.E2E = (() => {
                 }
                 if (m.callEntryPoint != null && $Object.hasOwnProperty.call(m, "callEntryPoint")) {
                     d.callEntryPoint = m.callEntryPoint;
+                }
+                if (m.callReason != null && $Object.hasOwnProperty.call(m, "callReason")) {
+                    d.callReason = m.callReason;
                 }
                 return d;
             };
@@ -41487,6 +41503,7 @@ export const E2E = $root.E2E = (() => {
             ProtocolMessage.prototype.aiMetadataOperation = null;
             ProtocolMessage.prototype.markAsVerifiedAction = null;
             ProtocolMessage.prototype.coexStateSync = null;
+            ProtocolMessage.prototype.syncRequestMutationRetry = null;
 
             ProtocolMessage.create = function(properties) {
                 return new ProtocolMessage(properties);
@@ -41559,6 +41576,8 @@ export const E2E = $root.E2E = (() => {
                     $root.E2E.Message.MarkAsVerifiedAction.encode(m.markAsVerifiedAction, w.uint32(258).fork(), q + 1).ldelim();
                 if (m.coexStateSync != null && $Object.hasOwnProperty.call(m, "coexStateSync"))
                     $root.ServerSync.CoexStateSync.encode(m.coexStateSync, w.uint32(266).fork(), q + 1).ldelim();
+                if (m.syncRequestMutationRetry != null && $Object.hasOwnProperty.call(m, "syncRequestMutationRetry"))
+                    $root.E2E.Message.SyncRequestMutationRetry.encode(m.syncRequestMutationRetry, w.uint32(274).fork(), q + 1).ldelim();
                 if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                     for (var i = 0; i < m.$unknowns.length; ++i)
                         w.raw(m.$unknowns[i]);
@@ -41768,6 +41787,12 @@ export const E2E = $root.E2E = (() => {
                             m.coexStateSync = $root.ServerSync.CoexStateSync.decode(r, r.uint32(), $undefined, q + 1, m.coexStateSync);
                             continue;
                         }
+                    case 34: {
+                            if (u !== 2)
+                                break;
+                            m.syncRequestMutationRetry = $root.E2E.Message.SyncRequestMutationRetry.decode(r, r.uint32(), $undefined, q + 1, m.syncRequestMutationRetry);
+                            continue;
+                        }
                     }
                     r.skipType(u, q, t);
                     if (!r.discardUnknown) {
@@ -41924,6 +41949,10 @@ export const E2E = $root.E2E = (() => {
                 case 37:
                     m.type = 37;
                     break;
+                case "SYNC_REQUEST_MUTATION_RETRY":
+                case 38:
+                    m.type = 38;
+                    break;
                 default:
                 }
                 if (d.ephemeralExpiration != null) {
@@ -42071,6 +42100,11 @@ export const E2E = $root.E2E = (() => {
                         throw $TypeError(".E2E.Message.ProtocolMessage.coexStateSync: object expected");
                     m.coexStateSync = $root.ServerSync.CoexStateSync.fromObject(d.coexStateSync, q + 1);
                 }
+                if (d.syncRequestMutationRetry != null) {
+                    if (!$util.isObject(d.syncRequestMutationRetry))
+                        throw $TypeError(".E2E.Message.ProtocolMessage.syncRequestMutationRetry: object expected");
+                    m.syncRequestMutationRetry = $root.E2E.Message.SyncRequestMutationRetry.fromObject(d.syncRequestMutationRetry, q + 1);
+                }
                 return m;
             };
 
@@ -42127,6 +42161,7 @@ export const E2E = $root.E2E = (() => {
                     d.aiMetadataOperation = null;
                     d.markAsVerifiedAction = null;
                     d.coexStateSync = null;
+                    d.syncRequestMutationRetry = null;
                 }
                 if (m.key != null && $Object.hasOwnProperty.call(m, "key")) {
                     d.key = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.toObject(m.key, o, q + 1);
@@ -42228,6 +42263,9 @@ export const E2E = $root.E2E = (() => {
                 if (m.coexStateSync != null && $Object.hasOwnProperty.call(m, "coexStateSync")) {
                     d.coexStateSync = $root.ServerSync.CoexStateSync.toObject(m.coexStateSync, o, q + 1);
                 }
+                if (m.syncRequestMutationRetry != null && $Object.hasOwnProperty.call(m, "syncRequestMutationRetry")) {
+                    d.syncRequestMutationRetry = $root.E2E.Message.SyncRequestMutationRetry.toObject(m.syncRequestMutationRetry, o, q + 1);
+                }
                 return d;
             };
 
@@ -42275,6 +42313,7 @@ export const E2E = $root.E2E = (() => {
                 values[valuesById[35] = "AI_METADATA_OPERATION"] = 35;
                 values[valuesById[36] = "MARK_AS_VERIFIED_ACTION"] = 36;
                 values[valuesById[37] = "COEX_STATE_SYNC"] = 37;
+                values[valuesById[38] = "SYNC_REQUEST_MUTATION_RETRY"] = 38;
                 return values;
             })();
 
@@ -46832,6 +46871,293 @@ export const E2E = $root.E2E = (() => {
             };
 
             return StickerSyncRMRMessage;
+        })();
+
+        Message.SyncRequestMutationRetry = (function() {
+
+            const SyncRequestMutationRetry = function (p) {
+                this.collections = [];
+                if (p)
+                    for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                        if (p[ks[i]] != null && ks[i] !== "__proto__")
+                            this[ks[i]] = p[ks[i]];
+            };
+
+            SyncRequestMutationRetry.prototype.collections = $util.emptyArray;
+            SyncRequestMutationRetry.prototype.count = 0;
+
+            SyncRequestMutationRetry.create = function(properties) {
+                return new SyncRequestMutationRetry(properties);
+            };
+
+            SyncRequestMutationRetry.encode = function (m, w, q) {
+                if (!w)
+                    w = $Writer.create();
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                if (m.collections != null && m.collections.length) {
+                    for (var i = 0; i < m.collections.length; ++i)
+                        $root.E2E.Message.SyncRequestMutationRetry.Collection.encode(m.collections[i], w.uint32(10).fork(), q + 1).ldelim();
+                }
+                if (m.count != null && $Object.hasOwnProperty.call(m, "count"))
+                    w.uint32(16).uint32(m.count);
+                if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                    for (var i = 0; i < m.$unknowns.length; ++i)
+                        w.raw(m.$unknowns[i]);
+                return w;
+            };
+
+            SyncRequestMutationRetry.decode = function (r, l, z, q, g) {
+                if (!(r instanceof $Reader))
+                    r = $Reader.create(r);
+                if (q === $undefined)
+                    q = 0;
+                if (q > $Reader.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.SyncRequestMutationRetry();
+                while (r.pos < c) {
+                    var s = r.pos;
+                    var t = r.tag();
+                    if (t === z) {
+                        z = $undefined;
+                        break;
+                    }
+                    var u = t & 7;
+                    switch (t >>>= 3) {
+                    case 1: {
+                            if (u !== 2)
+                                break;
+                            if (!(m.collections && m.collections.length))
+                                m.collections = [];
+                            m.collections.push($root.E2E.Message.SyncRequestMutationRetry.Collection.decode(r, r.uint32(), $undefined, q + 1));
+                            continue;
+                        }
+                    case 2: {
+                            if (u !== 0)
+                                break;
+                            m.count = r.uint32();
+                            continue;
+                        }
+                    }
+                    r.skipType(u, q, t);
+                    if (!r.discardUnknown) {
+                        $util.makeProp(m, "$unknowns", false);
+                        (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                    }
+                }
+                if (z !== $undefined)
+                    throw $Error("missing end group");
+                return m;
+            };
+
+            SyncRequestMutationRetry.fromObject = function (d, q) {
+                if (d instanceof $root.E2E.Message.SyncRequestMutationRetry)
+                    return d;
+                if (!$util.isObject(d))
+                    throw $TypeError(".E2E.Message.SyncRequestMutationRetry: object expected");
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var m = new $root.E2E.Message.SyncRequestMutationRetry();
+                if (d.collections) {
+                    if (!$Array.isArray(d.collections))
+                        throw $TypeError(".E2E.Message.SyncRequestMutationRetry.collections: array expected");
+                    m.collections = $Array(d.collections.length);
+                    for (var i = 0; i < d.collections.length; ++i) {
+                        if (!$util.isObject(d.collections[i]))
+                            throw $TypeError(".E2E.Message.SyncRequestMutationRetry.collections: object expected");
+                        m.collections[i] = $root.E2E.Message.SyncRequestMutationRetry.Collection.fromObject(d.collections[i], q + 1);
+                    }
+                }
+                if (d.count != null) {
+                    m.count = d.count >>> 0;
+                }
+                return m;
+            };
+
+            SyncRequestMutationRetry.toObject = function (m, o, q) {
+                if (!o)
+                    o = {};
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var d = {};
+                if (o.arrays || o.defaults) {
+                    d.collections = [];
+                }
+                if (o.defaults) {
+                    d.count = 0;
+                }
+                if (m.collections && m.collections.length) {
+                    d.collections = $Array(m.collections.length);
+                    for (var j = 0; j < m.collections.length; ++j) {
+                        d.collections[j] = $root.E2E.Message.SyncRequestMutationRetry.Collection.toObject(m.collections[j], o, q + 1);
+                    }
+                }
+                if (m.count != null && $Object.hasOwnProperty.call(m, "count")) {
+                    d.count = m.count;
+                }
+                return d;
+            };
+
+            SyncRequestMutationRetry.prototype.toJSON = function() {
+                return SyncRequestMutationRetry.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            SyncRequestMutationRetry.getTypeUrl = function(prefix) {
+                if (prefix === $undefined)
+                    prefix = "type.googleapis.com";
+                return prefix + "/E2E.Message.SyncRequestMutationRetry";
+            };
+
+            SyncRequestMutationRetry.Collection = (function() {
+
+                const Collection = function (p) {
+                    if (p)
+                        for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                            if (p[ks[i]] != null && ks[i] !== "__proto__")
+                                this[ks[i]] = p[ks[i]];
+                };
+
+                Collection.prototype.name = "";
+                Collection.prototype.storedSyncdVersion = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+
+                Collection.create = function(properties) {
+                    return new Collection(properties);
+                };
+
+                Collection.encode = function (m, w, q) {
+                    if (!w)
+                        w = $Writer.create();
+                    if (q === $undefined)
+                        q = 0;
+                    if (q > $util.recursionLimit)
+                        throw $Error("max depth exceeded");
+                    if (m.name != null && $Object.hasOwnProperty.call(m, "name"))
+                        w.uint32(10).string(m.name);
+                    if (m.storedSyncdVersion != null && $Object.hasOwnProperty.call(m, "storedSyncdVersion"))
+                        w.uint32(16).uint64(m.storedSyncdVersion);
+                    if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                        for (var i = 0; i < m.$unknowns.length; ++i)
+                            w.raw(m.$unknowns[i]);
+                    return w;
+                };
+
+                Collection.decode = function (r, l, z, q, g) {
+                    if (!(r instanceof $Reader))
+                        r = $Reader.create(r);
+                    if (q === $undefined)
+                        q = 0;
+                    if (q > $Reader.recursionLimit)
+                        throw $Error("max depth exceeded");
+                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.SyncRequestMutationRetry.Collection();
+                    while (r.pos < c) {
+                        var s = r.pos;
+                        var t = r.tag();
+                        if (t === z) {
+                            z = $undefined;
+                            break;
+                        }
+                        var u = t & 7;
+                        switch (t >>>= 3) {
+                        case 1: {
+                                if (u !== 2)
+                                    break;
+                                m.name = r.string();
+                                continue;
+                            }
+                        case 2: {
+                                if (u !== 0)
+                                    break;
+                                m.storedSyncdVersion = r.uint64();
+                                continue;
+                            }
+                        }
+                        r.skipType(u, q, t);
+                        if (!r.discardUnknown) {
+                            $util.makeProp(m, "$unknowns", false);
+                            (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                        }
+                    }
+                    if (z !== $undefined)
+                        throw $Error("missing end group");
+                    return m;
+                };
+
+                Collection.fromObject = function (d, q) {
+                    if (d instanceof $root.E2E.Message.SyncRequestMutationRetry.Collection)
+                        return d;
+                    if (!$util.isObject(d))
+                        throw $TypeError(".E2E.Message.SyncRequestMutationRetry.Collection: object expected");
+                    if (q === $undefined)
+                        q = 0;
+                    if (q > $util.recursionLimit)
+                        throw $Error("max depth exceeded");
+                    var m = new $root.E2E.Message.SyncRequestMutationRetry.Collection();
+                    if (d.name != null) {
+                        m.name = $String(d.name);
+                    }
+                    if (d.storedSyncdVersion != null) {
+                        if ($util.Long)
+                            m.storedSyncdVersion = $util.Long.fromValue(d.storedSyncdVersion, true);
+                        else if (typeof d.storedSyncdVersion === "string")
+                            m.storedSyncdVersion = $parseInt(d.storedSyncdVersion, 10);
+                        else if (typeof d.storedSyncdVersion === "number")
+                            m.storedSyncdVersion = d.storedSyncdVersion;
+                        else if (typeof d.storedSyncdVersion === "object")
+                            m.storedSyncdVersion = new $util.LongBits(d.storedSyncdVersion.low >>> 0, d.storedSyncdVersion.high >>> 0).toNumber(true);
+                    }
+                    return m;
+                };
+
+                Collection.toObject = function (m, o, q) {
+                    if (!o)
+                        o = {};
+                    if (q === $undefined)
+                        q = 0;
+                    if (q > $util.recursionLimit)
+                        throw $Error("max depth exceeded");
+                    var d = {};
+                    if (o.defaults) {
+                        d.name = "";
+                        if ($util.Long) {
+                            var n = new $util.Long(0, 0, true);
+                            d.storedSyncdVersion = o.longs === $String ? n.toString() : o.longs === $Number ? n.toNumber() : typeof $BigInt !== "undefined" && o.longs === $BigInt ? n.toBigInt() : n;
+                        } else
+                            d.storedSyncdVersion = o.longs === $String ? "0" : typeof $BigInt !== "undefined" && o.longs === $BigInt ? $BigInt("0") : 0;
+                    }
+                    if (m.name != null && $Object.hasOwnProperty.call(m, "name")) {
+                        d.name = m.name;
+                    }
+                    if (m.storedSyncdVersion != null && $Object.hasOwnProperty.call(m, "storedSyncdVersion")) {
+                        if (typeof $BigInt !== "undefined" && o.longs === $BigInt)
+                            d.storedSyncdVersion = typeof m.storedSyncdVersion === "number" ? $BigInt(m.storedSyncdVersion) : $util.Long.fromBits(m.storedSyncdVersion.low >>> 0, m.storedSyncdVersion.high >>> 0, true).toBigInt();
+                        else if (typeof m.storedSyncdVersion === "number")
+                            d.storedSyncdVersion = o.longs === $String ? $String(m.storedSyncdVersion) : m.storedSyncdVersion;
+                        else
+                            d.storedSyncdVersion = o.longs === String ? longToString(m.storedSyncdVersion, true) : o.longs === Number ? longToNumber(m.storedSyncdVersion, true) : m.storedSyncdVersion;
+                    }
+                    return d;
+                };
+
+                Collection.prototype.toJSON = function() {
+                    return Collection.toObject(this, $protobuf.util.toJSONOptions);
+                };
+
+                Collection.getTypeUrl = function(prefix) {
+                    if (prefix === $undefined)
+                        prefix = "type.googleapis.com";
+                    return prefix + "/E2E.Message.SyncRequestMutationRetry.Collection";
+                };
+
+                return Collection;
+            })();
+
+            return SyncRequestMutationRetry;
         })();
 
         Message.TemplateButtonReplyMessage = (function() {
@@ -56429,6 +56755,10 @@ export const AICommon = $root.AICommon = (() => {
             case "NEW_CHAT_LIST":
             case 56:
                 m.botEntryPointOrigin = 56;
+                break;
+            case "CONTACTS_TAB":
+            case 57:
+                m.botEntryPointOrigin = 57;
                 break;
             default:
             }
@@ -66394,6 +66724,10 @@ export const AICommon = $root.AICommon = (() => {
             case 56:
                 m.destinationEntryPoint = 56;
                 break;
+            case "CONTACTS_TAB":
+            case 57:
+                m.destinationEntryPoint = 57;
+                break;
             default:
             }
             switch (d.threadOrigin) {
@@ -68722,6 +69056,7 @@ export const AICommon = $root.AICommon = (() => {
         values[valuesById[54] = "GROUP_MEMBER"] = 54;
         values[valuesById[55] = "CHATLIST_SEARCH"] = 55;
         values[valuesById[56] = "NEW_CHAT_LIST"] = 56;
+        values[valuesById[57] = "CONTACTS_TAB"] = 57;
         return values;
     })();
 
