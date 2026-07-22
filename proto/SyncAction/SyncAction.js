@@ -7465,6 +7465,10 @@ export const SyncAction = $root.SyncAction = (() => {
                 case 15:
                     m.type = 15;
                     break;
+                case "LEAD":
+                case 16:
+                    m.type = 16;
+                    break;
                 default:
                 }
                 if (d.isImmutable != null) {
@@ -7569,6 +7573,7 @@ export const SyncAction = $root.SyncAction = (() => {
                 values[valuesById[13] = "LOCKED"] = 13;
                 values[valuesById[14] = "INVITES"] = 14;
                 values[valuesById[15] = "THIRD_PARTY"] = 15;
+                values[valuesById[16] = "LEAD"] = 16;
                 return values;
             })();
 
