@@ -17,9 +17,12 @@ function sleep(ms) {
 }
 
 /**
- * Fetch a URL as text, with timeout + retry with backoff.
+ * Fetch a URL as text, with timeout + retry with exponential backoff.
  * Replaces request-promise-native (deprecated, unmaintained, has open CVEs)
  * with native fetch, which every supported Node runtime already ships.
+ *
+ * Exponential backoff: delay = baseDelay * (2 ^ (attempt - 1))
+ * This prevents overwhelming the server during transient failures.
  */
 async function fetchText(url, { retries = config.maxRetries } = {}) {
    let lastError;
@@ -54,7 +57,9 @@ async function fetchText(url, { retries = config.maxRetries } = {}) {
          );
 
          if (!isLastAttempt) {
-            await sleep(config.retryDelayMs * attempt);
+            // Exponential backoff: 2^(attempt-1) * baseDelay
+            const backoffDelay = config.retryDelayMs * Math.pow(2, attempt - 1);
+            await sleep(backoffDelay);
          }
       } finally {
          clearTimeout(timeout);

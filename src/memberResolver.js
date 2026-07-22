@@ -1,6 +1,11 @@
 'use strict';
 
-function findByAlias(identifiers, alias) {
+/**
+ * Finds an identifier by its alias.
+ * Optimized to use a reverse map (aliasMap) if provided, otherwise falls back to O(N) search.
+ */
+function findByAlias(identifiers, alias, aliasMap = null) {
+   if (aliasMap) return aliasMap[alias];
    return Object.values(identifiers).find((item) => item.alias === alias);
 }
 
@@ -67,11 +72,12 @@ function resolveMessageOrEnumRef({
    crossRefs,
    modulesInfo,
    rename,
+   aliasMap = null,
 }) {
    const location = ` from member '${fieldName}' of message '${messageName}'`;
 
    if (refNode.type === 'Identifier') {
-      const found = findByAlias(identifiers, refNode.name);
+      const found = findByAlias(identifiers, refNode.name, aliasMap);
       if (!found) {
          console.warn(
             `unable to find reference of alias '${refNode.name}'${location}`
@@ -121,6 +127,7 @@ function resolveMember({
    crossRefs,
    modulesInfo,
    rename,
+   aliasMap = null,
 }) {
    const { type: rawType, flags } = resolveTypeAndFlags(elements[1], identifiers);
    let type = rawType;
@@ -143,6 +150,7 @@ function resolveMember({
             crossRefs,
             modulesInfo,
             rename,
+            aliasMap,
          });
       }
    }

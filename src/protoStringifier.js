@@ -51,8 +51,9 @@ function stringifyMessageSpecMember(member, completeFlags, moduleIndentationMap,
 
 function stringifyMessageSpec(identifier, { moduleIndentationMap, modInfo, getEntity }) {
    const nestedMembers = moduleIndentationMap[identifier.name]?.members;
+   const currentName = identifier.displayName || identifier.name;
    const lines = [
-      `message ${identifier.displayName || identifier.name} {`,
+      `message ${currentName} {`,
       ...addPrefix(
          identifier.members.flatMap((m) =>
             stringifyMessageSpecMember(m, true, moduleIndentationMap, identifier.name)
@@ -66,11 +67,14 @@ function stringifyMessageSpec(identifier, { moduleIndentationMap, modInfo, getEn
       for (const memberName of sortedMemberNames) {
          const entity = modInfo.identifiers[memberName];
          if (!entity) {
-            console.log('missing nested entity', memberName);
+            console.warn(`[protoStringifier] missing nested entity: ${memberName}`);
             continue;
          }
-         const displayName = entity.name.slice(identifier.name.length + 1);
-         lines.push(...addPrefix(getEntity({ ...entity, displayName }), INDENT));
+         // Pre-calculate display name if not already set
+         if (!entity.displayName) {
+            entity.displayName = entity.name.slice(identifier.name.length + 1);
+         }
+         lines.push(...addPrefix(getEntity(entity), INDENT));
       }
    }
 

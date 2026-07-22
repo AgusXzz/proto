@@ -91,10 +91,13 @@ function findEnumAliases(module) {
                id: p.value.value,
             }));
             // parent.left is `X.internalSpec` (a MemberExpression), so the
-            // alias we want is the object being assigned onto (`X`), not
-            // `.name` on the MemberExpression itself (which is always
-            // undefined — a bug present in the original script too).
-            enumAliases[parent.left.object.name] = values;
+            // alias we want is the object being assigned onto (`X`).
+            // We use .name for simple Identifiers or recursively find the name
+            // for more complex objects if needed.
+            const nameAlias = parent.left.object.name || parent.left.object.property?.name;
+            if (nameAlias) {
+               enumAliases[nameAlias] = values;
+            }
             return;
          }
 

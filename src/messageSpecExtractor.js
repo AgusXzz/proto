@@ -59,6 +59,7 @@ function extractMessageSpec({
    crossRefs,
    modulesInfo,
    rename,
+   aliasMap = null,
 }) {
    if (!isMessageFieldShape(specNode.right)) {
       // Enum-shaped internalSpec (e.g. `{ OK: 0, FAIL: 1 }`) — nothing to
@@ -66,9 +67,7 @@ function extractMessageSpec({
       return;
    }
 
-   const targetIdentifier = Object.values(identifiers).find(
-      (v) => v.alias === specNode.left.object.name
-   );
+   const targetIdentifier = findByAlias(identifiers, specNode.left.object.name, aliasMap);
 
    if (!targetIdentifier) {
       console.warn(
@@ -99,6 +98,7 @@ function extractMessageSpec({
          crossRefs,
          modulesInfo,
          rename,
+         aliasMap,
       })
    );
 
@@ -110,6 +110,12 @@ function extractMessageSpec({
  * each one's members onto the matching identifier.
  */
 function extractAllMessageSpecs(module, { identifiers, crossRefs, modulesInfo, rename }) {
+   // Pre-build aliasMap for O(1) lookups during spec extraction
+   const aliasMap = {};
+   Object.values(identifiers).forEach((id) => {
+      if (id.alias) aliasMap[id.alias] = id;
+   });
+
    walk.simple(module, {
       AssignmentExpression(node) {
          const isInternalSpecObject =
@@ -126,6 +132,7 @@ function extractAllMessageSpecs(module, { identifiers, crossRefs, modulesInfo, r
                crossRefs,
                modulesInfo,
                rename,
+               aliasMap,
             });
          } catch (err) {
             console.warn(

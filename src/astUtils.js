@@ -6,8 +6,13 @@
  * function bodies, expressions inside a block body, and expressions
  * inside a sequence expression. Used to find the `internalSpec`
  * assignment buried inside a module wrapper's IIFE.
+ *
+ * Optimized with visited set to avoid infinite recursion and duplicate processing.
  */
-function extractAllExpressions(node) {
+function extractAllExpressions(node, visited = new WeakSet()) {
+   if (!node || visited.has(node)) return [];
+   visited.add(node);
+
    const expressions = [node];
    const exp = node.expression;
 
@@ -19,7 +24,7 @@ function extractAllExpressions(node) {
       for (const arg of node.expression.arguments) {
          if (arg?.body?.body?.length) {
             for (const bodyExp of arg.body.body) {
-               expressions.push(...extractAllExpressions(bodyExp));
+               expressions.push(...extractAllExpressions(bodyExp, visited));
             }
          }
       }
@@ -28,14 +33,14 @@ function extractAllExpressions(node) {
    if (node?.body?.body?.length) {
       for (const bodyExp of node.body.body) {
          if (bodyExp.expression) {
-            expressions.push(...extractAllExpressions(bodyExp.expression));
+            expressions.push(...extractAllExpressions(bodyExp.expression, visited));
          }
       }
    }
 
    if (node.expression?.expressions?.length) {
       for (const seqExp of node.expression.expressions) {
-         expressions.push(...extractAllExpressions(seqExp));
+         expressions.push(...extractAllExpressions(seqExp, visited));
       }
    }
 
@@ -52,7 +57,16 @@ const unspecName = (name) => {
 };
 const unnestName = (name) => name.split('$').slice(-1)[0];
 const getNesting = (name) => name.split('$').slice(0, -1).join('$');
-const makeRenameFunc = () => (name) => unspecName(name);
+const makeRenameFunc = (moduleName) => {
+   // Cache the rename function to avoid repeated calls
+   const cache = new Map();
+   return (name) => {
+      if (!cache.has(name)) {
+         cache.set(name, unspecName(name));
+      }
+      return cache.get(name);
+   };
+};
 
 module.exports = {
    extractAllExpressions,

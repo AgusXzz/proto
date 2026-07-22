@@ -52,6 +52,8 @@ function populateMessageSpecs(modules, modulesInfo) {
 }
 
 /** Step 4: group resolved identifiers by target .proto file name and stringify each. */
+const { hasType } = require('./protoImportResolver');
+
 function buildDecodedProtoMap(modules, modulesInfo, moduleIndentationMap) {
    const decodedProtoMap = {};
 
@@ -71,29 +73,29 @@ function buildDecodedProtoMap(modules, modulesInfo, moduleIndentationMap) {
          if (moduleIndentationMap[identifier.name]?.indentation?.length) continue;
 
          const { name, content } = stringifyEntity(identifier, context);
-         const type = content.split(name)[0].trim();
+         const type = content.startsWith('message') ? 'message' : 'enum';
 
          decodedProtoMap[protoName] = decodedProtoMap[protoName] || [];
-         const alreadyPresent = decodedProtoMap[protoName].some(
+         const existingIndex = decodedProtoMap[protoName].findIndex(
             (entry) => entry.name === name
          );
 
-         if (!alreadyPresent) {
-            decodedProtoMap[protoName].push({
-               protoName,
-               name,
-               type,
-               content,
-               has(path) {
-                  const protobuf = require('protobufjs');
-                  try {
-                     return !!protobuf.parse(content).root.lookup(path);
-                  } catch {
-                     return false;
-                  }
-               },
-            });
+         const entry = {
+            protoName,
+            name,
+            type,
+            content,
+         };
+
+         if (existingIndex === -1) {
+            decodedProtoMap[protoName].push(entry);
+         } else {
+            // Optional: update if content is different or more complete
+            decodedProtoMap[protoName][existingIndex] = entry;
          }
+
+         // Attach hasType helper using the optimized cache from protoImportResolver
+         entry.has = (path) => hasType(entry, path);
       }
    }
 
