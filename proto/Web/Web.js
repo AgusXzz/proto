@@ -46028,6 +46028,7 @@ export const E2E = $root.E2E = (() => {
                 PeerDataOperationResult.prototype.historySyncChunkRetryResponse = null;
                 PeerDataOperationResult.prototype.flowResponsesCsvBundle = null;
                 PeerDataOperationResult.prototype.bizBroadcastInsightsContactListResponse = null;
+                PeerDataOperationResult.prototype.contactRefreshResponse = null;
 
                 PeerDataOperationResult.create = function(properties) {
                     return new PeerDataOperationResult(properties);
@@ -46064,6 +46065,8 @@ export const E2E = $root.E2E = (() => {
                         $root.E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.FlowResponsesCsvBundle.encode(m.flowResponsesCsvBundle, w.uint32(90).fork(), q + 1).ldelim();
                     if (m.bizBroadcastInsightsContactListResponse != null && $Object.hasOwnProperty.call(m, "bizBroadcastInsightsContactListResponse"))
                         $root.E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.BizBroadcastInsightsContactListResponse.encode(m.bizBroadcastInsightsContactListResponse, w.uint32(98).fork(), q + 1).ldelim();
+                    if (m.contactRefreshResponse != null && $Object.hasOwnProperty.call(m, "contactRefreshResponse"))
+                        $root.E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse.encode(m.contactRefreshResponse, w.uint32(106).fork(), q + 1).ldelim();
                     if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                         for (var i = 0; i < m.$unknowns.length; ++i)
                             w.raw(m.$unknowns[i]);
@@ -46165,6 +46168,12 @@ export const E2E = $root.E2E = (() => {
                                 m.bizBroadcastInsightsContactListResponse = $root.E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.BizBroadcastInsightsContactListResponse.decode(r, r.uint32(), $undefined, q + 1, m.bizBroadcastInsightsContactListResponse);
                                 continue;
                             }
+                        case 13: {
+                                if (u !== 2)
+                                    break;
+                                m.contactRefreshResponse = $root.E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse.decode(r, r.uint32(), $undefined, q + 1, m.contactRefreshResponse);
+                                continue;
+                            }
                         }
                         r.skipType(u, q, t);
                         if (!r.discardUnknown) {
@@ -46261,6 +46270,11 @@ export const E2E = $root.E2E = (() => {
                             throw $TypeError(".E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.bizBroadcastInsightsContactListResponse: object expected");
                         m.bizBroadcastInsightsContactListResponse = $root.E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.BizBroadcastInsightsContactListResponse.fromObject(d.bizBroadcastInsightsContactListResponse, q + 1);
                     }
+                    if (d.contactRefreshResponse != null) {
+                        if (!$util.isObject(d.contactRefreshResponse))
+                            throw $TypeError(".E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.contactRefreshResponse: object expected");
+                        m.contactRefreshResponse = $root.E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse.fromObject(d.contactRefreshResponse, q + 1);
+                    }
                     return m;
                 };
 
@@ -46285,6 +46299,7 @@ export const E2E = $root.E2E = (() => {
                         d.historySyncChunkRetryResponse = null;
                         d.flowResponsesCsvBundle = null;
                         d.bizBroadcastInsightsContactListResponse = null;
+                        d.contactRefreshResponse = null;
                     }
                     if (m.mediaUploadResult != null && $Object.hasOwnProperty.call(m, "mediaUploadResult")) {
                         d.mediaUploadResult = o.enums === $String ? $root.MmsRetry.MediaRetryNotification.ResultType[m.mediaUploadResult] === $undefined ? m.mediaUploadResult : $root.MmsRetry.MediaRetryNotification.ResultType[m.mediaUploadResult] : m.mediaUploadResult;
@@ -46321,6 +46336,9 @@ export const E2E = $root.E2E = (() => {
                     }
                     if (m.bizBroadcastInsightsContactListResponse != null && $Object.hasOwnProperty.call(m, "bizBroadcastInsightsContactListResponse")) {
                         d.bizBroadcastInsightsContactListResponse = $root.E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.BizBroadcastInsightsContactListResponse.toObject(m.bizBroadcastInsightsContactListResponse, o, q + 1);
+                    }
+                    if (m.contactRefreshResponse != null && $Object.hasOwnProperty.call(m, "contactRefreshResponse")) {
+                        d.contactRefreshResponse = $root.E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse.toObject(m.contactRefreshResponse, o, q + 1);
                     }
                     return d;
                 };
@@ -46916,6 +46934,244 @@ export const E2E = $root.E2E = (() => {
                     };
 
                     return CompanionMetaNonceFetchResponse;
+                })();
+
+                PeerDataOperationResult.ContactRefreshResponse = (function() {
+
+                    const ContactRefreshResponse = function (p) {
+                        this.coveredRequestIds = [];
+                        if (p)
+                            for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                                if (p[ks[i]] != null && ks[i] !== "__proto__")
+                                    this[ks[i]] = p[ks[i]];
+                    };
+
+                    ContactRefreshResponse.prototype.coveredRequestIds = $util.emptyArray;
+                    ContactRefreshResponse.prototype.collectionVersion = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+                    ContactRefreshResponse.prototype.primaryProcessStartTimestampMs = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+                    ContactRefreshResponse.prototype.primaryProcessEndTimestampMs = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+                    ContactRefreshResponse.prototype.uploadedContactCount = 0;
+
+                    ContactRefreshResponse.create = function(properties) {
+                        return new ContactRefreshResponse(properties);
+                    };
+
+                    ContactRefreshResponse.encode = function (m, w, q) {
+                        if (!w)
+                            w = $Writer.create();
+                        if (q === $undefined)
+                            q = 0;
+                        if (q > $util.recursionLimit)
+                            throw $Error("max depth exceeded");
+                        if (m.coveredRequestIds != null && m.coveredRequestIds.length) {
+                            for (var i = 0; i < m.coveredRequestIds.length; ++i)
+                                w.uint32(10).string(m.coveredRequestIds[i]);
+                        }
+                        if (m.collectionVersion != null && $Object.hasOwnProperty.call(m, "collectionVersion"))
+                            w.uint32(16).uint64(m.collectionVersion);
+                        if (m.primaryProcessStartTimestampMs != null && $Object.hasOwnProperty.call(m, "primaryProcessStartTimestampMs"))
+                            w.uint32(24).int64(m.primaryProcessStartTimestampMs);
+                        if (m.primaryProcessEndTimestampMs != null && $Object.hasOwnProperty.call(m, "primaryProcessEndTimestampMs"))
+                            w.uint32(32).int64(m.primaryProcessEndTimestampMs);
+                        if (m.uploadedContactCount != null && $Object.hasOwnProperty.call(m, "uploadedContactCount"))
+                            w.uint32(40).uint32(m.uploadedContactCount);
+                        if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                            for (var i = 0; i < m.$unknowns.length; ++i)
+                                w.raw(m.$unknowns[i]);
+                        return w;
+                    };
+
+                    ContactRefreshResponse.decode = function (r, l, z, q, g) {
+                        if (!(r instanceof $Reader))
+                            r = $Reader.create(r);
+                        if (q === $undefined)
+                            q = 0;
+                        if (q > $Reader.recursionLimit)
+                            throw $Error("max depth exceeded");
+                        var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse();
+                        while (r.pos < c) {
+                            var s = r.pos;
+                            var t = r.tag();
+                            if (t === z) {
+                                z = $undefined;
+                                break;
+                            }
+                            var u = t & 7;
+                            switch (t >>>= 3) {
+                            case 1: {
+                                    if (u !== 2)
+                                        break;
+                                    if (!(m.coveredRequestIds && m.coveredRequestIds.length))
+                                        m.coveredRequestIds = [];
+                                    m.coveredRequestIds.push(r.string());
+                                    continue;
+                                }
+                            case 2: {
+                                    if (u !== 0)
+                                        break;
+                                    m.collectionVersion = r.uint64();
+                                    continue;
+                                }
+                            case 3: {
+                                    if (u !== 0)
+                                        break;
+                                    m.primaryProcessStartTimestampMs = r.int64();
+                                    continue;
+                                }
+                            case 4: {
+                                    if (u !== 0)
+                                        break;
+                                    m.primaryProcessEndTimestampMs = r.int64();
+                                    continue;
+                                }
+                            case 5: {
+                                    if (u !== 0)
+                                        break;
+                                    m.uploadedContactCount = r.uint32();
+                                    continue;
+                                }
+                            }
+                            r.skipType(u, q, t);
+                            if (!r.discardUnknown) {
+                                $util.makeProp(m, "$unknowns", false);
+                                (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                            }
+                        }
+                        if (z !== $undefined)
+                            throw $Error("missing end group");
+                        return m;
+                    };
+
+                    ContactRefreshResponse.fromObject = function (d, q) {
+                        if (d instanceof $root.E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse)
+                            return d;
+                        if (!$util.isObject(d))
+                            throw $TypeError(".E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse: object expected");
+                        if (q === $undefined)
+                            q = 0;
+                        if (q > $util.recursionLimit)
+                            throw $Error("max depth exceeded");
+                        var m = new $root.E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse();
+                        if (d.coveredRequestIds) {
+                            if (!$Array.isArray(d.coveredRequestIds))
+                                throw $TypeError(".E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse.coveredRequestIds: array expected");
+                            m.coveredRequestIds = $Array(d.coveredRequestIds.length);
+                            for (var i = 0; i < d.coveredRequestIds.length; ++i) {
+                                m.coveredRequestIds[i] = $String(d.coveredRequestIds[i]);
+                            }
+                        }
+                        if (d.collectionVersion != null) {
+                            if ($util.Long)
+                                m.collectionVersion = $util.Long.fromValue(d.collectionVersion, true);
+                            else if (typeof d.collectionVersion === "string")
+                                m.collectionVersion = $parseInt(d.collectionVersion, 10);
+                            else if (typeof d.collectionVersion === "number")
+                                m.collectionVersion = d.collectionVersion;
+                            else if (typeof d.collectionVersion === "object")
+                                m.collectionVersion = new $util.LongBits(d.collectionVersion.low >>> 0, d.collectionVersion.high >>> 0).toNumber(true);
+                        }
+                        if (d.primaryProcessStartTimestampMs != null) {
+                            if ($util.Long)
+                                m.primaryProcessStartTimestampMs = $util.Long.fromValue(d.primaryProcessStartTimestampMs, false);
+                            else if (typeof d.primaryProcessStartTimestampMs === "string")
+                                m.primaryProcessStartTimestampMs = $parseInt(d.primaryProcessStartTimestampMs, 10);
+                            else if (typeof d.primaryProcessStartTimestampMs === "number")
+                                m.primaryProcessStartTimestampMs = d.primaryProcessStartTimestampMs;
+                            else if (typeof d.primaryProcessStartTimestampMs === "object")
+                                m.primaryProcessStartTimestampMs = new $util.LongBits(d.primaryProcessStartTimestampMs.low >>> 0, d.primaryProcessStartTimestampMs.high >>> 0).toNumber();
+                        }
+                        if (d.primaryProcessEndTimestampMs != null) {
+                            if ($util.Long)
+                                m.primaryProcessEndTimestampMs = $util.Long.fromValue(d.primaryProcessEndTimestampMs, false);
+                            else if (typeof d.primaryProcessEndTimestampMs === "string")
+                                m.primaryProcessEndTimestampMs = $parseInt(d.primaryProcessEndTimestampMs, 10);
+                            else if (typeof d.primaryProcessEndTimestampMs === "number")
+                                m.primaryProcessEndTimestampMs = d.primaryProcessEndTimestampMs;
+                            else if (typeof d.primaryProcessEndTimestampMs === "object")
+                                m.primaryProcessEndTimestampMs = new $util.LongBits(d.primaryProcessEndTimestampMs.low >>> 0, d.primaryProcessEndTimestampMs.high >>> 0).toNumber();
+                        }
+                        if (d.uploadedContactCount != null) {
+                            m.uploadedContactCount = d.uploadedContactCount >>> 0;
+                        }
+                        return m;
+                    };
+
+                    ContactRefreshResponse.toObject = function (m, o, q) {
+                        if (!o)
+                            o = {};
+                        if (q === $undefined)
+                            q = 0;
+                        if (q > $util.recursionLimit)
+                            throw $Error("max depth exceeded");
+                        var d = {};
+                        if (o.arrays || o.defaults) {
+                            d.coveredRequestIds = [];
+                        }
+                        if (o.defaults) {
+                            if ($util.Long) {
+                                var n = new $util.Long(0, 0, true);
+                                d.collectionVersion = o.longs === $String ? n.toString() : o.longs === $Number ? n.toNumber() : typeof $BigInt !== "undefined" && o.longs === $BigInt ? n.toBigInt() : n;
+                            } else
+                                d.collectionVersion = o.longs === $String ? "0" : typeof $BigInt !== "undefined" && o.longs === $BigInt ? $BigInt("0") : 0;
+                            if ($util.Long) {
+                                var n = new $util.Long(0, 0, false);
+                                d.primaryProcessStartTimestampMs = o.longs === $String ? n.toString() : o.longs === $Number ? n.toNumber() : typeof $BigInt !== "undefined" && o.longs === $BigInt ? n.toBigInt() : n;
+                            } else
+                                d.primaryProcessStartTimestampMs = o.longs === $String ? "0" : typeof $BigInt !== "undefined" && o.longs === $BigInt ? $BigInt("0") : 0;
+                            if ($util.Long) {
+                                var n = new $util.Long(0, 0, false);
+                                d.primaryProcessEndTimestampMs = o.longs === $String ? n.toString() : o.longs === $Number ? n.toNumber() : typeof $BigInt !== "undefined" && o.longs === $BigInt ? n.toBigInt() : n;
+                            } else
+                                d.primaryProcessEndTimestampMs = o.longs === $String ? "0" : typeof $BigInt !== "undefined" && o.longs === $BigInt ? $BigInt("0") : 0;
+                            d.uploadedContactCount = 0;
+                        }
+                        if (m.coveredRequestIds && m.coveredRequestIds.length) {
+                            d.coveredRequestIds = $Array(m.coveredRequestIds.length);
+                            for (var j = 0; j < m.coveredRequestIds.length; ++j) {
+                                d.coveredRequestIds[j] = m.coveredRequestIds[j];
+                            }
+                        }
+                        if (m.collectionVersion != null && $Object.hasOwnProperty.call(m, "collectionVersion")) {
+                            if (typeof $BigInt !== "undefined" && o.longs === $BigInt)
+                                d.collectionVersion = typeof m.collectionVersion === "number" ? $BigInt(m.collectionVersion) : $util.Long.fromBits(m.collectionVersion.low >>> 0, m.collectionVersion.high >>> 0, true).toBigInt();
+                            else if (typeof m.collectionVersion === "number")
+                                d.collectionVersion = o.longs === $String ? $String(m.collectionVersion) : m.collectionVersion;
+                            else
+                                d.collectionVersion = o.longs === String ? longToString(m.collectionVersion, true) : o.longs === Number ? longToNumber(m.collectionVersion, true) : m.collectionVersion;
+                        }
+                        if (m.primaryProcessStartTimestampMs != null && $Object.hasOwnProperty.call(m, "primaryProcessStartTimestampMs")) {
+                            if (typeof $BigInt !== "undefined" && o.longs === $BigInt)
+                                d.primaryProcessStartTimestampMs = typeof m.primaryProcessStartTimestampMs === "number" ? $BigInt(m.primaryProcessStartTimestampMs) : $util.Long.fromBits(m.primaryProcessStartTimestampMs.low >>> 0, m.primaryProcessStartTimestampMs.high >>> 0, false).toBigInt();
+                            else if (typeof m.primaryProcessStartTimestampMs === "number")
+                                d.primaryProcessStartTimestampMs = o.longs === $String ? $String(m.primaryProcessStartTimestampMs) : m.primaryProcessStartTimestampMs;
+                            else
+                                d.primaryProcessStartTimestampMs = o.longs === String ? longToString(m.primaryProcessStartTimestampMs) : o.longs === Number ? longToNumber(m.primaryProcessStartTimestampMs) : m.primaryProcessStartTimestampMs;
+                        }
+                        if (m.primaryProcessEndTimestampMs != null && $Object.hasOwnProperty.call(m, "primaryProcessEndTimestampMs")) {
+                            if (typeof $BigInt !== "undefined" && o.longs === $BigInt)
+                                d.primaryProcessEndTimestampMs = typeof m.primaryProcessEndTimestampMs === "number" ? $BigInt(m.primaryProcessEndTimestampMs) : $util.Long.fromBits(m.primaryProcessEndTimestampMs.low >>> 0, m.primaryProcessEndTimestampMs.high >>> 0, false).toBigInt();
+                            else if (typeof m.primaryProcessEndTimestampMs === "number")
+                                d.primaryProcessEndTimestampMs = o.longs === $String ? $String(m.primaryProcessEndTimestampMs) : m.primaryProcessEndTimestampMs;
+                            else
+                                d.primaryProcessEndTimestampMs = o.longs === String ? longToString(m.primaryProcessEndTimestampMs) : o.longs === Number ? longToNumber(m.primaryProcessEndTimestampMs) : m.primaryProcessEndTimestampMs;
+                        }
+                        if (m.uploadedContactCount != null && $Object.hasOwnProperty.call(m, "uploadedContactCount")) {
+                            d.uploadedContactCount = m.uploadedContactCount;
+                        }
+                        return d;
+                    };
+
+                    ContactRefreshResponse.prototype.toJSON = function() {
+                        return ContactRefreshResponse.toObject(this, $protobuf.util.toJSONOptions);
+                    };
+
+                    ContactRefreshResponse.getTypeUrl = function(prefix) {
+                        if (prefix === $undefined)
+                            prefix = "type.googleapis.com";
+                        return prefix + "/E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse";
+                    };
+
+                    return ContactRefreshResponse;
                 })();
 
                 PeerDataOperationResult.FlowResponsesCsvBundle = (function() {
@@ -80699,6 +80955,10 @@ export const StatusAttributions = $root.StatusAttributions = (() => {
             case 11:
                 m.type = 11;
                 break;
+            case "USERNAME_STATUS":
+            case 12:
+                m.type = 12;
+                break;
             default:
             }
             if (d.actionUrl != null) {
@@ -81952,6 +82212,7 @@ export const StatusAttributions = $root.StatusAttributions = (() => {
             values[valuesById[9] = "NEWSLETTER_STATUS"] = 9;
             values[valuesById[10] = "STATUS_CLOSE_SHARING"] = 10;
             values[valuesById[11] = "PAID_PARTNERSHIP"] = 11;
+            values[valuesById[12] = "USERNAME_STATUS"] = 12;
             return values;
         })();
 

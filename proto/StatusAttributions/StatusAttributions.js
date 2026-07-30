@@ -253,6 +253,10 @@ export const StatusAttributions = $root.StatusAttributions = (() => {
             case 11:
                 m.type = 11;
                 break;
+            case "USERNAME_STATUS":
+            case 12:
+                m.type = 12;
+                break;
             default:
             }
             if (d.actionUrl != null) {
@@ -1506,6 +1510,7 @@ export const StatusAttributions = $root.StatusAttributions = (() => {
             values[valuesById[9] = "NEWSLETTER_STATUS"] = 9;
             values[valuesById[10] = "STATUS_CLOSE_SHARING"] = 10;
             values[valuesById[11] = "PAID_PARTNERSHIP"] = 11;
+            values[valuesById[12] = "USERNAME_STATUS"] = 12;
             return values;
         })();
 
