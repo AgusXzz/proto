@@ -37158,9 +37158,8 @@ export const E2E = $root.E2E = (() => {
 
                     ContactRefreshResponse.prototype.coveredRequestIds = $util.emptyArray;
                     ContactRefreshResponse.prototype.collectionVersion = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
-                    ContactRefreshResponse.prototype.primaryProcessStartTimestampMs = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
-                    ContactRefreshResponse.prototype.primaryProcessEndTimestampMs = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
-                    ContactRefreshResponse.prototype.uploadedContactCount = 0;
+                    ContactRefreshResponse.prototype.primaryDurationMs = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+                    ContactRefreshResponse.prototype.uniqueContactCount = 0;
 
                     ContactRefreshResponse.create = function(properties) {
                         return new ContactRefreshResponse(properties);
@@ -37179,12 +37178,10 @@ export const E2E = $root.E2E = (() => {
                         }
                         if (m.collectionVersion != null && $Object.hasOwnProperty.call(m, "collectionVersion"))
                             w.uint32(16).uint64(m.collectionVersion);
-                        if (m.primaryProcessStartTimestampMs != null && $Object.hasOwnProperty.call(m, "primaryProcessStartTimestampMs"))
-                            w.uint32(24).int64(m.primaryProcessStartTimestampMs);
-                        if (m.primaryProcessEndTimestampMs != null && $Object.hasOwnProperty.call(m, "primaryProcessEndTimestampMs"))
-                            w.uint32(32).int64(m.primaryProcessEndTimestampMs);
-                        if (m.uploadedContactCount != null && $Object.hasOwnProperty.call(m, "uploadedContactCount"))
-                            w.uint32(40).uint32(m.uploadedContactCount);
+                        if (m.primaryDurationMs != null && $Object.hasOwnProperty.call(m, "primaryDurationMs"))
+                            w.uint32(24).int64(m.primaryDurationMs);
+                        if (m.uniqueContactCount != null && $Object.hasOwnProperty.call(m, "uniqueContactCount"))
+                            w.uint32(32).uint32(m.uniqueContactCount);
                         if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                             for (var i = 0; i < m.$unknowns.length; ++i)
                                 w.raw(m.$unknowns[i]);
@@ -37225,19 +37222,13 @@ export const E2E = $root.E2E = (() => {
                             case 3: {
                                     if (u !== 0)
                                         break;
-                                    m.primaryProcessStartTimestampMs = r.int64();
+                                    m.primaryDurationMs = r.int64();
                                     continue;
                                 }
                             case 4: {
                                     if (u !== 0)
                                         break;
-                                    m.primaryProcessEndTimestampMs = r.int64();
-                                    continue;
-                                }
-                            case 5: {
-                                    if (u !== 0)
-                                        break;
-                                    m.uploadedContactCount = r.uint32();
+                                    m.uniqueContactCount = r.uint32();
                                     continue;
                                 }
                             }
@@ -37280,28 +37271,18 @@ export const E2E = $root.E2E = (() => {
                             else if (typeof d.collectionVersion === "object")
                                 m.collectionVersion = new $util.LongBits(d.collectionVersion.low >>> 0, d.collectionVersion.high >>> 0).toNumber(true);
                         }
-                        if (d.primaryProcessStartTimestampMs != null) {
+                        if (d.primaryDurationMs != null) {
                             if ($util.Long)
-                                m.primaryProcessStartTimestampMs = $util.Long.fromValue(d.primaryProcessStartTimestampMs, false);
-                            else if (typeof d.primaryProcessStartTimestampMs === "string")
-                                m.primaryProcessStartTimestampMs = $parseInt(d.primaryProcessStartTimestampMs, 10);
-                            else if (typeof d.primaryProcessStartTimestampMs === "number")
-                                m.primaryProcessStartTimestampMs = d.primaryProcessStartTimestampMs;
-                            else if (typeof d.primaryProcessStartTimestampMs === "object")
-                                m.primaryProcessStartTimestampMs = new $util.LongBits(d.primaryProcessStartTimestampMs.low >>> 0, d.primaryProcessStartTimestampMs.high >>> 0).toNumber();
+                                m.primaryDurationMs = $util.Long.fromValue(d.primaryDurationMs, false);
+                            else if (typeof d.primaryDurationMs === "string")
+                                m.primaryDurationMs = $parseInt(d.primaryDurationMs, 10);
+                            else if (typeof d.primaryDurationMs === "number")
+                                m.primaryDurationMs = d.primaryDurationMs;
+                            else if (typeof d.primaryDurationMs === "object")
+                                m.primaryDurationMs = new $util.LongBits(d.primaryDurationMs.low >>> 0, d.primaryDurationMs.high >>> 0).toNumber();
                         }
-                        if (d.primaryProcessEndTimestampMs != null) {
-                            if ($util.Long)
-                                m.primaryProcessEndTimestampMs = $util.Long.fromValue(d.primaryProcessEndTimestampMs, false);
-                            else if (typeof d.primaryProcessEndTimestampMs === "string")
-                                m.primaryProcessEndTimestampMs = $parseInt(d.primaryProcessEndTimestampMs, 10);
-                            else if (typeof d.primaryProcessEndTimestampMs === "number")
-                                m.primaryProcessEndTimestampMs = d.primaryProcessEndTimestampMs;
-                            else if (typeof d.primaryProcessEndTimestampMs === "object")
-                                m.primaryProcessEndTimestampMs = new $util.LongBits(d.primaryProcessEndTimestampMs.low >>> 0, d.primaryProcessEndTimestampMs.high >>> 0).toNumber();
-                        }
-                        if (d.uploadedContactCount != null) {
-                            m.uploadedContactCount = d.uploadedContactCount >>> 0;
+                        if (d.uniqueContactCount != null) {
+                            m.uniqueContactCount = d.uniqueContactCount >>> 0;
                         }
                         return m;
                     };
@@ -37325,15 +37306,10 @@ export const E2E = $root.E2E = (() => {
                                 d.collectionVersion = o.longs === $String ? "0" : typeof $BigInt !== "undefined" && o.longs === $BigInt ? $BigInt("0") : 0;
                             if ($util.Long) {
                                 var n = new $util.Long(0, 0, false);
-                                d.primaryProcessStartTimestampMs = o.longs === $String ? n.toString() : o.longs === $Number ? n.toNumber() : typeof $BigInt !== "undefined" && o.longs === $BigInt ? n.toBigInt() : n;
+                                d.primaryDurationMs = o.longs === $String ? n.toString() : o.longs === $Number ? n.toNumber() : typeof $BigInt !== "undefined" && o.longs === $BigInt ? n.toBigInt() : n;
                             } else
-                                d.primaryProcessStartTimestampMs = o.longs === $String ? "0" : typeof $BigInt !== "undefined" && o.longs === $BigInt ? $BigInt("0") : 0;
-                            if ($util.Long) {
-                                var n = new $util.Long(0, 0, false);
-                                d.primaryProcessEndTimestampMs = o.longs === $String ? n.toString() : o.longs === $Number ? n.toNumber() : typeof $BigInt !== "undefined" && o.longs === $BigInt ? n.toBigInt() : n;
-                            } else
-                                d.primaryProcessEndTimestampMs = o.longs === $String ? "0" : typeof $BigInt !== "undefined" && o.longs === $BigInt ? $BigInt("0") : 0;
-                            d.uploadedContactCount = 0;
+                                d.primaryDurationMs = o.longs === $String ? "0" : typeof $BigInt !== "undefined" && o.longs === $BigInt ? $BigInt("0") : 0;
+                            d.uniqueContactCount = 0;
                         }
                         if (m.coveredRequestIds && m.coveredRequestIds.length) {
                             d.coveredRequestIds = $Array(m.coveredRequestIds.length);
@@ -37349,24 +37325,16 @@ export const E2E = $root.E2E = (() => {
                             else
                                 d.collectionVersion = o.longs === String ? longToString(m.collectionVersion, true) : o.longs === Number ? longToNumber(m.collectionVersion, true) : m.collectionVersion;
                         }
-                        if (m.primaryProcessStartTimestampMs != null && $Object.hasOwnProperty.call(m, "primaryProcessStartTimestampMs")) {
+                        if (m.primaryDurationMs != null && $Object.hasOwnProperty.call(m, "primaryDurationMs")) {
                             if (typeof $BigInt !== "undefined" && o.longs === $BigInt)
-                                d.primaryProcessStartTimestampMs = typeof m.primaryProcessStartTimestampMs === "number" ? $BigInt(m.primaryProcessStartTimestampMs) : $util.Long.fromBits(m.primaryProcessStartTimestampMs.low >>> 0, m.primaryProcessStartTimestampMs.high >>> 0, false).toBigInt();
-                            else if (typeof m.primaryProcessStartTimestampMs === "number")
-                                d.primaryProcessStartTimestampMs = o.longs === $String ? $String(m.primaryProcessStartTimestampMs) : m.primaryProcessStartTimestampMs;
+                                d.primaryDurationMs = typeof m.primaryDurationMs === "number" ? $BigInt(m.primaryDurationMs) : $util.Long.fromBits(m.primaryDurationMs.low >>> 0, m.primaryDurationMs.high >>> 0, false).toBigInt();
+                            else if (typeof m.primaryDurationMs === "number")
+                                d.primaryDurationMs = o.longs === $String ? $String(m.primaryDurationMs) : m.primaryDurationMs;
                             else
-                                d.primaryProcessStartTimestampMs = o.longs === String ? longToString(m.primaryProcessStartTimestampMs) : o.longs === Number ? longToNumber(m.primaryProcessStartTimestampMs) : m.primaryProcessStartTimestampMs;
+                                d.primaryDurationMs = o.longs === String ? longToString(m.primaryDurationMs) : o.longs === Number ? longToNumber(m.primaryDurationMs) : m.primaryDurationMs;
                         }
-                        if (m.primaryProcessEndTimestampMs != null && $Object.hasOwnProperty.call(m, "primaryProcessEndTimestampMs")) {
-                            if (typeof $BigInt !== "undefined" && o.longs === $BigInt)
-                                d.primaryProcessEndTimestampMs = typeof m.primaryProcessEndTimestampMs === "number" ? $BigInt(m.primaryProcessEndTimestampMs) : $util.Long.fromBits(m.primaryProcessEndTimestampMs.low >>> 0, m.primaryProcessEndTimestampMs.high >>> 0, false).toBigInt();
-                            else if (typeof m.primaryProcessEndTimestampMs === "number")
-                                d.primaryProcessEndTimestampMs = o.longs === $String ? $String(m.primaryProcessEndTimestampMs) : m.primaryProcessEndTimestampMs;
-                            else
-                                d.primaryProcessEndTimestampMs = o.longs === String ? longToString(m.primaryProcessEndTimestampMs) : o.longs === Number ? longToNumber(m.primaryProcessEndTimestampMs) : m.primaryProcessEndTimestampMs;
-                        }
-                        if (m.uploadedContactCount != null && $Object.hasOwnProperty.call(m, "uploadedContactCount")) {
-                            d.uploadedContactCount = m.uploadedContactCount;
+                        if (m.uniqueContactCount != null && $Object.hasOwnProperty.call(m, "uniqueContactCount")) {
+                            d.uniqueContactCount = m.uniqueContactCount;
                         }
                         return d;
                     };
