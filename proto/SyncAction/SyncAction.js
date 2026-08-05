@@ -713,6 +713,7 @@ export const SyncAction = $root.SyncAction = (() => {
         SyncActionValue.prototype.wasaRootSecretAction = null;
         SyncActionValue.prototype.bubbleLockMessageAction = null;
         SyncActionValue.prototype.labelSublistAction = null;
+        SyncActionValue.prototype.deviceCapabilitiesV2 = null;
 
         SyncActionValue.create = function(properties) {
             return new SyncActionValue(properties);
@@ -889,6 +890,8 @@ export const SyncAction = $root.SyncAction = (() => {
                 $root.SyncAction.SyncActionValue.BubbleLockMessageAction.encode(m.bubbleLockMessageAction, w.uint32(722).fork(), q + 1).ldelim();
             if (m.labelSublistAction != null && $Object.hasOwnProperty.call(m, "labelSublistAction"))
                 $root.SyncAction.SyncActionValue.LabelSublistAction.encode(m.labelSublistAction, w.uint32(730).fork(), q + 1).ldelim();
+            if (m.deviceCapabilitiesV2 != null && $Object.hasOwnProperty.call(m, "deviceCapabilitiesV2"))
+                $root.DeviceCapabilities.DeviceCapabilities.encode(m.deviceCapabilitiesV2, w.uint32(738).fork(), q + 1).ldelim();
             if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                 for (var i = 0; i < m.$unknowns.length; ++i)
                     w.raw(m.$unknowns[i]);
@@ -1404,6 +1407,12 @@ export const SyncAction = $root.SyncAction = (() => {
                         m.labelSublistAction = $root.SyncAction.SyncActionValue.LabelSublistAction.decode(r, r.uint32(), $undefined, q + 1, m.labelSublistAction);
                         continue;
                     }
+                case 92: {
+                        if (u !== 2)
+                            break;
+                        m.deviceCapabilitiesV2 = $root.DeviceCapabilities.DeviceCapabilities.decode(r, r.uint32(), $undefined, q + 1, m.deviceCapabilitiesV2);
+                        continue;
+                    }
                 }
                 r.skipType(u, q, t);
                 if (!r.discardUnknown) {
@@ -1841,6 +1850,11 @@ export const SyncAction = $root.SyncAction = (() => {
                     throw $TypeError(".SyncAction.SyncActionValue.labelSublistAction: object expected");
                 m.labelSublistAction = $root.SyncAction.SyncActionValue.LabelSublistAction.fromObject(d.labelSublistAction, q + 1);
             }
+            if (d.deviceCapabilitiesV2 != null) {
+                if (!$util.isObject(d.deviceCapabilitiesV2))
+                    throw $TypeError(".SyncAction.SyncActionValue.deviceCapabilitiesV2: object expected");
+                m.deviceCapabilitiesV2 = $root.DeviceCapabilities.DeviceCapabilities.fromObject(d.deviceCapabilitiesV2, q + 1);
+            }
             return m;
         };
 
@@ -1939,6 +1953,7 @@ export const SyncAction = $root.SyncAction = (() => {
                 d.wasaRootSecretAction = null;
                 d.bubbleLockMessageAction = null;
                 d.labelSublistAction = null;
+                d.deviceCapabilitiesV2 = null;
             }
             if (m.timestamp != null && $Object.hasOwnProperty.call(m, "timestamp")) {
                 if (typeof $BigInt !== "undefined" && o.longs === $BigInt)
@@ -2190,6 +2205,9 @@ export const SyncAction = $root.SyncAction = (() => {
             }
             if (m.labelSublistAction != null && $Object.hasOwnProperty.call(m, "labelSublistAction")) {
                 d.labelSublistAction = $root.SyncAction.SyncActionValue.LabelSublistAction.toObject(m.labelSublistAction, o, q + 1);
+            }
+            if (m.deviceCapabilitiesV2 != null && $Object.hasOwnProperty.call(m, "deviceCapabilitiesV2")) {
+                d.deviceCapabilitiesV2 = $root.DeviceCapabilities.DeviceCapabilities.toObject(m.deviceCapabilitiesV2, o, q + 1);
             }
             return d;
         };
@@ -12039,6 +12057,7 @@ export const SyncAction = $root.SyncAction = (() => {
             SettingsSyncAction.prototype.shouldPlaySoundForCallNotification = false;
             SettingsSyncAction.prototype.chatThemeId = "";
             SettingsSyncAction.prototype.colorSchemeId = "";
+            SettingsSyncAction.prototype.stockWallpaperImageId = "";
 
             SettingsSyncAction.create = function(properties) {
                 return new SettingsSyncAction(properties);
@@ -12117,6 +12136,8 @@ export const SyncAction = $root.SyncAction = (() => {
                     w.uint32(258).string(m.chatThemeId);
                 if (m.colorSchemeId != null && $Object.hasOwnProperty.call(m, "colorSchemeId"))
                     w.uint32(266).string(m.colorSchemeId);
+                if (m.stockWallpaperImageId != null && $Object.hasOwnProperty.call(m, "stockWallpaperImageId"))
+                    w.uint32(274).string(m.stockWallpaperImageId);
                 if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                     for (var i = 0; i < m.$unknowns.length; ++i)
                         w.raw(m.$unknowns[i]);
@@ -12356,6 +12377,12 @@ export const SyncAction = $root.SyncAction = (() => {
                             m.colorSchemeId = r.string();
                             continue;
                         }
+                    case 34: {
+                            if (u !== 2)
+                                break;
+                            m.stockWallpaperImageId = r.string();
+                            continue;
+                        }
                     }
                     r.skipType(u, q, t);
                     if (!r.discardUnknown) {
@@ -12521,6 +12548,9 @@ export const SyncAction = $root.SyncAction = (() => {
                 if (d.colorSchemeId != null) {
                     m.colorSchemeId = $String(d.colorSchemeId);
                 }
+                if (d.stockWallpaperImageId != null) {
+                    m.stockWallpaperImageId = $String(d.stockWallpaperImageId);
+                }
                 return m;
             };
 
@@ -12566,6 +12596,7 @@ export const SyncAction = $root.SyncAction = (() => {
                     d.shouldPlaySoundForCallNotification = false;
                     d.chatThemeId = "";
                     d.colorSchemeId = "";
+                    d.stockWallpaperImageId = "";
                 }
                 if (m.startAtLogin != null && $Object.hasOwnProperty.call(m, "startAtLogin")) {
                     d.startAtLogin = m.startAtLogin;
@@ -12666,6 +12697,9 @@ export const SyncAction = $root.SyncAction = (() => {
                 if (m.colorSchemeId != null && $Object.hasOwnProperty.call(m, "colorSchemeId")) {
                     d.colorSchemeId = m.colorSchemeId;
                 }
+                if (m.stockWallpaperImageId != null && $Object.hasOwnProperty.call(m, "stockWallpaperImageId")) {
+                    d.stockWallpaperImageId = m.stockWallpaperImageId;
+                }
                 return d;
             };
 
@@ -12732,6 +12766,7 @@ export const SyncAction = $root.SyncAction = (() => {
                 values[valuesById[31] = "SHOULD_PLAY_SOUND_FOR_CALL_NOTIFICATION"] = 31;
                 values[valuesById[32] = "CHAT_THEME_ID"] = 32;
                 values[valuesById[33] = "COLOR_SCHEME_ID"] = 33;
+                values[valuesById[34] = "STOCK_WALLPAPER_IMAGE_ID"] = 34;
                 return values;
             })();
 
@@ -17086,6 +17121,7 @@ export const SyncAction = $root.SyncAction = (() => {
         values[valuesById[89] = "WASA_ROOT_SECRET_ACTION"] = 89;
         values[valuesById[90] = "BUBBLE_LOCK_MESSAGE_ACTION"] = 90;
         values[valuesById[91] = "LABEL_SUBLIST_ACTION"] = 91;
+        values[valuesById[92] = "DEVICE_CAPABILITIES_V2"] = 92;
         values[valuesById[10001] = "SHARE_OWN_PN"] = 10001;
         values[valuesById[10002] = "BUSINESS_BROADCAST_ACTION"] = 10002;
         values[valuesById[10003] = "AI_THREAD_DELETE_ACTION"] = 10003;
