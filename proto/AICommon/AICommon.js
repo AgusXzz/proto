@@ -12503,6 +12503,7 @@ export const AICommon = $root.AICommon = (() => {
 
         const BotSignatureVerificationUseCaseProof = function (p) {
             this.certificateChain = [];
+            this.certificateChainSki = [];
             if (p)
                 for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
                     if (p[ks[i]] != null && ks[i] !== "__proto__")
@@ -12513,6 +12514,7 @@ export const AICommon = $root.AICommon = (() => {
         BotSignatureVerificationUseCaseProof.prototype.useCase = 0;
         BotSignatureVerificationUseCaseProof.prototype.signature = $util.newBuffer([]);
         BotSignatureVerificationUseCaseProof.prototype.certificateChain = $util.emptyArray;
+        BotSignatureVerificationUseCaseProof.prototype.certificateChainSki = $util.emptyArray;
 
         BotSignatureVerificationUseCaseProof.create = function(properties) {
             return new BotSignatureVerificationUseCaseProof(properties);
@@ -12534,6 +12536,10 @@ export const AICommon = $root.AICommon = (() => {
             if (m.certificateChain != null && m.certificateChain.length) {
                 for (var i = 0; i < m.certificateChain.length; ++i)
                     w.uint32(34).bytes(m.certificateChain[i]);
+            }
+            if (m.certificateChainSki != null && m.certificateChainSki.length) {
+                for (var i = 0; i < m.certificateChainSki.length; ++i)
+                    $root.AICommon.BotSignatureVerificationUseCaseProof.CertificateSKI.encode(m.certificateChainSki[i], w.uint32(42).fork(), q + 1).ldelim();
             }
             if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                 for (var i = 0; i < m.$unknowns.length; ++i)
@@ -12590,6 +12596,14 @@ export const AICommon = $root.AICommon = (() => {
                         m.certificateChain.push(r.bytes());
                         continue;
                     }
+                case 5: {
+                        if (u !== 2)
+                            break;
+                        if (!(m.certificateChainSki && m.certificateChainSki.length))
+                            m.certificateChainSki = [];
+                        m.certificateChainSki.push($root.AICommon.BotSignatureVerificationUseCaseProof.CertificateSKI.decode(r, r.uint32(), $undefined, q + 1));
+                        continue;
+                    }
                 }
                 r.skipType(u, q, t);
                 if (!r.discardUnknown) {
@@ -12632,6 +12646,14 @@ export const AICommon = $root.AICommon = (() => {
             case 3:
                 m.useCase = 3;
                 break;
+            case "WA_WAFFLE":
+            case 4:
+                m.useCase = 4;
+                break;
+            case "WA_FEATURE_PKI":
+            case 5:
+                m.useCase = 5;
+                break;
             default:
             }
             if (d.signature != null) {
@@ -12651,6 +12673,16 @@ export const AICommon = $root.AICommon = (() => {
                         m.certificateChain[i] = d.certificateChain[i];
                 }
             }
+            if (d.certificateChainSki) {
+                if (!$Array.isArray(d.certificateChainSki))
+                    throw $TypeError(".AICommon.BotSignatureVerificationUseCaseProof.certificateChainSki: array expected");
+                m.certificateChainSki = $Array(d.certificateChainSki.length);
+                for (var i = 0; i < d.certificateChainSki.length; ++i) {
+                    if (!$util.isObject(d.certificateChainSki[i]))
+                        throw $TypeError(".AICommon.BotSignatureVerificationUseCaseProof.certificateChainSki: object expected");
+                    m.certificateChainSki[i] = $root.AICommon.BotSignatureVerificationUseCaseProof.CertificateSKI.fromObject(d.certificateChainSki[i], q + 1);
+                }
+            }
             return m;
         };
 
@@ -12664,6 +12696,7 @@ export const AICommon = $root.AICommon = (() => {
             var d = {};
             if (o.arrays || o.defaults) {
                 d.certificateChain = [];
+                d.certificateChainSki = [];
             }
             if (o.defaults) {
                 d.version = 0;
@@ -12691,6 +12724,12 @@ export const AICommon = $root.AICommon = (() => {
                     d.certificateChain[j] = o.bytes === $String ? $util.base64.encode(m.certificateChain[j], 0, m.certificateChain[j].length) : o.bytes === $Array ? $Array.prototype.slice.call(m.certificateChain[j]) : m.certificateChain[j];
                 }
             }
+            if (m.certificateChainSki && m.certificateChainSki.length) {
+                d.certificateChainSki = $Array(m.certificateChainSki.length);
+                for (var j = 0; j < m.certificateChainSki.length; ++j) {
+                    d.certificateChainSki[j] = $root.AICommon.BotSignatureVerificationUseCaseProof.CertificateSKI.toObject(m.certificateChainSki[j], o, q + 1);
+                }
+            }
             return d;
         };
 
@@ -12710,7 +12749,175 @@ export const AICommon = $root.AICommon = (() => {
             values[valuesById[1] = "WA_BOT_MSG"] = 1;
             values[valuesById[2] = "WA_TEE_BOT_MSG"] = 2;
             values[valuesById[3] = "P2P_PILLS"] = 3;
+            values[valuesById[4] = "WA_WAFFLE"] = 4;
+            values[valuesById[5] = "WA_FEATURE_PKI"] = 5;
             return values;
+        })();
+
+        BotSignatureVerificationUseCaseProof.CertificateSKI = (function() {
+
+            const CertificateSKI = function (p) {
+                if (p)
+                    for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                        if (p[ks[i]] != null && ks[i] !== "__proto__")
+                            this[ks[i]] = p[ks[i]];
+            };
+
+            CertificateSKI.prototype.useCase = 0;
+            CertificateSKI.prototype.ski = $util.newBuffer([]);
+
+            CertificateSKI.create = function(properties) {
+                return new CertificateSKI(properties);
+            };
+
+            CertificateSKI.encode = function (m, w, q) {
+                if (!w)
+                    w = $Writer.create();
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                if (m.useCase != null && $Object.hasOwnProperty.call(m, "useCase"))
+                    w.uint32(8).int32(m.useCase);
+                if (m.ski != null && $Object.hasOwnProperty.call(m, "ski"))
+                    w.uint32(18).bytes(m.ski);
+                if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                    for (var i = 0; i < m.$unknowns.length; ++i)
+                        w.raw(m.$unknowns[i]);
+                return w;
+            };
+
+            CertificateSKI.decode = function (r, l, z, q, g) {
+                if (!(r instanceof $Reader))
+                    r = $Reader.create(r);
+                if (q === $undefined)
+                    q = 0;
+                if (q > $Reader.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotSignatureVerificationUseCaseProof.CertificateSKI(), v;
+                while (r.pos < c) {
+                    var s = r.pos;
+                    var t = r.tag();
+                    if (t === z) {
+                        z = $undefined;
+                        break;
+                    }
+                    var u = t & 7;
+                    switch (t >>>= 3) {
+                    case 1: {
+                            if (u !== 0)
+                                break;
+                            v = r.int32();
+                            if ($root.AICommon.BotSignatureVerificationUseCaseProof.BotSignatureUseCase[v] !== $undefined) {
+                                m.useCase = v;
+                            } else if (!r.discardUnknown) {
+                                $util.makeProp(m, "$unknowns", false);
+                                (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                            }
+                            continue;
+                        }
+                    case 2: {
+                            if (u !== 2)
+                                break;
+                            m.ski = r.bytes();
+                            continue;
+                        }
+                    }
+                    r.skipType(u, q, t);
+                    if (!r.discardUnknown) {
+                        $util.makeProp(m, "$unknowns", false);
+                        (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                    }
+                }
+                if (z !== $undefined)
+                    throw $Error("missing end group");
+                return m;
+            };
+
+            CertificateSKI.fromObject = function (d, q) {
+                if (d instanceof $root.AICommon.BotSignatureVerificationUseCaseProof.CertificateSKI)
+                    return d;
+                if (!$util.isObject(d))
+                    throw $TypeError(".AICommon.BotSignatureVerificationUseCaseProof.CertificateSKI: object expected");
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var m = new $root.AICommon.BotSignatureVerificationUseCaseProof.CertificateSKI();
+                switch (d.useCase) {
+                case "UNSPECIFIED":
+                case 0:
+                    m.useCase = 0;
+                    break;
+                case "WA_BOT_MSG":
+                case 1:
+                    m.useCase = 1;
+                    break;
+                case "WA_TEE_BOT_MSG":
+                case 2:
+                    m.useCase = 2;
+                    break;
+                case "P2P_PILLS":
+                case 3:
+                    m.useCase = 3;
+                    break;
+                case "WA_WAFFLE":
+                case 4:
+                    m.useCase = 4;
+                    break;
+                case "WA_FEATURE_PKI":
+                case 5:
+                    m.useCase = 5;
+                    break;
+                default:
+                }
+                if (d.ski != null) {
+                    if (typeof d.ski === "string")
+                        $util.base64.decode(d.ski, m.ski = $util.newBuffer($util.base64.length(d.ski)), 0);
+                    else if (d.ski.length >= 0)
+                        m.ski = d.ski;
+                }
+                return m;
+            };
+
+            CertificateSKI.toObject = function (m, o, q) {
+                if (!o)
+                    o = {};
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var d = {};
+                if (o.defaults) {
+                    d.useCase = o.enums === $String ? "UNSPECIFIED" : 0;
+                    if (o.bytes === $String)
+                        d.ski = "";
+                    else {
+                        d.ski = [];
+                        if (o.bytes !== $Array)
+                            d.ski = $util.newBuffer(d.ski);
+                    }
+                }
+                if (m.useCase != null && $Object.hasOwnProperty.call(m, "useCase")) {
+                    d.useCase = o.enums === $String ? $root.AICommon.BotSignatureVerificationUseCaseProof.BotSignatureUseCase[m.useCase] === $undefined ? m.useCase : $root.AICommon.BotSignatureVerificationUseCaseProof.BotSignatureUseCase[m.useCase] : m.useCase;
+                }
+                if (m.ski != null && $Object.hasOwnProperty.call(m, "ski")) {
+                    d.ski = o.bytes === $String ? $util.base64.encode(m.ski, 0, m.ski.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.ski) : m.ski;
+                }
+                return d;
+            };
+
+            CertificateSKI.prototype.toJSON = function() {
+                return CertificateSKI.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            CertificateSKI.getTypeUrl = function(prefix) {
+                if (prefix === $undefined)
+                    prefix = "type.googleapis.com";
+                return prefix + "/AICommon.BotSignatureVerificationUseCaseProof.CertificateSKI";
+            };
+
+            return CertificateSKI;
         })();
 
         return BotSignatureVerificationUseCaseProof;

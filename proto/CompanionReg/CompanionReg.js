@@ -1155,6 +1155,10 @@ export const CompanionReg = $root.CompanionReg = (() => {
             case 24:
                 m.deviceType = 24;
                 break;
+            case "WAIL":
+            case 25:
+                m.deviceType = 25;
+                break;
             default:
             }
             if (d.ref != null) {
@@ -1432,6 +1436,10 @@ export const CompanionReg = $root.CompanionReg = (() => {
             case "SMARTGLASSES":
             case 24:
                 m.platformType = 24;
+                break;
+            case "WAIL":
+            case 25:
+                m.platformType = 25;
                 break;
             default:
             }
@@ -2201,6 +2209,7 @@ export const CompanionReg = $root.CompanionReg = (() => {
             values[valuesById[22] = "VR"] = 22;
             values[valuesById[23] = "CLOUD_API"] = 23;
             values[valuesById[24] = "SMARTGLASSES"] = 24;
+            values[valuesById[25] = "WAIL"] = 25;
             return values;
         })();
 

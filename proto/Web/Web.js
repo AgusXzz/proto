@@ -21617,6 +21617,9 @@ export const E2E = $root.E2E = (() => {
         Message.prototype.newsletterAdminProfileStatusMessage = null;
         Message.prototype.rootSecretDistributeMessage = null;
         Message.prototype.splitPaymentUpdateMessage = null;
+        Message.prototype.musicMessage = null;
+        Message.prototype.statusLinkPreviewMetadata = null;
+        Message.prototype.botPlatformRegistrationSuccessMessage = null;
 
         Message.create = function(properties) {
             return new Message(properties);
@@ -21845,6 +21848,12 @@ export const E2E = $root.E2E = (() => {
                 $root.E2E.Message.RootSecretDistributeMessage.encode(m.rootSecretDistributeMessage, w.uint32(1018).fork(), q + 1).ldelim();
             if (m.splitPaymentUpdateMessage != null && $Object.hasOwnProperty.call(m, "splitPaymentUpdateMessage"))
                 $root.E2E.Message.SplitPaymentUpdateMessage.encode(m.splitPaymentUpdateMessage, w.uint32(1026).fork(), q + 1).ldelim();
+            if (m.musicMessage != null && $Object.hasOwnProperty.call(m, "musicMessage"))
+                $root.E2E.Message.MusicMessage.encode(m.musicMessage, w.uint32(1034).fork(), q + 1).ldelim();
+            if (m.statusLinkPreviewMetadata != null && $Object.hasOwnProperty.call(m, "statusLinkPreviewMetadata"))
+                $root.E2E.Message.StatusLinkPreviewMetadata.encode(m.statusLinkPreviewMetadata, w.uint32(1042).fork(), q + 1).ldelim();
+            if (m.botPlatformRegistrationSuccessMessage != null && $Object.hasOwnProperty.call(m, "botPlatformRegistrationSuccessMessage"))
+                $root.E2E.Message.FutureProofMessage.encode(m.botPlatformRegistrationSuccessMessage, w.uint32(1050).fork(), q + 1).ldelim();
             if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                 for (var i = 0; i < m.$unknowns.length; ++i)
                     w.raw(m.$unknowns[i]);
@@ -22516,6 +22525,24 @@ export const E2E = $root.E2E = (() => {
                         m.splitPaymentUpdateMessage = $root.E2E.Message.SplitPaymentUpdateMessage.decode(r, r.uint32(), $undefined, q + 1, m.splitPaymentUpdateMessage);
                         continue;
                     }
+                case 129: {
+                        if (u !== 2)
+                            break;
+                        m.musicMessage = $root.E2E.Message.MusicMessage.decode(r, r.uint32(), $undefined, q + 1, m.musicMessage);
+                        continue;
+                    }
+                case 130: {
+                        if (u !== 2)
+                            break;
+                        m.statusLinkPreviewMetadata = $root.E2E.Message.StatusLinkPreviewMetadata.decode(r, r.uint32(), $undefined, q + 1, m.statusLinkPreviewMetadata);
+                        continue;
+                    }
+                case 131: {
+                        if (u !== 2)
+                            break;
+                        m.botPlatformRegistrationSuccessMessage = $root.E2E.Message.FutureProofMessage.decode(r, r.uint32(), $undefined, q + 1, m.botPlatformRegistrationSuccessMessage);
+                        continue;
+                    }
                 }
                 r.skipType(u, q, t);
                 if (!r.discardUnknown) {
@@ -23076,6 +23103,21 @@ export const E2E = $root.E2E = (() => {
                     throw $TypeError(".E2E.Message.splitPaymentUpdateMessage: object expected");
                 m.splitPaymentUpdateMessage = $root.E2E.Message.SplitPaymentUpdateMessage.fromObject(d.splitPaymentUpdateMessage, q + 1);
             }
+            if (d.musicMessage != null) {
+                if (!$util.isObject(d.musicMessage))
+                    throw $TypeError(".E2E.Message.musicMessage: object expected");
+                m.musicMessage = $root.E2E.Message.MusicMessage.fromObject(d.musicMessage, q + 1);
+            }
+            if (d.statusLinkPreviewMetadata != null) {
+                if (!$util.isObject(d.statusLinkPreviewMetadata))
+                    throw $TypeError(".E2E.Message.statusLinkPreviewMetadata: object expected");
+                m.statusLinkPreviewMetadata = $root.E2E.Message.StatusLinkPreviewMetadata.fromObject(d.statusLinkPreviewMetadata, q + 1);
+            }
+            if (d.botPlatformRegistrationSuccessMessage != null) {
+                if (!$util.isObject(d.botPlatformRegistrationSuccessMessage))
+                    throw $TypeError(".E2E.Message.botPlatformRegistrationSuccessMessage: object expected");
+                m.botPlatformRegistrationSuccessMessage = $root.E2E.Message.FutureProofMessage.fromObject(d.botPlatformRegistrationSuccessMessage, q + 1);
+            }
             return m;
         };
 
@@ -23196,6 +23238,9 @@ export const E2E = $root.E2E = (() => {
                 d.newsletterAdminProfileStatusMessage = null;
                 d.rootSecretDistributeMessage = null;
                 d.splitPaymentUpdateMessage = null;
+                d.musicMessage = null;
+                d.statusLinkPreviewMetadata = null;
+                d.botPlatformRegistrationSuccessMessage = null;
             }
             if (m.conversation != null && $Object.hasOwnProperty.call(m, "conversation")) {
                 d.conversation = m.conversation;
@@ -23520,6 +23565,15 @@ export const E2E = $root.E2E = (() => {
             }
             if (m.splitPaymentUpdateMessage != null && $Object.hasOwnProperty.call(m, "splitPaymentUpdateMessage")) {
                 d.splitPaymentUpdateMessage = $root.E2E.Message.SplitPaymentUpdateMessage.toObject(m.splitPaymentUpdateMessage, o, q + 1);
+            }
+            if (m.musicMessage != null && $Object.hasOwnProperty.call(m, "musicMessage")) {
+                d.musicMessage = $root.E2E.Message.MusicMessage.toObject(m.musicMessage, o, q + 1);
+            }
+            if (m.statusLinkPreviewMetadata != null && $Object.hasOwnProperty.call(m, "statusLinkPreviewMetadata")) {
+                d.statusLinkPreviewMetadata = $root.E2E.Message.StatusLinkPreviewMetadata.toObject(m.statusLinkPreviewMetadata, o, q + 1);
+            }
+            if (m.botPlatformRegistrationSuccessMessage != null && $Object.hasOwnProperty.call(m, "botPlatformRegistrationSuccessMessage")) {
+                d.botPlatformRegistrationSuccessMessage = $root.E2E.Message.FutureProofMessage.toObject(m.botPlatformRegistrationSuccessMessage, o, q + 1);
             }
             return d;
         };
@@ -41755,6 +41809,191 @@ export const E2E = $root.E2E = (() => {
             return MessageHistoryNotice;
         })();
 
+        Message.MusicMessage = (function() {
+
+            const MusicMessage = function (p) {
+                if (p)
+                    for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                        if (p[ks[i]] != null && ks[i] !== "__proto__")
+                            this[ks[i]] = p[ks[i]];
+            };
+
+            MusicMessage.prototype.embeddedMusic = null;
+            MusicMessage.prototype.songUri = "";
+            MusicMessage.prototype.artworkUri = "";
+            MusicMessage.prototype.style = 0;
+            MusicMessage.prototype.contextInfo = null;
+
+            MusicMessage.create = function(properties) {
+                return new MusicMessage(properties);
+            };
+
+            MusicMessage.encode = function (m, w, q) {
+                if (!w)
+                    w = $Writer.create();
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                if (m.embeddedMusic != null && $Object.hasOwnProperty.call(m, "embeddedMusic"))
+                    $root.E2E.EmbeddedMusic.encode(m.embeddedMusic, w.uint32(10).fork(), q + 1).ldelim();
+                if (m.songUri != null && $Object.hasOwnProperty.call(m, "songUri"))
+                    w.uint32(18).string(m.songUri);
+                if (m.artworkUri != null && $Object.hasOwnProperty.call(m, "artworkUri"))
+                    w.uint32(26).string(m.artworkUri);
+                if (m.style != null && $Object.hasOwnProperty.call(m, "style"))
+                    w.uint32(32).int32(m.style);
+                if (m.contextInfo != null && $Object.hasOwnProperty.call(m, "contextInfo"))
+                    $root.E2E.ContextInfo.encode(m.contextInfo, w.uint32(42).fork(), q + 1).ldelim();
+                if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                    for (var i = 0; i < m.$unknowns.length; ++i)
+                        w.raw(m.$unknowns[i]);
+                return w;
+            };
+
+            MusicMessage.decode = function (r, l, z, q, g) {
+                if (!(r instanceof $Reader))
+                    r = $Reader.create(r);
+                if (q === $undefined)
+                    q = 0;
+                if (q > $Reader.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.MusicMessage();
+                while (r.pos < c) {
+                    var s = r.pos;
+                    var t = r.tag();
+                    if (t === z) {
+                        z = $undefined;
+                        break;
+                    }
+                    var u = t & 7;
+                    switch (t >>>= 3) {
+                    case 1: {
+                            if (u !== 2)
+                                break;
+                            m.embeddedMusic = $root.E2E.EmbeddedMusic.decode(r, r.uint32(), $undefined, q + 1, m.embeddedMusic);
+                            continue;
+                        }
+                    case 2: {
+                            if (u !== 2)
+                                break;
+                            m.songUri = r.string();
+                            continue;
+                        }
+                    case 3: {
+                            if (u !== 2)
+                                break;
+                            m.artworkUri = r.string();
+                            continue;
+                        }
+                    case 4: {
+                            if (u !== 0)
+                                break;
+                            m.style = r.int32();
+                            continue;
+                        }
+                    case 5: {
+                            if (u !== 2)
+                                break;
+                            m.contextInfo = $root.E2E.ContextInfo.decode(r, r.uint32(), $undefined, q + 1, m.contextInfo);
+                            continue;
+                        }
+                    }
+                    r.skipType(u, q, t);
+                    if (!r.discardUnknown) {
+                        $util.makeProp(m, "$unknowns", false);
+                        (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                    }
+                }
+                if (z !== $undefined)
+                    throw $Error("missing end group");
+                return m;
+            };
+
+            MusicMessage.fromObject = function (d, q) {
+                if (d instanceof $root.E2E.Message.MusicMessage)
+                    return d;
+                if (!$util.isObject(d))
+                    throw $TypeError(".E2E.Message.MusicMessage: object expected");
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var m = new $root.E2E.Message.MusicMessage();
+                if (d.embeddedMusic != null) {
+                    if (!$util.isObject(d.embeddedMusic))
+                        throw $TypeError(".E2E.Message.MusicMessage.embeddedMusic: object expected");
+                    m.embeddedMusic = $root.E2E.EmbeddedMusic.fromObject(d.embeddedMusic, q + 1);
+                }
+                if (d.songUri != null) {
+                    m.songUri = $String(d.songUri);
+                }
+                if (d.artworkUri != null) {
+                    m.artworkUri = $String(d.artworkUri);
+                }
+                if (d.style != null) {
+                    m.style = d.style | 0;
+                }
+                if (d.contextInfo != null) {
+                    if (!$util.isObject(d.contextInfo))
+                        throw $TypeError(".E2E.Message.MusicMessage.contextInfo: object expected");
+                    m.contextInfo = $root.E2E.ContextInfo.fromObject(d.contextInfo, q + 1);
+                }
+                return m;
+            };
+
+            MusicMessage.toObject = function (m, o, q) {
+                if (!o)
+                    o = {};
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var d = {};
+                if (o.defaults) {
+                    d.embeddedMusic = null;
+                    d.songUri = "";
+                    d.artworkUri = "";
+                    d.style = 0;
+                    d.contextInfo = null;
+                }
+                if (m.embeddedMusic != null && $Object.hasOwnProperty.call(m, "embeddedMusic")) {
+                    d.embeddedMusic = $root.E2E.EmbeddedMusic.toObject(m.embeddedMusic, o, q + 1);
+                }
+                if (m.songUri != null && $Object.hasOwnProperty.call(m, "songUri")) {
+                    d.songUri = m.songUri;
+                }
+                if (m.artworkUri != null && $Object.hasOwnProperty.call(m, "artworkUri")) {
+                    d.artworkUri = m.artworkUri;
+                }
+                if (m.style != null && $Object.hasOwnProperty.call(m, "style")) {
+                    d.style = m.style;
+                }
+                if (m.contextInfo != null && $Object.hasOwnProperty.call(m, "contextInfo")) {
+                    d.contextInfo = $root.E2E.ContextInfo.toObject(m.contextInfo, o, q + 1);
+                }
+                return d;
+            };
+
+            MusicMessage.prototype.toJSON = function() {
+                return MusicMessage.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            MusicMessage.getTypeUrl = function(prefix) {
+                if (prefix === $undefined)
+                    prefix = "type.googleapis.com";
+                return prefix + "/E2E.Message.MusicMessage";
+            };
+
+            MusicMessage.MusicMessageStyle = (function() {
+                const valuesById = $Object.create(null), values = $Object.create(valuesById);
+                values[valuesById[0] = "UNKNOWN"] = 0;
+                return values;
+            })();
+
+            return MusicMessage;
+        })();
+
         Message.NewsletterAdminInviteMessage = (function() {
 
             const NewsletterAdminInviteMessage = function (p) {
@@ -42848,6 +43087,10 @@ export const E2E = $root.E2E = (() => {
                 case 3:
                     m.serviceType = 3;
                     break;
+                case "PIX":
+                case 4:
+                    m.serviceType = 4;
+                    break;
                 default:
                 }
                 if (d.expiryTimestamp != null) {
@@ -42945,6 +43188,7 @@ export const E2E = $root.E2E = (() => {
                 values[valuesById[1] = "FBPAY"] = 1;
                 values[valuesById[2] = "NOVI"] = 2;
                 values[valuesById[3] = "UPI"] = 3;
+                values[valuesById[4] = "PIX"] = 4;
                 return values;
             })();
 
@@ -51526,7 +51770,6 @@ export const E2E = $root.E2E = (() => {
             ProtocolMessage.prototype.aiMetadataOperation = null;
             ProtocolMessage.prototype.markAsVerifiedAction = null;
             ProtocolMessage.prototype.coexStateSync = null;
-            ProtocolMessage.prototype.syncRequestMutationRetry = null;
 
             ProtocolMessage.create = function(properties) {
                 return new ProtocolMessage(properties);
@@ -51599,8 +51842,6 @@ export const E2E = $root.E2E = (() => {
                     $root.E2E.Message.MarkAsVerifiedAction.encode(m.markAsVerifiedAction, w.uint32(258).fork(), q + 1).ldelim();
                 if (m.coexStateSync != null && $Object.hasOwnProperty.call(m, "coexStateSync"))
                     $root.ServerSync.CoexStateSync.encode(m.coexStateSync, w.uint32(266).fork(), q + 1).ldelim();
-                if (m.syncRequestMutationRetry != null && $Object.hasOwnProperty.call(m, "syncRequestMutationRetry"))
-                    $root.E2E.Message.SyncRequestMutationRetry.encode(m.syncRequestMutationRetry, w.uint32(274).fork(), q + 1).ldelim();
                 if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                     for (var i = 0; i < m.$unknowns.length; ++i)
                         w.raw(m.$unknowns[i]);
@@ -51810,12 +52051,6 @@ export const E2E = $root.E2E = (() => {
                             m.coexStateSync = $root.ServerSync.CoexStateSync.decode(r, r.uint32(), $undefined, q + 1, m.coexStateSync);
                             continue;
                         }
-                    case 34: {
-                            if (u !== 2)
-                                break;
-                            m.syncRequestMutationRetry = $root.E2E.Message.SyncRequestMutationRetry.decode(r, r.uint32(), $undefined, q + 1, m.syncRequestMutationRetry);
-                            continue;
-                        }
                     }
                     r.skipType(u, q, t);
                     if (!r.discardUnknown) {
@@ -51972,10 +52207,6 @@ export const E2E = $root.E2E = (() => {
                 case 37:
                     m.type = 37;
                     break;
-                case "SYNC_REQUEST_MUTATION_RETRY":
-                case 38:
-                    m.type = 38;
-                    break;
                 default:
                 }
                 if (d.ephemeralExpiration != null) {
@@ -52123,11 +52354,6 @@ export const E2E = $root.E2E = (() => {
                         throw $TypeError(".E2E.Message.ProtocolMessage.coexStateSync: object expected");
                     m.coexStateSync = $root.ServerSync.CoexStateSync.fromObject(d.coexStateSync, q + 1);
                 }
-                if (d.syncRequestMutationRetry != null) {
-                    if (!$util.isObject(d.syncRequestMutationRetry))
-                        throw $TypeError(".E2E.Message.ProtocolMessage.syncRequestMutationRetry: object expected");
-                    m.syncRequestMutationRetry = $root.E2E.Message.SyncRequestMutationRetry.fromObject(d.syncRequestMutationRetry, q + 1);
-                }
                 return m;
             };
 
@@ -52184,7 +52410,6 @@ export const E2E = $root.E2E = (() => {
                     d.aiMetadataOperation = null;
                     d.markAsVerifiedAction = null;
                     d.coexStateSync = null;
-                    d.syncRequestMutationRetry = null;
                 }
                 if (m.key != null && $Object.hasOwnProperty.call(m, "key")) {
                     d.key = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.toObject(m.key, o, q + 1);
@@ -52286,9 +52511,6 @@ export const E2E = $root.E2E = (() => {
                 if (m.coexStateSync != null && $Object.hasOwnProperty.call(m, "coexStateSync")) {
                     d.coexStateSync = $root.ServerSync.CoexStateSync.toObject(m.coexStateSync, o, q + 1);
                 }
-                if (m.syncRequestMutationRetry != null && $Object.hasOwnProperty.call(m, "syncRequestMutationRetry")) {
-                    d.syncRequestMutationRetry = $root.E2E.Message.SyncRequestMutationRetry.toObject(m.syncRequestMutationRetry, o, q + 1);
-                }
                 return d;
             };
 
@@ -52336,7 +52558,6 @@ export const E2E = $root.E2E = (() => {
                 values[valuesById[35] = "AI_METADATA_OPERATION"] = 35;
                 values[valuesById[36] = "MARK_AS_VERIFIED_ACTION"] = 36;
                 values[valuesById[37] = "COEX_STATE_SYNC"] = 37;
-                values[valuesById[38] = "SYNC_REQUEST_MUTATION_RETRY"] = 38;
                 return values;
             })();
 
@@ -54714,6 +54935,148 @@ export const E2E = $root.E2E = (() => {
             return SplitPaymentUpdateMessage;
         })();
 
+        Message.StatusLinkPreviewMetadata = (function() {
+
+            const StatusLinkPreviewMetadata = function (p) {
+                if (p)
+                    for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                        if (p[ks[i]] != null && ks[i] !== "__proto__")
+                            this[ks[i]] = p[ks[i]];
+            };
+
+            StatusLinkPreviewMetadata.prototype.style = 0;
+
+            StatusLinkPreviewMetadata.create = function(properties) {
+                return new StatusLinkPreviewMetadata(properties);
+            };
+
+            StatusLinkPreviewMetadata.encode = function (m, w, q) {
+                if (!w)
+                    w = $Writer.create();
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                if (m.style != null && $Object.hasOwnProperty.call(m, "style"))
+                    w.uint32(8).int32(m.style);
+                if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                    for (var i = 0; i < m.$unknowns.length; ++i)
+                        w.raw(m.$unknowns[i]);
+                return w;
+            };
+
+            StatusLinkPreviewMetadata.decode = function (r, l, z, q, g) {
+                if (!(r instanceof $Reader))
+                    r = $Reader.create(r);
+                if (q === $undefined)
+                    q = 0;
+                if (q > $Reader.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.StatusLinkPreviewMetadata(), v;
+                while (r.pos < c) {
+                    var s = r.pos;
+                    var t = r.tag();
+                    if (t === z) {
+                        z = $undefined;
+                        break;
+                    }
+                    var u = t & 7;
+                    switch (t >>>= 3) {
+                    case 1: {
+                            if (u !== 0)
+                                break;
+                            v = r.int32();
+                            if ($root.E2E.Message.StatusLinkPreviewMetadata.Style[v] !== $undefined) {
+                                m.style = v;
+                            } else if (!r.discardUnknown) {
+                                $util.makeProp(m, "$unknowns", false);
+                                (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                            }
+                            continue;
+                        }
+                    }
+                    r.skipType(u, q, t);
+                    if (!r.discardUnknown) {
+                        $util.makeProp(m, "$unknowns", false);
+                        (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                    }
+                }
+                if (z !== $undefined)
+                    throw $Error("missing end group");
+                return m;
+            };
+
+            StatusLinkPreviewMetadata.fromObject = function (d, q) {
+                if (d instanceof $root.E2E.Message.StatusLinkPreviewMetadata)
+                    return d;
+                if (!$util.isObject(d))
+                    throw $TypeError(".E2E.Message.StatusLinkPreviewMetadata: object expected");
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var m = new $root.E2E.Message.StatusLinkPreviewMetadata();
+                switch (d.style) {
+                case "AUTO":
+                case 0:
+                    m.style = 0;
+                    break;
+                case "COMPACT":
+                case 1:
+                    m.style = 1;
+                    break;
+                case "FULL":
+                case 2:
+                    m.style = 2;
+                    break;
+                case "IMMERSIVE":
+                case 3:
+                    m.style = 3;
+                    break;
+                default:
+                }
+                return m;
+            };
+
+            StatusLinkPreviewMetadata.toObject = function (m, o, q) {
+                if (!o)
+                    o = {};
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var d = {};
+                if (o.defaults) {
+                    d.style = o.enums === $String ? "AUTO" : 0;
+                }
+                if (m.style != null && $Object.hasOwnProperty.call(m, "style")) {
+                    d.style = o.enums === $String ? $root.E2E.Message.StatusLinkPreviewMetadata.Style[m.style] === $undefined ? m.style : $root.E2E.Message.StatusLinkPreviewMetadata.Style[m.style] : m.style;
+                }
+                return d;
+            };
+
+            StatusLinkPreviewMetadata.prototype.toJSON = function() {
+                return StatusLinkPreviewMetadata.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            StatusLinkPreviewMetadata.getTypeUrl = function(prefix) {
+                if (prefix === $undefined)
+                    prefix = "type.googleapis.com";
+                return prefix + "/E2E.Message.StatusLinkPreviewMetadata";
+            };
+
+            StatusLinkPreviewMetadata.Style = (function() {
+                const valuesById = $Object.create(null), values = $Object.create(valuesById);
+                values[valuesById[0] = "AUTO"] = 0;
+                values[valuesById[1] = "COMPACT"] = 1;
+                values[valuesById[2] = "FULL"] = 2;
+                values[valuesById[3] = "IMMERSIVE"] = 3;
+                return values;
+            })();
+
+            return StatusLinkPreviewMetadata;
+        })();
+
         Message.StatusNotificationMessage = (function() {
 
             const StatusNotificationMessage = function (p) {
@@ -54840,6 +55203,10 @@ export const E2E = $root.E2E = (() => {
                 case 3:
                     m.type = 3;
                     break;
+                case "STATUS_GROUP_STATUS_REPLY":
+                case 4:
+                    m.type = 4;
+                    break;
                 default:
                 }
                 return m;
@@ -54886,6 +55253,7 @@ export const E2E = $root.E2E = (() => {
                 values[valuesById[1] = "STATUS_ADD_YOURS"] = 1;
                 values[valuesById[2] = "STATUS_RESHARE"] = 2;
                 values[valuesById[3] = "STATUS_QUESTION_ANSWER_RESHARE"] = 3;
+                values[valuesById[4] = "STATUS_GROUP_STATUS_REPLY"] = 4;
                 return values;
             })();
 
@@ -56894,293 +57262,6 @@ export const E2E = $root.E2E = (() => {
             };
 
             return StickerSyncRMRMessage;
-        })();
-
-        Message.SyncRequestMutationRetry = (function() {
-
-            const SyncRequestMutationRetry = function (p) {
-                this.collections = [];
-                if (p)
-                    for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
-                        if (p[ks[i]] != null && ks[i] !== "__proto__")
-                            this[ks[i]] = p[ks[i]];
-            };
-
-            SyncRequestMutationRetry.prototype.collections = $util.emptyArray;
-            SyncRequestMutationRetry.prototype.count = 0;
-
-            SyncRequestMutationRetry.create = function(properties) {
-                return new SyncRequestMutationRetry(properties);
-            };
-
-            SyncRequestMutationRetry.encode = function (m, w, q) {
-                if (!w)
-                    w = $Writer.create();
-                if (q === $undefined)
-                    q = 0;
-                if (q > $util.recursionLimit)
-                    throw $Error("max depth exceeded");
-                if (m.collections != null && m.collections.length) {
-                    for (var i = 0; i < m.collections.length; ++i)
-                        $root.E2E.Message.SyncRequestMutationRetry.Collection.encode(m.collections[i], w.uint32(10).fork(), q + 1).ldelim();
-                }
-                if (m.count != null && $Object.hasOwnProperty.call(m, "count"))
-                    w.uint32(16).uint32(m.count);
-                if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
-                    for (var i = 0; i < m.$unknowns.length; ++i)
-                        w.raw(m.$unknowns[i]);
-                return w;
-            };
-
-            SyncRequestMutationRetry.decode = function (r, l, z, q, g) {
-                if (!(r instanceof $Reader))
-                    r = $Reader.create(r);
-                if (q === $undefined)
-                    q = 0;
-                if (q > $Reader.recursionLimit)
-                    throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.SyncRequestMutationRetry();
-                while (r.pos < c) {
-                    var s = r.pos;
-                    var t = r.tag();
-                    if (t === z) {
-                        z = $undefined;
-                        break;
-                    }
-                    var u = t & 7;
-                    switch (t >>>= 3) {
-                    case 1: {
-                            if (u !== 2)
-                                break;
-                            if (!(m.collections && m.collections.length))
-                                m.collections = [];
-                            m.collections.push($root.E2E.Message.SyncRequestMutationRetry.Collection.decode(r, r.uint32(), $undefined, q + 1));
-                            continue;
-                        }
-                    case 2: {
-                            if (u !== 0)
-                                break;
-                            m.count = r.uint32();
-                            continue;
-                        }
-                    }
-                    r.skipType(u, q, t);
-                    if (!r.discardUnknown) {
-                        $util.makeProp(m, "$unknowns", false);
-                        (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
-                    }
-                }
-                if (z !== $undefined)
-                    throw $Error("missing end group");
-                return m;
-            };
-
-            SyncRequestMutationRetry.fromObject = function (d, q) {
-                if (d instanceof $root.E2E.Message.SyncRequestMutationRetry)
-                    return d;
-                if (!$util.isObject(d))
-                    throw $TypeError(".E2E.Message.SyncRequestMutationRetry: object expected");
-                if (q === $undefined)
-                    q = 0;
-                if (q > $util.recursionLimit)
-                    throw $Error("max depth exceeded");
-                var m = new $root.E2E.Message.SyncRequestMutationRetry();
-                if (d.collections) {
-                    if (!$Array.isArray(d.collections))
-                        throw $TypeError(".E2E.Message.SyncRequestMutationRetry.collections: array expected");
-                    m.collections = $Array(d.collections.length);
-                    for (var i = 0; i < d.collections.length; ++i) {
-                        if (!$util.isObject(d.collections[i]))
-                            throw $TypeError(".E2E.Message.SyncRequestMutationRetry.collections: object expected");
-                        m.collections[i] = $root.E2E.Message.SyncRequestMutationRetry.Collection.fromObject(d.collections[i], q + 1);
-                    }
-                }
-                if (d.count != null) {
-                    m.count = d.count >>> 0;
-                }
-                return m;
-            };
-
-            SyncRequestMutationRetry.toObject = function (m, o, q) {
-                if (!o)
-                    o = {};
-                if (q === $undefined)
-                    q = 0;
-                if (q > $util.recursionLimit)
-                    throw $Error("max depth exceeded");
-                var d = {};
-                if (o.arrays || o.defaults) {
-                    d.collections = [];
-                }
-                if (o.defaults) {
-                    d.count = 0;
-                }
-                if (m.collections && m.collections.length) {
-                    d.collections = $Array(m.collections.length);
-                    for (var j = 0; j < m.collections.length; ++j) {
-                        d.collections[j] = $root.E2E.Message.SyncRequestMutationRetry.Collection.toObject(m.collections[j], o, q + 1);
-                    }
-                }
-                if (m.count != null && $Object.hasOwnProperty.call(m, "count")) {
-                    d.count = m.count;
-                }
-                return d;
-            };
-
-            SyncRequestMutationRetry.prototype.toJSON = function() {
-                return SyncRequestMutationRetry.toObject(this, $protobuf.util.toJSONOptions);
-            };
-
-            SyncRequestMutationRetry.getTypeUrl = function(prefix) {
-                if (prefix === $undefined)
-                    prefix = "type.googleapis.com";
-                return prefix + "/E2E.Message.SyncRequestMutationRetry";
-            };
-
-            SyncRequestMutationRetry.Collection = (function() {
-
-                const Collection = function (p) {
-                    if (p)
-                        for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
-                            if (p[ks[i]] != null && ks[i] !== "__proto__")
-                                this[ks[i]] = p[ks[i]];
-                };
-
-                Collection.prototype.name = "";
-                Collection.prototype.storedSyncdVersion = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
-
-                Collection.create = function(properties) {
-                    return new Collection(properties);
-                };
-
-                Collection.encode = function (m, w, q) {
-                    if (!w)
-                        w = $Writer.create();
-                    if (q === $undefined)
-                        q = 0;
-                    if (q > $util.recursionLimit)
-                        throw $Error("max depth exceeded");
-                    if (m.name != null && $Object.hasOwnProperty.call(m, "name"))
-                        w.uint32(10).string(m.name);
-                    if (m.storedSyncdVersion != null && $Object.hasOwnProperty.call(m, "storedSyncdVersion"))
-                        w.uint32(16).uint64(m.storedSyncdVersion);
-                    if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
-                        for (var i = 0; i < m.$unknowns.length; ++i)
-                            w.raw(m.$unknowns[i]);
-                    return w;
-                };
-
-                Collection.decode = function (r, l, z, q, g) {
-                    if (!(r instanceof $Reader))
-                        r = $Reader.create(r);
-                    if (q === $undefined)
-                        q = 0;
-                    if (q > $Reader.recursionLimit)
-                        throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.SyncRequestMutationRetry.Collection();
-                    while (r.pos < c) {
-                        var s = r.pos;
-                        var t = r.tag();
-                        if (t === z) {
-                            z = $undefined;
-                            break;
-                        }
-                        var u = t & 7;
-                        switch (t >>>= 3) {
-                        case 1: {
-                                if (u !== 2)
-                                    break;
-                                m.name = r.string();
-                                continue;
-                            }
-                        case 2: {
-                                if (u !== 0)
-                                    break;
-                                m.storedSyncdVersion = r.uint64();
-                                continue;
-                            }
-                        }
-                        r.skipType(u, q, t);
-                        if (!r.discardUnknown) {
-                            $util.makeProp(m, "$unknowns", false);
-                            (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
-                        }
-                    }
-                    if (z !== $undefined)
-                        throw $Error("missing end group");
-                    return m;
-                };
-
-                Collection.fromObject = function (d, q) {
-                    if (d instanceof $root.E2E.Message.SyncRequestMutationRetry.Collection)
-                        return d;
-                    if (!$util.isObject(d))
-                        throw $TypeError(".E2E.Message.SyncRequestMutationRetry.Collection: object expected");
-                    if (q === $undefined)
-                        q = 0;
-                    if (q > $util.recursionLimit)
-                        throw $Error("max depth exceeded");
-                    var m = new $root.E2E.Message.SyncRequestMutationRetry.Collection();
-                    if (d.name != null) {
-                        m.name = $String(d.name);
-                    }
-                    if (d.storedSyncdVersion != null) {
-                        if ($util.Long)
-                            m.storedSyncdVersion = $util.Long.fromValue(d.storedSyncdVersion, true);
-                        else if (typeof d.storedSyncdVersion === "string")
-                            m.storedSyncdVersion = $parseInt(d.storedSyncdVersion, 10);
-                        else if (typeof d.storedSyncdVersion === "number")
-                            m.storedSyncdVersion = d.storedSyncdVersion;
-                        else if (typeof d.storedSyncdVersion === "object")
-                            m.storedSyncdVersion = new $util.LongBits(d.storedSyncdVersion.low >>> 0, d.storedSyncdVersion.high >>> 0).toNumber(true);
-                    }
-                    return m;
-                };
-
-                Collection.toObject = function (m, o, q) {
-                    if (!o)
-                        o = {};
-                    if (q === $undefined)
-                        q = 0;
-                    if (q > $util.recursionLimit)
-                        throw $Error("max depth exceeded");
-                    var d = {};
-                    if (o.defaults) {
-                        d.name = "";
-                        if ($util.Long) {
-                            var n = new $util.Long(0, 0, true);
-                            d.storedSyncdVersion = o.longs === $String ? n.toString() : o.longs === $Number ? n.toNumber() : typeof $BigInt !== "undefined" && o.longs === $BigInt ? n.toBigInt() : n;
-                        } else
-                            d.storedSyncdVersion = o.longs === $String ? "0" : typeof $BigInt !== "undefined" && o.longs === $BigInt ? $BigInt("0") : 0;
-                    }
-                    if (m.name != null && $Object.hasOwnProperty.call(m, "name")) {
-                        d.name = m.name;
-                    }
-                    if (m.storedSyncdVersion != null && $Object.hasOwnProperty.call(m, "storedSyncdVersion")) {
-                        if (typeof $BigInt !== "undefined" && o.longs === $BigInt)
-                            d.storedSyncdVersion = typeof m.storedSyncdVersion === "number" ? $BigInt(m.storedSyncdVersion) : $util.Long.fromBits(m.storedSyncdVersion.low >>> 0, m.storedSyncdVersion.high >>> 0, true).toBigInt();
-                        else if (typeof m.storedSyncdVersion === "number")
-                            d.storedSyncdVersion = o.longs === $String ? $String(m.storedSyncdVersion) : m.storedSyncdVersion;
-                        else
-                            d.storedSyncdVersion = o.longs === String ? longToString(m.storedSyncdVersion, true) : o.longs === Number ? longToNumber(m.storedSyncdVersion, true) : m.storedSyncdVersion;
-                    }
-                    return d;
-                };
-
-                Collection.prototype.toJSON = function() {
-                    return Collection.toObject(this, $protobuf.util.toJSONOptions);
-                };
-
-                Collection.getTypeUrl = function(prefix) {
-                    if (prefix === $undefined)
-                        prefix = "type.googleapis.com";
-                    return prefix + "/E2E.Message.SyncRequestMutationRetry.Collection";
-                };
-
-                return Collection;
-            })();
-
-            return SyncRequestMutationRetry;
         })();
 
         Message.TemplateButtonReplyMessage = (function() {
@@ -77257,6 +77338,7 @@ export const AICommon = $root.AICommon = (() => {
 
         const BotSignatureVerificationUseCaseProof = function (p) {
             this.certificateChain = [];
+            this.certificateChainSki = [];
             if (p)
                 for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
                     if (p[ks[i]] != null && ks[i] !== "__proto__")
@@ -77267,6 +77349,7 @@ export const AICommon = $root.AICommon = (() => {
         BotSignatureVerificationUseCaseProof.prototype.useCase = 0;
         BotSignatureVerificationUseCaseProof.prototype.signature = $util.newBuffer([]);
         BotSignatureVerificationUseCaseProof.prototype.certificateChain = $util.emptyArray;
+        BotSignatureVerificationUseCaseProof.prototype.certificateChainSki = $util.emptyArray;
 
         BotSignatureVerificationUseCaseProof.create = function(properties) {
             return new BotSignatureVerificationUseCaseProof(properties);
@@ -77288,6 +77371,10 @@ export const AICommon = $root.AICommon = (() => {
             if (m.certificateChain != null && m.certificateChain.length) {
                 for (var i = 0; i < m.certificateChain.length; ++i)
                     w.uint32(34).bytes(m.certificateChain[i]);
+            }
+            if (m.certificateChainSki != null && m.certificateChainSki.length) {
+                for (var i = 0; i < m.certificateChainSki.length; ++i)
+                    $root.AICommon.BotSignatureVerificationUseCaseProof.CertificateSKI.encode(m.certificateChainSki[i], w.uint32(42).fork(), q + 1).ldelim();
             }
             if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                 for (var i = 0; i < m.$unknowns.length; ++i)
@@ -77344,6 +77431,14 @@ export const AICommon = $root.AICommon = (() => {
                         m.certificateChain.push(r.bytes());
                         continue;
                     }
+                case 5: {
+                        if (u !== 2)
+                            break;
+                        if (!(m.certificateChainSki && m.certificateChainSki.length))
+                            m.certificateChainSki = [];
+                        m.certificateChainSki.push($root.AICommon.BotSignatureVerificationUseCaseProof.CertificateSKI.decode(r, r.uint32(), $undefined, q + 1));
+                        continue;
+                    }
                 }
                 r.skipType(u, q, t);
                 if (!r.discardUnknown) {
@@ -77386,6 +77481,14 @@ export const AICommon = $root.AICommon = (() => {
             case 3:
                 m.useCase = 3;
                 break;
+            case "WA_WAFFLE":
+            case 4:
+                m.useCase = 4;
+                break;
+            case "WA_FEATURE_PKI":
+            case 5:
+                m.useCase = 5;
+                break;
             default:
             }
             if (d.signature != null) {
@@ -77405,6 +77508,16 @@ export const AICommon = $root.AICommon = (() => {
                         m.certificateChain[i] = d.certificateChain[i];
                 }
             }
+            if (d.certificateChainSki) {
+                if (!$Array.isArray(d.certificateChainSki))
+                    throw $TypeError(".AICommon.BotSignatureVerificationUseCaseProof.certificateChainSki: array expected");
+                m.certificateChainSki = $Array(d.certificateChainSki.length);
+                for (var i = 0; i < d.certificateChainSki.length; ++i) {
+                    if (!$util.isObject(d.certificateChainSki[i]))
+                        throw $TypeError(".AICommon.BotSignatureVerificationUseCaseProof.certificateChainSki: object expected");
+                    m.certificateChainSki[i] = $root.AICommon.BotSignatureVerificationUseCaseProof.CertificateSKI.fromObject(d.certificateChainSki[i], q + 1);
+                }
+            }
             return m;
         };
 
@@ -77418,6 +77531,7 @@ export const AICommon = $root.AICommon = (() => {
             var d = {};
             if (o.arrays || o.defaults) {
                 d.certificateChain = [];
+                d.certificateChainSki = [];
             }
             if (o.defaults) {
                 d.version = 0;
@@ -77445,6 +77559,12 @@ export const AICommon = $root.AICommon = (() => {
                     d.certificateChain[j] = o.bytes === $String ? $util.base64.encode(m.certificateChain[j], 0, m.certificateChain[j].length) : o.bytes === $Array ? $Array.prototype.slice.call(m.certificateChain[j]) : m.certificateChain[j];
                 }
             }
+            if (m.certificateChainSki && m.certificateChainSki.length) {
+                d.certificateChainSki = $Array(m.certificateChainSki.length);
+                for (var j = 0; j < m.certificateChainSki.length; ++j) {
+                    d.certificateChainSki[j] = $root.AICommon.BotSignatureVerificationUseCaseProof.CertificateSKI.toObject(m.certificateChainSki[j], o, q + 1);
+                }
+            }
             return d;
         };
 
@@ -77464,7 +77584,175 @@ export const AICommon = $root.AICommon = (() => {
             values[valuesById[1] = "WA_BOT_MSG"] = 1;
             values[valuesById[2] = "WA_TEE_BOT_MSG"] = 2;
             values[valuesById[3] = "P2P_PILLS"] = 3;
+            values[valuesById[4] = "WA_WAFFLE"] = 4;
+            values[valuesById[5] = "WA_FEATURE_PKI"] = 5;
             return values;
+        })();
+
+        BotSignatureVerificationUseCaseProof.CertificateSKI = (function() {
+
+            const CertificateSKI = function (p) {
+                if (p)
+                    for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                        if (p[ks[i]] != null && ks[i] !== "__proto__")
+                            this[ks[i]] = p[ks[i]];
+            };
+
+            CertificateSKI.prototype.useCase = 0;
+            CertificateSKI.prototype.ski = $util.newBuffer([]);
+
+            CertificateSKI.create = function(properties) {
+                return new CertificateSKI(properties);
+            };
+
+            CertificateSKI.encode = function (m, w, q) {
+                if (!w)
+                    w = $Writer.create();
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                if (m.useCase != null && $Object.hasOwnProperty.call(m, "useCase"))
+                    w.uint32(8).int32(m.useCase);
+                if (m.ski != null && $Object.hasOwnProperty.call(m, "ski"))
+                    w.uint32(18).bytes(m.ski);
+                if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                    for (var i = 0; i < m.$unknowns.length; ++i)
+                        w.raw(m.$unknowns[i]);
+                return w;
+            };
+
+            CertificateSKI.decode = function (r, l, z, q, g) {
+                if (!(r instanceof $Reader))
+                    r = $Reader.create(r);
+                if (q === $undefined)
+                    q = 0;
+                if (q > $Reader.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotSignatureVerificationUseCaseProof.CertificateSKI(), v;
+                while (r.pos < c) {
+                    var s = r.pos;
+                    var t = r.tag();
+                    if (t === z) {
+                        z = $undefined;
+                        break;
+                    }
+                    var u = t & 7;
+                    switch (t >>>= 3) {
+                    case 1: {
+                            if (u !== 0)
+                                break;
+                            v = r.int32();
+                            if ($root.AICommon.BotSignatureVerificationUseCaseProof.BotSignatureUseCase[v] !== $undefined) {
+                                m.useCase = v;
+                            } else if (!r.discardUnknown) {
+                                $util.makeProp(m, "$unknowns", false);
+                                (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                            }
+                            continue;
+                        }
+                    case 2: {
+                            if (u !== 2)
+                                break;
+                            m.ski = r.bytes();
+                            continue;
+                        }
+                    }
+                    r.skipType(u, q, t);
+                    if (!r.discardUnknown) {
+                        $util.makeProp(m, "$unknowns", false);
+                        (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                    }
+                }
+                if (z !== $undefined)
+                    throw $Error("missing end group");
+                return m;
+            };
+
+            CertificateSKI.fromObject = function (d, q) {
+                if (d instanceof $root.AICommon.BotSignatureVerificationUseCaseProof.CertificateSKI)
+                    return d;
+                if (!$util.isObject(d))
+                    throw $TypeError(".AICommon.BotSignatureVerificationUseCaseProof.CertificateSKI: object expected");
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var m = new $root.AICommon.BotSignatureVerificationUseCaseProof.CertificateSKI();
+                switch (d.useCase) {
+                case "UNSPECIFIED":
+                case 0:
+                    m.useCase = 0;
+                    break;
+                case "WA_BOT_MSG":
+                case 1:
+                    m.useCase = 1;
+                    break;
+                case "WA_TEE_BOT_MSG":
+                case 2:
+                    m.useCase = 2;
+                    break;
+                case "P2P_PILLS":
+                case 3:
+                    m.useCase = 3;
+                    break;
+                case "WA_WAFFLE":
+                case 4:
+                    m.useCase = 4;
+                    break;
+                case "WA_FEATURE_PKI":
+                case 5:
+                    m.useCase = 5;
+                    break;
+                default:
+                }
+                if (d.ski != null) {
+                    if (typeof d.ski === "string")
+                        $util.base64.decode(d.ski, m.ski = $util.newBuffer($util.base64.length(d.ski)), 0);
+                    else if (d.ski.length >= 0)
+                        m.ski = d.ski;
+                }
+                return m;
+            };
+
+            CertificateSKI.toObject = function (m, o, q) {
+                if (!o)
+                    o = {};
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var d = {};
+                if (o.defaults) {
+                    d.useCase = o.enums === $String ? "UNSPECIFIED" : 0;
+                    if (o.bytes === $String)
+                        d.ski = "";
+                    else {
+                        d.ski = [];
+                        if (o.bytes !== $Array)
+                            d.ski = $util.newBuffer(d.ski);
+                    }
+                }
+                if (m.useCase != null && $Object.hasOwnProperty.call(m, "useCase")) {
+                    d.useCase = o.enums === $String ? $root.AICommon.BotSignatureVerificationUseCaseProof.BotSignatureUseCase[m.useCase] === $undefined ? m.useCase : $root.AICommon.BotSignatureVerificationUseCaseProof.BotSignatureUseCase[m.useCase] : m.useCase;
+                }
+                if (m.ski != null && $Object.hasOwnProperty.call(m, "ski")) {
+                    d.ski = o.bytes === $String ? $util.base64.encode(m.ski, 0, m.ski.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.ski) : m.ski;
+                }
+                return d;
+            };
+
+            CertificateSKI.prototype.toJSON = function() {
+                return CertificateSKI.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            CertificateSKI.getTypeUrl = function(prefix) {
+                if (prefix === $undefined)
+                    prefix = "type.googleapis.com";
+                return prefix + "/AICommon.BotSignatureVerificationUseCaseProof.CertificateSKI";
+            };
+
+            return CertificateSKI;
         })();
 
         return BotSignatureVerificationUseCaseProof;
@@ -83302,6 +83590,10 @@ export const CompanionReg = $root.CompanionReg = (() => {
             case 24:
                 m.deviceType = 24;
                 break;
+            case "WAIL":
+            case 25:
+                m.deviceType = 25;
+                break;
             default:
             }
             if (d.ref != null) {
@@ -83579,6 +83871,10 @@ export const CompanionReg = $root.CompanionReg = (() => {
             case "SMARTGLASSES":
             case 24:
                 m.platformType = 24;
+                break;
+            case "WAIL":
+            case 25:
+                m.platformType = 25;
                 break;
             default:
             }
@@ -84348,6 +84644,7 @@ export const CompanionReg = $root.CompanionReg = (() => {
             values[valuesById[22] = "VR"] = 22;
             values[valuesById[23] = "CLOUD_API"] = 23;
             values[valuesById[24] = "SMARTGLASSES"] = 24;
+            values[valuesById[25] = "WAIL"] = 25;
             return values;
         })();
 

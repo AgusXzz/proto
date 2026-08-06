@@ -3649,6 +3649,10 @@ export const Wa6 = $root.Wa6 = (() => {
                 case 2:
                     m.pqMode = 2;
                     break;
+                case "XXKEM_EPH":
+                case 9:
+                    m.pqMode = 9;
+                    break;
                 case "WA_CLASSICAL":
                 case 3:
                     m.pqMode = 3;
@@ -3791,6 +3795,7 @@ export const Wa6 = $root.Wa6 = (() => {
             values[valuesById[0] = "HANDSHAKE_PQ_MODE_UNKNOWN"] = 0;
             values[valuesById[1] = "XXKEM"] = 1;
             values[valuesById[2] = "XXKEM_FS"] = 2;
+            values[valuesById[9] = "XXKEM_EPH"] = 9;
             values[valuesById[3] = "WA_CLASSICAL"] = 3;
             values[valuesById[4] = "WA_PQ"] = 4;
             values[valuesById[5] = "IKKEM"] = 5;
