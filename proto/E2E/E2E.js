@@ -32198,6 +32198,7 @@ export const E2E = $root.E2E = (() => {
             MusicMessage.MusicMessageStyle = (function() {
                 const valuesById = $Object.create(null), values = $Object.create(valuesById);
                 values[valuesById[0] = "UNKNOWN"] = 0;
+                values[valuesById[1] = "VINYL"] = 1;
                 return values;
             })();
 

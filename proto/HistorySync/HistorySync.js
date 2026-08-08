@@ -37790,6 +37790,7 @@ export const E2E = $root.E2E = (() => {
             MusicMessage.MusicMessageStyle = (function() {
                 const valuesById = $Object.create(null), values = $Object.create(valuesById);
                 values[valuesById[0] = "UNKNOWN"] = 0;
+                values[valuesById[1] = "VINYL"] = 1;
                 return values;
             })();
 
@@ -100251,6 +100252,10 @@ export const SyncAction = $root.SyncAction = (() => {
                 case 16:
                     m.type = 16;
                     break;
+                case "MENTIONS_AND_REPLIES":
+                case 17:
+                    m.type = 17;
+                    break;
                 default:
                 }
                 if (d.isImmutable != null) {
@@ -100356,6 +100361,7 @@ export const SyncAction = $root.SyncAction = (() => {
                 values[valuesById[14] = "INVITES"] = 14;
                 values[valuesById[15] = "THIRD_PARTY"] = 15;
                 values[valuesById[16] = "LEAD"] = 16;
+                values[valuesById[17] = "MENTIONS_AND_REPLIES"] = 17;
                 return values;
             })();
 
@@ -109921,6 +109927,7 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
         DeviceCapabilities.prototype.memberNameTagPrimarySupport = 0;
         DeviceCapabilities.prototype.aiThread = null;
         DeviceCapabilities.prototype.aiFbidMigration = null;
+        DeviceCapabilities.prototype.bizAiSettingsSync = null;
 
         DeviceCapabilities.create = function(properties) {
             return new DeviceCapabilities(properties);
@@ -109947,6 +109954,8 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                 $root.DeviceCapabilities.DeviceCapabilities.AiThread.encode(m.aiThread, w.uint32(50).fork(), q + 1).ldelim();
             if (m.aiFbidMigration != null && $Object.hasOwnProperty.call(m, "aiFbidMigration"))
                 $root.DeviceCapabilities.DeviceCapabilities.AiFbidMigration.encode(m.aiFbidMigration, w.uint32(58).fork(), q + 1).ldelim();
+            if (m.bizAiSettingsSync != null && $Object.hasOwnProperty.call(m, "bizAiSettingsSync"))
+                $root.DeviceCapabilities.DeviceCapabilities.BizAiSettingsSync.encode(m.bizAiSettingsSync, w.uint32(66).fork(), q + 1).ldelim();
             if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                 for (var i = 0; i < m.$unknowns.length; ++i)
                     w.raw(m.$unknowns[i]);
@@ -110022,6 +110031,12 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                         if (u !== 2)
                             break;
                         m.aiFbidMigration = $root.DeviceCapabilities.DeviceCapabilities.AiFbidMigration.decode(r, r.uint32(), $undefined, q + 1, m.aiFbidMigration);
+                        continue;
+                    }
+                case 8: {
+                        if (u !== 2)
+                            break;
+                        m.bizAiSettingsSync = $root.DeviceCapabilities.DeviceCapabilities.BizAiSettingsSync.decode(r, r.uint32(), $undefined, q + 1, m.bizAiSettingsSync);
                         continue;
                     }
                 }
@@ -110101,6 +110116,11 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                     throw $TypeError(".DeviceCapabilities.DeviceCapabilities.aiFbidMigration: object expected");
                 m.aiFbidMigration = $root.DeviceCapabilities.DeviceCapabilities.AiFbidMigration.fromObject(d.aiFbidMigration, q + 1);
             }
+            if (d.bizAiSettingsSync != null) {
+                if (!$util.isObject(d.bizAiSettingsSync))
+                    throw $TypeError(".DeviceCapabilities.DeviceCapabilities.bizAiSettingsSync: object expected");
+                m.bizAiSettingsSync = $root.DeviceCapabilities.DeviceCapabilities.BizAiSettingsSync.fromObject(d.bizAiSettingsSync, q + 1);
+            }
             return m;
         };
 
@@ -110120,6 +110140,7 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                 d.memberNameTagPrimarySupport = o.enums === $String ? "DISABLED" : 0;
                 d.aiThread = null;
                 d.aiFbidMigration = null;
+                d.bizAiSettingsSync = null;
             }
             if (m.chatLockSupportLevel != null && $Object.hasOwnProperty.call(m, "chatLockSupportLevel")) {
                 d.chatLockSupportLevel = o.enums === $String ? $root.DeviceCapabilities.DeviceCapabilities.ChatLockSupportLevel[m.chatLockSupportLevel] === $undefined ? m.chatLockSupportLevel : $root.DeviceCapabilities.DeviceCapabilities.ChatLockSupportLevel[m.chatLockSupportLevel] : m.chatLockSupportLevel;
@@ -110141,6 +110162,9 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
             }
             if (m.aiFbidMigration != null && $Object.hasOwnProperty.call(m, "aiFbidMigration")) {
                 d.aiFbidMigration = $root.DeviceCapabilities.DeviceCapabilities.AiFbidMigration.toObject(m.aiFbidMigration, o, q + 1);
+            }
+            if (m.bizAiSettingsSync != null && $Object.hasOwnProperty.call(m, "bizAiSettingsSync")) {
+                d.bizAiSettingsSync = $root.DeviceCapabilities.DeviceCapabilities.BizAiSettingsSync.toObject(m.bizAiSettingsSync, o, q + 1);
             }
             return d;
         };
@@ -110417,6 +110441,117 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
             })();
 
             return AiThread;
+        })();
+
+        DeviceCapabilities.BizAiSettingsSync = (function() {
+
+            const BizAiSettingsSync = function (p) {
+                if (p)
+                    for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                        if (p[ks[i]] != null && ks[i] !== "__proto__")
+                            this[ks[i]] = p[ks[i]];
+            };
+
+            BizAiSettingsSync.prototype.handoffRemovalTimingEnabled = false;
+
+            BizAiSettingsSync.create = function(properties) {
+                return new BizAiSettingsSync(properties);
+            };
+
+            BizAiSettingsSync.encode = function (m, w, q) {
+                if (!w)
+                    w = $Writer.create();
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                if (m.handoffRemovalTimingEnabled != null && $Object.hasOwnProperty.call(m, "handoffRemovalTimingEnabled"))
+                    w.uint32(8).bool(m.handoffRemovalTimingEnabled);
+                if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                    for (var i = 0; i < m.$unknowns.length; ++i)
+                        w.raw(m.$unknowns[i]);
+                return w;
+            };
+
+            BizAiSettingsSync.decode = function (r, l, z, q, g) {
+                if (!(r instanceof $Reader))
+                    r = $Reader.create(r);
+                if (q === $undefined)
+                    q = 0;
+                if (q > $Reader.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.DeviceCapabilities.DeviceCapabilities.BizAiSettingsSync();
+                while (r.pos < c) {
+                    var s = r.pos;
+                    var t = r.tag();
+                    if (t === z) {
+                        z = $undefined;
+                        break;
+                    }
+                    var u = t & 7;
+                    switch (t >>>= 3) {
+                    case 1: {
+                            if (u !== 0)
+                                break;
+                            m.handoffRemovalTimingEnabled = r.bool();
+                            continue;
+                        }
+                    }
+                    r.skipType(u, q, t);
+                    if (!r.discardUnknown) {
+                        $util.makeProp(m, "$unknowns", false);
+                        (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                    }
+                }
+                if (z !== $undefined)
+                    throw $Error("missing end group");
+                return m;
+            };
+
+            BizAiSettingsSync.fromObject = function (d, q) {
+                if (d instanceof $root.DeviceCapabilities.DeviceCapabilities.BizAiSettingsSync)
+                    return d;
+                if (!$util.isObject(d))
+                    throw $TypeError(".DeviceCapabilities.DeviceCapabilities.BizAiSettingsSync: object expected");
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var m = new $root.DeviceCapabilities.DeviceCapabilities.BizAiSettingsSync();
+                if (d.handoffRemovalTimingEnabled != null) {
+                    m.handoffRemovalTimingEnabled = $Boolean(d.handoffRemovalTimingEnabled);
+                }
+                return m;
+            };
+
+            BizAiSettingsSync.toObject = function (m, o, q) {
+                if (!o)
+                    o = {};
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var d = {};
+                if (o.defaults) {
+                    d.handoffRemovalTimingEnabled = false;
+                }
+                if (m.handoffRemovalTimingEnabled != null && $Object.hasOwnProperty.call(m, "handoffRemovalTimingEnabled")) {
+                    d.handoffRemovalTimingEnabled = m.handoffRemovalTimingEnabled;
+                }
+                return d;
+            };
+
+            BizAiSettingsSync.prototype.toJSON = function() {
+                return BizAiSettingsSync.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            BizAiSettingsSync.getTypeUrl = function(prefix) {
+                if (prefix === $undefined)
+                    prefix = "type.googleapis.com";
+                return prefix + "/DeviceCapabilities.DeviceCapabilities.BizAiSettingsSync";
+            };
+
+            return BizAiSettingsSync;
         })();
 
         DeviceCapabilities.BusinessBroadcast = (function() {
