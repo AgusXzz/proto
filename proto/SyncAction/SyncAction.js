@@ -714,6 +714,7 @@ export const SyncAction = $root.SyncAction = (() => {
         SyncActionValue.prototype.bubbleLockMessageAction = null;
         SyncActionValue.prototype.labelSublistAction = null;
         SyncActionValue.prototype.deviceCapabilitiesV2 = null;
+        SyncActionValue.prototype.ctwaMessageReceivedAction = null;
 
         SyncActionValue.create = function(properties) {
             return new SyncActionValue(properties);
@@ -892,6 +893,8 @@ export const SyncAction = $root.SyncAction = (() => {
                 $root.SyncAction.SyncActionValue.LabelSublistAction.encode(m.labelSublistAction, w.uint32(730).fork(), q + 1).ldelim();
             if (m.deviceCapabilitiesV2 != null && $Object.hasOwnProperty.call(m, "deviceCapabilitiesV2"))
                 $root.DeviceCapabilities.DeviceCapabilities.encode(m.deviceCapabilitiesV2, w.uint32(738).fork(), q + 1).ldelim();
+            if (m.ctwaMessageReceivedAction != null && $Object.hasOwnProperty.call(m, "ctwaMessageReceivedAction"))
+                $root.SyncAction.SyncActionValue.CtwaMessageReceivedAction.encode(m.ctwaMessageReceivedAction, w.uint32(746).fork(), q + 1).ldelim();
             if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                 for (var i = 0; i < m.$unknowns.length; ++i)
                     w.raw(m.$unknowns[i]);
@@ -1413,6 +1416,12 @@ export const SyncAction = $root.SyncAction = (() => {
                         m.deviceCapabilitiesV2 = $root.DeviceCapabilities.DeviceCapabilities.decode(r, r.uint32(), $undefined, q + 1, m.deviceCapabilitiesV2);
                         continue;
                     }
+                case 93: {
+                        if (u !== 2)
+                            break;
+                        m.ctwaMessageReceivedAction = $root.SyncAction.SyncActionValue.CtwaMessageReceivedAction.decode(r, r.uint32(), $undefined, q + 1, m.ctwaMessageReceivedAction);
+                        continue;
+                    }
                 }
                 r.skipType(u, q, t);
                 if (!r.discardUnknown) {
@@ -1855,6 +1864,11 @@ export const SyncAction = $root.SyncAction = (() => {
                     throw $TypeError(".SyncAction.SyncActionValue.deviceCapabilitiesV2: object expected");
                 m.deviceCapabilitiesV2 = $root.DeviceCapabilities.DeviceCapabilities.fromObject(d.deviceCapabilitiesV2, q + 1);
             }
+            if (d.ctwaMessageReceivedAction != null) {
+                if (!$util.isObject(d.ctwaMessageReceivedAction))
+                    throw $TypeError(".SyncAction.SyncActionValue.ctwaMessageReceivedAction: object expected");
+                m.ctwaMessageReceivedAction = $root.SyncAction.SyncActionValue.CtwaMessageReceivedAction.fromObject(d.ctwaMessageReceivedAction, q + 1);
+            }
             return m;
         };
 
@@ -1954,6 +1968,7 @@ export const SyncAction = $root.SyncAction = (() => {
                 d.bubbleLockMessageAction = null;
                 d.labelSublistAction = null;
                 d.deviceCapabilitiesV2 = null;
+                d.ctwaMessageReceivedAction = null;
             }
             if (m.timestamp != null && $Object.hasOwnProperty.call(m, "timestamp")) {
                 if (typeof $BigInt !== "undefined" && o.longs === $BigInt)
@@ -2208,6 +2223,9 @@ export const SyncAction = $root.SyncAction = (() => {
             }
             if (m.deviceCapabilitiesV2 != null && $Object.hasOwnProperty.call(m, "deviceCapabilitiesV2")) {
                 d.deviceCapabilitiesV2 = $root.DeviceCapabilities.DeviceCapabilities.toObject(m.deviceCapabilitiesV2, o, q + 1);
+            }
+            if (m.ctwaMessageReceivedAction != null && $Object.hasOwnProperty.call(m, "ctwaMessageReceivedAction")) {
+                d.ctwaMessageReceivedAction = $root.SyncAction.SyncActionValue.CtwaMessageReceivedAction.toObject(m.ctwaMessageReceivedAction, o, q + 1);
             }
             return d;
         };
@@ -5146,6 +5164,117 @@ export const SyncAction = $root.SyncAction = (() => {
             };
 
             return ContactAction;
+        })();
+
+        SyncActionValue.CtwaMessageReceivedAction = (function() {
+
+            const CtwaMessageReceivedAction = function (p) {
+                if (p)
+                    for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                        if (p[ks[i]] != null && ks[i] !== "__proto__")
+                            this[ks[i]] = p[ks[i]];
+            };
+
+            CtwaMessageReceivedAction.prototype.isCtwaMessageReceived = false;
+
+            CtwaMessageReceivedAction.create = function(properties) {
+                return new CtwaMessageReceivedAction(properties);
+            };
+
+            CtwaMessageReceivedAction.encode = function (m, w, q) {
+                if (!w)
+                    w = $Writer.create();
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                if (m.isCtwaMessageReceived != null && $Object.hasOwnProperty.call(m, "isCtwaMessageReceived"))
+                    w.uint32(8).bool(m.isCtwaMessageReceived);
+                if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                    for (var i = 0; i < m.$unknowns.length; ++i)
+                        w.raw(m.$unknowns[i]);
+                return w;
+            };
+
+            CtwaMessageReceivedAction.decode = function (r, l, z, q, g) {
+                if (!(r instanceof $Reader))
+                    r = $Reader.create(r);
+                if (q === $undefined)
+                    q = 0;
+                if (q > $Reader.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.CtwaMessageReceivedAction();
+                while (r.pos < c) {
+                    var s = r.pos;
+                    var t = r.tag();
+                    if (t === z) {
+                        z = $undefined;
+                        break;
+                    }
+                    var u = t & 7;
+                    switch (t >>>= 3) {
+                    case 1: {
+                            if (u !== 0)
+                                break;
+                            m.isCtwaMessageReceived = r.bool();
+                            continue;
+                        }
+                    }
+                    r.skipType(u, q, t);
+                    if (!r.discardUnknown) {
+                        $util.makeProp(m, "$unknowns", false);
+                        (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                    }
+                }
+                if (z !== $undefined)
+                    throw $Error("missing end group");
+                return m;
+            };
+
+            CtwaMessageReceivedAction.fromObject = function (d, q) {
+                if (d instanceof $root.SyncAction.SyncActionValue.CtwaMessageReceivedAction)
+                    return d;
+                if (!$util.isObject(d))
+                    throw $TypeError(".SyncAction.SyncActionValue.CtwaMessageReceivedAction: object expected");
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var m = new $root.SyncAction.SyncActionValue.CtwaMessageReceivedAction();
+                if (d.isCtwaMessageReceived != null) {
+                    m.isCtwaMessageReceived = $Boolean(d.isCtwaMessageReceived);
+                }
+                return m;
+            };
+
+            CtwaMessageReceivedAction.toObject = function (m, o, q) {
+                if (!o)
+                    o = {};
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var d = {};
+                if (o.defaults) {
+                    d.isCtwaMessageReceived = false;
+                }
+                if (m.isCtwaMessageReceived != null && $Object.hasOwnProperty.call(m, "isCtwaMessageReceived")) {
+                    d.isCtwaMessageReceived = m.isCtwaMessageReceived;
+                }
+                return d;
+            };
+
+            CtwaMessageReceivedAction.prototype.toJSON = function() {
+                return CtwaMessageReceivedAction.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            CtwaMessageReceivedAction.getTypeUrl = function(prefix) {
+                if (prefix === $undefined)
+                    prefix = "type.googleapis.com";
+                return prefix + "/SyncAction.SyncActionValue.CtwaMessageReceivedAction";
+            };
+
+            return CtwaMessageReceivedAction;
         })();
 
         SyncActionValue.CtwaPerCustomerDataSharingAction = (function() {
@@ -17127,6 +17256,7 @@ export const SyncAction = $root.SyncAction = (() => {
         values[valuesById[90] = "BUBBLE_LOCK_MESSAGE_ACTION"] = 90;
         values[valuesById[91] = "LABEL_SUBLIST_ACTION"] = 91;
         values[valuesById[92] = "DEVICE_CAPABILITIES_V2"] = 92;
+        values[valuesById[93] = "CTWA_MESSAGE_RECEIVED_ACTION"] = 93;
         values[valuesById[10001] = "SHARE_OWN_PN"] = 10001;
         values[valuesById[10002] = "BUSINESS_BROADCAST_ACTION"] = 10002;
         values[valuesById[10003] = "AI_THREAD_DELETE_ACTION"] = 10003;
