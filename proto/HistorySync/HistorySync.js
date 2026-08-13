@@ -110058,6 +110058,7 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
         DeviceCapabilities.prototype.aiThread = null;
         DeviceCapabilities.prototype.aiFbidMigration = null;
         DeviceCapabilities.prototype.bizAiSettingsSync = null;
+        DeviceCapabilities.prototype.contactRefresh = null;
 
         DeviceCapabilities.create = function(properties) {
             return new DeviceCapabilities(properties);
@@ -110086,6 +110087,8 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                 $root.DeviceCapabilities.DeviceCapabilities.AiFbidMigration.encode(m.aiFbidMigration, w.uint32(58).fork(), q + 1).ldelim();
             if (m.bizAiSettingsSync != null && $Object.hasOwnProperty.call(m, "bizAiSettingsSync"))
                 $root.DeviceCapabilities.DeviceCapabilities.BizAiSettingsSync.encode(m.bizAiSettingsSync, w.uint32(66).fork(), q + 1).ldelim();
+            if (m.contactRefresh != null && $Object.hasOwnProperty.call(m, "contactRefresh"))
+                $root.DeviceCapabilities.DeviceCapabilities.ContactRefresh.encode(m.contactRefresh, w.uint32(74).fork(), q + 1).ldelim();
             if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                 for (var i = 0; i < m.$unknowns.length; ++i)
                     w.raw(m.$unknowns[i]);
@@ -110167,6 +110170,12 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                         if (u !== 2)
                             break;
                         m.bizAiSettingsSync = $root.DeviceCapabilities.DeviceCapabilities.BizAiSettingsSync.decode(r, r.uint32(), $undefined, q + 1, m.bizAiSettingsSync);
+                        continue;
+                    }
+                case 9: {
+                        if (u !== 2)
+                            break;
+                        m.contactRefresh = $root.DeviceCapabilities.DeviceCapabilities.ContactRefresh.decode(r, r.uint32(), $undefined, q + 1, m.contactRefresh);
                         continue;
                     }
                 }
@@ -110251,6 +110260,11 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                     throw $TypeError(".DeviceCapabilities.DeviceCapabilities.bizAiSettingsSync: object expected");
                 m.bizAiSettingsSync = $root.DeviceCapabilities.DeviceCapabilities.BizAiSettingsSync.fromObject(d.bizAiSettingsSync, q + 1);
             }
+            if (d.contactRefresh != null) {
+                if (!$util.isObject(d.contactRefresh))
+                    throw $TypeError(".DeviceCapabilities.DeviceCapabilities.contactRefresh: object expected");
+                m.contactRefresh = $root.DeviceCapabilities.DeviceCapabilities.ContactRefresh.fromObject(d.contactRefresh, q + 1);
+            }
             return m;
         };
 
@@ -110271,6 +110285,7 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                 d.aiThread = null;
                 d.aiFbidMigration = null;
                 d.bizAiSettingsSync = null;
+                d.contactRefresh = null;
             }
             if (m.chatLockSupportLevel != null && $Object.hasOwnProperty.call(m, "chatLockSupportLevel")) {
                 d.chatLockSupportLevel = o.enums === $String ? $root.DeviceCapabilities.DeviceCapabilities.ChatLockSupportLevel[m.chatLockSupportLevel] === $undefined ? m.chatLockSupportLevel : $root.DeviceCapabilities.DeviceCapabilities.ChatLockSupportLevel[m.chatLockSupportLevel] : m.chatLockSupportLevel;
@@ -110295,6 +110310,9 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
             }
             if (m.bizAiSettingsSync != null && $Object.hasOwnProperty.call(m, "bizAiSettingsSync")) {
                 d.bizAiSettingsSync = $root.DeviceCapabilities.DeviceCapabilities.BizAiSettingsSync.toObject(m.bizAiSettingsSync, o, q + 1);
+            }
+            if (m.contactRefresh != null && $Object.hasOwnProperty.call(m, "contactRefresh")) {
+                d.contactRefresh = $root.DeviceCapabilities.DeviceCapabilities.ContactRefresh.toObject(m.contactRefresh, o, q + 1);
             }
             return d;
         };
@@ -110865,6 +110883,117 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
             values[valuesById[1] = "MINIMAL"] = 1;
             values[valuesById[2] = "FULL"] = 2;
             return values;
+        })();
+
+        DeviceCapabilities.ContactRefresh = (function() {
+
+            const ContactRefresh = function (p) {
+                if (p)
+                    for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                        if (p[ks[i]] != null && ks[i] !== "__proto__")
+                            this[ks[i]] = p[ks[i]];
+            };
+
+            ContactRefresh.prototype.refreshSupported = false;
+
+            ContactRefresh.create = function(properties) {
+                return new ContactRefresh(properties);
+            };
+
+            ContactRefresh.encode = function (m, w, q) {
+                if (!w)
+                    w = $Writer.create();
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                if (m.refreshSupported != null && $Object.hasOwnProperty.call(m, "refreshSupported"))
+                    w.uint32(8).bool(m.refreshSupported);
+                if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                    for (var i = 0; i < m.$unknowns.length; ++i)
+                        w.raw(m.$unknowns[i]);
+                return w;
+            };
+
+            ContactRefresh.decode = function (r, l, z, q, g) {
+                if (!(r instanceof $Reader))
+                    r = $Reader.create(r);
+                if (q === $undefined)
+                    q = 0;
+                if (q > $Reader.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.DeviceCapabilities.DeviceCapabilities.ContactRefresh();
+                while (r.pos < c) {
+                    var s = r.pos;
+                    var t = r.tag();
+                    if (t === z) {
+                        z = $undefined;
+                        break;
+                    }
+                    var u = t & 7;
+                    switch (t >>>= 3) {
+                    case 1: {
+                            if (u !== 0)
+                                break;
+                            m.refreshSupported = r.bool();
+                            continue;
+                        }
+                    }
+                    r.skipType(u, q, t);
+                    if (!r.discardUnknown) {
+                        $util.makeProp(m, "$unknowns", false);
+                        (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                    }
+                }
+                if (z !== $undefined)
+                    throw $Error("missing end group");
+                return m;
+            };
+
+            ContactRefresh.fromObject = function (d, q) {
+                if (d instanceof $root.DeviceCapabilities.DeviceCapabilities.ContactRefresh)
+                    return d;
+                if (!$util.isObject(d))
+                    throw $TypeError(".DeviceCapabilities.DeviceCapabilities.ContactRefresh: object expected");
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var m = new $root.DeviceCapabilities.DeviceCapabilities.ContactRefresh();
+                if (d.refreshSupported != null) {
+                    m.refreshSupported = $Boolean(d.refreshSupported);
+                }
+                return m;
+            };
+
+            ContactRefresh.toObject = function (m, o, q) {
+                if (!o)
+                    o = {};
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var d = {};
+                if (o.defaults) {
+                    d.refreshSupported = false;
+                }
+                if (m.refreshSupported != null && $Object.hasOwnProperty.call(m, "refreshSupported")) {
+                    d.refreshSupported = m.refreshSupported;
+                }
+                return d;
+            };
+
+            ContactRefresh.prototype.toJSON = function() {
+                return ContactRefresh.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            ContactRefresh.getTypeUrl = function(prefix) {
+                if (prefix === $undefined)
+                    prefix = "type.googleapis.com";
+                return prefix + "/DeviceCapabilities.DeviceCapabilities.ContactRefresh";
+            };
+
+            return ContactRefresh;
         })();
 
         DeviceCapabilities.LIDMigration = (function() {
