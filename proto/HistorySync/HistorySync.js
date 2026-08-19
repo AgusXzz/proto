@@ -17407,7 +17407,6 @@ export const E2E = $root.E2E = (() => {
         Message.prototype.newsletterFollowerInviteMessageV2 = null;
         Message.prototype.pollResultSnapshotMessageV3 = null;
         Message.prototype.newsletterAdminProfileMessage = null;
-        Message.prototype.newsletterAdminProfileMessageV2 = null;
         Message.prototype.spoilerMessage = null;
         Message.prototype.pollCreationMessageV6 = null;
         Message.prototype.conditionalRevealMessage = null;
@@ -17626,8 +17625,6 @@ export const E2E = $root.E2E = (() => {
                 $root.E2E.Message.PollResultSnapshotMessage.encode(m.pollResultSnapshotMessageV3, w.uint32(922).fork(), q + 1).ldelim();
             if (m.newsletterAdminProfileMessage != null && $Object.hasOwnProperty.call(m, "newsletterAdminProfileMessage"))
                 $root.E2E.Message.FutureProofMessage.encode(m.newsletterAdminProfileMessage, w.uint32(930).fork(), q + 1).ldelim();
-            if (m.newsletterAdminProfileMessageV2 != null && $Object.hasOwnProperty.call(m, "newsletterAdminProfileMessageV2"))
-                $root.E2E.Message.FutureProofMessage.encode(m.newsletterAdminProfileMessageV2, w.uint32(938).fork(), q + 1).ldelim();
             if (m.spoilerMessage != null && $Object.hasOwnProperty.call(m, "spoilerMessage"))
                 $root.E2E.Message.FutureProofMessage.encode(m.spoilerMessage, w.uint32(946).fork(), q + 1).ldelim();
             if (m.pollCreationMessageV6 != null && $Object.hasOwnProperty.call(m, "pollCreationMessageV6"))
@@ -18255,12 +18252,6 @@ export const E2E = $root.E2E = (() => {
                         m.newsletterAdminProfileMessage = $root.E2E.Message.FutureProofMessage.decode(r, r.uint32(), $undefined, q + 1, m.newsletterAdminProfileMessage);
                         continue;
                     }
-                case 117: {
-                        if (u !== 2)
-                            break;
-                        m.newsletterAdminProfileMessageV2 = $root.E2E.Message.FutureProofMessage.decode(r, r.uint32(), $undefined, q + 1, m.newsletterAdminProfileMessageV2);
-                        continue;
-                    }
                 case 118: {
                         if (u !== 2)
                             break;
@@ -18845,11 +18836,6 @@ export const E2E = $root.E2E = (() => {
                     throw $TypeError(".E2E.Message.newsletterAdminProfileMessage: object expected");
                 m.newsletterAdminProfileMessage = $root.E2E.Message.FutureProofMessage.fromObject(d.newsletterAdminProfileMessage, q + 1);
             }
-            if (d.newsletterAdminProfileMessageV2 != null) {
-                if (!$util.isObject(d.newsletterAdminProfileMessageV2))
-                    throw $TypeError(".E2E.Message.newsletterAdminProfileMessageV2: object expected");
-                m.newsletterAdminProfileMessageV2 = $root.E2E.Message.FutureProofMessage.fromObject(d.newsletterAdminProfileMessageV2, q + 1);
-            }
             if (d.spoilerMessage != null) {
                 if (!$util.isObject(d.spoilerMessage))
                     throw $TypeError(".E2E.Message.spoilerMessage: object expected");
@@ -19028,7 +19014,6 @@ export const E2E = $root.E2E = (() => {
                 d.newsletterFollowerInviteMessageV2 = null;
                 d.pollResultSnapshotMessageV3 = null;
                 d.newsletterAdminProfileMessage = null;
-                d.newsletterAdminProfileMessageV2 = null;
                 d.spoilerMessage = null;
                 d.pollCreationMessageV6 = null;
                 d.conditionalRevealMessage = null;
@@ -19331,9 +19316,6 @@ export const E2E = $root.E2E = (() => {
             }
             if (m.newsletterAdminProfileMessage != null && $Object.hasOwnProperty.call(m, "newsletterAdminProfileMessage")) {
                 d.newsletterAdminProfileMessage = $root.E2E.Message.FutureProofMessage.toObject(m.newsletterAdminProfileMessage, o, q + 1);
-            }
-            if (m.newsletterAdminProfileMessageV2 != null && $Object.hasOwnProperty.call(m, "newsletterAdminProfileMessageV2")) {
-                d.newsletterAdminProfileMessageV2 = $root.E2E.Message.FutureProofMessage.toObject(m.newsletterAdminProfileMessageV2, o, q + 1);
             }
             if (m.spoilerMessage != null && $Object.hasOwnProperty.call(m, "spoilerMessage")) {
                 d.spoilerMessage = $root.E2E.Message.FutureProofMessage.toObject(m.spoilerMessage, o, q + 1);
