@@ -715,6 +715,8 @@ export const SyncAction = $root.SyncAction = (() => {
         SyncActionValue.prototype.labelSublistAction = null;
         SyncActionValue.prototype.deviceCapabilitiesV2 = null;
         SyncActionValue.prototype.ctwaMessageReceivedAction = null;
+        SyncActionValue.prototype.sharedDeviceAllowlistAction = null;
+        SyncActionValue.prototype.contactManagerMetadataAction = null;
 
         SyncActionValue.create = function(properties) {
             return new SyncActionValue(properties);
@@ -895,6 +897,10 @@ export const SyncAction = $root.SyncAction = (() => {
                 $root.DeviceCapabilities.DeviceCapabilities.encode(m.deviceCapabilitiesV2, w.uint32(738).fork(), q + 1).ldelim();
             if (m.ctwaMessageReceivedAction != null && $Object.hasOwnProperty.call(m, "ctwaMessageReceivedAction"))
                 $root.SyncAction.SyncActionValue.CtwaMessageReceivedAction.encode(m.ctwaMessageReceivedAction, w.uint32(746).fork(), q + 1).ldelim();
+            if (m.sharedDeviceAllowlistAction != null && $Object.hasOwnProperty.call(m, "sharedDeviceAllowlistAction"))
+                $root.SyncAction.SyncActionValue.SharedDeviceAllowlistAction.encode(m.sharedDeviceAllowlistAction, w.uint32(754).fork(), q + 1).ldelim();
+            if (m.contactManagerMetadataAction != null && $Object.hasOwnProperty.call(m, "contactManagerMetadataAction"))
+                $root.SyncAction.SyncActionValue.ContactManagerMetadataAction.encode(m.contactManagerMetadataAction, w.uint32(762).fork(), q + 1).ldelim();
             if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                 for (var i = 0; i < m.$unknowns.length; ++i)
                     w.raw(m.$unknowns[i]);
@@ -1422,6 +1428,18 @@ export const SyncAction = $root.SyncAction = (() => {
                         m.ctwaMessageReceivedAction = $root.SyncAction.SyncActionValue.CtwaMessageReceivedAction.decode(r, r.uint32(), $undefined, q + 1, m.ctwaMessageReceivedAction);
                         continue;
                     }
+                case 94: {
+                        if (u !== 2)
+                            break;
+                        m.sharedDeviceAllowlistAction = $root.SyncAction.SyncActionValue.SharedDeviceAllowlistAction.decode(r, r.uint32(), $undefined, q + 1, m.sharedDeviceAllowlistAction);
+                        continue;
+                    }
+                case 95: {
+                        if (u !== 2)
+                            break;
+                        m.contactManagerMetadataAction = $root.SyncAction.SyncActionValue.ContactManagerMetadataAction.decode(r, r.uint32(), $undefined, q + 1, m.contactManagerMetadataAction);
+                        continue;
+                    }
                 }
                 r.skipType(u, q, t);
                 if (!r.discardUnknown) {
@@ -1869,6 +1887,16 @@ export const SyncAction = $root.SyncAction = (() => {
                     throw $TypeError(".SyncAction.SyncActionValue.ctwaMessageReceivedAction: object expected");
                 m.ctwaMessageReceivedAction = $root.SyncAction.SyncActionValue.CtwaMessageReceivedAction.fromObject(d.ctwaMessageReceivedAction, q + 1);
             }
+            if (d.sharedDeviceAllowlistAction != null) {
+                if (!$util.isObject(d.sharedDeviceAllowlistAction))
+                    throw $TypeError(".SyncAction.SyncActionValue.sharedDeviceAllowlistAction: object expected");
+                m.sharedDeviceAllowlistAction = $root.SyncAction.SyncActionValue.SharedDeviceAllowlistAction.fromObject(d.sharedDeviceAllowlistAction, q + 1);
+            }
+            if (d.contactManagerMetadataAction != null) {
+                if (!$util.isObject(d.contactManagerMetadataAction))
+                    throw $TypeError(".SyncAction.SyncActionValue.contactManagerMetadataAction: object expected");
+                m.contactManagerMetadataAction = $root.SyncAction.SyncActionValue.ContactManagerMetadataAction.fromObject(d.contactManagerMetadataAction, q + 1);
+            }
             return m;
         };
 
@@ -1969,6 +1997,8 @@ export const SyncAction = $root.SyncAction = (() => {
                 d.labelSublistAction = null;
                 d.deviceCapabilitiesV2 = null;
                 d.ctwaMessageReceivedAction = null;
+                d.sharedDeviceAllowlistAction = null;
+                d.contactManagerMetadataAction = null;
             }
             if (m.timestamp != null && $Object.hasOwnProperty.call(m, "timestamp")) {
                 if (typeof $BigInt !== "undefined" && o.longs === $BigInt)
@@ -2226,6 +2256,12 @@ export const SyncAction = $root.SyncAction = (() => {
             }
             if (m.ctwaMessageReceivedAction != null && $Object.hasOwnProperty.call(m, "ctwaMessageReceivedAction")) {
                 d.ctwaMessageReceivedAction = $root.SyncAction.SyncActionValue.CtwaMessageReceivedAction.toObject(m.ctwaMessageReceivedAction, o, q + 1);
+            }
+            if (m.sharedDeviceAllowlistAction != null && $Object.hasOwnProperty.call(m, "sharedDeviceAllowlistAction")) {
+                d.sharedDeviceAllowlistAction = $root.SyncAction.SyncActionValue.SharedDeviceAllowlistAction.toObject(m.sharedDeviceAllowlistAction, o, q + 1);
+            }
+            if (m.contactManagerMetadataAction != null && $Object.hasOwnProperty.call(m, "contactManagerMetadataAction")) {
+                d.contactManagerMetadataAction = $root.SyncAction.SyncActionValue.ContactManagerMetadataAction.toObject(m.contactManagerMetadataAction, o, q + 1);
             }
             return d;
         };
@@ -5164,6 +5200,117 @@ export const SyncAction = $root.SyncAction = (() => {
             };
 
             return ContactAction;
+        })();
+
+        SyncActionValue.ContactManagerMetadataAction = (function() {
+
+            const ContactManagerMetadataAction = function (p) {
+                if (p)
+                    for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                        if (p[ks[i]] != null && ks[i] !== "__proto__")
+                            this[ks[i]] = p[ks[i]];
+            };
+
+            ContactManagerMetadataAction.prototype.isHidden = false;
+
+            ContactManagerMetadataAction.create = function(properties) {
+                return new ContactManagerMetadataAction(properties);
+            };
+
+            ContactManagerMetadataAction.encode = function (m, w, q) {
+                if (!w)
+                    w = $Writer.create();
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                if (m.isHidden != null && $Object.hasOwnProperty.call(m, "isHidden"))
+                    w.uint32(8).bool(m.isHidden);
+                if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                    for (var i = 0; i < m.$unknowns.length; ++i)
+                        w.raw(m.$unknowns[i]);
+                return w;
+            };
+
+            ContactManagerMetadataAction.decode = function (r, l, z, q, g) {
+                if (!(r instanceof $Reader))
+                    r = $Reader.create(r);
+                if (q === $undefined)
+                    q = 0;
+                if (q > $Reader.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.ContactManagerMetadataAction();
+                while (r.pos < c) {
+                    var s = r.pos;
+                    var t = r.tag();
+                    if (t === z) {
+                        z = $undefined;
+                        break;
+                    }
+                    var u = t & 7;
+                    switch (t >>>= 3) {
+                    case 1: {
+                            if (u !== 0)
+                                break;
+                            m.isHidden = r.bool();
+                            continue;
+                        }
+                    }
+                    r.skipType(u, q, t);
+                    if (!r.discardUnknown) {
+                        $util.makeProp(m, "$unknowns", false);
+                        (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                    }
+                }
+                if (z !== $undefined)
+                    throw $Error("missing end group");
+                return m;
+            };
+
+            ContactManagerMetadataAction.fromObject = function (d, q) {
+                if (d instanceof $root.SyncAction.SyncActionValue.ContactManagerMetadataAction)
+                    return d;
+                if (!$util.isObject(d))
+                    throw $TypeError(".SyncAction.SyncActionValue.ContactManagerMetadataAction: object expected");
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var m = new $root.SyncAction.SyncActionValue.ContactManagerMetadataAction();
+                if (d.isHidden != null) {
+                    m.isHidden = $Boolean(d.isHidden);
+                }
+                return m;
+            };
+
+            ContactManagerMetadataAction.toObject = function (m, o, q) {
+                if (!o)
+                    o = {};
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var d = {};
+                if (o.defaults) {
+                    d.isHidden = false;
+                }
+                if (m.isHidden != null && $Object.hasOwnProperty.call(m, "isHidden")) {
+                    d.isHidden = m.isHidden;
+                }
+                return d;
+            };
+
+            ContactManagerMetadataAction.prototype.toJSON = function() {
+                return ContactManagerMetadataAction.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            ContactManagerMetadataAction.getTypeUrl = function(prefix) {
+                if (prefix === $undefined)
+                    prefix = "type.googleapis.com";
+                return prefix + "/SyncAction.SyncActionValue.ContactManagerMetadataAction";
+            };
+
+            return ContactManagerMetadataAction;
         })();
 
         SyncActionValue.CtwaMessageReceivedAction = (function() {
@@ -12917,6 +13064,117 @@ export const SyncAction = $root.SyncAction = (() => {
             return SettingsSyncAction;
         })();
 
+        SyncActionValue.SharedDeviceAllowlistAction = (function() {
+
+            const SharedDeviceAllowlistAction = function (p) {
+                if (p)
+                    for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                        if (p[ks[i]] != null && ks[i] !== "__proto__")
+                            this[ks[i]] = p[ks[i]];
+            };
+
+            SharedDeviceAllowlistAction.prototype.allowed = false;
+
+            SharedDeviceAllowlistAction.create = function(properties) {
+                return new SharedDeviceAllowlistAction(properties);
+            };
+
+            SharedDeviceAllowlistAction.encode = function (m, w, q) {
+                if (!w)
+                    w = $Writer.create();
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                if (m.allowed != null && $Object.hasOwnProperty.call(m, "allowed"))
+                    w.uint32(8).bool(m.allowed);
+                if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                    for (var i = 0; i < m.$unknowns.length; ++i)
+                        w.raw(m.$unknowns[i]);
+                return w;
+            };
+
+            SharedDeviceAllowlistAction.decode = function (r, l, z, q, g) {
+                if (!(r instanceof $Reader))
+                    r = $Reader.create(r);
+                if (q === $undefined)
+                    q = 0;
+                if (q > $Reader.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.SharedDeviceAllowlistAction();
+                while (r.pos < c) {
+                    var s = r.pos;
+                    var t = r.tag();
+                    if (t === z) {
+                        z = $undefined;
+                        break;
+                    }
+                    var u = t & 7;
+                    switch (t >>>= 3) {
+                    case 1: {
+                            if (u !== 0)
+                                break;
+                            m.allowed = r.bool();
+                            continue;
+                        }
+                    }
+                    r.skipType(u, q, t);
+                    if (!r.discardUnknown) {
+                        $util.makeProp(m, "$unknowns", false);
+                        (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                    }
+                }
+                if (z !== $undefined)
+                    throw $Error("missing end group");
+                return m;
+            };
+
+            SharedDeviceAllowlistAction.fromObject = function (d, q) {
+                if (d instanceof $root.SyncAction.SyncActionValue.SharedDeviceAllowlistAction)
+                    return d;
+                if (!$util.isObject(d))
+                    throw $TypeError(".SyncAction.SyncActionValue.SharedDeviceAllowlistAction: object expected");
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var m = new $root.SyncAction.SyncActionValue.SharedDeviceAllowlistAction();
+                if (d.allowed != null) {
+                    m.allowed = $Boolean(d.allowed);
+                }
+                return m;
+            };
+
+            SharedDeviceAllowlistAction.toObject = function (m, o, q) {
+                if (!o)
+                    o = {};
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var d = {};
+                if (o.defaults) {
+                    d.allowed = false;
+                }
+                if (m.allowed != null && $Object.hasOwnProperty.call(m, "allowed")) {
+                    d.allowed = m.allowed;
+                }
+                return d;
+            };
+
+            SharedDeviceAllowlistAction.prototype.toJSON = function() {
+                return SharedDeviceAllowlistAction.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            SharedDeviceAllowlistAction.getTypeUrl = function(prefix) {
+                if (prefix === $undefined)
+                    prefix = "type.googleapis.com";
+                return prefix + "/SyncAction.SyncActionValue.SharedDeviceAllowlistAction";
+            };
+
+            return SharedDeviceAllowlistAction;
+        })();
+
         SyncActionValue.StarAction = (function() {
 
             const StarAction = function (p) {
@@ -17257,6 +17515,8 @@ export const SyncAction = $root.SyncAction = (() => {
         values[valuesById[91] = "LABEL_SUBLIST_ACTION"] = 91;
         values[valuesById[92] = "DEVICE_CAPABILITIES_V2"] = 92;
         values[valuesById[93] = "CTWA_MESSAGE_RECEIVED_ACTION"] = 93;
+        values[valuesById[94] = "SHARED_DEVICE_ALLOWLIST_ACTION"] = 94;
+        values[valuesById[95] = "CONTACT_MANAGER_METADATA_ACTION"] = 95;
         values[valuesById[10001] = "SHARE_OWN_PN"] = 10001;
         values[valuesById[10002] = "BUSINESS_BROADCAST_ACTION"] = 10002;
         values[valuesById[10003] = "AI_THREAD_DELETE_ACTION"] = 10003;
