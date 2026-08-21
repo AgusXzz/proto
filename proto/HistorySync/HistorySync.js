@@ -93459,6 +93459,7 @@ export const SyncAction = $root.SyncAction = (() => {
         SyncActionValue.prototype.ctwaMessageReceivedAction = null;
         SyncActionValue.prototype.sharedDeviceAllowlistAction = null;
         SyncActionValue.prototype.contactManagerMetadataAction = null;
+        SyncActionValue.prototype.businessFolderActivationAction = null;
 
         SyncActionValue.create = function(properties) {
             return new SyncActionValue(properties);
@@ -93643,6 +93644,8 @@ export const SyncAction = $root.SyncAction = (() => {
                 $root.SyncAction.SyncActionValue.SharedDeviceAllowlistAction.encode(m.sharedDeviceAllowlistAction, w.uint32(754).fork(), q + 1).ldelim();
             if (m.contactManagerMetadataAction != null && $Object.hasOwnProperty.call(m, "contactManagerMetadataAction"))
                 $root.SyncAction.SyncActionValue.ContactManagerMetadataAction.encode(m.contactManagerMetadataAction, w.uint32(762).fork(), q + 1).ldelim();
+            if (m.businessFolderActivationAction != null && $Object.hasOwnProperty.call(m, "businessFolderActivationAction"))
+                $root.SyncAction.SyncActionValue.BusinessFolderActivationAction.encode(m.businessFolderActivationAction, w.uint32(770).fork(), q + 1).ldelim();
             if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                 for (var i = 0; i < m.$unknowns.length; ++i)
                     w.raw(m.$unknowns[i]);
@@ -94182,6 +94185,12 @@ export const SyncAction = $root.SyncAction = (() => {
                         m.contactManagerMetadataAction = $root.SyncAction.SyncActionValue.ContactManagerMetadataAction.decode(r, r.uint32(), $undefined, q + 1, m.contactManagerMetadataAction);
                         continue;
                     }
+                case 96: {
+                        if (u !== 2)
+                            break;
+                        m.businessFolderActivationAction = $root.SyncAction.SyncActionValue.BusinessFolderActivationAction.decode(r, r.uint32(), $undefined, q + 1, m.businessFolderActivationAction);
+                        continue;
+                    }
                 }
                 r.skipType(u, q, t);
                 if (!r.discardUnknown) {
@@ -94639,6 +94648,11 @@ export const SyncAction = $root.SyncAction = (() => {
                     throw $TypeError(".SyncAction.SyncActionValue.contactManagerMetadataAction: object expected");
                 m.contactManagerMetadataAction = $root.SyncAction.SyncActionValue.ContactManagerMetadataAction.fromObject(d.contactManagerMetadataAction, q + 1);
             }
+            if (d.businessFolderActivationAction != null) {
+                if (!$util.isObject(d.businessFolderActivationAction))
+                    throw $TypeError(".SyncAction.SyncActionValue.businessFolderActivationAction: object expected");
+                m.businessFolderActivationAction = $root.SyncAction.SyncActionValue.BusinessFolderActivationAction.fromObject(d.businessFolderActivationAction, q + 1);
+            }
             return m;
         };
 
@@ -94741,6 +94755,7 @@ export const SyncAction = $root.SyncAction = (() => {
                 d.ctwaMessageReceivedAction = null;
                 d.sharedDeviceAllowlistAction = null;
                 d.contactManagerMetadataAction = null;
+                d.businessFolderActivationAction = null;
             }
             if (m.timestamp != null && $Object.hasOwnProperty.call(m, "timestamp")) {
                 if (typeof $BigInt !== "undefined" && o.longs === $BigInt)
@@ -95004,6 +95019,9 @@ export const SyncAction = $root.SyncAction = (() => {
             }
             if (m.contactManagerMetadataAction != null && $Object.hasOwnProperty.call(m, "contactManagerMetadataAction")) {
                 d.contactManagerMetadataAction = $root.SyncAction.SyncActionValue.ContactManagerMetadataAction.toObject(m.contactManagerMetadataAction, o, q + 1);
+            }
+            if (m.businessFolderActivationAction != null && $Object.hasOwnProperty.call(m, "businessFolderActivationAction")) {
+                d.businessFolderActivationAction = $root.SyncAction.SyncActionValue.BusinessFolderActivationAction.toObject(m.businessFolderActivationAction, o, q + 1);
             }
             return d;
         };
@@ -97176,6 +97194,117 @@ export const SyncAction = $root.SyncAction = (() => {
             };
 
             return BusinessBroadcastListAction;
+        })();
+
+        SyncActionValue.BusinessFolderActivationAction = (function() {
+
+            const BusinessFolderActivationAction = function (p) {
+                if (p)
+                    for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                        if (p[ks[i]] != null && ks[i] !== "__proto__")
+                            this[ks[i]] = p[ks[i]];
+            };
+
+            BusinessFolderActivationAction.prototype.activated = false;
+
+            BusinessFolderActivationAction.create = function(properties) {
+                return new BusinessFolderActivationAction(properties);
+            };
+
+            BusinessFolderActivationAction.encode = function (m, w, q) {
+                if (!w)
+                    w = $Writer.create();
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                if (m.activated != null && $Object.hasOwnProperty.call(m, "activated"))
+                    w.uint32(8).bool(m.activated);
+                if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                    for (var i = 0; i < m.$unknowns.length; ++i)
+                        w.raw(m.$unknowns[i]);
+                return w;
+            };
+
+            BusinessFolderActivationAction.decode = function (r, l, z, q, g) {
+                if (!(r instanceof $Reader))
+                    r = $Reader.create(r);
+                if (q === $undefined)
+                    q = 0;
+                if (q > $Reader.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.BusinessFolderActivationAction();
+                while (r.pos < c) {
+                    var s = r.pos;
+                    var t = r.tag();
+                    if (t === z) {
+                        z = $undefined;
+                        break;
+                    }
+                    var u = t & 7;
+                    switch (t >>>= 3) {
+                    case 1: {
+                            if (u !== 0)
+                                break;
+                            m.activated = r.bool();
+                            continue;
+                        }
+                    }
+                    r.skipType(u, q, t);
+                    if (!r.discardUnknown) {
+                        $util.makeProp(m, "$unknowns", false);
+                        (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                    }
+                }
+                if (z !== $undefined)
+                    throw $Error("missing end group");
+                return m;
+            };
+
+            BusinessFolderActivationAction.fromObject = function (d, q) {
+                if (d instanceof $root.SyncAction.SyncActionValue.BusinessFolderActivationAction)
+                    return d;
+                if (!$util.isObject(d))
+                    throw $TypeError(".SyncAction.SyncActionValue.BusinessFolderActivationAction: object expected");
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var m = new $root.SyncAction.SyncActionValue.BusinessFolderActivationAction();
+                if (d.activated != null) {
+                    m.activated = $Boolean(d.activated);
+                }
+                return m;
+            };
+
+            BusinessFolderActivationAction.toObject = function (m, o, q) {
+                if (!o)
+                    o = {};
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var d = {};
+                if (o.defaults) {
+                    d.activated = false;
+                }
+                if (m.activated != null && $Object.hasOwnProperty.call(m, "activated")) {
+                    d.activated = m.activated;
+                }
+                return d;
+            };
+
+            BusinessFolderActivationAction.prototype.toJSON = function() {
+                return BusinessFolderActivationAction.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            BusinessFolderActivationAction.getTypeUrl = function(prefix) {
+                if (prefix === $undefined)
+                    prefix = "type.googleapis.com";
+                return prefix + "/SyncAction.SyncActionValue.BusinessFolderActivationAction";
+            };
+
+            return BusinessFolderActivationAction;
         })();
 
         SyncActionValue.CallLogAction = (function() {
@@ -110259,6 +110388,7 @@ export const SyncAction = $root.SyncAction = (() => {
         values[valuesById[93] = "CTWA_MESSAGE_RECEIVED_ACTION"] = 93;
         values[valuesById[94] = "SHARED_DEVICE_ALLOWLIST_ACTION"] = 94;
         values[valuesById[95] = "CONTACT_MANAGER_METADATA_ACTION"] = 95;
+        values[valuesById[96] = "BUSINESS_FOLDER_ACTIVATION_ACTION"] = 96;
         values[valuesById[10001] = "SHARE_OWN_PN"] = 10001;
         values[valuesById[10002] = "BUSINESS_BROADCAST_ACTION"] = 10002;
         values[valuesById[10003] = "AI_THREAD_DELETE_ACTION"] = 10003;
