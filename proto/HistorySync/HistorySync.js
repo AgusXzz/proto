@@ -12502,6 +12502,7 @@ export const E2E = $root.E2E = (() => {
             this.mentionedJid = [];
             this.groupMentions = [];
             this.statusAttributions = [];
+            this.experienceIds = [];
             if (p)
                 for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
                     if (p[ks[i]] != null && ks[i] !== "__proto__")
@@ -12572,6 +12573,7 @@ export const E2E = $root.E2E = (() => {
         ContextInfo.prototype.posterStatusId = "";
         ContextInfo.prototype.instagramThreadLink = null;
         ContextInfo.prototype.aiProvenance = null;
+        ContextInfo.prototype.experienceIds = $util.emptyArray;
 
         ContextInfo.create = function(properties) {
             return new ContextInfo(properties);
@@ -12718,6 +12720,9 @@ export const E2E = $root.E2E = (() => {
                 $root.E2E.ContextInfo.InstagramThreadLink.encode(m.instagramThreadLink, w.uint32(642).fork(), q + 1).ldelim();
             if (m.aiProvenance != null && $Object.hasOwnProperty.call(m, "aiProvenance"))
                 $root.AICommon.AIProvenance.encode(m.aiProvenance, w.uint32(650).fork(), q + 1).ldelim();
+            if (m.experienceIds != null && m.experienceIds.length) {
+                w.uint32(658).uint32s(m.experienceIds);
+            }
             if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                 for (var i = 0; i < m.$unknowns.length; ++i)
                     w.raw(m.$unknowns[i]);
@@ -13167,6 +13172,20 @@ export const E2E = $root.E2E = (() => {
                         m.aiProvenance = $root.AICommon.AIProvenance.decode(r, r.uint32(), $undefined, q + 1, m.aiProvenance);
                         continue;
                     }
+                case 82: {
+                        if (u === 2) {
+                            if (!(m.experienceIds && m.experienceIds.length))
+                                m.experienceIds = [];
+                            r.uint32s(m.experienceIds);
+                            continue;
+                        }
+                        if (u !== 0)
+                            break;
+                        if (!(m.experienceIds && m.experienceIds.length))
+                            m.experienceIds = [];
+                        m.experienceIds.push(r.uint32());
+                        continue;
+                    }
                 }
                 r.skipType(u, q, t);
                 if (!r.discardUnknown) {
@@ -13584,6 +13603,14 @@ export const E2E = $root.E2E = (() => {
                     throw $TypeError(".E2E.ContextInfo.aiProvenance: object expected");
                 m.aiProvenance = $root.AICommon.AIProvenance.fromObject(d.aiProvenance, q + 1);
             }
+            if (d.experienceIds) {
+                if (!$Array.isArray(d.experienceIds))
+                    throw $TypeError(".E2E.ContextInfo.experienceIds: array expected");
+                m.experienceIds = $Array(d.experienceIds.length);
+                for (var i = 0; i < d.experienceIds.length; ++i) {
+                    m.experienceIds[i] = d.experienceIds[i] >>> 0;
+                }
+            }
             return m;
         };
 
@@ -13599,6 +13626,7 @@ export const E2E = $root.E2E = (() => {
                 d.mentionedJid = [];
                 d.groupMentions = [];
                 d.statusAttributions = [];
+                d.experienceIds = [];
             }
             if (o.defaults) {
                 d.stanzaId = "";
@@ -13890,6 +13918,12 @@ export const E2E = $root.E2E = (() => {
             }
             if (m.aiProvenance != null && $Object.hasOwnProperty.call(m, "aiProvenance")) {
                 d.aiProvenance = $root.AICommon.AIProvenance.toObject(m.aiProvenance, o, q + 1);
+            }
+            if (m.experienceIds && m.experienceIds.length) {
+                d.experienceIds = $Array(m.experienceIds.length);
+                for (var j = 0; j < m.experienceIds.length; ++j) {
+                    d.experienceIds[j] = m.experienceIds[j];
+                }
             }
             return d;
         };
@@ -17421,6 +17455,7 @@ export const E2E = $root.E2E = (() => {
         Message.prototype.musicMessage = null;
         Message.prototype.statusLinkPreviewMetadata = null;
         Message.prototype.botPlatformRegistrationSuccessMessage = null;
+        Message.prototype.newsletterScheduledMessage = null;
 
         Message.create = function(properties) {
             return new Message(properties);
@@ -17653,6 +17688,8 @@ export const E2E = $root.E2E = (() => {
                 $root.E2E.Message.StatusLinkPreviewMetadata.encode(m.statusLinkPreviewMetadata, w.uint32(1042).fork(), q + 1).ldelim();
             if (m.botPlatformRegistrationSuccessMessage != null && $Object.hasOwnProperty.call(m, "botPlatformRegistrationSuccessMessage"))
                 $root.E2E.Message.FutureProofMessage.encode(m.botPlatformRegistrationSuccessMessage, w.uint32(1050).fork(), q + 1).ldelim();
+            if (m.newsletterScheduledMessage != null && $Object.hasOwnProperty.call(m, "newsletterScheduledMessage"))
+                $root.E2E.Message.FutureProofMessage.encode(m.newsletterScheduledMessage, w.uint32(1058).fork(), q + 1).ldelim();
             if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                 for (var i = 0; i < m.$unknowns.length; ++i)
                     w.raw(m.$unknowns[i]);
@@ -18336,6 +18373,12 @@ export const E2E = $root.E2E = (() => {
                         m.botPlatformRegistrationSuccessMessage = $root.E2E.Message.FutureProofMessage.decode(r, r.uint32(), $undefined, q + 1, m.botPlatformRegistrationSuccessMessage);
                         continue;
                     }
+                case 132: {
+                        if (u !== 2)
+                            break;
+                        m.newsletterScheduledMessage = $root.E2E.Message.FutureProofMessage.decode(r, r.uint32(), $undefined, q + 1, m.newsletterScheduledMessage);
+                        continue;
+                    }
                 }
                 r.skipType(u, q, t);
                 if (!r.discardUnknown) {
@@ -18906,6 +18949,11 @@ export const E2E = $root.E2E = (() => {
                     throw $TypeError(".E2E.Message.botPlatformRegistrationSuccessMessage: object expected");
                 m.botPlatformRegistrationSuccessMessage = $root.E2E.Message.FutureProofMessage.fromObject(d.botPlatformRegistrationSuccessMessage, q + 1);
             }
+            if (d.newsletterScheduledMessage != null) {
+                if (!$util.isObject(d.newsletterScheduledMessage))
+                    throw $TypeError(".E2E.Message.newsletterScheduledMessage: object expected");
+                m.newsletterScheduledMessage = $root.E2E.Message.FutureProofMessage.fromObject(d.newsletterScheduledMessage, q + 1);
+            }
             return m;
         };
 
@@ -19028,6 +19076,7 @@ export const E2E = $root.E2E = (() => {
                 d.musicMessage = null;
                 d.statusLinkPreviewMetadata = null;
                 d.botPlatformRegistrationSuccessMessage = null;
+                d.newsletterScheduledMessage = null;
             }
             if (m.conversation != null && $Object.hasOwnProperty.call(m, "conversation")) {
                 d.conversation = m.conversation;
@@ -19358,6 +19407,9 @@ export const E2E = $root.E2E = (() => {
             }
             if (m.botPlatformRegistrationSuccessMessage != null && $Object.hasOwnProperty.call(m, "botPlatformRegistrationSuccessMessage")) {
                 d.botPlatformRegistrationSuccessMessage = $root.E2E.Message.FutureProofMessage.toObject(m.botPlatformRegistrationSuccessMessage, o, q + 1);
+            }
+            if (m.newsletterScheduledMessage != null && $Object.hasOwnProperty.call(m, "newsletterScheduledMessage")) {
+                d.newsletterScheduledMessage = $root.E2E.Message.FutureProofMessage.toObject(m.newsletterScheduledMessage, o, q + 1);
             }
             return d;
         };
