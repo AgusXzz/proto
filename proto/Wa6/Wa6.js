@@ -2,7 +2,7 @@
 import $protobuf from "protobufjs/minimal.js";
 
 const $Reader = $protobuf.Reader, $Writer = $protobuf.Writer, $util = $protobuf.util;
-const $Object = $util.global.Object, $undefined = $util.global.undefined, $Error = $util.global.Error, $TypeError = $util.global.TypeError, $parseInt = $util.global.parseInt, $Boolean = $util.global.Boolean, $String = $util.global.String, $Array = $util.global.Array, $Number = $util.global.Number, $BigInt = $util.global.BigInt;
+const $Object = $util.global.Object, $undefined = $util.global.undefined, $Error = $util.global.Error, $RangeError = $util.global.RangeError, $TypeError = $util.global.TypeError, $parseInt = $util.global.parseInt, $Boolean = $util.global.Boolean, $String = $util.global.String, $Array = $util.global.Array, $Number = $util.global.Number, $BigInt = $util.global.BigInt;
 
 const $root = $protobuf.roots["default"] || ($protobuf.roots["default"] = {});
 
@@ -195,7 +195,17 @@ export const Wa6 = $root.Wa6 = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.Wa6.ClientPayload(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.Wa6.ClientPayload();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -473,6 +483,11 @@ export const Wa6 = $root.Wa6 = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -1087,7 +1102,17 @@ export const Wa6 = $root.Wa6 = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.Wa6.ClientPayload.DNSSource(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.Wa6.ClientPayload.DNSSource();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -1121,6 +1146,11 @@ export const Wa6 = $root.Wa6 = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -1283,7 +1313,17 @@ export const Wa6 = $root.Wa6 = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.Wa6.ClientPayload.DevicePairingRegistrationData();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.Wa6.ClientPayload.DevicePairingRegistrationData();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -1347,6 +1387,11 @@ export const Wa6 = $root.Wa6 = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -1571,7 +1616,17 @@ export const Wa6 = $root.Wa6 = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.Wa6.ClientPayload.InteropData();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.Wa6.ClientPayload.InteropData();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -1605,6 +1660,11 @@ export const Wa6 = $root.Wa6 = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -1798,7 +1858,17 @@ export const Wa6 = $root.Wa6 = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.Wa6.ClientPayload.UserAgent(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.Wa6.ClientPayload.UserAgent();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -1940,6 +2010,11 @@ export const Wa6 = $root.Wa6 = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -2360,7 +2435,17 @@ export const Wa6 = $root.Wa6 = (() => {
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.Wa6.ClientPayload.UserAgent.AppVersion();
+                    var c, m;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.Wa6.ClientPayload.UserAgent.AppVersion();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -2406,6 +2491,11 @@ export const Wa6 = $root.Wa6 = (() => {
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -2613,7 +2703,17 @@ export const Wa6 = $root.Wa6 = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.Wa6.ClientPayload.WebInfo(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.Wa6.ClientPayload.WebInfo();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -2671,6 +2771,11 @@ export const Wa6 = $root.Wa6 = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -2859,7 +2964,17 @@ export const Wa6 = $root.Wa6 = (() => {
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.Wa6.ClientPayload.WebInfo.WebdPayload();
+                    var c, m;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.Wa6.ClientPayload.WebInfo.WebdPayload();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -2941,6 +3056,11 @@ export const Wa6 = $root.Wa6 = (() => {
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -3121,7 +3241,17 @@ export const Wa6 = $root.Wa6 = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.Wa6.HandshakeMessage();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.Wa6.HandshakeMessage();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -3155,6 +3285,11 @@ export const Wa6 = $root.Wa6 = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -3273,7 +3408,17 @@ export const Wa6 = $root.Wa6 = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.Wa6.HandshakeMessage.ClientFinish();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.Wa6.HandshakeMessage.ClientFinish();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -3319,6 +3464,11 @@ export const Wa6 = $root.Wa6 = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -3499,7 +3649,17 @@ export const Wa6 = $root.Wa6 = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.Wa6.HandshakeMessage.ClientHello(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.Wa6.HandshakeMessage.ClientHello();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -3581,6 +3741,11 @@ export const Wa6 = $root.Wa6 = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -3857,7 +4022,17 @@ export const Wa6 = $root.Wa6 = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.Wa6.HandshakeMessage.ServerHello();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.Wa6.HandshakeMessage.ServerHello();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -3909,6 +4084,11 @@ export const Wa6 = $root.Wa6 = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");

@@ -2,7 +2,7 @@
 import $protobuf from "protobufjs/minimal.js";
 
 const $Reader = $protobuf.Reader, $Writer = $protobuf.Writer, $util = $protobuf.util;
-const $Object = $util.global.Object, $undefined = $util.global.undefined, $Error = $util.global.Error, $TypeError = $util.global.TypeError, $Boolean = $util.global.Boolean, $String = $util.global.String, $Array = $util.global.Array, $parseInt = $util.global.parseInt, $Number = $util.global.Number, $BigInt = $util.global.BigInt, $isFinite = $util.global.isFinite;
+const $Object = $util.global.Object, $undefined = $util.global.undefined, $Error = $util.global.Error, $RangeError = $util.global.RangeError, $TypeError = $util.global.TypeError, $Boolean = $util.global.Boolean, $String = $util.global.String, $Array = $util.global.Array, $parseInt = $util.global.parseInt, $Number = $util.global.Number, $BigInt = $util.global.BigInt, $isFinite = $util.global.isFinite;
 
 const $root = $protobuf.roots["default"] || ($protobuf.roots["default"] = {});
 
@@ -114,7 +114,17 @@ export const SyncAction = $root.SyncAction = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.PatchDebugData(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.SyncAction.PatchDebugData();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -202,6 +212,11 @@ export const SyncAction = $root.SyncAction = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -489,7 +504,17 @@ export const SyncAction = $root.SyncAction = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionData();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.SyncAction.SyncActionData();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -529,6 +554,11 @@ export const SyncAction = $root.SyncAction = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -917,7 +947,17 @@ export const SyncAction = $root.SyncAction = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.SyncAction.SyncActionValue();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -1455,6 +1495,11 @@ export const SyncAction = $root.SyncAction = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -2337,7 +2382,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.AgentAction();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.AgentAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -2371,6 +2426,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -2474,7 +2534,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.AiThreadRenameAction();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.AiThreadRenameAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -2496,6 +2566,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -2585,7 +2660,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.AndroidUnsupportedActions();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.AndroidUnsupportedActions();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -2607,6 +2692,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -2699,7 +2789,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.ArchiveChatAction();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.ArchiveChatAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -2727,6 +2827,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -2825,7 +2930,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.AutoOrganizeBusinessChatSetting();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.AutoOrganizeBusinessChatSetting();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -2847,6 +2962,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -2942,7 +3062,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.AvatarUpdatedAction(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.AvatarUpdatedAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -2978,6 +3108,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -3112,7 +3247,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.BizAISettingsNudgeAction(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.BizAISettingsNudgeAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -3152,6 +3297,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -3327,7 +3477,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.BotWelcomeRequestAction();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.BotWelcomeRequestAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -3349,6 +3509,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -3440,7 +3605,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.BroadcastListParticipant();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.BroadcastListParticipant();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -3468,6 +3643,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -3566,7 +3746,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.BubbleLockMessageAction();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.BubbleLockMessageAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -3588,6 +3778,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -3677,7 +3872,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.BusinessBroadcastAssociationAction();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.BusinessBroadcastAssociationAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -3699,6 +3904,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -3812,7 +4022,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.BusinessBroadcastCampaignAction(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.BusinessBroadcastCampaignAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -3888,6 +4108,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -4107,7 +4332,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.BusinessBroadcastInsightsAction();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.BusinessBroadcastInsightsAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -4153,6 +4388,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -4291,7 +4531,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.BusinessBroadcastListAction();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.BusinessBroadcastListAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -4347,6 +4597,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -4491,7 +4746,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.BusinessFolderActivationAction();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.BusinessFolderActivationAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -4513,6 +4778,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -4602,7 +4872,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.CallLogAction();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.CallLogAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -4624,6 +4904,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -4715,7 +5000,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.ChatAssignmentAction();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.ChatAssignmentAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -4737,6 +5032,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -4826,7 +5126,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.ChatAssignmentOpenedStatusAction();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.ChatAssignmentOpenedStatusAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -4848,6 +5158,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -4937,7 +5252,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.ClearChatAction();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.ClearChatAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -4959,6 +5284,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -5050,7 +5380,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.CoexV2VersionAction();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.CoexV2VersionAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -5072,6 +5412,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -5192,7 +5537,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.ContactAction();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.ContactAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -5244,6 +5599,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -5368,7 +5728,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.ContactManagerMetadataAction();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.ContactManagerMetadataAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -5390,6 +5760,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -5479,7 +5854,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.CtwaMessageReceivedAction();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.CtwaMessageReceivedAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -5501,6 +5886,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -5590,7 +5980,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.CtwaPerCustomerDataSharingAction();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.CtwaPerCustomerDataSharingAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -5612,6 +6012,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -5710,7 +6115,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.CustomPaymentMethod();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.CustomPaymentMethod();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -5752,6 +6167,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -5881,7 +6301,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.CustomPaymentMethodMetadata();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.CustomPaymentMethodMetadata();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -5909,6 +6339,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -6012,7 +6447,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.CustomPaymentMethodsAction();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.CustomPaymentMethodsAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -6036,6 +6481,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -6165,7 +6615,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.CustomerDataAction();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.CustomerDataAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -6247,6 +6707,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -6470,7 +6935,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.DeleteChatAction();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.DeleteChatAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -6492,6 +6967,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -6586,7 +7066,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.DeleteIndividualCallLogAction();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.DeleteIndividualCallLogAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -6614,6 +7104,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -6713,7 +7208,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.DeleteMessageForMeAction();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.DeleteMessageForMeAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -6741,6 +7246,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -6853,7 +7363,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.DetectedOutcomesStatusAction();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.DetectedOutcomesStatusAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -6875,6 +7395,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -6964,7 +7489,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.ExternalWebBetaAction();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.ExternalWebBetaAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -6986,6 +7521,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -7078,7 +7618,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.FavoritesAction();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.FavoritesAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -7102,6 +7652,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -7198,7 +7753,17 @@ export const SyncAction = $root.SyncAction = (() => {
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.FavoritesAction.Favorite();
+                    var c, m;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.SyncAction.SyncActionValue.FavoritesAction.Favorite();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -7220,6 +7785,11 @@ export const SyncAction = $root.SyncAction = (() => {
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -7314,7 +7884,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.InteractiveMessageAction(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.InteractiveMessageAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -7348,6 +7928,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -7456,7 +8041,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.KeyExpiration();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.KeyExpiration();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -7478,6 +8073,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -7570,7 +8170,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.LabelAssociationAction();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.LabelAssociationAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -7598,6 +8208,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -7718,7 +8333,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.LabelEditAction(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.LabelEditAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -7794,6 +8419,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -8053,7 +8683,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.LabelReorderingAction();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.LabelReorderingAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -8083,6 +8723,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -8180,7 +8825,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.LabelSublistAction();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.LabelSublistAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -8202,6 +8857,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -8297,7 +8957,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.LidContactAction();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.LidContactAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -8331,6 +9001,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -8434,7 +9109,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.LocaleSetting();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.LocaleSetting();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -8456,6 +9141,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -8545,7 +9235,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.LockChatAction();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.LockChatAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -8567,6 +9267,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -8659,7 +9364,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.MaibaAIFeaturesControlAction(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.MaibaAIFeaturesControlAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -8699,6 +9414,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -8838,7 +9558,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.MarkChatAsReadAction();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.MarkChatAsReadAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -8866,6 +9596,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -8982,7 +9717,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.MarketingMessageAction(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.MarketingMessageAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -9046,6 +9791,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -9219,7 +9969,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.MarketingMessageBroadcastAction();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.MarketingMessageBroadcastAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -9241,6 +10001,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -9337,7 +10102,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.MerchantPaymentPartnerAction(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.MerchantPaymentPartnerAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -9383,6 +10158,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -9519,7 +10299,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.MusicUserIdAction(), k, v;
+                var c, m, k, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.MusicUserIdAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -9541,6 +10331,9 @@ export const SyncAction = $root.SyncAction = (() => {
                             if (m.musicUserIdMap === $util.emptyObject)
                                 m.musicUserIdMap = {};
                             var c2 = r.uint32() + r.pos;
+                            if (c2 > r.len)
+                                throw $RangeError("index out of range");
+                            r.len = c2;
                             k = "";
                             v = "";
                             while (r.pos < c2) {
@@ -9560,6 +10353,9 @@ export const SyncAction = $root.SyncAction = (() => {
                                 }
                                 r.skipType(u, q, t2);
                             }
+                            if (r.pos !== c2)
+                                throw $RangeError("index out of range");
+                            r.len = c;
                             if (k === "__proto__")
                                 $util.makeProp(m.musicUserIdMap, k);
                             m.musicUserIdMap[k] = v;
@@ -9571,6 +10367,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -9691,7 +10492,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.MuteAction();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.MuteAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -9731,6 +10542,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -9873,7 +10689,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.NctSaltSyncAction();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.NctSaltSyncAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -9895,6 +10721,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -9993,7 +10824,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.NewsletterSavedInterestsAction();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.NewsletterSavedInterestsAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -10015,6 +10856,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -10116,7 +10962,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.NoteEditAction(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.NoteEditAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -10168,6 +11024,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -10316,7 +11177,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.NotificationActivitySettingAction(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.NotificationActivitySettingAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -10344,6 +11215,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -10458,7 +11334,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.NuxAction();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.NuxAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -10480,6 +11366,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -10572,7 +11463,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.OutContactAction();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.OutContactAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -10600,6 +11501,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -10696,7 +11602,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.PaymentInfoAction();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.PaymentInfoAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -10718,6 +11634,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -10808,7 +11729,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.PaymentTosAction(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.PaymentTosAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -10842,6 +11773,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -10952,7 +11888,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.PinAction();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.PinAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -10974,6 +11920,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -11063,7 +12014,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.PnForLidChatAction();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.PnForLidChatAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -11085,6 +12046,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -11177,7 +12143,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.PrimaryFeature();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.PrimaryFeature();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -11201,6 +12177,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -11298,7 +12279,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.PrimaryVersionAction();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.PrimaryVersionAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -11320,6 +12311,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -11409,7 +12405,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.PrivacySettingChannelsPersonalisedRecommendationAction();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.PrivacySettingChannelsPersonalisedRecommendationAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -11431,6 +12437,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -11520,7 +12531,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.PrivacySettingDisableLinkPreviewsAction();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.PrivacySettingDisableLinkPreviewsAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -11542,6 +12563,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -11631,7 +12657,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.PrivacySettingRelayAllCalls();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.PrivacySettingRelayAllCalls();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -11653,6 +12689,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -11742,7 +12783,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.PrivateProcessingSettingAction(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.PrivateProcessingSettingAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -11770,6 +12821,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -11879,7 +12935,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.PushNameSetting();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.PushNameSetting();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -11901,6 +12967,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -12011,7 +13082,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.QuickReplyAction();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.QuickReplyAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -12067,6 +13148,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -12212,7 +13298,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.RecentEmojiWeightsAction();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.RecentEmojiWeightsAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -12236,6 +13332,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -12335,7 +13436,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.RemoveRecentStickerAction();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.RemoveRecentStickerAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -12357,6 +13468,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -12561,7 +13677,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.SettingsSyncAction(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.SettingsSyncAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -12799,6 +13925,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -13230,7 +14361,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.SharedDeviceAllowlistAction();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.SharedDeviceAllowlistAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -13252,6 +14393,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -13341,7 +14487,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.StarAction();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.StarAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -13363,6 +14519,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -13452,7 +14613,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.StatusPostOptInNotificationPreferencesAction();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.StatusPostOptInNotificationPreferencesAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -13474,6 +14645,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -13587,7 +14763,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.StatusPrivacyAction(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.StatusPrivacyAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -13640,6 +14826,9 @@ export const SyncAction = $root.SyncAction = (() => {
                     case 6: {
                             if (u === 2) {
                                 var c2 = r.uint32() + r.pos;
+                                if (c2 > r.len)
+                                    throw $RangeError("index out of range");
+                                r.len = c2;
                                 while (r.pos < c2) {
                                     s = r.pos;
                                     v = r.int32();
@@ -13652,6 +14841,9 @@ export const SyncAction = $root.SyncAction = (() => {
                                         (m.$unknowns || (m.$unknowns = [])).push($util.rawField(6, 0, r.raw(s, r.pos)));
                                     }
                                 }
+                                if (r.pos !== c2)
+                                    throw $RangeError("index out of range");
+                                r.len = c;
                                 continue;
                             }
                             if (u !== 0)
@@ -13673,6 +14865,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -13879,7 +15076,17 @@ export const SyncAction = $root.SyncAction = (() => {
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.StatusPrivacyAction.CustomList();
+                    var c, m;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.SyncAction.SyncActionValue.StatusPrivacyAction.CustomList();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -13927,6 +15134,11 @@ export const SyncAction = $root.SyncAction = (() => {
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -14103,7 +15315,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.StickerAction();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.StickerAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -14197,6 +15419,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -14410,7 +15637,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.SubscriptionAction();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.SubscriptionAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -14444,6 +15681,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -14572,7 +15814,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.SubscriptionsSyncV2Action();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.SubscriptionsSyncV2Action();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -14604,6 +15856,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -14726,7 +15983,17 @@ export const SyncAction = $root.SyncAction = (() => {
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.SubscriptionsSyncV2Action.PaidFeature();
+                    var c, m;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.SyncAction.SyncActionValue.SubscriptionsSyncV2Action.PaidFeature();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -14766,6 +16033,11 @@ export const SyncAction = $root.SyncAction = (() => {
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -14913,7 +16185,17 @@ export const SyncAction = $root.SyncAction = (() => {
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.SubscriptionsSyncV2Action.SubscriptionInfo();
+                    var c, m;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.SyncAction.SyncActionValue.SubscriptionsSyncV2Action.SubscriptionInfo();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -14977,6 +16259,11 @@ export const SyncAction = $root.SyncAction = (() => {
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -15169,7 +16456,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.SyncActionMessage();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.SyncActionMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -15197,6 +16494,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -15320,7 +16622,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.SyncActionMessageRange();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.SyncActionMessageRange();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -15356,6 +16668,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -15503,7 +16820,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.ThreadPinAction();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.ThreadPinAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -15525,6 +16852,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -15614,7 +16946,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.TimeFormatAction();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.TimeFormatAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -15636,6 +16978,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -15725,7 +17072,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.UGCBot();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.UGCBot();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -15747,6 +17104,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -15845,7 +17207,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.UnarchiveChatsSetting();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.UnarchiveChatsSetting();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -15867,6 +17239,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -15956,7 +17333,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.UserStatusMuteAction();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.UserStatusMuteAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -15978,6 +17365,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -16067,7 +17459,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.UsernameChatStartModeAction(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.UsernameChatStartModeAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -16095,6 +17497,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -16202,7 +17609,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.WASARootSecretAction();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.WASARootSecretAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -16226,6 +17643,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -16331,7 +17753,17 @@ export const SyncAction = $root.SyncAction = (() => {
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.WASARootSecretAction.RootSecretEntry(), v;
+                    var c, m, v;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.SyncAction.SyncActionValue.WASARootSecretAction.RootSecretEntry();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -16377,6 +17809,11 @@ export const SyncAction = $root.SyncAction = (() => {
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -16530,7 +17967,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.WaffleAccountLinkStateAction(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.WaffleAccountLinkStateAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -16558,6 +18005,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -16667,7 +18119,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.SyncActionValue.WamoUserIdentifierAction();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.WamoUserIdentifierAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -16689,6 +18151,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -16826,7 +18293,17 @@ export const SyncAction = $root.SyncAction = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.CallLogRecord(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.SyncAction.CallLogRecord();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -16952,6 +18429,11 @@ export const SyncAction = $root.SyncAction = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -17279,7 +18761,17 @@ export const SyncAction = $root.SyncAction = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.CallLogRecord.ParticipantInfo(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.CallLogRecord.ParticipantInfo();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -17313,6 +18805,11 @@ export const SyncAction = $root.SyncAction = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -17468,7 +18965,17 @@ export const SyncAction = $root.SyncAction = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SyncAction.RecentEmojiWeight();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.SyncAction.RecentEmojiWeight();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -17496,6 +19003,11 @@ export const SyncAction = $root.SyncAction = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -17711,7 +19223,17 @@ export const ChatLockSettings = $root.ChatLockSettings = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.ChatLockSettings.ChatLockSettings();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.ChatLockSettings.ChatLockSettings();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -17739,6 +19261,11 @@ export const ChatLockSettings = $root.ChatLockSettings = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -17856,7 +19383,17 @@ export const UserPassword = $root.UserPassword = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.UserPassword.UserPassword(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.UserPassword.UserPassword();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -17910,6 +19447,11 @@ export const UserPassword = $root.UserPassword = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -18076,7 +19618,17 @@ export const UserPassword = $root.UserPassword = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.UserPassword.UserPassword.TransformerArg();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.UserPassword.UserPassword.TransformerArg();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -18104,6 +19656,11 @@ export const UserPassword = $root.UserPassword = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -18209,7 +19766,17 @@ export const UserPassword = $root.UserPassword = (() => {
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.UserPassword.UserPassword.TransformerArg.Value();
+                    var c, m;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.UserPassword.UserPassword.TransformerArg.Value();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -18239,6 +19806,11 @@ export const UserPassword = $root.UserPassword = (() => {
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -18375,7 +19947,17 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.DeviceCapabilities.DeviceCapabilities(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.DeviceCapabilities.DeviceCapabilities();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -18457,6 +20039,11 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -18637,7 +20224,17 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.DeviceCapabilities.DeviceCapabilities.AiFbidMigration();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.DeviceCapabilities.DeviceCapabilities.AiFbidMigration();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -18659,6 +20256,11 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -18764,7 +20366,17 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.DeviceCapabilities.DeviceCapabilities.AiThread(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.DeviceCapabilities.DeviceCapabilities.AiThread();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -18792,6 +20404,11 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -18901,7 +20518,17 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.DeviceCapabilities.DeviceCapabilities.BizAiSettingsSync();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.DeviceCapabilities.DeviceCapabilities.BizAiSettingsSync();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -18923,6 +20550,11 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -19024,7 +20656,17 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.DeviceCapabilities.DeviceCapabilities.BusinessBroadcast();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.DeviceCapabilities.DeviceCapabilities.BusinessBroadcast();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -19070,6 +20712,11 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -19195,7 +20842,17 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.DeviceCapabilities.DeviceCapabilities.ContactRefresh();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.DeviceCapabilities.DeviceCapabilities.ContactRefresh();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -19217,6 +20874,11 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -19306,7 +20968,17 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.DeviceCapabilities.DeviceCapabilities.LIDMigration();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.DeviceCapabilities.DeviceCapabilities.LIDMigration();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -19328,6 +21000,11 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -19441,7 +21118,17 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.DeviceCapabilities.DeviceCapabilities.UserHasAvatar();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.DeviceCapabilities.DeviceCapabilities.UserHasAvatar();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -19463,6 +21150,11 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -19565,7 +21257,17 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SignalLocalStorageProtocol.SenderKeyRecordStructure();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.SignalLocalStorageProtocol.SenderKeyRecordStructure();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -19589,6 +21291,11 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -19700,7 +21407,17 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SignalLocalStorageProtocol.SenderKeyStateStructure();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.SignalLocalStorageProtocol.SenderKeyStateStructure();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -19742,6 +21459,11 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -19868,7 +21590,17 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SignalLocalStorageProtocol.SenderKeyStateStructure.SenderChainKey();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SignalLocalStorageProtocol.SenderKeyStateStructure.SenderChainKey();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -19896,6 +21628,11 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -20004,7 +21741,17 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SignalLocalStorageProtocol.SenderKeyStateStructure.SenderMessageKey();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SignalLocalStorageProtocol.SenderKeyStateStructure.SenderMessageKey();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -20032,6 +21779,11 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -20140,7 +21892,17 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SignalLocalStorageProtocol.SenderKeyStateStructure.SenderSigningKey();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SignalLocalStorageProtocol.SenderKeyStateStructure.SenderSigningKey();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -20168,6 +21930,11 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -20288,7 +22055,17 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SignalLocalStorageProtocol.IdentityKeyPairStructure();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.SignalLocalStorageProtocol.IdentityKeyPairStructure();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -20316,6 +22093,11 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -20442,7 +22224,17 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SignalLocalStorageProtocol.SignedPreKeyRecordStructure();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.SignalLocalStorageProtocol.SignedPreKeyRecordStructure();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -20488,6 +22280,11 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -20654,7 +22451,17 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SignalLocalStorageProtocol.PreKeyRecordStructure();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.SignalLocalStorageProtocol.PreKeyRecordStructure();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -20688,6 +22495,11 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -20815,7 +22627,17 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SignalLocalStorageProtocol.RecordStructure();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.SignalLocalStorageProtocol.RecordStructure();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -20845,6 +22667,11 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -20994,7 +22821,17 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SignalLocalStorageProtocol.SessionStructure();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.SignalLocalStorageProtocol.SessionStructure();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -21090,6 +22927,11 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -21326,7 +23168,17 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SignalLocalStorageProtocol.SessionStructure.Chain();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SignalLocalStorageProtocol.SessionStructure.Chain();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -21368,6 +23220,11 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -21510,7 +23367,17 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SignalLocalStorageProtocol.SessionStructure.Chain.ChainKey();
+                    var c, m;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.SignalLocalStorageProtocol.SessionStructure.Chain.ChainKey();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -21538,6 +23405,11 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -21652,7 +23524,17 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey();
+                    var c, m;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -21692,6 +23574,11 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -21850,7 +23737,17 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SignalLocalStorageProtocol.SessionStructure.PendingKeyExchange();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SignalLocalStorageProtocol.SessionStructure.PendingKeyExchange();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -21908,6 +23805,11 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -22105,7 +24007,17 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SignalLocalStorageProtocol.SessionStructure.PendingPreKey();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SignalLocalStorageProtocol.SessionStructure.PendingPreKey();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -22151,6 +24063,11 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");

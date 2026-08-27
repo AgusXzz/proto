@@ -2,7 +2,7 @@
 import $protobuf from "protobufjs/minimal.js";
 
 const $Reader = $protobuf.Reader, $Writer = $protobuf.Writer, $util = $protobuf.util;
-const $Object = $util.global.Object, $undefined = $util.global.undefined, $Error = $util.global.Error, $TypeError = $util.global.TypeError, $Boolean = $util.global.Boolean, $parseInt = $util.global.parseInt, $String = $util.global.String, $Number = $util.global.Number, $BigInt = $util.global.BigInt;
+const $Object = $util.global.Object, $undefined = $util.global.undefined, $Error = $util.global.Error, $RangeError = $util.global.RangeError, $TypeError = $util.global.TypeError, $Boolean = $util.global.Boolean, $parseInt = $util.global.parseInt, $String = $util.global.String, $Number = $util.global.Number, $BigInt = $util.global.BigInt;
 
 const $root = $protobuf.roots["default"] || ($protobuf.roots["default"] = {});
 
@@ -93,7 +93,17 @@ export const Protocol = $root.Protocol = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.Protocol.LimitSharing(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.Protocol.LimitSharing();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -139,6 +149,11 @@ export const Protocol = $root.Protocol = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -299,7 +314,17 @@ export const Protocol = $root.Protocol = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.Protocol.MessageKey();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.Protocol.MessageKey();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -339,6 +364,11 @@ export const Protocol = $root.Protocol = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");

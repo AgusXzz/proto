@@ -2,7 +2,7 @@
 import $protobuf from "protobufjs/minimal.js";
 
 const $Reader = $protobuf.Reader, $Writer = $protobuf.Writer, $util = $protobuf.util;
-const $Object = $util.global.Object, $undefined = $util.global.undefined, $Error = $util.global.Error, $TypeError = $util.global.TypeError, $Boolean = $util.global.Boolean;
+const $Object = $util.global.Object, $undefined = $util.global.undefined, $Error = $util.global.Error, $RangeError = $util.global.RangeError, $TypeError = $util.global.TypeError, $Boolean = $util.global.Boolean;
 
 const $root = $protobuf.roots["default"] || ($protobuf.roots["default"] = {});
 
@@ -101,7 +101,17 @@ export const Reporting = $root.Reporting = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.Reporting.Field(), k, v;
+            var c, m, k, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.Reporting.Field();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -141,6 +151,9 @@ export const Reporting = $root.Reporting = (() => {
                         if (m.subfield === $util.emptyObject)
                             m.subfield = {};
                         var c2 = r.uint32() + r.pos;
+                        if (c2 > r.len)
+                            throw $RangeError("index out of range");
+                        r.len = c2;
                         k = 0;
                         v = null;
                         while (r.pos < c2) {
@@ -160,6 +173,9 @@ export const Reporting = $root.Reporting = (() => {
                             }
                             r.skipType(u, q, t2);
                         }
+                        if (r.pos !== c2)
+                            throw $RangeError("index out of range");
+                        r.len = c;
                         m.subfield[k] = v || new $root.Reporting.Field();
                         continue;
                     }
@@ -169,6 +185,11 @@ export const Reporting = $root.Reporting = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -311,7 +332,17 @@ export const Reporting = $root.Reporting = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.Reporting.Config(), k, v;
+            var c, m, k, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.Reporting.Config();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -327,6 +358,9 @@ export const Reporting = $root.Reporting = (() => {
                         if (m.field === $util.emptyObject)
                             m.field = {};
                         var c2 = r.uint32() + r.pos;
+                        if (c2 > r.len)
+                            throw $RangeError("index out of range");
+                        r.len = c2;
                         k = 0;
                         v = null;
                         while (r.pos < c2) {
@@ -346,6 +380,9 @@ export const Reporting = $root.Reporting = (() => {
                             }
                             r.skipType(u, q, t2);
                         }
+                        if (r.pos !== c2)
+                            throw $RangeError("index out of range");
+                        r.len = c;
                         m.field[k] = v || new $root.Reporting.Field();
                         continue;
                     }
@@ -361,6 +398,11 @@ export const Reporting = $root.Reporting = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -483,7 +525,17 @@ export const Reporting = $root.Reporting = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.Reporting.Reportable();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.Reporting.Reportable();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -523,6 +575,11 @@ export const Reporting = $root.Reporting = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");

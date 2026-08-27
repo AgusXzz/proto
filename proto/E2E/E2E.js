@@ -2,7 +2,7 @@
 import $protobuf from "protobufjs/minimal.js";
 
 const $Reader = $protobuf.Reader, $Writer = $protobuf.Writer, $util = $protobuf.util;
-const $Object = $util.global.Object, $undefined = $util.global.undefined, $Error = $util.global.Error, $TypeError = $util.global.TypeError, $String = $util.global.String, $parseInt = $util.global.parseInt, $Array = $util.global.Array, $Number = $util.global.Number, $BigInt = $util.global.BigInt, $Boolean = $util.global.Boolean, $isFinite = $util.global.isFinite;
+const $Object = $util.global.Object, $undefined = $util.global.undefined, $Error = $util.global.Error, $RangeError = $util.global.RangeError, $TypeError = $util.global.TypeError, $String = $util.global.String, $parseInt = $util.global.parseInt, $Array = $util.global.Array, $Number = $util.global.Number, $BigInt = $util.global.BigInt, $Boolean = $util.global.Boolean, $isFinite = $util.global.isFinite;
 
 const $root = $protobuf.roots["default"] || ($protobuf.roots["default"] = {});
 
@@ -93,7 +93,17 @@ export const E2E = $root.E2E = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.GroupRootKeyShareEntry();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.E2E.GroupRootKeyShareEntry();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -133,6 +143,11 @@ export const E2E = $root.E2E = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -287,7 +302,17 @@ export const E2E = $root.E2E = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.GroupRootKeyShare();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.E2E.GroupRootKeyShare();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -311,6 +336,11 @@ export const E2E = $root.E2E = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -416,7 +446,17 @@ export const E2E = $root.E2E = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.AIQueryFanout();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.E2E.AIQueryFanout();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -450,6 +490,11 @@ export const E2E = $root.E2E = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -585,7 +630,17 @@ export const E2E = $root.E2E = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.AIRichResponseMessage(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.E2E.AIRichResponseMessage();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -633,6 +688,11 @@ export const E2E = $root.E2E = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -770,7 +830,17 @@ export const E2E = $root.E2E = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.MemberLabel();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.E2E.MemberLabel();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -798,6 +868,11 @@ export const E2E = $root.E2E = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -913,7 +988,17 @@ export const E2E = $root.E2E = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.UrlTrackingMap();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.E2E.UrlTrackingMap();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -937,6 +1022,11 @@ export const E2E = $root.E2E = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -1042,7 +1132,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.UrlTrackingMap.UrlTrackingMapElement();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.UrlTrackingMap.UrlTrackingMapElement();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -1082,6 +1182,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -1219,7 +1324,17 @@ export const E2E = $root.E2E = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.ProcessedVideo(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.E2E.ProcessedVideo();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -1291,6 +1406,11 @@ export const E2E = $root.E2E = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -1489,7 +1609,17 @@ export const E2E = $root.E2E = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.LIDMigrationMappingSyncMessage();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.E2E.LIDMigrationMappingSyncMessage();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -1511,6 +1641,11 @@ export const E2E = $root.E2E = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -1615,7 +1750,17 @@ export const E2E = $root.E2E = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.MediaNotifyMessage();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.E2E.MediaNotifyMessage();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -1649,6 +1794,11 @@ export const E2E = $root.E2E = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -1783,7 +1933,17 @@ export const E2E = $root.E2E = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.MessageSecretMessage();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.E2E.MessageSecretMessage();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -1817,6 +1977,11 @@ export const E2E = $root.E2E = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -1941,7 +2106,17 @@ export const E2E = $root.E2E = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.GroupMention();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.E2E.GroupMention();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -1969,6 +2144,11 @@ export const E2E = $root.E2E = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -2068,7 +2248,17 @@ export const E2E = $root.E2E = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.ActionLink();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.E2E.ActionLink();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -2096,6 +2286,11 @@ export const E2E = $root.E2E = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -2201,7 +2396,17 @@ export const E2E = $root.E2E = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.DisappearingMode(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.E2E.DisappearingMode();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -2253,6 +2458,11 @@ export const E2E = $root.E2E = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -2450,7 +2660,17 @@ export const E2E = $root.E2E = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.PaymentBackground(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.E2E.PaymentBackground();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -2532,6 +2752,11 @@ export const E2E = $root.E2E = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -2719,7 +2944,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.PaymentBackground.MediaData();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.PaymentBackground.MediaData();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -2765,6 +3000,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -2941,7 +3181,17 @@ export const E2E = $root.E2E = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Money();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.E2E.Money();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -2975,6 +3225,11 @@ export const E2E = $root.E2E = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -3110,7 +3365,17 @@ export const E2E = $root.E2E = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.HydratedTemplateButton();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.E2E.HydratedTemplateButton();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -3153,6 +3418,11 @@ export const E2E = $root.E2E = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -3272,7 +3542,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.HydratedTemplateButton.HydratedCallButton();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.HydratedTemplateButton.HydratedCallButton();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -3300,6 +3580,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -3399,7 +3684,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.HydratedTemplateButton.HydratedQuickReplyButton();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.HydratedTemplateButton.HydratedQuickReplyButton();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -3427,6 +3722,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -3532,7 +3832,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.HydratedTemplateButton.HydratedURLButton(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.HydratedTemplateButton.HydratedURLButton();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -3578,6 +3888,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -3727,7 +4042,17 @@ export const E2E = $root.E2E = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.TemplateButton();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.E2E.TemplateButton();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -3770,6 +4095,11 @@ export const E2E = $root.E2E = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -3889,7 +4219,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.TemplateButton.CallButton();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.TemplateButton.CallButton();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -3917,6 +4257,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -4020,7 +4365,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.TemplateButton.QuickReplyButton();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.TemplateButton.QuickReplyButton();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -4048,6 +4403,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -4149,7 +4509,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.TemplateButton.URLButton();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.TemplateButton.URLButton();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -4177,6 +4547,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -4286,7 +4661,17 @@ export const E2E = $root.E2E = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Location();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.E2E.Location();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -4320,6 +4705,11 @@ export const E2E = $root.E2E = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -4432,7 +4822,17 @@ export const E2E = $root.E2E = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Point();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.E2E.Point();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -4472,6 +4872,11 @@ export const E2E = $root.E2E = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -4613,7 +5018,17 @@ export const E2E = $root.E2E = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.InteractiveAnnotation(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.E2E.InteractiveAnnotation();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -4689,6 +5104,11 @@ export const E2E = $root.E2E = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -4874,7 +5294,17 @@ export const E2E = $root.E2E = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.TapLinkAction();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.E2E.TapLinkAction();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -4902,6 +5332,11 @@ export const E2E = $root.E2E = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -5008,7 +5443,17 @@ export const E2E = $root.E2E = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.EmbeddedContent();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.E2E.EmbeddedContent();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -5038,6 +5483,11 @@ export const E2E = $root.E2E = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -5177,7 +5627,17 @@ export const E2E = $root.E2E = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.EmbeddedMusic();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.E2E.EmbeddedMusic();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -5277,6 +5737,11 @@ export const E2E = $root.E2E = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -5544,7 +6009,17 @@ export const E2E = $root.E2E = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.EmbeddedMessage();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.E2E.EmbeddedMessage();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -5572,6 +6047,11 @@ export const E2E = $root.E2E = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -5695,7 +6175,17 @@ export const E2E = $root.E2E = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.DeviceListMetadata(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.E2E.DeviceListMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -5787,6 +6277,11 @@ export const E2E = $root.E2E = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -6074,7 +6569,17 @@ export const E2E = $root.E2E = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.MessageContextInfo(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.E2E.MessageContextInfo();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -6218,6 +6723,11 @@ export const E2E = $root.E2E = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -6528,7 +7038,17 @@ export const E2E = $root.E2E = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.ThreadID(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.E2E.ThreadID();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -6562,6 +7082,11 @@ export const E2E = $root.E2E = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -6686,7 +7211,17 @@ export const E2E = $root.E2E = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.MessageAssociation(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.E2E.MessageAssociation();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -6726,6 +7261,11 @@ export const E2E = $root.E2E = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -7144,7 +7684,17 @@ export const E2E = $root.E2E = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.ContextInfo(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.E2E.ContextInfo();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -7600,6 +8150,11 @@ export const E2E = $root.E2E = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -8392,7 +8947,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.ContextInfo.AdReplyInfo(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.ContextInfo.AdReplyInfo();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -8438,6 +9003,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -8595,7 +9165,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.ContextInfo.BusinessInteractionPills(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.ContextInfo.BusinessInteractionPills();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -8655,6 +9235,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -8839,7 +9424,17 @@ export const E2E = $root.E2E = (() => {
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.ContextInfo.BusinessInteractionPills.Pill(), v;
+                    var c, m, v;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.E2E.ContextInfo.BusinessInteractionPills.Pill();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -8873,6 +9468,11 @@ export const E2E = $root.E2E = (() => {
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -9045,7 +9645,17 @@ export const E2E = $root.E2E = (() => {
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.ContextInfo.BusinessInteractionPills.SignedPayload();
+                    var c, m;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.E2E.ContextInfo.BusinessInteractionPills.SignedPayload();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -9075,6 +9685,11 @@ export const E2E = $root.E2E = (() => {
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -9192,7 +9807,17 @@ export const E2E = $root.E2E = (() => {
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.ContextInfo.BusinessInteractionPills.UnauthenticatedBusinessMetadata();
+                    var c, m;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.E2E.ContextInfo.BusinessInteractionPills.UnauthenticatedBusinessMetadata();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -9232,6 +9857,11 @@ export const E2E = $root.E2E = (() => {
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -9361,7 +9991,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.ContextInfo.BusinessMessageForwardInfo();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.ContextInfo.BusinessMessageForwardInfo();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -9383,6 +10023,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -9492,7 +10137,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.ContextInfo.DataSharingContext();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.ContextInfo.DataSharingContext();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -9534,6 +10189,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -9672,7 +10332,17 @@ export const E2E = $root.E2E = (() => {
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.ContextInfo.DataSharingContext.Parameters();
+                    var c, m;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.E2E.ContextInfo.DataSharingContext.Parameters();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -9718,6 +10388,11 @@ export const E2E = $root.E2E = (() => {
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -9949,7 +10624,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.ContextInfo.ExternalAdReplyInfo(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.ContextInfo.ExternalAdReplyInfo();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -10169,6 +10854,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -10531,7 +11221,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.ContextInfo.FeatureEligibilities();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.ContextInfo.FeatureEligibilities();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -10577,6 +11277,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -10720,7 +11425,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.ContextInfo.ForwardedNewsletterMessageInfo(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.ContextInfo.ForwardedNewsletterMessageInfo();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -10778,6 +11493,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -10922,7 +11642,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.ContextInfo.InstagramThreadLink();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.ContextInfo.InstagramThreadLink();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -10944,6 +11674,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -11047,7 +11782,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.ContextInfo.PartiallySelectedContent();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.ContextInfo.PartiallySelectedContent();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -11069,6 +11814,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -11164,7 +11914,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.ContextInfo.QuestionReplyQuotedMessage();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.ContextInfo.QuestionReplyQuotedMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -11198,6 +11958,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -11328,7 +12093,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.ContextInfo.StatusAudienceMetadata(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.ContextInfo.StatusAudienceMetadata();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -11368,6 +12143,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -11500,7 +12280,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.ContextInfo.UTMInfo();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.ContextInfo.UTMInfo();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -11528,6 +12318,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -11630,7 +12425,17 @@ export const E2E = $root.E2E = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.MediaDomainInfo(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.E2E.MediaDomainInfo();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -11664,6 +12469,11 @@ export const E2E = $root.E2E = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -12111,7 +12921,17 @@ export const E2E = $root.E2E = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.E2E.Message();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -12793,6 +13613,11 @@ export const E2E = $root.E2E = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -13875,7 +14700,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.AlbumMessage();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.AlbumMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -13909,6 +14744,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -14020,7 +14860,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.AppStateFatalExceptionNotification();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.AppStateFatalExceptionNotification();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -14050,6 +14900,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -14175,7 +15030,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.AppStateSyncKey();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.AppStateSyncKey();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -14203,6 +15068,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -14309,7 +15179,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.AppStateSyncKeyData();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.AppStateSyncKeyData();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -14343,6 +15223,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -14481,7 +15366,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.AppStateSyncKeyFingerprint();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.AppStateSyncKeyFingerprint();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -14523,6 +15418,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -14636,7 +15536,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.AppStateSyncKeyId();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.AppStateSyncKeyId();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -14658,6 +15568,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -14759,7 +15674,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.AppStateSyncKeyRequest();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.AppStateSyncKeyRequest();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -14783,6 +15708,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -14885,7 +15815,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.AppStateSyncKeyShare();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.AppStateSyncKeyShare();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -14909,6 +15849,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -15053,7 +15998,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.AudioMessage();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.AudioMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -15165,6 +16120,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -15447,7 +16407,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.BCallMessage(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.BCallMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -15493,6 +16463,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -15641,7 +16616,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.BotHistoryShareSyncMetadata();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.BotHistoryShareSyncMetadata();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -15677,6 +16662,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -15845,7 +16835,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.ButtonsMessage(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.ButtonsMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -15934,6 +16934,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -16147,7 +17152,17 @@ export const E2E = $root.E2E = (() => {
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.ButtonsMessage.Button(), v;
+                    var c, m, v;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.E2E.Message.ButtonsMessage.Button();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -16193,6 +17208,11 @@ export const E2E = $root.E2E = (() => {
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -16316,7 +17336,17 @@ export const E2E = $root.E2E = (() => {
                             q = 0;
                         if (q > $Reader.recursionLimit)
                             throw $Error("max depth exceeded");
-                        var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.ButtonsMessage.Button.ButtonText();
+                        var c, m;
+                        if (l === $undefined)
+                            c = r.len;
+                        else {
+                            c = r.pos + l;
+                            if (c > r.len)
+                                throw $RangeError("index out of range");
+                            l = r.len;
+                            r.len = c;
+                        }
+                        m = g || new $root.E2E.Message.ButtonsMessage.Button.ButtonText();
                         while (r.pos < c) {
                             var s = r.pos;
                             var t = r.tag();
@@ -16338,6 +17368,11 @@ export const E2E = $root.E2E = (() => {
                                 $util.makeProp(m, "$unknowns", false);
                                 (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                             }
+                        }
+                        if (l !== $undefined) {
+                            if (r.pos !== c)
+                                throw $RangeError("index out of range");
+                            r.len = l;
                         }
                         if (z !== $undefined)
                             throw $Error("missing end group");
@@ -16430,7 +17465,17 @@ export const E2E = $root.E2E = (() => {
                             q = 0;
                         if (q > $Reader.recursionLimit)
                             throw $Error("max depth exceeded");
-                        var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.ButtonsMessage.Button.NativeFlowInfo();
+                        var c, m;
+                        if (l === $undefined)
+                            c = r.len;
+                        else {
+                            c = r.pos + l;
+                            if (c > r.len)
+                                throw $RangeError("index out of range");
+                            l = r.len;
+                            r.len = c;
+                        }
+                        m = g || new $root.E2E.Message.ButtonsMessage.Button.NativeFlowInfo();
                         while (r.pos < c) {
                             var s = r.pos;
                             var t = r.tag();
@@ -16458,6 +17503,11 @@ export const E2E = $root.E2E = (() => {
                                 $util.makeProp(m, "$unknowns", false);
                                 (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                             }
+                        }
+                        if (l !== $undefined) {
+                            if (r.pos !== c)
+                                throw $RangeError("index out of range");
+                            r.len = l;
                         }
                         if (z !== $undefined)
                             throw $Error("missing end group");
@@ -16596,7 +17646,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.ButtonsResponseMessage(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.ButtonsResponseMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -16643,6 +17703,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -16804,7 +17869,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.Call();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.Call();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -16892,6 +17967,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -17104,7 +18184,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.CallLogMessage(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.CallLogMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -17164,6 +18254,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -17366,7 +18461,17 @@ export const E2E = $root.E2E = (() => {
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.CallLogMessage.CallParticipant(), v;
+                    var c, m, v;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.E2E.Message.CallLogMessage.CallParticipant();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -17400,6 +18505,11 @@ export const E2E = $root.E2E = (() => {
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -17539,7 +18649,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.CancelPaymentRequestMessage();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.CancelPaymentRequestMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -17561,6 +18681,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -17655,7 +18780,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.Chat();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.Chat();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -17683,6 +18818,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -17791,7 +18931,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.ChatCustomImageWallpaper();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.ChatCustomImageWallpaper();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -17837,6 +18987,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -17981,7 +19136,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.ChatDefaultWallpaper();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.ChatDefaultWallpaper();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -18003,6 +19168,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -18098,7 +19268,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.ChatSolidColorWallpaper();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.ChatSolidColorWallpaper();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -18132,6 +19312,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -18238,7 +19423,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.ChatStockImageWallpaper();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.ChatStockImageWallpaper();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -18266,6 +19461,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -18387,7 +19587,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.ChatThemeSetting();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.ChatThemeSetting();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -18449,6 +19659,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -18623,7 +19838,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.CloudAPIThreadControlNotification(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.CloudAPIThreadControlNotification();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -18681,6 +19906,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -18848,7 +20078,17 @@ export const E2E = $root.E2E = (() => {
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.CloudAPIThreadControlNotification.CloudAPIThreadControlNotificationContent();
+                    var c, m;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.E2E.Message.CloudAPIThreadControlNotification.CloudAPIThreadControlNotificationContent();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -18876,6 +20116,11 @@ export const E2E = $root.E2E = (() => {
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -18978,7 +20223,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.CommentMessage();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.CommentMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -19006,6 +20261,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -19115,7 +20375,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.ConditionalRevealMessage(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.ConditionalRevealMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -19161,6 +20431,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -19313,7 +20588,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.ContactMessage();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.ContactMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -19353,6 +20638,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -19474,7 +20764,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.ContactsArrayMessage();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.ContactsArrayMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -19510,6 +20810,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -19627,7 +20932,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.DeclinePaymentRequestMessage();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.DeclinePaymentRequestMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -19649,6 +20964,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -19746,7 +21066,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.DeviceSentMessage();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.DeviceSentMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -19780,6 +21110,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -19945,7 +21280,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.DocumentMessage();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.DocumentMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -20087,6 +21432,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -20410,7 +21760,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.EncCommentMessage();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.EncCommentMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -20444,6 +21804,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -20573,7 +21938,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.EncEventResponseMessage();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.EncEventResponseMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -20607,6 +21982,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -20736,7 +22116,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.EncReactionMessage();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.EncReactionMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -20770,6 +22160,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -20917,7 +22312,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.EventInviteMessage();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.EventInviteMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -20987,6 +22392,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -21208,7 +22618,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.EventMessage();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.EventMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -21296,6 +22716,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -21520,7 +22945,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.EventResponseMessage(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.EventResponseMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -21560,6 +22995,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -21800,7 +23240,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.ExtendedTextMessage(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.ExtendedTextMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -22034,6 +23484,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -22549,7 +24004,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.FullHistorySyncOnDemandConfig();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.FullHistorySyncOnDemandConfig();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -22577,6 +24042,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -22695,7 +24165,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.FullHistorySyncOnDemandRequestMetadata();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.FullHistorySyncOnDemandRequestMetadata();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -22729,6 +24209,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -22841,7 +24326,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.FutureProofMessage();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.FutureProofMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -22863,6 +24358,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -22975,7 +24475,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.GroupInviteMessage(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.GroupInviteMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -23045,6 +24555,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -23255,7 +24770,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.HighlyStructuredMessage();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.HighlyStructuredMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -23329,6 +24854,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -23506,7 +25036,17 @@ export const E2E = $root.E2E = (() => {
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.HighlyStructuredMessage.HSMLocalizableParameter();
+                    var c, m;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.E2E.Message.HighlyStructuredMessage.HSMLocalizableParameter();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -23542,6 +25082,11 @@ export const E2E = $root.E2E = (() => {
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -23651,7 +25196,17 @@ export const E2E = $root.E2E = (() => {
                             q = 0;
                         if (q > $Reader.recursionLimit)
                             throw $Error("max depth exceeded");
-                        var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.HighlyStructuredMessage.HSMLocalizableParameter.HSMCurrency();
+                        var c, m;
+                        if (l === $undefined)
+                            c = r.len;
+                        else {
+                            c = r.pos + l;
+                            if (c > r.len)
+                                throw $RangeError("index out of range");
+                            l = r.len;
+                            r.len = c;
+                        }
+                        m = g || new $root.E2E.Message.HighlyStructuredMessage.HSMLocalizableParameter.HSMCurrency();
                         while (r.pos < c) {
                             var s = r.pos;
                             var t = r.tag();
@@ -23679,6 +25234,11 @@ export const E2E = $root.E2E = (() => {
                                 $util.makeProp(m, "$unknowns", false);
                                 (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                             }
+                        }
+                        if (l !== $undefined) {
+                            if (r.pos !== c)
+                                throw $RangeError("index out of range");
+                            r.len = l;
                         }
                         if (z !== $undefined)
                             throw $Error("missing end group");
@@ -23801,7 +25361,17 @@ export const E2E = $root.E2E = (() => {
                             q = 0;
                         if (q > $Reader.recursionLimit)
                             throw $Error("max depth exceeded");
-                        var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.HighlyStructuredMessage.HSMLocalizableParameter.HSMDateTime();
+                        var c, m;
+                        if (l === $undefined)
+                            c = r.len;
+                        else {
+                            c = r.pos + l;
+                            if (c > r.len)
+                                throw $RangeError("index out of range");
+                            l = r.len;
+                            r.len = c;
+                        }
+                        m = g || new $root.E2E.Message.HighlyStructuredMessage.HSMLocalizableParameter.HSMDateTime();
                         while (r.pos < c) {
                             var s = r.pos;
                             var t = r.tag();
@@ -23831,6 +25401,11 @@ export const E2E = $root.E2E = (() => {
                                 $util.makeProp(m, "$unknowns", false);
                                 (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                             }
+                        }
+                        if (l !== $undefined) {
+                            if (r.pos !== c)
+                                throw $RangeError("index out of range");
+                            r.len = l;
                         }
                         if (z !== $undefined)
                             throw $Error("missing end group");
@@ -23946,7 +25521,17 @@ export const E2E = $root.E2E = (() => {
                                 q = 0;
                             if (q > $Reader.recursionLimit)
                                 throw $Error("max depth exceeded");
-                            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.HighlyStructuredMessage.HSMLocalizableParameter.HSMDateTime.HSMDateTimeComponent(), v;
+                            var c, m, v;
+                            if (l === $undefined)
+                                c = r.len;
+                            else {
+                                c = r.pos + l;
+                                if (c > r.len)
+                                    throw $RangeError("index out of range");
+                                l = r.len;
+                                r.len = c;
+                            }
+                            m = g || new $root.E2E.Message.HighlyStructuredMessage.HSMLocalizableParameter.HSMDateTime.HSMDateTimeComponent();
                             while (r.pos < c) {
                                 var s = r.pos;
                                 var t = r.tag();
@@ -24016,6 +25601,11 @@ export const E2E = $root.E2E = (() => {
                                     $util.makeProp(m, "$unknowns", false);
                                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                                 }
+                            }
+                            if (l !== $undefined) {
+                                if (r.pos !== c)
+                                    throw $RangeError("index out of range");
+                                r.len = l;
                             }
                             if (z !== $undefined)
                                 throw $Error("missing end group");
@@ -24202,7 +25792,17 @@ export const E2E = $root.E2E = (() => {
                                 q = 0;
                             if (q > $Reader.recursionLimit)
                                 throw $Error("max depth exceeded");
-                            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.HighlyStructuredMessage.HSMLocalizableParameter.HSMDateTime.HSMDateTimeUnixEpoch();
+                            var c, m;
+                            if (l === $undefined)
+                                c = r.len;
+                            else {
+                                c = r.pos + l;
+                                if (c > r.len)
+                                    throw $RangeError("index out of range");
+                                l = r.len;
+                                r.len = c;
+                            }
+                            m = g || new $root.E2E.Message.HighlyStructuredMessage.HSMLocalizableParameter.HSMDateTime.HSMDateTimeUnixEpoch();
                             while (r.pos < c) {
                                 var s = r.pos;
                                 var t = r.tag();
@@ -24224,6 +25824,11 @@ export const E2E = $root.E2E = (() => {
                                     $util.makeProp(m, "$unknowns", false);
                                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                                 }
+                            }
+                            if (l !== $undefined) {
+                                if (r.pos !== c)
+                                    throw $RangeError("index out of range");
+                                r.len = l;
                             }
                             if (z !== $undefined)
                                 throw $Error("missing end group");
@@ -24341,7 +25946,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.HistoryShareMessageEntry();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.HistoryShareMessageEntry();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -24369,6 +25984,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -24474,7 +26094,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.HistorySyncMessageAccessStatus();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.HistorySyncMessageAccessStatus();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -24496,6 +26126,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -24627,7 +26262,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.HistorySyncNotification(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.HistorySyncNotification();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -24739,6 +26384,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -25144,7 +26794,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.ImageMessage(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.ImageMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -25358,6 +27018,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -25829,7 +27494,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.InitialSecurityNotificationSettingSync();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.InitialSecurityNotificationSettingSync();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -25851,6 +27526,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -25984,7 +27664,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.InteractiveMessage();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.InteractiveMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -26064,6 +27754,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -26246,7 +27941,17 @@ export const E2E = $root.E2E = (() => {
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.InteractiveMessage.BloksWidget();
+                    var c, m;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.E2E.Message.InteractiveMessage.BloksWidget();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -26286,6 +27991,11 @@ export const E2E = $root.E2E = (() => {
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -26396,7 +28106,17 @@ export const E2E = $root.E2E = (() => {
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.InteractiveMessage.Body();
+                    var c, m;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.E2E.Message.InteractiveMessage.Body();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -26418,6 +28138,11 @@ export const E2E = $root.E2E = (() => {
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -26516,7 +28241,17 @@ export const E2E = $root.E2E = (() => {
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.InteractiveMessage.CarouselMessage(), v;
+                    var c, m, v;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.E2E.Message.InteractiveMessage.CarouselMessage();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -26558,6 +28293,11 @@ export const E2E = $root.E2E = (() => {
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -26699,7 +28439,17 @@ export const E2E = $root.E2E = (() => {
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.InteractiveMessage.CollectionMessage();
+                    var c, m;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.E2E.Message.InteractiveMessage.CollectionMessage();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -26733,6 +28483,11 @@ export const E2E = $root.E2E = (() => {
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -26849,7 +28604,17 @@ export const E2E = $root.E2E = (() => {
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.InteractiveMessage.Footer();
+                    var c, m;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.E2E.Message.InteractiveMessage.Footer();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -26884,6 +28649,11 @@ export const E2E = $root.E2E = (() => {
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -27024,7 +28794,17 @@ export const E2E = $root.E2E = (() => {
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.InteractiveMessage.Header();
+                    var c, m;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.E2E.Message.InteractiveMessage.Header();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -27106,6 +28886,11 @@ export const E2E = $root.E2E = (() => {
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -27288,7 +29073,17 @@ export const E2E = $root.E2E = (() => {
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.InteractiveMessage.NativeFlowMessage();
+                    var c, m;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.E2E.Message.InteractiveMessage.NativeFlowMessage();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -27324,6 +29119,11 @@ export const E2E = $root.E2E = (() => {
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -27439,7 +29239,17 @@ export const E2E = $root.E2E = (() => {
                             q = 0;
                         if (q > $Reader.recursionLimit)
                             throw $Error("max depth exceeded");
-                        var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.InteractiveMessage.NativeFlowMessage.NativeFlowButton();
+                        var c, m;
+                        if (l === $undefined)
+                            c = r.len;
+                        else {
+                            c = r.pos + l;
+                            if (c > r.len)
+                                throw $RangeError("index out of range");
+                            l = r.len;
+                            r.len = c;
+                        }
+                        m = g || new $root.E2E.Message.InteractiveMessage.NativeFlowMessage.NativeFlowButton();
                         while (r.pos < c) {
                             var s = r.pos;
                             var t = r.tag();
@@ -27467,6 +29277,11 @@ export const E2E = $root.E2E = (() => {
                                 $util.makeProp(m, "$unknowns", false);
                                 (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                             }
+                        }
+                        if (l !== $undefined) {
+                            if (r.pos !== c)
+                                throw $RangeError("index out of range");
+                            r.len = l;
                         }
                         if (z !== $undefined)
                             throw $Error("missing end group");
@@ -27572,7 +29387,17 @@ export const E2E = $root.E2E = (() => {
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.InteractiveMessage.ShopMessage(), v;
+                    var c, m, v;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.E2E.Message.InteractiveMessage.ShopMessage();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -27612,6 +29437,11 @@ export const E2E = $root.E2E = (() => {
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -27756,7 +29586,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.InteractiveResponseMessage();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.InteractiveResponseMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -27791,6 +29631,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -27901,7 +29746,17 @@ export const E2E = $root.E2E = (() => {
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.InteractiveResponseMessage.Body(), v;
+                    var c, m, v;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.E2E.Message.InteractiveResponseMessage.Body();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -27935,6 +29790,11 @@ export const E2E = $root.E2E = (() => {
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -28052,7 +29912,17 @@ export const E2E = $root.E2E = (() => {
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.InteractiveResponseMessage.NativeFlowResponseMessage();
+                    var c, m;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.E2E.Message.InteractiveResponseMessage.NativeFlowResponseMessage();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -28086,6 +29956,11 @@ export const E2E = $root.E2E = (() => {
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -28219,7 +30094,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.InvoiceMessage(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.InvoiceMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -28301,6 +30186,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -28526,7 +30416,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.KeepInChatMessage(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.KeepInChatMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -28566,6 +30466,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -28723,7 +30628,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.LinkPreviewMetadata(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.LinkPreviewMetadata();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -28799,6 +30714,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -29009,7 +30929,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.ListMessage(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.ListMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -29081,6 +31011,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -29252,7 +31187,17 @@ export const E2E = $root.E2E = (() => {
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.ListMessage.Product();
+                    var c, m;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.E2E.Message.ListMessage.Product();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -29274,6 +31219,11 @@ export const E2E = $root.E2E = (() => {
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -29366,7 +31316,17 @@ export const E2E = $root.E2E = (() => {
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.ListMessage.ProductListHeaderImage();
+                    var c, m;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.E2E.Message.ListMessage.ProductListHeaderImage();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -29394,6 +31354,11 @@ export const E2E = $root.E2E = (() => {
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -29508,7 +31473,17 @@ export const E2E = $root.E2E = (() => {
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.ListMessage.ProductListInfo();
+                    var c, m;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.E2E.Message.ListMessage.ProductListInfo();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -29544,6 +31519,11 @@ export const E2E = $root.E2E = (() => {
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -29667,7 +31647,17 @@ export const E2E = $root.E2E = (() => {
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.ListMessage.ProductSection();
+                    var c, m;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.E2E.Message.ListMessage.ProductSection();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -29697,6 +31687,11 @@ export const E2E = $root.E2E = (() => {
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -29811,7 +31806,17 @@ export const E2E = $root.E2E = (() => {
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.ListMessage.Row();
+                    var c, m;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.E2E.Message.ListMessage.Row();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -29845,6 +31850,11 @@ export const E2E = $root.E2E = (() => {
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -29954,7 +31964,17 @@ export const E2E = $root.E2E = (() => {
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.ListMessage.Section();
+                    var c, m;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.E2E.Message.ListMessage.Section();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -29984,6 +32004,11 @@ export const E2E = $root.E2E = (() => {
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -30107,7 +32132,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.ListResponseMessage(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.ListResponseMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -30159,6 +32194,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -30292,7 +32332,17 @@ export const E2E = $root.E2E = (() => {
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.ListResponseMessage.SingleSelectReply();
+                    var c, m;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.E2E.Message.ListResponseMessage.SingleSelectReply();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -30314,6 +32364,11 @@ export const E2E = $root.E2E = (() => {
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -30433,7 +32488,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.LiveLocationMessage();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.LiveLocationMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -30509,6 +32574,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -30721,7 +32791,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.LocationMessage();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.LocationMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -30809,6 +32889,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -31004,7 +33089,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.MMSThumbnailMetadata();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.MMSThumbnailMetadata();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -31062,6 +33157,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -31245,7 +33345,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.MarkAsVerifiedAction();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.MarkAsVerifiedAction();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -31285,6 +33395,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -31441,7 +33556,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.MessageHistoryBundle();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.MessageHistoryBundle();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -31505,6 +33630,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -31708,7 +33838,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.MessageHistoryMetadata();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.MessageHistoryMetadata();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -31758,6 +33898,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -31947,7 +34092,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.MessageHistoryNotice();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.MessageHistoryNotice();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -31981,6 +34136,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -32102,7 +34262,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.MusicMessage();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.MusicMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -32148,6 +34318,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -32291,7 +34466,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.NewsletterAdminInviteMessage();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.NewsletterAdminInviteMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -32343,6 +34528,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -32506,7 +34696,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.NewsletterFollowerInviteMessage();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.NewsletterFollowerInviteMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -32552,6 +34752,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -32722,7 +34927,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.OrderMessage(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.OrderMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -32840,6 +35055,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -33092,7 +35312,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.PaymentExtendedMetadata();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.PaymentExtendedMetadata();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -33126,6 +35356,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -33241,7 +35476,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.PaymentInviteMessage(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.PaymentInviteMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -33299,6 +35544,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -33483,7 +35733,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.PaymentLinkMetadata();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.PaymentLinkMetadata();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -33517,6 +35777,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -33623,7 +35888,17 @@ export const E2E = $root.E2E = (() => {
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.PaymentLinkMetadata.PaymentLinkButton();
+                    var c, m;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.E2E.Message.PaymentLinkMetadata.PaymentLinkButton();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -33645,6 +35920,11 @@ export const E2E = $root.E2E = (() => {
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -33734,7 +36014,17 @@ export const E2E = $root.E2E = (() => {
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.PaymentLinkMetadata.PaymentLinkHeader(), v;
+                    var c, m, v;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.E2E.Message.PaymentLinkMetadata.PaymentLinkHeader();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -33762,6 +36052,11 @@ export const E2E = $root.E2E = (() => {
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -33866,7 +36161,17 @@ export const E2E = $root.E2E = (() => {
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.PaymentLinkMetadata.PaymentLinkProvider();
+                    var c, m;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.E2E.Message.PaymentLinkMetadata.PaymentLinkProvider();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -33888,6 +36193,11 @@ export const E2E = $root.E2E = (() => {
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -34004,7 +36314,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.PaymentReminderMessage(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.PaymentReminderMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -34086,6 +36406,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -34340,7 +36665,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.PeerDataOperationRequestMessage(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.PeerDataOperationRequestMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -34440,6 +36775,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -34711,7 +37051,17 @@ export const E2E = $root.E2E = (() => {
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.PeerDataOperationRequestMessage.BizBroadcastInsightsContactListRequest();
+                    var c, m;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.E2E.Message.PeerDataOperationRequestMessage.BizBroadcastInsightsContactListRequest();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -34733,6 +37083,11 @@ export const E2E = $root.E2E = (() => {
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -34822,7 +37177,17 @@ export const E2E = $root.E2E = (() => {
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.PeerDataOperationRequestMessage.BizBroadcastInsightsRefreshRequest();
+                    var c, m;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.E2E.Message.PeerDataOperationRequestMessage.BizBroadcastInsightsRefreshRequest();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -34844,6 +37209,11 @@ export const E2E = $root.E2E = (() => {
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -34933,7 +37303,17 @@ export const E2E = $root.E2E = (() => {
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.PeerDataOperationRequestMessage.CompanionCanonicalUserNonceFetchRequest();
+                    var c, m;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.E2E.Message.PeerDataOperationRequestMessage.CompanionCanonicalUserNonceFetchRequest();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -34955,6 +37335,11 @@ export const E2E = $root.E2E = (() => {
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -35050,7 +37435,17 @@ export const E2E = $root.E2E = (() => {
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.PeerDataOperationRequestMessage.FullHistorySyncOnDemandRequest();
+                    var c, m;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.E2E.Message.PeerDataOperationRequestMessage.FullHistorySyncOnDemandRequest();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -35084,6 +37479,11 @@ export const E2E = $root.E2E = (() => {
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -35205,7 +37605,17 @@ export const E2E = $root.E2E = (() => {
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.PeerDataOperationRequestMessage.GalaxyFlowAction(), v;
+                    var c, m, v;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.E2E.Message.PeerDataOperationRequestMessage.GalaxyFlowAction();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -35257,6 +37667,11 @@ export const E2E = $root.E2E = (() => {
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -35398,7 +37813,17 @@ export const E2E = $root.E2E = (() => {
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.PeerDataOperationRequestMessage.HistorySyncChunkRetryRequest(), v;
+                    var c, m, v;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.E2E.Message.PeerDataOperationRequestMessage.HistorySyncChunkRetryRequest();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -35444,6 +37869,11 @@ export const E2E = $root.E2E = (() => {
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -35608,7 +38038,17 @@ export const E2E = $root.E2E = (() => {
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.PeerDataOperationRequestMessage.HistorySyncOnDemandRequest();
+                    var c, m;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.E2E.Message.PeerDataOperationRequestMessage.HistorySyncOnDemandRequest();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -35666,6 +38106,11 @@ export const E2E = $root.E2E = (() => {
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -35813,7 +38258,17 @@ export const E2E = $root.E2E = (() => {
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.PeerDataOperationRequestMessage.PlaceholderMessageResendRequest();
+                    var c, m;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.E2E.Message.PeerDataOperationRequestMessage.PlaceholderMessageResendRequest();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -35835,6 +38290,11 @@ export const E2E = $root.E2E = (() => {
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -35926,7 +38386,17 @@ export const E2E = $root.E2E = (() => {
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.PeerDataOperationRequestMessage.RequestStickerReupload();
+                    var c, m;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.E2E.Message.PeerDataOperationRequestMessage.RequestStickerReupload();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -35948,6 +38418,11 @@ export const E2E = $root.E2E = (() => {
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -36040,7 +38515,17 @@ export const E2E = $root.E2E = (() => {
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.PeerDataOperationRequestMessage.RequestUrlPreview();
+                    var c, m;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.E2E.Message.PeerDataOperationRequestMessage.RequestUrlPreview();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -36068,6 +38553,11 @@ export const E2E = $root.E2E = (() => {
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -36167,7 +38657,17 @@ export const E2E = $root.E2E = (() => {
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.PeerDataOperationRequestMessage.SyncDCollectionFatalRecoveryRequest();
+                    var c, m;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.E2E.Message.PeerDataOperationRequestMessage.SyncDCollectionFatalRecoveryRequest();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -36195,6 +38695,11 @@ export const E2E = $root.E2E = (() => {
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -36319,7 +38824,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.PeerDataOperationRequestResponseMessage(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.PeerDataOperationRequestResponseMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -36361,6 +38876,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -36569,7 +39089,17 @@ export const E2E = $root.E2E = (() => {
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult(), v;
+                    var c, m, v;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -36669,6 +39199,11 @@ export const E2E = $root.E2E = (() => {
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -36888,7 +39423,17 @@ export const E2E = $root.E2E = (() => {
                             q = 0;
                         if (q > $Reader.recursionLimit)
                             throw $Error("max depth exceeded");
-                        var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.BizBroadcastInsightsContactListResponse();
+                        var c, m;
+                        if (l === $undefined)
+                            c = r.len;
+                        else {
+                            c = r.pos + l;
+                            if (c > r.len)
+                                throw $RangeError("index out of range");
+                            l = r.len;
+                            r.len = c;
+                        }
+                        m = g || new $root.E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.BizBroadcastInsightsContactListResponse();
                         while (r.pos < c) {
                             var s = r.pos;
                             var t = r.tag();
@@ -36924,6 +39469,11 @@ export const E2E = $root.E2E = (() => {
                                 $util.makeProp(m, "$unknowns", false);
                                 (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                             }
+                        }
+                        if (l !== $undefined) {
+                            if (r.pos !== c)
+                                throw $RangeError("index out of range");
+                            r.len = l;
                         }
                         if (z !== $undefined)
                             throw $Error("missing end group");
@@ -37058,7 +39608,17 @@ export const E2E = $root.E2E = (() => {
                             q = 0;
                         if (q > $Reader.recursionLimit)
                             throw $Error("max depth exceeded");
-                        var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.BizBroadcastInsightsContactState(), v;
+                        var c, m, v;
+                        if (l === $undefined)
+                            c = r.len;
+                        else {
+                            c = r.pos + l;
+                            if (c > r.len)
+                                throw $RangeError("index out of range");
+                            l = r.len;
+                            r.len = c;
+                        }
+                        m = g || new $root.E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.BizBroadcastInsightsContactState();
                         while (r.pos < c) {
                             var s = r.pos;
                             var t = r.tag();
@@ -37092,6 +39652,11 @@ export const E2E = $root.E2E = (() => {
                                 $util.makeProp(m, "$unknowns", false);
                                 (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                             }
+                        }
+                        if (l !== $undefined) {
+                            if (r.pos !== c)
+                                throw $RangeError("index out of range");
+                            r.len = l;
                         }
                         if (z !== $undefined)
                             throw $Error("missing end group");
@@ -37214,7 +39779,17 @@ export const E2E = $root.E2E = (() => {
                             q = 0;
                         if (q > $Reader.recursionLimit)
                             throw $Error("max depth exceeded");
-                        var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.CompanionCanonicalUserNonceFetchResponse();
+                        var c, m;
+                        if (l === $undefined)
+                            c = r.len;
+                        else {
+                            c = r.pos + l;
+                            if (c > r.len)
+                                throw $RangeError("index out of range");
+                            l = r.len;
+                            r.len = c;
+                        }
+                        m = g || new $root.E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.CompanionCanonicalUserNonceFetchResponse();
                         while (r.pos < c) {
                             var s = r.pos;
                             var t = r.tag();
@@ -37248,6 +39823,11 @@ export const E2E = $root.E2E = (() => {
                                 $util.makeProp(m, "$unknowns", false);
                                 (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                             }
+                        }
+                        if (l !== $undefined) {
+                            if (r.pos !== c)
+                                throw $RangeError("index out of range");
+                            r.len = l;
                         }
                         if (z !== $undefined)
                             throw $Error("missing end group");
@@ -37351,7 +39931,17 @@ export const E2E = $root.E2E = (() => {
                             q = 0;
                         if (q > $Reader.recursionLimit)
                             throw $Error("max depth exceeded");
-                        var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.CompanionMetaNonceFetchResponse();
+                        var c, m;
+                        if (l === $undefined)
+                            c = r.len;
+                        else {
+                            c = r.pos + l;
+                            if (c > r.len)
+                                throw $RangeError("index out of range");
+                            l = r.len;
+                            r.len = c;
+                        }
+                        m = g || new $root.E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.CompanionMetaNonceFetchResponse();
                         while (r.pos < c) {
                             var s = r.pos;
                             var t = r.tag();
@@ -37373,6 +39963,11 @@ export const E2E = $root.E2E = (() => {
                                 $util.makeProp(m, "$unknowns", false);
                                 (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                             }
+                        }
+                        if (l !== $undefined) {
+                            if (r.pos !== c)
+                                throw $RangeError("index out of range");
+                            r.len = l;
                         }
                         if (z !== $undefined)
                             throw $Error("missing end group");
@@ -37474,7 +40069,17 @@ export const E2E = $root.E2E = (() => {
                             q = 0;
                         if (q > $Reader.recursionLimit)
                             throw $Error("max depth exceeded");
-                        var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse();
+                        var c, m;
+                        if (l === $undefined)
+                            c = r.len;
+                        else {
+                            c = r.pos + l;
+                            if (c > r.len)
+                                throw $RangeError("index out of range");
+                            l = r.len;
+                            r.len = c;
+                        }
+                        m = g || new $root.E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse();
                         while (r.pos < c) {
                             var s = r.pos;
                             var t = r.tag();
@@ -37516,6 +40121,11 @@ export const E2E = $root.E2E = (() => {
                                 $util.makeProp(m, "$unknowns", false);
                                 (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                             }
+                        }
+                        if (l !== $undefined) {
+                            if (r.pos !== c)
+                                throw $RangeError("index out of range");
+                            r.len = l;
                         }
                         if (z !== $undefined)
                             throw $Error("missing end group");
@@ -37695,7 +40305,17 @@ export const E2E = $root.E2E = (() => {
                             q = 0;
                         if (q > $Reader.recursionLimit)
                             throw $Error("max depth exceeded");
-                        var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.FlowResponsesCsvBundle();
+                        var c, m;
+                        if (l === $undefined)
+                            c = r.len;
+                        else {
+                            c = r.pos + l;
+                            if (c > r.len)
+                                throw $RangeError("index out of range");
+                            l = r.len;
+                            r.len = c;
+                        }
+                        m = g || new $root.E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.FlowResponsesCsvBundle();
                         while (r.pos < c) {
                             var s = r.pos;
                             var t = r.tag();
@@ -37771,6 +40391,11 @@ export const E2E = $root.E2E = (() => {
                                 $util.makeProp(m, "$unknowns", false);
                                 (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                             }
+                        }
+                        if (l !== $undefined) {
+                            if (r.pos !== c)
+                                throw $RangeError("index out of range");
+                            r.len = l;
                         }
                         if (z !== $undefined)
                             throw $Error("missing end group");
@@ -37985,7 +40610,17 @@ export const E2E = $root.E2E = (() => {
                             q = 0;
                         if (q > $Reader.recursionLimit)
                             throw $Error("max depth exceeded");
-                        var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.FullHistorySyncOnDemandRequestResponse(), v;
+                        var c, m, v;
+                        if (l === $undefined)
+                            c = r.len;
+                        else {
+                            c = r.pos + l;
+                            if (c > r.len)
+                                throw $RangeError("index out of range");
+                            l = r.len;
+                            r.len = c;
+                        }
+                        m = g || new $root.E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.FullHistorySyncOnDemandRequestResponse();
                         while (r.pos < c) {
                             var s = r.pos;
                             var t = r.tag();
@@ -38019,6 +40654,11 @@ export const E2E = $root.E2E = (() => {
                                 $util.makeProp(m, "$unknowns", false);
                                 (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                             }
+                        }
+                        if (l !== $undefined) {
+                            if (r.pos !== c)
+                                throw $RangeError("index out of range");
+                            r.len = l;
                         }
                         if (z !== $undefined)
                             throw $Error("missing end group");
@@ -38174,7 +40814,17 @@ export const E2E = $root.E2E = (() => {
                             q = 0;
                         if (q > $Reader.recursionLimit)
                             throw $Error("max depth exceeded");
-                        var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.HistorySyncChunkRetryResponse(), v;
+                        var c, m, v;
+                        if (l === $undefined)
+                            c = r.len;
+                        else {
+                            c = r.pos + l;
+                            if (c > r.len)
+                                throw $RangeError("index out of range");
+                            l = r.len;
+                            r.len = c;
+                        }
+                        m = g || new $root.E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.HistorySyncChunkRetryResponse();
                         while (r.pos < c) {
                             var s = r.pos;
                             var t = r.tag();
@@ -38232,6 +40882,11 @@ export const E2E = $root.E2E = (() => {
                                 $util.makeProp(m, "$unknowns", false);
                                 (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                             }
+                        }
+                        if (l !== $undefined) {
+                            if (r.pos !== c)
+                                throw $RangeError("index out of range");
+                            r.len = l;
                         }
                         if (z !== $undefined)
                             throw $Error("missing end group");
@@ -38441,7 +41096,17 @@ export const E2E = $root.E2E = (() => {
                             q = 0;
                         if (q > $Reader.recursionLimit)
                             throw $Error("max depth exceeded");
-                        var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.LinkPreviewResponse();
+                        var c, m;
+                        if (l === $undefined)
+                            c = r.len;
+                        else {
+                            c = r.pos + l;
+                            if (c > r.len)
+                                throw $RangeError("index out of range");
+                            l = r.len;
+                            r.len = c;
+                        }
+                        m = g || new $root.E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.LinkPreviewResponse();
                         while (r.pos < c) {
                             var s = r.pos;
                             var t = r.tag();
@@ -38505,6 +41170,11 @@ export const E2E = $root.E2E = (() => {
                                 $util.makeProp(m, "$unknowns", false);
                                 (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                             }
+                        }
+                        if (l !== $undefined) {
+                            if (r.pos !== c)
+                                throw $RangeError("index out of range");
+                            r.len = l;
                         }
                         if (z !== $undefined)
                             throw $Error("missing end group");
@@ -38671,7 +41341,17 @@ export const E2E = $root.E2E = (() => {
                                 q = 0;
                             if (q > $Reader.recursionLimit)
                                 throw $Error("max depth exceeded");
-                            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.LinkPreviewResponse.LinkPreviewHighQualityThumbnail();
+                            var c, m;
+                            if (l === $undefined)
+                                c = r.len;
+                            else {
+                                c = r.pos + l;
+                                if (c > r.len)
+                                    throw $RangeError("index out of range");
+                                l = r.len;
+                                r.len = c;
+                            }
+                            m = g || new $root.E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.LinkPreviewResponse.LinkPreviewHighQualityThumbnail();
                             while (r.pos < c) {
                                 var s = r.pos;
                                 var t = r.tag();
@@ -38729,6 +41409,11 @@ export const E2E = $root.E2E = (() => {
                                     $util.makeProp(m, "$unknowns", false);
                                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                                 }
+                            }
+                            if (l !== $undefined) {
+                                if (r.pos !== c)
+                                    throw $RangeError("index out of range");
+                                r.len = l;
                             }
                             if (z !== $undefined)
                                 throw $Error("missing end group");
@@ -38897,7 +41582,17 @@ export const E2E = $root.E2E = (() => {
                                 q = 0;
                             if (q > $Reader.recursionLimit)
                                 throw $Error("max depth exceeded");
-                            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.LinkPreviewResponse.PaymentLinkPreviewMetadata();
+                            var c, m;
+                            if (l === $undefined)
+                                c = r.len;
+                            else {
+                                c = r.pos + l;
+                                if (c > r.len)
+                                    throw $RangeError("index out of range");
+                                l = r.len;
+                                r.len = c;
+                            }
+                            m = g || new $root.E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.LinkPreviewResponse.PaymentLinkPreviewMetadata();
                             while (r.pos < c) {
                                 var s = r.pos;
                                 var t = r.tag();
@@ -38943,6 +41638,11 @@ export const E2E = $root.E2E = (() => {
                                     $util.makeProp(m, "$unknowns", false);
                                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                                 }
+                            }
+                            if (l !== $undefined) {
+                                if (r.pos !== c)
+                                    throw $RangeError("index out of range");
+                                r.len = l;
                             }
                             if (z !== $undefined)
                                 throw $Error("missing end group");
@@ -39063,7 +41763,17 @@ export const E2E = $root.E2E = (() => {
                             q = 0;
                         if (q > $Reader.recursionLimit)
                             throw $Error("max depth exceeded");
-                        var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.PlaceholderMessageResendResponse();
+                        var c, m;
+                        if (l === $undefined)
+                            c = r.len;
+                        else {
+                            c = r.pos + l;
+                            if (c > r.len)
+                                throw $RangeError("index out of range");
+                            l = r.len;
+                            r.len = c;
+                        }
+                        m = g || new $root.E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.PlaceholderMessageResendResponse();
                         while (r.pos < c) {
                             var s = r.pos;
                             var t = r.tag();
@@ -39085,6 +41795,11 @@ export const E2E = $root.E2E = (() => {
                                 $util.makeProp(m, "$unknowns", false);
                                 (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                             }
+                        }
+                        if (l !== $undefined) {
+                            if (r.pos !== c)
+                                throw $RangeError("index out of range");
+                            r.len = l;
                         }
                         if (z !== $undefined)
                             throw $Error("missing end group");
@@ -39186,7 +41901,17 @@ export const E2E = $root.E2E = (() => {
                             q = 0;
                         if (q > $Reader.recursionLimit)
                             throw $Error("max depth exceeded");
-                        var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.SyncDSnapshotFatalRecoveryResponse();
+                        var c, m;
+                        if (l === $undefined)
+                            c = r.len;
+                        else {
+                            c = r.pos + l;
+                            if (c > r.len)
+                                throw $RangeError("index out of range");
+                            l = r.len;
+                            r.len = c;
+                        }
+                        m = g || new $root.E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.SyncDSnapshotFatalRecoveryResponse();
                         while (r.pos < c) {
                             var s = r.pos;
                             var t = r.tag();
@@ -39214,6 +41939,11 @@ export const E2E = $root.E2E = (() => {
                                 $util.makeProp(m, "$unknowns", false);
                                 (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                             }
+                        }
+                        if (l !== $undefined) {
+                            if (r.pos !== c)
+                                throw $RangeError("index out of range");
+                            r.len = l;
                         }
                         if (z !== $undefined)
                             throw $Error("missing end group");
@@ -39322,7 +42052,17 @@ export const E2E = $root.E2E = (() => {
                             q = 0;
                         if (q > $Reader.recursionLimit)
                             throw $Error("max depth exceeded");
-                        var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.WaffleNonceFetchResponse();
+                        var c, m;
+                        if (l === $undefined)
+                            c = r.len;
+                        else {
+                            c = r.pos + l;
+                            if (c > r.len)
+                                throw $RangeError("index out of range");
+                            l = r.len;
+                            r.len = c;
+                        }
+                        m = g || new $root.E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.WaffleNonceFetchResponse();
                         while (r.pos < c) {
                             var s = r.pos;
                             var t = r.tag();
@@ -39350,6 +42090,11 @@ export const E2E = $root.E2E = (() => {
                                 $util.makeProp(m, "$unknowns", false);
                                 (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                             }
+                        }
+                        if (l !== $undefined) {
+                            if (r.pos !== c)
+                                throw $RangeError("index out of range");
+                            r.len = l;
                         }
                         if (z !== $undefined)
                             throw $Error("missing end group");
@@ -39478,7 +42223,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.PinInChatMessage(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.PinInChatMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -39518,6 +42273,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -39659,7 +42419,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.PlaceholderMessage(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.PlaceholderMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -39687,6 +42457,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -39792,7 +42567,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.PollAddOptionMessage();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.PollAddOptionMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -39826,6 +42611,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -39976,7 +42766,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.PollCreationMessage(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.PollCreationMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -40072,6 +42872,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -40292,7 +43097,17 @@ export const E2E = $root.E2E = (() => {
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.PollCreationMessage.Option();
+                    var c, m;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.E2E.Message.PollCreationMessage.Option();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -40320,6 +43135,11 @@ export const E2E = $root.E2E = (() => {
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -40422,7 +43242,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.PollEncValue();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.PollEncValue();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -40450,6 +43280,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -40576,7 +43411,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.PollResultSnapshotMessage(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.PollResultSnapshotMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -40624,6 +43469,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -40756,7 +43606,17 @@ export const E2E = $root.E2E = (() => {
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.PollResultSnapshotMessage.PollVote();
+                    var c, m;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.E2E.Message.PollResultSnapshotMessage.PollVote();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -40784,6 +43644,11 @@ export const E2E = $root.E2E = (() => {
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -40915,7 +43780,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.PollUpdateMessage();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.PollUpdateMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -40955,6 +43830,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -41090,7 +43970,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.PollUpdateMessageMetadata();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.PollUpdateMessageMetadata();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -41118,6 +44008,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -41226,7 +44121,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.PollVoteMessage();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.PollVoteMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -41250,6 +44155,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -41365,7 +44275,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.ProductMessage();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.ProductMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -41417,6 +44337,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -41550,7 +44475,17 @@ export const E2E = $root.E2E = (() => {
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.ProductMessage.CatalogSnapshot();
+                    var c, m;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.E2E.Message.ProductMessage.CatalogSnapshot();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -41584,6 +44519,11 @@ export const E2E = $root.E2E = (() => {
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -41722,7 +44662,17 @@ export const E2E = $root.E2E = (() => {
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.ProductMessage.ProductSnapshot();
+                    var c, m;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.E2E.Message.ProductMessage.ProductSnapshot();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -41810,6 +44760,11 @@ export const E2E = $root.E2E = (() => {
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -42100,7 +45055,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.ProtocolMessage(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.ProtocolMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -42302,6 +45267,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -42849,7 +45819,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.QuestionResponseMessage();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.QuestionResponseMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -42877,6 +45857,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -42984,7 +45969,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.ReactionMessage();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.ReactionMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -43024,6 +46019,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -43170,7 +46170,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.RequestPaymentMessage();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.RequestPaymentMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -43228,6 +46238,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -43397,7 +46412,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.RequestPhoneNumberMessage();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.RequestPhoneNumberMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -43419,6 +46444,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -43516,7 +46546,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.RequestWelcomeMessageMetadata(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.RequestWelcomeMessageMetadata();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -43562,6 +46602,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -43697,7 +46742,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.RootSecretDistributeMessage();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.RootSecretDistributeMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -43719,6 +46774,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -43814,7 +46874,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.ScheduledCallCreationMessage(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.ScheduledCallCreationMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -43854,6 +46924,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -43996,7 +47071,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.ScheduledCallEditMessage(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.ScheduledCallEditMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -44030,6 +47115,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -44155,7 +47245,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.SecretEncryptedMessage(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.SecretEncryptedMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -44207,6 +47307,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -44388,7 +47493,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.SendPaymentMessage();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.SendPaymentMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -44428,6 +47543,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -44547,7 +47667,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.SenderKeyDistributionMessage();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.SenderKeyDistributionMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -44575,6 +47705,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -44701,7 +47836,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.SplitPaymentMessage();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.SplitPaymentMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -44761,6 +47906,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -44930,7 +48080,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.SplitPaymentParticipant(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.SplitPaymentParticipant();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -44970,6 +48130,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -45093,7 +48258,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.SplitPaymentUpdateMessage();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.SplitPaymentUpdateMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -45121,6 +48296,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -45217,7 +48397,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.StatusLinkPreviewMetadata(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.StatusLinkPreviewMetadata();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -45245,6 +48435,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -45365,7 +48560,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.StatusNotificationMessage(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.StatusNotificationMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -45405,6 +48610,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -45545,7 +48755,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.StatusQuestionAnswerMessage();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.StatusQuestionAnswerMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -45573,6 +48793,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -45680,7 +48905,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.StatusQuotedMessage(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.StatusQuotedMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -45726,6 +48961,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -45863,7 +49103,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.StatusStickerInteractionMessage(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.StatusStickerInteractionMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -45903,6 +49153,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -46086,7 +49341,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.StickerMessage();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.StickerMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -46234,6 +49499,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -46631,7 +49901,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.StickerPackMessage(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.StickerPackMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -46787,6 +50067,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -47160,7 +50445,17 @@ export const E2E = $root.E2E = (() => {
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.StickerPackMessage.Sticker();
+                    var c, m;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.E2E.Message.StickerPackMessage.Sticker();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -47220,6 +50515,11 @@ export const E2E = $root.E2E = (() => {
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -47381,7 +50681,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.StickerSyncRMRMessage();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.StickerSyncRMRMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -47417,6 +50727,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -47558,7 +50873,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.TemplateButtonReplyMessage();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.TemplateButtonReplyMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -47604,6 +50929,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -47745,7 +51075,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.TemplateMessage();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.TemplateMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -47800,6 +51140,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -47965,7 +51310,17 @@ export const E2E = $root.E2E = (() => {
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.TemplateMessage.FourRowTemplate();
+                    var c, m;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.E2E.Message.TemplateMessage.FourRowTemplate();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -48036,6 +51391,11 @@ export const E2E = $root.E2E = (() => {
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -48242,7 +51602,17 @@ export const E2E = $root.E2E = (() => {
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.TemplateMessage.HydratedFourRowTemplate();
+                    var c, m;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.E2E.Message.TemplateMessage.HydratedFourRowTemplate();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -48325,6 +51695,11 @@ export const E2E = $root.E2E = (() => {
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -48505,7 +51880,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.URLMetadata();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.URLMetadata();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -48527,6 +51912,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -48621,7 +52011,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.VideoEndCard();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.VideoEndCard();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -48661,6 +52061,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -48875,7 +52280,17 @@ export const E2E = $root.E2E = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.E2E.Message.VideoMessage(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.VideoMessage();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -49089,6 +52504,11 @@ export const E2E = $root.E2E = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -49602,7 +53022,17 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SignalLocalStorageProtocol.SenderKeyRecordStructure();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.SignalLocalStorageProtocol.SenderKeyRecordStructure();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -49626,6 +53056,11 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -49737,7 +53172,17 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SignalLocalStorageProtocol.SenderKeyStateStructure();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.SignalLocalStorageProtocol.SenderKeyStateStructure();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -49779,6 +53224,11 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -49905,7 +53355,17 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SignalLocalStorageProtocol.SenderKeyStateStructure.SenderChainKey();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SignalLocalStorageProtocol.SenderKeyStateStructure.SenderChainKey();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -49933,6 +53393,11 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -50041,7 +53506,17 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SignalLocalStorageProtocol.SenderKeyStateStructure.SenderMessageKey();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SignalLocalStorageProtocol.SenderKeyStateStructure.SenderMessageKey();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -50069,6 +53544,11 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -50177,7 +53657,17 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SignalLocalStorageProtocol.SenderKeyStateStructure.SenderSigningKey();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SignalLocalStorageProtocol.SenderKeyStateStructure.SenderSigningKey();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -50205,6 +53695,11 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -50325,7 +53820,17 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SignalLocalStorageProtocol.IdentityKeyPairStructure();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.SignalLocalStorageProtocol.IdentityKeyPairStructure();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -50353,6 +53858,11 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -50479,7 +53989,17 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SignalLocalStorageProtocol.SignedPreKeyRecordStructure();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.SignalLocalStorageProtocol.SignedPreKeyRecordStructure();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -50525,6 +54045,11 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -50691,7 +54216,17 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SignalLocalStorageProtocol.PreKeyRecordStructure();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.SignalLocalStorageProtocol.PreKeyRecordStructure();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -50725,6 +54260,11 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -50852,7 +54392,17 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SignalLocalStorageProtocol.RecordStructure();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.SignalLocalStorageProtocol.RecordStructure();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -50882,6 +54432,11 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -51031,7 +54586,17 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SignalLocalStorageProtocol.SessionStructure();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.SignalLocalStorageProtocol.SessionStructure();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -51127,6 +54692,11 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -51363,7 +54933,17 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SignalLocalStorageProtocol.SessionStructure.Chain();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SignalLocalStorageProtocol.SessionStructure.Chain();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -51405,6 +54985,11 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -51547,7 +55132,17 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SignalLocalStorageProtocol.SessionStructure.Chain.ChainKey();
+                    var c, m;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.SignalLocalStorageProtocol.SessionStructure.Chain.ChainKey();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -51575,6 +55170,11 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -51689,7 +55289,17 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey();
+                    var c, m;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -51729,6 +55339,11 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -51887,7 +55502,17 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SignalLocalStorageProtocol.SessionStructure.PendingKeyExchange();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SignalLocalStorageProtocol.SessionStructure.PendingKeyExchange();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -51945,6 +55570,11 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -52142,7 +55772,17 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SignalLocalStorageProtocol.SessionStructure.PendingPreKey();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SignalLocalStorageProtocol.SessionStructure.PendingPreKey();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -52188,6 +55828,11 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -52360,7 +56005,17 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommonDeprecated.AIRichResponseSubMessage(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommonDeprecated.AIRichResponseSubMessage();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -52442,6 +56097,11 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -52656,7 +56316,17 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommonDeprecated.AIRichResponseContentItemsMetadata(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommonDeprecated.AIRichResponseContentItemsMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -52692,6 +56362,11 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -52812,7 +56487,17 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommonDeprecated.AIRichResponseContentItemsMetadata.AIRichResponseContentItemMetadata();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.AICommonDeprecated.AIRichResponseContentItemsMetadata.AIRichResponseContentItemMetadata();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -52835,6 +56520,11 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -52934,7 +56624,17 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommonDeprecated.AIRichResponseContentItemsMetadata.AIRichResponseReelItem();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.AICommonDeprecated.AIRichResponseContentItemsMetadata.AIRichResponseReelItem();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -52974,6 +56674,11 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -53112,7 +56817,17 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommonDeprecated.AIRichResponseMapMetadata();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommonDeprecated.AIRichResponseMapMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -53166,6 +56881,11 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -53311,7 +57031,17 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommonDeprecated.AIRichResponseMapMetadata.AIRichResponseMapAnnotation();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.AICommonDeprecated.AIRichResponseMapMetadata.AIRichResponseMapAnnotation();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -53357,6 +57087,11 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -53483,7 +57218,17 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommonDeprecated.AIRichResponseLatexMetadata();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommonDeprecated.AIRichResponseLatexMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -53513,6 +57258,11 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -53642,7 +57392,17 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommonDeprecated.AIRichResponseLatexMetadata.AIRichResponseLatexExpression();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.AICommonDeprecated.AIRichResponseLatexMetadata.AIRichResponseLatexExpression();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -53712,6 +57472,11 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -53869,7 +57634,17 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommonDeprecated.AIRichResponseDynamicMetadata(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommonDeprecated.AIRichResponseDynamicMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -53915,6 +57690,11 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -54067,7 +57847,17 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommonDeprecated.AIRichResponseTableMetadata();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommonDeprecated.AIRichResponseTableMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -54097,6 +57887,11 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -54208,7 +58003,17 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommonDeprecated.AIRichResponseTableMetadata.AIRichResponseTableRow();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.AICommonDeprecated.AIRichResponseTableMetadata.AIRichResponseTableRow();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -54238,6 +58043,11 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -54353,7 +58163,17 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommonDeprecated.AIRichResponseCodeMetadata();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommonDeprecated.AIRichResponseCodeMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -54383,6 +58203,11 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -54491,7 +58316,17 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommonDeprecated.AIRichResponseCodeMetadata.AIRichResponseCodeBlock(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.AICommonDeprecated.AIRichResponseCodeMetadata.AIRichResponseCodeBlock();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -54525,6 +58360,11 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -54668,7 +58508,17 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommonDeprecated.AIRichResponseInlineImageMetadata(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommonDeprecated.AIRichResponseInlineImageMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -54714,6 +58564,11 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -54852,7 +58707,17 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommonDeprecated.AIRichResponseGridImageMetadata();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommonDeprecated.AIRichResponseGridImageMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -54882,6 +58747,11 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -54998,7 +58868,17 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommonDeprecated.AIRichResponseImageURL();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommonDeprecated.AIRichResponseImageURL();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -55032,6 +58912,11 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -55167,7 +59052,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.AIProvenance();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.AIProvenance();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -55195,6 +59090,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -55295,7 +59195,17 @@ export const AICommon = $root.AICommon = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.AIProvenance.Metadata();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.AICommon.AIProvenance.Metadata();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -55323,6 +59233,11 @@ export const AICommon = $root.AICommon = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -55425,7 +59340,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotAgentDeepLinkMetadata();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotAgentDeepLinkMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -55453,6 +59378,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -55558,7 +59488,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotAgentMetadata();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotAgentMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -55580,6 +59520,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -55680,7 +59625,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotInfrastructureDiagnostics(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotInfrastructureDiagnostics();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -55722,6 +59677,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -55862,7 +59822,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.AIHomeState();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.AIHomeState();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -55900,6 +59870,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -56059,7 +60034,17 @@ export const AICommon = $root.AICommon = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.AIHomeState.AIHomeOption(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.AICommon.AIHomeState.AIHomeOption();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -56129,6 +60114,11 @@ export const AICommon = $root.AICommon = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -56305,7 +60295,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotDocumentMessageMetadata(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotDocumentMessageMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -56333,6 +60333,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -56443,7 +60448,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.SessionTransparencyMetadata(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.SessionTransparencyMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -56483,6 +60498,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -56597,7 +60617,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.AIRegenerateMetadata();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.AIRegenerateMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -56625,6 +60655,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -56739,7 +60774,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.AIRichResponseUnifiedResponse();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.AIRichResponseUnifiedResponse();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -56761,6 +60806,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -56862,7 +60912,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotMessageSharingInfo(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotMessageSharingInfo();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -56896,6 +60956,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -57194,7 +61259,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.ForwardedAIBotMessageInfo();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.ForwardedAIBotMessageInfo();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -57228,6 +61303,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -57349,7 +61429,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotFeedbackMessage(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotFeedbackMessage();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -57419,6 +61509,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -57722,7 +61817,17 @@ export const AICommon = $root.AICommon = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotFeedbackMessage.SideBySideSurveyMetadata();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.AICommon.BotFeedbackMessage.SideBySideSurveyMetadata();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -57792,6 +61897,11 @@ export const AICommon = $root.AICommon = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -57944,7 +62054,17 @@ export const AICommon = $root.AICommon = (() => {
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotFeedbackMessage.SideBySideSurveyMetadata.SideBySideSurveyAnalyticsData();
+                    var c, m;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.AICommon.BotFeedbackMessage.SideBySideSurveyMetadata.SideBySideSurveyAnalyticsData();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -57978,6 +62098,11 @@ export const AICommon = $root.AICommon = (() => {
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -58105,7 +62230,17 @@ export const AICommon = $root.AICommon = (() => {
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotFeedbackMessage.SideBySideSurveyMetadata.SidebySideSurveyMetaAiAnalyticsData();
+                    var c, m;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.AICommon.BotFeedbackMessage.SideBySideSurveyMetadata.SidebySideSurveyMetaAiAnalyticsData();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -58175,6 +62310,11 @@ export const AICommon = $root.AICommon = (() => {
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -58327,7 +62467,17 @@ export const AICommon = $root.AICommon = (() => {
                             q = 0;
                         if (q > $Reader.recursionLimit)
                             throw $Error("max depth exceeded");
-                        var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotFeedbackMessage.SideBySideSurveyMetadata.SidebySideSurveyMetaAiAnalyticsData.SideBySideSurveyAbandonEventData();
+                        var c, m;
+                        if (l === $undefined)
+                            c = r.len;
+                        else {
+                            c = r.pos + l;
+                            if (c > r.len)
+                                throw $RangeError("index out of range");
+                            l = r.len;
+                            r.len = c;
+                        }
+                        m = g || new $root.AICommon.BotFeedbackMessage.SideBySideSurveyMetadata.SidebySideSurveyMetaAiAnalyticsData.SideBySideSurveyAbandonEventData();
                         while (r.pos < c) {
                             var s = r.pos;
                             var t = r.tag();
@@ -58349,6 +62499,11 @@ export const AICommon = $root.AICommon = (() => {
                                 $util.makeProp(m, "$unknowns", false);
                                 (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                             }
+                        }
+                        if (l !== $undefined) {
+                            if (r.pos !== c)
+                                throw $RangeError("index out of range");
+                            r.len = l;
                         }
                         if (z !== $undefined)
                             throw $Error("missing end group");
@@ -58441,7 +62596,17 @@ export const AICommon = $root.AICommon = (() => {
                             q = 0;
                         if (q > $Reader.recursionLimit)
                             throw $Error("max depth exceeded");
-                        var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotFeedbackMessage.SideBySideSurveyMetadata.SidebySideSurveyMetaAiAnalyticsData.SideBySideSurveyCTAClickEventData();
+                        var c, m;
+                        if (l === $undefined)
+                            c = r.len;
+                        else {
+                            c = r.pos + l;
+                            if (c > r.len)
+                                throw $RangeError("index out of range");
+                            l = r.len;
+                            r.len = c;
+                        }
+                        m = g || new $root.AICommon.BotFeedbackMessage.SideBySideSurveyMetadata.SidebySideSurveyMetaAiAnalyticsData.SideBySideSurveyCTAClickEventData();
                         while (r.pos < c) {
                             var s = r.pos;
                             var t = r.tag();
@@ -58469,6 +62634,11 @@ export const AICommon = $root.AICommon = (() => {
                                 $util.makeProp(m, "$unknowns", false);
                                 (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                             }
+                        }
+                        if (l !== $undefined) {
+                            if (r.pos !== c)
+                                throw $RangeError("index out of range");
+                            r.len = l;
                         }
                         if (z !== $undefined)
                             throw $Error("missing end group");
@@ -58565,7 +62735,17 @@ export const AICommon = $root.AICommon = (() => {
                             q = 0;
                         if (q > $Reader.recursionLimit)
                             throw $Error("max depth exceeded");
-                        var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotFeedbackMessage.SideBySideSurveyMetadata.SidebySideSurveyMetaAiAnalyticsData.SideBySideSurveyCTAImpressionEventData();
+                        var c, m;
+                        if (l === $undefined)
+                            c = r.len;
+                        else {
+                            c = r.pos + l;
+                            if (c > r.len)
+                                throw $RangeError("index out of range");
+                            l = r.len;
+                            r.len = c;
+                        }
+                        m = g || new $root.AICommon.BotFeedbackMessage.SideBySideSurveyMetadata.SidebySideSurveyMetaAiAnalyticsData.SideBySideSurveyCTAImpressionEventData();
                         while (r.pos < c) {
                             var s = r.pos;
                             var t = r.tag();
@@ -58587,6 +62767,11 @@ export const AICommon = $root.AICommon = (() => {
                                 $util.makeProp(m, "$unknowns", false);
                                 (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                             }
+                        }
+                        if (l !== $undefined) {
+                            if (r.pos !== c)
+                                throw $RangeError("index out of range");
+                            r.len = l;
                         }
                         if (z !== $undefined)
                             throw $Error("missing end group");
@@ -58679,7 +62864,17 @@ export const AICommon = $root.AICommon = (() => {
                             q = 0;
                         if (q > $Reader.recursionLimit)
                             throw $Error("max depth exceeded");
-                        var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotFeedbackMessage.SideBySideSurveyMetadata.SidebySideSurveyMetaAiAnalyticsData.SideBySideSurveyResponseEventData();
+                        var c, m;
+                        if (l === $undefined)
+                            c = r.len;
+                        else {
+                            c = r.pos + l;
+                            if (c > r.len)
+                                throw $RangeError("index out of range");
+                            l = r.len;
+                            r.len = c;
+                        }
+                        m = g || new $root.AICommon.BotFeedbackMessage.SideBySideSurveyMetadata.SidebySideSurveyMetaAiAnalyticsData.SideBySideSurveyResponseEventData();
                         while (r.pos < c) {
                             var s = r.pos;
                             var t = r.tag();
@@ -58707,6 +62902,11 @@ export const AICommon = $root.AICommon = (() => {
                                 $util.makeProp(m, "$unknowns", false);
                                 (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                             }
+                        }
+                        if (l !== $undefined) {
+                            if (r.pos !== c)
+                                throw $RangeError("index out of range");
+                            r.len = l;
                         }
                         if (z !== $undefined)
                             throw $Error("missing end group");
@@ -58812,7 +63012,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotGroupParticipantMetadata();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotGroupParticipantMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -58834,6 +63044,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -58926,7 +63141,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotRenderingConfigMetadata();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotRenderingConfigMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -58954,6 +63179,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -59053,7 +63283,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotHistoryShareMetadata();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotHistoryShareMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -59077,6 +63317,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -59179,7 +63424,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotGroupMetadata();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotGroupMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -59203,6 +63458,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -59302,7 +63562,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.AISubscriptionUpsellMetadata(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.AISubscriptionUpsellMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -59330,6 +63600,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -59561,7 +63836,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotMetadata();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -59835,6 +64120,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -60306,7 +64596,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotPttPromptMetadata();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotPttPromptMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -60328,6 +64628,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -60420,7 +64725,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotResolvedToolCallMetadata();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotResolvedToolCallMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -60448,6 +64763,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -60550,7 +64870,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotCommandMetadata();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotCommandMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -60584,6 +64914,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -60687,7 +65022,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.AIMetadataOperation();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.AIMetadataOperation();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -60709,6 +65054,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -60806,7 +65156,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.HatchMetadataSync();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.HatchMetadataSync();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -60840,6 +65200,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -60974,7 +65339,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.AIMediaCollectionMessage();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.AIMediaCollectionMessage();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -61008,6 +65383,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -61114,7 +65494,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.AIMediaCollectionMetadata();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.AIMediaCollectionMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -61142,6 +65532,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -61241,7 +65636,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.AIThreadInfo();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.AIThreadInfo();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -61269,6 +65674,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -61369,7 +65779,17 @@ export const AICommon = $root.AICommon = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.AIThreadInfo.AIThreadClientInfo(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.AICommon.AIThreadInfo.AIThreadClientInfo();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -61403,6 +65823,11 @@ export const AICommon = $root.AICommon = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -61524,7 +65949,17 @@ export const AICommon = $root.AICommon = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.AIThreadInfo.AIThreadServerInfo();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.AICommon.AIThreadInfo.AIThreadServerInfo();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -61546,6 +65981,11 @@ export const AICommon = $root.AICommon = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -61644,7 +66084,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotUnifiedResponseMutation();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotUnifiedResponseMutation();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -61674,6 +66124,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -61787,7 +66242,17 @@ export const AICommon = $root.AICommon = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotUnifiedResponseMutation.MediaDetailsMetadata();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.AICommon.BotUnifiedResponseMutation.MediaDetailsMetadata();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -61821,6 +66286,11 @@ export const AICommon = $root.AICommon = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -61931,7 +66401,17 @@ export const AICommon = $root.AICommon = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotUnifiedResponseMutation.SideBySideMetadata();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.AICommon.BotUnifiedResponseMutation.SideBySideMetadata();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -61959,6 +66439,11 @@ export const AICommon = $root.AICommon = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -62058,7 +66543,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotMessageOrigin(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotMessageOrigin();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -62086,6 +66581,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -62188,7 +66688,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotMessageOriginMetadata();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotMessageOriginMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -62212,6 +66722,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -62368,7 +66883,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.InThreadSurveyMetadata();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.InThreadSurveyMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -62496,6 +67021,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -62729,7 +67259,17 @@ export const AICommon = $root.AICommon = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.InThreadSurveyMetadata.InThreadSurveyOption();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.AICommon.InThreadSurveyMetadata.InThreadSurveyOption();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -62763,6 +67303,11 @@ export const AICommon = $root.AICommon = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -62869,7 +67414,17 @@ export const AICommon = $root.AICommon = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.InThreadSurveyMetadata.InThreadSurveyPrivacyStatementPart();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.AICommon.InThreadSurveyMetadata.InThreadSurveyPrivacyStatementPart();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -62897,6 +67452,11 @@ export const AICommon = $root.AICommon = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -63002,7 +67562,17 @@ export const AICommon = $root.AICommon = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.InThreadSurveyMetadata.InThreadSurveyQuestion();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.AICommon.InThreadSurveyMetadata.InThreadSurveyQuestion();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -63038,6 +67608,11 @@ export const AICommon = $root.AICommon = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -63159,7 +67734,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotSourcesMetadata();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotSourcesMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -63183,6 +67768,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -63297,7 +67887,17 @@ export const AICommon = $root.AICommon = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotSourcesMetadata.BotSourceItem(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.AICommon.BotSourcesMetadata.BotSourceItem();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -63361,6 +67961,11 @@ export const AICommon = $root.AICommon = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -63531,7 +68136,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotAgeCollectionMetadata(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotAgeCollectionMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -63571,6 +68186,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -63692,7 +68312,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotImagineMetadata(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotImagineMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -63726,6 +68356,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -63855,7 +68490,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotQuotaMetadata();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotQuotaMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -63879,6 +68524,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -63981,7 +68631,17 @@ export const AICommon = $root.AICommon = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotQuotaMetadata.BotFeatureQuotaMetadata(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.AICommon.BotQuotaMetadata.BotFeatureQuotaMetadata();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -64021,6 +68681,11 @@ export const AICommon = $root.AICommon = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -64167,7 +68832,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotModeSelectionMetadata(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotModeSelectionMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -64180,6 +68855,9 @@ export const AICommon = $root.AICommon = (() => {
                 case 1: {
                         if (u === 2) {
                             var c2 = r.uint32() + r.pos;
+                            if (c2 > r.len)
+                                throw $RangeError("index out of range");
+                            r.len = c2;
                             while (r.pos < c2) {
                                 s = r.pos;
                                 v = r.int32();
@@ -64192,6 +68870,9 @@ export const AICommon = $root.AICommon = (() => {
                                     (m.$unknowns || (m.$unknowns = [])).push($util.rawField(1, 0, r.raw(s, r.pos)));
                                 }
                             }
+                            if (r.pos !== c2)
+                                throw $RangeError("index out of range");
+                            r.len = c;
                             continue;
                         }
                         if (u !== 0)
@@ -64227,6 +68908,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -64359,7 +69045,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotCapabilityMetadata(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotCapabilityMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -64372,6 +69068,9 @@ export const AICommon = $root.AICommon = (() => {
                 case 1: {
                         if (u === 2) {
                             var c2 = r.uint32() + r.pos;
+                            if (c2 > r.len)
+                                throw $RangeError("index out of range");
+                            r.len = c2;
                             while (r.pos < c2) {
                                 s = r.pos;
                                 v = r.int32();
@@ -64384,6 +69083,9 @@ export const AICommon = $root.AICommon = (() => {
                                     (m.$unknowns || (m.$unknowns = [])).push($util.rawField(1, 0, r.raw(s, r.pos)));
                                 }
                             }
+                            if (r.pos !== c2)
+                                throw $RangeError("index out of range");
+                            r.len = c;
                             continue;
                         }
                         if (u !== 0)
@@ -64405,6 +69107,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -64868,7 +69575,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotProgressIndicatorMetadata();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotProgressIndicatorMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -64904,6 +69621,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -65056,7 +69778,17 @@ export const AICommon = $root.AICommon = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotProgressIndicatorMetadata.BotPlanningStepMetadata(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.AICommon.BotProgressIndicatorMetadata.BotPlanningStepMetadata();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -65124,6 +69856,11 @@ export const AICommon = $root.AICommon = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -65299,7 +70036,17 @@ export const AICommon = $root.AICommon = (() => {
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotProgressIndicatorMetadata.BotPlanningStepMetadata.BotPlanningSearchSourceMetadata(), v;
+                    var c, m, v;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.AICommon.BotProgressIndicatorMetadata.BotPlanningStepMetadata.BotPlanningSearchSourceMetadata();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -65345,6 +70092,11 @@ export const AICommon = $root.AICommon = (() => {
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -65477,7 +70229,17 @@ export const AICommon = $root.AICommon = (() => {
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotProgressIndicatorMetadata.BotPlanningStepMetadata.BotPlanningSearchSourcesMetadata(), v;
+                    var c, m, v;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.AICommon.BotProgressIndicatorMetadata.BotPlanningStepMetadata.BotPlanningSearchSourcesMetadata();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -65517,6 +70279,11 @@ export const AICommon = $root.AICommon = (() => {
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -65654,7 +70421,17 @@ export const AICommon = $root.AICommon = (() => {
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotProgressIndicatorMetadata.BotPlanningStepMetadata.BotPlanningStepSectionMetadata();
+                    var c, m;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.AICommon.BotProgressIndicatorMetadata.BotPlanningStepMetadata.BotPlanningStepSectionMetadata();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -65690,6 +70467,11 @@ export const AICommon = $root.AICommon = (() => {
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -65835,7 +70617,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotModelMetadata(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotModelMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -65881,6 +70673,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -66036,7 +70833,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotReminderMetadata(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotReminderMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -66094,6 +70901,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -66287,7 +71099,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotMemuMetadata();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotMemuMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -66311,6 +71133,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -66428,7 +71255,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotMediaMetadata(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotMediaMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -66492,6 +71329,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -66662,7 +71504,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotSessionMetadata(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotSessionMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -66696,6 +71548,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -66830,7 +71687,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotMetricsMetadata(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotMetricsMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -66876,6 +71743,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -67198,7 +72070,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotRenderingMetadata();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotRenderingMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -67222,6 +72104,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -67324,7 +72211,17 @@ export const AICommon = $root.AICommon = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotRenderingMetadata.Keyword();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.AICommon.BotRenderingMetadata.Keyword();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -67354,6 +72251,11 @@ export const AICommon = $root.AICommon = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -67466,7 +72368,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotPromotionMessageMetadata(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotPromotionMessageMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -67500,6 +72412,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -67634,7 +72551,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotSignatureVerificationUseCaseProof(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotSignatureVerificationUseCaseProof();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -67690,6 +72617,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -67874,7 +72806,17 @@ export const AICommon = $root.AICommon = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotSignatureVerificationUseCaseProof.CertificateSKI(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.AICommon.BotSignatureVerificationUseCaseProof.CertificateSKI();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -67908,6 +72850,11 @@ export const AICommon = $root.AICommon = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -68043,7 +72990,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotSignatureVerificationMetadata();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotSignatureVerificationMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -68067,6 +73024,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -68169,7 +73131,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotMemoryFact();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotMemoryFact();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -68197,6 +73169,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -68305,7 +73282,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotMemoryMetadata();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotMemoryMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -68343,6 +73330,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -68468,7 +73460,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotLinkedAccount(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotLinkedAccount();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -68496,6 +73498,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -68604,7 +73611,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotLinkedAccountsMetadata();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotLinkedAccountsMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -68640,6 +73657,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -68767,7 +73789,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotPromptSuggestion();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotPromptSuggestion();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -68795,6 +73827,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -68894,7 +73931,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotPromptSuggestions();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotPromptSuggestions();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -68918,6 +73965,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -69029,7 +74081,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotSuggestedPromptMetadata();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotSuggestedPromptMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -69071,6 +74133,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -69226,7 +74293,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotPluginMetadata(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotPluginMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -69338,6 +74415,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -69664,7 +74746,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.SideBySideSurveyCardImpressionEventData();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.SideBySideSurveyCardImpressionEventData();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -69677,6 +74769,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -69762,7 +74859,17 @@ export const Adv = $root.Adv = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.Adv.ADVSignedDeviceIdentityHMAC(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.Adv.ADVSignedDeviceIdentityHMAC();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -69802,6 +74909,11 @@ export const Adv = $root.Adv = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -69944,7 +75056,17 @@ export const Adv = $root.Adv = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.Adv.ADVSignedDeviceIdentity();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.Adv.ADVSignedDeviceIdentity();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -69984,6 +75106,11 @@ export const Adv = $root.Adv = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -70142,7 +75269,17 @@ export const Adv = $root.Adv = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.Adv.ADVDeviceIdentity(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.Adv.ADVDeviceIdentity();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -70200,6 +75337,11 @@ export const Adv = $root.Adv = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -70363,7 +75505,17 @@ export const Adv = $root.Adv = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.Adv.ADVSignedKeyIndexList();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.Adv.ADVSignedKeyIndexList();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -70397,6 +75549,11 @@ export const Adv = $root.Adv = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -70541,7 +75698,17 @@ export const Adv = $root.Adv = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.Adv.ADVKeyIndexList(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.Adv.ADVKeyIndexList();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -70601,6 +75768,11 @@ export const Adv = $root.Adv = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -70780,7 +75952,17 @@ export const Protocol = $root.Protocol = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.Protocol.LimitSharing(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.Protocol.LimitSharing();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -70826,6 +76008,11 @@ export const Protocol = $root.Protocol = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -70986,7 +76173,17 @@ export const Protocol = $root.Protocol = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.Protocol.MessageKey();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.Protocol.MessageKey();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -71026,6 +76223,11 @@ export const Protocol = $root.Protocol = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -71143,7 +76345,17 @@ export const Aea = $root.Aea = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.Aea.NonE2EEAttestation(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.Aea.NonE2EEAttestation();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -71171,6 +76383,11 @@ export const Aea = $root.Aea = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -71315,7 +76532,17 @@ export const StatusAttributions = $root.StatusAttributions = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.StatusAttributions.StatusAttribution(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.StatusAttributions.StatusAttribution();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -71391,6 +76618,11 @@ export const StatusAttributions = $root.StatusAttributions = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -71596,7 +76828,17 @@ export const StatusAttributions = $root.StatusAttributions = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.StatusAttributions.StatusAttribution.AiCreatedAttribution(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.StatusAttributions.StatusAttribution.AiCreatedAttribution();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -71624,6 +76866,11 @@ export const StatusAttributions = $root.StatusAttributions = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -71737,7 +76984,17 @@ export const StatusAttributions = $root.StatusAttributions = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.StatusAttributions.StatusAttribution.ExternalShare(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.StatusAttributions.StatusAttribution.ExternalShare();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -71783,6 +77040,11 @@ export const StatusAttributions = $root.StatusAttributions = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -71968,7 +77230,17 @@ export const StatusAttributions = $root.StatusAttributions = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.StatusAttributions.StatusAttribution.GroupStatus();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.StatusAttributions.StatusAttribution.GroupStatus();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -71990,6 +77262,11 @@ export const StatusAttributions = $root.StatusAttributions = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -72094,7 +77371,17 @@ export const StatusAttributions = $root.StatusAttributions = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.StatusAttributions.StatusAttribution.Music();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.StatusAttributions.StatusAttribution.Music();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -72146,6 +77433,11 @@ export const StatusAttributions = $root.StatusAttributions = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -72270,7 +77562,17 @@ export const StatusAttributions = $root.StatusAttributions = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.StatusAttributions.StatusAttribution.RLAttribution(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.StatusAttributions.StatusAttribution.RLAttribution();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -72298,6 +77600,11 @@ export const StatusAttributions = $root.StatusAttributions = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -72415,7 +77722,17 @@ export const StatusAttributions = $root.StatusAttributions = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.StatusAttributions.StatusAttribution.StatusReshare(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.StatusAttributions.StatusAttribution.StatusReshare();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -72449,6 +77766,11 @@ export const StatusAttributions = $root.StatusAttributions = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -72573,7 +77895,17 @@ export const StatusAttributions = $root.StatusAttributions = (() => {
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.StatusAttributions.StatusAttribution.StatusReshare.Metadata();
+                    var c, m;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.StatusAttributions.StatusAttribution.StatusReshare.Metadata();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -72613,6 +77945,11 @@ export const StatusAttributions = $root.StatusAttributions = (() => {
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -72776,7 +78113,17 @@ export const CompanionReg = $root.CompanionReg = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.CompanionReg.ClientPairingProps();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.CompanionReg.ClientPairingProps();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -72822,6 +78169,11 @@ export const CompanionReg = $root.CompanionReg = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -72951,7 +78303,17 @@ export const CompanionReg = $root.CompanionReg = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.CompanionReg.EncryptedPairingRequest();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.CompanionReg.EncryptedPairingRequest();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -72979,6 +78341,11 @@ export const CompanionReg = $root.CompanionReg = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -73099,7 +78466,17 @@ export const CompanionReg = $root.CompanionReg = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.CompanionReg.PairingRequest();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.CompanionReg.PairingRequest();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -73133,6 +78510,11 @@ export const CompanionReg = $root.CompanionReg = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -73266,7 +78648,17 @@ export const CompanionReg = $root.CompanionReg = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.CompanionReg.PrimaryEphemeralIdentity();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.CompanionReg.PrimaryEphemeralIdentity();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -73294,6 +78686,11 @@ export const CompanionReg = $root.CompanionReg = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -73411,7 +78808,17 @@ export const CompanionReg = $root.CompanionReg = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.CompanionReg.ProloguePayload();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.CompanionReg.ProloguePayload();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -73439,6 +78846,11 @@ export const CompanionReg = $root.CompanionReg = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -73546,7 +78958,17 @@ export const CompanionReg = $root.CompanionReg = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.CompanionReg.CompanionCommitment();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.CompanionReg.CompanionCommitment();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -73568,6 +78990,11 @@ export const CompanionReg = $root.CompanionReg = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -73672,7 +79099,17 @@ export const CompanionReg = $root.CompanionReg = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.CompanionReg.CompanionEphemeralIdentity(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.CompanionReg.CompanionEphemeralIdentity();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -73712,6 +79149,11 @@ export const CompanionReg = $root.CompanionReg = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -73940,7 +79382,17 @@ export const CompanionReg = $root.CompanionReg = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.CompanionReg.DeviceProps(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.CompanionReg.DeviceProps();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -73992,6 +79444,11 @@ export const CompanionReg = $root.CompanionReg = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -74226,7 +79683,17 @@ export const CompanionReg = $root.CompanionReg = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.CompanionReg.DeviceProps.AppVersion();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.CompanionReg.DeviceProps.AppVersion();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -74272,6 +79739,11 @@ export const CompanionReg = $root.CompanionReg = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -74464,7 +79936,17 @@ export const CompanionReg = $root.CompanionReg = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.CompanionReg.DeviceProps.HistorySyncConfig();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.CompanionReg.DeviceProps.HistorySyncConfig();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -74632,6 +80114,11 @@ export const CompanionReg = $root.CompanionReg = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -74940,7 +80427,17 @@ export const MmsRetry = $root.MmsRetry = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.MmsRetry.ServerErrorReceipt();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.MmsRetry.ServerErrorReceipt();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -74962,6 +80459,11 @@ export const MmsRetry = $root.MmsRetry = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -75060,7 +80562,17 @@ export const MmsRetry = $root.MmsRetry = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.MmsRetry.MediaRetryNotification(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.MmsRetry.MediaRetryNotification();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -75106,6 +80618,11 @@ export const MmsRetry = $root.MmsRetry = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -75260,7 +80777,17 @@ export const ServerSync = $root.ServerSync = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.ServerSync.CoexStateSync();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.ServerSync.CoexStateSync();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -75284,6 +80811,11 @@ export const ServerSync = $root.ServerSync = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -75386,7 +80918,17 @@ export const ServerSync = $root.ServerSync = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.ServerSync.CoexStateSync.CollectionMutations();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.ServerSync.CoexStateSync.CollectionMutations();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -75416,6 +80958,11 @@ export const ServerSync = $root.ServerSync = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -75533,7 +81080,17 @@ export const ServerSync = $root.ServerSync = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.ServerSync.CoexStateSync.Mutation(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.ServerSync.CoexStateSync.Mutation();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -75579,6 +81136,11 @@ export const ServerSync = $root.ServerSync = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -75747,7 +81309,17 @@ export const ServerSync = $root.ServerSync = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.ServerSync.SyncdPatch();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.ServerSync.SyncdPatch();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -75819,6 +81391,11 @@ export const ServerSync = $root.ServerSync = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -76014,7 +81591,17 @@ export const ServerSync = $root.ServerSync = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.ServerSync.SyncdMutation(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.ServerSync.SyncdMutation();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -76048,6 +81635,11 @@ export const ServerSync = $root.ServerSync = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -76164,7 +81756,17 @@ export const ServerSync = $root.ServerSync = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.ServerSync.SyncdMutations();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.ServerSync.SyncdMutations();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -76188,6 +81790,11 @@ export const ServerSync = $root.ServerSync = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -76299,7 +81906,17 @@ export const ServerSync = $root.ServerSync = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.ServerSync.SyncdSnapshot();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.ServerSync.SyncdSnapshot();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -76341,6 +81958,11 @@ export const ServerSync = $root.ServerSync = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -76491,7 +82113,17 @@ export const ServerSync = $root.ServerSync = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.ServerSync.ExternalBlobReference();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.ServerSync.ExternalBlobReference();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -76543,6 +82175,11 @@ export const ServerSync = $root.ServerSync = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -76716,7 +82353,17 @@ export const ServerSync = $root.ServerSync = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.ServerSync.SyncdRecord();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.ServerSync.SyncdRecord();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -76750,6 +82397,11 @@ export const ServerSync = $root.ServerSync = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -76859,7 +82511,17 @@ export const ServerSync = $root.ServerSync = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.ServerSync.KeyId();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.ServerSync.KeyId();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -76881,6 +82543,11 @@ export const ServerSync = $root.ServerSync = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -76979,7 +82646,17 @@ export const ServerSync = $root.ServerSync = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.ServerSync.SyncdValue();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.ServerSync.SyncdValue();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -77001,6 +82678,11 @@ export const ServerSync = $root.ServerSync = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -77099,7 +82781,17 @@ export const ServerSync = $root.ServerSync = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.ServerSync.SyncdIndex();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.ServerSync.SyncdIndex();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -77121,6 +82813,11 @@ export const ServerSync = $root.ServerSync = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -77222,7 +82919,17 @@ export const ServerSync = $root.ServerSync = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.ServerSync.ExitCode();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.ServerSync.ExitCode();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -77250,6 +82957,11 @@ export const ServerSync = $root.ServerSync = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -77362,7 +83074,17 @@ export const ServerSync = $root.ServerSync = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.ServerSync.SyncdVersion();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.ServerSync.SyncdVersion();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -77384,6 +83106,11 @@ export const ServerSync = $root.ServerSync = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");

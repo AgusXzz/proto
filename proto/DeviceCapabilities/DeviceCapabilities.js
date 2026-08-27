@@ -2,7 +2,7 @@
 import $protobuf from "protobufjs/minimal.js";
 
 const $Reader = $protobuf.Reader, $Writer = $protobuf.Writer, $util = $protobuf.util;
-const $Object = $util.global.Object, $undefined = $util.global.undefined, $Error = $util.global.Error, $TypeError = $util.global.TypeError, $String = $util.global.String, $parseInt = $util.global.parseInt, $Number = $util.global.Number, $BigInt = $util.global.BigInt, $Boolean = $util.global.Boolean;
+const $Object = $util.global.Object, $undefined = $util.global.undefined, $Error = $util.global.Error, $RangeError = $util.global.RangeError, $TypeError = $util.global.TypeError, $String = $util.global.String, $parseInt = $util.global.parseInt, $Number = $util.global.Number, $BigInt = $util.global.BigInt, $Boolean = $util.global.Boolean;
 
 const $root = $protobuf.roots["default"] || ($protobuf.roots["default"] = {});
 
@@ -108,7 +108,17 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.DeviceCapabilities.DeviceCapabilities(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.DeviceCapabilities.DeviceCapabilities();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -190,6 +200,11 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -370,7 +385,17 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.DeviceCapabilities.DeviceCapabilities.AiFbidMigration();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.DeviceCapabilities.DeviceCapabilities.AiFbidMigration();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -392,6 +417,11 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -497,7 +527,17 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.DeviceCapabilities.DeviceCapabilities.AiThread(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.DeviceCapabilities.DeviceCapabilities.AiThread();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -525,6 +565,11 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -634,7 +679,17 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.DeviceCapabilities.DeviceCapabilities.BizAiSettingsSync();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.DeviceCapabilities.DeviceCapabilities.BizAiSettingsSync();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -656,6 +711,11 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -757,7 +817,17 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.DeviceCapabilities.DeviceCapabilities.BusinessBroadcast();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.DeviceCapabilities.DeviceCapabilities.BusinessBroadcast();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -803,6 +873,11 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -928,7 +1003,17 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.DeviceCapabilities.DeviceCapabilities.ContactRefresh();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.DeviceCapabilities.DeviceCapabilities.ContactRefresh();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -950,6 +1035,11 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -1039,7 +1129,17 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.DeviceCapabilities.DeviceCapabilities.LIDMigration();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.DeviceCapabilities.DeviceCapabilities.LIDMigration();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -1061,6 +1161,11 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -1174,7 +1279,17 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.DeviceCapabilities.DeviceCapabilities.UserHasAvatar();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.DeviceCapabilities.DeviceCapabilities.UserHasAvatar();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -1196,6 +1311,11 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");

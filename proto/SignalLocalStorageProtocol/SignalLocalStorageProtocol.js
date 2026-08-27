@@ -2,7 +2,7 @@
 import $protobuf from "protobufjs/minimal.js";
 
 const $Reader = $protobuf.Reader, $Writer = $protobuf.Writer, $util = $protobuf.util;
-const $Object = $util.global.Object, $undefined = $util.global.undefined, $Error = $util.global.Error, $TypeError = $util.global.TypeError, $Array = $util.global.Array, $String = $util.global.String, $parseInt = $util.global.parseInt, $Number = $util.global.Number, $BigInt = $util.global.BigInt, $Boolean = $util.global.Boolean;
+const $Object = $util.global.Object, $undefined = $util.global.undefined, $Error = $util.global.Error, $RangeError = $util.global.RangeError, $TypeError = $util.global.TypeError, $Array = $util.global.Array, $String = $util.global.String, $parseInt = $util.global.parseInt, $Number = $util.global.Number, $BigInt = $util.global.BigInt, $Boolean = $util.global.Boolean;
 
 const $root = $protobuf.roots["default"] || ($protobuf.roots["default"] = {});
 
@@ -87,7 +87,17 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SignalLocalStorageProtocol.SenderKeyRecordStructure();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.SignalLocalStorageProtocol.SenderKeyRecordStructure();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -111,6 +121,11 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -222,7 +237,17 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SignalLocalStorageProtocol.SenderKeyStateStructure();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.SignalLocalStorageProtocol.SenderKeyStateStructure();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -264,6 +289,11 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -390,7 +420,17 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SignalLocalStorageProtocol.SenderKeyStateStructure.SenderChainKey();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SignalLocalStorageProtocol.SenderKeyStateStructure.SenderChainKey();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -418,6 +458,11 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -526,7 +571,17 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SignalLocalStorageProtocol.SenderKeyStateStructure.SenderMessageKey();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SignalLocalStorageProtocol.SenderKeyStateStructure.SenderMessageKey();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -554,6 +609,11 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -662,7 +722,17 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SignalLocalStorageProtocol.SenderKeyStateStructure.SenderSigningKey();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SignalLocalStorageProtocol.SenderKeyStateStructure.SenderSigningKey();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -690,6 +760,11 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -810,7 +885,17 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SignalLocalStorageProtocol.IdentityKeyPairStructure();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.SignalLocalStorageProtocol.IdentityKeyPairStructure();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -838,6 +923,11 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -964,7 +1054,17 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SignalLocalStorageProtocol.SignedPreKeyRecordStructure();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.SignalLocalStorageProtocol.SignedPreKeyRecordStructure();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -1010,6 +1110,11 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -1176,7 +1281,17 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SignalLocalStorageProtocol.PreKeyRecordStructure();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.SignalLocalStorageProtocol.PreKeyRecordStructure();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -1210,6 +1325,11 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -1337,7 +1457,17 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SignalLocalStorageProtocol.RecordStructure();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.SignalLocalStorageProtocol.RecordStructure();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -1367,6 +1497,11 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -1516,7 +1651,17 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SignalLocalStorageProtocol.SessionStructure();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.SignalLocalStorageProtocol.SessionStructure();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -1612,6 +1757,11 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -1848,7 +1998,17 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SignalLocalStorageProtocol.SessionStructure.Chain();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SignalLocalStorageProtocol.SessionStructure.Chain();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -1890,6 +2050,11 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -2032,7 +2197,17 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SignalLocalStorageProtocol.SessionStructure.Chain.ChainKey();
+                    var c, m;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.SignalLocalStorageProtocol.SessionStructure.Chain.ChainKey();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -2060,6 +2235,11 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -2174,7 +2354,17 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey();
+                    var c, m;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -2214,6 +2404,11 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -2372,7 +2567,17 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SignalLocalStorageProtocol.SessionStructure.PendingKeyExchange();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SignalLocalStorageProtocol.SessionStructure.PendingKeyExchange();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -2430,6 +2635,11 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -2627,7 +2837,17 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SignalLocalStorageProtocol.SessionStructure.PendingPreKey();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SignalLocalStorageProtocol.SessionStructure.PendingPreKey();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -2673,6 +2893,11 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");

@@ -2,7 +2,7 @@
 import $protobuf from "protobufjs/minimal.js";
 
 const $Reader = $protobuf.Reader, $Writer = $protobuf.Writer, $util = $protobuf.util;
-const $Object = $util.global.Object, $undefined = $util.global.undefined, $Error = $util.global.Error, $TypeError = $util.global.TypeError, $String = $util.global.String, $Array = $util.global.Array, $Number = $util.global.Number, $Boolean = $util.global.Boolean, $isFinite = $util.global.isFinite, $parseInt = $util.global.parseInt, $BigInt = $util.global.BigInt;
+const $Object = $util.global.Object, $undefined = $util.global.undefined, $Error = $util.global.Error, $RangeError = $util.global.RangeError, $TypeError = $util.global.TypeError, $String = $util.global.String, $Array = $util.global.Array, $Number = $util.global.Number, $Boolean = $util.global.Boolean, $isFinite = $util.global.isFinite, $parseInt = $util.global.parseInt, $BigInt = $util.global.BigInt;
 
 const $root = $protobuf.roots["default"] || ($protobuf.roots["default"] = {});
 
@@ -111,7 +111,17 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommonDeprecated.AIRichResponseSubMessage(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommonDeprecated.AIRichResponseSubMessage();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -193,6 +203,11 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -407,7 +422,17 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommonDeprecated.AIRichResponseContentItemsMetadata(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommonDeprecated.AIRichResponseContentItemsMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -443,6 +468,11 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -563,7 +593,17 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommonDeprecated.AIRichResponseContentItemsMetadata.AIRichResponseContentItemMetadata();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.AICommonDeprecated.AIRichResponseContentItemsMetadata.AIRichResponseContentItemMetadata();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -586,6 +626,11 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -685,7 +730,17 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommonDeprecated.AIRichResponseContentItemsMetadata.AIRichResponseReelItem();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.AICommonDeprecated.AIRichResponseContentItemsMetadata.AIRichResponseReelItem();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -725,6 +780,11 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -863,7 +923,17 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommonDeprecated.AIRichResponseMapMetadata();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommonDeprecated.AIRichResponseMapMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -917,6 +987,11 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -1062,7 +1137,17 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommonDeprecated.AIRichResponseMapMetadata.AIRichResponseMapAnnotation();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.AICommonDeprecated.AIRichResponseMapMetadata.AIRichResponseMapAnnotation();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -1108,6 +1193,11 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -1234,7 +1324,17 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommonDeprecated.AIRichResponseLatexMetadata();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommonDeprecated.AIRichResponseLatexMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -1264,6 +1364,11 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -1393,7 +1498,17 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommonDeprecated.AIRichResponseLatexMetadata.AIRichResponseLatexExpression();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.AICommonDeprecated.AIRichResponseLatexMetadata.AIRichResponseLatexExpression();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -1463,6 +1578,11 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -1620,7 +1740,17 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommonDeprecated.AIRichResponseDynamicMetadata(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommonDeprecated.AIRichResponseDynamicMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -1666,6 +1796,11 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -1818,7 +1953,17 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommonDeprecated.AIRichResponseTableMetadata();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommonDeprecated.AIRichResponseTableMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -1848,6 +1993,11 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -1959,7 +2109,17 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommonDeprecated.AIRichResponseTableMetadata.AIRichResponseTableRow();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.AICommonDeprecated.AIRichResponseTableMetadata.AIRichResponseTableRow();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -1989,6 +2149,11 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -2104,7 +2269,17 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommonDeprecated.AIRichResponseCodeMetadata();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommonDeprecated.AIRichResponseCodeMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -2134,6 +2309,11 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -2242,7 +2422,17 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommonDeprecated.AIRichResponseCodeMetadata.AIRichResponseCodeBlock(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.AICommonDeprecated.AIRichResponseCodeMetadata.AIRichResponseCodeBlock();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -2276,6 +2466,11 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -2419,7 +2614,17 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommonDeprecated.AIRichResponseInlineImageMetadata(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommonDeprecated.AIRichResponseInlineImageMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -2465,6 +2670,11 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -2603,7 +2813,17 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommonDeprecated.AIRichResponseGridImageMetadata();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommonDeprecated.AIRichResponseGridImageMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -2633,6 +2853,11 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -2749,7 +2974,17 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommonDeprecated.AIRichResponseImageURL();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommonDeprecated.AIRichResponseImageURL();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -2783,6 +3018,11 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -2918,7 +3158,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.AIProvenance();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.AIProvenance();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -2946,6 +3196,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -3046,7 +3301,17 @@ export const AICommon = $root.AICommon = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.AIProvenance.Metadata();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.AICommon.AIProvenance.Metadata();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -3074,6 +3339,11 @@ export const AICommon = $root.AICommon = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -3176,7 +3446,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotAgentDeepLinkMetadata();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotAgentDeepLinkMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -3204,6 +3484,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -3309,7 +3594,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotAgentMetadata();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotAgentMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -3331,6 +3626,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -3431,7 +3731,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotInfrastructureDiagnostics(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotInfrastructureDiagnostics();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -3473,6 +3783,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -3613,7 +3928,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.AIHomeState();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.AIHomeState();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -3651,6 +3976,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -3810,7 +4140,17 @@ export const AICommon = $root.AICommon = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.AIHomeState.AIHomeOption(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.AICommon.AIHomeState.AIHomeOption();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -3880,6 +4220,11 @@ export const AICommon = $root.AICommon = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -4056,7 +4401,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotDocumentMessageMetadata(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotDocumentMessageMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -4084,6 +4439,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -4194,7 +4554,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.SessionTransparencyMetadata(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.SessionTransparencyMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -4234,6 +4604,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -4348,7 +4723,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.AIRegenerateMetadata();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.AIRegenerateMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -4376,6 +4761,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -4490,7 +4880,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.AIRichResponseUnifiedResponse();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.AIRichResponseUnifiedResponse();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -4512,6 +4912,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -4613,7 +5018,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotMessageSharingInfo(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotMessageSharingInfo();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -4647,6 +5062,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -4945,7 +5365,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.ForwardedAIBotMessageInfo();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.ForwardedAIBotMessageInfo();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -4979,6 +5409,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -5100,7 +5535,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotFeedbackMessage(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotFeedbackMessage();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -5170,6 +5615,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -5473,7 +5923,17 @@ export const AICommon = $root.AICommon = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotFeedbackMessage.SideBySideSurveyMetadata();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.AICommon.BotFeedbackMessage.SideBySideSurveyMetadata();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -5543,6 +6003,11 @@ export const AICommon = $root.AICommon = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -5695,7 +6160,17 @@ export const AICommon = $root.AICommon = (() => {
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotFeedbackMessage.SideBySideSurveyMetadata.SideBySideSurveyAnalyticsData();
+                    var c, m;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.AICommon.BotFeedbackMessage.SideBySideSurveyMetadata.SideBySideSurveyAnalyticsData();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -5729,6 +6204,11 @@ export const AICommon = $root.AICommon = (() => {
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -5856,7 +6336,17 @@ export const AICommon = $root.AICommon = (() => {
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotFeedbackMessage.SideBySideSurveyMetadata.SidebySideSurveyMetaAiAnalyticsData();
+                    var c, m;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.AICommon.BotFeedbackMessage.SideBySideSurveyMetadata.SidebySideSurveyMetaAiAnalyticsData();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -5926,6 +6416,11 @@ export const AICommon = $root.AICommon = (() => {
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -6078,7 +6573,17 @@ export const AICommon = $root.AICommon = (() => {
                             q = 0;
                         if (q > $Reader.recursionLimit)
                             throw $Error("max depth exceeded");
-                        var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotFeedbackMessage.SideBySideSurveyMetadata.SidebySideSurveyMetaAiAnalyticsData.SideBySideSurveyAbandonEventData();
+                        var c, m;
+                        if (l === $undefined)
+                            c = r.len;
+                        else {
+                            c = r.pos + l;
+                            if (c > r.len)
+                                throw $RangeError("index out of range");
+                            l = r.len;
+                            r.len = c;
+                        }
+                        m = g || new $root.AICommon.BotFeedbackMessage.SideBySideSurveyMetadata.SidebySideSurveyMetaAiAnalyticsData.SideBySideSurveyAbandonEventData();
                         while (r.pos < c) {
                             var s = r.pos;
                             var t = r.tag();
@@ -6100,6 +6605,11 @@ export const AICommon = $root.AICommon = (() => {
                                 $util.makeProp(m, "$unknowns", false);
                                 (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                             }
+                        }
+                        if (l !== $undefined) {
+                            if (r.pos !== c)
+                                throw $RangeError("index out of range");
+                            r.len = l;
                         }
                         if (z !== $undefined)
                             throw $Error("missing end group");
@@ -6192,7 +6702,17 @@ export const AICommon = $root.AICommon = (() => {
                             q = 0;
                         if (q > $Reader.recursionLimit)
                             throw $Error("max depth exceeded");
-                        var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotFeedbackMessage.SideBySideSurveyMetadata.SidebySideSurveyMetaAiAnalyticsData.SideBySideSurveyCTAClickEventData();
+                        var c, m;
+                        if (l === $undefined)
+                            c = r.len;
+                        else {
+                            c = r.pos + l;
+                            if (c > r.len)
+                                throw $RangeError("index out of range");
+                            l = r.len;
+                            r.len = c;
+                        }
+                        m = g || new $root.AICommon.BotFeedbackMessage.SideBySideSurveyMetadata.SidebySideSurveyMetaAiAnalyticsData.SideBySideSurveyCTAClickEventData();
                         while (r.pos < c) {
                             var s = r.pos;
                             var t = r.tag();
@@ -6220,6 +6740,11 @@ export const AICommon = $root.AICommon = (() => {
                                 $util.makeProp(m, "$unknowns", false);
                                 (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                             }
+                        }
+                        if (l !== $undefined) {
+                            if (r.pos !== c)
+                                throw $RangeError("index out of range");
+                            r.len = l;
                         }
                         if (z !== $undefined)
                             throw $Error("missing end group");
@@ -6316,7 +6841,17 @@ export const AICommon = $root.AICommon = (() => {
                             q = 0;
                         if (q > $Reader.recursionLimit)
                             throw $Error("max depth exceeded");
-                        var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotFeedbackMessage.SideBySideSurveyMetadata.SidebySideSurveyMetaAiAnalyticsData.SideBySideSurveyCTAImpressionEventData();
+                        var c, m;
+                        if (l === $undefined)
+                            c = r.len;
+                        else {
+                            c = r.pos + l;
+                            if (c > r.len)
+                                throw $RangeError("index out of range");
+                            l = r.len;
+                            r.len = c;
+                        }
+                        m = g || new $root.AICommon.BotFeedbackMessage.SideBySideSurveyMetadata.SidebySideSurveyMetaAiAnalyticsData.SideBySideSurveyCTAImpressionEventData();
                         while (r.pos < c) {
                             var s = r.pos;
                             var t = r.tag();
@@ -6338,6 +6873,11 @@ export const AICommon = $root.AICommon = (() => {
                                 $util.makeProp(m, "$unknowns", false);
                                 (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                             }
+                        }
+                        if (l !== $undefined) {
+                            if (r.pos !== c)
+                                throw $RangeError("index out of range");
+                            r.len = l;
                         }
                         if (z !== $undefined)
                             throw $Error("missing end group");
@@ -6430,7 +6970,17 @@ export const AICommon = $root.AICommon = (() => {
                             q = 0;
                         if (q > $Reader.recursionLimit)
                             throw $Error("max depth exceeded");
-                        var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotFeedbackMessage.SideBySideSurveyMetadata.SidebySideSurveyMetaAiAnalyticsData.SideBySideSurveyResponseEventData();
+                        var c, m;
+                        if (l === $undefined)
+                            c = r.len;
+                        else {
+                            c = r.pos + l;
+                            if (c > r.len)
+                                throw $RangeError("index out of range");
+                            l = r.len;
+                            r.len = c;
+                        }
+                        m = g || new $root.AICommon.BotFeedbackMessage.SideBySideSurveyMetadata.SidebySideSurveyMetaAiAnalyticsData.SideBySideSurveyResponseEventData();
                         while (r.pos < c) {
                             var s = r.pos;
                             var t = r.tag();
@@ -6458,6 +7008,11 @@ export const AICommon = $root.AICommon = (() => {
                                 $util.makeProp(m, "$unknowns", false);
                                 (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                             }
+                        }
+                        if (l !== $undefined) {
+                            if (r.pos !== c)
+                                throw $RangeError("index out of range");
+                            r.len = l;
                         }
                         if (z !== $undefined)
                             throw $Error("missing end group");
@@ -6563,7 +7118,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotGroupParticipantMetadata();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotGroupParticipantMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -6585,6 +7150,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -6677,7 +7247,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotRenderingConfigMetadata();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotRenderingConfigMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -6705,6 +7285,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -6804,7 +7389,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotHistoryShareMetadata();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotHistoryShareMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -6828,6 +7423,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -6930,7 +7530,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotGroupMetadata();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotGroupMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -6954,6 +7564,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -7053,7 +7668,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.AISubscriptionUpsellMetadata(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.AISubscriptionUpsellMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -7081,6 +7706,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -7312,7 +7942,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotMetadata();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -7586,6 +8226,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -8057,7 +8702,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotPttPromptMetadata();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotPttPromptMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -8079,6 +8734,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -8171,7 +8831,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotResolvedToolCallMetadata();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotResolvedToolCallMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -8199,6 +8869,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -8301,7 +8976,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotCommandMetadata();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotCommandMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -8335,6 +9020,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -8438,7 +9128,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.AIMetadataOperation();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.AIMetadataOperation();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -8460,6 +9160,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -8557,7 +9262,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.HatchMetadataSync();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.HatchMetadataSync();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -8591,6 +9306,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -8725,7 +9445,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.AIMediaCollectionMessage();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.AIMediaCollectionMessage();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -8759,6 +9489,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -8865,7 +9600,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.AIMediaCollectionMetadata();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.AIMediaCollectionMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -8893,6 +9638,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -8992,7 +9742,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.AIThreadInfo();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.AIThreadInfo();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -9020,6 +9780,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -9120,7 +9885,17 @@ export const AICommon = $root.AICommon = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.AIThreadInfo.AIThreadClientInfo(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.AICommon.AIThreadInfo.AIThreadClientInfo();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -9154,6 +9929,11 @@ export const AICommon = $root.AICommon = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -9275,7 +10055,17 @@ export const AICommon = $root.AICommon = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.AIThreadInfo.AIThreadServerInfo();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.AICommon.AIThreadInfo.AIThreadServerInfo();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -9297,6 +10087,11 @@ export const AICommon = $root.AICommon = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -9395,7 +10190,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotUnifiedResponseMutation();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotUnifiedResponseMutation();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -9425,6 +10230,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -9538,7 +10348,17 @@ export const AICommon = $root.AICommon = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotUnifiedResponseMutation.MediaDetailsMetadata();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.AICommon.BotUnifiedResponseMutation.MediaDetailsMetadata();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -9572,6 +10392,11 @@ export const AICommon = $root.AICommon = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -9682,7 +10507,17 @@ export const AICommon = $root.AICommon = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotUnifiedResponseMutation.SideBySideMetadata();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.AICommon.BotUnifiedResponseMutation.SideBySideMetadata();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -9710,6 +10545,11 @@ export const AICommon = $root.AICommon = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -9809,7 +10649,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotMessageOrigin(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotMessageOrigin();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -9837,6 +10687,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -9939,7 +10794,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotMessageOriginMetadata();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotMessageOriginMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -9963,6 +10828,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -10119,7 +10989,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.InThreadSurveyMetadata();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.InThreadSurveyMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -10247,6 +11127,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -10480,7 +11365,17 @@ export const AICommon = $root.AICommon = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.InThreadSurveyMetadata.InThreadSurveyOption();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.AICommon.InThreadSurveyMetadata.InThreadSurveyOption();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -10514,6 +11409,11 @@ export const AICommon = $root.AICommon = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -10620,7 +11520,17 @@ export const AICommon = $root.AICommon = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.InThreadSurveyMetadata.InThreadSurveyPrivacyStatementPart();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.AICommon.InThreadSurveyMetadata.InThreadSurveyPrivacyStatementPart();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -10648,6 +11558,11 @@ export const AICommon = $root.AICommon = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -10753,7 +11668,17 @@ export const AICommon = $root.AICommon = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.InThreadSurveyMetadata.InThreadSurveyQuestion();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.AICommon.InThreadSurveyMetadata.InThreadSurveyQuestion();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -10789,6 +11714,11 @@ export const AICommon = $root.AICommon = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -10910,7 +11840,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotSourcesMetadata();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotSourcesMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -10934,6 +11874,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -11048,7 +11993,17 @@ export const AICommon = $root.AICommon = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotSourcesMetadata.BotSourceItem(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.AICommon.BotSourcesMetadata.BotSourceItem();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -11112,6 +12067,11 @@ export const AICommon = $root.AICommon = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -11282,7 +12242,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotAgeCollectionMetadata(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotAgeCollectionMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -11322,6 +12292,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -11443,7 +12418,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotImagineMetadata(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotImagineMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -11477,6 +12462,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -11606,7 +12596,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotQuotaMetadata();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotQuotaMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -11630,6 +12630,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -11732,7 +12737,17 @@ export const AICommon = $root.AICommon = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotQuotaMetadata.BotFeatureQuotaMetadata(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.AICommon.BotQuotaMetadata.BotFeatureQuotaMetadata();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -11772,6 +12787,11 @@ export const AICommon = $root.AICommon = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -11918,7 +12938,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotModeSelectionMetadata(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotModeSelectionMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -11931,6 +12961,9 @@ export const AICommon = $root.AICommon = (() => {
                 case 1: {
                         if (u === 2) {
                             var c2 = r.uint32() + r.pos;
+                            if (c2 > r.len)
+                                throw $RangeError("index out of range");
+                            r.len = c2;
                             while (r.pos < c2) {
                                 s = r.pos;
                                 v = r.int32();
@@ -11943,6 +12976,9 @@ export const AICommon = $root.AICommon = (() => {
                                     (m.$unknowns || (m.$unknowns = [])).push($util.rawField(1, 0, r.raw(s, r.pos)));
                                 }
                             }
+                            if (r.pos !== c2)
+                                throw $RangeError("index out of range");
+                            r.len = c;
                             continue;
                         }
                         if (u !== 0)
@@ -11978,6 +13014,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -12110,7 +13151,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotCapabilityMetadata(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotCapabilityMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -12123,6 +13174,9 @@ export const AICommon = $root.AICommon = (() => {
                 case 1: {
                         if (u === 2) {
                             var c2 = r.uint32() + r.pos;
+                            if (c2 > r.len)
+                                throw $RangeError("index out of range");
+                            r.len = c2;
                             while (r.pos < c2) {
                                 s = r.pos;
                                 v = r.int32();
@@ -12135,6 +13189,9 @@ export const AICommon = $root.AICommon = (() => {
                                     (m.$unknowns || (m.$unknowns = [])).push($util.rawField(1, 0, r.raw(s, r.pos)));
                                 }
                             }
+                            if (r.pos !== c2)
+                                throw $RangeError("index out of range");
+                            r.len = c;
                             continue;
                         }
                         if (u !== 0)
@@ -12156,6 +13213,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -12619,7 +13681,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotProgressIndicatorMetadata();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotProgressIndicatorMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -12655,6 +13727,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -12807,7 +13884,17 @@ export const AICommon = $root.AICommon = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotProgressIndicatorMetadata.BotPlanningStepMetadata(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.AICommon.BotProgressIndicatorMetadata.BotPlanningStepMetadata();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -12875,6 +13962,11 @@ export const AICommon = $root.AICommon = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -13050,7 +14142,17 @@ export const AICommon = $root.AICommon = (() => {
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotProgressIndicatorMetadata.BotPlanningStepMetadata.BotPlanningSearchSourceMetadata(), v;
+                    var c, m, v;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.AICommon.BotProgressIndicatorMetadata.BotPlanningStepMetadata.BotPlanningSearchSourceMetadata();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -13096,6 +14198,11 @@ export const AICommon = $root.AICommon = (() => {
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -13228,7 +14335,17 @@ export const AICommon = $root.AICommon = (() => {
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotProgressIndicatorMetadata.BotPlanningStepMetadata.BotPlanningSearchSourcesMetadata(), v;
+                    var c, m, v;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.AICommon.BotProgressIndicatorMetadata.BotPlanningStepMetadata.BotPlanningSearchSourcesMetadata();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -13268,6 +14385,11 @@ export const AICommon = $root.AICommon = (() => {
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -13405,7 +14527,17 @@ export const AICommon = $root.AICommon = (() => {
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotProgressIndicatorMetadata.BotPlanningStepMetadata.BotPlanningStepSectionMetadata();
+                    var c, m;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.AICommon.BotProgressIndicatorMetadata.BotPlanningStepMetadata.BotPlanningStepSectionMetadata();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -13441,6 +14573,11 @@ export const AICommon = $root.AICommon = (() => {
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -13586,7 +14723,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotModelMetadata(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotModelMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -13632,6 +14779,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -13787,7 +14939,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotReminderMetadata(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotReminderMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -13845,6 +15007,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -14038,7 +15205,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotMemuMetadata();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotMemuMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -14062,6 +15239,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -14179,7 +15361,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotMediaMetadata(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotMediaMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -14243,6 +15435,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -14413,7 +15610,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotSessionMetadata(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotSessionMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -14447,6 +15654,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -14581,7 +15793,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotMetricsMetadata(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotMetricsMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -14627,6 +15849,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -14949,7 +16176,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotRenderingMetadata();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotRenderingMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -14973,6 +16210,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -15075,7 +16317,17 @@ export const AICommon = $root.AICommon = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotRenderingMetadata.Keyword();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.AICommon.BotRenderingMetadata.Keyword();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -15105,6 +16357,11 @@ export const AICommon = $root.AICommon = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -15217,7 +16474,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotPromotionMessageMetadata(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotPromotionMessageMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -15251,6 +16518,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -15385,7 +16657,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotSignatureVerificationUseCaseProof(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotSignatureVerificationUseCaseProof();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -15441,6 +16723,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -15625,7 +16912,17 @@ export const AICommon = $root.AICommon = (() => {
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotSignatureVerificationUseCaseProof.CertificateSKI(), v;
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.AICommon.BotSignatureVerificationUseCaseProof.CertificateSKI();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -15659,6 +16956,11 @@ export const AICommon = $root.AICommon = (() => {
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -15794,7 +17096,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotSignatureVerificationMetadata();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotSignatureVerificationMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -15818,6 +17130,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -15920,7 +17237,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotMemoryFact();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotMemoryFact();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -15948,6 +17275,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -16056,7 +17388,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotMemoryMetadata();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotMemoryMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -16094,6 +17436,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -16219,7 +17566,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotLinkedAccount(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotLinkedAccount();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -16247,6 +17604,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -16355,7 +17717,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotLinkedAccountsMetadata();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotLinkedAccountsMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -16391,6 +17763,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -16518,7 +17895,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotPromptSuggestion();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotPromptSuggestion();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -16546,6 +17933,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -16645,7 +18037,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotPromptSuggestions();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotPromptSuggestions();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -16669,6 +18071,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -16780,7 +18187,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotSuggestedPromptMetadata();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotSuggestedPromptMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -16822,6 +18239,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -16977,7 +18399,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.BotPluginMetadata(), v;
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotPluginMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -17089,6 +18521,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -17415,7 +18852,17 @@ export const AICommon = $root.AICommon = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.AICommon.SideBySideSurveyCardImpressionEventData();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.SideBySideSurveyCardImpressionEventData();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -17428,6 +18875,11 @@ export const AICommon = $root.AICommon = (() => {
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -17510,7 +18962,17 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SignalLocalStorageProtocol.SenderKeyRecordStructure();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.SignalLocalStorageProtocol.SenderKeyRecordStructure();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -17534,6 +18996,11 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -17645,7 +19112,17 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SignalLocalStorageProtocol.SenderKeyStateStructure();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.SignalLocalStorageProtocol.SenderKeyStateStructure();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -17687,6 +19164,11 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -17813,7 +19295,17 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SignalLocalStorageProtocol.SenderKeyStateStructure.SenderChainKey();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SignalLocalStorageProtocol.SenderKeyStateStructure.SenderChainKey();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -17841,6 +19333,11 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -17949,7 +19446,17 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SignalLocalStorageProtocol.SenderKeyStateStructure.SenderMessageKey();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SignalLocalStorageProtocol.SenderKeyStateStructure.SenderMessageKey();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -17977,6 +19484,11 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -18085,7 +19597,17 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SignalLocalStorageProtocol.SenderKeyStateStructure.SenderSigningKey();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SignalLocalStorageProtocol.SenderKeyStateStructure.SenderSigningKey();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -18113,6 +19635,11 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -18233,7 +19760,17 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SignalLocalStorageProtocol.IdentityKeyPairStructure();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.SignalLocalStorageProtocol.IdentityKeyPairStructure();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -18261,6 +19798,11 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -18387,7 +19929,17 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SignalLocalStorageProtocol.SignedPreKeyRecordStructure();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.SignalLocalStorageProtocol.SignedPreKeyRecordStructure();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -18433,6 +19985,11 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -18599,7 +20156,17 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SignalLocalStorageProtocol.PreKeyRecordStructure();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.SignalLocalStorageProtocol.PreKeyRecordStructure();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -18633,6 +20200,11 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -18760,7 +20332,17 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SignalLocalStorageProtocol.RecordStructure();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.SignalLocalStorageProtocol.RecordStructure();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -18790,6 +20372,11 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -18939,7 +20526,17 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SignalLocalStorageProtocol.SessionStructure();
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.SignalLocalStorageProtocol.SessionStructure();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -19035,6 +20632,11 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                     $util.makeProp(m, "$unknowns", false);
                     (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                 }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
             }
             if (z !== $undefined)
                 throw $Error("missing end group");
@@ -19271,7 +20873,17 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SignalLocalStorageProtocol.SessionStructure.Chain();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SignalLocalStorageProtocol.SessionStructure.Chain();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -19313,6 +20925,11 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -19455,7 +21072,17 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SignalLocalStorageProtocol.SessionStructure.Chain.ChainKey();
+                    var c, m;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.SignalLocalStorageProtocol.SessionStructure.Chain.ChainKey();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -19483,6 +21110,11 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -19597,7 +21229,17 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey();
+                    var c, m;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey();
                     while (r.pos < c) {
                         var s = r.pos;
                         var t = r.tag();
@@ -19637,6 +21279,11 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                             $util.makeProp(m, "$unknowns", false);
                             (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                         }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
                     }
                     if (z !== $undefined)
                         throw $Error("missing end group");
@@ -19795,7 +21442,17 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SignalLocalStorageProtocol.SessionStructure.PendingKeyExchange();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SignalLocalStorageProtocol.SessionStructure.PendingKeyExchange();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -19853,6 +21510,11 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
@@ -20050,7 +21712,17 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                     q = 0;
                 if (q > $Reader.recursionLimit)
                     throw $Error("max depth exceeded");
-                var c = l === $undefined ? r.len : r.pos + l, m = g || new $root.SignalLocalStorageProtocol.SessionStructure.PendingPreKey();
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SignalLocalStorageProtocol.SessionStructure.PendingPreKey();
                 while (r.pos < c) {
                     var s = r.pos;
                     var t = r.tag();
@@ -20096,6 +21768,11 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                         $util.makeProp(m, "$unknowns", false);
                         (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                     }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
                 }
                 if (z !== $undefined)
                     throw $Error("missing end group");
