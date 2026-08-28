@@ -782,6 +782,7 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
             BusinessBroadcast.prototype.campaignSyncEnabled = false;
             BusinessBroadcast.prototype.insightsSyncEnabled = false;
             BusinessBroadcast.prototype.recipientLimit = 0;
+            BusinessBroadcast.prototype.proCompanionSupportEnabled = false;
 
             BusinessBroadcast.create = function(properties) {
                 return new BusinessBroadcast(properties);
@@ -804,6 +805,8 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                     w.uint32(32).bool(m.insightsSyncEnabled);
                 if (m.recipientLimit != null && $Object.hasOwnProperty.call(m, "recipientLimit"))
                     w.uint32(40).int32(m.recipientLimit);
+                if (m.proCompanionSupportEnabled != null && $Object.hasOwnProperty.call(m, "proCompanionSupportEnabled"))
+                    w.uint32(48).bool(m.proCompanionSupportEnabled);
                 if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                     for (var i = 0; i < m.$unknowns.length; ++i)
                         w.raw(m.$unknowns[i]);
@@ -867,6 +870,12 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                             m.recipientLimit = r.int32();
                             continue;
                         }
+                    case 6: {
+                            if (u !== 0)
+                                break;
+                            m.proCompanionSupportEnabled = r.bool();
+                            continue;
+                        }
                     }
                     r.skipType(u, q, t);
                     if (!r.discardUnknown) {
@@ -909,6 +918,9 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                 if (d.recipientLimit != null) {
                     m.recipientLimit = d.recipientLimit | 0;
                 }
+                if (d.proCompanionSupportEnabled != null) {
+                    m.proCompanionSupportEnabled = $Boolean(d.proCompanionSupportEnabled);
+                }
                 return m;
             };
 
@@ -926,6 +938,7 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                     d.campaignSyncEnabled = false;
                     d.insightsSyncEnabled = false;
                     d.recipientLimit = 0;
+                    d.proCompanionSupportEnabled = false;
                 }
                 if (m.importListEnabled != null && $Object.hasOwnProperty.call(m, "importListEnabled")) {
                     d.importListEnabled = m.importListEnabled;
@@ -941,6 +954,9 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                 }
                 if (m.recipientLimit != null && $Object.hasOwnProperty.call(m, "recipientLimit")) {
                     d.recipientLimit = m.recipientLimit;
+                }
+                if (m.proCompanionSupportEnabled != null && $Object.hasOwnProperty.call(m, "proCompanionSupportEnabled")) {
+                    d.proCompanionSupportEnabled = m.proCompanionSupportEnabled;
                 }
                 return d;
             };

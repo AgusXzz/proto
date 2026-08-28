@@ -2209,6 +2209,10 @@ export const AICommon = $root.AICommon = (() => {
             case 57:
                 m.botEntryPointOrigin = 57;
                 break;
+            case "NEW_3P_AGENT_CREATION":
+            case 58:
+                m.botEntryPointOrigin = 58;
+                break;
             default:
             }
             if (d.forwardScore != null) {
@@ -4759,6 +4763,7 @@ export const AICommon = $root.AICommon = (() => {
         BotMetadata.prototype.subscriptionUpsellMetadata = null;
         BotMetadata.prototype.pttPromptMetadata = null;
         BotMetadata.prototype.botHistoryShareMetadata = null;
+        BotMetadata.prototype.responseStoppedByUser = false;
         BotMetadata.prototype.internalMetadata = $util.newBuffer([]);
 
         BotMetadata.create = function(properties) {
@@ -4856,6 +4861,8 @@ export const AICommon = $root.AICommon = (() => {
                 $root.AICommon.BotPttPromptMetadata.encode(m.pttPromptMetadata, w.uint32(338).fork(), q + 1).ldelim();
             if (m.botHistoryShareMetadata != null && $Object.hasOwnProperty.call(m, "botHistoryShareMetadata"))
                 $root.AICommon.BotHistoryShareMetadata.encode(m.botHistoryShareMetadata, w.uint32(346).fork(), q + 1).ldelim();
+            if (m.responseStoppedByUser != null && $Object.hasOwnProperty.call(m, "responseStoppedByUser"))
+                w.uint32(352).bool(m.responseStoppedByUser);
             if (m.internalMetadata != null && $Object.hasOwnProperty.call(m, "internalMetadata"))
                 w.uint32(7994).bytes(m.internalMetadata);
             if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
@@ -5143,6 +5150,12 @@ export const AICommon = $root.AICommon = (() => {
                         m.botHistoryShareMetadata = $root.AICommon.BotHistoryShareMetadata.decode(r, r.uint32(), $undefined, q + 1, m.botHistoryShareMetadata);
                         continue;
                     }
+                case 44: {
+                        if (u !== 0)
+                            break;
+                        m.responseStoppedByUser = r.bool();
+                        continue;
+                    }
                 case 999: {
                         if (u !== 2)
                             break;
@@ -5375,6 +5388,9 @@ export const AICommon = $root.AICommon = (() => {
                     throw $TypeError(".AICommon.BotMetadata.botHistoryShareMetadata: object expected");
                 m.botHistoryShareMetadata = $root.AICommon.BotHistoryShareMetadata.fromObject(d.botHistoryShareMetadata, q + 1);
             }
+            if (d.responseStoppedByUser != null) {
+                m.responseStoppedByUser = $Boolean(d.responseStoppedByUser);
+            }
             if (d.internalMetadata != null) {
                 if (typeof d.internalMetadata === "string")
                     $util.base64.decode(d.internalMetadata, m.internalMetadata = $util.newBuffer($util.base64.length(d.internalMetadata)), 0);
@@ -5441,6 +5457,7 @@ export const AICommon = $root.AICommon = (() => {
                 d.subscriptionUpsellMetadata = null;
                 d.pttPromptMetadata = null;
                 d.botHistoryShareMetadata = null;
+                d.responseStoppedByUser = false;
                 if (o.bytes === $String)
                     d.internalMetadata = "";
                 else {
@@ -5574,6 +5591,9 @@ export const AICommon = $root.AICommon = (() => {
             }
             if (m.botHistoryShareMetadata != null && $Object.hasOwnProperty.call(m, "botHistoryShareMetadata")) {
                 d.botHistoryShareMetadata = $root.AICommon.BotHistoryShareMetadata.toObject(m.botHistoryShareMetadata, o, q + 1);
+            }
+            if (m.responseStoppedByUser != null && $Object.hasOwnProperty.call(m, "responseStoppedByUser")) {
+                d.responseStoppedByUser = m.responseStoppedByUser;
             }
             if (m.internalMetadata != null && $Object.hasOwnProperty.call(m, "internalMetadata")) {
                 d.internalMetadata = o.bytes === $String ? $util.base64.encode(m.internalMetadata, 0, m.internalMetadata.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.internalMetadata) : m.internalMetadata;
@@ -10449,6 +10469,10 @@ export const AICommon = $root.AICommon = (() => {
                     case 69:
                         m.capabilities[m.capabilities.length] = 69;
                         break;
+                    case "AI_STOP_GENERATION_ENABLED":
+                    case 70:
+                        m.capabilities[m.capabilities.length] = 70;
+                        break;
                     default:
                     }
                 }
@@ -10558,6 +10582,7 @@ export const AICommon = $root.AICommon = (() => {
             values[valuesById[67] = "AI_RICH_RESPONSE_ARTIFACTS_ENABLED"] = 67;
             values[valuesById[68] = "AI_RICH_RESPONSE_EMAIL_CALENDAR_ENABLED"] = 68;
             values[valuesById[69] = "AI_RICH_RESPONSE_REMINDERS_ENABLED"] = 69;
+            values[valuesById[70] = "AI_STOP_GENERATION_ENABLED"] = 70;
             return values;
         })();
 
@@ -12998,6 +13023,10 @@ export const AICommon = $root.AICommon = (() => {
             case "CONTACTS_TAB":
             case 57:
                 m.destinationEntryPoint = 57;
+                break;
+            case "NEW_3P_AGENT_CREATION":
+            case 58:
+                m.destinationEntryPoint = 58;
                 break;
             default:
             }
@@ -15745,6 +15774,7 @@ export const AICommon = $root.AICommon = (() => {
         values[valuesById[55] = "CHATLIST_SEARCH"] = 55;
         values[valuesById[56] = "NEW_CHAT_LIST"] = 56;
         values[valuesById[57] = "CONTACTS_TAB"] = 57;
+        values[valuesById[58] = "NEW_3P_AGENT_CREATION"] = 58;
         return values;
     })();
 

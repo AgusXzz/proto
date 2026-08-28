@@ -6502,6 +6502,7 @@ export const E2E = $root.E2E = (() => {
         AIRichResponseMessage.prototype.submessages = $util.emptyArray;
         AIRichResponseMessage.prototype.unifiedResponse = null;
         AIRichResponseMessage.prototype.contextInfo = null;
+        AIRichResponseMessage.prototype.originalRecipientMetadata = null;
 
         AIRichResponseMessage.create = function(properties) {
             return new AIRichResponseMessage(properties);
@@ -6524,6 +6525,8 @@ export const E2E = $root.E2E = (() => {
                 $root.AICommon.AIRichResponseUnifiedResponse.encode(m.unifiedResponse, w.uint32(26).fork(), q + 1).ldelim();
             if (m.contextInfo != null && $Object.hasOwnProperty.call(m, "contextInfo"))
                 $root.E2E.ContextInfo.encode(m.contextInfo, w.uint32(34).fork(), q + 1).ldelim();
+            if (m.originalRecipientMetadata != null && $Object.hasOwnProperty.call(m, "originalRecipientMetadata"))
+                $root.AICommon.AIRichResponseUnifiedResponse.encode(m.originalRecipientMetadata, w.uint32(42).fork(), q + 1).ldelim();
             if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                 for (var i = 0; i < m.$unknowns.length; ++i)
                     w.raw(m.$unknowns[i]);
@@ -6589,6 +6592,12 @@ export const E2E = $root.E2E = (() => {
                         m.contextInfo = $root.E2E.ContextInfo.decode(r, r.uint32(), $undefined, q + 1, m.contextInfo);
                         continue;
                     }
+                case 5: {
+                        if (u !== 2)
+                            break;
+                        m.originalRecipientMetadata = $root.AICommon.AIRichResponseUnifiedResponse.decode(r, r.uint32(), $undefined, q + 1, m.originalRecipientMetadata);
+                        continue;
+                    }
                 }
                 r.skipType(u, q, t);
                 if (!r.discardUnknown) {
@@ -6647,6 +6656,11 @@ export const E2E = $root.E2E = (() => {
                     throw $TypeError(".E2E.AIRichResponseMessage.contextInfo: object expected");
                 m.contextInfo = $root.E2E.ContextInfo.fromObject(d.contextInfo, q + 1);
             }
+            if (d.originalRecipientMetadata != null) {
+                if (!$util.isObject(d.originalRecipientMetadata))
+                    throw $TypeError(".E2E.AIRichResponseMessage.originalRecipientMetadata: object expected");
+                m.originalRecipientMetadata = $root.AICommon.AIRichResponseUnifiedResponse.fromObject(d.originalRecipientMetadata, q + 1);
+            }
             return m;
         };
 
@@ -6665,6 +6679,7 @@ export const E2E = $root.E2E = (() => {
                 d.messageType = o.enums === $String ? "AI_RICH_RESPONSE_TYPE_UNKNOWN" : 0;
                 d.unifiedResponse = null;
                 d.contextInfo = null;
+                d.originalRecipientMetadata = null;
             }
             if (m.messageType != null && $Object.hasOwnProperty.call(m, "messageType")) {
                 d.messageType = o.enums === $String ? $root.AICommonDeprecated.AIRichResponseMessageType[m.messageType] === $undefined ? m.messageType : $root.AICommonDeprecated.AIRichResponseMessageType[m.messageType] : m.messageType;
@@ -6680,6 +6695,9 @@ export const E2E = $root.E2E = (() => {
             }
             if (m.contextInfo != null && $Object.hasOwnProperty.call(m, "contextInfo")) {
                 d.contextInfo = $root.E2E.ContextInfo.toObject(m.contextInfo, o, q + 1);
+            }
+            if (m.originalRecipientMetadata != null && $Object.hasOwnProperty.call(m, "originalRecipientMetadata")) {
+                d.originalRecipientMetadata = $root.AICommon.AIRichResponseUnifiedResponse.toObject(m.originalRecipientMetadata, o, q + 1);
             }
             return d;
         };
@@ -58096,6 +58114,7 @@ export const E2E = $root.E2E = (() => {
             VideoMessage.prototype.motionPhotoPresentationOffsetMs = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
             VideoMessage.prototype.metadataUrl = "";
             VideoMessage.prototype.videoSourceType = 0;
+            VideoMessage.prototype.dashManifestUrl = "";
 
             VideoMessage.create = function(properties) {
                 return new VideoMessage(properties);
@@ -58174,6 +58193,8 @@ export const E2E = $root.E2E = (() => {
                     w.uint32(242).string(m.metadataUrl);
                 if (m.videoSourceType != null && $Object.hasOwnProperty.call(m, "videoSourceType"))
                     w.uint32(248).int32(m.videoSourceType);
+                if (m.dashManifestUrl != null && $Object.hasOwnProperty.call(m, "dashManifestUrl"))
+                    w.uint32(266).string(m.dashManifestUrl);
                 if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                     for (var i = 0; i < m.$unknowns.length; ++i)
                         w.raw(m.$unknowns[i]);
@@ -58405,6 +58426,12 @@ export const E2E = $root.E2E = (() => {
                             }
                             continue;
                         }
+                    case 33: {
+                            if (u !== 2)
+                                break;
+                            m.dashManifestUrl = r.string();
+                            continue;
+                        }
                     }
                     r.skipType(u, q, t);
                     if (!r.discardUnknown) {
@@ -58611,6 +58638,9 @@ export const E2E = $root.E2E = (() => {
                     break;
                 default:
                 }
+                if (d.dashManifestUrl != null) {
+                    m.dashManifestUrl = $String(d.dashManifestUrl);
+                }
                 return m;
             };
 
@@ -58709,6 +58739,7 @@ export const E2E = $root.E2E = (() => {
                         d.motionPhotoPresentationOffsetMs = o.longs === $String ? "0" : typeof $BigInt !== "undefined" && o.longs === $BigInt ? $BigInt("0") : 0;
                     d.metadataUrl = "";
                     d.videoSourceType = o.enums === $String ? "USER_VIDEO" : 0;
+                    d.dashManifestUrl = "";
                 }
                 if (m.url != null && $Object.hasOwnProperty.call(m, "url")) {
                     d.url = m.url;
@@ -58823,6 +58854,9 @@ export const E2E = $root.E2E = (() => {
                 }
                 if (m.videoSourceType != null && $Object.hasOwnProperty.call(m, "videoSourceType")) {
                     d.videoSourceType = o.enums === $String ? $root.E2E.Message.VideoMessage.VideoSourceType[m.videoSourceType] === $undefined ? m.videoSourceType : $root.E2E.Message.VideoMessage.VideoSourceType[m.videoSourceType] : m.videoSourceType;
+                }
+                if (m.dashManifestUrl != null && $Object.hasOwnProperty.call(m, "dashManifestUrl")) {
+                    d.dashManifestUrl = m.dashManifestUrl;
                 }
                 return d;
             };
@@ -67081,6 +67115,10 @@ export const AICommon = $root.AICommon = (() => {
             case 57:
                 m.botEntryPointOrigin = 57;
                 break;
+            case "NEW_3P_AGENT_CREATION":
+            case 58:
+                m.botEntryPointOrigin = 58;
+                break;
             default:
             }
             if (d.forwardScore != null) {
@@ -69631,6 +69669,7 @@ export const AICommon = $root.AICommon = (() => {
         BotMetadata.prototype.subscriptionUpsellMetadata = null;
         BotMetadata.prototype.pttPromptMetadata = null;
         BotMetadata.prototype.botHistoryShareMetadata = null;
+        BotMetadata.prototype.responseStoppedByUser = false;
         BotMetadata.prototype.internalMetadata = $util.newBuffer([]);
 
         BotMetadata.create = function(properties) {
@@ -69728,6 +69767,8 @@ export const AICommon = $root.AICommon = (() => {
                 $root.AICommon.BotPttPromptMetadata.encode(m.pttPromptMetadata, w.uint32(338).fork(), q + 1).ldelim();
             if (m.botHistoryShareMetadata != null && $Object.hasOwnProperty.call(m, "botHistoryShareMetadata"))
                 $root.AICommon.BotHistoryShareMetadata.encode(m.botHistoryShareMetadata, w.uint32(346).fork(), q + 1).ldelim();
+            if (m.responseStoppedByUser != null && $Object.hasOwnProperty.call(m, "responseStoppedByUser"))
+                w.uint32(352).bool(m.responseStoppedByUser);
             if (m.internalMetadata != null && $Object.hasOwnProperty.call(m, "internalMetadata"))
                 w.uint32(7994).bytes(m.internalMetadata);
             if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
@@ -70015,6 +70056,12 @@ export const AICommon = $root.AICommon = (() => {
                         m.botHistoryShareMetadata = $root.AICommon.BotHistoryShareMetadata.decode(r, r.uint32(), $undefined, q + 1, m.botHistoryShareMetadata);
                         continue;
                     }
+                case 44: {
+                        if (u !== 0)
+                            break;
+                        m.responseStoppedByUser = r.bool();
+                        continue;
+                    }
                 case 999: {
                         if (u !== 2)
                             break;
@@ -70247,6 +70294,9 @@ export const AICommon = $root.AICommon = (() => {
                     throw $TypeError(".AICommon.BotMetadata.botHistoryShareMetadata: object expected");
                 m.botHistoryShareMetadata = $root.AICommon.BotHistoryShareMetadata.fromObject(d.botHistoryShareMetadata, q + 1);
             }
+            if (d.responseStoppedByUser != null) {
+                m.responseStoppedByUser = $Boolean(d.responseStoppedByUser);
+            }
             if (d.internalMetadata != null) {
                 if (typeof d.internalMetadata === "string")
                     $util.base64.decode(d.internalMetadata, m.internalMetadata = $util.newBuffer($util.base64.length(d.internalMetadata)), 0);
@@ -70313,6 +70363,7 @@ export const AICommon = $root.AICommon = (() => {
                 d.subscriptionUpsellMetadata = null;
                 d.pttPromptMetadata = null;
                 d.botHistoryShareMetadata = null;
+                d.responseStoppedByUser = false;
                 if (o.bytes === $String)
                     d.internalMetadata = "";
                 else {
@@ -70446,6 +70497,9 @@ export const AICommon = $root.AICommon = (() => {
             }
             if (m.botHistoryShareMetadata != null && $Object.hasOwnProperty.call(m, "botHistoryShareMetadata")) {
                 d.botHistoryShareMetadata = $root.AICommon.BotHistoryShareMetadata.toObject(m.botHistoryShareMetadata, o, q + 1);
+            }
+            if (m.responseStoppedByUser != null && $Object.hasOwnProperty.call(m, "responseStoppedByUser")) {
+                d.responseStoppedByUser = m.responseStoppedByUser;
             }
             if (m.internalMetadata != null && $Object.hasOwnProperty.call(m, "internalMetadata")) {
                 d.internalMetadata = o.bytes === $String ? $util.base64.encode(m.internalMetadata, 0, m.internalMetadata.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.internalMetadata) : m.internalMetadata;
@@ -75321,6 +75375,10 @@ export const AICommon = $root.AICommon = (() => {
                     case 69:
                         m.capabilities[m.capabilities.length] = 69;
                         break;
+                    case "AI_STOP_GENERATION_ENABLED":
+                    case 70:
+                        m.capabilities[m.capabilities.length] = 70;
+                        break;
                     default:
                     }
                 }
@@ -75430,6 +75488,7 @@ export const AICommon = $root.AICommon = (() => {
             values[valuesById[67] = "AI_RICH_RESPONSE_ARTIFACTS_ENABLED"] = 67;
             values[valuesById[68] = "AI_RICH_RESPONSE_EMAIL_CALENDAR_ENABLED"] = 68;
             values[valuesById[69] = "AI_RICH_RESPONSE_REMINDERS_ENABLED"] = 69;
+            values[valuesById[70] = "AI_STOP_GENERATION_ENABLED"] = 70;
             return values;
         })();
 
@@ -77870,6 +77929,10 @@ export const AICommon = $root.AICommon = (() => {
             case "CONTACTS_TAB":
             case 57:
                 m.destinationEntryPoint = 57;
+                break;
+            case "NEW_3P_AGENT_CREATION":
+            case 58:
+                m.destinationEntryPoint = 58;
                 break;
             default:
             }
@@ -80617,6 +80680,7 @@ export const AICommon = $root.AICommon = (() => {
         values[valuesById[55] = "CHATLIST_SEARCH"] = 55;
         values[valuesById[56] = "NEW_CHAT_LIST"] = 56;
         values[valuesById[57] = "CONTACTS_TAB"] = 57;
+        values[valuesById[58] = "NEW_3P_AGENT_CREATION"] = 58;
         return values;
     })();
 
@@ -119204,6 +119268,7 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
             BusinessBroadcast.prototype.campaignSyncEnabled = false;
             BusinessBroadcast.prototype.insightsSyncEnabled = false;
             BusinessBroadcast.prototype.recipientLimit = 0;
+            BusinessBroadcast.prototype.proCompanionSupportEnabled = false;
 
             BusinessBroadcast.create = function(properties) {
                 return new BusinessBroadcast(properties);
@@ -119226,6 +119291,8 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                     w.uint32(32).bool(m.insightsSyncEnabled);
                 if (m.recipientLimit != null && $Object.hasOwnProperty.call(m, "recipientLimit"))
                     w.uint32(40).int32(m.recipientLimit);
+                if (m.proCompanionSupportEnabled != null && $Object.hasOwnProperty.call(m, "proCompanionSupportEnabled"))
+                    w.uint32(48).bool(m.proCompanionSupportEnabled);
                 if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                     for (var i = 0; i < m.$unknowns.length; ++i)
                         w.raw(m.$unknowns[i]);
@@ -119289,6 +119356,12 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                             m.recipientLimit = r.int32();
                             continue;
                         }
+                    case 6: {
+                            if (u !== 0)
+                                break;
+                            m.proCompanionSupportEnabled = r.bool();
+                            continue;
+                        }
                     }
                     r.skipType(u, q, t);
                     if (!r.discardUnknown) {
@@ -119331,6 +119404,9 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                 if (d.recipientLimit != null) {
                     m.recipientLimit = d.recipientLimit | 0;
                 }
+                if (d.proCompanionSupportEnabled != null) {
+                    m.proCompanionSupportEnabled = $Boolean(d.proCompanionSupportEnabled);
+                }
                 return m;
             };
 
@@ -119348,6 +119424,7 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                     d.campaignSyncEnabled = false;
                     d.insightsSyncEnabled = false;
                     d.recipientLimit = 0;
+                    d.proCompanionSupportEnabled = false;
                 }
                 if (m.importListEnabled != null && $Object.hasOwnProperty.call(m, "importListEnabled")) {
                     d.importListEnabled = m.importListEnabled;
@@ -119363,6 +119440,9 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                 }
                 if (m.recipientLimit != null && $Object.hasOwnProperty.call(m, "recipientLimit")) {
                     d.recipientLimit = m.recipientLimit;
+                }
+                if (m.proCompanionSupportEnabled != null && $Object.hasOwnProperty.call(m, "proCompanionSupportEnabled")) {
+                    d.proCompanionSupportEnabled = m.proCompanionSupportEnabled;
                 }
                 return d;
             };
