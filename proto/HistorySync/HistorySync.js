@@ -84049,6 +84049,7 @@ export const CompanionReg = $root.CompanionReg = (() => {
         ClientPairingProps.prototype.isSyncdSnapshotRecoveryEnabled = false;
         ClientPairingProps.prototype.isHsThumbnailSyncEnabled = false;
         ClientPairingProps.prototype.subscriptionSyncPayload = $util.newBuffer([]);
+        ClientPairingProps.prototype.isBotJidDbMigrated = false;
 
         ClientPairingProps.create = function(properties) {
             return new ClientPairingProps(properties);
@@ -84071,6 +84072,8 @@ export const CompanionReg = $root.CompanionReg = (() => {
                 w.uint32(32).bool(m.isHsThumbnailSyncEnabled);
             if (m.subscriptionSyncPayload != null && $Object.hasOwnProperty.call(m, "subscriptionSyncPayload"))
                 w.uint32(42).bytes(m.subscriptionSyncPayload);
+            if (m.isBotJidDbMigrated != null && $Object.hasOwnProperty.call(m, "isBotJidDbMigrated"))
+                w.uint32(48).bool(m.isBotJidDbMigrated);
             if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                 for (var i = 0; i < m.$unknowns.length; ++i)
                     w.raw(m.$unknowns[i]);
@@ -84134,6 +84137,12 @@ export const CompanionReg = $root.CompanionReg = (() => {
                         m.subscriptionSyncPayload = r.bytes();
                         continue;
                     }
+                case 6: {
+                        if (u !== 0)
+                            break;
+                        m.isBotJidDbMigrated = r.bool();
+                        continue;
+                    }
                 }
                 r.skipType(u, q, t);
                 if (!r.discardUnknown) {
@@ -84179,6 +84188,9 @@ export const CompanionReg = $root.CompanionReg = (() => {
                 else if (d.subscriptionSyncPayload.length >= 0)
                     m.subscriptionSyncPayload = d.subscriptionSyncPayload;
             }
+            if (d.isBotJidDbMigrated != null) {
+                m.isBotJidDbMigrated = $Boolean(d.isBotJidDbMigrated);
+            }
             return m;
         };
 
@@ -84202,6 +84214,7 @@ export const CompanionReg = $root.CompanionReg = (() => {
                     if (o.bytes !== $Array)
                         d.subscriptionSyncPayload = $util.newBuffer(d.subscriptionSyncPayload);
                 }
+                d.isBotJidDbMigrated = false;
             }
             if (m.isChatDbLidMigrated != null && $Object.hasOwnProperty.call(m, "isChatDbLidMigrated")) {
                 d.isChatDbLidMigrated = m.isChatDbLidMigrated;
@@ -84217,6 +84230,9 @@ export const CompanionReg = $root.CompanionReg = (() => {
             }
             if (m.subscriptionSyncPayload != null && $Object.hasOwnProperty.call(m, "subscriptionSyncPayload")) {
                 d.subscriptionSyncPayload = o.bytes === $String ? $util.base64.encode(m.subscriptionSyncPayload, 0, m.subscriptionSyncPayload.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.subscriptionSyncPayload) : m.subscriptionSyncPayload;
+            }
+            if (m.isBotJidDbMigrated != null && $Object.hasOwnProperty.call(m, "isBotJidDbMigrated")) {
+                d.isBotJidDbMigrated = m.isBotJidDbMigrated;
             }
             return d;
         };
@@ -118844,6 +118860,7 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
             };
 
             AiFbidMigration.prototype.chatDbMigrationTimestamp = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+            AiFbidMigration.prototype.supportVersion = 0;
 
             AiFbidMigration.create = function(properties) {
                 return new AiFbidMigration(properties);
@@ -118858,6 +118875,8 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                     throw $Error("max depth exceeded");
                 if (m.chatDbMigrationTimestamp != null && $Object.hasOwnProperty.call(m, "chatDbMigrationTimestamp"))
                     w.uint32(8).uint64(m.chatDbMigrationTimestamp);
+                if (m.supportVersion != null && $Object.hasOwnProperty.call(m, "supportVersion"))
+                    w.uint32(16).uint32(m.supportVersion);
                 if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                     for (var i = 0; i < m.$unknowns.length; ++i)
                         w.raw(m.$unknowns[i]);
@@ -118897,6 +118916,12 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                             m.chatDbMigrationTimestamp = r.uint64();
                             continue;
                         }
+                    case 2: {
+                            if (u !== 0)
+                                break;
+                            m.supportVersion = r.uint32();
+                            continue;
+                        }
                     }
                     r.skipType(u, q, t);
                     if (!r.discardUnknown) {
@@ -118934,6 +118959,9 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                     else if (typeof d.chatDbMigrationTimestamp === "object")
                         m.chatDbMigrationTimestamp = new $util.LongBits(d.chatDbMigrationTimestamp.low >>> 0, d.chatDbMigrationTimestamp.high >>> 0).toNumber(true);
                 }
+                if (d.supportVersion != null) {
+                    m.supportVersion = d.supportVersion >>> 0;
+                }
                 return m;
             };
 
@@ -118951,6 +118979,7 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                         d.chatDbMigrationTimestamp = o.longs === $String ? n.toString() : o.longs === $Number ? n.toNumber() : typeof $BigInt !== "undefined" && o.longs === $BigInt ? n.toBigInt() : n;
                     } else
                         d.chatDbMigrationTimestamp = o.longs === $String ? "0" : typeof $BigInt !== "undefined" && o.longs === $BigInt ? $BigInt("0") : 0;
+                    d.supportVersion = 0;
                 }
                 if (m.chatDbMigrationTimestamp != null && $Object.hasOwnProperty.call(m, "chatDbMigrationTimestamp")) {
                     if (typeof $BigInt !== "undefined" && o.longs === $BigInt)
@@ -118959,6 +118988,9 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                         d.chatDbMigrationTimestamp = o.longs === $String ? $String(m.chatDbMigrationTimestamp) : m.chatDbMigrationTimestamp;
                     else
                         d.chatDbMigrationTimestamp = o.longs === String ? longToString(m.chatDbMigrationTimestamp, true) : o.longs === Number ? longToNumber(m.chatDbMigrationTimestamp, true) : m.chatDbMigrationTimestamp;
+                }
+                if (m.supportVersion != null && $Object.hasOwnProperty.call(m, "supportVersion")) {
+                    d.supportVersion = m.supportVersion;
                 }
                 return d;
             };

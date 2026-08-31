@@ -358,6 +358,7 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
             };
 
             AiFbidMigration.prototype.chatDbMigrationTimestamp = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+            AiFbidMigration.prototype.supportVersion = 0;
 
             AiFbidMigration.create = function(properties) {
                 return new AiFbidMigration(properties);
@@ -372,6 +373,8 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                     throw $Error("max depth exceeded");
                 if (m.chatDbMigrationTimestamp != null && $Object.hasOwnProperty.call(m, "chatDbMigrationTimestamp"))
                     w.uint32(8).uint64(m.chatDbMigrationTimestamp);
+                if (m.supportVersion != null && $Object.hasOwnProperty.call(m, "supportVersion"))
+                    w.uint32(16).uint32(m.supportVersion);
                 if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                     for (var i = 0; i < m.$unknowns.length; ++i)
                         w.raw(m.$unknowns[i]);
@@ -411,6 +414,12 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                             m.chatDbMigrationTimestamp = r.uint64();
                             continue;
                         }
+                    case 2: {
+                            if (u !== 0)
+                                break;
+                            m.supportVersion = r.uint32();
+                            continue;
+                        }
                     }
                     r.skipType(u, q, t);
                     if (!r.discardUnknown) {
@@ -448,6 +457,9 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                     else if (typeof d.chatDbMigrationTimestamp === "object")
                         m.chatDbMigrationTimestamp = new $util.LongBits(d.chatDbMigrationTimestamp.low >>> 0, d.chatDbMigrationTimestamp.high >>> 0).toNumber(true);
                 }
+                if (d.supportVersion != null) {
+                    m.supportVersion = d.supportVersion >>> 0;
+                }
                 return m;
             };
 
@@ -465,6 +477,7 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                         d.chatDbMigrationTimestamp = o.longs === $String ? n.toString() : o.longs === $Number ? n.toNumber() : typeof $BigInt !== "undefined" && o.longs === $BigInt ? n.toBigInt() : n;
                     } else
                         d.chatDbMigrationTimestamp = o.longs === $String ? "0" : typeof $BigInt !== "undefined" && o.longs === $BigInt ? $BigInt("0") : 0;
+                    d.supportVersion = 0;
                 }
                 if (m.chatDbMigrationTimestamp != null && $Object.hasOwnProperty.call(m, "chatDbMigrationTimestamp")) {
                     if (typeof $BigInt !== "undefined" && o.longs === $BigInt)
@@ -473,6 +486,9 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                         d.chatDbMigrationTimestamp = o.longs === $String ? $String(m.chatDbMigrationTimestamp) : m.chatDbMigrationTimestamp;
                     else
                         d.chatDbMigrationTimestamp = o.longs === String ? longToString(m.chatDbMigrationTimestamp, true) : o.longs === Number ? longToNumber(m.chatDbMigrationTimestamp, true) : m.chatDbMigrationTimestamp;
+                }
+                if (m.supportVersion != null && $Object.hasOwnProperty.call(m, "supportVersion")) {
+                    d.supportVersion = m.supportVersion;
                 }
                 return d;
             };

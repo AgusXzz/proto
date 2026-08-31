@@ -88382,6 +88382,7 @@ export const CompanionReg = $root.CompanionReg = (() => {
         ClientPairingProps.prototype.isSyncdSnapshotRecoveryEnabled = false;
         ClientPairingProps.prototype.isHsThumbnailSyncEnabled = false;
         ClientPairingProps.prototype.subscriptionSyncPayload = $util.newBuffer([]);
+        ClientPairingProps.prototype.isBotJidDbMigrated = false;
 
         ClientPairingProps.create = function(properties) {
             return new ClientPairingProps(properties);
@@ -88404,6 +88405,8 @@ export const CompanionReg = $root.CompanionReg = (() => {
                 w.uint32(32).bool(m.isHsThumbnailSyncEnabled);
             if (m.subscriptionSyncPayload != null && $Object.hasOwnProperty.call(m, "subscriptionSyncPayload"))
                 w.uint32(42).bytes(m.subscriptionSyncPayload);
+            if (m.isBotJidDbMigrated != null && $Object.hasOwnProperty.call(m, "isBotJidDbMigrated"))
+                w.uint32(48).bool(m.isBotJidDbMigrated);
             if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                 for (var i = 0; i < m.$unknowns.length; ++i)
                     w.raw(m.$unknowns[i]);
@@ -88467,6 +88470,12 @@ export const CompanionReg = $root.CompanionReg = (() => {
                         m.subscriptionSyncPayload = r.bytes();
                         continue;
                     }
+                case 6: {
+                        if (u !== 0)
+                            break;
+                        m.isBotJidDbMigrated = r.bool();
+                        continue;
+                    }
                 }
                 r.skipType(u, q, t);
                 if (!r.discardUnknown) {
@@ -88512,6 +88521,9 @@ export const CompanionReg = $root.CompanionReg = (() => {
                 else if (d.subscriptionSyncPayload.length >= 0)
                     m.subscriptionSyncPayload = d.subscriptionSyncPayload;
             }
+            if (d.isBotJidDbMigrated != null) {
+                m.isBotJidDbMigrated = $Boolean(d.isBotJidDbMigrated);
+            }
             return m;
         };
 
@@ -88535,6 +88547,7 @@ export const CompanionReg = $root.CompanionReg = (() => {
                     if (o.bytes !== $Array)
                         d.subscriptionSyncPayload = $util.newBuffer(d.subscriptionSyncPayload);
                 }
+                d.isBotJidDbMigrated = false;
             }
             if (m.isChatDbLidMigrated != null && $Object.hasOwnProperty.call(m, "isChatDbLidMigrated")) {
                 d.isChatDbLidMigrated = m.isChatDbLidMigrated;
@@ -88550,6 +88563,9 @@ export const CompanionReg = $root.CompanionReg = (() => {
             }
             if (m.subscriptionSyncPayload != null && $Object.hasOwnProperty.call(m, "subscriptionSyncPayload")) {
                 d.subscriptionSyncPayload = o.bytes === $String ? $util.base64.encode(m.subscriptionSyncPayload, 0, m.subscriptionSyncPayload.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.subscriptionSyncPayload) : m.subscriptionSyncPayload;
+            }
+            if (m.isBotJidDbMigrated != null && $Object.hasOwnProperty.call(m, "isBotJidDbMigrated")) {
+                d.isBotJidDbMigrated = m.isBotJidDbMigrated;
             }
             return d;
         };
