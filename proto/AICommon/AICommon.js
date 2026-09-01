@@ -2,7 +2,7 @@
 import $protobuf from "protobufjs/minimal.js";
 
 const $Reader = $protobuf.Reader, $Writer = $protobuf.Writer, $util = $protobuf.util;
-const $Object = $util.global.Object, $undefined = $util.global.undefined, $Error = $util.global.Error, $RangeError = $util.global.RangeError, $TypeError = $util.global.TypeError, $Boolean = $util.global.Boolean, $String = $util.global.String, $Array = $util.global.Array, $parseInt = $util.global.parseInt, $Number = $util.global.Number, $BigInt = $util.global.BigInt, $isFinite = $util.global.isFinite;
+const $Object = $util.global.Object, $undefined = $util.global.undefined, $Error = $util.global.Error, $RangeError = $util.global.RangeError, $TypeError = $util.global.TypeError, $String = $util.global.String, $parseInt = $util.global.parseInt, $Number = $util.global.Number, $BigInt = $util.global.BigInt, $Boolean = $util.global.Boolean, $Array = $util.global.Array, $isFinite = $util.global.isFinite;
 
 const $root = $protobuf.roots["default"] || ($protobuf.roots["default"] = {});
 
@@ -46,6 +46,457 @@ function longToNumber(value, unsigned) {
 export const AICommon = $root.AICommon = (() => {
 
     const AICommon = {};
+
+    AICommon.BizAIMetadataSync = (function() {
+
+        const BizAIMetadataSync = function (p) {
+            if (p)
+                for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                    if (p[ks[i]] != null && ks[i] !== "__proto__")
+                        this[ks[i]] = p[ks[i]];
+        };
+
+        BizAIMetadataSync.prototype.serverEvent = null;
+
+        let $oneOfFields;
+
+        $Object.defineProperty(BizAIMetadataSync.prototype, "operation", {
+            get: $util.oneOfGetter($oneOfFields = ["serverEvent"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        BizAIMetadataSync.create = function(properties) {
+            return new BizAIMetadataSync(properties);
+        };
+
+        BizAIMetadataSync.encode = function (m, w, q) {
+            if (!w)
+                w = $Writer.create();
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (m.serverEvent != null && $Object.hasOwnProperty.call(m, "serverEvent"))
+                $root.AICommon.BizAIMetadataSync.ServerEvent.encode(m.serverEvent, w.uint32(10).fork(), q + 1).ldelim();
+            if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                for (var i = 0; i < m.$unknowns.length; ++i)
+                    w.raw(m.$unknowns[i]);
+            return w;
+        };
+
+        BizAIMetadataSync.decode = function (r, l, z, q, g) {
+            if (!(r instanceof $Reader))
+                r = $Reader.create(r);
+            if (q === $undefined)
+                q = 0;
+            if (q > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BizAIMetadataSync();
+            while (r.pos < c) {
+                var s = r.pos;
+                var t = r.tag();
+                if (t === z) {
+                    z = $undefined;
+                    break;
+                }
+                var u = t & 7;
+                switch (t >>>= 3) {
+                case 1: {
+                        if (u !== 2)
+                            break;
+                        m.serverEvent = $root.AICommon.BizAIMetadataSync.ServerEvent.decode(r, r.uint32(), $undefined, q + 1, m.serverEvent);
+                        m.operation = "serverEvent";
+                        continue;
+                    }
+                }
+                r.skipType(u, q, t);
+                if (!r.discardUnknown) {
+                    $util.makeProp(m, "$unknowns", false);
+                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
+            }
+            if (z !== $undefined)
+                throw $Error("missing end group");
+            return m;
+        };
+
+        BizAIMetadataSync.fromObject = function (d, q) {
+            if (d instanceof $root.AICommon.BizAIMetadataSync)
+                return d;
+            if (!$util.isObject(d))
+                throw $TypeError(".AICommon.BizAIMetadataSync: object expected");
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var m = new $root.AICommon.BizAIMetadataSync();
+            if (d.serverEvent != null) {
+                if (!$util.isObject(d.serverEvent))
+                    throw $TypeError(".AICommon.BizAIMetadataSync.serverEvent: object expected");
+                m.serverEvent = $root.AICommon.BizAIMetadataSync.ServerEvent.fromObject(d.serverEvent, q + 1);
+            }
+            return m;
+        };
+
+        BizAIMetadataSync.toObject = function (m, o, q) {
+            if (!o)
+                o = {};
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var d = {};
+            if (m.serverEvent != null && $Object.hasOwnProperty.call(m, "serverEvent")) {
+                d.serverEvent = $root.AICommon.BizAIMetadataSync.ServerEvent.toObject(m.serverEvent, o, q + 1);
+                if (o.oneofs)
+                    d.operation = "serverEvent";
+            }
+            return d;
+        };
+
+        BizAIMetadataSync.prototype.toJSON = function() {
+            return BizAIMetadataSync.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        BizAIMetadataSync.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/AICommon.BizAIMetadataSync";
+        };
+
+        BizAIMetadataSync.ServerEvent = (function() {
+
+            const ServerEvent = function (p) {
+                if (p)
+                    for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                        if (p[ks[i]] != null && ks[i] !== "__proto__")
+                            this[ks[i]] = p[ks[i]];
+            };
+
+            ServerEvent.prototype.protocolEvent = null;
+            ServerEvent.prototype.agentOnboardingStarted = null;
+
+            let $oneOfFields;
+
+            $Object.defineProperty(ServerEvent.prototype, "event", {
+                get: $util.oneOfGetter($oneOfFields = ["protocolEvent", "agentOnboardingStarted"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            ServerEvent.create = function(properties) {
+                return new ServerEvent(properties);
+            };
+
+            ServerEvent.encode = function (m, w, q) {
+                if (!w)
+                    w = $Writer.create();
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                if (m.protocolEvent != null && $Object.hasOwnProperty.call(m, "protocolEvent"))
+                    w.uint32(8).int32(m.protocolEvent);
+                if (m.agentOnboardingStarted != null && $Object.hasOwnProperty.call(m, "agentOnboardingStarted"))
+                    $root.AICommon.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted.encode(m.agentOnboardingStarted, w.uint32(18).fork(), q + 1).ldelim();
+                if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                    for (var i = 0; i < m.$unknowns.length; ++i)
+                        w.raw(m.$unknowns[i]);
+                return w;
+            };
+
+            ServerEvent.decode = function (r, l, z, q, g) {
+                if (!(r instanceof $Reader))
+                    r = $Reader.create(r);
+                if (q === $undefined)
+                    q = 0;
+                if (q > $Reader.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.AICommon.BizAIMetadataSync.ServerEvent();
+                while (r.pos < c) {
+                    var s = r.pos;
+                    var t = r.tag();
+                    if (t === z) {
+                        z = $undefined;
+                        break;
+                    }
+                    var u = t & 7;
+                    switch (t >>>= 3) {
+                    case 1: {
+                            if (u !== 0)
+                                break;
+                            v = r.int32();
+                            if ($root.AICommon.BizAIMetadataSync.ServerEvent.ProtocolEvent[v] !== $undefined) {
+                                m.protocolEvent = v;
+                                m.event = "protocolEvent";
+                            } else if (!r.discardUnknown) {
+                                $util.makeProp(m, "$unknowns", false);
+                                (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                            }
+                            continue;
+                        }
+                    case 2: {
+                            if (u !== 2)
+                                break;
+                            m.agentOnboardingStarted = $root.AICommon.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted.decode(r, r.uint32(), $undefined, q + 1, m.agentOnboardingStarted);
+                            m.event = "agentOnboardingStarted";
+                            continue;
+                        }
+                    }
+                    r.skipType(u, q, t);
+                    if (!r.discardUnknown) {
+                        $util.makeProp(m, "$unknowns", false);
+                        (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                    }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
+                }
+                if (z !== $undefined)
+                    throw $Error("missing end group");
+                return m;
+            };
+
+            ServerEvent.fromObject = function (d, q) {
+                if (d instanceof $root.AICommon.BizAIMetadataSync.ServerEvent)
+                    return d;
+                if (!$util.isObject(d))
+                    throw $TypeError(".AICommon.BizAIMetadataSync.ServerEvent: object expected");
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var m = new $root.AICommon.BizAIMetadataSync.ServerEvent();
+                switch (d.protocolEvent) {
+                case "UNSPECIFIED":
+                case 0:
+                    m.protocolEvent = 0;
+                    break;
+                case "AGENT_CHAT_READY":
+                case 1:
+                    m.protocolEvent = 1;
+                    break;
+                default:
+                }
+                if (d.agentOnboardingStarted != null) {
+                    if (!$util.isObject(d.agentOnboardingStarted))
+                        throw $TypeError(".AICommon.BizAIMetadataSync.ServerEvent.agentOnboardingStarted: object expected");
+                    m.agentOnboardingStarted = $root.AICommon.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted.fromObject(d.agentOnboardingStarted, q + 1);
+                }
+                return m;
+            };
+
+            ServerEvent.toObject = function (m, o, q) {
+                if (!o)
+                    o = {};
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var d = {};
+                if (m.protocolEvent != null && $Object.hasOwnProperty.call(m, "protocolEvent")) {
+                    d.protocolEvent = o.enums === $String ? $root.AICommon.BizAIMetadataSync.ServerEvent.ProtocolEvent[m.protocolEvent] === $undefined ? m.protocolEvent : $root.AICommon.BizAIMetadataSync.ServerEvent.ProtocolEvent[m.protocolEvent] : m.protocolEvent;
+                    if (o.oneofs)
+                        d.event = "protocolEvent";
+                }
+                if (m.agentOnboardingStarted != null && $Object.hasOwnProperty.call(m, "agentOnboardingStarted")) {
+                    d.agentOnboardingStarted = $root.AICommon.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted.toObject(m.agentOnboardingStarted, o, q + 1);
+                    if (o.oneofs)
+                        d.event = "agentOnboardingStarted";
+                }
+                return d;
+            };
+
+            ServerEvent.prototype.toJSON = function() {
+                return ServerEvent.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            ServerEvent.getTypeUrl = function(prefix) {
+                if (prefix === $undefined)
+                    prefix = "type.googleapis.com";
+                return prefix + "/AICommon.BizAIMetadataSync.ServerEvent";
+            };
+
+            ServerEvent.AgentOnboardingStarted = (function() {
+
+                const AgentOnboardingStarted = function (p) {
+                    if (p)
+                        for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                            if (p[ks[i]] != null && ks[i] !== "__proto__")
+                                this[ks[i]] = p[ks[i]];
+                };
+
+                AgentOnboardingStarted.prototype.composerBlockDurationSecs = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+
+                AgentOnboardingStarted.create = function(properties) {
+                    return new AgentOnboardingStarted(properties);
+                };
+
+                AgentOnboardingStarted.encode = function (m, w, q) {
+                    if (!w)
+                        w = $Writer.create();
+                    if (q === $undefined)
+                        q = 0;
+                    if (q > $util.recursionLimit)
+                        throw $Error("max depth exceeded");
+                    if (m.composerBlockDurationSecs != null && $Object.hasOwnProperty.call(m, "composerBlockDurationSecs"))
+                        w.uint32(8).int64(m.composerBlockDurationSecs);
+                    if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                        for (var i = 0; i < m.$unknowns.length; ++i)
+                            w.raw(m.$unknowns[i]);
+                    return w;
+                };
+
+                AgentOnboardingStarted.decode = function (r, l, z, q, g) {
+                    if (!(r instanceof $Reader))
+                        r = $Reader.create(r);
+                    if (q === $undefined)
+                        q = 0;
+                    if (q > $Reader.recursionLimit)
+                        throw $Error("max depth exceeded");
+                    var c, m;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.AICommon.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted();
+                    while (r.pos < c) {
+                        var s = r.pos;
+                        var t = r.tag();
+                        if (t === z) {
+                            z = $undefined;
+                            break;
+                        }
+                        var u = t & 7;
+                        switch (t >>>= 3) {
+                        case 1: {
+                                if (u !== 0)
+                                    break;
+                                m.composerBlockDurationSecs = r.int64();
+                                continue;
+                            }
+                        }
+                        r.skipType(u, q, t);
+                        if (!r.discardUnknown) {
+                            $util.makeProp(m, "$unknowns", false);
+                            (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                        }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
+                    }
+                    if (z !== $undefined)
+                        throw $Error("missing end group");
+                    return m;
+                };
+
+                AgentOnboardingStarted.fromObject = function (d, q) {
+                    if (d instanceof $root.AICommon.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted)
+                        return d;
+                    if (!$util.isObject(d))
+                        throw $TypeError(".AICommon.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted: object expected");
+                    if (q === $undefined)
+                        q = 0;
+                    if (q > $util.recursionLimit)
+                        throw $Error("max depth exceeded");
+                    var m = new $root.AICommon.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted();
+                    if (d.composerBlockDurationSecs != null) {
+                        if ($util.Long)
+                            m.composerBlockDurationSecs = $util.Long.fromValue(d.composerBlockDurationSecs, false);
+                        else if (typeof d.composerBlockDurationSecs === "string")
+                            m.composerBlockDurationSecs = $parseInt(d.composerBlockDurationSecs, 10);
+                        else if (typeof d.composerBlockDurationSecs === "number")
+                            m.composerBlockDurationSecs = d.composerBlockDurationSecs;
+                        else if (typeof d.composerBlockDurationSecs === "object")
+                            m.composerBlockDurationSecs = new $util.LongBits(d.composerBlockDurationSecs.low >>> 0, d.composerBlockDurationSecs.high >>> 0).toNumber();
+                    }
+                    return m;
+                };
+
+                AgentOnboardingStarted.toObject = function (m, o, q) {
+                    if (!o)
+                        o = {};
+                    if (q === $undefined)
+                        q = 0;
+                    if (q > $util.recursionLimit)
+                        throw $Error("max depth exceeded");
+                    var d = {};
+                    if (o.defaults) {
+                        if ($util.Long) {
+                            var n = new $util.Long(0, 0, false);
+                            d.composerBlockDurationSecs = o.longs === $String ? n.toString() : o.longs === $Number ? n.toNumber() : typeof $BigInt !== "undefined" && o.longs === $BigInt ? n.toBigInt() : n;
+                        } else
+                            d.composerBlockDurationSecs = o.longs === $String ? "0" : typeof $BigInt !== "undefined" && o.longs === $BigInt ? $BigInt("0") : 0;
+                    }
+                    if (m.composerBlockDurationSecs != null && $Object.hasOwnProperty.call(m, "composerBlockDurationSecs")) {
+                        if (typeof $BigInt !== "undefined" && o.longs === $BigInt)
+                            d.composerBlockDurationSecs = typeof m.composerBlockDurationSecs === "number" ? $BigInt(m.composerBlockDurationSecs) : $util.Long.fromBits(m.composerBlockDurationSecs.low >>> 0, m.composerBlockDurationSecs.high >>> 0, false).toBigInt();
+                        else if (typeof m.composerBlockDurationSecs === "number")
+                            d.composerBlockDurationSecs = o.longs === $String ? $String(m.composerBlockDurationSecs) : m.composerBlockDurationSecs;
+                        else
+                            d.composerBlockDurationSecs = o.longs === String ? longToString(m.composerBlockDurationSecs) : o.longs === Number ? longToNumber(m.composerBlockDurationSecs) : m.composerBlockDurationSecs;
+                    }
+                    return d;
+                };
+
+                AgentOnboardingStarted.prototype.toJSON = function() {
+                    return AgentOnboardingStarted.toObject(this, $protobuf.util.toJSONOptions);
+                };
+
+                AgentOnboardingStarted.getTypeUrl = function(prefix) {
+                    if (prefix === $undefined)
+                        prefix = "type.googleapis.com";
+                    return prefix + "/AICommon.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted";
+                };
+
+                return AgentOnboardingStarted;
+            })();
+
+            ServerEvent.ProtocolEvent = (function() {
+                const valuesById = $Object.create(null), values = $Object.create(valuesById);
+                values[valuesById[0] = "UNSPECIFIED"] = 0;
+                values[valuesById[1] = "AGENT_CHAT_READY"] = 1;
+                return values;
+            })();
+
+            return ServerEvent;
+        })();
+
+        return BizAIMetadataSync;
+    })();
 
     AICommon.AIProvenance = (function() {
 
@@ -6050,6 +6501,7 @@ export const AICommon = $root.AICommon = (() => {
         };
 
         AIMetadataOperation.prototype.hatchMetadataSync = null;
+        AIMetadataOperation.prototype.bizAiMetadataSync = null;
 
         AIMetadataOperation.create = function(properties) {
             return new AIMetadataOperation(properties);
@@ -6064,6 +6516,8 @@ export const AICommon = $root.AICommon = (() => {
                 throw $Error("max depth exceeded");
             if (m.hatchMetadataSync != null && $Object.hasOwnProperty.call(m, "hatchMetadataSync"))
                 $root.AICommon.HatchMetadataSync.encode(m.hatchMetadataSync, w.uint32(10).fork(), q + 1).ldelim();
+            if (m.bizAiMetadataSync != null && $Object.hasOwnProperty.call(m, "bizAiMetadataSync"))
+                $root.AICommon.BizAIMetadataSync.encode(m.bizAiMetadataSync, w.uint32(18).fork(), q + 1).ldelim();
             if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                 for (var i = 0; i < m.$unknowns.length; ++i)
                     w.raw(m.$unknowns[i]);
@@ -6103,6 +6557,12 @@ export const AICommon = $root.AICommon = (() => {
                         m.hatchMetadataSync = $root.AICommon.HatchMetadataSync.decode(r, r.uint32(), $undefined, q + 1, m.hatchMetadataSync);
                         continue;
                     }
+                case 2: {
+                        if (u !== 2)
+                            break;
+                        m.bizAiMetadataSync = $root.AICommon.BizAIMetadataSync.decode(r, r.uint32(), $undefined, q + 1, m.bizAiMetadataSync);
+                        continue;
+                    }
                 }
                 r.skipType(u, q, t);
                 if (!r.discardUnknown) {
@@ -6135,6 +6595,11 @@ export const AICommon = $root.AICommon = (() => {
                     throw $TypeError(".AICommon.AIMetadataOperation.hatchMetadataSync: object expected");
                 m.hatchMetadataSync = $root.AICommon.HatchMetadataSync.fromObject(d.hatchMetadataSync, q + 1);
             }
+            if (d.bizAiMetadataSync != null) {
+                if (!$util.isObject(d.bizAiMetadataSync))
+                    throw $TypeError(".AICommon.AIMetadataOperation.bizAiMetadataSync: object expected");
+                m.bizAiMetadataSync = $root.AICommon.BizAIMetadataSync.fromObject(d.bizAiMetadataSync, q + 1);
+            }
             return m;
         };
 
@@ -6148,9 +6613,13 @@ export const AICommon = $root.AICommon = (() => {
             var d = {};
             if (o.defaults) {
                 d.hatchMetadataSync = null;
+                d.bizAiMetadataSync = null;
             }
             if (m.hatchMetadataSync != null && $Object.hasOwnProperty.call(m, "hatchMetadataSync")) {
                 d.hatchMetadataSync = $root.AICommon.HatchMetadataSync.toObject(m.hatchMetadataSync, o, q + 1);
+            }
+            if (m.bizAiMetadataSync != null && $Object.hasOwnProperty.call(m, "bizAiMetadataSync")) {
+                d.bizAiMetadataSync = $root.AICommon.BizAIMetadataSync.toObject(m.bizAiMetadataSync, o, q + 1);
             }
             return d;
         };

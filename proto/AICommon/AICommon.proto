@@ -3,6 +3,25 @@ package AICommon;
 
 import "../SignalLocalStorageProtocol/SignalLocalStorageProtocol.proto";
 
+message BizAIMetadataSync {
+    oneof operation {
+        ServerEvent serverEvent = 1;
+    }
+    message ServerEvent {
+        oneof event {
+            ProtocolEvent protocolEvent = 1;
+            AgentOnboardingStarted agentOnboardingStarted = 2;
+        }
+        message AgentOnboardingStarted {
+            optional int64 composerBlockDurationSecs = 1;
+        }
+        enum ProtocolEvent {
+            UNSPECIFIED = 0;
+            AGENT_CHAT_READY = 1;
+        }
+    }
+}
+
 message AIProvenance {
     optional Metadata c2PaMetadata = 1;
     optional Metadata iptcMetadata = 2;
@@ -261,6 +280,7 @@ message BotCommandMetadata {
 
 message AIMetadataOperation {
     optional HatchMetadataSync hatchMetadataSync = 1;
+    optional BizAIMetadataSync bizAiMetadataSync = 2;
 }
 
 message HatchMetadataSync {
