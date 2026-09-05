@@ -112,6 +112,8 @@ export const MdStorageMsgRowOpaqueData = $root.MdStorageMsgRowOpaqueData = (() =
         MsgOpaqueData.prototype.sharableEventInviteIsCanceled = false;
         MsgOpaqueData.prototype.sharableEventInviteJpegThumbnail = $util.newBuffer([]);
         MsgOpaqueData.prototype.sharableEventInviteCallLink = "";
+        MsgOpaqueData.prototype.mediaPngThumbnail = "";
+        MsgOpaqueData.prototype.qrUrl = "";
 
         MsgOpaqueData.create = function(properties) {
             return new MsgOpaqueData(properties);
@@ -236,6 +238,10 @@ export const MdStorageMsgRowOpaqueData = $root.MdStorageMsgRowOpaqueData = (() =
                 w.uint32(474).bytes(m.sharableEventInviteJpegThumbnail);
             if (m.sharableEventInviteCallLink != null && $Object.hasOwnProperty.call(m, "sharableEventInviteCallLink"))
                 w.uint32(482).string(m.sharableEventInviteCallLink);
+            if (m.mediaPngThumbnail != null && $Object.hasOwnProperty.call(m, "mediaPngThumbnail"))
+                w.uint32(490).string(m.mediaPngThumbnail);
+            if (m.qrUrl != null && $Object.hasOwnProperty.call(m, "qrUrl"))
+                w.uint32(498).string(m.qrUrl);
             if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                 for (var i = 0; i < m.$unknowns.length; ++i)
                     w.raw(m.$unknowns[i]);
@@ -613,6 +619,18 @@ export const MdStorageMsgRowOpaqueData = $root.MdStorageMsgRowOpaqueData = (() =
                         m.sharableEventInviteCallLink = r.string();
                         continue;
                     }
+                case 61: {
+                        if (u !== 2)
+                            break;
+                        m.mediaPngThumbnail = r.string();
+                        continue;
+                    }
+                case 62: {
+                        if (u !== 2)
+                            break;
+                        m.qrUrl = r.string();
+                        continue;
+                    }
                 }
                 r.skipType(u, q, t);
                 if (!r.discardUnknown) {
@@ -907,6 +925,12 @@ export const MdStorageMsgRowOpaqueData = $root.MdStorageMsgRowOpaqueData = (() =
             if (d.sharableEventInviteCallLink != null) {
                 m.sharableEventInviteCallLink = $String(d.sharableEventInviteCallLink);
             }
+            if (d.mediaPngThumbnail != null) {
+                m.mediaPngThumbnail = $String(d.mediaPngThumbnail);
+            }
+            if (d.qrUrl != null) {
+                m.qrUrl = $String(d.qrUrl);
+            }
             return m;
         };
 
@@ -1054,6 +1078,8 @@ export const MdStorageMsgRowOpaqueData = $root.MdStorageMsgRowOpaqueData = (() =
                         d.sharableEventInviteJpegThumbnail = $util.newBuffer(d.sharableEventInviteJpegThumbnail);
                 }
                 d.sharableEventInviteCallLink = "";
+                d.mediaPngThumbnail = "";
+                d.qrUrl = "";
             }
             if (m.body != null && $Object.hasOwnProperty.call(m, "body")) {
                 d.body = m.body;
@@ -1252,6 +1278,12 @@ export const MdStorageMsgRowOpaqueData = $root.MdStorageMsgRowOpaqueData = (() =
             }
             if (m.sharableEventInviteCallLink != null && $Object.hasOwnProperty.call(m, "sharableEventInviteCallLink")) {
                 d.sharableEventInviteCallLink = m.sharableEventInviteCallLink;
+            }
+            if (m.mediaPngThumbnail != null && $Object.hasOwnProperty.call(m, "mediaPngThumbnail")) {
+                d.mediaPngThumbnail = m.mediaPngThumbnail;
+            }
+            if (m.qrUrl != null && $Object.hasOwnProperty.call(m, "qrUrl")) {
+                d.qrUrl = m.qrUrl;
             }
             return d;
         };
