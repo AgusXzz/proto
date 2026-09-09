@@ -16763,6 +16763,7 @@ export const E2E = $root.E2E = (() => {
         MessageContextInfo.prototype.accountEncryptionAttestation = null;
         MessageContextInfo.prototype.associatedPrimaryIdentityKey = $util.newBuffer([]);
         MessageContextInfo.prototype.teeContextAnchorMessageId = "";
+        MessageContextInfo.prototype.acp2Setting = null;
 
         MessageContextInfo.create = function(properties) {
             return new MessageContextInfo(properties);
@@ -16817,6 +16818,8 @@ export const E2E = $root.E2E = (() => {
                 w.uint32(154).bytes(m.associatedPrimaryIdentityKey);
             if (m.teeContextAnchorMessageId != null && $Object.hasOwnProperty.call(m, "teeContextAnchorMessageId"))
                 w.uint32(162).string(m.teeContextAnchorMessageId);
+            if (m.acp2Setting != null && $Object.hasOwnProperty.call(m, "acp2Setting"))
+                $root.Protocol.ACP2Setting.encode(m.acp2Setting, w.uint32(170).fork(), q + 1).ldelim();
             if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                 for (var i = 0; i < m.$unknowns.length; ++i)
                     w.raw(m.$unknowns[i]);
@@ -16984,6 +16987,12 @@ export const E2E = $root.E2E = (() => {
                         m.teeContextAnchorMessageId = r.string();
                         continue;
                     }
+                case 21: {
+                        if (u !== 2)
+                            break;
+                        m.acp2Setting = $root.Protocol.ACP2Setting.decode(r, r.uint32(), $undefined, q + 1, m.acp2Setting);
+                        continue;
+                    }
                 }
                 r.skipType(u, q, t);
                 if (!r.discardUnknown) {
@@ -17121,6 +17130,11 @@ export const E2E = $root.E2E = (() => {
             if (d.teeContextAnchorMessageId != null) {
                 m.teeContextAnchorMessageId = $String(d.teeContextAnchorMessageId);
             }
+            if (d.acp2Setting != null) {
+                if (!$util.isObject(d.acp2Setting))
+                    throw $TypeError(".E2E.MessageContextInfo.acp2Setting: object expected");
+                m.acp2Setting = $root.Protocol.ACP2Setting.fromObject(d.acp2Setting, q + 1);
+            }
             return m;
         };
 
@@ -17185,6 +17199,7 @@ export const E2E = $root.E2E = (() => {
                         d.associatedPrimaryIdentityKey = $util.newBuffer(d.associatedPrimaryIdentityKey);
                 }
                 d.teeContextAnchorMessageId = "";
+                d.acp2Setting = null;
             }
             if (m.deviceListMetadata != null && $Object.hasOwnProperty.call(m, "deviceListMetadata")) {
                 d.deviceListMetadata = $root.E2E.DeviceListMetadata.toObject(m.deviceListMetadata, o, q + 1);
@@ -17248,6 +17263,9 @@ export const E2E = $root.E2E = (() => {
             }
             if (m.teeContextAnchorMessageId != null && $Object.hasOwnProperty.call(m, "teeContextAnchorMessageId")) {
                 d.teeContextAnchorMessageId = m.teeContextAnchorMessageId;
+            }
+            if (m.acp2Setting != null && $Object.hasOwnProperty.call(m, "acp2Setting")) {
+                d.acp2Setting = $root.Protocol.ACP2Setting.toObject(m.acp2Setting, o, q + 1);
             }
             return d;
         };
@@ -22948,6 +22966,7 @@ export const E2E = $root.E2E = (() => {
         Message.prototype.statusLinkPreviewMetadata = null;
         Message.prototype.botPlatformRegistrationSuccessMessage = null;
         Message.prototype.newsletterScheduledMessage = null;
+        Message.prototype.acp2SettingMessage = null;
 
         Message.create = function(properties) {
             return new Message(properties);
@@ -23182,6 +23201,8 @@ export const E2E = $root.E2E = (() => {
                 $root.E2E.Message.FutureProofMessage.encode(m.botPlatformRegistrationSuccessMessage, w.uint32(1050).fork(), q + 1).ldelim();
             if (m.newsletterScheduledMessage != null && $Object.hasOwnProperty.call(m, "newsletterScheduledMessage"))
                 $root.E2E.Message.FutureProofMessage.encode(m.newsletterScheduledMessage, w.uint32(1058).fork(), q + 1).ldelim();
+            if (m.acp2SettingMessage != null && $Object.hasOwnProperty.call(m, "acp2SettingMessage"))
+                $root.E2E.Message.FutureProofMessage.encode(m.acp2SettingMessage, w.uint32(1066).fork(), q + 1).ldelim();
             if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                 for (var i = 0; i < m.$unknowns.length; ++i)
                     w.raw(m.$unknowns[i]);
@@ -23881,6 +23902,12 @@ export const E2E = $root.E2E = (() => {
                         m.newsletterScheduledMessage = $root.E2E.Message.FutureProofMessage.decode(r, r.uint32(), $undefined, q + 1, m.newsletterScheduledMessage);
                         continue;
                     }
+                case 133: {
+                        if (u !== 2)
+                            break;
+                        m.acp2SettingMessage = $root.E2E.Message.FutureProofMessage.decode(r, r.uint32(), $undefined, q + 1, m.acp2SettingMessage);
+                        continue;
+                    }
                 }
                 r.skipType(u, q, t);
                 if (!r.discardUnknown) {
@@ -24461,6 +24488,11 @@ export const E2E = $root.E2E = (() => {
                     throw $TypeError(".E2E.Message.newsletterScheduledMessage: object expected");
                 m.newsletterScheduledMessage = $root.E2E.Message.FutureProofMessage.fromObject(d.newsletterScheduledMessage, q + 1);
             }
+            if (d.acp2SettingMessage != null) {
+                if (!$util.isObject(d.acp2SettingMessage))
+                    throw $TypeError(".E2E.Message.acp2SettingMessage: object expected");
+                m.acp2SettingMessage = $root.E2E.Message.FutureProofMessage.fromObject(d.acp2SettingMessage, q + 1);
+            }
             return m;
         };
 
@@ -24584,6 +24616,7 @@ export const E2E = $root.E2E = (() => {
                 d.statusLinkPreviewMetadata = null;
                 d.botPlatformRegistrationSuccessMessage = null;
                 d.newsletterScheduledMessage = null;
+                d.acp2SettingMessage = null;
             }
             if (m.conversation != null && $Object.hasOwnProperty.call(m, "conversation")) {
                 d.conversation = m.conversation;
@@ -24917,6 +24950,9 @@ export const E2E = $root.E2E = (() => {
             }
             if (m.newsletterScheduledMessage != null && $Object.hasOwnProperty.call(m, "newsletterScheduledMessage")) {
                 d.newsletterScheduledMessage = $root.E2E.Message.FutureProofMessage.toObject(m.newsletterScheduledMessage, o, q + 1);
+            }
+            if (m.acp2SettingMessage != null && $Object.hasOwnProperty.call(m, "acp2SettingMessage")) {
+                d.acp2SettingMessage = $root.E2E.Message.FutureProofMessage.toObject(m.acp2SettingMessage, o, q + 1);
             }
             return d;
         };
@@ -55244,6 +55280,7 @@ export const E2E = $root.E2E = (() => {
             ProtocolMessage.prototype.aiMetadataOperation = null;
             ProtocolMessage.prototype.markAsVerifiedAction = null;
             ProtocolMessage.prototype.coexStateSync = null;
+            ProtocolMessage.prototype.acp2Setting = null;
 
             ProtocolMessage.create = function(properties) {
                 return new ProtocolMessage(properties);
@@ -55316,6 +55353,8 @@ export const E2E = $root.E2E = (() => {
                     $root.E2E.Message.MarkAsVerifiedAction.encode(m.markAsVerifiedAction, w.uint32(258).fork(), q + 1).ldelim();
                 if (m.coexStateSync != null && $Object.hasOwnProperty.call(m, "coexStateSync"))
                     $root.ServerSync.CoexStateSync.encode(m.coexStateSync, w.uint32(266).fork(), q + 1).ldelim();
+                if (m.acp2Setting != null && $Object.hasOwnProperty.call(m, "acp2Setting"))
+                    $root.Protocol.ACP2Setting.encode(m.acp2Setting, w.uint32(282).fork(), q + 1).ldelim();
                 if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                     for (var i = 0; i < m.$unknowns.length; ++i)
                         w.raw(m.$unknowns[i]);
@@ -55535,6 +55574,12 @@ export const E2E = $root.E2E = (() => {
                             m.coexStateSync = $root.ServerSync.CoexStateSync.decode(r, r.uint32(), $undefined, q + 1, m.coexStateSync);
                             continue;
                         }
+                    case 35: {
+                            if (u !== 2)
+                                break;
+                            m.acp2Setting = $root.Protocol.ACP2Setting.decode(r, r.uint32(), $undefined, q + 1, m.acp2Setting);
+                            continue;
+                        }
                     }
                     r.skipType(u, q, t);
                     if (!r.discardUnknown) {
@@ -55696,6 +55741,10 @@ export const E2E = $root.E2E = (() => {
                 case 37:
                     m.type = 37;
                     break;
+                case "ACP2_SETTING":
+                case 39:
+                    m.type = 39;
+                    break;
                 default:
                 }
                 if (d.ephemeralExpiration != null) {
@@ -55843,6 +55892,11 @@ export const E2E = $root.E2E = (() => {
                         throw $TypeError(".E2E.Message.ProtocolMessage.coexStateSync: object expected");
                     m.coexStateSync = $root.ServerSync.CoexStateSync.fromObject(d.coexStateSync, q + 1);
                 }
+                if (d.acp2Setting != null) {
+                    if (!$util.isObject(d.acp2Setting))
+                        throw $TypeError(".E2E.Message.ProtocolMessage.acp2Setting: object expected");
+                    m.acp2Setting = $root.Protocol.ACP2Setting.fromObject(d.acp2Setting, q + 1);
+                }
                 return m;
             };
 
@@ -55899,6 +55953,7 @@ export const E2E = $root.E2E = (() => {
                     d.aiMetadataOperation = null;
                     d.markAsVerifiedAction = null;
                     d.coexStateSync = null;
+                    d.acp2Setting = null;
                 }
                 if (m.key != null && $Object.hasOwnProperty.call(m, "key")) {
                     d.key = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.toObject(m.key, o, q + 1);
@@ -56000,6 +56055,9 @@ export const E2E = $root.E2E = (() => {
                 if (m.coexStateSync != null && $Object.hasOwnProperty.call(m, "coexStateSync")) {
                     d.coexStateSync = $root.ServerSync.CoexStateSync.toObject(m.coexStateSync, o, q + 1);
                 }
+                if (m.acp2Setting != null && $Object.hasOwnProperty.call(m, "acp2Setting")) {
+                    d.acp2Setting = $root.Protocol.ACP2Setting.toObject(m.acp2Setting, o, q + 1);
+                }
                 return d;
             };
 
@@ -56047,6 +56105,7 @@ export const E2E = $root.E2E = (() => {
                 values[valuesById[35] = "AI_METADATA_OPERATION"] = 35;
                 values[valuesById[36] = "MARK_AS_VERIFIED_ACTION"] = 36;
                 values[valuesById[37] = "COEX_STATE_SYNC"] = 37;
+                values[valuesById[39] = "ACP2_SETTING"] = 39;
                 return values;
             })();
 
@@ -86699,6 +86758,218 @@ export const Adv = $root.Adv = (() => {
 export const Protocol = $root.Protocol = (() => {
 
     const Protocol = {};
+
+    Protocol.ACP2Setting = (function() {
+
+        const ACP2Setting = function (p) {
+            if (p)
+                for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                    if (p[ks[i]] != null && ks[i] !== "__proto__")
+                        this[ks[i]] = p[ks[i]];
+        };
+
+        ACP2Setting.prototype.enabled = false;
+        ACP2Setting.prototype.trigger = 0;
+        ACP2Setting.prototype.settingTimestamp = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+        ACP2Setting.prototype.initiatedByMe = false;
+
+        ACP2Setting.create = function(properties) {
+            return new ACP2Setting(properties);
+        };
+
+        ACP2Setting.encode = function (m, w, q) {
+            if (!w)
+                w = $Writer.create();
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (m.enabled != null && $Object.hasOwnProperty.call(m, "enabled"))
+                w.uint32(8).bool(m.enabled);
+            if (m.trigger != null && $Object.hasOwnProperty.call(m, "trigger"))
+                w.uint32(16).int32(m.trigger);
+            if (m.settingTimestamp != null && $Object.hasOwnProperty.call(m, "settingTimestamp"))
+                w.uint32(24).int64(m.settingTimestamp);
+            if (m.initiatedByMe != null && $Object.hasOwnProperty.call(m, "initiatedByMe"))
+                w.uint32(32).bool(m.initiatedByMe);
+            if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                for (var i = 0; i < m.$unknowns.length; ++i)
+                    w.raw(m.$unknowns[i]);
+            return w;
+        };
+
+        ACP2Setting.decode = function (r, l, z, q, g) {
+            if (!(r instanceof $Reader))
+                r = $Reader.create(r);
+            if (q === $undefined)
+                q = 0;
+            if (q > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.Protocol.ACP2Setting();
+            while (r.pos < c) {
+                var s = r.pos;
+                var t = r.tag();
+                if (t === z) {
+                    z = $undefined;
+                    break;
+                }
+                var u = t & 7;
+                switch (t >>>= 3) {
+                case 1: {
+                        if (u !== 0)
+                            break;
+                        m.enabled = r.bool();
+                        continue;
+                    }
+                case 2: {
+                        if (u !== 0)
+                            break;
+                        v = r.int32();
+                        if ($root.Protocol.LimitSharing.TriggerType[v] !== $undefined) {
+                            m.trigger = v;
+                        } else if (!r.discardUnknown) {
+                            $util.makeProp(m, "$unknowns", false);
+                            (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                        }
+                        continue;
+                    }
+                case 3: {
+                        if (u !== 0)
+                            break;
+                        m.settingTimestamp = r.int64();
+                        continue;
+                    }
+                case 4: {
+                        if (u !== 0)
+                            break;
+                        m.initiatedByMe = r.bool();
+                        continue;
+                    }
+                }
+                r.skipType(u, q, t);
+                if (!r.discardUnknown) {
+                    $util.makeProp(m, "$unknowns", false);
+                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
+            }
+            if (z !== $undefined)
+                throw $Error("missing end group");
+            return m;
+        };
+
+        ACP2Setting.fromObject = function (d, q) {
+            if (d instanceof $root.Protocol.ACP2Setting)
+                return d;
+            if (!$util.isObject(d))
+                throw $TypeError(".Protocol.ACP2Setting: object expected");
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var m = new $root.Protocol.ACP2Setting();
+            if (d.enabled != null) {
+                m.enabled = $Boolean(d.enabled);
+            }
+            switch (d.trigger) {
+            case "UNKNOWN":
+            case 0:
+                m.trigger = 0;
+                break;
+            case "CHAT_SETTING":
+            case 1:
+                m.trigger = 1;
+                break;
+            case "BIZ_SUPPORTS_FB_HOSTING":
+            case 2:
+                m.trigger = 2;
+                break;
+            case "UNKNOWN_GROUP":
+            case 3:
+                m.trigger = 3;
+                break;
+            default:
+            }
+            if (d.settingTimestamp != null) {
+                if ($util.Long)
+                    m.settingTimestamp = $util.Long.fromValue(d.settingTimestamp, false);
+                else if (typeof d.settingTimestamp === "string")
+                    m.settingTimestamp = $parseInt(d.settingTimestamp, 10);
+                else if (typeof d.settingTimestamp === "number")
+                    m.settingTimestamp = d.settingTimestamp;
+                else if (typeof d.settingTimestamp === "object")
+                    m.settingTimestamp = new $util.LongBits(d.settingTimestamp.low >>> 0, d.settingTimestamp.high >>> 0).toNumber();
+            }
+            if (d.initiatedByMe != null) {
+                m.initiatedByMe = $Boolean(d.initiatedByMe);
+            }
+            return m;
+        };
+
+        ACP2Setting.toObject = function (m, o, q) {
+            if (!o)
+                o = {};
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var d = {};
+            if (o.defaults) {
+                d.enabled = false;
+                d.trigger = o.enums === $String ? "UNKNOWN" : 0;
+                if ($util.Long) {
+                    var n = new $util.Long(0, 0, false);
+                    d.settingTimestamp = o.longs === $String ? n.toString() : o.longs === $Number ? n.toNumber() : typeof $BigInt !== "undefined" && o.longs === $BigInt ? n.toBigInt() : n;
+                } else
+                    d.settingTimestamp = o.longs === $String ? "0" : typeof $BigInt !== "undefined" && o.longs === $BigInt ? $BigInt("0") : 0;
+                d.initiatedByMe = false;
+            }
+            if (m.enabled != null && $Object.hasOwnProperty.call(m, "enabled")) {
+                d.enabled = m.enabled;
+            }
+            if (m.trigger != null && $Object.hasOwnProperty.call(m, "trigger")) {
+                d.trigger = o.enums === $String ? $root.Protocol.LimitSharing.TriggerType[m.trigger] === $undefined ? m.trigger : $root.Protocol.LimitSharing.TriggerType[m.trigger] : m.trigger;
+            }
+            if (m.settingTimestamp != null && $Object.hasOwnProperty.call(m, "settingTimestamp")) {
+                if (typeof $BigInt !== "undefined" && o.longs === $BigInt)
+                    d.settingTimestamp = typeof m.settingTimestamp === "number" ? $BigInt(m.settingTimestamp) : $util.Long.fromBits(m.settingTimestamp.low >>> 0, m.settingTimestamp.high >>> 0, false).toBigInt();
+                else if (typeof m.settingTimestamp === "number")
+                    d.settingTimestamp = o.longs === $String ? $String(m.settingTimestamp) : m.settingTimestamp;
+                else
+                    d.settingTimestamp = o.longs === String ? longToString(m.settingTimestamp) : o.longs === Number ? longToNumber(m.settingTimestamp) : m.settingTimestamp;
+            }
+            if (m.initiatedByMe != null && $Object.hasOwnProperty.call(m, "initiatedByMe")) {
+                d.initiatedByMe = m.initiatedByMe;
+            }
+            return d;
+        };
+
+        ACP2Setting.prototype.toJSON = function() {
+            return ACP2Setting.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        ACP2Setting.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/Protocol.ACP2Setting";
+        };
+
+        return ACP2Setting;
+    })();
 
     Protocol.LimitSharing = (function() {
 

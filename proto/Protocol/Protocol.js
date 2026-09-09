@@ -47,6 +47,218 @@ export const Protocol = $root.Protocol = (() => {
 
     const Protocol = {};
 
+    Protocol.ACP2Setting = (function() {
+
+        const ACP2Setting = function (p) {
+            if (p)
+                for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                    if (p[ks[i]] != null && ks[i] !== "__proto__")
+                        this[ks[i]] = p[ks[i]];
+        };
+
+        ACP2Setting.prototype.enabled = false;
+        ACP2Setting.prototype.trigger = 0;
+        ACP2Setting.prototype.settingTimestamp = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+        ACP2Setting.prototype.initiatedByMe = false;
+
+        ACP2Setting.create = function(properties) {
+            return new ACP2Setting(properties);
+        };
+
+        ACP2Setting.encode = function (m, w, q) {
+            if (!w)
+                w = $Writer.create();
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (m.enabled != null && $Object.hasOwnProperty.call(m, "enabled"))
+                w.uint32(8).bool(m.enabled);
+            if (m.trigger != null && $Object.hasOwnProperty.call(m, "trigger"))
+                w.uint32(16).int32(m.trigger);
+            if (m.settingTimestamp != null && $Object.hasOwnProperty.call(m, "settingTimestamp"))
+                w.uint32(24).int64(m.settingTimestamp);
+            if (m.initiatedByMe != null && $Object.hasOwnProperty.call(m, "initiatedByMe"))
+                w.uint32(32).bool(m.initiatedByMe);
+            if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                for (var i = 0; i < m.$unknowns.length; ++i)
+                    w.raw(m.$unknowns[i]);
+            return w;
+        };
+
+        ACP2Setting.decode = function (r, l, z, q, g) {
+            if (!(r instanceof $Reader))
+                r = $Reader.create(r);
+            if (q === $undefined)
+                q = 0;
+            if (q > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var c, m, v;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.Protocol.ACP2Setting();
+            while (r.pos < c) {
+                var s = r.pos;
+                var t = r.tag();
+                if (t === z) {
+                    z = $undefined;
+                    break;
+                }
+                var u = t & 7;
+                switch (t >>>= 3) {
+                case 1: {
+                        if (u !== 0)
+                            break;
+                        m.enabled = r.bool();
+                        continue;
+                    }
+                case 2: {
+                        if (u !== 0)
+                            break;
+                        v = r.int32();
+                        if ($root.Protocol.LimitSharing.TriggerType[v] !== $undefined) {
+                            m.trigger = v;
+                        } else if (!r.discardUnknown) {
+                            $util.makeProp(m, "$unknowns", false);
+                            (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                        }
+                        continue;
+                    }
+                case 3: {
+                        if (u !== 0)
+                            break;
+                        m.settingTimestamp = r.int64();
+                        continue;
+                    }
+                case 4: {
+                        if (u !== 0)
+                            break;
+                        m.initiatedByMe = r.bool();
+                        continue;
+                    }
+                }
+                r.skipType(u, q, t);
+                if (!r.discardUnknown) {
+                    $util.makeProp(m, "$unknowns", false);
+                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
+            }
+            if (z !== $undefined)
+                throw $Error("missing end group");
+            return m;
+        };
+
+        ACP2Setting.fromObject = function (d, q) {
+            if (d instanceof $root.Protocol.ACP2Setting)
+                return d;
+            if (!$util.isObject(d))
+                throw $TypeError(".Protocol.ACP2Setting: object expected");
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var m = new $root.Protocol.ACP2Setting();
+            if (d.enabled != null) {
+                m.enabled = $Boolean(d.enabled);
+            }
+            switch (d.trigger) {
+            case "UNKNOWN":
+            case 0:
+                m.trigger = 0;
+                break;
+            case "CHAT_SETTING":
+            case 1:
+                m.trigger = 1;
+                break;
+            case "BIZ_SUPPORTS_FB_HOSTING":
+            case 2:
+                m.trigger = 2;
+                break;
+            case "UNKNOWN_GROUP":
+            case 3:
+                m.trigger = 3;
+                break;
+            default:
+            }
+            if (d.settingTimestamp != null) {
+                if ($util.Long)
+                    m.settingTimestamp = $util.Long.fromValue(d.settingTimestamp, false);
+                else if (typeof d.settingTimestamp === "string")
+                    m.settingTimestamp = $parseInt(d.settingTimestamp, 10);
+                else if (typeof d.settingTimestamp === "number")
+                    m.settingTimestamp = d.settingTimestamp;
+                else if (typeof d.settingTimestamp === "object")
+                    m.settingTimestamp = new $util.LongBits(d.settingTimestamp.low >>> 0, d.settingTimestamp.high >>> 0).toNumber();
+            }
+            if (d.initiatedByMe != null) {
+                m.initiatedByMe = $Boolean(d.initiatedByMe);
+            }
+            return m;
+        };
+
+        ACP2Setting.toObject = function (m, o, q) {
+            if (!o)
+                o = {};
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var d = {};
+            if (o.defaults) {
+                d.enabled = false;
+                d.trigger = o.enums === $String ? "UNKNOWN" : 0;
+                if ($util.Long) {
+                    var n = new $util.Long(0, 0, false);
+                    d.settingTimestamp = o.longs === $String ? n.toString() : o.longs === $Number ? n.toNumber() : typeof $BigInt !== "undefined" && o.longs === $BigInt ? n.toBigInt() : n;
+                } else
+                    d.settingTimestamp = o.longs === $String ? "0" : typeof $BigInt !== "undefined" && o.longs === $BigInt ? $BigInt("0") : 0;
+                d.initiatedByMe = false;
+            }
+            if (m.enabled != null && $Object.hasOwnProperty.call(m, "enabled")) {
+                d.enabled = m.enabled;
+            }
+            if (m.trigger != null && $Object.hasOwnProperty.call(m, "trigger")) {
+                d.trigger = o.enums === $String ? $root.Protocol.LimitSharing.TriggerType[m.trigger] === $undefined ? m.trigger : $root.Protocol.LimitSharing.TriggerType[m.trigger] : m.trigger;
+            }
+            if (m.settingTimestamp != null && $Object.hasOwnProperty.call(m, "settingTimestamp")) {
+                if (typeof $BigInt !== "undefined" && o.longs === $BigInt)
+                    d.settingTimestamp = typeof m.settingTimestamp === "number" ? $BigInt(m.settingTimestamp) : $util.Long.fromBits(m.settingTimestamp.low >>> 0, m.settingTimestamp.high >>> 0, false).toBigInt();
+                else if (typeof m.settingTimestamp === "number")
+                    d.settingTimestamp = o.longs === $String ? $String(m.settingTimestamp) : m.settingTimestamp;
+                else
+                    d.settingTimestamp = o.longs === String ? longToString(m.settingTimestamp) : o.longs === Number ? longToNumber(m.settingTimestamp) : m.settingTimestamp;
+            }
+            if (m.initiatedByMe != null && $Object.hasOwnProperty.call(m, "initiatedByMe")) {
+                d.initiatedByMe = m.initiatedByMe;
+            }
+            return d;
+        };
+
+        ACP2Setting.prototype.toJSON = function() {
+            return ACP2Setting.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        ACP2Setting.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/Protocol.ACP2Setting";
+        };
+
+        return ACP2Setting;
+    })();
+
     Protocol.LimitSharing = (function() {
 
         const LimitSharing = function (p) {
