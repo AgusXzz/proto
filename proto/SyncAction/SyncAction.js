@@ -3979,6 +3979,8 @@ export const SyncAction = $root.SyncAction = (() => {
             BusinessBroadcastCampaignAction.prototype.scheduledTimestamp = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
             BusinessBroadcastCampaignAction.prototype.createTimestamp = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
             BusinessBroadcastCampaignAction.prototype.status = 1;
+            BusinessBroadcastCampaignAction.prototype.bbProStatus = 1;
+            BusinessBroadcastCampaignAction.prototype.customAudienceFbid = "";
 
             BusinessBroadcastCampaignAction.create = function(properties) {
                 return new BusinessBroadcastCampaignAction(properties);
@@ -4009,6 +4011,10 @@ export const SyncAction = $root.SyncAction = (() => {
                     w.uint32(64).int64(m.createTimestamp);
                 if (m.status != null && $Object.hasOwnProperty.call(m, "status"))
                     w.uint32(72).int32(m.status);
+                if (m.bbProStatus != null && $Object.hasOwnProperty.call(m, "bbProStatus"))
+                    w.uint32(80).int32(m.bbProStatus);
+                if (m.customAudienceFbid != null && $Object.hasOwnProperty.call(m, "customAudienceFbid"))
+                    w.uint32(90).string(m.customAudienceFbid);
                 if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                     for (var i = 0; i < m.$unknowns.length; ++i)
                         w.raw(m.$unknowns[i]);
@@ -4102,6 +4108,24 @@ export const SyncAction = $root.SyncAction = (() => {
                             }
                             continue;
                         }
+                    case 10: {
+                            if (u !== 0)
+                                break;
+                            v = r.int32();
+                            if ($root.SyncAction.SyncActionValue.BusinessBroadcastCampaignBBProStatus[v] !== $undefined) {
+                                m.bbProStatus = v;
+                            } else if (!r.discardUnknown) {
+                                $util.makeProp(m, "$unknowns", false);
+                                (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                            }
+                            continue;
+                        }
+                    case 11: {
+                            if (u !== 2)
+                                break;
+                            m.customAudienceFbid = r.string();
+                            continue;
+                        }
                     }
                     r.skipType(u, q, t);
                     if (!r.discardUnknown) {
@@ -4190,6 +4214,52 @@ export const SyncAction = $root.SyncAction = (() => {
                     break;
                 default:
                 }
+                switch (d.bbProStatus) {
+                case "BB_PRO_ACTIVE":
+                case 1:
+                    m.bbProStatus = 1;
+                    break;
+                case "BB_PRO_COMPLETED":
+                case 2:
+                    m.bbProStatus = 2;
+                    break;
+                case "BB_PRO_IN_DRAFT":
+                case 3:
+                    m.bbProStatus = 3;
+                    break;
+                case "BB_PRO_IN_REVIEW":
+                case 4:
+                    m.bbProStatus = 4;
+                    break;
+                case "BB_PRO_NOT_SENDING":
+                case 5:
+                    m.bbProStatus = 5;
+                    break;
+                case "BB_PRO_OFF":
+                case 6:
+                    m.bbProStatus = 6;
+                    break;
+                case "BB_PRO_REJECTED":
+                case 7:
+                    m.bbProStatus = 7;
+                    break;
+                case "BB_PRO_SCHEDULED":
+                case 8:
+                    m.bbProStatus = 8;
+                    break;
+                case "BB_PRO_SENDING_LIMITED":
+                case 9:
+                    m.bbProStatus = 9;
+                    break;
+                case "BB_PRO_PROCESSING":
+                case 10:
+                    m.bbProStatus = 10;
+                    break;
+                default:
+                }
+                if (d.customAudienceFbid != null) {
+                    m.customAudienceFbid = $String(d.customAudienceFbid);
+                }
                 return m;
             };
 
@@ -4219,6 +4289,8 @@ export const SyncAction = $root.SyncAction = (() => {
                     } else
                         d.createTimestamp = o.longs === $String ? "0" : typeof $BigInt !== "undefined" && o.longs === $BigInt ? $BigInt("0") : 0;
                     d.status = o.enums === $String ? "DRAFT" : 1;
+                    d.bbProStatus = o.enums === $String ? "BB_PRO_ACTIVE" : 1;
+                    d.customAudienceFbid = "";
                 }
                 if (m.deviceId != null && $Object.hasOwnProperty.call(m, "deviceId")) {
                     d.deviceId = m.deviceId;
@@ -4257,6 +4329,12 @@ export const SyncAction = $root.SyncAction = (() => {
                 if (m.status != null && $Object.hasOwnProperty.call(m, "status")) {
                     d.status = o.enums === $String ? $root.SyncAction.SyncActionValue.BusinessBroadcastCampaignStatus[m.status] === $undefined ? m.status : $root.SyncAction.SyncActionValue.BusinessBroadcastCampaignStatus[m.status] : m.status;
                 }
+                if (m.bbProStatus != null && $Object.hasOwnProperty.call(m, "bbProStatus")) {
+                    d.bbProStatus = o.enums === $String ? $root.SyncAction.SyncActionValue.BusinessBroadcastCampaignBBProStatus[m.bbProStatus] === $undefined ? m.bbProStatus : $root.SyncAction.SyncActionValue.BusinessBroadcastCampaignBBProStatus[m.bbProStatus] : m.bbProStatus;
+                }
+                if (m.customAudienceFbid != null && $Object.hasOwnProperty.call(m, "customAudienceFbid")) {
+                    d.customAudienceFbid = m.customAudienceFbid;
+                }
                 return d;
             };
 
@@ -4271,6 +4349,21 @@ export const SyncAction = $root.SyncAction = (() => {
             };
 
             return BusinessBroadcastCampaignAction;
+        })();
+
+        SyncActionValue.BusinessBroadcastCampaignBBProStatus = (function() {
+            const valuesById = $Object.create(null), values = $Object.create(valuesById);
+            values[valuesById[1] = "BB_PRO_ACTIVE"] = 1;
+            values[valuesById[2] = "BB_PRO_COMPLETED"] = 2;
+            values[valuesById[3] = "BB_PRO_IN_DRAFT"] = 3;
+            values[valuesById[4] = "BB_PRO_IN_REVIEW"] = 4;
+            values[valuesById[5] = "BB_PRO_NOT_SENDING"] = 5;
+            values[valuesById[6] = "BB_PRO_OFF"] = 6;
+            values[valuesById[7] = "BB_PRO_REJECTED"] = 7;
+            values[valuesById[8] = "BB_PRO_SCHEDULED"] = 8;
+            values[valuesById[9] = "BB_PRO_SENDING_LIMITED"] = 9;
+            values[valuesById[10] = "BB_PRO_PROCESSING"] = 10;
+            return values;
         })();
 
         SyncActionValue.BusinessBroadcastCampaignStatus = (function() {

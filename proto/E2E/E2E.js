@@ -10587,6 +10587,7 @@ export const E2E = $root.E2E = (() => {
             ExternalAdReplyInfo.prototype.agmTitleStrategy = 0;
             ExternalAdReplyInfo.prototype.agmSubtitleStrategy = 0;
             ExternalAdReplyInfo.prototype.agmHeaderInteractionStrategy = 0;
+            ExternalAdReplyInfo.prototype.containsCtwaFlowsAutoLabel = false;
 
             ExternalAdReplyInfo.create = function(properties) {
                 return new ExternalAdReplyInfo(properties);
@@ -10663,6 +10664,8 @@ export const E2E = $root.E2E = (() => {
                     w.uint32(248).int32(m.agmSubtitleStrategy);
                 if (m.agmHeaderInteractionStrategy != null && $Object.hasOwnProperty.call(m, "agmHeaderInteractionStrategy"))
                     w.uint32(256).int32(m.agmHeaderInteractionStrategy);
+                if (m.containsCtwaFlowsAutoLabel != null && $Object.hasOwnProperty.call(m, "containsCtwaFlowsAutoLabel"))
+                    w.uint32(264).bool(m.containsCtwaFlowsAutoLabel);
                 if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                     for (var i = 0; i < m.$unknowns.length; ++i)
                         w.raw(m.$unknowns[i]);
@@ -10900,6 +10903,12 @@ export const E2E = $root.E2E = (() => {
                             m.agmHeaderInteractionStrategy = r.int32();
                             continue;
                         }
+                    case 33: {
+                            if (u !== 0)
+                                break;
+                            m.containsCtwaFlowsAutoLabel = r.bool();
+                            continue;
+                        }
                     }
                     r.skipType(u, q, t);
                     if (!r.discardUnknown) {
@@ -11046,6 +11055,9 @@ export const E2E = $root.E2E = (() => {
                 if (d.agmHeaderInteractionStrategy != null) {
                     m.agmHeaderInteractionStrategy = d.agmHeaderInteractionStrategy | 0;
                 }
+                if (d.containsCtwaFlowsAutoLabel != null) {
+                    m.containsCtwaFlowsAutoLabel = $Boolean(d.containsCtwaFlowsAutoLabel);
+                }
                 return m;
             };
 
@@ -11096,6 +11108,7 @@ export const E2E = $root.E2E = (() => {
                     d.agmTitleStrategy = 0;
                     d.agmSubtitleStrategy = 0;
                     d.agmHeaderInteractionStrategy = 0;
+                    d.containsCtwaFlowsAutoLabel = false;
                 }
                 if (m.title != null && $Object.hasOwnProperty.call(m, "title")) {
                     d.title = m.title;
@@ -11192,6 +11205,9 @@ export const E2E = $root.E2E = (() => {
                 }
                 if (m.agmHeaderInteractionStrategy != null && $Object.hasOwnProperty.call(m, "agmHeaderInteractionStrategy")) {
                     d.agmHeaderInteractionStrategy = m.agmHeaderInteractionStrategy;
+                }
+                if (m.containsCtwaFlowsAutoLabel != null && $Object.hasOwnProperty.call(m, "containsCtwaFlowsAutoLabel")) {
+                    d.containsCtwaFlowsAutoLabel = m.containsCtwaFlowsAutoLabel;
                 }
                 return d;
             };
@@ -18952,6 +18968,148 @@ export const E2E = $root.E2E = (() => {
             return Chat;
         })();
 
+        Message.ChatAnimatedWallpaper = (function() {
+
+            const ChatAnimatedWallpaper = function (p) {
+                if (p)
+                    for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                        if (p[ks[i]] != null && ks[i] !== "__proto__")
+                            this[ks[i]] = p[ks[i]];
+            };
+
+            ChatAnimatedWallpaper.prototype.animatedWallpaperId = "";
+            ChatAnimatedWallpaper.prototype.dimLevel = 0;
+
+            ChatAnimatedWallpaper.create = function(properties) {
+                return new ChatAnimatedWallpaper(properties);
+            };
+
+            ChatAnimatedWallpaper.encode = function (m, w, q) {
+                if (!w)
+                    w = $Writer.create();
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                if (m.animatedWallpaperId != null && $Object.hasOwnProperty.call(m, "animatedWallpaperId"))
+                    w.uint32(10).string(m.animatedWallpaperId);
+                if (m.dimLevel != null && $Object.hasOwnProperty.call(m, "dimLevel"))
+                    w.uint32(21).float(m.dimLevel);
+                if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                    for (var i = 0; i < m.$unknowns.length; ++i)
+                        w.raw(m.$unknowns[i]);
+                return w;
+            };
+
+            ChatAnimatedWallpaper.decode = function (r, l, z, q, g) {
+                if (!(r instanceof $Reader))
+                    r = $Reader.create(r);
+                if (q === $undefined)
+                    q = 0;
+                if (q > $Reader.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.ChatAnimatedWallpaper();
+                while (r.pos < c) {
+                    var s = r.pos;
+                    var t = r.tag();
+                    if (t === z) {
+                        z = $undefined;
+                        break;
+                    }
+                    var u = t & 7;
+                    switch (t >>>= 3) {
+                    case 1: {
+                            if (u !== 2)
+                                break;
+                            m.animatedWallpaperId = r.string();
+                            continue;
+                        }
+                    case 2: {
+                            if (u !== 5)
+                                break;
+                            m.dimLevel = r.float();
+                            continue;
+                        }
+                    }
+                    r.skipType(u, q, t);
+                    if (!r.discardUnknown) {
+                        $util.makeProp(m, "$unknowns", false);
+                        (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                    }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
+                }
+                if (z !== $undefined)
+                    throw $Error("missing end group");
+                return m;
+            };
+
+            ChatAnimatedWallpaper.fromObject = function (d, q) {
+                if (d instanceof $root.E2E.Message.ChatAnimatedWallpaper)
+                    return d;
+                if (!$util.isObject(d))
+                    throw $TypeError(".E2E.Message.ChatAnimatedWallpaper: object expected");
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var m = new $root.E2E.Message.ChatAnimatedWallpaper();
+                if (d.animatedWallpaperId != null) {
+                    m.animatedWallpaperId = $String(d.animatedWallpaperId);
+                }
+                if (d.dimLevel != null) {
+                    m.dimLevel = $Number(d.dimLevel);
+                }
+                return m;
+            };
+
+            ChatAnimatedWallpaper.toObject = function (m, o, q) {
+                if (!o)
+                    o = {};
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var d = {};
+                if (o.defaults) {
+                    d.animatedWallpaperId = "";
+                    d.dimLevel = 0;
+                }
+                if (m.animatedWallpaperId != null && $Object.hasOwnProperty.call(m, "animatedWallpaperId")) {
+                    d.animatedWallpaperId = m.animatedWallpaperId;
+                }
+                if (m.dimLevel != null && $Object.hasOwnProperty.call(m, "dimLevel")) {
+                    d.dimLevel = o.json && !$isFinite(m.dimLevel) ? $String(m.dimLevel) : m.dimLevel;
+                }
+                return d;
+            };
+
+            ChatAnimatedWallpaper.prototype.toJSON = function() {
+                return ChatAnimatedWallpaper.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            ChatAnimatedWallpaper.getTypeUrl = function(prefix) {
+                if (prefix === $undefined)
+                    prefix = "type.googleapis.com";
+                return prefix + "/E2E.Message.ChatAnimatedWallpaper";
+            };
+
+            return ChatAnimatedWallpaper;
+        })();
+
         Message.ChatCustomImageWallpaper = (function() {
 
             const ChatCustomImageWallpaper = function (p) {
@@ -19611,11 +19769,12 @@ export const E2E = $root.E2E = (() => {
             ChatThemeSetting.prototype.solidColor = null;
             ChatThemeSetting.prototype.stockImage = null;
             ChatThemeSetting.prototype.customImage = null;
+            ChatThemeSetting.prototype.animatedWallpaper = null;
 
             let $oneOfFields;
 
             $Object.defineProperty(ChatThemeSetting.prototype, "wallpaper", {
-                get: $util.oneOfGetter($oneOfFields = ["defaultWallpaper", "solidColor", "stockImage", "customImage"]),
+                get: $util.oneOfGetter($oneOfFields = ["defaultWallpaper", "solidColor", "stockImage", "customImage", "animatedWallpaper"]),
                 set: $util.oneOfSetter($oneOfFields)
             });
 
@@ -19644,6 +19803,8 @@ export const E2E = $root.E2E = (() => {
                     $root.E2E.Message.ChatStockImageWallpaper.encode(m.stockImage, w.uint32(98).fork(), q + 1).ldelim();
                 if (m.customImage != null && $Object.hasOwnProperty.call(m, "customImage"))
                     $root.E2E.Message.ChatCustomImageWallpaper.encode(m.customImage, w.uint32(106).fork(), q + 1).ldelim();
+                if (m.animatedWallpaper != null && $Object.hasOwnProperty.call(m, "animatedWallpaper"))
+                    $root.E2E.Message.ChatAnimatedWallpaper.encode(m.animatedWallpaper, w.uint32(114).fork(), q + 1).ldelim();
                 if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                     for (var i = 0; i < m.$unknowns.length; ++i)
                         w.raw(m.$unknowns[i]);
@@ -19723,6 +19884,13 @@ export const E2E = $root.E2E = (() => {
                             m.wallpaper = "customImage";
                             continue;
                         }
+                    case 14: {
+                            if (u !== 2)
+                                break;
+                            m.animatedWallpaper = $root.E2E.Message.ChatAnimatedWallpaper.decode(r, r.uint32(), $undefined, q + 1, m.animatedWallpaper);
+                            m.wallpaper = "animatedWallpaper";
+                            continue;
+                        }
                     }
                     r.skipType(u, q, t);
                     if (!r.discardUnknown) {
@@ -19786,6 +19954,11 @@ export const E2E = $root.E2E = (() => {
                         throw $TypeError(".E2E.Message.ChatThemeSetting.customImage: object expected");
                     m.customImage = $root.E2E.Message.ChatCustomImageWallpaper.fromObject(d.customImage, q + 1);
                 }
+                if (d.animatedWallpaper != null) {
+                    if (!$util.isObject(d.animatedWallpaper))
+                        throw $TypeError(".E2E.Message.ChatThemeSetting.animatedWallpaper: object expected");
+                    m.animatedWallpaper = $root.E2E.Message.ChatAnimatedWallpaper.fromObject(d.animatedWallpaper, q + 1);
+                }
                 return m;
             };
 
@@ -19839,6 +20012,11 @@ export const E2E = $root.E2E = (() => {
                     d.customImage = $root.E2E.Message.ChatCustomImageWallpaper.toObject(m.customImage, o, q + 1);
                     if (o.oneofs)
                         d.wallpaper = "customImage";
+                }
+                if (m.animatedWallpaper != null && $Object.hasOwnProperty.call(m, "animatedWallpaper")) {
+                    d.animatedWallpaper = $root.E2E.Message.ChatAnimatedWallpaper.toObject(m.animatedWallpaper, o, q + 1);
+                    if (o.oneofs)
+                        d.wallpaper = "animatedWallpaper";
                 }
                 return d;
             };
@@ -45041,6 +45219,8 @@ export const E2E = $root.E2E = (() => {
             ProtocolMessage.prototype.markAsVerifiedAction = null;
             ProtocolMessage.prototype.coexStateSync = null;
             ProtocolMessage.prototype.acp2Setting = null;
+            ProtocolMessage.prototype.sharedDeviceContactHashKeyShare = null;
+            ProtocolMessage.prototype.sharedDeviceContactHashKeyRequest = null;
 
             ProtocolMessage.create = function(properties) {
                 return new ProtocolMessage(properties);
@@ -45115,6 +45295,10 @@ export const E2E = $root.E2E = (() => {
                     $root.ServerSync.CoexStateSync.encode(m.coexStateSync, w.uint32(266).fork(), q + 1).ldelim();
                 if (m.acp2Setting != null && $Object.hasOwnProperty.call(m, "acp2Setting"))
                     $root.Protocol.ACP2Setting.encode(m.acp2Setting, w.uint32(282).fork(), q + 1).ldelim();
+                if (m.sharedDeviceContactHashKeyShare != null && $Object.hasOwnProperty.call(m, "sharedDeviceContactHashKeyShare"))
+                    $root.E2E.Message.SharedDeviceContactHashKeyShare.encode(m.sharedDeviceContactHashKeyShare, w.uint32(290).fork(), q + 1).ldelim();
+                if (m.sharedDeviceContactHashKeyRequest != null && $Object.hasOwnProperty.call(m, "sharedDeviceContactHashKeyRequest"))
+                    $root.E2E.Message.SharedDeviceContactHashKeyRequest.encode(m.sharedDeviceContactHashKeyRequest, w.uint32(298).fork(), q + 1).ldelim();
                 if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                     for (var i = 0; i < m.$unknowns.length; ++i)
                         w.raw(m.$unknowns[i]);
@@ -45340,6 +45524,18 @@ export const E2E = $root.E2E = (() => {
                             m.acp2Setting = $root.Protocol.ACP2Setting.decode(r, r.uint32(), $undefined, q + 1, m.acp2Setting);
                             continue;
                         }
+                    case 36: {
+                            if (u !== 2)
+                                break;
+                            m.sharedDeviceContactHashKeyShare = $root.E2E.Message.SharedDeviceContactHashKeyShare.decode(r, r.uint32(), $undefined, q + 1, m.sharedDeviceContactHashKeyShare);
+                            continue;
+                        }
+                    case 37: {
+                            if (u !== 2)
+                                break;
+                            m.sharedDeviceContactHashKeyRequest = $root.E2E.Message.SharedDeviceContactHashKeyRequest.decode(r, r.uint32(), $undefined, q + 1, m.sharedDeviceContactHashKeyRequest);
+                            continue;
+                        }
                     }
                     r.skipType(u, q, t);
                     if (!r.discardUnknown) {
@@ -45505,6 +45701,14 @@ export const E2E = $root.E2E = (() => {
                 case 39:
                     m.type = 39;
                     break;
+                case "SHARED_DEVICE_CONTACT_HASH_KEY_SHARE":
+                case 40:
+                    m.type = 40;
+                    break;
+                case "SHARED_DEVICE_CONTACT_HASH_KEY_REQUEST":
+                case 41:
+                    m.type = 41;
+                    break;
                 default:
                 }
                 if (d.ephemeralExpiration != null) {
@@ -45657,6 +45861,16 @@ export const E2E = $root.E2E = (() => {
                         throw $TypeError(".E2E.Message.ProtocolMessage.acp2Setting: object expected");
                     m.acp2Setting = $root.Protocol.ACP2Setting.fromObject(d.acp2Setting, q + 1);
                 }
+                if (d.sharedDeviceContactHashKeyShare != null) {
+                    if (!$util.isObject(d.sharedDeviceContactHashKeyShare))
+                        throw $TypeError(".E2E.Message.ProtocolMessage.sharedDeviceContactHashKeyShare: object expected");
+                    m.sharedDeviceContactHashKeyShare = $root.E2E.Message.SharedDeviceContactHashKeyShare.fromObject(d.sharedDeviceContactHashKeyShare, q + 1);
+                }
+                if (d.sharedDeviceContactHashKeyRequest != null) {
+                    if (!$util.isObject(d.sharedDeviceContactHashKeyRequest))
+                        throw $TypeError(".E2E.Message.ProtocolMessage.sharedDeviceContactHashKeyRequest: object expected");
+                    m.sharedDeviceContactHashKeyRequest = $root.E2E.Message.SharedDeviceContactHashKeyRequest.fromObject(d.sharedDeviceContactHashKeyRequest, q + 1);
+                }
                 return m;
             };
 
@@ -45714,6 +45928,8 @@ export const E2E = $root.E2E = (() => {
                     d.markAsVerifiedAction = null;
                     d.coexStateSync = null;
                     d.acp2Setting = null;
+                    d.sharedDeviceContactHashKeyShare = null;
+                    d.sharedDeviceContactHashKeyRequest = null;
                 }
                 if (m.key != null && $Object.hasOwnProperty.call(m, "key")) {
                     d.key = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.toObject(m.key, o, q + 1);
@@ -45818,6 +46034,12 @@ export const E2E = $root.E2E = (() => {
                 if (m.acp2Setting != null && $Object.hasOwnProperty.call(m, "acp2Setting")) {
                     d.acp2Setting = $root.Protocol.ACP2Setting.toObject(m.acp2Setting, o, q + 1);
                 }
+                if (m.sharedDeviceContactHashKeyShare != null && $Object.hasOwnProperty.call(m, "sharedDeviceContactHashKeyShare")) {
+                    d.sharedDeviceContactHashKeyShare = $root.E2E.Message.SharedDeviceContactHashKeyShare.toObject(m.sharedDeviceContactHashKeyShare, o, q + 1);
+                }
+                if (m.sharedDeviceContactHashKeyRequest != null && $Object.hasOwnProperty.call(m, "sharedDeviceContactHashKeyRequest")) {
+                    d.sharedDeviceContactHashKeyRequest = $root.E2E.Message.SharedDeviceContactHashKeyRequest.toObject(m.sharedDeviceContactHashKeyRequest, o, q + 1);
+                }
                 return d;
             };
 
@@ -45866,6 +46088,8 @@ export const E2E = $root.E2E = (() => {
                 values[valuesById[36] = "MARK_AS_VERIFIED_ACTION"] = 36;
                 values[valuesById[37] = "COEX_STATE_SYNC"] = 37;
                 values[valuesById[39] = "ACP2_SETTING"] = 39;
+                values[valuesById[40] = "SHARED_DEVICE_CONTACT_HASH_KEY_SHARE"] = 40;
+                values[valuesById[41] = "SHARED_DEVICE_CONTACT_HASH_KEY_REQUEST"] = 41;
                 return values;
             })();
 
@@ -47869,6 +48093,466 @@ export const E2E = $root.E2E = (() => {
             };
 
             return SenderKeyDistributionMessage;
+        })();
+
+        Message.SharedDeviceContactHashKey = (function() {
+
+            const SharedDeviceContactHashKey = function (p) {
+                if (p)
+                    for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                        if (p[ks[i]] != null && ks[i] !== "__proto__")
+                            this[ks[i]] = p[ks[i]];
+            };
+
+            SharedDeviceContactHashKey.prototype.epoch = 0;
+            SharedDeviceContactHashKey.prototype.kind = 0;
+            SharedDeviceContactHashKey.prototype.keyData = $util.newBuffer([]);
+
+            SharedDeviceContactHashKey.create = function(properties) {
+                return new SharedDeviceContactHashKey(properties);
+            };
+
+            SharedDeviceContactHashKey.encode = function (m, w, q) {
+                if (!w)
+                    w = $Writer.create();
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                if (m.epoch != null && $Object.hasOwnProperty.call(m, "epoch"))
+                    w.uint32(8).uint32(m.epoch);
+                if (m.kind != null && $Object.hasOwnProperty.call(m, "kind"))
+                    w.uint32(16).int32(m.kind);
+                if (m.keyData != null && $Object.hasOwnProperty.call(m, "keyData"))
+                    w.uint32(26).bytes(m.keyData);
+                if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                    for (var i = 0; i < m.$unknowns.length; ++i)
+                        w.raw(m.$unknowns[i]);
+                return w;
+            };
+
+            SharedDeviceContactHashKey.decode = function (r, l, z, q, g) {
+                if (!(r instanceof $Reader))
+                    r = $Reader.create(r);
+                if (q === $undefined)
+                    q = 0;
+                if (q > $Reader.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.SharedDeviceContactHashKey();
+                while (r.pos < c) {
+                    var s = r.pos;
+                    var t = r.tag();
+                    if (t === z) {
+                        z = $undefined;
+                        break;
+                    }
+                    var u = t & 7;
+                    switch (t >>>= 3) {
+                    case 1: {
+                            if (u !== 0)
+                                break;
+                            m.epoch = r.uint32();
+                            continue;
+                        }
+                    case 2: {
+                            if (u !== 0)
+                                break;
+                            v = r.int32();
+                            if ($root.E2E.Message.SharedDeviceContactHashKey.Kind[v] !== $undefined) {
+                                m.kind = v;
+                            } else if (!r.discardUnknown) {
+                                $util.makeProp(m, "$unknowns", false);
+                                (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                            }
+                            continue;
+                        }
+                    case 3: {
+                            if (u !== 2)
+                                break;
+                            m.keyData = r.bytes();
+                            continue;
+                        }
+                    }
+                    r.skipType(u, q, t);
+                    if (!r.discardUnknown) {
+                        $util.makeProp(m, "$unknowns", false);
+                        (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                    }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
+                }
+                if (z !== $undefined)
+                    throw $Error("missing end group");
+                return m;
+            };
+
+            SharedDeviceContactHashKey.fromObject = function (d, q) {
+                if (d instanceof $root.E2E.Message.SharedDeviceContactHashKey)
+                    return d;
+                if (!$util.isObject(d))
+                    throw $TypeError(".E2E.Message.SharedDeviceContactHashKey: object expected");
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var m = new $root.E2E.Message.SharedDeviceContactHashKey();
+                if (d.epoch != null) {
+                    m.epoch = d.epoch >>> 0;
+                }
+                switch (d.kind) {
+                case "UNKNOWN":
+                case 0:
+                    m.kind = 0;
+                    break;
+                case "LID":
+                case 1:
+                    m.kind = 1;
+                    break;
+                case "PHONE_NUMBER":
+                case 2:
+                    m.kind = 2;
+                    break;
+                default:
+                }
+                if (d.keyData != null) {
+                    if (typeof d.keyData === "string")
+                        $util.base64.decode(d.keyData, m.keyData = $util.newBuffer($util.base64.length(d.keyData)), 0);
+                    else if (d.keyData.length >= 0)
+                        m.keyData = d.keyData;
+                }
+                return m;
+            };
+
+            SharedDeviceContactHashKey.toObject = function (m, o, q) {
+                if (!o)
+                    o = {};
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var d = {};
+                if (o.defaults) {
+                    d.epoch = 0;
+                    d.kind = o.enums === $String ? "UNKNOWN" : 0;
+                    if (o.bytes === $String)
+                        d.keyData = "";
+                    else {
+                        d.keyData = [];
+                        if (o.bytes !== $Array)
+                            d.keyData = $util.newBuffer(d.keyData);
+                    }
+                }
+                if (m.epoch != null && $Object.hasOwnProperty.call(m, "epoch")) {
+                    d.epoch = m.epoch;
+                }
+                if (m.kind != null && $Object.hasOwnProperty.call(m, "kind")) {
+                    d.kind = o.enums === $String ? $root.E2E.Message.SharedDeviceContactHashKey.Kind[m.kind] === $undefined ? m.kind : $root.E2E.Message.SharedDeviceContactHashKey.Kind[m.kind] : m.kind;
+                }
+                if (m.keyData != null && $Object.hasOwnProperty.call(m, "keyData")) {
+                    d.keyData = o.bytes === $String ? $util.base64.encode(m.keyData, 0, m.keyData.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.keyData) : m.keyData;
+                }
+                return d;
+            };
+
+            SharedDeviceContactHashKey.prototype.toJSON = function() {
+                return SharedDeviceContactHashKey.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            SharedDeviceContactHashKey.getTypeUrl = function(prefix) {
+                if (prefix === $undefined)
+                    prefix = "type.googleapis.com";
+                return prefix + "/E2E.Message.SharedDeviceContactHashKey";
+            };
+
+            SharedDeviceContactHashKey.Kind = (function() {
+                const valuesById = $Object.create(null), values = $Object.create(valuesById);
+                values[valuesById[0] = "UNKNOWN"] = 0;
+                values[valuesById[1] = "LID"] = 1;
+                values[valuesById[2] = "PHONE_NUMBER"] = 2;
+                return values;
+            })();
+
+            return SharedDeviceContactHashKey;
+        })();
+
+        Message.SharedDeviceContactHashKeyRequest = (function() {
+
+            const SharedDeviceContactHashKeyRequest = function (p) {
+                if (p)
+                    for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                        if (p[ks[i]] != null && ks[i] !== "__proto__")
+                            this[ks[i]] = p[ks[i]];
+            };
+
+            SharedDeviceContactHashKeyRequest.prototype.knownEpoch = 0;
+
+            SharedDeviceContactHashKeyRequest.create = function(properties) {
+                return new SharedDeviceContactHashKeyRequest(properties);
+            };
+
+            SharedDeviceContactHashKeyRequest.encode = function (m, w, q) {
+                if (!w)
+                    w = $Writer.create();
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                if (m.knownEpoch != null && $Object.hasOwnProperty.call(m, "knownEpoch"))
+                    w.uint32(8).uint32(m.knownEpoch);
+                if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                    for (var i = 0; i < m.$unknowns.length; ++i)
+                        w.raw(m.$unknowns[i]);
+                return w;
+            };
+
+            SharedDeviceContactHashKeyRequest.decode = function (r, l, z, q, g) {
+                if (!(r instanceof $Reader))
+                    r = $Reader.create(r);
+                if (q === $undefined)
+                    q = 0;
+                if (q > $Reader.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.SharedDeviceContactHashKeyRequest();
+                while (r.pos < c) {
+                    var s = r.pos;
+                    var t = r.tag();
+                    if (t === z) {
+                        z = $undefined;
+                        break;
+                    }
+                    var u = t & 7;
+                    switch (t >>>= 3) {
+                    case 1: {
+                            if (u !== 0)
+                                break;
+                            m.knownEpoch = r.uint32();
+                            continue;
+                        }
+                    }
+                    r.skipType(u, q, t);
+                    if (!r.discardUnknown) {
+                        $util.makeProp(m, "$unknowns", false);
+                        (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                    }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
+                }
+                if (z !== $undefined)
+                    throw $Error("missing end group");
+                return m;
+            };
+
+            SharedDeviceContactHashKeyRequest.fromObject = function (d, q) {
+                if (d instanceof $root.E2E.Message.SharedDeviceContactHashKeyRequest)
+                    return d;
+                if (!$util.isObject(d))
+                    throw $TypeError(".E2E.Message.SharedDeviceContactHashKeyRequest: object expected");
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var m = new $root.E2E.Message.SharedDeviceContactHashKeyRequest();
+                if (d.knownEpoch != null) {
+                    m.knownEpoch = d.knownEpoch >>> 0;
+                }
+                return m;
+            };
+
+            SharedDeviceContactHashKeyRequest.toObject = function (m, o, q) {
+                if (!o)
+                    o = {};
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var d = {};
+                if (o.defaults) {
+                    d.knownEpoch = 0;
+                }
+                if (m.knownEpoch != null && $Object.hasOwnProperty.call(m, "knownEpoch")) {
+                    d.knownEpoch = m.knownEpoch;
+                }
+                return d;
+            };
+
+            SharedDeviceContactHashKeyRequest.prototype.toJSON = function() {
+                return SharedDeviceContactHashKeyRequest.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            SharedDeviceContactHashKeyRequest.getTypeUrl = function(prefix) {
+                if (prefix === $undefined)
+                    prefix = "type.googleapis.com";
+                return prefix + "/E2E.Message.SharedDeviceContactHashKeyRequest";
+            };
+
+            return SharedDeviceContactHashKeyRequest;
+        })();
+
+        Message.SharedDeviceContactHashKeyShare = (function() {
+
+            const SharedDeviceContactHashKeyShare = function (p) {
+                this.keys = [];
+                if (p)
+                    for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                        if (p[ks[i]] != null && ks[i] !== "__proto__")
+                            this[ks[i]] = p[ks[i]];
+            };
+
+            SharedDeviceContactHashKeyShare.prototype.keys = $util.emptyArray;
+
+            SharedDeviceContactHashKeyShare.create = function(properties) {
+                return new SharedDeviceContactHashKeyShare(properties);
+            };
+
+            SharedDeviceContactHashKeyShare.encode = function (m, w, q) {
+                if (!w)
+                    w = $Writer.create();
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                if (m.keys != null && m.keys.length) {
+                    for (var i = 0; i < m.keys.length; ++i)
+                        $root.E2E.Message.SharedDeviceContactHashKey.encode(m.keys[i], w.uint32(10).fork(), q + 1).ldelim();
+                }
+                if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                    for (var i = 0; i < m.$unknowns.length; ++i)
+                        w.raw(m.$unknowns[i]);
+                return w;
+            };
+
+            SharedDeviceContactHashKeyShare.decode = function (r, l, z, q, g) {
+                if (!(r instanceof $Reader))
+                    r = $Reader.create(r);
+                if (q === $undefined)
+                    q = 0;
+                if (q > $Reader.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.SharedDeviceContactHashKeyShare();
+                while (r.pos < c) {
+                    var s = r.pos;
+                    var t = r.tag();
+                    if (t === z) {
+                        z = $undefined;
+                        break;
+                    }
+                    var u = t & 7;
+                    switch (t >>>= 3) {
+                    case 1: {
+                            if (u !== 2)
+                                break;
+                            if (!(m.keys && m.keys.length))
+                                m.keys = [];
+                            m.keys.push($root.E2E.Message.SharedDeviceContactHashKey.decode(r, r.uint32(), $undefined, q + 1));
+                            continue;
+                        }
+                    }
+                    r.skipType(u, q, t);
+                    if (!r.discardUnknown) {
+                        $util.makeProp(m, "$unknowns", false);
+                        (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                    }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
+                }
+                if (z !== $undefined)
+                    throw $Error("missing end group");
+                return m;
+            };
+
+            SharedDeviceContactHashKeyShare.fromObject = function (d, q) {
+                if (d instanceof $root.E2E.Message.SharedDeviceContactHashKeyShare)
+                    return d;
+                if (!$util.isObject(d))
+                    throw $TypeError(".E2E.Message.SharedDeviceContactHashKeyShare: object expected");
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var m = new $root.E2E.Message.SharedDeviceContactHashKeyShare();
+                if (d.keys) {
+                    if (!$Array.isArray(d.keys))
+                        throw $TypeError(".E2E.Message.SharedDeviceContactHashKeyShare.keys: array expected");
+                    m.keys = $Array(d.keys.length);
+                    for (var i = 0; i < d.keys.length; ++i) {
+                        if (!$util.isObject(d.keys[i]))
+                            throw $TypeError(".E2E.Message.SharedDeviceContactHashKeyShare.keys: object expected");
+                        m.keys[i] = $root.E2E.Message.SharedDeviceContactHashKey.fromObject(d.keys[i], q + 1);
+                    }
+                }
+                return m;
+            };
+
+            SharedDeviceContactHashKeyShare.toObject = function (m, o, q) {
+                if (!o)
+                    o = {};
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var d = {};
+                if (o.arrays || o.defaults) {
+                    d.keys = [];
+                }
+                if (m.keys && m.keys.length) {
+                    d.keys = $Array(m.keys.length);
+                    for (var j = 0; j < m.keys.length; ++j) {
+                        d.keys[j] = $root.E2E.Message.SharedDeviceContactHashKey.toObject(m.keys[j], o, q + 1);
+                    }
+                }
+                return d;
+            };
+
+            SharedDeviceContactHashKeyShare.prototype.toJSON = function() {
+                return SharedDeviceContactHashKeyShare.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            SharedDeviceContactHashKeyShare.getTypeUrl = function(prefix) {
+                if (prefix === $undefined)
+                    prefix = "type.googleapis.com";
+                return prefix + "/E2E.Message.SharedDeviceContactHashKeyShare";
+            };
+
+            return SharedDeviceContactHashKeyShare;
         })();
 
         Message.SplitPaymentMessage = (function() {
@@ -80122,6 +80806,14 @@ export const CompanionReg = $root.CompanionReg = (() => {
             case 25:
                 m.deviceType = 25;
                 break;
+            case "WASS":
+            case 26:
+                m.deviceType = 26;
+                break;
+            case "BUSINESS_BACK_OFFICE":
+            case 27:
+                m.deviceType = 27;
+                break;
             default:
             }
             if (d.ref != null) {
@@ -80418,6 +81110,14 @@ export const CompanionReg = $root.CompanionReg = (() => {
             case "WAIL":
             case 25:
                 m.platformType = 25;
+                break;
+            case "WASS":
+            case 26:
+                m.platformType = 26;
+                break;
+            case "BUSINESS_BACK_OFFICE":
+            case 27:
+                m.platformType = 27;
                 break;
             default:
             }
@@ -81218,6 +81918,8 @@ export const CompanionReg = $root.CompanionReg = (() => {
             values[valuesById[23] = "CLOUD_API"] = 23;
             values[valuesById[24] = "SMARTGLASSES"] = 24;
             values[valuesById[25] = "WAIL"] = 25;
+            values[valuesById[26] = "WASS"] = 26;
+            values[valuesById[27] = "BUSINESS_BACK_OFFICE"] = 27;
             return values;
         })();
 
