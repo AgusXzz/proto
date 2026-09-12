@@ -1532,6 +1532,7 @@ export const MdStorageMsgRowOpaqueData = $root.MdStorageMsgRowOpaqueData = (() =
 
             PollOption.prototype.name = "";
             PollOption.prototype.hash = "";
+            PollOption.prototype.addOptionMsgKey = "";
 
             PollOption.create = function(properties) {
                 return new PollOption(properties);
@@ -1548,6 +1549,8 @@ export const MdStorageMsgRowOpaqueData = $root.MdStorageMsgRowOpaqueData = (() =
                     w.uint32(10).string(m.name);
                 if (m.hash != null && $Object.hasOwnProperty.call(m, "hash"))
                     w.uint32(18).string(m.hash);
+                if (m.addOptionMsgKey != null && $Object.hasOwnProperty.call(m, "addOptionMsgKey"))
+                    w.uint32(26).string(m.addOptionMsgKey);
                 if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                     for (var i = 0; i < m.$unknowns.length; ++i)
                         w.raw(m.$unknowns[i]);
@@ -1593,6 +1596,12 @@ export const MdStorageMsgRowOpaqueData = $root.MdStorageMsgRowOpaqueData = (() =
                             m.hash = r.string();
                             continue;
                         }
+                    case 3: {
+                            if (u !== 2)
+                                break;
+                            m.addOptionMsgKey = r.string();
+                            continue;
+                        }
                     }
                     r.skipType(u, q, t);
                     if (!r.discardUnknown) {
@@ -1626,6 +1635,9 @@ export const MdStorageMsgRowOpaqueData = $root.MdStorageMsgRowOpaqueData = (() =
                 if (d.hash != null) {
                     m.hash = $String(d.hash);
                 }
+                if (d.addOptionMsgKey != null) {
+                    m.addOptionMsgKey = $String(d.addOptionMsgKey);
+                }
                 return m;
             };
 
@@ -1640,12 +1652,16 @@ export const MdStorageMsgRowOpaqueData = $root.MdStorageMsgRowOpaqueData = (() =
                 if (o.defaults) {
                     d.name = "";
                     d.hash = "";
+                    d.addOptionMsgKey = "";
                 }
                 if (m.name != null && $Object.hasOwnProperty.call(m, "name")) {
                     d.name = m.name;
                 }
                 if (m.hash != null && $Object.hasOwnProperty.call(m, "hash")) {
                     d.hash = m.hash;
+                }
+                if (m.addOptionMsgKey != null && $Object.hasOwnProperty.call(m, "addOptionMsgKey")) {
+                    d.addOptionMsgKey = m.addOptionMsgKey;
                 }
                 return d;
             };

@@ -18668,6 +18668,7 @@ export const E2E = $root.E2E = (() => {
         Message.prototype.botPlatformRegistrationSuccessMessage = null;
         Message.prototype.newsletterScheduledMessage = null;
         Message.prototype.acp2SettingMessage = null;
+        Message.prototype.audioStickerMessage = null;
 
         Message.create = function(properties) {
             return new Message(properties);
@@ -18904,6 +18905,8 @@ export const E2E = $root.E2E = (() => {
                 $root.E2E.Message.FutureProofMessage.encode(m.newsletterScheduledMessage, w.uint32(1058).fork(), q + 1).ldelim();
             if (m.acp2SettingMessage != null && $Object.hasOwnProperty.call(m, "acp2SettingMessage"))
                 $root.E2E.Message.FutureProofMessage.encode(m.acp2SettingMessage, w.uint32(1066).fork(), q + 1).ldelim();
+            if (m.audioStickerMessage != null && $Object.hasOwnProperty.call(m, "audioStickerMessage"))
+                $root.E2E.Message.FutureProofMessage.encode(m.audioStickerMessage, w.uint32(1074).fork(), q + 1).ldelim();
             if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                 for (var i = 0; i < m.$unknowns.length; ++i)
                     w.raw(m.$unknowns[i]);
@@ -19609,6 +19612,12 @@ export const E2E = $root.E2E = (() => {
                         m.acp2SettingMessage = $root.E2E.Message.FutureProofMessage.decode(r, r.uint32(), $undefined, q + 1, m.acp2SettingMessage);
                         continue;
                     }
+                case 134: {
+                        if (u !== 2)
+                            break;
+                        m.audioStickerMessage = $root.E2E.Message.FutureProofMessage.decode(r, r.uint32(), $undefined, q + 1, m.audioStickerMessage);
+                        continue;
+                    }
                 }
                 r.skipType(u, q, t);
                 if (!r.discardUnknown) {
@@ -20194,6 +20203,11 @@ export const E2E = $root.E2E = (() => {
                     throw $TypeError(".E2E.Message.acp2SettingMessage: object expected");
                 m.acp2SettingMessage = $root.E2E.Message.FutureProofMessage.fromObject(d.acp2SettingMessage, q + 1);
             }
+            if (d.audioStickerMessage != null) {
+                if (!$util.isObject(d.audioStickerMessage))
+                    throw $TypeError(".E2E.Message.audioStickerMessage: object expected");
+                m.audioStickerMessage = $root.E2E.Message.FutureProofMessage.fromObject(d.audioStickerMessage, q + 1);
+            }
             return m;
         };
 
@@ -20318,6 +20332,7 @@ export const E2E = $root.E2E = (() => {
                 d.botPlatformRegistrationSuccessMessage = null;
                 d.newsletterScheduledMessage = null;
                 d.acp2SettingMessage = null;
+                d.audioStickerMessage = null;
             }
             if (m.conversation != null && $Object.hasOwnProperty.call(m, "conversation")) {
                 d.conversation = m.conversation;
@@ -20654,6 +20669,9 @@ export const E2E = $root.E2E = (() => {
             }
             if (m.acp2SettingMessage != null && $Object.hasOwnProperty.call(m, "acp2SettingMessage")) {
                 d.acp2SettingMessage = $root.E2E.Message.FutureProofMessage.toObject(m.acp2SettingMessage, o, q + 1);
+            }
+            if (m.audioStickerMessage != null && $Object.hasOwnProperty.call(m, "audioStickerMessage")) {
+                d.audioStickerMessage = $root.E2E.Message.FutureProofMessage.toObject(m.audioStickerMessage, o, q + 1);
             }
             return d;
         };
@@ -55974,6 +55992,14 @@ export const E2E = $root.E2E = (() => {
             StickerMessage.prototype.accessibilityLabel = "";
             StickerMessage.prototype.premium = 0;
             StickerMessage.prototype.emojis = "";
+            StickerMessage.prototype.audioMessage = null;
+
+            let $oneOfFields;
+
+            $Object.defineProperty(StickerMessage.prototype, "audio", {
+                get: $util.oneOfGetter($oneOfFields = ["audioMessage"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
 
             StickerMessage.create = function(properties) {
                 return new StickerMessage(properties);
@@ -56030,6 +56056,8 @@ export const E2E = $root.E2E = (() => {
                     w.uint32(192).int32(m.premium);
                 if (m.emojis != null && $Object.hasOwnProperty.call(m, "emojis"))
                     w.uint32(202).string(m.emojis);
+                if (m.audioMessage != null && $Object.hasOwnProperty.call(m, "audioMessage"))
+                    $root.E2E.Message.AudioMessage.encode(m.audioMessage, w.uint32(210).fork(), q + 1).ldelim();
                 if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                     for (var i = 0; i < m.$unknowns.length; ++i)
                         w.raw(m.$unknowns[i]);
@@ -56195,6 +56223,13 @@ export const E2E = $root.E2E = (() => {
                             m.emojis = r.string();
                             continue;
                         }
+                    case 26: {
+                            if (u !== 2)
+                                break;
+                            m.audioMessage = $root.E2E.Message.AudioMessage.decode(r, r.uint32(), $undefined, q + 1, m.audioMessage);
+                            m.audio = "audioMessage";
+                            continue;
+                        }
                     }
                     r.skipType(u, q, t);
                     if (!r.discardUnknown) {
@@ -56325,6 +56360,11 @@ export const E2E = $root.E2E = (() => {
                 }
                 if (d.emojis != null) {
                     m.emojis = $String(d.emojis);
+                }
+                if (d.audioMessage != null) {
+                    if (!$util.isObject(d.audioMessage))
+                        throw $TypeError(".E2E.Message.StickerMessage.audioMessage: object expected");
+                    m.audioMessage = $root.E2E.Message.AudioMessage.fromObject(d.audioMessage, q + 1);
                 }
                 return m;
             };
@@ -56483,6 +56523,11 @@ export const E2E = $root.E2E = (() => {
                 }
                 if (m.emojis != null && $Object.hasOwnProperty.call(m, "emojis")) {
                     d.emojis = m.emojis;
+                }
+                if (m.audioMessage != null && $Object.hasOwnProperty.call(m, "audioMessage")) {
+                    d.audioMessage = $root.E2E.Message.AudioMessage.toObject(m.audioMessage, o, q + 1);
+                    if (o.oneofs)
+                        d.audio = "audioMessage";
                 }
                 return d;
             };
@@ -109481,6 +109526,10 @@ export const SyncAction = $root.SyncAction = (() => {
                 case 17:
                     m.type = 17;
                     break;
+                case "REQUESTS":
+                case 18:
+                    m.type = 18;
+                    break;
                 default:
                 }
                 if (d.isImmutable != null) {
@@ -109587,6 +109636,7 @@ export const SyncAction = $root.SyncAction = (() => {
                 values[valuesById[15] = "THIRD_PARTY"] = 15;
                 values[valuesById[16] = "LEAD"] = 16;
                 values[valuesById[17] = "MENTIONS_AND_REPLIES"] = 17;
+                values[valuesById[18] = "REQUESTS"] = 18;
                 return values;
             })();
 
