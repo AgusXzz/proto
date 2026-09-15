@@ -7574,6 +7574,7 @@ export const E2E = $root.E2E = (() => {
         ContextInfo.prototype.instagramThreadLink = null;
         ContextInfo.prototype.aiProvenance = null;
         ContextInfo.prototype.experienceIds = $util.emptyArray;
+        ContextInfo.prototype.partnerDeepLinkToken = "";
 
         ContextInfo.create = function(properties) {
             return new ContextInfo(properties);
@@ -7723,6 +7724,8 @@ export const E2E = $root.E2E = (() => {
             if (m.experienceIds != null && m.experienceIds.length) {
                 w.uint32(658).uint32s(m.experienceIds);
             }
+            if (m.partnerDeepLinkToken != null && $Object.hasOwnProperty.call(m, "partnerDeepLinkToken"))
+                w.uint32(666).string(m.partnerDeepLinkToken);
             if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                 for (var i = 0; i < m.$unknowns.length; ++i)
                     w.raw(m.$unknowns[i]);
@@ -8196,6 +8199,12 @@ export const E2E = $root.E2E = (() => {
                         m.experienceIds.push(r.uint32());
                         continue;
                     }
+                case 83: {
+                        if (u !== 2)
+                            break;
+                        m.partnerDeepLinkToken = r.string();
+                        continue;
+                    }
                 }
                 r.skipType(u, q, t);
                 if (!r.discardUnknown) {
@@ -8626,6 +8635,9 @@ export const E2E = $root.E2E = (() => {
                     m.experienceIds[i] = d.experienceIds[i] >>> 0;
                 }
             }
+            if (d.partnerDeepLinkToken != null) {
+                m.partnerDeepLinkToken = $String(d.partnerDeepLinkToken);
+            }
             return m;
         };
 
@@ -8727,6 +8739,7 @@ export const E2E = $root.E2E = (() => {
                 d.posterStatusId = "";
                 d.instagramThreadLink = null;
                 d.aiProvenance = null;
+                d.partnerDeepLinkToken = "";
             }
             if (m.stanzaId != null && $Object.hasOwnProperty.call(m, "stanzaId")) {
                 d.stanzaId = m.stanzaId;
@@ -8939,6 +8952,9 @@ export const E2E = $root.E2E = (() => {
                 for (var j = 0; j < m.experienceIds.length; ++j) {
                     d.experienceIds[j] = m.experienceIds[j];
                 }
+            }
+            if (m.partnerDeepLinkToken != null && $Object.hasOwnProperty.call(m, "partnerDeepLinkToken")) {
+                d.partnerDeepLinkToken = m.partnerDeepLinkToken;
             }
             return d;
         };
