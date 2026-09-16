@@ -9273,9 +9273,29 @@ export const Web = $root.Web = (() => {
             case 240:
                 m.messageStubType = 240;
                 break;
+            case "BIZ_CALLBACK_ENABLED":
+            case 247:
+                m.messageStubType = 247;
+                break;
             case "EPHEMERAL_CHANGED_FOR_COEX":
             case 248:
                 m.messageStubType = 248;
+                break;
+            case "UGC_BOT_PROFILE_UPDATED":
+            case 249:
+                m.messageStubType = 249;
+                break;
+            case "ORDER_EPHEMERAL_EXEMPTION":
+            case 250:
+                m.messageStubType = 250;
+                break;
+            case "CAMEO_CHAT_CREATED":
+            case 254:
+                m.messageStubType = 254;
+                break;
+            case "CAMEO_TRANSITIONED":
+            case 256:
+                m.messageStubType = 256;
                 break;
             default:
             }
@@ -10283,7 +10303,12 @@ export const Web = $root.Web = (() => {
             values[valuesById[228] = "IDENTITY_TRUST_REVOKED"] = 228;
             values[valuesById[230] = "CTWA_CONSUMER_DISCLOSURE"] = 230;
             values[valuesById[240] = "CHANGE_ACP2_SETTING"] = 240;
+            values[valuesById[247] = "BIZ_CALLBACK_ENABLED"] = 247;
             values[valuesById[248] = "EPHEMERAL_CHANGED_FOR_COEX"] = 248;
+            values[valuesById[249] = "UGC_BOT_PROFILE_UPDATED"] = 249;
+            values[valuesById[250] = "ORDER_EPHEMERAL_EXEMPTION"] = 250;
+            values[valuesById[254] = "CAMEO_CHAT_CREATED"] = 254;
+            values[valuesById[256] = "CAMEO_TRANSITIONED"] = 256;
             return values;
         })();
 
