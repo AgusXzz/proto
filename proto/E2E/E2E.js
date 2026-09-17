@@ -34081,6 +34081,7 @@ export const E2E = $root.E2E = (() => {
             MessageHistoryMetadata.prototype.messageCount = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
             MessageHistoryMetadata.prototype.nonHistoryReceivers = $util.emptyArray;
             MessageHistoryMetadata.prototype.oldestMessageTimestampInBundle = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+            MessageHistoryMetadata.prototype.includesChatTheme = false;
 
             MessageHistoryMetadata.create = function(properties) {
                 return new MessageHistoryMetadata(properties);
@@ -34107,6 +34108,8 @@ export const E2E = $root.E2E = (() => {
                 }
                 if (m.oldestMessageTimestampInBundle != null && $Object.hasOwnProperty.call(m, "oldestMessageTimestampInBundle"))
                     w.uint32(40).int64(m.oldestMessageTimestampInBundle);
+                if (m.includesChatTheme != null && $Object.hasOwnProperty.call(m, "includesChatTheme"))
+                    w.uint32(48).bool(m.includesChatTheme);
                 if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                     for (var i = 0; i < m.$unknowns.length; ++i)
                         w.raw(m.$unknowns[i]);
@@ -34172,6 +34175,12 @@ export const E2E = $root.E2E = (() => {
                             if (u !== 0)
                                 break;
                             m.oldestMessageTimestampInBundle = r.int64();
+                            continue;
+                        }
+                    case 6: {
+                            if (u !== 0)
+                                break;
+                            m.includesChatTheme = r.bool();
                             continue;
                         }
                     }
@@ -34247,6 +34256,9 @@ export const E2E = $root.E2E = (() => {
                     else if (typeof d.oldestMessageTimestampInBundle === "object")
                         m.oldestMessageTimestampInBundle = new $util.LongBits(d.oldestMessageTimestampInBundle.low >>> 0, d.oldestMessageTimestampInBundle.high >>> 0).toNumber();
                 }
+                if (d.includesChatTheme != null) {
+                    m.includesChatTheme = $Boolean(d.includesChatTheme);
+                }
                 return m;
             };
 
@@ -34278,6 +34290,7 @@ export const E2E = $root.E2E = (() => {
                         d.oldestMessageTimestampInBundle = o.longs === $String ? n.toString() : o.longs === $Number ? n.toNumber() : typeof $BigInt !== "undefined" && o.longs === $BigInt ? n.toBigInt() : n;
                     } else
                         d.oldestMessageTimestampInBundle = o.longs === $String ? "0" : typeof $BigInt !== "undefined" && o.longs === $BigInt ? $BigInt("0") : 0;
+                    d.includesChatTheme = false;
                 }
                 if (m.historyReceivers && m.historyReceivers.length) {
                     d.historyReceivers = $Array(m.historyReceivers.length);
@@ -34314,6 +34327,9 @@ export const E2E = $root.E2E = (() => {
                         d.oldestMessageTimestampInBundle = o.longs === $String ? $String(m.oldestMessageTimestampInBundle) : m.oldestMessageTimestampInBundle;
                     else
                         d.oldestMessageTimestampInBundle = o.longs === String ? longToString(m.oldestMessageTimestampInBundle) : o.longs === Number ? longToNumber(m.oldestMessageTimestampInBundle) : m.oldestMessageTimestampInBundle;
+                }
+                if (m.includesChatTheme != null && $Object.hasOwnProperty.call(m, "includesChatTheme")) {
+                    d.includesChatTheme = m.includesChatTheme;
                 }
                 return d;
             };
@@ -53028,6 +53044,7 @@ export const E2E = $root.E2E = (() => {
             VideoMessage.prototype.metadataUrl = "";
             VideoMessage.prototype.videoSourceType = 0;
             VideoMessage.prototype.dashManifestUrl = "";
+            VideoMessage.prototype.smartThumbnailTs = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
 
             VideoMessage.create = function(properties) {
                 return new VideoMessage(properties);
@@ -53108,6 +53125,8 @@ export const E2E = $root.E2E = (() => {
                     w.uint32(248).int32(m.videoSourceType);
                 if (m.dashManifestUrl != null && $Object.hasOwnProperty.call(m, "dashManifestUrl"))
                     w.uint32(266).string(m.dashManifestUrl);
+                if (m.smartThumbnailTs != null && $Object.hasOwnProperty.call(m, "smartThumbnailTs"))
+                    w.uint32(272).int64(m.smartThumbnailTs);
                 if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                     for (var i = 0; i < m.$unknowns.length; ++i)
                         w.raw(m.$unknowns[i]);
@@ -53345,6 +53364,12 @@ export const E2E = $root.E2E = (() => {
                             m.dashManifestUrl = r.string();
                             continue;
                         }
+                    case 34: {
+                            if (u !== 0)
+                                break;
+                            m.smartThumbnailTs = r.int64();
+                            continue;
+                        }
                     }
                     r.skipType(u, q, t);
                     if (!r.discardUnknown) {
@@ -53554,6 +53579,16 @@ export const E2E = $root.E2E = (() => {
                 if (d.dashManifestUrl != null) {
                     m.dashManifestUrl = $String(d.dashManifestUrl);
                 }
+                if (d.smartThumbnailTs != null) {
+                    if ($util.Long)
+                        m.smartThumbnailTs = $util.Long.fromValue(d.smartThumbnailTs, false);
+                    else if (typeof d.smartThumbnailTs === "string")
+                        m.smartThumbnailTs = $parseInt(d.smartThumbnailTs, 10);
+                    else if (typeof d.smartThumbnailTs === "number")
+                        m.smartThumbnailTs = d.smartThumbnailTs;
+                    else if (typeof d.smartThumbnailTs === "object")
+                        m.smartThumbnailTs = new $util.LongBits(d.smartThumbnailTs.low >>> 0, d.smartThumbnailTs.high >>> 0).toNumber();
+                }
                 return m;
             };
 
@@ -53653,6 +53688,11 @@ export const E2E = $root.E2E = (() => {
                     d.metadataUrl = "";
                     d.videoSourceType = o.enums === $String ? "USER_VIDEO" : 0;
                     d.dashManifestUrl = "";
+                    if ($util.Long) {
+                        var n = new $util.Long(0, 0, false);
+                        d.smartThumbnailTs = o.longs === $String ? n.toString() : o.longs === $Number ? n.toNumber() : typeof $BigInt !== "undefined" && o.longs === $BigInt ? n.toBigInt() : n;
+                    } else
+                        d.smartThumbnailTs = o.longs === $String ? "0" : typeof $BigInt !== "undefined" && o.longs === $BigInt ? $BigInt("0") : 0;
                 }
                 if (m.url != null && $Object.hasOwnProperty.call(m, "url")) {
                     d.url = m.url;
@@ -53770,6 +53810,14 @@ export const E2E = $root.E2E = (() => {
                 }
                 if (m.dashManifestUrl != null && $Object.hasOwnProperty.call(m, "dashManifestUrl")) {
                     d.dashManifestUrl = m.dashManifestUrl;
+                }
+                if (m.smartThumbnailTs != null && $Object.hasOwnProperty.call(m, "smartThumbnailTs")) {
+                    if (typeof $BigInt !== "undefined" && o.longs === $BigInt)
+                        d.smartThumbnailTs = typeof m.smartThumbnailTs === "number" ? $BigInt(m.smartThumbnailTs) : $util.Long.fromBits(m.smartThumbnailTs.low >>> 0, m.smartThumbnailTs.high >>> 0, false).toBigInt();
+                    else if (typeof m.smartThumbnailTs === "number")
+                        d.smartThumbnailTs = o.longs === $String ? $String(m.smartThumbnailTs) : m.smartThumbnailTs;
+                    else
+                        d.smartThumbnailTs = o.longs === String ? longToString(m.smartThumbnailTs) : o.longs === Number ? longToNumber(m.smartThumbnailTs) : m.smartThumbnailTs;
                 }
                 return d;
             };
