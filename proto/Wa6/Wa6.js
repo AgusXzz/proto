@@ -94,6 +94,7 @@ export const Wa6 = $root.Wa6 = (() => {
         ClientPayload.prototype.processingQueueSize = 0;
         ClientPayload.prototype.pairedPeripherals = $util.emptyArray;
         ClientPayload.prototype.testIsolationId = $util.newBuffer([]);
+        ClientPayload.prototype.messageSts = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
 
         ClientPayload.create = function(properties) {
             return new ClientPayload(properties);
@@ -182,6 +183,8 @@ export const Wa6 = $root.Wa6 = (() => {
             }
             if (m.testIsolationId != null && $Object.hasOwnProperty.call(m, "testIsolationId"))
                 w.uint32(386).bytes(m.testIsolationId);
+            if (m.messageSts != null && $Object.hasOwnProperty.call(m, "messageSts"))
+                w.uint32(392).int64(m.messageSts);
             if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                 for (var i = 0; i < m.$unknowns.length; ++i)
                     w.raw(m.$unknowns[i]);
@@ -475,6 +478,12 @@ export const Wa6 = $root.Wa6 = (() => {
                         if (u !== 2)
                             break;
                         m.testIsolationId = r.bytes();
+                        continue;
+                    }
+                case 49: {
+                        if (u !== 0)
+                            break;
+                        m.messageSts = r.int64();
                         continue;
                     }
                 }
@@ -797,6 +806,16 @@ export const Wa6 = $root.Wa6 = (() => {
                 else if (d.testIsolationId.length >= 0)
                     m.testIsolationId = d.testIsolationId;
             }
+            if (d.messageSts != null) {
+                if ($util.Long)
+                    m.messageSts = $util.Long.fromValue(d.messageSts, false);
+                else if (typeof d.messageSts === "string")
+                    m.messageSts = $parseInt(d.messageSts, 10);
+                else if (typeof d.messageSts === "number")
+                    m.messageSts = d.messageSts;
+                else if (typeof d.messageSts === "object")
+                    m.messageSts = new $util.LongBits(d.messageSts.low >>> 0, d.messageSts.high >>> 0).toNumber();
+            }
             return m;
         };
 
@@ -885,6 +904,11 @@ export const Wa6 = $root.Wa6 = (() => {
                     if (o.bytes !== $Array)
                         d.testIsolationId = $util.newBuffer(d.testIsolationId);
                 }
+                if ($util.Long) {
+                    var n = new $util.Long(0, 0, false);
+                    d.messageSts = o.longs === $String ? n.toString() : o.longs === $Number ? n.toNumber() : typeof $BigInt !== "undefined" && o.longs === $BigInt ? n.toBigInt() : n;
+                } else
+                    d.messageSts = o.longs === $String ? "0" : typeof $BigInt !== "undefined" && o.longs === $BigInt ? $BigInt("0") : 0;
             }
             if (m.username != null && $Object.hasOwnProperty.call(m, "username")) {
                 if (typeof $BigInt !== "undefined" && o.longs === $BigInt)
@@ -1009,6 +1033,14 @@ export const Wa6 = $root.Wa6 = (() => {
             }
             if (m.testIsolationId != null && $Object.hasOwnProperty.call(m, "testIsolationId")) {
                 d.testIsolationId = o.bytes === $String ? $util.base64.encode(m.testIsolationId, 0, m.testIsolationId.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.testIsolationId) : m.testIsolationId;
+            }
+            if (m.messageSts != null && $Object.hasOwnProperty.call(m, "messageSts")) {
+                if (typeof $BigInt !== "undefined" && o.longs === $BigInt)
+                    d.messageSts = typeof m.messageSts === "number" ? $BigInt(m.messageSts) : $util.Long.fromBits(m.messageSts.low >>> 0, m.messageSts.high >>> 0, false).toBigInt();
+                else if (typeof m.messageSts === "number")
+                    d.messageSts = o.longs === $String ? $String(m.messageSts) : m.messageSts;
+                else
+                    d.messageSts = o.longs === String ? longToString(m.messageSts) : o.longs === Number ? longToNumber(m.messageSts) : m.messageSts;
             }
             return d;
         };

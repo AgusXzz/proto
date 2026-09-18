@@ -76738,6 +76738,10 @@ export const AICommon = $root.AICommon = (() => {
                     case 71:
                         m.capabilities[m.capabilities.length] = 71;
                         break;
+                    case "HATCH_NOTIFICATION_METADATA_EVENT_ENABLED":
+                    case 72:
+                        m.capabilities[m.capabilities.length] = 72;
+                        break;
                     default:
                     }
                 }
@@ -76849,6 +76853,7 @@ export const AICommon = $root.AICommon = (() => {
             values[valuesById[69] = "AI_RICH_RESPONSE_REMINDERS_ENABLED"] = 69;
             values[valuesById[70] = "AI_STOP_GENERATION_ENABLED"] = 70;
             values[valuesById[71] = "AI_RICH_RESPONSE_3P_LINKING_CARD_ENABLED"] = 71;
+            values[valuesById[72] = "HATCH_NOTIFICATION_METADATA_EVENT_ENABLED"] = 72;
             return values;
         })();
 
@@ -99989,6 +99994,10 @@ export const Web = $root.Web = (() => {
             case 240:
                 m.messageStubType = 240;
                 break;
+            case "BIZ_CALLBACK_DISABLED":
+            case 244:
+                m.messageStubType = 244;
+                break;
             case "BIZ_CALLBACK_ENABLED":
             case 247:
                 m.messageStubType = 247;
@@ -101023,6 +101032,7 @@ export const Web = $root.Web = (() => {
             values[valuesById[228] = "IDENTITY_TRUST_REVOKED"] = 228;
             values[valuesById[230] = "CTWA_CONSUMER_DISCLOSURE"] = 230;
             values[valuesById[240] = "CHANGE_ACP2_SETTING"] = 240;
+            values[valuesById[244] = "BIZ_CALLBACK_DISABLED"] = 244;
             values[valuesById[247] = "BIZ_CALLBACK_ENABLED"] = 247;
             values[valuesById[248] = "EPHEMERAL_CHANGED_FOR_COEX"] = 248;
             values[valuesById[249] = "UGC_BOT_PROFILE_UPDATED"] = 249;

@@ -70813,6 +70813,10 @@ export const AICommon = $root.AICommon = (() => {
                     case 71:
                         m.capabilities[m.capabilities.length] = 71;
                         break;
+                    case "HATCH_NOTIFICATION_METADATA_EVENT_ENABLED":
+                    case 72:
+                        m.capabilities[m.capabilities.length] = 72;
+                        break;
                     default:
                     }
                 }
@@ -70924,6 +70928,7 @@ export const AICommon = $root.AICommon = (() => {
             values[valuesById[69] = "AI_RICH_RESPONSE_REMINDERS_ENABLED"] = 69;
             values[valuesById[70] = "AI_STOP_GENERATION_ENABLED"] = 70;
             values[valuesById[71] = "AI_RICH_RESPONSE_3P_LINKING_CARD_ENABLED"] = 71;
+            values[valuesById[72] = "HATCH_NOTIFICATION_METADATA_EVENT_ENABLED"] = 72;
             return values;
         })();
 
