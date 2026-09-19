@@ -748,6 +748,7 @@ export const SyncAction = $root.SyncAction = (() => {
         SyncActionValue.prototype.sharedDeviceAllowlistAction = null;
         SyncActionValue.prototype.contactManagerMetadataAction = null;
         SyncActionValue.prototype.businessFolderActivationAction = null;
+        SyncActionValue.prototype.groupHistoryToggleAction = null;
 
         SyncActionValue.create = function(properties) {
             return new SyncActionValue(properties);
@@ -934,6 +935,8 @@ export const SyncAction = $root.SyncAction = (() => {
                 $root.SyncAction.SyncActionValue.ContactManagerMetadataAction.encode(m.contactManagerMetadataAction, w.uint32(762).fork(), q + 1).ldelim();
             if (m.businessFolderActivationAction != null && $Object.hasOwnProperty.call(m, "businessFolderActivationAction"))
                 $root.SyncAction.SyncActionValue.BusinessFolderActivationAction.encode(m.businessFolderActivationAction, w.uint32(770).fork(), q + 1).ldelim();
+            if (m.groupHistoryToggleAction != null && $Object.hasOwnProperty.call(m, "groupHistoryToggleAction"))
+                $root.SyncAction.SyncActionValue.GroupHistoryToggleAction.encode(m.groupHistoryToggleAction, w.uint32(778).fork(), q + 1).ldelim();
             if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                 for (var i = 0; i < m.$unknowns.length; ++i)
                     w.raw(m.$unknowns[i]);
@@ -1489,6 +1492,12 @@ export const SyncAction = $root.SyncAction = (() => {
                         m.businessFolderActivationAction = $root.SyncAction.SyncActionValue.BusinessFolderActivationAction.decode(r, r.uint32(), $undefined, q + 1, m.businessFolderActivationAction);
                         continue;
                     }
+                case 97: {
+                        if (u !== 2)
+                            break;
+                        m.groupHistoryToggleAction = $root.SyncAction.SyncActionValue.GroupHistoryToggleAction.decode(r, r.uint32(), $undefined, q + 1, m.groupHistoryToggleAction);
+                        continue;
+                    }
                 }
                 r.skipType(u, q, t);
                 if (!r.discardUnknown) {
@@ -1956,6 +1965,11 @@ export const SyncAction = $root.SyncAction = (() => {
                     throw $TypeError(".SyncAction.SyncActionValue.businessFolderActivationAction: object expected");
                 m.businessFolderActivationAction = $root.SyncAction.SyncActionValue.BusinessFolderActivationAction.fromObject(d.businessFolderActivationAction, q + 1);
             }
+            if (d.groupHistoryToggleAction != null) {
+                if (!$util.isObject(d.groupHistoryToggleAction))
+                    throw $TypeError(".SyncAction.SyncActionValue.groupHistoryToggleAction: object expected");
+                m.groupHistoryToggleAction = $root.SyncAction.SyncActionValue.GroupHistoryToggleAction.fromObject(d.groupHistoryToggleAction, q + 1);
+            }
             return m;
         };
 
@@ -2059,6 +2073,7 @@ export const SyncAction = $root.SyncAction = (() => {
                 d.sharedDeviceAllowlistAction = null;
                 d.contactManagerMetadataAction = null;
                 d.businessFolderActivationAction = null;
+                d.groupHistoryToggleAction = null;
             }
             if (m.timestamp != null && $Object.hasOwnProperty.call(m, "timestamp")) {
                 if (typeof $BigInt !== "undefined" && o.longs === $BigInt)
@@ -2325,6 +2340,9 @@ export const SyncAction = $root.SyncAction = (() => {
             }
             if (m.businessFolderActivationAction != null && $Object.hasOwnProperty.call(m, "businessFolderActivationAction")) {
                 d.businessFolderActivationAction = $root.SyncAction.SyncActionValue.BusinessFolderActivationAction.toObject(m.businessFolderActivationAction, o, q + 1);
+            }
+            if (m.groupHistoryToggleAction != null && $Object.hasOwnProperty.call(m, "groupHistoryToggleAction")) {
+                d.groupHistoryToggleAction = $root.SyncAction.SyncActionValue.GroupHistoryToggleAction.toObject(m.groupHistoryToggleAction, o, q + 1);
             }
             return d;
         };
@@ -7936,6 +7954,158 @@ export const SyncAction = $root.SyncAction = (() => {
             })();
 
             return FavoritesAction;
+        })();
+
+        SyncActionValue.GroupHistoryToggleAction = (function() {
+
+            const GroupHistoryToggleAction = function (p) {
+                if (p)
+                    for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                        if (p[ks[i]] != null && ks[i] !== "__proto__")
+                            this[ks[i]] = p[ks[i]];
+            };
+
+            GroupHistoryToggleAction.prototype.groupHistoryToggleMode = 0;
+
+            GroupHistoryToggleAction.create = function(properties) {
+                return new GroupHistoryToggleAction(properties);
+            };
+
+            GroupHistoryToggleAction.encode = function (m, w, q) {
+                if (!w)
+                    w = $Writer.create();
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                if (m.groupHistoryToggleMode != null && $Object.hasOwnProperty.call(m, "groupHistoryToggleMode"))
+                    w.uint32(8).int32(m.groupHistoryToggleMode);
+                if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                    for (var i = 0; i < m.$unknowns.length; ++i)
+                        w.raw(m.$unknowns[i]);
+                return w;
+            };
+
+            GroupHistoryToggleAction.decode = function (r, l, z, q, g) {
+                if (!(r instanceof $Reader))
+                    r = $Reader.create(r);
+                if (q === $undefined)
+                    q = 0;
+                if (q > $Reader.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.GroupHistoryToggleAction();
+                while (r.pos < c) {
+                    var s = r.pos;
+                    var t = r.tag();
+                    if (t === z) {
+                        z = $undefined;
+                        break;
+                    }
+                    var u = t & 7;
+                    switch (t >>>= 3) {
+                    case 1: {
+                            if (u !== 0)
+                                break;
+                            v = r.int32();
+                            if ($root.SyncAction.SyncActionValue.GroupHistoryToggleAction.GroupHistoryToggleMode[v] !== $undefined) {
+                                m.groupHistoryToggleMode = v;
+                            } else if (!r.discardUnknown) {
+                                $util.makeProp(m, "$unknowns", false);
+                                (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                            }
+                            continue;
+                        }
+                    }
+                    r.skipType(u, q, t);
+                    if (!r.discardUnknown) {
+                        $util.makeProp(m, "$unknowns", false);
+                        (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                    }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
+                }
+                if (z !== $undefined)
+                    throw $Error("missing end group");
+                return m;
+            };
+
+            GroupHistoryToggleAction.fromObject = function (d, q) {
+                if (d instanceof $root.SyncAction.SyncActionValue.GroupHistoryToggleAction)
+                    return d;
+                if (!$util.isObject(d))
+                    throw $TypeError(".SyncAction.SyncActionValue.GroupHistoryToggleAction: object expected");
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var m = new $root.SyncAction.SyncActionValue.GroupHistoryToggleAction();
+                switch (d.groupHistoryToggleMode) {
+                case "GROUP_HISTORY_TOGGLE_MODE_UNKNOWN":
+                case 0:
+                    m.groupHistoryToggleMode = 0;
+                    break;
+                case "GROUP_HISTORY_TOGGLE_MODE_ON":
+                case 1:
+                    m.groupHistoryToggleMode = 1;
+                    break;
+                case "GROUP_HISTORY_TOGGLE_MODE_OFF":
+                case 2:
+                    m.groupHistoryToggleMode = 2;
+                    break;
+                default:
+                }
+                return m;
+            };
+
+            GroupHistoryToggleAction.toObject = function (m, o, q) {
+                if (!o)
+                    o = {};
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var d = {};
+                if (o.defaults) {
+                    d.groupHistoryToggleMode = o.enums === $String ? "GROUP_HISTORY_TOGGLE_MODE_UNKNOWN" : 0;
+                }
+                if (m.groupHistoryToggleMode != null && $Object.hasOwnProperty.call(m, "groupHistoryToggleMode")) {
+                    d.groupHistoryToggleMode = o.enums === $String ? $root.SyncAction.SyncActionValue.GroupHistoryToggleAction.GroupHistoryToggleMode[m.groupHistoryToggleMode] === $undefined ? m.groupHistoryToggleMode : $root.SyncAction.SyncActionValue.GroupHistoryToggleAction.GroupHistoryToggleMode[m.groupHistoryToggleMode] : m.groupHistoryToggleMode;
+                }
+                return d;
+            };
+
+            GroupHistoryToggleAction.prototype.toJSON = function() {
+                return GroupHistoryToggleAction.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            GroupHistoryToggleAction.getTypeUrl = function(prefix) {
+                if (prefix === $undefined)
+                    prefix = "type.googleapis.com";
+                return prefix + "/SyncAction.SyncActionValue.GroupHistoryToggleAction";
+            };
+
+            GroupHistoryToggleAction.GroupHistoryToggleMode = (function() {
+                const valuesById = $Object.create(null), values = $Object.create(valuesById);
+                values[valuesById[0] = "GROUP_HISTORY_TOGGLE_MODE_UNKNOWN"] = 0;
+                values[valuesById[1] = "GROUP_HISTORY_TOGGLE_MODE_ON"] = 1;
+                values[valuesById[2] = "GROUP_HISTORY_TOGGLE_MODE_OFF"] = 2;
+                return values;
+            })();
+
+            return GroupHistoryToggleAction;
         })();
 
         SyncActionValue.InteractiveMessageAction = (function() {
@@ -19262,6 +19432,7 @@ export const SyncAction = $root.SyncAction = (() => {
         values[valuesById[94] = "SHARED_DEVICE_ALLOWLIST_ACTION"] = 94;
         values[valuesById[95] = "CONTACT_MANAGER_METADATA_ACTION"] = 95;
         values[valuesById[96] = "BUSINESS_FOLDER_ACTIVATION_ACTION"] = 96;
+        values[valuesById[97] = "GROUP_HISTORY_TOGGLE_ACTION"] = 97;
         values[valuesById[10001] = "SHARE_OWN_PN"] = 10001;
         values[valuesById[10002] = "BUSINESS_BROADCAST_ACTION"] = 10002;
         values[valuesById[10003] = "AI_THREAD_DELETE_ACTION"] = 10003;

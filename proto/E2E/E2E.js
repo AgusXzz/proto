@@ -10604,6 +10604,7 @@ export const E2E = $root.E2E = (() => {
             ExternalAdReplyInfo.prototype.agmSubtitleStrategy = 0;
             ExternalAdReplyInfo.prototype.agmHeaderInteractionStrategy = 0;
             ExternalAdReplyInfo.prototype.containsCtwaFlowsAutoLabel = false;
+            ExternalAdReplyInfo.prototype.productId = "";
 
             ExternalAdReplyInfo.create = function(properties) {
                 return new ExternalAdReplyInfo(properties);
@@ -10682,6 +10683,8 @@ export const E2E = $root.E2E = (() => {
                     w.uint32(256).int32(m.agmHeaderInteractionStrategy);
                 if (m.containsCtwaFlowsAutoLabel != null && $Object.hasOwnProperty.call(m, "containsCtwaFlowsAutoLabel"))
                     w.uint32(264).bool(m.containsCtwaFlowsAutoLabel);
+                if (m.productId != null && $Object.hasOwnProperty.call(m, "productId"))
+                    w.uint32(274).string(m.productId);
                 if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                     for (var i = 0; i < m.$unknowns.length; ++i)
                         w.raw(m.$unknowns[i]);
@@ -10925,6 +10928,12 @@ export const E2E = $root.E2E = (() => {
                             m.containsCtwaFlowsAutoLabel = r.bool();
                             continue;
                         }
+                    case 34: {
+                            if (u !== 2)
+                                break;
+                            m.productId = r.string();
+                            continue;
+                        }
                     }
                     r.skipType(u, q, t);
                     if (!r.discardUnknown) {
@@ -11074,6 +11083,9 @@ export const E2E = $root.E2E = (() => {
                 if (d.containsCtwaFlowsAutoLabel != null) {
                     m.containsCtwaFlowsAutoLabel = $Boolean(d.containsCtwaFlowsAutoLabel);
                 }
+                if (d.productId != null) {
+                    m.productId = $String(d.productId);
+                }
                 return m;
             };
 
@@ -11125,6 +11137,7 @@ export const E2E = $root.E2E = (() => {
                     d.agmSubtitleStrategy = 0;
                     d.agmHeaderInteractionStrategy = 0;
                     d.containsCtwaFlowsAutoLabel = false;
+                    d.productId = "";
                 }
                 if (m.title != null && $Object.hasOwnProperty.call(m, "title")) {
                     d.title = m.title;
@@ -11224,6 +11237,9 @@ export const E2E = $root.E2E = (() => {
                 }
                 if (m.containsCtwaFlowsAutoLabel != null && $Object.hasOwnProperty.call(m, "containsCtwaFlowsAutoLabel")) {
                     d.containsCtwaFlowsAutoLabel = m.containsCtwaFlowsAutoLabel;
+                }
+                if (m.productId != null && $Object.hasOwnProperty.call(m, "productId")) {
+                    d.productId = m.productId;
                 }
                 return d;
             };
