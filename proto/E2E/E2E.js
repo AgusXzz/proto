@@ -12776,6 +12776,7 @@ export const E2E = $root.E2E = (() => {
         Message.prototype.newsletterScheduledMessage = null;
         Message.prototype.acp2SettingMessage = null;
         Message.prototype.audioStickerMessage = null;
+        Message.prototype.botGroupParticipantMessage = null;
 
         Message.create = function(properties) {
             return new Message(properties);
@@ -13014,6 +13015,8 @@ export const E2E = $root.E2E = (() => {
                 $root.E2E.Message.FutureProofMessage.encode(m.acp2SettingMessage, w.uint32(1066).fork(), q + 1).ldelim();
             if (m.audioStickerMessage != null && $Object.hasOwnProperty.call(m, "audioStickerMessage"))
                 $root.E2E.Message.FutureProofMessage.encode(m.audioStickerMessage, w.uint32(1074).fork(), q + 1).ldelim();
+            if (m.botGroupParticipantMessage != null && $Object.hasOwnProperty.call(m, "botGroupParticipantMessage"))
+                $root.E2E.Message.FutureProofMessage.encode(m.botGroupParticipantMessage, w.uint32(1098).fork(), q + 1).ldelim();
             if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                 for (var i = 0; i < m.$unknowns.length; ++i)
                     w.raw(m.$unknowns[i]);
@@ -13725,6 +13728,12 @@ export const E2E = $root.E2E = (() => {
                         m.audioStickerMessage = $root.E2E.Message.FutureProofMessage.decode(r, r.uint32(), $undefined, q + 1, m.audioStickerMessage);
                         continue;
                     }
+                case 137: {
+                        if (u !== 2)
+                            break;
+                        m.botGroupParticipantMessage = $root.E2E.Message.FutureProofMessage.decode(r, r.uint32(), $undefined, q + 1, m.botGroupParticipantMessage);
+                        continue;
+                    }
                 }
                 r.skipType(u, q, t);
                 if (!r.discardUnknown) {
@@ -14315,6 +14324,11 @@ export const E2E = $root.E2E = (() => {
                     throw $TypeError(".E2E.Message.audioStickerMessage: object expected");
                 m.audioStickerMessage = $root.E2E.Message.FutureProofMessage.fromObject(d.audioStickerMessage, q + 1);
             }
+            if (d.botGroupParticipantMessage != null) {
+                if (!$util.isObject(d.botGroupParticipantMessage))
+                    throw $TypeError(".E2E.Message.botGroupParticipantMessage: object expected");
+                m.botGroupParticipantMessage = $root.E2E.Message.FutureProofMessage.fromObject(d.botGroupParticipantMessage, q + 1);
+            }
             return m;
         };
 
@@ -14440,6 +14454,7 @@ export const E2E = $root.E2E = (() => {
                 d.newsletterScheduledMessage = null;
                 d.acp2SettingMessage = null;
                 d.audioStickerMessage = null;
+                d.botGroupParticipantMessage = null;
             }
             if (m.conversation != null && $Object.hasOwnProperty.call(m, "conversation")) {
                 d.conversation = m.conversation;
@@ -14779,6 +14794,9 @@ export const E2E = $root.E2E = (() => {
             }
             if (m.audioStickerMessage != null && $Object.hasOwnProperty.call(m, "audioStickerMessage")) {
                 d.audioStickerMessage = $root.E2E.Message.FutureProofMessage.toObject(m.audioStickerMessage, o, q + 1);
+            }
+            if (m.botGroupParticipantMessage != null && $Object.hasOwnProperty.call(m, "botGroupParticipantMessage")) {
+                d.botGroupParticipantMessage = $root.E2E.Message.FutureProofMessage.toObject(m.botGroupParticipantMessage, o, q + 1);
             }
             return d;
         };
