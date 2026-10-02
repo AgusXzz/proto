@@ -101789,6 +101789,7 @@ export const SyncAction = $root.SyncAction = (() => {
         SyncActionValue.prototype.contactManagerMetadataAction = null;
         SyncActionValue.prototype.businessFolderActivationAction = null;
         SyncActionValue.prototype.groupHistoryToggleAction = null;
+        SyncActionValue.prototype.bbProPendingCustomerBaseAction = null;
 
         SyncActionValue.create = function(properties) {
             return new SyncActionValue(properties);
@@ -101977,6 +101978,8 @@ export const SyncAction = $root.SyncAction = (() => {
                 $root.SyncAction.SyncActionValue.BusinessFolderActivationAction.encode(m.businessFolderActivationAction, w.uint32(770).fork(), q + 1).ldelim();
             if (m.groupHistoryToggleAction != null && $Object.hasOwnProperty.call(m, "groupHistoryToggleAction"))
                 $root.SyncAction.SyncActionValue.GroupHistoryToggleAction.encode(m.groupHistoryToggleAction, w.uint32(778).fork(), q + 1).ldelim();
+            if (m.bbProPendingCustomerBaseAction != null && $Object.hasOwnProperty.call(m, "bbProPendingCustomerBaseAction"))
+                $root.SyncAction.SyncActionValue.BBProPendingCustomerBaseAction.encode(m.bbProPendingCustomerBaseAction, w.uint32(786).fork(), q + 1).ldelim();
             if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                 for (var i = 0; i < m.$unknowns.length; ++i)
                     w.raw(m.$unknowns[i]);
@@ -102538,6 +102541,12 @@ export const SyncAction = $root.SyncAction = (() => {
                         m.groupHistoryToggleAction = $root.SyncAction.SyncActionValue.GroupHistoryToggleAction.decode(r, r.uint32(), $undefined, q + 1, m.groupHistoryToggleAction);
                         continue;
                     }
+                case 98: {
+                        if (u !== 2)
+                            break;
+                        m.bbProPendingCustomerBaseAction = $root.SyncAction.SyncActionValue.BBProPendingCustomerBaseAction.decode(r, r.uint32(), $undefined, q + 1, m.bbProPendingCustomerBaseAction);
+                        continue;
+                    }
                 }
                 r.skipType(u, q, t);
                 if (!r.discardUnknown) {
@@ -103010,6 +103019,11 @@ export const SyncAction = $root.SyncAction = (() => {
                     throw $TypeError(".SyncAction.SyncActionValue.groupHistoryToggleAction: object expected");
                 m.groupHistoryToggleAction = $root.SyncAction.SyncActionValue.GroupHistoryToggleAction.fromObject(d.groupHistoryToggleAction, q + 1);
             }
+            if (d.bbProPendingCustomerBaseAction != null) {
+                if (!$util.isObject(d.bbProPendingCustomerBaseAction))
+                    throw $TypeError(".SyncAction.SyncActionValue.bbProPendingCustomerBaseAction: object expected");
+                m.bbProPendingCustomerBaseAction = $root.SyncAction.SyncActionValue.BBProPendingCustomerBaseAction.fromObject(d.bbProPendingCustomerBaseAction, q + 1);
+            }
             return m;
         };
 
@@ -103114,6 +103128,7 @@ export const SyncAction = $root.SyncAction = (() => {
                 d.contactManagerMetadataAction = null;
                 d.businessFolderActivationAction = null;
                 d.groupHistoryToggleAction = null;
+                d.bbProPendingCustomerBaseAction = null;
             }
             if (m.timestamp != null && $Object.hasOwnProperty.call(m, "timestamp")) {
                 if (typeof $BigInt !== "undefined" && o.longs === $BigInt)
@@ -103383,6 +103398,9 @@ export const SyncAction = $root.SyncAction = (() => {
             }
             if (m.groupHistoryToggleAction != null && $Object.hasOwnProperty.call(m, "groupHistoryToggleAction")) {
                 d.groupHistoryToggleAction = $root.SyncAction.SyncActionValue.GroupHistoryToggleAction.toObject(m.groupHistoryToggleAction, o, q + 1);
+            }
+            if (m.bbProPendingCustomerBaseAction != null && $Object.hasOwnProperty.call(m, "bbProPendingCustomerBaseAction")) {
+                d.bbProPendingCustomerBaseAction = $root.SyncAction.SyncActionValue.BBProPendingCustomerBaseAction.toObject(m.bbProPendingCustomerBaseAction, o, q + 1);
             }
             return d;
         };
@@ -104260,6 +104278,132 @@ export const SyncAction = $root.SyncAction = (() => {
             })();
 
             return AvatarUpdatedAction;
+        })();
+
+        SyncActionValue.BBProPendingCustomerBaseAction = (function() {
+
+            const BBProPendingCustomerBaseAction = function (p) {
+                if (p)
+                    for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                        if (p[ks[i]] != null && ks[i] !== "__proto__")
+                            this[ks[i]] = p[ks[i]];
+            };
+
+            BBProPendingCustomerBaseAction.prototype.pending = false;
+
+            BBProPendingCustomerBaseAction.create = function(properties) {
+                return new BBProPendingCustomerBaseAction(properties);
+            };
+
+            BBProPendingCustomerBaseAction.encode = function (m, w, q) {
+                if (!w)
+                    w = $Writer.create();
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                if (m.pending != null && $Object.hasOwnProperty.call(m, "pending"))
+                    w.uint32(8).bool(m.pending);
+                if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                    for (var i = 0; i < m.$unknowns.length; ++i)
+                        w.raw(m.$unknowns[i]);
+                return w;
+            };
+
+            BBProPendingCustomerBaseAction.decode = function (r, l, z, q, g) {
+                if (!(r instanceof $Reader))
+                    r = $Reader.create(r);
+                if (q === $undefined)
+                    q = 0;
+                if (q > $Reader.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.BBProPendingCustomerBaseAction();
+                while (r.pos < c) {
+                    var s = r.pos;
+                    var t = r.tag();
+                    if (t === z) {
+                        z = $undefined;
+                        break;
+                    }
+                    var u = t & 7;
+                    switch (t >>>= 3) {
+                    case 1: {
+                            if (u !== 0)
+                                break;
+                            m.pending = r.bool();
+                            continue;
+                        }
+                    }
+                    r.skipType(u, q, t);
+                    if (!r.discardUnknown) {
+                        $util.makeProp(m, "$unknowns", false);
+                        (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                    }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
+                }
+                if (z !== $undefined)
+                    throw $Error("missing end group");
+                return m;
+            };
+
+            BBProPendingCustomerBaseAction.fromObject = function (d, q) {
+                if (d instanceof $root.SyncAction.SyncActionValue.BBProPendingCustomerBaseAction)
+                    return d;
+                if (!$util.isObject(d))
+                    throw $TypeError(".SyncAction.SyncActionValue.BBProPendingCustomerBaseAction: object expected");
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var m = new $root.SyncAction.SyncActionValue.BBProPendingCustomerBaseAction();
+                if (d.pending != null) {
+                    m.pending = $Boolean(d.pending);
+                }
+                return m;
+            };
+
+            BBProPendingCustomerBaseAction.toObject = function (m, o, q) {
+                if (!o)
+                    o = {};
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var d = {};
+                if (o.defaults) {
+                    d.pending = false;
+                }
+                if (m.pending != null && $Object.hasOwnProperty.call(m, "pending")) {
+                    d.pending = m.pending;
+                }
+                return d;
+            };
+
+            BBProPendingCustomerBaseAction.prototype.toJSON = function() {
+                return BBProPendingCustomerBaseAction.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            BBProPendingCustomerBaseAction.getTypeUrl = function(prefix) {
+                if (prefix === $undefined)
+                    prefix = "type.googleapis.com";
+                return prefix + "/SyncAction.SyncActionValue.BBProPendingCustomerBaseAction";
+            };
+
+            return BBProPendingCustomerBaseAction;
         })();
 
         SyncActionValue.BizAISettingsNudgeAction = (function() {
@@ -120034,6 +120178,132 @@ export const SyncAction = $root.SyncAction = (() => {
             return values;
         })();
 
+        CallLogRecord.GuestInfo = (function() {
+
+            const GuestInfo = function (p) {
+                if (p)
+                    for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                        if (p[ks[i]] != null && ks[i] !== "__proto__")
+                            this[ks[i]] = p[ks[i]];
+            };
+
+            GuestInfo.prototype.pushName = "";
+
+            GuestInfo.create = function(properties) {
+                return new GuestInfo(properties);
+            };
+
+            GuestInfo.encode = function (m, w, q) {
+                if (!w)
+                    w = $Writer.create();
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                if (m.pushName != null && $Object.hasOwnProperty.call(m, "pushName"))
+                    w.uint32(10).string(m.pushName);
+                if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                    for (var i = 0; i < m.$unknowns.length; ++i)
+                        w.raw(m.$unknowns[i]);
+                return w;
+            };
+
+            GuestInfo.decode = function (r, l, z, q, g) {
+                if (!(r instanceof $Reader))
+                    r = $Reader.create(r);
+                if (q === $undefined)
+                    q = 0;
+                if (q > $Reader.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.CallLogRecord.GuestInfo();
+                while (r.pos < c) {
+                    var s = r.pos;
+                    var t = r.tag();
+                    if (t === z) {
+                        z = $undefined;
+                        break;
+                    }
+                    var u = t & 7;
+                    switch (t >>>= 3) {
+                    case 1: {
+                            if (u !== 2)
+                                break;
+                            m.pushName = r.string();
+                            continue;
+                        }
+                    }
+                    r.skipType(u, q, t);
+                    if (!r.discardUnknown) {
+                        $util.makeProp(m, "$unknowns", false);
+                        (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                    }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
+                }
+                if (z !== $undefined)
+                    throw $Error("missing end group");
+                return m;
+            };
+
+            GuestInfo.fromObject = function (d, q) {
+                if (d instanceof $root.SyncAction.CallLogRecord.GuestInfo)
+                    return d;
+                if (!$util.isObject(d))
+                    throw $TypeError(".SyncAction.CallLogRecord.GuestInfo: object expected");
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var m = new $root.SyncAction.CallLogRecord.GuestInfo();
+                if (d.pushName != null) {
+                    m.pushName = $String(d.pushName);
+                }
+                return m;
+            };
+
+            GuestInfo.toObject = function (m, o, q) {
+                if (!o)
+                    o = {};
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var d = {};
+                if (o.defaults) {
+                    d.pushName = "";
+                }
+                if (m.pushName != null && $Object.hasOwnProperty.call(m, "pushName")) {
+                    d.pushName = m.pushName;
+                }
+                return d;
+            };
+
+            GuestInfo.prototype.toJSON = function() {
+                return GuestInfo.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            GuestInfo.getTypeUrl = function(prefix) {
+                if (prefix === $undefined)
+                    prefix = "type.googleapis.com";
+                return prefix + "/SyncAction.CallLogRecord.GuestInfo";
+            };
+
+            return GuestInfo;
+        })();
+
         CallLogRecord.ParticipantInfo = (function() {
 
             const ParticipantInfo = function (p) {
@@ -120045,6 +120315,7 @@ export const SyncAction = $root.SyncAction = (() => {
 
             ParticipantInfo.prototype.userJid = "";
             ParticipantInfo.prototype.callResult = 0;
+            ParticipantInfo.prototype.guestInfo = null;
 
             ParticipantInfo.create = function(properties) {
                 return new ParticipantInfo(properties);
@@ -120061,6 +120332,8 @@ export const SyncAction = $root.SyncAction = (() => {
                     w.uint32(10).string(m.userJid);
                 if (m.callResult != null && $Object.hasOwnProperty.call(m, "callResult"))
                     w.uint32(16).int32(m.callResult);
+                if (m.guestInfo != null && $Object.hasOwnProperty.call(m, "guestInfo"))
+                    $root.SyncAction.CallLogRecord.GuestInfo.encode(m.guestInfo, w.uint32(26).fork(), q + 1).ldelim();
                 if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                     for (var i = 0; i < m.$unknowns.length; ++i)
                         w.raw(m.$unknowns[i]);
@@ -120110,6 +120383,12 @@ export const SyncAction = $root.SyncAction = (() => {
                                 $util.makeProp(m, "$unknowns", false);
                                 (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
                             }
+                            continue;
+                        }
+                    case 3: {
+                            if (u !== 2)
+                                break;
+                            m.guestInfo = $root.SyncAction.CallLogRecord.GuestInfo.decode(r, r.uint32(), $undefined, q + 1, m.guestInfo);
                             continue;
                         }
                     }
@@ -120189,6 +120468,11 @@ export const SyncAction = $root.SyncAction = (() => {
                     break;
                 default:
                 }
+                if (d.guestInfo != null) {
+                    if (!$util.isObject(d.guestInfo))
+                        throw $TypeError(".SyncAction.CallLogRecord.ParticipantInfo.guestInfo: object expected");
+                    m.guestInfo = $root.SyncAction.CallLogRecord.GuestInfo.fromObject(d.guestInfo, q + 1);
+                }
                 return m;
             };
 
@@ -120203,12 +120487,16 @@ export const SyncAction = $root.SyncAction = (() => {
                 if (o.defaults) {
                     d.userJid = "";
                     d.callResult = o.enums === $String ? "CONNECTED" : 0;
+                    d.guestInfo = null;
                 }
                 if (m.userJid != null && $Object.hasOwnProperty.call(m, "userJid")) {
                     d.userJid = m.userJid;
                 }
                 if (m.callResult != null && $Object.hasOwnProperty.call(m, "callResult")) {
                     d.callResult = o.enums === $String ? $root.SyncAction.CallLogRecord.CallResult[m.callResult] === $undefined ? m.callResult : $root.SyncAction.CallLogRecord.CallResult[m.callResult] : m.callResult;
+                }
+                if (m.guestInfo != null && $Object.hasOwnProperty.call(m, "guestInfo")) {
+                    d.guestInfo = $root.SyncAction.CallLogRecord.GuestInfo.toObject(m.guestInfo, o, q + 1);
                 }
                 return d;
             };
@@ -120473,6 +120761,7 @@ export const SyncAction = $root.SyncAction = (() => {
         values[valuesById[95] = "CONTACT_MANAGER_METADATA_ACTION"] = 95;
         values[valuesById[96] = "BUSINESS_FOLDER_ACTIVATION_ACTION"] = 96;
         values[valuesById[97] = "GROUP_HISTORY_TOGGLE_ACTION"] = 97;
+        values[valuesById[98] = "BB_PRO_PENDING_CUSTOMER_BASE_ACTION"] = 98;
         values[valuesById[10001] = "SHARE_OWN_PN"] = 10001;
         values[valuesById[10002] = "BUSINESS_BROADCAST_ACTION"] = 10002;
         values[valuesById[10003] = "AI_THREAD_DELETE_ACTION"] = 10003;
