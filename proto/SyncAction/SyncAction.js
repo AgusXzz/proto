@@ -20467,6 +20467,8 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
         DeviceCapabilities.prototype.aiFbidMigration = null;
         DeviceCapabilities.prototype.bizAiSettingsSync = null;
         DeviceCapabilities.prototype.contactRefresh = null;
+        DeviceCapabilities.prototype.reverseHistorySync = null;
+        DeviceCapabilities.prototype.newsletterChatsMigration = null;
 
         DeviceCapabilities.create = function(properties) {
             return new DeviceCapabilities(properties);
@@ -20497,6 +20499,10 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                 $root.DeviceCapabilities.DeviceCapabilities.BizAiSettingsSync.encode(m.bizAiSettingsSync, w.uint32(66).fork(), q + 1).ldelim();
             if (m.contactRefresh != null && $Object.hasOwnProperty.call(m, "contactRefresh"))
                 $root.DeviceCapabilities.DeviceCapabilities.ContactRefresh.encode(m.contactRefresh, w.uint32(74).fork(), q + 1).ldelim();
+            if (m.reverseHistorySync != null && $Object.hasOwnProperty.call(m, "reverseHistorySync"))
+                $root.DeviceCapabilities.DeviceCapabilities.ReverseHistorySync.encode(m.reverseHistorySync, w.uint32(82).fork(), q + 1).ldelim();
+            if (m.newsletterChatsMigration != null && $Object.hasOwnProperty.call(m, "newsletterChatsMigration"))
+                $root.DeviceCapabilities.DeviceCapabilities.NewsletterChatsMigration.encode(m.newsletterChatsMigration, w.uint32(90).fork(), q + 1).ldelim();
             if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                 for (var i = 0; i < m.$unknowns.length; ++i)
                     w.raw(m.$unknowns[i]);
@@ -20596,6 +20602,18 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                         m.contactRefresh = $root.DeviceCapabilities.DeviceCapabilities.ContactRefresh.decode(r, r.uint32(), $undefined, q + 1, m.contactRefresh);
                         continue;
                     }
+                case 10: {
+                        if (u !== 2)
+                            break;
+                        m.reverseHistorySync = $root.DeviceCapabilities.DeviceCapabilities.ReverseHistorySync.decode(r, r.uint32(), $undefined, q + 1, m.reverseHistorySync);
+                        continue;
+                    }
+                case 11: {
+                        if (u !== 2)
+                            break;
+                        m.newsletterChatsMigration = $root.DeviceCapabilities.DeviceCapabilities.NewsletterChatsMigration.decode(r, r.uint32(), $undefined, q + 1, m.newsletterChatsMigration);
+                        continue;
+                    }
                 }
                 r.skipType(u, q, t);
                 if (!r.discardUnknown) {
@@ -20688,6 +20706,16 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                     throw $TypeError(".DeviceCapabilities.DeviceCapabilities.contactRefresh: object expected");
                 m.contactRefresh = $root.DeviceCapabilities.DeviceCapabilities.ContactRefresh.fromObject(d.contactRefresh, q + 1);
             }
+            if (d.reverseHistorySync != null) {
+                if (!$util.isObject(d.reverseHistorySync))
+                    throw $TypeError(".DeviceCapabilities.DeviceCapabilities.reverseHistorySync: object expected");
+                m.reverseHistorySync = $root.DeviceCapabilities.DeviceCapabilities.ReverseHistorySync.fromObject(d.reverseHistorySync, q + 1);
+            }
+            if (d.newsletterChatsMigration != null) {
+                if (!$util.isObject(d.newsletterChatsMigration))
+                    throw $TypeError(".DeviceCapabilities.DeviceCapabilities.newsletterChatsMigration: object expected");
+                m.newsletterChatsMigration = $root.DeviceCapabilities.DeviceCapabilities.NewsletterChatsMigration.fromObject(d.newsletterChatsMigration, q + 1);
+            }
             return m;
         };
 
@@ -20709,6 +20737,8 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                 d.aiFbidMigration = null;
                 d.bizAiSettingsSync = null;
                 d.contactRefresh = null;
+                d.reverseHistorySync = null;
+                d.newsletterChatsMigration = null;
             }
             if (m.chatLockSupportLevel != null && $Object.hasOwnProperty.call(m, "chatLockSupportLevel")) {
                 d.chatLockSupportLevel = o.enums === $String ? $root.DeviceCapabilities.DeviceCapabilities.ChatLockSupportLevel[m.chatLockSupportLevel] === $undefined ? m.chatLockSupportLevel : $root.DeviceCapabilities.DeviceCapabilities.ChatLockSupportLevel[m.chatLockSupportLevel] : m.chatLockSupportLevel;
@@ -20736,6 +20766,12 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
             }
             if (m.contactRefresh != null && $Object.hasOwnProperty.call(m, "contactRefresh")) {
                 d.contactRefresh = $root.DeviceCapabilities.DeviceCapabilities.ContactRefresh.toObject(m.contactRefresh, o, q + 1);
+            }
+            if (m.reverseHistorySync != null && $Object.hasOwnProperty.call(m, "reverseHistorySync")) {
+                d.reverseHistorySync = $root.DeviceCapabilities.DeviceCapabilities.ReverseHistorySync.toObject(m.reverseHistorySync, o, q + 1);
+            }
+            if (m.newsletterChatsMigration != null && $Object.hasOwnProperty.call(m, "newsletterChatsMigration")) {
+                d.newsletterChatsMigration = $root.DeviceCapabilities.DeviceCapabilities.NewsletterChatsMigration.toObject(m.newsletterChatsMigration, o, q + 1);
             }
             return d;
         };
@@ -21674,6 +21710,364 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
             values[valuesById[1] = "RECEIVER_ENABLED"] = 1;
             values[valuesById[2] = "SENDER_ENABLED"] = 2;
             return values;
+        })();
+
+        DeviceCapabilities.NewsletterChatsMigration = (function() {
+
+            const NewsletterChatsMigration = function (p) {
+                if (p)
+                    for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                        if (p[ks[i]] != null && ks[i] !== "__proto__")
+                            this[ks[i]] = p[ks[i]];
+            };
+
+            NewsletterChatsMigration.prototype.effectiveMigrated = false;
+            NewsletterChatsMigration.prototype.countdownEndsAt = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+            NewsletterChatsMigration.prototype.rolledBack = false;
+
+            NewsletterChatsMigration.create = function(properties) {
+                return new NewsletterChatsMigration(properties);
+            };
+
+            NewsletterChatsMigration.encode = function (m, w, q) {
+                if (!w)
+                    w = $Writer.create();
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                if (m.effectiveMigrated != null && $Object.hasOwnProperty.call(m, "effectiveMigrated"))
+                    w.uint32(8).bool(m.effectiveMigrated);
+                if (m.countdownEndsAt != null && $Object.hasOwnProperty.call(m, "countdownEndsAt"))
+                    w.uint32(16).int64(m.countdownEndsAt);
+                if (m.rolledBack != null && $Object.hasOwnProperty.call(m, "rolledBack"))
+                    w.uint32(24).bool(m.rolledBack);
+                if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                    for (var i = 0; i < m.$unknowns.length; ++i)
+                        w.raw(m.$unknowns[i]);
+                return w;
+            };
+
+            NewsletterChatsMigration.decode = function (r, l, z, q, g) {
+                if (!(r instanceof $Reader))
+                    r = $Reader.create(r);
+                if (q === $undefined)
+                    q = 0;
+                if (q > $Reader.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.DeviceCapabilities.DeviceCapabilities.NewsletterChatsMigration();
+                while (r.pos < c) {
+                    var s = r.pos;
+                    var t = r.tag();
+                    if (t === z) {
+                        z = $undefined;
+                        break;
+                    }
+                    var u = t & 7;
+                    switch (t >>>= 3) {
+                    case 1: {
+                            if (u !== 0)
+                                break;
+                            m.effectiveMigrated = r.bool();
+                            continue;
+                        }
+                    case 2: {
+                            if (u !== 0)
+                                break;
+                            m.countdownEndsAt = r.int64();
+                            continue;
+                        }
+                    case 3: {
+                            if (u !== 0)
+                                break;
+                            m.rolledBack = r.bool();
+                            continue;
+                        }
+                    }
+                    r.skipType(u, q, t);
+                    if (!r.discardUnknown) {
+                        $util.makeProp(m, "$unknowns", false);
+                        (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                    }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
+                }
+                if (z !== $undefined)
+                    throw $Error("missing end group");
+                return m;
+            };
+
+            NewsletterChatsMigration.fromObject = function (d, q) {
+                if (d instanceof $root.DeviceCapabilities.DeviceCapabilities.NewsletterChatsMigration)
+                    return d;
+                if (!$util.isObject(d))
+                    throw $TypeError(".DeviceCapabilities.DeviceCapabilities.NewsletterChatsMigration: object expected");
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var m = new $root.DeviceCapabilities.DeviceCapabilities.NewsletterChatsMigration();
+                if (d.effectiveMigrated != null) {
+                    m.effectiveMigrated = $Boolean(d.effectiveMigrated);
+                }
+                if (d.countdownEndsAt != null) {
+                    if ($util.Long)
+                        m.countdownEndsAt = $util.Long.fromValue(d.countdownEndsAt, false);
+                    else if (typeof d.countdownEndsAt === "string")
+                        m.countdownEndsAt = $parseInt(d.countdownEndsAt, 10);
+                    else if (typeof d.countdownEndsAt === "number")
+                        m.countdownEndsAt = d.countdownEndsAt;
+                    else if (typeof d.countdownEndsAt === "object")
+                        m.countdownEndsAt = new $util.LongBits(d.countdownEndsAt.low >>> 0, d.countdownEndsAt.high >>> 0).toNumber();
+                }
+                if (d.rolledBack != null) {
+                    m.rolledBack = $Boolean(d.rolledBack);
+                }
+                return m;
+            };
+
+            NewsletterChatsMigration.toObject = function (m, o, q) {
+                if (!o)
+                    o = {};
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var d = {};
+                if (o.defaults) {
+                    d.effectiveMigrated = false;
+                    if ($util.Long) {
+                        var n = new $util.Long(0, 0, false);
+                        d.countdownEndsAt = o.longs === $String ? n.toString() : o.longs === $Number ? n.toNumber() : typeof $BigInt !== "undefined" && o.longs === $BigInt ? n.toBigInt() : n;
+                    } else
+                        d.countdownEndsAt = o.longs === $String ? "0" : typeof $BigInt !== "undefined" && o.longs === $BigInt ? $BigInt("0") : 0;
+                    d.rolledBack = false;
+                }
+                if (m.effectiveMigrated != null && $Object.hasOwnProperty.call(m, "effectiveMigrated")) {
+                    d.effectiveMigrated = m.effectiveMigrated;
+                }
+                if (m.countdownEndsAt != null && $Object.hasOwnProperty.call(m, "countdownEndsAt")) {
+                    if (typeof $BigInt !== "undefined" && o.longs === $BigInt)
+                        d.countdownEndsAt = typeof m.countdownEndsAt === "number" ? $BigInt(m.countdownEndsAt) : $util.Long.fromBits(m.countdownEndsAt.low >>> 0, m.countdownEndsAt.high >>> 0, false).toBigInt();
+                    else if (typeof m.countdownEndsAt === "number")
+                        d.countdownEndsAt = o.longs === $String ? $String(m.countdownEndsAt) : m.countdownEndsAt;
+                    else
+                        d.countdownEndsAt = o.longs === String ? longToString(m.countdownEndsAt) : o.longs === Number ? longToNumber(m.countdownEndsAt) : m.countdownEndsAt;
+                }
+                if (m.rolledBack != null && $Object.hasOwnProperty.call(m, "rolledBack")) {
+                    d.rolledBack = m.rolledBack;
+                }
+                return d;
+            };
+
+            NewsletterChatsMigration.prototype.toJSON = function() {
+                return NewsletterChatsMigration.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            NewsletterChatsMigration.getTypeUrl = function(prefix) {
+                if (prefix === $undefined)
+                    prefix = "type.googleapis.com";
+                return prefix + "/DeviceCapabilities.DeviceCapabilities.NewsletterChatsMigration";
+            };
+
+            return NewsletterChatsMigration;
+        })();
+
+        DeviceCapabilities.ReverseHistorySync = (function() {
+
+            const ReverseHistorySync = function (p) {
+                this.enabledProducts = [];
+                if (p)
+                    for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                        if (p[ks[i]] != null && ks[i] !== "__proto__")
+                            this[ks[i]] = p[ks[i]];
+            };
+
+            ReverseHistorySync.prototype.enabledProducts = $util.emptyArray;
+
+            ReverseHistorySync.create = function(properties) {
+                return new ReverseHistorySync(properties);
+            };
+
+            ReverseHistorySync.encode = function (m, w, q) {
+                if (!w)
+                    w = $Writer.create();
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                if (m.enabledProducts != null && m.enabledProducts.length) {
+                    for (var i = 0; i < m.enabledProducts.length; ++i)
+                        w.uint32(8).int32(m.enabledProducts[i]);
+                }
+                if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                    for (var i = 0; i < m.$unknowns.length; ++i)
+                        w.raw(m.$unknowns[i]);
+                return w;
+            };
+
+            ReverseHistorySync.decode = function (r, l, z, q, g) {
+                if (!(r instanceof $Reader))
+                    r = $Reader.create(r);
+                if (q === $undefined)
+                    q = 0;
+                if (q > $Reader.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.DeviceCapabilities.DeviceCapabilities.ReverseHistorySync();
+                while (r.pos < c) {
+                    var s = r.pos;
+                    var t = r.tag();
+                    if (t === z) {
+                        z = $undefined;
+                        break;
+                    }
+                    var u = t & 7;
+                    switch (t >>>= 3) {
+                    case 1: {
+                            if (u === 2) {
+                                var c2 = r.uint32() + r.pos;
+                                if (c2 > r.len)
+                                    throw $RangeError("index out of range");
+                                r.len = c2;
+                                while (r.pos < c2) {
+                                    s = r.pos;
+                                    v = r.int32();
+                                    if ($root.DeviceCapabilities.DeviceCapabilities.ReverseHistorySync.Product[v] !== $undefined) {
+                                        if (!(m.enabledProducts && m.enabledProducts.length))
+                                            m.enabledProducts = [];
+                                        m.enabledProducts.push(v);
+                                    } else if (!r.discardUnknown) {
+                                        $util.makeProp(m, "$unknowns", false);
+                                        (m.$unknowns || (m.$unknowns = [])).push($util.rawField(1, 0, r.raw(s, r.pos)));
+                                    }
+                                }
+                                if (r.pos !== c2)
+                                    throw $RangeError("index out of range");
+                                r.len = c;
+                                continue;
+                            }
+                            if (u !== 0)
+                                break;
+                            v = r.int32();
+                            if ($root.DeviceCapabilities.DeviceCapabilities.ReverseHistorySync.Product[v] !== $undefined) {
+                                if (!(m.enabledProducts && m.enabledProducts.length))
+                                    m.enabledProducts = [];
+                                m.enabledProducts.push(v);
+                            } else if (!r.discardUnknown) {
+                                $util.makeProp(m, "$unknowns", false);
+                                (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                            }
+                            continue;
+                        }
+                    }
+                    r.skipType(u, q, t);
+                    if (!r.discardUnknown) {
+                        $util.makeProp(m, "$unknowns", false);
+                        (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                    }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
+                }
+                if (z !== $undefined)
+                    throw $Error("missing end group");
+                return m;
+            };
+
+            ReverseHistorySync.fromObject = function (d, q) {
+                if (d instanceof $root.DeviceCapabilities.DeviceCapabilities.ReverseHistorySync)
+                    return d;
+                if (!$util.isObject(d))
+                    throw $TypeError(".DeviceCapabilities.DeviceCapabilities.ReverseHistorySync: object expected");
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var m = new $root.DeviceCapabilities.DeviceCapabilities.ReverseHistorySync();
+                if (d.enabledProducts) {
+                    if (!$Array.isArray(d.enabledProducts))
+                        throw $TypeError(".DeviceCapabilities.DeviceCapabilities.ReverseHistorySync.enabledProducts: array expected");
+                    m.enabledProducts = [];
+                    for (var i = 0; i < d.enabledProducts.length; ++i) {
+                        switch (d.enabledProducts[i]) {
+                        case "PRODUCT_UNSPECIFIED":
+                        case 0:
+                            m.enabledProducts[m.enabledProducts.length] = 0;
+                            break;
+                        case "HATCH":
+                        case 1:
+                            m.enabledProducts[m.enabledProducts.length] = 1;
+                            break;
+                        default:
+                        }
+                    }
+                }
+                return m;
+            };
+
+            ReverseHistorySync.toObject = function (m, o, q) {
+                if (!o)
+                    o = {};
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var d = {};
+                if (o.arrays || o.defaults) {
+                    d.enabledProducts = [];
+                }
+                if (m.enabledProducts && m.enabledProducts.length) {
+                    d.enabledProducts = $Array(m.enabledProducts.length);
+                    for (var j = 0; j < m.enabledProducts.length; ++j) {
+                        d.enabledProducts[j] = o.enums === $String ? $root.DeviceCapabilities.DeviceCapabilities.ReverseHistorySync.Product[m.enabledProducts[j]] === $undefined ? m.enabledProducts[j] : $root.DeviceCapabilities.DeviceCapabilities.ReverseHistorySync.Product[m.enabledProducts[j]] : m.enabledProducts[j];
+                    }
+                }
+                return d;
+            };
+
+            ReverseHistorySync.prototype.toJSON = function() {
+                return ReverseHistorySync.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            ReverseHistorySync.getTypeUrl = function(prefix) {
+                if (prefix === $undefined)
+                    prefix = "type.googleapis.com";
+                return prefix + "/DeviceCapabilities.DeviceCapabilities.ReverseHistorySync";
+            };
+
+            ReverseHistorySync.Product = (function() {
+                const valuesById = $Object.create(null), values = $Object.create(valuesById);
+                values[valuesById[0] = "PRODUCT_UNSPECIFIED"] = 0;
+                values[valuesById[1] = "HATCH"] = 1;
+                return values;
+            })();
+
+            return ReverseHistorySync;
         })();
 
         DeviceCapabilities.UserHasAvatar = (function() {
