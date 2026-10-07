@@ -1288,6 +1288,14 @@ export const CompanionReg = $root.CompanionReg = (() => {
             case 27:
                 m.deviceType = 27;
                 break;
+            case "WAIL_WAI":
+            case 28:
+                m.deviceType = 28;
+                break;
+            case "WAIL_ALEXA":
+            case 29:
+                m.deviceType = 29;
+                break;
             default:
             }
             if (d.ref != null) {
@@ -1593,6 +1601,14 @@ export const CompanionReg = $root.CompanionReg = (() => {
             case 27:
                 m.platformType = 27;
                 break;
+            case "WAIL_WAI":
+            case 28:
+                m.platformType = 28;
+                break;
+            case "WAIL_ALEXA":
+            case 29:
+                m.platformType = 29;
+                break;
             default:
             }
             if (d.requireFullSync != null) {
@@ -1874,6 +1890,8 @@ export const CompanionReg = $root.CompanionReg = (() => {
             HistorySyncConfig.prototype.supportedBotChannelFbids = $util.emptyArray;
             HistorySyncConfig.prototype.supportInlineContacts = false;
             HistorySyncConfig.prototype.supportNewsletter = false;
+            HistorySyncConfig.prototype.supportUniversalReachChat = false;
+            HistorySyncConfig.prototype.supportOmittedConversationIndex = false;
 
             HistorySyncConfig.create = function(properties) {
                 return new HistorySyncConfig(properties);
@@ -1938,6 +1956,10 @@ export const CompanionReg = $root.CompanionReg = (() => {
                     w.uint32(192).bool(m.supportInlineContacts);
                 if (m.supportNewsletter != null && $Object.hasOwnProperty.call(m, "supportNewsletter"))
                     w.uint32(200).bool(m.supportNewsletter);
+                if (m.supportUniversalReachChat != null && $Object.hasOwnProperty.call(m, "supportUniversalReachChat"))
+                    w.uint32(208).bool(m.supportUniversalReachChat);
+                if (m.supportOmittedConversationIndex != null && $Object.hasOwnProperty.call(m, "supportOmittedConversationIndex"))
+                    w.uint32(216).bool(m.supportOmittedConversationIndex);
                 if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                     for (var i = 0; i < m.$unknowns.length; ++i)
                         w.raw(m.$unknowns[i]);
@@ -2123,6 +2145,18 @@ export const CompanionReg = $root.CompanionReg = (() => {
                             m.supportNewsletter = r.bool();
                             continue;
                         }
+                    case 26: {
+                            if (u !== 0)
+                                break;
+                            m.supportUniversalReachChat = r.bool();
+                            continue;
+                        }
+                    case 27: {
+                            if (u !== 0)
+                                break;
+                            m.supportOmittedConversationIndex = r.bool();
+                            continue;
+                        }
                     }
                     r.skipType(u, q, t);
                     if (!r.discardUnknown) {
@@ -2230,6 +2264,12 @@ export const CompanionReg = $root.CompanionReg = (() => {
                 if (d.supportNewsletter != null) {
                     m.supportNewsletter = $Boolean(d.supportNewsletter);
                 }
+                if (d.supportUniversalReachChat != null) {
+                    m.supportUniversalReachChat = $Boolean(d.supportUniversalReachChat);
+                }
+                if (d.supportOmittedConversationIndex != null) {
+                    m.supportOmittedConversationIndex = $Boolean(d.supportOmittedConversationIndex);
+                }
                 return m;
             };
 
@@ -2269,6 +2309,8 @@ export const CompanionReg = $root.CompanionReg = (() => {
                     d.supportHatchHistory = false;
                     d.supportInlineContacts = false;
                     d.supportNewsletter = false;
+                    d.supportUniversalReachChat = false;
+                    d.supportOmittedConversationIndex = false;
                 }
                 if (m.fullSyncDaysLimit != null && $Object.hasOwnProperty.call(m, "fullSyncDaysLimit")) {
                     d.fullSyncDaysLimit = m.fullSyncDaysLimit;
@@ -2348,6 +2390,12 @@ export const CompanionReg = $root.CompanionReg = (() => {
                 if (m.supportNewsletter != null && $Object.hasOwnProperty.call(m, "supportNewsletter")) {
                     d.supportNewsletter = m.supportNewsletter;
                 }
+                if (m.supportUniversalReachChat != null && $Object.hasOwnProperty.call(m, "supportUniversalReachChat")) {
+                    d.supportUniversalReachChat = m.supportUniversalReachChat;
+                }
+                if (m.supportOmittedConversationIndex != null && $Object.hasOwnProperty.call(m, "supportOmittedConversationIndex")) {
+                    d.supportOmittedConversationIndex = m.supportOmittedConversationIndex;
+                }
                 return d;
             };
 
@@ -2394,6 +2442,8 @@ export const CompanionReg = $root.CompanionReg = (() => {
             values[valuesById[25] = "WAIL"] = 25;
             values[valuesById[26] = "WASS"] = 26;
             values[valuesById[27] = "BUSINESS_BACK_OFFICE"] = 27;
+            values[valuesById[28] = "WAIL_WAI"] = 28;
+            values[valuesById[29] = "WAIL_ALEXA"] = 29;
             return values;
         })();
 

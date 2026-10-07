@@ -5755,6 +5755,7 @@ export const SyncAction = $root.SyncAction = (() => {
             ContactAction.prototype.saveOnPrimaryAddressbook = false;
             ContactAction.prototype.pnJid = "";
             ContactAction.prototype.username = "";
+            ContactAction.prototype.birthday = "";
 
             ContactAction.create = function(properties) {
                 return new ContactAction(properties);
@@ -5779,6 +5780,8 @@ export const SyncAction = $root.SyncAction = (() => {
                     w.uint32(42).string(m.pnJid);
                 if (m.username != null && $Object.hasOwnProperty.call(m, "username"))
                     w.uint32(50).string(m.username);
+                if (m.birthday != null && $Object.hasOwnProperty.call(m, "birthday"))
+                    w.uint32(58).string(m.birthday);
                 if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                     for (var i = 0; i < m.$unknowns.length; ++i)
                         w.raw(m.$unknowns[i]);
@@ -5848,6 +5851,12 @@ export const SyncAction = $root.SyncAction = (() => {
                             m.username = r.string();
                             continue;
                         }
+                    case 7: {
+                            if (u !== 2)
+                                break;
+                            m.birthday = r.string();
+                            continue;
+                        }
                     }
                     r.skipType(u, q, t);
                     if (!r.discardUnknown) {
@@ -5893,6 +5902,9 @@ export const SyncAction = $root.SyncAction = (() => {
                 if (d.username != null) {
                     m.username = $String(d.username);
                 }
+                if (d.birthday != null) {
+                    m.birthday = $String(d.birthday);
+                }
                 return m;
             };
 
@@ -5911,6 +5923,7 @@ export const SyncAction = $root.SyncAction = (() => {
                     d.saveOnPrimaryAddressbook = false;
                     d.pnJid = "";
                     d.username = "";
+                    d.birthday = "";
                 }
                 if (m.fullName != null && $Object.hasOwnProperty.call(m, "fullName")) {
                     d.fullName = m.fullName;
@@ -5929,6 +5942,9 @@ export const SyncAction = $root.SyncAction = (() => {
                 }
                 if (m.username != null && $Object.hasOwnProperty.call(m, "username")) {
                     d.username = m.username;
+                }
+                if (m.birthday != null && $Object.hasOwnProperty.call(m, "birthday")) {
+                    d.birthday = m.birthday;
                 }
                 return d;
             };
@@ -9343,6 +9359,7 @@ export const SyncAction = $root.SyncAction = (() => {
             LidContactAction.prototype.fullName = "";
             LidContactAction.prototype.firstName = "";
             LidContactAction.prototype.username = "";
+            LidContactAction.prototype.birthday = "";
 
             LidContactAction.create = function(properties) {
                 return new LidContactAction(properties);
@@ -9361,6 +9378,8 @@ export const SyncAction = $root.SyncAction = (() => {
                     w.uint32(18).string(m.firstName);
                 if (m.username != null && $Object.hasOwnProperty.call(m, "username"))
                     w.uint32(26).string(m.username);
+                if (m.birthday != null && $Object.hasOwnProperty.call(m, "birthday"))
+                    w.uint32(34).string(m.birthday);
                 if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                     for (var i = 0; i < m.$unknowns.length; ++i)
                         w.raw(m.$unknowns[i]);
@@ -9412,6 +9431,12 @@ export const SyncAction = $root.SyncAction = (() => {
                             m.username = r.string();
                             continue;
                         }
+                    case 4: {
+                            if (u !== 2)
+                                break;
+                            m.birthday = r.string();
+                            continue;
+                        }
                     }
                     r.skipType(u, q, t);
                     if (!r.discardUnknown) {
@@ -9448,6 +9473,9 @@ export const SyncAction = $root.SyncAction = (() => {
                 if (d.username != null) {
                     m.username = $String(d.username);
                 }
+                if (d.birthday != null) {
+                    m.birthday = $String(d.birthday);
+                }
                 return m;
             };
 
@@ -9463,6 +9491,7 @@ export const SyncAction = $root.SyncAction = (() => {
                     d.fullName = "";
                     d.firstName = "";
                     d.username = "";
+                    d.birthday = "";
                 }
                 if (m.fullName != null && $Object.hasOwnProperty.call(m, "fullName")) {
                     d.fullName = m.fullName;
@@ -9472,6 +9501,9 @@ export const SyncAction = $root.SyncAction = (() => {
                 }
                 if (m.username != null && $Object.hasOwnProperty.call(m, "username")) {
                     d.username = m.username;
+                }
+                if (m.birthday != null && $Object.hasOwnProperty.call(m, "birthday")) {
+                    d.birthday = m.birthday;
                 }
                 return d;
             };
