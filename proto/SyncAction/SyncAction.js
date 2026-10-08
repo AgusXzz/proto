@@ -8962,6 +8962,10 @@ export const SyncAction = $root.SyncAction = (() => {
                 case 19:
                     m.type = 19;
                     break;
+                case "ONE_ON_ONE":
+                case 20:
+                    m.type = 20;
+                    break;
                 default:
                 }
                 if (d.isImmutable != null) {
@@ -9070,6 +9074,7 @@ export const SyncAction = $root.SyncAction = (() => {
                 values[valuesById[17] = "MENTIONS_AND_REPLIES"] = 17;
                 values[valuesById[18] = "REQUESTS"] = 18;
                 values[valuesById[19] = "BUSINESS"] = 19;
+                values[valuesById[20] = "ONE_ON_ONE"] = 20;
                 return values;
             })();
 
