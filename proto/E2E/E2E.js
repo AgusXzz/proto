@@ -7423,6 +7423,10 @@ export const E2E = $root.E2E = (() => {
             case 21:
                 m.associationType = 21;
                 break;
+            case "STREAMED_HD_VIDEO_DUAL_UPLOAD":
+            case 22:
+                m.associationType = 22;
+                break;
             default:
             }
             if (d.parentMessageKey != null) {
@@ -7495,6 +7499,7 @@ export const E2E = $root.E2E = (() => {
             values[valuesById[19] = "HEVC_VIDEO_DUAL_UPLOAD"] = 19;
             values[valuesById[20] = "POLL_ADD_OPTION"] = 20;
             values[valuesById[21] = "AV1_VIDEO_DUAL_UPLOAD"] = 21;
+            values[valuesById[22] = "STREAMED_HD_VIDEO_DUAL_UPLOAD"] = 22;
             return values;
         })();
 
@@ -8481,6 +8486,14 @@ export const E2E = $root.E2E = (() => {
             case "AV1_VIDEO_CHILD":
             case 10:
                 m.pairedMediaType = 10;
+                break;
+            case "STREAMED_VIDEO_PARENT":
+            case 11:
+                m.pairedMediaType = 11;
+                break;
+            case "STREAMED_VIDEO_CHILD":
+            case 12:
+                m.pairedMediaType = 12;
                 break;
             default:
             }
@@ -11985,6 +11998,8 @@ export const E2E = $root.E2E = (() => {
             values[valuesById[8] = "HEVC_VIDEO_CHILD"] = 8;
             values[valuesById[9] = "AV1_VIDEO_PARENT"] = 9;
             values[valuesById[10] = "AV1_VIDEO_CHILD"] = 10;
+            values[valuesById[11] = "STREAMED_VIDEO_PARENT"] = 11;
+            values[valuesById[12] = "STREAMED_VIDEO_CHILD"] = 12;
             return values;
         })();
 
@@ -12922,6 +12937,7 @@ export const E2E = $root.E2E = (() => {
         Message.prototype.instantImageMessage = null;
         Message.prototype.requestLocationMessage = null;
         Message.prototype.botGroupParticipantMessage = null;
+        Message.prototype.requestLocationUpdateMessage = null;
 
         Message.create = function(properties) {
             return new Message(properties);
@@ -13166,6 +13182,8 @@ export const E2E = $root.E2E = (() => {
                 $root.E2E.Message.RequestLocationMessage.encode(m.requestLocationMessage, w.uint32(1090).fork(), q + 1).ldelim();
             if (m.botGroupParticipantMessage != null && $Object.hasOwnProperty.call(m, "botGroupParticipantMessage"))
                 $root.E2E.Message.FutureProofMessage.encode(m.botGroupParticipantMessage, w.uint32(1098).fork(), q + 1).ldelim();
+            if (m.requestLocationUpdateMessage != null && $Object.hasOwnProperty.call(m, "requestLocationUpdateMessage"))
+                $root.E2E.Message.RequestLocationUpdateMessage.encode(m.requestLocationUpdateMessage, w.uint32(1106).fork(), q + 1).ldelim();
             if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                 for (var i = 0; i < m.$unknowns.length; ++i)
                     w.raw(m.$unknowns[i]);
@@ -13895,6 +13913,12 @@ export const E2E = $root.E2E = (() => {
                         m.botGroupParticipantMessage = $root.E2E.Message.FutureProofMessage.decode(r, r.uint32(), $undefined, q + 1, m.botGroupParticipantMessage);
                         continue;
                     }
+                case 138: {
+                        if (u !== 2)
+                            break;
+                        m.requestLocationUpdateMessage = $root.E2E.Message.RequestLocationUpdateMessage.decode(r, r.uint32(), $undefined, q + 1, m.requestLocationUpdateMessage);
+                        continue;
+                    }
                 }
                 r.skipType(u, q, t);
                 if (!r.discardUnknown) {
@@ -14500,6 +14524,11 @@ export const E2E = $root.E2E = (() => {
                     throw $TypeError(".E2E.Message.botGroupParticipantMessage: object expected");
                 m.botGroupParticipantMessage = $root.E2E.Message.FutureProofMessage.fromObject(d.botGroupParticipantMessage, q + 1);
             }
+            if (d.requestLocationUpdateMessage != null) {
+                if (!$util.isObject(d.requestLocationUpdateMessage))
+                    throw $TypeError(".E2E.Message.requestLocationUpdateMessage: object expected");
+                m.requestLocationUpdateMessage = $root.E2E.Message.RequestLocationUpdateMessage.fromObject(d.requestLocationUpdateMessage, q + 1);
+            }
             return m;
         };
 
@@ -14628,6 +14657,7 @@ export const E2E = $root.E2E = (() => {
                 d.instantImageMessage = null;
                 d.requestLocationMessage = null;
                 d.botGroupParticipantMessage = null;
+                d.requestLocationUpdateMessage = null;
             }
             if (m.conversation != null && $Object.hasOwnProperty.call(m, "conversation")) {
                 d.conversation = m.conversation;
@@ -14976,6 +15006,9 @@ export const E2E = $root.E2E = (() => {
             }
             if (m.botGroupParticipantMessage != null && $Object.hasOwnProperty.call(m, "botGroupParticipantMessage")) {
                 d.botGroupParticipantMessage = $root.E2E.Message.FutureProofMessage.toObject(m.botGroupParticipantMessage, o, q + 1);
+            }
+            if (m.requestLocationUpdateMessage != null && $Object.hasOwnProperty.call(m, "requestLocationUpdateMessage")) {
+                d.requestLocationUpdateMessage = $root.E2E.Message.RequestLocationUpdateMessage.toObject(m.requestLocationUpdateMessage, o, q + 1);
             }
             return d;
         };
@@ -47186,6 +47219,203 @@ export const E2E = $root.E2E = (() => {
             };
 
             return RequestLocationMessage;
+        })();
+
+        Message.RequestLocationUpdateMessage = (function() {
+
+            const RequestLocationUpdateMessage = function (p) {
+                if (p)
+                    for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                        if (p[ks[i]] != null && ks[i] !== "__proto__")
+                            this[ks[i]] = p[ks[i]];
+            };
+
+            RequestLocationUpdateMessage.prototype.key = null;
+            RequestLocationUpdateMessage.prototype.updateType = 0;
+            RequestLocationUpdateMessage.prototype.senderTimestampMs = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+
+            RequestLocationUpdateMessage.create = function(properties) {
+                return new RequestLocationUpdateMessage(properties);
+            };
+
+            RequestLocationUpdateMessage.encode = function (m, w, q) {
+                if (!w)
+                    w = $Writer.create();
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                if (m.key != null && $Object.hasOwnProperty.call(m, "key"))
+                    $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.encode(m.key, w.uint32(10).fork(), q + 1).ldelim();
+                if (m.updateType != null && $Object.hasOwnProperty.call(m, "updateType"))
+                    w.uint32(16).int32(m.updateType);
+                if (m.senderTimestampMs != null && $Object.hasOwnProperty.call(m, "senderTimestampMs"))
+                    w.uint32(24).int64(m.senderTimestampMs);
+                if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                    for (var i = 0; i < m.$unknowns.length; ++i)
+                        w.raw(m.$unknowns[i]);
+                return w;
+            };
+
+            RequestLocationUpdateMessage.decode = function (r, l, z, q, g) {
+                if (!(r instanceof $Reader))
+                    r = $Reader.create(r);
+                if (q === $undefined)
+                    q = 0;
+                if (q > $Reader.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.E2E.Message.RequestLocationUpdateMessage();
+                while (r.pos < c) {
+                    var s = r.pos;
+                    var t = r.tag();
+                    if (t === z) {
+                        z = $undefined;
+                        break;
+                    }
+                    var u = t & 7;
+                    switch (t >>>= 3) {
+                    case 1: {
+                            if (u !== 2)
+                                break;
+                            m.key = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.uint32(), $undefined, q + 1, m.key);
+                            continue;
+                        }
+                    case 2: {
+                            if (u !== 0)
+                                break;
+                            v = r.int32();
+                            if ($root.E2E.Message.RequestLocationUpdateMessage.UpdateType[v] !== $undefined) {
+                                m.updateType = v;
+                            } else if (!r.discardUnknown) {
+                                $util.makeProp(m, "$unknowns", false);
+                                (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                            }
+                            continue;
+                        }
+                    case 3: {
+                            if (u !== 0)
+                                break;
+                            m.senderTimestampMs = r.int64();
+                            continue;
+                        }
+                    }
+                    r.skipType(u, q, t);
+                    if (!r.discardUnknown) {
+                        $util.makeProp(m, "$unknowns", false);
+                        (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                    }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
+                }
+                if (z !== $undefined)
+                    throw $Error("missing end group");
+                return m;
+            };
+
+            RequestLocationUpdateMessage.fromObject = function (d, q) {
+                if (d instanceof $root.E2E.Message.RequestLocationUpdateMessage)
+                    return d;
+                if (!$util.isObject(d))
+                    throw $TypeError(".E2E.Message.RequestLocationUpdateMessage: object expected");
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var m = new $root.E2E.Message.RequestLocationUpdateMessage();
+                if (d.key != null) {
+                    if (!$util.isObject(d.key))
+                        throw $TypeError(".E2E.Message.RequestLocationUpdateMessage.key: object expected");
+                    m.key = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.fromObject(d.key, q + 1);
+                }
+                switch (d.updateType) {
+                case "UNKNOWN":
+                case 0:
+                    m.updateType = 0;
+                    break;
+                case "CANCEL":
+                case 1:
+                    m.updateType = 1;
+                    break;
+                default:
+                }
+                if (d.senderTimestampMs != null) {
+                    if ($util.Long)
+                        m.senderTimestampMs = $util.Long.fromValue(d.senderTimestampMs, false);
+                    else if (typeof d.senderTimestampMs === "string")
+                        m.senderTimestampMs = $parseInt(d.senderTimestampMs, 10);
+                    else if (typeof d.senderTimestampMs === "number")
+                        m.senderTimestampMs = d.senderTimestampMs;
+                    else if (typeof d.senderTimestampMs === "object")
+                        m.senderTimestampMs = new $util.LongBits(d.senderTimestampMs.low >>> 0, d.senderTimestampMs.high >>> 0).toNumber();
+                }
+                return m;
+            };
+
+            RequestLocationUpdateMessage.toObject = function (m, o, q) {
+                if (!o)
+                    o = {};
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var d = {};
+                if (o.defaults) {
+                    d.key = null;
+                    d.updateType = o.enums === $String ? "UNKNOWN" : 0;
+                    if ($util.Long) {
+                        var n = new $util.Long(0, 0, false);
+                        d.senderTimestampMs = o.longs === $String ? n.toString() : o.longs === $Number ? n.toNumber() : typeof $BigInt !== "undefined" && o.longs === $BigInt ? n.toBigInt() : n;
+                    } else
+                        d.senderTimestampMs = o.longs === $String ? "0" : typeof $BigInt !== "undefined" && o.longs === $BigInt ? $BigInt("0") : 0;
+                }
+                if (m.key != null && $Object.hasOwnProperty.call(m, "key")) {
+                    d.key = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.toObject(m.key, o, q + 1);
+                }
+                if (m.updateType != null && $Object.hasOwnProperty.call(m, "updateType")) {
+                    d.updateType = o.enums === $String ? $root.E2E.Message.RequestLocationUpdateMessage.UpdateType[m.updateType] === $undefined ? m.updateType : $root.E2E.Message.RequestLocationUpdateMessage.UpdateType[m.updateType] : m.updateType;
+                }
+                if (m.senderTimestampMs != null && $Object.hasOwnProperty.call(m, "senderTimestampMs")) {
+                    if (typeof $BigInt !== "undefined" && o.longs === $BigInt)
+                        d.senderTimestampMs = typeof m.senderTimestampMs === "number" ? $BigInt(m.senderTimestampMs) : $util.Long.fromBits(m.senderTimestampMs.low >>> 0, m.senderTimestampMs.high >>> 0, false).toBigInt();
+                    else if (typeof m.senderTimestampMs === "number")
+                        d.senderTimestampMs = o.longs === $String ? $String(m.senderTimestampMs) : m.senderTimestampMs;
+                    else
+                        d.senderTimestampMs = o.longs === String ? longToString(m.senderTimestampMs) : o.longs === Number ? longToNumber(m.senderTimestampMs) : m.senderTimestampMs;
+                }
+                return d;
+            };
+
+            RequestLocationUpdateMessage.prototype.toJSON = function() {
+                return RequestLocationUpdateMessage.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            RequestLocationUpdateMessage.getTypeUrl = function(prefix) {
+                if (prefix === $undefined)
+                    prefix = "type.googleapis.com";
+                return prefix + "/E2E.Message.RequestLocationUpdateMessage";
+            };
+
+            RequestLocationUpdateMessage.UpdateType = (function() {
+                const valuesById = $Object.create(null), values = $Object.create(valuesById);
+                values[valuesById[0] = "UNKNOWN"] = 0;
+                values[valuesById[1] = "CANCEL"] = 1;
+                return values;
+            })();
+
+            return RequestLocationUpdateMessage;
         })();
 
         Message.RequestPaymentMessage = (function() {

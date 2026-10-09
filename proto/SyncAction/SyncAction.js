@@ -750,6 +750,7 @@ export const SyncAction = $root.SyncAction = (() => {
         SyncActionValue.prototype.businessFolderActivationAction = null;
         SyncActionValue.prototype.groupHistoryToggleAction = null;
         SyncActionValue.prototype.bbProPendingCustomerBaseAction = null;
+        SyncActionValue.prototype.communityNestingStateAction = null;
 
         SyncActionValue.create = function(properties) {
             return new SyncActionValue(properties);
@@ -940,6 +941,8 @@ export const SyncAction = $root.SyncAction = (() => {
                 $root.SyncAction.SyncActionValue.GroupHistoryToggleAction.encode(m.groupHistoryToggleAction, w.uint32(778).fork(), q + 1).ldelim();
             if (m.bbProPendingCustomerBaseAction != null && $Object.hasOwnProperty.call(m, "bbProPendingCustomerBaseAction"))
                 $root.SyncAction.SyncActionValue.BBProPendingCustomerBaseAction.encode(m.bbProPendingCustomerBaseAction, w.uint32(786).fork(), q + 1).ldelim();
+            if (m.communityNestingStateAction != null && $Object.hasOwnProperty.call(m, "communityNestingStateAction"))
+                $root.SyncAction.SyncActionValue.CommunityNestingStateAction.encode(m.communityNestingStateAction, w.uint32(794).fork(), q + 1).ldelim();
             if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                 for (var i = 0; i < m.$unknowns.length; ++i)
                     w.raw(m.$unknowns[i]);
@@ -1507,6 +1510,12 @@ export const SyncAction = $root.SyncAction = (() => {
                         m.bbProPendingCustomerBaseAction = $root.SyncAction.SyncActionValue.BBProPendingCustomerBaseAction.decode(r, r.uint32(), $undefined, q + 1, m.bbProPendingCustomerBaseAction);
                         continue;
                     }
+                case 99: {
+                        if (u !== 2)
+                            break;
+                        m.communityNestingStateAction = $root.SyncAction.SyncActionValue.CommunityNestingStateAction.decode(r, r.uint32(), $undefined, q + 1, m.communityNestingStateAction);
+                        continue;
+                    }
                 }
                 r.skipType(u, q, t);
                 if (!r.discardUnknown) {
@@ -1984,6 +1993,11 @@ export const SyncAction = $root.SyncAction = (() => {
                     throw $TypeError(".SyncAction.SyncActionValue.bbProPendingCustomerBaseAction: object expected");
                 m.bbProPendingCustomerBaseAction = $root.SyncAction.SyncActionValue.BBProPendingCustomerBaseAction.fromObject(d.bbProPendingCustomerBaseAction, q + 1);
             }
+            if (d.communityNestingStateAction != null) {
+                if (!$util.isObject(d.communityNestingStateAction))
+                    throw $TypeError(".SyncAction.SyncActionValue.communityNestingStateAction: object expected");
+                m.communityNestingStateAction = $root.SyncAction.SyncActionValue.CommunityNestingStateAction.fromObject(d.communityNestingStateAction, q + 1);
+            }
             return m;
         };
 
@@ -2089,6 +2103,7 @@ export const SyncAction = $root.SyncAction = (() => {
                 d.businessFolderActivationAction = null;
                 d.groupHistoryToggleAction = null;
                 d.bbProPendingCustomerBaseAction = null;
+                d.communityNestingStateAction = null;
             }
             if (m.timestamp != null && $Object.hasOwnProperty.call(m, "timestamp")) {
                 if (typeof $BigInt !== "undefined" && o.longs === $BigInt)
@@ -2361,6 +2376,9 @@ export const SyncAction = $root.SyncAction = (() => {
             }
             if (m.bbProPendingCustomerBaseAction != null && $Object.hasOwnProperty.call(m, "bbProPendingCustomerBaseAction")) {
                 d.bbProPendingCustomerBaseAction = $root.SyncAction.SyncActionValue.BBProPendingCustomerBaseAction.toObject(m.bbProPendingCustomerBaseAction, o, q + 1);
+            }
+            if (m.communityNestingStateAction != null && $Object.hasOwnProperty.call(m, "communityNestingStateAction")) {
+                d.communityNestingStateAction = $root.SyncAction.SyncActionValue.CommunityNestingStateAction.toObject(m.communityNestingStateAction, o, q + 1);
             }
             return d;
         };
@@ -5738,6 +5756,158 @@ export const SyncAction = $root.SyncAction = (() => {
             };
 
             return CoexV2VersionAction;
+        })();
+
+        SyncActionValue.CommunityNestingStateAction = (function() {
+
+            const CommunityNestingStateAction = function (p) {
+                if (p)
+                    for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                        if (p[ks[i]] != null && ks[i] !== "__proto__")
+                            this[ks[i]] = p[ks[i]];
+            };
+
+            CommunityNestingStateAction.prototype.nestingState = 0;
+
+            CommunityNestingStateAction.create = function(properties) {
+                return new CommunityNestingStateAction(properties);
+            };
+
+            CommunityNestingStateAction.encode = function (m, w, q) {
+                if (!w)
+                    w = $Writer.create();
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                if (m.nestingState != null && $Object.hasOwnProperty.call(m, "nestingState"))
+                    w.uint32(8).int32(m.nestingState);
+                if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                    for (var i = 0; i < m.$unknowns.length; ++i)
+                        w.raw(m.$unknowns[i]);
+                return w;
+            };
+
+            CommunityNestingStateAction.decode = function (r, l, z, q, g) {
+                if (!(r instanceof $Reader))
+                    r = $Reader.create(r);
+                if (q === $undefined)
+                    q = 0;
+                if (q > $Reader.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.SyncAction.SyncActionValue.CommunityNestingStateAction();
+                while (r.pos < c) {
+                    var s = r.pos;
+                    var t = r.tag();
+                    if (t === z) {
+                        z = $undefined;
+                        break;
+                    }
+                    var u = t & 7;
+                    switch (t >>>= 3) {
+                    case 1: {
+                            if (u !== 0)
+                                break;
+                            v = r.int32();
+                            if ($root.SyncAction.SyncActionValue.CommunityNestingStateAction.NestingState[v] !== $undefined) {
+                                m.nestingState = v;
+                            } else if (!r.discardUnknown) {
+                                $util.makeProp(m, "$unknowns", false);
+                                (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                            }
+                            continue;
+                        }
+                    }
+                    r.skipType(u, q, t);
+                    if (!r.discardUnknown) {
+                        $util.makeProp(m, "$unknowns", false);
+                        (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                    }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
+                }
+                if (z !== $undefined)
+                    throw $Error("missing end group");
+                return m;
+            };
+
+            CommunityNestingStateAction.fromObject = function (d, q) {
+                if (d instanceof $root.SyncAction.SyncActionValue.CommunityNestingStateAction)
+                    return d;
+                if (!$util.isObject(d))
+                    throw $TypeError(".SyncAction.SyncActionValue.CommunityNestingStateAction: object expected");
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var m = new $root.SyncAction.SyncActionValue.CommunityNestingStateAction();
+                switch (d.nestingState) {
+                case "NESTING_STATE_UNKNOWN":
+                case 0:
+                    m.nestingState = 0;
+                    break;
+                case "NESTING_STATE_NESTED":
+                case 1:
+                    m.nestingState = 1;
+                    break;
+                case "NESTING_STATE_UNNESTED":
+                case 2:
+                    m.nestingState = 2;
+                    break;
+                default:
+                }
+                return m;
+            };
+
+            CommunityNestingStateAction.toObject = function (m, o, q) {
+                if (!o)
+                    o = {};
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var d = {};
+                if (o.defaults) {
+                    d.nestingState = o.enums === $String ? "NESTING_STATE_UNKNOWN" : 0;
+                }
+                if (m.nestingState != null && $Object.hasOwnProperty.call(m, "nestingState")) {
+                    d.nestingState = o.enums === $String ? $root.SyncAction.SyncActionValue.CommunityNestingStateAction.NestingState[m.nestingState] === $undefined ? m.nestingState : $root.SyncAction.SyncActionValue.CommunityNestingStateAction.NestingState[m.nestingState] : m.nestingState;
+                }
+                return d;
+            };
+
+            CommunityNestingStateAction.prototype.toJSON = function() {
+                return CommunityNestingStateAction.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            CommunityNestingStateAction.getTypeUrl = function(prefix) {
+                if (prefix === $undefined)
+                    prefix = "type.googleapis.com";
+                return prefix + "/SyncAction.SyncActionValue.CommunityNestingStateAction";
+            };
+
+            CommunityNestingStateAction.NestingState = (function() {
+                const valuesById = $Object.create(null), values = $Object.create(valuesById);
+                values[valuesById[0] = "NESTING_STATE_UNKNOWN"] = 0;
+                values[valuesById[1] = "NESTING_STATE_NESTED"] = 1;
+                values[valuesById[2] = "NESTING_STATE_UNNESTED"] = 2;
+                return values;
+            })();
+
+            return CommunityNestingStateAction;
         })();
 
         SyncActionValue.ContactAction = (function() {
@@ -19759,6 +19929,7 @@ export const SyncAction = $root.SyncAction = (() => {
         values[valuesById[96] = "BUSINESS_FOLDER_ACTIVATION_ACTION"] = 96;
         values[valuesById[97] = "GROUP_HISTORY_TOGGLE_ACTION"] = 97;
         values[valuesById[98] = "BB_PRO_PENDING_CUSTOMER_BASE_ACTION"] = 98;
+        values[valuesById[99] = "COMMUNITY_NESTING_STATE_ACTION"] = 99;
         values[valuesById[10001] = "SHARE_OWN_PN"] = 10001;
         values[valuesById[10002] = "BUSINESS_BROADCAST_ACTION"] = 10002;
         values[valuesById[10003] = "AI_THREAD_DELETE_ACTION"] = 10003;
