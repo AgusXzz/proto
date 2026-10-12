@@ -533,7 +533,7 @@ export const SyncAction = $root.SyncAction = (() => {
                 case 2: {
                         if (u !== 2)
                             break;
-                        m.value = $root.SyncAction.SyncActionValue.decode(r, r.uint32(), $undefined, q + 1, m.value);
+                        m.value = $root.SyncAction.SyncActionValue.decode(r, r.size(), $undefined, q + 1, m.value);
                         continue;
                     }
                 case 3: {
@@ -985,535 +985,535 @@ export const SyncAction = $root.SyncAction = (() => {
                 case 2: {
                         if (u !== 2)
                             break;
-                        m.starAction = $root.SyncAction.SyncActionValue.StarAction.decode(r, r.uint32(), $undefined, q + 1, m.starAction);
+                        m.starAction = $root.SyncAction.SyncActionValue.StarAction.decode(r, r.size(), $undefined, q + 1, m.starAction);
                         continue;
                     }
                 case 3: {
                         if (u !== 2)
                             break;
-                        m.contactAction = $root.SyncAction.SyncActionValue.ContactAction.decode(r, r.uint32(), $undefined, q + 1, m.contactAction);
+                        m.contactAction = $root.SyncAction.SyncActionValue.ContactAction.decode(r, r.size(), $undefined, q + 1, m.contactAction);
                         continue;
                     }
                 case 4: {
                         if (u !== 2)
                             break;
-                        m.muteAction = $root.SyncAction.SyncActionValue.MuteAction.decode(r, r.uint32(), $undefined, q + 1, m.muteAction);
+                        m.muteAction = $root.SyncAction.SyncActionValue.MuteAction.decode(r, r.size(), $undefined, q + 1, m.muteAction);
                         continue;
                     }
                 case 5: {
                         if (u !== 2)
                             break;
-                        m.pinAction = $root.SyncAction.SyncActionValue.PinAction.decode(r, r.uint32(), $undefined, q + 1, m.pinAction);
+                        m.pinAction = $root.SyncAction.SyncActionValue.PinAction.decode(r, r.size(), $undefined, q + 1, m.pinAction);
                         continue;
                     }
                 case 7: {
                         if (u !== 2)
                             break;
-                        m.pushNameSetting = $root.SyncAction.SyncActionValue.PushNameSetting.decode(r, r.uint32(), $undefined, q + 1, m.pushNameSetting);
+                        m.pushNameSetting = $root.SyncAction.SyncActionValue.PushNameSetting.decode(r, r.size(), $undefined, q + 1, m.pushNameSetting);
                         continue;
                     }
                 case 8: {
                         if (u !== 2)
                             break;
-                        m.quickReplyAction = $root.SyncAction.SyncActionValue.QuickReplyAction.decode(r, r.uint32(), $undefined, q + 1, m.quickReplyAction);
+                        m.quickReplyAction = $root.SyncAction.SyncActionValue.QuickReplyAction.decode(r, r.size(), $undefined, q + 1, m.quickReplyAction);
                         continue;
                     }
                 case 11: {
                         if (u !== 2)
                             break;
-                        m.recentEmojiWeightsAction = $root.SyncAction.SyncActionValue.RecentEmojiWeightsAction.decode(r, r.uint32(), $undefined, q + 1, m.recentEmojiWeightsAction);
+                        m.recentEmojiWeightsAction = $root.SyncAction.SyncActionValue.RecentEmojiWeightsAction.decode(r, r.size(), $undefined, q + 1, m.recentEmojiWeightsAction);
                         continue;
                     }
                 case 14: {
                         if (u !== 2)
                             break;
-                        m.labelEditAction = $root.SyncAction.SyncActionValue.LabelEditAction.decode(r, r.uint32(), $undefined, q + 1, m.labelEditAction);
+                        m.labelEditAction = $root.SyncAction.SyncActionValue.LabelEditAction.decode(r, r.size(), $undefined, q + 1, m.labelEditAction);
                         continue;
                     }
                 case 15: {
                         if (u !== 2)
                             break;
-                        m.labelAssociationAction = $root.SyncAction.SyncActionValue.LabelAssociationAction.decode(r, r.uint32(), $undefined, q + 1, m.labelAssociationAction);
+                        m.labelAssociationAction = $root.SyncAction.SyncActionValue.LabelAssociationAction.decode(r, r.size(), $undefined, q + 1, m.labelAssociationAction);
                         continue;
                     }
                 case 16: {
                         if (u !== 2)
                             break;
-                        m.localeSetting = $root.SyncAction.SyncActionValue.LocaleSetting.decode(r, r.uint32(), $undefined, q + 1, m.localeSetting);
+                        m.localeSetting = $root.SyncAction.SyncActionValue.LocaleSetting.decode(r, r.size(), $undefined, q + 1, m.localeSetting);
                         continue;
                     }
                 case 17: {
                         if (u !== 2)
                             break;
-                        m.archiveChatAction = $root.SyncAction.SyncActionValue.ArchiveChatAction.decode(r, r.uint32(), $undefined, q + 1, m.archiveChatAction);
+                        m.archiveChatAction = $root.SyncAction.SyncActionValue.ArchiveChatAction.decode(r, r.size(), $undefined, q + 1, m.archiveChatAction);
                         continue;
                     }
                 case 18: {
                         if (u !== 2)
                             break;
-                        m.deleteMessageForMeAction = $root.SyncAction.SyncActionValue.DeleteMessageForMeAction.decode(r, r.uint32(), $undefined, q + 1, m.deleteMessageForMeAction);
+                        m.deleteMessageForMeAction = $root.SyncAction.SyncActionValue.DeleteMessageForMeAction.decode(r, r.size(), $undefined, q + 1, m.deleteMessageForMeAction);
                         continue;
                     }
                 case 19: {
                         if (u !== 2)
                             break;
-                        m.keyExpiration = $root.SyncAction.SyncActionValue.KeyExpiration.decode(r, r.uint32(), $undefined, q + 1, m.keyExpiration);
+                        m.keyExpiration = $root.SyncAction.SyncActionValue.KeyExpiration.decode(r, r.size(), $undefined, q + 1, m.keyExpiration);
                         continue;
                     }
                 case 20: {
                         if (u !== 2)
                             break;
-                        m.markChatAsReadAction = $root.SyncAction.SyncActionValue.MarkChatAsReadAction.decode(r, r.uint32(), $undefined, q + 1, m.markChatAsReadAction);
+                        m.markChatAsReadAction = $root.SyncAction.SyncActionValue.MarkChatAsReadAction.decode(r, r.size(), $undefined, q + 1, m.markChatAsReadAction);
                         continue;
                     }
                 case 21: {
                         if (u !== 2)
                             break;
-                        m.clearChatAction = $root.SyncAction.SyncActionValue.ClearChatAction.decode(r, r.uint32(), $undefined, q + 1, m.clearChatAction);
+                        m.clearChatAction = $root.SyncAction.SyncActionValue.ClearChatAction.decode(r, r.size(), $undefined, q + 1, m.clearChatAction);
                         continue;
                     }
                 case 22: {
                         if (u !== 2)
                             break;
-                        m.deleteChatAction = $root.SyncAction.SyncActionValue.DeleteChatAction.decode(r, r.uint32(), $undefined, q + 1, m.deleteChatAction);
+                        m.deleteChatAction = $root.SyncAction.SyncActionValue.DeleteChatAction.decode(r, r.size(), $undefined, q + 1, m.deleteChatAction);
                         continue;
                     }
                 case 23: {
                         if (u !== 2)
                             break;
-                        m.unarchiveChatsSetting = $root.SyncAction.SyncActionValue.UnarchiveChatsSetting.decode(r, r.uint32(), $undefined, q + 1, m.unarchiveChatsSetting);
+                        m.unarchiveChatsSetting = $root.SyncAction.SyncActionValue.UnarchiveChatsSetting.decode(r, r.size(), $undefined, q + 1, m.unarchiveChatsSetting);
                         continue;
                     }
                 case 24: {
                         if (u !== 2)
                             break;
-                        m.primaryFeature = $root.SyncAction.SyncActionValue.PrimaryFeature.decode(r, r.uint32(), $undefined, q + 1, m.primaryFeature);
+                        m.primaryFeature = $root.SyncAction.SyncActionValue.PrimaryFeature.decode(r, r.size(), $undefined, q + 1, m.primaryFeature);
                         continue;
                     }
                 case 26: {
                         if (u !== 2)
                             break;
-                        m.androidUnsupportedActions = $root.SyncAction.SyncActionValue.AndroidUnsupportedActions.decode(r, r.uint32(), $undefined, q + 1, m.androidUnsupportedActions);
+                        m.androidUnsupportedActions = $root.SyncAction.SyncActionValue.AndroidUnsupportedActions.decode(r, r.size(), $undefined, q + 1, m.androidUnsupportedActions);
                         continue;
                     }
                 case 27: {
                         if (u !== 2)
                             break;
-                        m.agentAction = $root.SyncAction.SyncActionValue.AgentAction.decode(r, r.uint32(), $undefined, q + 1, m.agentAction);
+                        m.agentAction = $root.SyncAction.SyncActionValue.AgentAction.decode(r, r.size(), $undefined, q + 1, m.agentAction);
                         continue;
                     }
                 case 28: {
                         if (u !== 2)
                             break;
-                        m.subscriptionAction = $root.SyncAction.SyncActionValue.SubscriptionAction.decode(r, r.uint32(), $undefined, q + 1, m.subscriptionAction);
+                        m.subscriptionAction = $root.SyncAction.SyncActionValue.SubscriptionAction.decode(r, r.size(), $undefined, q + 1, m.subscriptionAction);
                         continue;
                     }
                 case 29: {
                         if (u !== 2)
                             break;
-                        m.userStatusMuteAction = $root.SyncAction.SyncActionValue.UserStatusMuteAction.decode(r, r.uint32(), $undefined, q + 1, m.userStatusMuteAction);
+                        m.userStatusMuteAction = $root.SyncAction.SyncActionValue.UserStatusMuteAction.decode(r, r.size(), $undefined, q + 1, m.userStatusMuteAction);
                         continue;
                     }
                 case 30: {
                         if (u !== 2)
                             break;
-                        m.timeFormatAction = $root.SyncAction.SyncActionValue.TimeFormatAction.decode(r, r.uint32(), $undefined, q + 1, m.timeFormatAction);
+                        m.timeFormatAction = $root.SyncAction.SyncActionValue.TimeFormatAction.decode(r, r.size(), $undefined, q + 1, m.timeFormatAction);
                         continue;
                     }
                 case 31: {
                         if (u !== 2)
                             break;
-                        m.nuxAction = $root.SyncAction.SyncActionValue.NuxAction.decode(r, r.uint32(), $undefined, q + 1, m.nuxAction);
+                        m.nuxAction = $root.SyncAction.SyncActionValue.NuxAction.decode(r, r.size(), $undefined, q + 1, m.nuxAction);
                         continue;
                     }
                 case 32: {
                         if (u !== 2)
                             break;
-                        m.primaryVersionAction = $root.SyncAction.SyncActionValue.PrimaryVersionAction.decode(r, r.uint32(), $undefined, q + 1, m.primaryVersionAction);
+                        m.primaryVersionAction = $root.SyncAction.SyncActionValue.PrimaryVersionAction.decode(r, r.size(), $undefined, q + 1, m.primaryVersionAction);
                         continue;
                     }
                 case 33: {
                         if (u !== 2)
                             break;
-                        m.stickerAction = $root.SyncAction.SyncActionValue.StickerAction.decode(r, r.uint32(), $undefined, q + 1, m.stickerAction);
+                        m.stickerAction = $root.SyncAction.SyncActionValue.StickerAction.decode(r, r.size(), $undefined, q + 1, m.stickerAction);
                         continue;
                     }
                 case 34: {
                         if (u !== 2)
                             break;
-                        m.removeRecentStickerAction = $root.SyncAction.SyncActionValue.RemoveRecentStickerAction.decode(r, r.uint32(), $undefined, q + 1, m.removeRecentStickerAction);
+                        m.removeRecentStickerAction = $root.SyncAction.SyncActionValue.RemoveRecentStickerAction.decode(r, r.size(), $undefined, q + 1, m.removeRecentStickerAction);
                         continue;
                     }
                 case 35: {
                         if (u !== 2)
                             break;
-                        m.chatAssignment = $root.SyncAction.SyncActionValue.ChatAssignmentAction.decode(r, r.uint32(), $undefined, q + 1, m.chatAssignment);
+                        m.chatAssignment = $root.SyncAction.SyncActionValue.ChatAssignmentAction.decode(r, r.size(), $undefined, q + 1, m.chatAssignment);
                         continue;
                     }
                 case 36: {
                         if (u !== 2)
                             break;
-                        m.chatAssignmentOpenedStatus = $root.SyncAction.SyncActionValue.ChatAssignmentOpenedStatusAction.decode(r, r.uint32(), $undefined, q + 1, m.chatAssignmentOpenedStatus);
+                        m.chatAssignmentOpenedStatus = $root.SyncAction.SyncActionValue.ChatAssignmentOpenedStatusAction.decode(r, r.size(), $undefined, q + 1, m.chatAssignmentOpenedStatus);
                         continue;
                     }
                 case 37: {
                         if (u !== 2)
                             break;
-                        m.pnForLidChatAction = $root.SyncAction.SyncActionValue.PnForLidChatAction.decode(r, r.uint32(), $undefined, q + 1, m.pnForLidChatAction);
+                        m.pnForLidChatAction = $root.SyncAction.SyncActionValue.PnForLidChatAction.decode(r, r.size(), $undefined, q + 1, m.pnForLidChatAction);
                         continue;
                     }
                 case 38: {
                         if (u !== 2)
                             break;
-                        m.marketingMessageAction = $root.SyncAction.SyncActionValue.MarketingMessageAction.decode(r, r.uint32(), $undefined, q + 1, m.marketingMessageAction);
+                        m.marketingMessageAction = $root.SyncAction.SyncActionValue.MarketingMessageAction.decode(r, r.size(), $undefined, q + 1, m.marketingMessageAction);
                         continue;
                     }
                 case 39: {
                         if (u !== 2)
                             break;
-                        m.marketingMessageBroadcastAction = $root.SyncAction.SyncActionValue.MarketingMessageBroadcastAction.decode(r, r.uint32(), $undefined, q + 1, m.marketingMessageBroadcastAction);
+                        m.marketingMessageBroadcastAction = $root.SyncAction.SyncActionValue.MarketingMessageBroadcastAction.decode(r, r.size(), $undefined, q + 1, m.marketingMessageBroadcastAction);
                         continue;
                     }
                 case 40: {
                         if (u !== 2)
                             break;
-                        m.externalWebBetaAction = $root.SyncAction.SyncActionValue.ExternalWebBetaAction.decode(r, r.uint32(), $undefined, q + 1, m.externalWebBetaAction);
+                        m.externalWebBetaAction = $root.SyncAction.SyncActionValue.ExternalWebBetaAction.decode(r, r.size(), $undefined, q + 1, m.externalWebBetaAction);
                         continue;
                     }
                 case 41: {
                         if (u !== 2)
                             break;
-                        m.privacySettingRelayAllCalls = $root.SyncAction.SyncActionValue.PrivacySettingRelayAllCalls.decode(r, r.uint32(), $undefined, q + 1, m.privacySettingRelayAllCalls);
+                        m.privacySettingRelayAllCalls = $root.SyncAction.SyncActionValue.PrivacySettingRelayAllCalls.decode(r, r.size(), $undefined, q + 1, m.privacySettingRelayAllCalls);
                         continue;
                     }
                 case 42: {
                         if (u !== 2)
                             break;
-                        m.callLogAction = $root.SyncAction.SyncActionValue.CallLogAction.decode(r, r.uint32(), $undefined, q + 1, m.callLogAction);
+                        m.callLogAction = $root.SyncAction.SyncActionValue.CallLogAction.decode(r, r.size(), $undefined, q + 1, m.callLogAction);
                         continue;
                     }
                 case 43: {
                         if (u !== 2)
                             break;
-                        m.ugcBot = $root.SyncAction.SyncActionValue.UGCBot.decode(r, r.uint32(), $undefined, q + 1, m.ugcBot);
+                        m.ugcBot = $root.SyncAction.SyncActionValue.UGCBot.decode(r, r.size(), $undefined, q + 1, m.ugcBot);
                         continue;
                     }
                 case 44: {
                         if (u !== 2)
                             break;
-                        m.statusPrivacy = $root.SyncAction.SyncActionValue.StatusPrivacyAction.decode(r, r.uint32(), $undefined, q + 1, m.statusPrivacy);
+                        m.statusPrivacy = $root.SyncAction.SyncActionValue.StatusPrivacyAction.decode(r, r.size(), $undefined, q + 1, m.statusPrivacy);
                         continue;
                     }
                 case 45: {
                         if (u !== 2)
                             break;
-                        m.botWelcomeRequestAction = $root.SyncAction.SyncActionValue.BotWelcomeRequestAction.decode(r, r.uint32(), $undefined, q + 1, m.botWelcomeRequestAction);
+                        m.botWelcomeRequestAction = $root.SyncAction.SyncActionValue.BotWelcomeRequestAction.decode(r, r.size(), $undefined, q + 1, m.botWelcomeRequestAction);
                         continue;
                     }
                 case 46: {
                         if (u !== 2)
                             break;
-                        m.deleteIndividualCallLog = $root.SyncAction.SyncActionValue.DeleteIndividualCallLogAction.decode(r, r.uint32(), $undefined, q + 1, m.deleteIndividualCallLog);
+                        m.deleteIndividualCallLog = $root.SyncAction.SyncActionValue.DeleteIndividualCallLogAction.decode(r, r.size(), $undefined, q + 1, m.deleteIndividualCallLog);
                         continue;
                     }
                 case 47: {
                         if (u !== 2)
                             break;
-                        m.labelReorderingAction = $root.SyncAction.SyncActionValue.LabelReorderingAction.decode(r, r.uint32(), $undefined, q + 1, m.labelReorderingAction);
+                        m.labelReorderingAction = $root.SyncAction.SyncActionValue.LabelReorderingAction.decode(r, r.size(), $undefined, q + 1, m.labelReorderingAction);
                         continue;
                     }
                 case 48: {
                         if (u !== 2)
                             break;
-                        m.paymentInfoAction = $root.SyncAction.SyncActionValue.PaymentInfoAction.decode(r, r.uint32(), $undefined, q + 1, m.paymentInfoAction);
+                        m.paymentInfoAction = $root.SyncAction.SyncActionValue.PaymentInfoAction.decode(r, r.size(), $undefined, q + 1, m.paymentInfoAction);
                         continue;
                     }
                 case 49: {
                         if (u !== 2)
                             break;
-                        m.customPaymentMethodsAction = $root.SyncAction.SyncActionValue.CustomPaymentMethodsAction.decode(r, r.uint32(), $undefined, q + 1, m.customPaymentMethodsAction);
+                        m.customPaymentMethodsAction = $root.SyncAction.SyncActionValue.CustomPaymentMethodsAction.decode(r, r.size(), $undefined, q + 1, m.customPaymentMethodsAction);
                         continue;
                     }
                 case 50: {
                         if (u !== 2)
                             break;
-                        m.lockChatAction = $root.SyncAction.SyncActionValue.LockChatAction.decode(r, r.uint32(), $undefined, q + 1, m.lockChatAction);
+                        m.lockChatAction = $root.SyncAction.SyncActionValue.LockChatAction.decode(r, r.size(), $undefined, q + 1, m.lockChatAction);
                         continue;
                     }
                 case 51: {
                         if (u !== 2)
                             break;
-                        m.chatLockSettings = $root.ChatLockSettings.ChatLockSettings.decode(r, r.uint32(), $undefined, q + 1, m.chatLockSettings);
+                        m.chatLockSettings = $root.ChatLockSettings.ChatLockSettings.decode(r, r.size(), $undefined, q + 1, m.chatLockSettings);
                         continue;
                     }
                 case 52: {
                         if (u !== 2)
                             break;
-                        m.wamoUserIdentifierAction = $root.SyncAction.SyncActionValue.WamoUserIdentifierAction.decode(r, r.uint32(), $undefined, q + 1, m.wamoUserIdentifierAction);
+                        m.wamoUserIdentifierAction = $root.SyncAction.SyncActionValue.WamoUserIdentifierAction.decode(r, r.size(), $undefined, q + 1, m.wamoUserIdentifierAction);
                         continue;
                     }
                 case 53: {
                         if (u !== 2)
                             break;
-                        m.privacySettingDisableLinkPreviewsAction = $root.SyncAction.SyncActionValue.PrivacySettingDisableLinkPreviewsAction.decode(r, r.uint32(), $undefined, q + 1, m.privacySettingDisableLinkPreviewsAction);
+                        m.privacySettingDisableLinkPreviewsAction = $root.SyncAction.SyncActionValue.PrivacySettingDisableLinkPreviewsAction.decode(r, r.size(), $undefined, q + 1, m.privacySettingDisableLinkPreviewsAction);
                         continue;
                     }
                 case 54: {
                         if (u !== 2)
                             break;
-                        m.deviceCapabilities = $root.DeviceCapabilities.DeviceCapabilities.decode(r, r.uint32(), $undefined, q + 1, m.deviceCapabilities);
+                        m.deviceCapabilities = $root.DeviceCapabilities.DeviceCapabilities.decode(r, r.size(), $undefined, q + 1, m.deviceCapabilities);
                         continue;
                     }
                 case 55: {
                         if (u !== 2)
                             break;
-                        m.noteEditAction = $root.SyncAction.SyncActionValue.NoteEditAction.decode(r, r.uint32(), $undefined, q + 1, m.noteEditAction);
+                        m.noteEditAction = $root.SyncAction.SyncActionValue.NoteEditAction.decode(r, r.size(), $undefined, q + 1, m.noteEditAction);
                         continue;
                     }
                 case 56: {
                         if (u !== 2)
                             break;
-                        m.favoritesAction = $root.SyncAction.SyncActionValue.FavoritesAction.decode(r, r.uint32(), $undefined, q + 1, m.favoritesAction);
+                        m.favoritesAction = $root.SyncAction.SyncActionValue.FavoritesAction.decode(r, r.size(), $undefined, q + 1, m.favoritesAction);
                         continue;
                     }
                 case 57: {
                         if (u !== 2)
                             break;
-                        m.merchantPaymentPartnerAction = $root.SyncAction.SyncActionValue.MerchantPaymentPartnerAction.decode(r, r.uint32(), $undefined, q + 1, m.merchantPaymentPartnerAction);
+                        m.merchantPaymentPartnerAction = $root.SyncAction.SyncActionValue.MerchantPaymentPartnerAction.decode(r, r.size(), $undefined, q + 1, m.merchantPaymentPartnerAction);
                         continue;
                     }
                 case 58: {
                         if (u !== 2)
                             break;
-                        m.waffleAccountLinkStateAction = $root.SyncAction.SyncActionValue.WaffleAccountLinkStateAction.decode(r, r.uint32(), $undefined, q + 1, m.waffleAccountLinkStateAction);
+                        m.waffleAccountLinkStateAction = $root.SyncAction.SyncActionValue.WaffleAccountLinkStateAction.decode(r, r.size(), $undefined, q + 1, m.waffleAccountLinkStateAction);
                         continue;
                     }
                 case 59: {
                         if (u !== 2)
                             break;
-                        m.usernameChatStartMode = $root.SyncAction.SyncActionValue.UsernameChatStartModeAction.decode(r, r.uint32(), $undefined, q + 1, m.usernameChatStartMode);
+                        m.usernameChatStartMode = $root.SyncAction.SyncActionValue.UsernameChatStartModeAction.decode(r, r.size(), $undefined, q + 1, m.usernameChatStartMode);
                         continue;
                     }
                 case 60: {
                         if (u !== 2)
                             break;
-                        m.notificationActivitySettingAction = $root.SyncAction.SyncActionValue.NotificationActivitySettingAction.decode(r, r.uint32(), $undefined, q + 1, m.notificationActivitySettingAction);
+                        m.notificationActivitySettingAction = $root.SyncAction.SyncActionValue.NotificationActivitySettingAction.decode(r, r.size(), $undefined, q + 1, m.notificationActivitySettingAction);
                         continue;
                     }
                 case 61: {
                         if (u !== 2)
                             break;
-                        m.lidContactAction = $root.SyncAction.SyncActionValue.LidContactAction.decode(r, r.uint32(), $undefined, q + 1, m.lidContactAction);
+                        m.lidContactAction = $root.SyncAction.SyncActionValue.LidContactAction.decode(r, r.size(), $undefined, q + 1, m.lidContactAction);
                         continue;
                     }
                 case 62: {
                         if (u !== 2)
                             break;
-                        m.ctwaPerCustomerDataSharingAction = $root.SyncAction.SyncActionValue.CtwaPerCustomerDataSharingAction.decode(r, r.uint32(), $undefined, q + 1, m.ctwaPerCustomerDataSharingAction);
+                        m.ctwaPerCustomerDataSharingAction = $root.SyncAction.SyncActionValue.CtwaPerCustomerDataSharingAction.decode(r, r.size(), $undefined, q + 1, m.ctwaPerCustomerDataSharingAction);
                         continue;
                     }
                 case 63: {
                         if (u !== 2)
                             break;
-                        m.paymentTosAction = $root.SyncAction.SyncActionValue.PaymentTosAction.decode(r, r.uint32(), $undefined, q + 1, m.paymentTosAction);
+                        m.paymentTosAction = $root.SyncAction.SyncActionValue.PaymentTosAction.decode(r, r.size(), $undefined, q + 1, m.paymentTosAction);
                         continue;
                     }
                 case 64: {
                         if (u !== 2)
                             break;
-                        m.privacySettingChannelsPersonalisedRecommendationAction = $root.SyncAction.SyncActionValue.PrivacySettingChannelsPersonalisedRecommendationAction.decode(r, r.uint32(), $undefined, q + 1, m.privacySettingChannelsPersonalisedRecommendationAction);
+                        m.privacySettingChannelsPersonalisedRecommendationAction = $root.SyncAction.SyncActionValue.PrivacySettingChannelsPersonalisedRecommendationAction.decode(r, r.size(), $undefined, q + 1, m.privacySettingChannelsPersonalisedRecommendationAction);
                         continue;
                     }
                 case 66: {
                         if (u !== 2)
                             break;
-                        m.detectedOutcomesStatusAction = $root.SyncAction.SyncActionValue.DetectedOutcomesStatusAction.decode(r, r.uint32(), $undefined, q + 1, m.detectedOutcomesStatusAction);
+                        m.detectedOutcomesStatusAction = $root.SyncAction.SyncActionValue.DetectedOutcomesStatusAction.decode(r, r.size(), $undefined, q + 1, m.detectedOutcomesStatusAction);
                         continue;
                     }
                 case 68: {
                         if (u !== 2)
                             break;
-                        m.maibaAiFeaturesControlAction = $root.SyncAction.SyncActionValue.MaibaAIFeaturesControlAction.decode(r, r.uint32(), $undefined, q + 1, m.maibaAiFeaturesControlAction);
+                        m.maibaAiFeaturesControlAction = $root.SyncAction.SyncActionValue.MaibaAIFeaturesControlAction.decode(r, r.size(), $undefined, q + 1, m.maibaAiFeaturesControlAction);
                         continue;
                     }
                 case 69: {
                         if (u !== 2)
                             break;
-                        m.businessBroadcastListAction = $root.SyncAction.SyncActionValue.BusinessBroadcastListAction.decode(r, r.uint32(), $undefined, q + 1, m.businessBroadcastListAction);
+                        m.businessBroadcastListAction = $root.SyncAction.SyncActionValue.BusinessBroadcastListAction.decode(r, r.size(), $undefined, q + 1, m.businessBroadcastListAction);
                         continue;
                     }
                 case 70: {
                         if (u !== 2)
                             break;
-                        m.musicUserIdAction = $root.SyncAction.SyncActionValue.MusicUserIdAction.decode(r, r.uint32(), $undefined, q + 1, m.musicUserIdAction);
+                        m.musicUserIdAction = $root.SyncAction.SyncActionValue.MusicUserIdAction.decode(r, r.size(), $undefined, q + 1, m.musicUserIdAction);
                         continue;
                     }
                 case 71: {
                         if (u !== 2)
                             break;
-                        m.statusPostOptInNotificationPreferencesAction = $root.SyncAction.SyncActionValue.StatusPostOptInNotificationPreferencesAction.decode(r, r.uint32(), $undefined, q + 1, m.statusPostOptInNotificationPreferencesAction);
+                        m.statusPostOptInNotificationPreferencesAction = $root.SyncAction.SyncActionValue.StatusPostOptInNotificationPreferencesAction.decode(r, r.size(), $undefined, q + 1, m.statusPostOptInNotificationPreferencesAction);
                         continue;
                     }
                 case 72: {
                         if (u !== 2)
                             break;
-                        m.avatarUpdatedAction = $root.SyncAction.SyncActionValue.AvatarUpdatedAction.decode(r, r.uint32(), $undefined, q + 1, m.avatarUpdatedAction);
+                        m.avatarUpdatedAction = $root.SyncAction.SyncActionValue.AvatarUpdatedAction.decode(r, r.size(), $undefined, q + 1, m.avatarUpdatedAction);
                         continue;
                     }
                 case 74: {
                         if (u !== 2)
                             break;
-                        m.privateProcessingSettingAction = $root.SyncAction.SyncActionValue.PrivateProcessingSettingAction.decode(r, r.uint32(), $undefined, q + 1, m.privateProcessingSettingAction);
+                        m.privateProcessingSettingAction = $root.SyncAction.SyncActionValue.PrivateProcessingSettingAction.decode(r, r.size(), $undefined, q + 1, m.privateProcessingSettingAction);
                         continue;
                     }
                 case 75: {
                         if (u !== 2)
                             break;
-                        m.newsletterSavedInterestsAction = $root.SyncAction.SyncActionValue.NewsletterSavedInterestsAction.decode(r, r.uint32(), $undefined, q + 1, m.newsletterSavedInterestsAction);
+                        m.newsletterSavedInterestsAction = $root.SyncAction.SyncActionValue.NewsletterSavedInterestsAction.decode(r, r.size(), $undefined, q + 1, m.newsletterSavedInterestsAction);
                         continue;
                     }
                 case 76: {
                         if (u !== 2)
                             break;
-                        m.aiThreadRenameAction = $root.SyncAction.SyncActionValue.AiThreadRenameAction.decode(r, r.uint32(), $undefined, q + 1, m.aiThreadRenameAction);
+                        m.aiThreadRenameAction = $root.SyncAction.SyncActionValue.AiThreadRenameAction.decode(r, r.size(), $undefined, q + 1, m.aiThreadRenameAction);
                         continue;
                     }
                 case 77: {
                         if (u !== 2)
                             break;
-                        m.interactiveMessageAction = $root.SyncAction.SyncActionValue.InteractiveMessageAction.decode(r, r.uint32(), $undefined, q + 1, m.interactiveMessageAction);
+                        m.interactiveMessageAction = $root.SyncAction.SyncActionValue.InteractiveMessageAction.decode(r, r.size(), $undefined, q + 1, m.interactiveMessageAction);
                         continue;
                     }
                 case 78: {
                         if (u !== 2)
                             break;
-                        m.settingsSyncAction = $root.SyncAction.SyncActionValue.SettingsSyncAction.decode(r, r.uint32(), $undefined, q + 1, m.settingsSyncAction);
+                        m.settingsSyncAction = $root.SyncAction.SyncActionValue.SettingsSyncAction.decode(r, r.size(), $undefined, q + 1, m.settingsSyncAction);
                         continue;
                     }
                 case 79: {
                         if (u !== 2)
                             break;
-                        m.outContactAction = $root.SyncAction.SyncActionValue.OutContactAction.decode(r, r.uint32(), $undefined, q + 1, m.outContactAction);
+                        m.outContactAction = $root.SyncAction.SyncActionValue.OutContactAction.decode(r, r.size(), $undefined, q + 1, m.outContactAction);
                         continue;
                     }
                 case 80: {
                         if (u !== 2)
                             break;
-                        m.nctSaltSyncAction = $root.SyncAction.SyncActionValue.NctSaltSyncAction.decode(r, r.uint32(), $undefined, q + 1, m.nctSaltSyncAction);
+                        m.nctSaltSyncAction = $root.SyncAction.SyncActionValue.NctSaltSyncAction.decode(r, r.size(), $undefined, q + 1, m.nctSaltSyncAction);
                         continue;
                     }
                 case 81: {
                         if (u !== 2)
                             break;
-                        m.businessBroadcastCampaignAction = $root.SyncAction.SyncActionValue.BusinessBroadcastCampaignAction.decode(r, r.uint32(), $undefined, q + 1, m.businessBroadcastCampaignAction);
+                        m.businessBroadcastCampaignAction = $root.SyncAction.SyncActionValue.BusinessBroadcastCampaignAction.decode(r, r.size(), $undefined, q + 1, m.businessBroadcastCampaignAction);
                         continue;
                     }
                 case 82: {
                         if (u !== 2)
                             break;
-                        m.businessBroadcastInsightsAction = $root.SyncAction.SyncActionValue.BusinessBroadcastInsightsAction.decode(r, r.uint32(), $undefined, q + 1, m.businessBroadcastInsightsAction);
+                        m.businessBroadcastInsightsAction = $root.SyncAction.SyncActionValue.BusinessBroadcastInsightsAction.decode(r, r.size(), $undefined, q + 1, m.businessBroadcastInsightsAction);
                         continue;
                     }
                 case 83: {
                         if (u !== 2)
                             break;
-                        m.customerDataAction = $root.SyncAction.SyncActionValue.CustomerDataAction.decode(r, r.uint32(), $undefined, q + 1, m.customerDataAction);
+                        m.customerDataAction = $root.SyncAction.SyncActionValue.CustomerDataAction.decode(r, r.size(), $undefined, q + 1, m.customerDataAction);
                         continue;
                     }
                 case 84: {
                         if (u !== 2)
                             break;
-                        m.subscriptionsSyncV2Action = $root.SyncAction.SyncActionValue.SubscriptionsSyncV2Action.decode(r, r.uint32(), $undefined, q + 1, m.subscriptionsSyncV2Action);
+                        m.subscriptionsSyncV2Action = $root.SyncAction.SyncActionValue.SubscriptionsSyncV2Action.decode(r, r.size(), $undefined, q + 1, m.subscriptionsSyncV2Action);
                         continue;
                     }
                 case 85: {
                         if (u !== 2)
                             break;
-                        m.threadPinAction = $root.SyncAction.SyncActionValue.ThreadPinAction.decode(r, r.uint32(), $undefined, q + 1, m.threadPinAction);
+                        m.threadPinAction = $root.SyncAction.SyncActionValue.ThreadPinAction.decode(r, r.size(), $undefined, q + 1, m.threadPinAction);
                         continue;
                     }
                 case 86: {
                         if (u !== 2)
                             break;
-                        m.autoOrganizeBusinessChatSetting = $root.SyncAction.SyncActionValue.AutoOrganizeBusinessChatSetting.decode(r, r.uint32(), $undefined, q + 1, m.autoOrganizeBusinessChatSetting);
+                        m.autoOrganizeBusinessChatSetting = $root.SyncAction.SyncActionValue.AutoOrganizeBusinessChatSetting.decode(r, r.size(), $undefined, q + 1, m.autoOrganizeBusinessChatSetting);
                         continue;
                     }
                 case 87: {
                         if (u !== 2)
                             break;
-                        m.bizAiSettingsNudgeAction = $root.SyncAction.SyncActionValue.BizAISettingsNudgeAction.decode(r, r.uint32(), $undefined, q + 1, m.bizAiSettingsNudgeAction);
+                        m.bizAiSettingsNudgeAction = $root.SyncAction.SyncActionValue.BizAISettingsNudgeAction.decode(r, r.size(), $undefined, q + 1, m.bizAiSettingsNudgeAction);
                         continue;
                     }
                 case 88: {
                         if (u !== 2)
                             break;
-                        m.coexV2VersionAction = $root.SyncAction.SyncActionValue.CoexV2VersionAction.decode(r, r.uint32(), $undefined, q + 1, m.coexV2VersionAction);
+                        m.coexV2VersionAction = $root.SyncAction.SyncActionValue.CoexV2VersionAction.decode(r, r.size(), $undefined, q + 1, m.coexV2VersionAction);
                         continue;
                     }
                 case 89: {
                         if (u !== 2)
                             break;
-                        m.wasaRootSecretAction = $root.SyncAction.SyncActionValue.WASARootSecretAction.decode(r, r.uint32(), $undefined, q + 1, m.wasaRootSecretAction);
+                        m.wasaRootSecretAction = $root.SyncAction.SyncActionValue.WASARootSecretAction.decode(r, r.size(), $undefined, q + 1, m.wasaRootSecretAction);
                         continue;
                     }
                 case 90: {
                         if (u !== 2)
                             break;
-                        m.bubbleLockMessageAction = $root.SyncAction.SyncActionValue.BubbleLockMessageAction.decode(r, r.uint32(), $undefined, q + 1, m.bubbleLockMessageAction);
+                        m.bubbleLockMessageAction = $root.SyncAction.SyncActionValue.BubbleLockMessageAction.decode(r, r.size(), $undefined, q + 1, m.bubbleLockMessageAction);
                         continue;
                     }
                 case 91: {
                         if (u !== 2)
                             break;
-                        m.labelSublistAction = $root.SyncAction.SyncActionValue.LabelSublistAction.decode(r, r.uint32(), $undefined, q + 1, m.labelSublistAction);
+                        m.labelSublistAction = $root.SyncAction.SyncActionValue.LabelSublistAction.decode(r, r.size(), $undefined, q + 1, m.labelSublistAction);
                         continue;
                     }
                 case 92: {
                         if (u !== 2)
                             break;
-                        m.deviceCapabilitiesV2 = $root.DeviceCapabilities.DeviceCapabilities.decode(r, r.uint32(), $undefined, q + 1, m.deviceCapabilitiesV2);
+                        m.deviceCapabilitiesV2 = $root.DeviceCapabilities.DeviceCapabilities.decode(r, r.size(), $undefined, q + 1, m.deviceCapabilitiesV2);
                         continue;
                     }
                 case 93: {
                         if (u !== 2)
                             break;
-                        m.ctwaMessageReceivedAction = $root.SyncAction.SyncActionValue.CtwaMessageReceivedAction.decode(r, r.uint32(), $undefined, q + 1, m.ctwaMessageReceivedAction);
+                        m.ctwaMessageReceivedAction = $root.SyncAction.SyncActionValue.CtwaMessageReceivedAction.decode(r, r.size(), $undefined, q + 1, m.ctwaMessageReceivedAction);
                         continue;
                     }
                 case 94: {
                         if (u !== 2)
                             break;
-                        m.sharedDeviceAllowlistAction = $root.SyncAction.SyncActionValue.SharedDeviceAllowlistAction.decode(r, r.uint32(), $undefined, q + 1, m.sharedDeviceAllowlistAction);
+                        m.sharedDeviceAllowlistAction = $root.SyncAction.SyncActionValue.SharedDeviceAllowlistAction.decode(r, r.size(), $undefined, q + 1, m.sharedDeviceAllowlistAction);
                         continue;
                     }
                 case 95: {
                         if (u !== 2)
                             break;
-                        m.contactManagerMetadataAction = $root.SyncAction.SyncActionValue.ContactManagerMetadataAction.decode(r, r.uint32(), $undefined, q + 1, m.contactManagerMetadataAction);
+                        m.contactManagerMetadataAction = $root.SyncAction.SyncActionValue.ContactManagerMetadataAction.decode(r, r.size(), $undefined, q + 1, m.contactManagerMetadataAction);
                         continue;
                     }
                 case 96: {
                         if (u !== 2)
                             break;
-                        m.businessFolderActivationAction = $root.SyncAction.SyncActionValue.BusinessFolderActivationAction.decode(r, r.uint32(), $undefined, q + 1, m.businessFolderActivationAction);
+                        m.businessFolderActivationAction = $root.SyncAction.SyncActionValue.BusinessFolderActivationAction.decode(r, r.size(), $undefined, q + 1, m.businessFolderActivationAction);
                         continue;
                     }
                 case 97: {
                         if (u !== 2)
                             break;
-                        m.groupHistoryToggleAction = $root.SyncAction.SyncActionValue.GroupHistoryToggleAction.decode(r, r.uint32(), $undefined, q + 1, m.groupHistoryToggleAction);
+                        m.groupHistoryToggleAction = $root.SyncAction.SyncActionValue.GroupHistoryToggleAction.decode(r, r.size(), $undefined, q + 1, m.groupHistoryToggleAction);
                         continue;
                     }
                 case 98: {
                         if (u !== 2)
                             break;
-                        m.bbProPendingCustomerBaseAction = $root.SyncAction.SyncActionValue.BBProPendingCustomerBaseAction.decode(r, r.uint32(), $undefined, q + 1, m.bbProPendingCustomerBaseAction);
+                        m.bbProPendingCustomerBaseAction = $root.SyncAction.SyncActionValue.BBProPendingCustomerBaseAction.decode(r, r.size(), $undefined, q + 1, m.bbProPendingCustomerBaseAction);
                         continue;
                     }
                 case 99: {
                         if (u !== 2)
                             break;
-                        m.communityNestingStateAction = $root.SyncAction.SyncActionValue.CommunityNestingStateAction.decode(r, r.uint32(), $undefined, q + 1, m.communityNestingStateAction);
+                        m.communityNestingStateAction = $root.SyncAction.SyncActionValue.CommunityNestingStateAction.decode(r, r.size(), $undefined, q + 1, m.communityNestingStateAction);
                         continue;
                     }
                 }
@@ -2872,7 +2872,7 @@ export const SyncAction = $root.SyncAction = (() => {
                     case 2: {
                             if (u !== 2)
                                 break;
-                            m.messageRange = $root.SyncAction.SyncActionValue.SyncActionMessageRange.decode(r, r.uint32(), $undefined, q + 1, m.messageRange);
+                            m.messageRange = $root.SyncAction.SyncActionValue.SyncActionMessageRange.decode(r, r.size(), $undefined, q + 1, m.messageRange);
                             continue;
                         }
                     }
@@ -3153,7 +3153,7 @@ export const SyncAction = $root.SyncAction = (() => {
                                 break;
                             if (!(m.recentAvatarStickers && m.recentAvatarStickers.length))
                                 m.recentAvatarStickers = [];
-                            m.recentAvatarStickers.push($root.SyncAction.SyncActionValue.StickerAction.decode(r, r.uint32(), $undefined, q + 1));
+                            m.recentAvatarStickers.push($root.SyncAction.SyncActionValue.StickerAction.decode(r, r.size(), $undefined, q + 1));
                             continue;
                         }
                     }
@@ -4835,7 +4835,7 @@ export const SyncAction = $root.SyncAction = (() => {
                                 break;
                             if (!(m.participants && m.participants.length))
                                 m.participants = [];
-                            m.participants.push($root.SyncAction.SyncActionValue.BroadcastListParticipant.decode(r, r.uint32(), $undefined, q + 1));
+                            m.participants.push($root.SyncAction.SyncActionValue.BroadcastListParticipant.decode(r, r.size(), $undefined, q + 1));
                             continue;
                         }
                     case 3: {
@@ -5168,7 +5168,7 @@ export const SyncAction = $root.SyncAction = (() => {
                     case 1: {
                             if (u !== 2)
                                 break;
-                            m.callLogRecord = $root.SyncAction.CallLogRecord.decode(r, r.uint32(), $undefined, q + 1, m.callLogRecord);
+                            m.callLogRecord = $root.SyncAction.CallLogRecord.decode(r, r.size(), $undefined, q + 1, m.callLogRecord);
                             continue;
                         }
                     }
@@ -5548,7 +5548,7 @@ export const SyncAction = $root.SyncAction = (() => {
                     case 1: {
                             if (u !== 2)
                                 break;
-                            m.messageRange = $root.SyncAction.SyncActionValue.SyncActionMessageRange.decode(r, r.uint32(), $undefined, q + 1, m.messageRange);
+                            m.messageRange = $root.SyncAction.SyncActionValue.SyncActionMessageRange.decode(r, r.size(), $undefined, q + 1, m.messageRange);
                             continue;
                         }
                     }
@@ -6599,7 +6599,7 @@ export const SyncAction = $root.SyncAction = (() => {
                                 break;
                             if (!(m.metadata && m.metadata.length))
                                 m.metadata = [];
-                            m.metadata.push($root.SyncAction.SyncActionValue.CustomPaymentMethodMetadata.decode(r, r.uint32(), $undefined, q + 1));
+                            m.metadata.push($root.SyncAction.SyncActionValue.CustomPaymentMethodMetadata.decode(r, r.size(), $undefined, q + 1));
                             continue;
                         }
                     }
@@ -6913,7 +6913,7 @@ export const SyncAction = $root.SyncAction = (() => {
                                 break;
                             if (!(m.customPaymentMethods && m.customPaymentMethods.length))
                                 m.customPaymentMethods = [];
-                            m.customPaymentMethods.push($root.SyncAction.SyncActionValue.CustomPaymentMethod.decode(r, r.uint32(), $undefined, q + 1));
+                            m.customPaymentMethods.push($root.SyncAction.SyncActionValue.CustomPaymentMethod.decode(r, r.size(), $undefined, q + 1));
                             continue;
                         }
                     }
@@ -7399,7 +7399,7 @@ export const SyncAction = $root.SyncAction = (() => {
                     case 1: {
                             if (u !== 2)
                                 break;
-                            m.messageRange = $root.SyncAction.SyncActionValue.SyncActionMessageRange.decode(r, r.uint32(), $undefined, q + 1, m.messageRange);
+                            m.messageRange = $root.SyncAction.SyncActionValue.SyncActionMessageRange.decode(r, r.size(), $undefined, q + 1, m.messageRange);
                             continue;
                         }
                     }
@@ -8084,7 +8084,7 @@ export const SyncAction = $root.SyncAction = (() => {
                                 break;
                             if (!(m.favorites && m.favorites.length))
                                 m.favorites = [];
-                            m.favorites.push($root.SyncAction.SyncActionValue.FavoritesAction.Favorite.decode(r, r.uint32(), $undefined, q + 1));
+                            m.favorites.push($root.SyncAction.SyncActionValue.FavoritesAction.Favorite.decode(r, r.size(), $undefined, q + 1));
                             continue;
                         }
                     }
@@ -10211,7 +10211,7 @@ export const SyncAction = $root.SyncAction = (() => {
                     case 2: {
                             if (u !== 2)
                                 break;
-                            m.messageRange = $root.SyncAction.SyncActionValue.SyncActionMessageRange.decode(r, r.uint32(), $undefined, q + 1, m.messageRange);
+                            m.messageRange = $root.SyncAction.SyncActionValue.SyncActionMessageRange.decode(r, r.size(), $undefined, q + 1, m.messageRange);
                             continue;
                         }
                     }
@@ -10954,7 +10954,7 @@ export const SyncAction = $root.SyncAction = (() => {
                                 break;
                             if (m.musicUserIdMap === $util.emptyObject)
                                 m.musicUserIdMap = {};
-                            var c2 = r.uint32() + r.pos;
+                            var c2 = r.size() + r.pos;
                             if (c2 > r.len)
                                 throw $RangeError("index out of range");
                             r.len = c2;
@@ -13947,7 +13947,7 @@ export const SyncAction = $root.SyncAction = (() => {
                                 break;
                             if (!(m.weights && m.weights.length))
                                 m.weights = [];
-                            m.weights.push($root.SyncAction.RecentEmojiWeight.decode(r, r.uint32(), $undefined, q + 1));
+                            m.weights.push($root.SyncAction.RecentEmojiWeight.decode(r, r.size(), $undefined, q + 1));
                             continue;
                         }
                     }
@@ -15444,12 +15444,12 @@ export const SyncAction = $root.SyncAction = (() => {
                                 break;
                             if (!(m.customLists && m.customLists.length))
                                 m.customLists = [];
-                            m.customLists.push($root.SyncAction.SyncActionValue.StatusPrivacyAction.CustomList.decode(r, r.uint32(), $undefined, q + 1));
+                            m.customLists.push($root.SyncAction.SyncActionValue.StatusPrivacyAction.CustomList.decode(r, r.size(), $undefined, q + 1));
                             continue;
                         }
                     case 6: {
                             if (u === 2) {
-                                var c2 = r.uint32() + r.pos;
+                                var c2 = r.size() + r.pos;
                                 if (c2 > r.len)
                                     throw $RangeError("index out of range");
                                 r.len = c2;
@@ -16463,7 +16463,7 @@ export const SyncAction = $root.SyncAction = (() => {
                                 break;
                             if (!(m.subscriptions && m.subscriptions.length))
                                 m.subscriptions = [];
-                            m.subscriptions.push($root.SyncAction.SyncActionValue.SubscriptionsSyncV2Action.SubscriptionInfo.decode(r, r.uint32(), $undefined, q + 1));
+                            m.subscriptions.push($root.SyncAction.SyncActionValue.SubscriptionsSyncV2Action.SubscriptionInfo.decode(r, r.size(), $undefined, q + 1));
                             continue;
                         }
                     case 2: {
@@ -16471,7 +16471,7 @@ export const SyncAction = $root.SyncAction = (() => {
                                 break;
                             if (!(m.paidFeature && m.paidFeature.length))
                                 m.paidFeature = [];
-                            m.paidFeature.push($root.SyncAction.SyncActionValue.SubscriptionsSyncV2Action.PaidFeature.decode(r, r.uint32(), $undefined, q + 1));
+                            m.paidFeature.push($root.SyncAction.SyncActionValue.SubscriptionsSyncV2Action.PaidFeature.decode(r, r.size(), $undefined, q + 1));
                             continue;
                         }
                     }
@@ -17103,7 +17103,7 @@ export const SyncAction = $root.SyncAction = (() => {
                     case 1: {
                             if (u !== 2)
                                 break;
-                            m.key = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.uint32(), $undefined, q + 1, m.key);
+                            m.key = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.size(), $undefined, q + 1, m.key);
                             continue;
                         }
                     case 2: {
@@ -17283,7 +17283,7 @@ export const SyncAction = $root.SyncAction = (() => {
                                 break;
                             if (!(m.messages && m.messages.length))
                                 m.messages = [];
-                            m.messages.push($root.SyncAction.SyncActionValue.SyncActionMessage.decode(r, r.uint32(), $undefined, q + 1));
+                            m.messages.push($root.SyncAction.SyncActionValue.SyncActionMessage.decode(r, r.size(), $undefined, q + 1));
                             continue;
                         }
                     }
@@ -18258,7 +18258,7 @@ export const SyncAction = $root.SyncAction = (() => {
                                 break;
                             if (!(m.secrets && m.secrets.length))
                                 m.secrets = [];
-                            m.secrets.push($root.SyncAction.SyncActionValue.WASARootSecretAction.RootSecretEntry.decode(r, r.uint32(), $undefined, q + 1));
+                            m.secrets.push($root.SyncAction.SyncActionValue.WASARootSecretAction.RootSecretEntry.decode(r, r.size(), $undefined, q + 1));
                             continue;
                         }
                     }
@@ -19032,7 +19032,7 @@ export const SyncAction = $root.SyncAction = (() => {
                             break;
                         if (!(m.participants && m.participants.length))
                             m.participants = [];
-                        m.participants.push($root.SyncAction.CallLogRecord.ParticipantInfo.decode(r, r.uint32(), $undefined, q + 1));
+                        m.participants.push($root.SyncAction.CallLogRecord.ParticipantInfo.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 case 15: {
@@ -19555,7 +19555,7 @@ export const SyncAction = $root.SyncAction = (() => {
                     case 3: {
                             if (u !== 2)
                                 break;
-                            m.guestInfo = $root.SyncAction.CallLogRecord.GuestInfo.decode(r, r.uint32(), $undefined, q + 1, m.guestInfo);
+                            m.guestInfo = $root.SyncAction.CallLogRecord.GuestInfo.decode(r, r.size(), $undefined, q + 1, m.guestInfo);
                             continue;
                         }
                     }
@@ -20023,7 +20023,7 @@ export const ChatLockSettings = $root.ChatLockSettings = (() => {
                 case 2: {
                         if (u !== 2)
                             break;
-                        m.secretCode = $root.UserPassword.UserPassword.decode(r, r.uint32(), $undefined, q + 1, m.secretCode);
+                        m.secretCode = $root.UserPassword.UserPassword.decode(r, r.size(), $undefined, q + 1, m.secretCode);
                         continue;
                     }
                 }
@@ -20203,7 +20203,7 @@ export const UserPassword = $root.UserPassword = (() => {
                             break;
                         if (!(m.transformerArg && m.transformerArg.length))
                             m.transformerArg = [];
-                        m.transformerArg.push($root.UserPassword.UserPassword.TransformerArg.decode(r, r.uint32(), $undefined, q + 1));
+                        m.transformerArg.push($root.UserPassword.UserPassword.TransformerArg.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 case 4: {
@@ -20418,7 +20418,7 @@ export const UserPassword = $root.UserPassword = (() => {
                     case 2: {
                             if (u !== 2)
                                 break;
-                            m.value = $root.UserPassword.UserPassword.TransformerArg.Value.decode(r, r.uint32(), $undefined, q + 1, m.value);
+                            m.value = $root.UserPassword.UserPassword.TransformerArg.Value.decode(r, r.size(), $undefined, q + 1, m.value);
                             continue;
                         }
                     }
@@ -20759,19 +20759,19 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                 case 2: {
                         if (u !== 2)
                             break;
-                        m.lidMigration = $root.DeviceCapabilities.DeviceCapabilities.LIDMigration.decode(r, r.uint32(), $undefined, q + 1, m.lidMigration);
+                        m.lidMigration = $root.DeviceCapabilities.DeviceCapabilities.LIDMigration.decode(r, r.size(), $undefined, q + 1, m.lidMigration);
                         continue;
                     }
                 case 3: {
                         if (u !== 2)
                             break;
-                        m.businessBroadcast = $root.DeviceCapabilities.DeviceCapabilities.BusinessBroadcast.decode(r, r.uint32(), $undefined, q + 1, m.businessBroadcast);
+                        m.businessBroadcast = $root.DeviceCapabilities.DeviceCapabilities.BusinessBroadcast.decode(r, r.size(), $undefined, q + 1, m.businessBroadcast);
                         continue;
                     }
                 case 4: {
                         if (u !== 2)
                             break;
-                        m.userHasAvatar = $root.DeviceCapabilities.DeviceCapabilities.UserHasAvatar.decode(r, r.uint32(), $undefined, q + 1, m.userHasAvatar);
+                        m.userHasAvatar = $root.DeviceCapabilities.DeviceCapabilities.UserHasAvatar.decode(r, r.size(), $undefined, q + 1, m.userHasAvatar);
                         continue;
                     }
                 case 5: {
@@ -20789,37 +20789,37 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                 case 6: {
                         if (u !== 2)
                             break;
-                        m.aiThread = $root.DeviceCapabilities.DeviceCapabilities.AiThread.decode(r, r.uint32(), $undefined, q + 1, m.aiThread);
+                        m.aiThread = $root.DeviceCapabilities.DeviceCapabilities.AiThread.decode(r, r.size(), $undefined, q + 1, m.aiThread);
                         continue;
                     }
                 case 7: {
                         if (u !== 2)
                             break;
-                        m.aiFbidMigration = $root.DeviceCapabilities.DeviceCapabilities.AiFbidMigration.decode(r, r.uint32(), $undefined, q + 1, m.aiFbidMigration);
+                        m.aiFbidMigration = $root.DeviceCapabilities.DeviceCapabilities.AiFbidMigration.decode(r, r.size(), $undefined, q + 1, m.aiFbidMigration);
                         continue;
                     }
                 case 8: {
                         if (u !== 2)
                             break;
-                        m.bizAiSettingsSync = $root.DeviceCapabilities.DeviceCapabilities.BizAiSettingsSync.decode(r, r.uint32(), $undefined, q + 1, m.bizAiSettingsSync);
+                        m.bizAiSettingsSync = $root.DeviceCapabilities.DeviceCapabilities.BizAiSettingsSync.decode(r, r.size(), $undefined, q + 1, m.bizAiSettingsSync);
                         continue;
                     }
                 case 9: {
                         if (u !== 2)
                             break;
-                        m.contactRefresh = $root.DeviceCapabilities.DeviceCapabilities.ContactRefresh.decode(r, r.uint32(), $undefined, q + 1, m.contactRefresh);
+                        m.contactRefresh = $root.DeviceCapabilities.DeviceCapabilities.ContactRefresh.decode(r, r.size(), $undefined, q + 1, m.contactRefresh);
                         continue;
                     }
                 case 10: {
                         if (u !== 2)
                             break;
-                        m.reverseHistorySync = $root.DeviceCapabilities.DeviceCapabilities.ReverseHistorySync.decode(r, r.uint32(), $undefined, q + 1, m.reverseHistorySync);
+                        m.reverseHistorySync = $root.DeviceCapabilities.DeviceCapabilities.ReverseHistorySync.decode(r, r.size(), $undefined, q + 1, m.reverseHistorySync);
                         continue;
                     }
                 case 11: {
                         if (u !== 2)
                             break;
-                        m.newsletterChatsMigration = $root.DeviceCapabilities.DeviceCapabilities.NewsletterChatsMigration.decode(r, r.uint32(), $undefined, q + 1, m.newsletterChatsMigration);
+                        m.newsletterChatsMigration = $root.DeviceCapabilities.DeviceCapabilities.NewsletterChatsMigration.decode(r, r.size(), $undefined, q + 1, m.newsletterChatsMigration);
                         continue;
                     }
                 }
@@ -22156,7 +22156,7 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                     switch (t >>>= 3) {
                     case 1: {
                             if (u === 2) {
-                                var c2 = r.uint32() + r.pos;
+                                var c2 = r.size() + r.pos;
                                 if (c2 > r.len)
                                     throw $RangeError("index out of range");
                                 r.len = c2;
@@ -22479,7 +22479,7 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                             break;
                         if (!(m.senderKeyStates && m.senderKeyStates.length))
                             m.senderKeyStates = [];
-                        m.senderKeyStates.push($root.SignalLocalStorageProtocol.SenderKeyStateStructure.decode(r, r.uint32(), $undefined, q + 1));
+                        m.senderKeyStates.push($root.SignalLocalStorageProtocol.SenderKeyStateStructure.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 }
@@ -22633,13 +22633,13 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                 case 2: {
                         if (u !== 2)
                             break;
-                        m.senderChainKey = $root.SignalLocalStorageProtocol.SenderKeyStateStructure.SenderChainKey.decode(r, r.uint32(), $undefined, q + 1, m.senderChainKey);
+                        m.senderChainKey = $root.SignalLocalStorageProtocol.SenderKeyStateStructure.SenderChainKey.decode(r, r.size(), $undefined, q + 1, m.senderChainKey);
                         continue;
                     }
                 case 3: {
                         if (u !== 2)
                             break;
-                        m.senderSigningKey = $root.SignalLocalStorageProtocol.SenderKeyStateStructure.SenderSigningKey.decode(r, r.uint32(), $undefined, q + 1, m.senderSigningKey);
+                        m.senderSigningKey = $root.SignalLocalStorageProtocol.SenderKeyStateStructure.SenderSigningKey.decode(r, r.size(), $undefined, q + 1, m.senderSigningKey);
                         continue;
                     }
                 case 4: {
@@ -22647,7 +22647,7 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                             break;
                         if (!(m.senderMessageKeys && m.senderMessageKeys.length))
                             m.senderMessageKeys = [];
-                        m.senderMessageKeys.push($root.SignalLocalStorageProtocol.SenderKeyStateStructure.SenderMessageKey.decode(r, r.uint32(), $undefined, q + 1));
+                        m.senderMessageKeys.push($root.SignalLocalStorageProtocol.SenderKeyStateStructure.SenderMessageKey.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 }
@@ -23847,7 +23847,7 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                 case 1: {
                         if (u !== 2)
                             break;
-                        m.currentSession = $root.SignalLocalStorageProtocol.SessionStructure.decode(r, r.uint32(), $undefined, q + 1, m.currentSession);
+                        m.currentSession = $root.SignalLocalStorageProtocol.SessionStructure.decode(r, r.size(), $undefined, q + 1, m.currentSession);
                         continue;
                     }
                 case 2: {
@@ -23855,7 +23855,7 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                             break;
                         if (!(m.previousSessions && m.previousSessions.length))
                             m.previousSessions = [];
-                        m.previousSessions.push($root.SignalLocalStorageProtocol.SessionStructure.decode(r, r.uint32(), $undefined, q + 1));
+                        m.previousSessions.push($root.SignalLocalStorageProtocol.SessionStructure.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 }
@@ -24071,7 +24071,7 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                 case 6: {
                         if (u !== 2)
                             break;
-                        m.senderChain = $root.SignalLocalStorageProtocol.SessionStructure.Chain.decode(r, r.uint32(), $undefined, q + 1, m.senderChain);
+                        m.senderChain = $root.SignalLocalStorageProtocol.SessionStructure.Chain.decode(r, r.size(), $undefined, q + 1, m.senderChain);
                         continue;
                     }
                 case 7: {
@@ -24079,19 +24079,19 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                             break;
                         if (!(m.receiverChains && m.receiverChains.length))
                             m.receiverChains = [];
-                        m.receiverChains.push($root.SignalLocalStorageProtocol.SessionStructure.Chain.decode(r, r.uint32(), $undefined, q + 1));
+                        m.receiverChains.push($root.SignalLocalStorageProtocol.SessionStructure.Chain.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 case 8: {
                         if (u !== 2)
                             break;
-                        m.pendingKeyExchange = $root.SignalLocalStorageProtocol.SessionStructure.PendingKeyExchange.decode(r, r.uint32(), $undefined, q + 1, m.pendingKeyExchange);
+                        m.pendingKeyExchange = $root.SignalLocalStorageProtocol.SessionStructure.PendingKeyExchange.decode(r, r.size(), $undefined, q + 1, m.pendingKeyExchange);
                         continue;
                     }
                 case 9: {
                         if (u !== 2)
                             break;
-                        m.pendingPreKey = $root.SignalLocalStorageProtocol.SessionStructure.PendingPreKey.decode(r, r.uint32(), $undefined, q + 1, m.pendingPreKey);
+                        m.pendingPreKey = $root.SignalLocalStorageProtocol.SessionStructure.PendingPreKey.decode(r, r.size(), $undefined, q + 1, m.pendingPreKey);
                         continue;
                     }
                 case 10: {
@@ -24400,7 +24400,7 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                     case 3: {
                             if (u !== 2)
                                 break;
-                            m.chainKey = $root.SignalLocalStorageProtocol.SessionStructure.Chain.ChainKey.decode(r, r.uint32(), $undefined, q + 1, m.chainKey);
+                            m.chainKey = $root.SignalLocalStorageProtocol.SessionStructure.Chain.ChainKey.decode(r, r.size(), $undefined, q + 1, m.chainKey);
                             continue;
                         }
                     case 4: {
@@ -24408,7 +24408,7 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                                 break;
                             if (!(m.messageKeys && m.messageKeys.length))
                                 m.messageKeys = [];
-                            m.messageKeys.push($root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.uint32(), $undefined, q + 1));
+                            m.messageKeys.push($root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.size(), $undefined, q + 1));
                             continue;
                         }
                     }

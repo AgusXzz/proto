@@ -110,13 +110,13 @@ export const Cert = $root.Cert = (() => {
                 case 1: {
                         if (u !== 2)
                             break;
-                        m.leaf = $root.Cert.CertChain.NoiseCertificate.decode(r, r.uint32(), $undefined, q + 1, m.leaf);
+                        m.leaf = $root.Cert.CertChain.NoiseCertificate.decode(r, r.size(), $undefined, q + 1, m.leaf);
                         continue;
                     }
                 case 2: {
                         if (u !== 2)
                             break;
-                        m.intermediate = $root.Cert.CertChain.NoiseCertificate.decode(r, r.uint32(), $undefined, q + 1, m.intermediate);
+                        m.intermediate = $root.Cert.CertChain.NoiseCertificate.decode(r, r.size(), $undefined, q + 1, m.intermediate);
                         continue;
                     }
                 }

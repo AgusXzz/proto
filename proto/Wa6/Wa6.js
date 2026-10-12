@@ -233,13 +233,13 @@ export const Wa6 = $root.Wa6 = (() => {
                 case 5: {
                         if (u !== 2)
                             break;
-                        m.userAgent = $root.Wa6.ClientPayload.UserAgent.decode(r, r.uint32(), $undefined, q + 1, m.userAgent);
+                        m.userAgent = $root.Wa6.ClientPayload.UserAgent.decode(r, r.size(), $undefined, q + 1, m.userAgent);
                         continue;
                     }
                 case 6: {
                         if (u !== 2)
                             break;
-                        m.webInfo = $root.Wa6.ClientPayload.WebInfo.decode(r, r.uint32(), $undefined, q + 1, m.webInfo);
+                        m.webInfo = $root.Wa6.ClientPayload.WebInfo.decode(r, r.size(), $undefined, q + 1, m.webInfo);
                         continue;
                     }
                 case 7: {
@@ -301,7 +301,7 @@ export const Wa6 = $root.Wa6 = (() => {
                 case 15: {
                         if (u !== 2)
                             break;
-                        m.dnsSource = $root.Wa6.ClientPayload.DNSSource.decode(r, r.uint32(), $undefined, q + 1, m.dnsSource);
+                        m.dnsSource = $root.Wa6.ClientPayload.DNSSource.decode(r, r.size(), $undefined, q + 1, m.dnsSource);
                         continue;
                     }
                 case 16: {
@@ -319,7 +319,7 @@ export const Wa6 = $root.Wa6 = (() => {
                 case 19: {
                         if (u !== 2)
                             break;
-                        m.devicePairingData = $root.Wa6.ClientPayload.DevicePairingRegistrationData.decode(r, r.uint32(), $undefined, q + 1, m.devicePairingData);
+                        m.devicePairingData = $root.Wa6.ClientPayload.DevicePairingRegistrationData.decode(r, r.size(), $undefined, q + 1, m.devicePairingData);
                         continue;
                     }
                 case 20: {
@@ -409,7 +409,7 @@ export const Wa6 = $root.Wa6 = (() => {
                 case 38: {
                         if (u !== 2)
                             break;
-                        m.interopData = $root.Wa6.ClientPayload.InteropData.decode(r, r.uint32(), $undefined, q + 1, m.interopData);
+                        m.interopData = $root.Wa6.ClientPayload.InteropData.decode(r, r.size(), $undefined, q + 1, m.interopData);
                         continue;
                     }
                 case 40: {
@@ -1925,7 +1925,7 @@ export const Wa6 = $root.Wa6 = (() => {
                     case 2: {
                             if (u !== 2)
                                 break;
-                            m.appVersion = $root.Wa6.ClientPayload.UserAgent.AppVersion.decode(r, r.uint32(), $undefined, q + 1, m.appVersion);
+                            m.appVersion = $root.Wa6.ClientPayload.UserAgent.AppVersion.decode(r, r.size(), $undefined, q + 1, m.appVersion);
                             continue;
                         }
                     case 3: {
@@ -2780,7 +2780,7 @@ export const Wa6 = $root.Wa6 = (() => {
                     case 3: {
                             if (u !== 2)
                                 break;
-                            m.webdPayload = $root.Wa6.ClientPayload.WebInfo.WebdPayload.decode(r, r.uint32(), $undefined, q + 1, m.webdPayload);
+                            m.webdPayload = $root.Wa6.ClientPayload.WebInfo.WebdPayload.decode(r, r.size(), $undefined, q + 1, m.webdPayload);
                             continue;
                         }
                     case 4: {
@@ -3306,19 +3306,19 @@ export const Wa6 = $root.Wa6 = (() => {
                 case 2: {
                         if (u !== 2)
                             break;
-                        m.clientHello = $root.Wa6.HandshakeMessage.ClientHello.decode(r, r.uint32(), $undefined, q + 1, m.clientHello);
+                        m.clientHello = $root.Wa6.HandshakeMessage.ClientHello.decode(r, r.size(), $undefined, q + 1, m.clientHello);
                         continue;
                     }
                 case 3: {
                         if (u !== 2)
                             break;
-                        m.serverHello = $root.Wa6.HandshakeMessage.ServerHello.decode(r, r.uint32(), $undefined, q + 1, m.serverHello);
+                        m.serverHello = $root.Wa6.HandshakeMessage.ServerHello.decode(r, r.size(), $undefined, q + 1, m.serverHello);
                         continue;
                     }
                 case 4: {
                         if (u !== 2)
                             break;
-                        m.clientFinish = $root.Wa6.HandshakeMessage.ClientFinish.decode(r, r.uint32(), $undefined, q + 1, m.clientFinish);
+                        m.clientFinish = $root.Wa6.HandshakeMessage.ClientFinish.decode(r, r.size(), $undefined, q + 1, m.clientFinish);
                         continue;
                     }
                 }

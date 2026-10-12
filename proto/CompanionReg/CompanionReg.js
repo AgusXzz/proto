@@ -836,7 +836,7 @@ export const CompanionReg = $root.CompanionReg = (() => {
                 case 2: {
                         if (u !== 2)
                             break;
-                        m.commitment = $root.CompanionReg.CompanionCommitment.decode(r, r.uint32(), $undefined, q + 1, m.commitment);
+                        m.commitment = $root.CompanionReg.CompanionCommitment.decode(r, r.size(), $undefined, q + 1, m.commitment);
                         continue;
                     }
                 }
@@ -1426,7 +1426,7 @@ export const CompanionReg = $root.CompanionReg = (() => {
                 case 2: {
                         if (u !== 2)
                             break;
-                        m.version = $root.CompanionReg.DeviceProps.AppVersion.decode(r, r.uint32(), $undefined, q + 1, m.version);
+                        m.version = $root.CompanionReg.DeviceProps.AppVersion.decode(r, r.size(), $undefined, q + 1, m.version);
                         continue;
                     }
                 case 3: {
@@ -1450,7 +1450,7 @@ export const CompanionReg = $root.CompanionReg = (() => {
                 case 5: {
                         if (u !== 2)
                             break;
-                        m.historySyncConfig = $root.CompanionReg.DeviceProps.HistorySyncConfig.decode(r, r.uint32(), $undefined, q + 1, m.historySyncConfig);
+                        m.historySyncConfig = $root.CompanionReg.DeviceProps.HistorySyncConfig.decode(r, r.size(), $undefined, q + 1, m.historySyncConfig);
                         continue;
                     }
                 }

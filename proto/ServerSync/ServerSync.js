@@ -112,7 +112,7 @@ export const ServerSync = $root.ServerSync = (() => {
                             break;
                         if (!(m.collectionMutations && m.collectionMutations.length))
                             m.collectionMutations = [];
-                        m.collectionMutations.push($root.ServerSync.CoexStateSync.CollectionMutations.decode(r, r.uint32(), $undefined, q + 1));
+                        m.collectionMutations.push($root.ServerSync.CoexStateSync.CollectionMutations.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 }
@@ -259,7 +259,7 @@ export const ServerSync = $root.ServerSync = (() => {
                                 break;
                             if (!(m.mutations && m.mutations.length))
                                 m.mutations = [];
-                            m.mutations.push($root.ServerSync.CoexStateSync.Mutation.decode(r, r.uint32(), $undefined, q + 1));
+                            m.mutations.push($root.ServerSync.CoexStateSync.Mutation.decode(r, r.size(), $undefined, q + 1));
                             continue;
                         }
                     }
@@ -413,13 +413,13 @@ export const ServerSync = $root.ServerSync = (() => {
                     case 1: {
                             if (u !== 2)
                                 break;
-                            m.index = $root.ServerSync.SyncdIndex.decode(r, r.uint32(), $undefined, q + 1, m.index);
+                            m.index = $root.ServerSync.SyncdIndex.decode(r, r.size(), $undefined, q + 1, m.index);
                             continue;
                         }
                     case 2: {
                             if (u !== 2)
                                 break;
-                            m.value = $root.ServerSync.SyncdValue.decode(r, r.uint32(), $undefined, q + 1, m.value);
+                            m.value = $root.ServerSync.SyncdValue.decode(r, r.size(), $undefined, q + 1, m.value);
                             continue;
                         }
                     case 3: {
@@ -642,7 +642,7 @@ export const ServerSync = $root.ServerSync = (() => {
                 case 1: {
                         if (u !== 2)
                             break;
-                        m.version = $root.ServerSync.SyncdVersion.decode(r, r.uint32(), $undefined, q + 1, m.version);
+                        m.version = $root.ServerSync.SyncdVersion.decode(r, r.size(), $undefined, q + 1, m.version);
                         continue;
                     }
                 case 2: {
@@ -650,13 +650,13 @@ export const ServerSync = $root.ServerSync = (() => {
                             break;
                         if (!(m.mutations && m.mutations.length))
                             m.mutations = [];
-                        m.mutations.push($root.ServerSync.SyncdMutation.decode(r, r.uint32(), $undefined, q + 1));
+                        m.mutations.push($root.ServerSync.SyncdMutation.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 case 3: {
                         if (u !== 2)
                             break;
-                        m.externalMutations = $root.ServerSync.ExternalBlobReference.decode(r, r.uint32(), $undefined, q + 1, m.externalMutations);
+                        m.externalMutations = $root.ServerSync.ExternalBlobReference.decode(r, r.size(), $undefined, q + 1, m.externalMutations);
                         continue;
                     }
                 case 4: {
@@ -674,13 +674,13 @@ export const ServerSync = $root.ServerSync = (() => {
                 case 6: {
                         if (u !== 2)
                             break;
-                        m.keyId = $root.ServerSync.KeyId.decode(r, r.uint32(), $undefined, q + 1, m.keyId);
+                        m.keyId = $root.ServerSync.KeyId.decode(r, r.size(), $undefined, q + 1, m.keyId);
                         continue;
                     }
                 case 7: {
                         if (u !== 2)
                             break;
-                        m.exitCode = $root.ServerSync.ExitCode.decode(r, r.uint32(), $undefined, q + 1, m.exitCode);
+                        m.exitCode = $root.ServerSync.ExitCode.decode(r, r.size(), $undefined, q + 1, m.exitCode);
                         continue;
                     }
                 case 8: {
@@ -936,7 +936,7 @@ export const ServerSync = $root.ServerSync = (() => {
                 case 2: {
                         if (u !== 2)
                             break;
-                        m.record = $root.ServerSync.SyncdRecord.decode(r, r.uint32(), $undefined, q + 1, m.record);
+                        m.record = $root.ServerSync.SyncdRecord.decode(r, r.size(), $undefined, q + 1, m.record);
                         continue;
                     }
                 }
@@ -1091,7 +1091,7 @@ export const ServerSync = $root.ServerSync = (() => {
                             break;
                         if (!(m.mutations && m.mutations.length))
                             m.mutations = [];
-                        m.mutations.push($root.ServerSync.SyncdMutation.decode(r, r.uint32(), $undefined, q + 1));
+                        m.mutations.push($root.ServerSync.SyncdMutation.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 }
@@ -1239,7 +1239,7 @@ export const ServerSync = $root.ServerSync = (() => {
                 case 1: {
                         if (u !== 2)
                             break;
-                        m.version = $root.ServerSync.SyncdVersion.decode(r, r.uint32(), $undefined, q + 1, m.version);
+                        m.version = $root.ServerSync.SyncdVersion.decode(r, r.size(), $undefined, q + 1, m.version);
                         continue;
                     }
                 case 2: {
@@ -1247,7 +1247,7 @@ export const ServerSync = $root.ServerSync = (() => {
                             break;
                         if (!(m.records && m.records.length))
                             m.records = [];
-                        m.records.push($root.ServerSync.SyncdRecord.decode(r, r.uint32(), $undefined, q + 1));
+                        m.records.push($root.ServerSync.SyncdRecord.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 case 3: {
@@ -1259,7 +1259,7 @@ export const ServerSync = $root.ServerSync = (() => {
                 case 4: {
                         if (u !== 2)
                             break;
-                        m.keyId = $root.ServerSync.KeyId.decode(r, r.uint32(), $undefined, q + 1, m.keyId);
+                        m.keyId = $root.ServerSync.KeyId.decode(r, r.size(), $undefined, q + 1, m.keyId);
                         continue;
                     }
                 }
@@ -1686,19 +1686,19 @@ export const ServerSync = $root.ServerSync = (() => {
                 case 1: {
                         if (u !== 2)
                             break;
-                        m.index = $root.ServerSync.SyncdIndex.decode(r, r.uint32(), $undefined, q + 1, m.index);
+                        m.index = $root.ServerSync.SyncdIndex.decode(r, r.size(), $undefined, q + 1, m.index);
                         continue;
                     }
                 case 2: {
                         if (u !== 2)
                             break;
-                        m.value = $root.ServerSync.SyncdValue.decode(r, r.uint32(), $undefined, q + 1, m.value);
+                        m.value = $root.ServerSync.SyncdValue.decode(r, r.size(), $undefined, q + 1, m.value);
                         continue;
                     }
                 case 3: {
                         if (u !== 2)
                             break;
-                        m.keyId = $root.ServerSync.KeyId.decode(r, r.uint32(), $undefined, q + 1, m.keyId);
+                        m.keyId = $root.ServerSync.KeyId.decode(r, r.size(), $undefined, q + 1, m.keyId);
                         continue;
                     }
                 }

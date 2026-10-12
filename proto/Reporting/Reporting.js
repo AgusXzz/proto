@@ -150,7 +150,7 @@ export const Reporting = $root.Reporting = (() => {
                             break;
                         if (m.subfield === $util.emptyObject)
                             m.subfield = {};
-                        var c2 = r.uint32() + r.pos;
+                        var c2 = r.size() + r.pos;
                         if (c2 > r.len)
                             throw $RangeError("index out of range");
                         r.len = c2;
@@ -168,7 +168,7 @@ export const Reporting = $root.Reporting = (() => {
                             case 2:
                                 if (u !== 2)
                                     break;
-                                v = $root.Reporting.Field.decode(r, r.uint32(), $undefined, q + 1, v);
+                                v = $root.Reporting.Field.decode(r, r.size(), $undefined, q + 1, v);
                                 continue;
                             }
                             r.skipType(u, q, t2);
@@ -357,7 +357,7 @@ export const Reporting = $root.Reporting = (() => {
                             break;
                         if (m.field === $util.emptyObject)
                             m.field = {};
-                        var c2 = r.uint32() + r.pos;
+                        var c2 = r.size() + r.pos;
                         if (c2 > r.len)
                             throw $RangeError("index out of range");
                         r.len = c2;
@@ -375,7 +375,7 @@ export const Reporting = $root.Reporting = (() => {
                             case 2:
                                 if (u !== 2)
                                     break;
-                                v = $root.Reporting.Field.decode(r, r.uint32(), $undefined, q + 1, v);
+                                v = $root.Reporting.Field.decode(r, r.size(), $undefined, q + 1, v);
                                 continue;
                             }
                             r.skipType(u, q, t2);

@@ -327,7 +327,7 @@ export const E2E = $root.E2E = (() => {
                             break;
                         if (!(m.keys && m.keys.length))
                             m.keys = [];
-                        m.keys.push($root.E2E.GroupRootKeyShareEntry.decode(r, r.uint32(), $undefined, q + 1));
+                        m.keys.push($root.E2E.GroupRootKeyShareEntry.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 }
@@ -469,13 +469,13 @@ export const E2E = $root.E2E = (() => {
                 case 1: {
                         if (u !== 2)
                             break;
-                        m.messageKey = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.uint32(), $undefined, q + 1, m.messageKey);
+                        m.messageKey = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.size(), $undefined, q + 1, m.messageKey);
                         continue;
                     }
                 case 2: {
                         if (u !== 2)
                             break;
-                        m.message = $root.E2E.Message.decode(r, r.uint32(), $undefined, q + 1, m.message);
+                        m.message = $root.E2E.Message.decode(r, r.size(), $undefined, q + 1, m.message);
                         continue;
                     }
                 case 3: {
@@ -670,25 +670,25 @@ export const E2E = $root.E2E = (() => {
                             break;
                         if (!(m.submessages && m.submessages.length))
                             m.submessages = [];
-                        m.submessages.push($root.AICommonDeprecated.AIRichResponseSubMessage.decode(r, r.uint32(), $undefined, q + 1));
+                        m.submessages.push($root.AICommonDeprecated.AIRichResponseSubMessage.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 case 3: {
                         if (u !== 2)
                             break;
-                        m.unifiedResponse = $root.AICommon.AIRichResponseUnifiedResponse.decode(r, r.uint32(), $undefined, q + 1, m.unifiedResponse);
+                        m.unifiedResponse = $root.AICommon.AIRichResponseUnifiedResponse.decode(r, r.size(), $undefined, q + 1, m.unifiedResponse);
                         continue;
                     }
                 case 4: {
                         if (u !== 2)
                             break;
-                        m.contextInfo = $root.E2E.ContextInfo.decode(r, r.uint32(), $undefined, q + 1, m.contextInfo);
+                        m.contextInfo = $root.E2E.ContextInfo.decode(r, r.size(), $undefined, q + 1, m.contextInfo);
                         continue;
                     }
                 case 5: {
                         if (u !== 2)
                             break;
-                        m.originalRecipientMetadata = $root.AICommon.AIRichResponseUnifiedResponse.decode(r, r.uint32(), $undefined, q + 1, m.originalRecipientMetadata);
+                        m.originalRecipientMetadata = $root.AICommon.AIRichResponseUnifiedResponse.decode(r, r.size(), $undefined, q + 1, m.originalRecipientMetadata);
                         continue;
                     }
                 }
@@ -1031,7 +1031,7 @@ export const E2E = $root.E2E = (() => {
                             break;
                         if (!(m.urlTrackingMapElements && m.urlTrackingMapElements.length))
                             m.urlTrackingMapElements = [];
-                        m.urlTrackingMapElements.push($root.E2E.UrlTrackingMap.UrlTrackingMapElement.decode(r, r.uint32(), $undefined, q + 1));
+                        m.urlTrackingMapElements.push($root.E2E.UrlTrackingMap.UrlTrackingMapElement.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 }
@@ -2749,7 +2749,7 @@ export const E2E = $root.E2E = (() => {
                 case 9: {
                         if (u !== 2)
                             break;
-                        m.mediaData = $root.E2E.PaymentBackground.MediaData.decode(r, r.uint32(), $undefined, q + 1, m.mediaData);
+                        m.mediaData = $root.E2E.PaymentBackground.MediaData.decode(r, r.size(), $undefined, q + 1, m.mediaData);
                         continue;
                     }
                 case 10: {
@@ -3412,21 +3412,21 @@ export const E2E = $root.E2E = (() => {
                 case 1: {
                         if (u !== 2)
                             break;
-                        m.quickReplyButton = $root.E2E.HydratedTemplateButton.HydratedQuickReplyButton.decode(r, r.uint32(), $undefined, q + 1, m.quickReplyButton);
+                        m.quickReplyButton = $root.E2E.HydratedTemplateButton.HydratedQuickReplyButton.decode(r, r.size(), $undefined, q + 1, m.quickReplyButton);
                         m.hydratedButton = "quickReplyButton";
                         continue;
                     }
                 case 2: {
                         if (u !== 2)
                             break;
-                        m.urlButton = $root.E2E.HydratedTemplateButton.HydratedURLButton.decode(r, r.uint32(), $undefined, q + 1, m.urlButton);
+                        m.urlButton = $root.E2E.HydratedTemplateButton.HydratedURLButton.decode(r, r.size(), $undefined, q + 1, m.urlButton);
                         m.hydratedButton = "urlButton";
                         continue;
                     }
                 case 3: {
                         if (u !== 2)
                             break;
-                        m.callButton = $root.E2E.HydratedTemplateButton.HydratedCallButton.decode(r, r.uint32(), $undefined, q + 1, m.callButton);
+                        m.callButton = $root.E2E.HydratedTemplateButton.HydratedCallButton.decode(r, r.size(), $undefined, q + 1, m.callButton);
                         m.hydratedButton = "callButton";
                         continue;
                     }
@@ -4089,21 +4089,21 @@ export const E2E = $root.E2E = (() => {
                 case 1: {
                         if (u !== 2)
                             break;
-                        m.quickReplyButton = $root.E2E.TemplateButton.QuickReplyButton.decode(r, r.uint32(), $undefined, q + 1, m.quickReplyButton);
+                        m.quickReplyButton = $root.E2E.TemplateButton.QuickReplyButton.decode(r, r.size(), $undefined, q + 1, m.quickReplyButton);
                         m.button = "quickReplyButton";
                         continue;
                     }
                 case 2: {
                         if (u !== 2)
                             break;
-                        m.urlButton = $root.E2E.TemplateButton.URLButton.decode(r, r.uint32(), $undefined, q + 1, m.urlButton);
+                        m.urlButton = $root.E2E.TemplateButton.URLButton.decode(r, r.size(), $undefined, q + 1, m.urlButton);
                         m.button = "urlButton";
                         continue;
                     }
                 case 3: {
                         if (u !== 2)
                             break;
-                        m.callButton = $root.E2E.TemplateButton.CallButton.decode(r, r.uint32(), $undefined, q + 1, m.callButton);
+                        m.callButton = $root.E2E.TemplateButton.CallButton.decode(r, r.size(), $undefined, q + 1, m.callButton);
                         m.button = "callButton";
                         continue;
                     }
@@ -4260,13 +4260,13 @@ export const E2E = $root.E2E = (() => {
                     case 1: {
                             if (u !== 2)
                                 break;
-                            m.displayText = $root.E2E.Message.HighlyStructuredMessage.decode(r, r.uint32(), $undefined, q + 1, m.displayText);
+                            m.displayText = $root.E2E.Message.HighlyStructuredMessage.decode(r, r.size(), $undefined, q + 1, m.displayText);
                             continue;
                         }
                     case 2: {
                             if (u !== 2)
                                 break;
-                            m.phoneNumber = $root.E2E.Message.HighlyStructuredMessage.decode(r, r.uint32(), $undefined, q + 1, m.phoneNumber);
+                            m.phoneNumber = $root.E2E.Message.HighlyStructuredMessage.decode(r, r.size(), $undefined, q + 1, m.phoneNumber);
                             continue;
                         }
                     }
@@ -4406,7 +4406,7 @@ export const E2E = $root.E2E = (() => {
                     case 1: {
                             if (u !== 2)
                                 break;
-                            m.displayText = $root.E2E.Message.HighlyStructuredMessage.decode(r, r.uint32(), $undefined, q + 1, m.displayText);
+                            m.displayText = $root.E2E.Message.HighlyStructuredMessage.decode(r, r.size(), $undefined, q + 1, m.displayText);
                             continue;
                         }
                     case 2: {
@@ -4550,13 +4550,13 @@ export const E2E = $root.E2E = (() => {
                     case 1: {
                             if (u !== 2)
                                 break;
-                            m.displayText = $root.E2E.Message.HighlyStructuredMessage.decode(r, r.uint32(), $undefined, q + 1, m.displayText);
+                            m.displayText = $root.E2E.Message.HighlyStructuredMessage.decode(r, r.size(), $undefined, q + 1, m.displayText);
                             continue;
                         }
                     case 2: {
                             if (u !== 2)
                                 break;
-                            m.url = $root.E2E.Message.HighlyStructuredMessage.decode(r, r.uint32(), $undefined, q + 1, m.url);
+                            m.url = $root.E2E.Message.HighlyStructuredMessage.decode(r, r.size(), $undefined, q + 1, m.url);
                             continue;
                         }
                     }
@@ -5061,7 +5061,7 @@ export const E2E = $root.E2E = (() => {
                             break;
                         if (!(m.polygonVertices && m.polygonVertices.length))
                             m.polygonVertices = [];
-                        m.polygonVertices.push($root.E2E.Point.decode(r, r.uint32(), $undefined, q + 1));
+                        m.polygonVertices.push($root.E2E.Point.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 case 4: {
@@ -5073,7 +5073,7 @@ export const E2E = $root.E2E = (() => {
                 case 5: {
                         if (u !== 2)
                             break;
-                        m.embeddedContent = $root.E2E.EmbeddedContent.decode(r, r.uint32(), $undefined, q + 1, m.embeddedContent);
+                        m.embeddedContent = $root.E2E.EmbeddedContent.decode(r, r.size(), $undefined, q + 1, m.embeddedContent);
                         continue;
                     }
                 case 8: {
@@ -5091,14 +5091,14 @@ export const E2E = $root.E2E = (() => {
                 case 2: {
                         if (u !== 2)
                             break;
-                        m.location = $root.E2E.Location.decode(r, r.uint32(), $undefined, q + 1, m.location);
+                        m.location = $root.E2E.Location.decode(r, r.size(), $undefined, q + 1, m.location);
                         m.action = "location";
                         continue;
                     }
                 case 3: {
                         if (u !== 2)
                             break;
-                        m.newsletter = $root.E2E.ContextInfo.ForwardedNewsletterMessageInfo.decode(r, r.uint32(), $undefined, q + 1, m.newsletter);
+                        m.newsletter = $root.E2E.ContextInfo.ForwardedNewsletterMessageInfo.decode(r, r.size(), $undefined, q + 1, m.newsletter);
                         m.action = "newsletter";
                         continue;
                     }
@@ -5112,7 +5112,7 @@ export const E2E = $root.E2E = (() => {
                 case 7: {
                         if (u !== 2)
                             break;
-                        m.tapAction = $root.E2E.TapLinkAction.decode(r, r.uint32(), $undefined, q + 1, m.tapAction);
+                        m.tapAction = $root.E2E.TapLinkAction.decode(r, r.size(), $undefined, q + 1, m.tapAction);
                         m.action = "tapAction";
                         continue;
                     }
@@ -5484,14 +5484,14 @@ export const E2E = $root.E2E = (() => {
                 case 1: {
                         if (u !== 2)
                             break;
-                        m.embeddedMessage = $root.E2E.EmbeddedMessage.decode(r, r.uint32(), $undefined, q + 1, m.embeddedMessage);
+                        m.embeddedMessage = $root.E2E.EmbeddedMessage.decode(r, r.size(), $undefined, q + 1, m.embeddedMessage);
                         m.content = "embeddedMessage";
                         continue;
                     }
                 case 2: {
                         if (u !== 2)
                             break;
-                        m.embeddedMusic = $root.E2E.EmbeddedMusic.decode(r, r.uint32(), $undefined, q + 1, m.embeddedMusic);
+                        m.embeddedMusic = $root.E2E.EmbeddedMusic.decode(r, r.size(), $undefined, q + 1, m.embeddedMusic);
                         m.content = "embeddedMusic";
                         continue;
                     }
@@ -6056,7 +6056,7 @@ export const E2E = $root.E2E = (() => {
                 case 2: {
                         if (u !== 2)
                             break;
-                        m.message = $root.E2E.Message.decode(r, r.uint32(), $undefined, q + 1, m.message);
+                        m.message = $root.E2E.Message.decode(r, r.size(), $undefined, q + 1, m.message);
                         continue;
                     }
                 }
@@ -6616,7 +6616,7 @@ export const E2E = $root.E2E = (() => {
                 case 1: {
                         if (u !== 2)
                             break;
-                        m.deviceListMetadata = $root.E2E.DeviceListMetadata.decode(r, r.uint32(), $undefined, q + 1, m.deviceListMetadata);
+                        m.deviceListMetadata = $root.E2E.DeviceListMetadata.decode(r, r.size(), $undefined, q + 1, m.deviceListMetadata);
                         continue;
                     }
                 case 2: {
@@ -6652,7 +6652,7 @@ export const E2E = $root.E2E = (() => {
                 case 7: {
                         if (u !== 2)
                             break;
-                        m.botMetadata = $root.AICommon.BotMetadata.decode(r, r.uint32(), $undefined, q + 1, m.botMetadata);
+                        m.botMetadata = $root.AICommon.BotMetadata.decode(r, r.size(), $undefined, q + 1, m.botMetadata);
                         continue;
                     }
                 case 8: {
@@ -6676,7 +6676,7 @@ export const E2E = $root.E2E = (() => {
                 case 10: {
                         if (u !== 2)
                             break;
-                        m.messageAssociation = $root.E2E.MessageAssociation.decode(r, r.uint32(), $undefined, q + 1, m.messageAssociation);
+                        m.messageAssociation = $root.E2E.MessageAssociation.decode(r, r.size(), $undefined, q + 1, m.messageAssociation);
                         continue;
                     }
                 case 11: {
@@ -6694,13 +6694,13 @@ export const E2E = $root.E2E = (() => {
                 case 13: {
                         if (u !== 2)
                             break;
-                        m.limitSharing = $root.Protocol.LimitSharing.decode(r, r.uint32(), $undefined, q + 1, m.limitSharing);
+                        m.limitSharing = $root.Protocol.LimitSharing.decode(r, r.size(), $undefined, q + 1, m.limitSharing);
                         continue;
                     }
                 case 14: {
                         if (u !== 2)
                             break;
-                        m.limitSharingV2 = $root.Protocol.LimitSharing.decode(r, r.uint32(), $undefined, q + 1, m.limitSharingV2);
+                        m.limitSharingV2 = $root.Protocol.LimitSharing.decode(r, r.size(), $undefined, q + 1, m.limitSharingV2);
                         continue;
                     }
                 case 15: {
@@ -6708,7 +6708,7 @@ export const E2E = $root.E2E = (() => {
                             break;
                         if (!(m.threadId && m.threadId.length))
                             m.threadId = [];
-                        m.threadId.push($root.E2E.ThreadID.decode(r, r.uint32(), $undefined, q + 1));
+                        m.threadId.push($root.E2E.ThreadID.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 case 16: {
@@ -6732,7 +6732,7 @@ export const E2E = $root.E2E = (() => {
                 case 18: {
                         if (u !== 2)
                             break;
-                        m.accountEncryptionAttestation = $root.Aea.NonE2EEAttestation.decode(r, r.uint32(), $undefined, q + 1, m.accountEncryptionAttestation);
+                        m.accountEncryptionAttestation = $root.Aea.NonE2EEAttestation.decode(r, r.size(), $undefined, q + 1, m.accountEncryptionAttestation);
                         continue;
                     }
                 case 19: {
@@ -6750,7 +6750,7 @@ export const E2E = $root.E2E = (() => {
                 case 21: {
                         if (u !== 2)
                             break;
-                        m.acp2Setting = $root.Protocol.ACP2Setting.decode(r, r.uint32(), $undefined, q + 1, m.acp2Setting);
+                        m.acp2Setting = $root.Protocol.ACP2Setting.decode(r, r.size(), $undefined, q + 1, m.acp2Setting);
                         continue;
                     }
                 }
@@ -7125,7 +7125,7 @@ export const E2E = $root.E2E = (() => {
                 case 2: {
                         if (u !== 2)
                             break;
-                        m.threadKey = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.uint32(), $undefined, q + 1, m.threadKey);
+                        m.threadKey = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.size(), $undefined, q + 1, m.threadKey);
                         continue;
                     }
                 }
@@ -7298,7 +7298,7 @@ export const E2E = $root.E2E = (() => {
                 case 2: {
                         if (u !== 2)
                             break;
-                        m.parentMessageKey = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.uint32(), $undefined, q + 1, m.parentMessageKey);
+                        m.parentMessageKey = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.size(), $undefined, q + 1, m.parentMessageKey);
                         continue;
                     }
                 case 3: {
@@ -7784,7 +7784,7 @@ export const E2E = $root.E2E = (() => {
                 case 3: {
                         if (u !== 2)
                             break;
-                        m.quotedMessage = $root.E2E.Message.decode(r, r.uint32(), $undefined, q + 1, m.quotedMessage);
+                        m.quotedMessage = $root.E2E.Message.decode(r, r.size(), $undefined, q + 1, m.quotedMessage);
                         continue;
                     }
                 case 4: {
@@ -7834,13 +7834,13 @@ export const E2E = $root.E2E = (() => {
                 case 23: {
                         if (u !== 2)
                             break;
-                        m.quotedAd = $root.E2E.ContextInfo.AdReplyInfo.decode(r, r.uint32(), $undefined, q + 1, m.quotedAd);
+                        m.quotedAd = $root.E2E.ContextInfo.AdReplyInfo.decode(r, r.size(), $undefined, q + 1, m.quotedAd);
                         continue;
                     }
                 case 24: {
                         if (u !== 2)
                             break;
-                        m.placeholderKey = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.uint32(), $undefined, q + 1, m.placeholderKey);
+                        m.placeholderKey = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.size(), $undefined, q + 1, m.placeholderKey);
                         continue;
                     }
                 case 25: {
@@ -7864,7 +7864,7 @@ export const E2E = $root.E2E = (() => {
                 case 28: {
                         if (u !== 2)
                             break;
-                        m.externalAdReply = $root.E2E.ContextInfo.ExternalAdReplyInfo.decode(r, r.uint32(), $undefined, q + 1, m.externalAdReply);
+                        m.externalAdReply = $root.E2E.ContextInfo.ExternalAdReplyInfo.decode(r, r.size(), $undefined, q + 1, m.externalAdReply);
                         continue;
                     }
                 case 29: {
@@ -7888,13 +7888,13 @@ export const E2E = $root.E2E = (() => {
                 case 32: {
                         if (u !== 2)
                             break;
-                        m.disappearingMode = $root.E2E.DisappearingMode.decode(r, r.uint32(), $undefined, q + 1, m.disappearingMode);
+                        m.disappearingMode = $root.E2E.DisappearingMode.decode(r, r.size(), $undefined, q + 1, m.disappearingMode);
                         continue;
                     }
                 case 33: {
                         if (u !== 2)
                             break;
-                        m.actionLink = $root.E2E.ActionLink.decode(r, r.uint32(), $undefined, q + 1, m.actionLink);
+                        m.actionLink = $root.E2E.ActionLink.decode(r, r.size(), $undefined, q + 1, m.actionLink);
                         continue;
                     }
                 case 34: {
@@ -7932,25 +7932,25 @@ export const E2E = $root.E2E = (() => {
                             break;
                         if (!(m.groupMentions && m.groupMentions.length))
                             m.groupMentions = [];
-                        m.groupMentions.push($root.E2E.GroupMention.decode(r, r.uint32(), $undefined, q + 1));
+                        m.groupMentions.push($root.E2E.GroupMention.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 case 41: {
                         if (u !== 2)
                             break;
-                        m.utm = $root.E2E.ContextInfo.UTMInfo.decode(r, r.uint32(), $undefined, q + 1, m.utm);
+                        m.utm = $root.E2E.ContextInfo.UTMInfo.decode(r, r.size(), $undefined, q + 1, m.utm);
                         continue;
                     }
                 case 43: {
                         if (u !== 2)
                             break;
-                        m.forwardedNewsletterMessageInfo = $root.E2E.ContextInfo.ForwardedNewsletterMessageInfo.decode(r, r.uint32(), $undefined, q + 1, m.forwardedNewsletterMessageInfo);
+                        m.forwardedNewsletterMessageInfo = $root.E2E.ContextInfo.ForwardedNewsletterMessageInfo.decode(r, r.size(), $undefined, q + 1, m.forwardedNewsletterMessageInfo);
                         continue;
                     }
                 case 44: {
                         if (u !== 2)
                             break;
-                        m.businessMessageForwardInfo = $root.E2E.ContextInfo.BusinessMessageForwardInfo.decode(r, r.uint32(), $undefined, q + 1, m.businessMessageForwardInfo);
+                        m.businessMessageForwardInfo = $root.E2E.ContextInfo.BusinessMessageForwardInfo.decode(r, r.size(), $undefined, q + 1, m.businessMessageForwardInfo);
                         continue;
                     }
                 case 45: {
@@ -7968,7 +7968,7 @@ export const E2E = $root.E2E = (() => {
                 case 47: {
                         if (u !== 2)
                             break;
-                        m.dataSharingContext = $root.E2E.ContextInfo.DataSharingContext.decode(r, r.uint32(), $undefined, q + 1, m.dataSharingContext);
+                        m.dataSharingContext = $root.E2E.ContextInfo.DataSharingContext.decode(r, r.size(), $undefined, q + 1, m.dataSharingContext);
                         continue;
                     }
                 case 48: {
@@ -7980,7 +7980,7 @@ export const E2E = $root.E2E = (() => {
                 case 49: {
                         if (u !== 2)
                             break;
-                        m.featureEligibilities = $root.E2E.ContextInfo.FeatureEligibilities.decode(r, r.uint32(), $undefined, q + 1, m.featureEligibilities);
+                        m.featureEligibilities = $root.E2E.ContextInfo.FeatureEligibilities.decode(r, r.size(), $undefined, q + 1, m.featureEligibilities);
                         continue;
                     }
                 case 50: {
@@ -8010,7 +8010,7 @@ export const E2E = $root.E2E = (() => {
                 case 56: {
                         if (u !== 2)
                             break;
-                        m.forwardedAiBotMessageInfo = $root.AICommon.ForwardedAIBotMessageInfo.decode(r, r.uint32(), $undefined, q + 1, m.forwardedAiBotMessageInfo);
+                        m.forwardedAiBotMessageInfo = $root.AICommon.ForwardedAIBotMessageInfo.decode(r, r.size(), $undefined, q + 1, m.forwardedAiBotMessageInfo);
                         continue;
                     }
                 case 57: {
@@ -8028,7 +8028,7 @@ export const E2E = $root.E2E = (() => {
                 case 58: {
                         if (u !== 2)
                             break;
-                        m.urlTrackingMap = $root.E2E.UrlTrackingMap.decode(r, r.uint32(), $undefined, q + 1, m.urlTrackingMap);
+                        m.urlTrackingMap = $root.E2E.UrlTrackingMap.decode(r, r.size(), $undefined, q + 1, m.urlTrackingMap);
                         continue;
                     }
                 case 59: {
@@ -8052,7 +8052,7 @@ export const E2E = $root.E2E = (() => {
                 case 62: {
                         if (u !== 2)
                             break;
-                        m.memberLabel = $root.E2E.MemberLabel.decode(r, r.uint32(), $undefined, q + 1, m.memberLabel);
+                        m.memberLabel = $root.E2E.MemberLabel.decode(r, r.size(), $undefined, q + 1, m.memberLabel);
                         continue;
                     }
                 case 63: {
@@ -8078,7 +8078,7 @@ export const E2E = $root.E2E = (() => {
                             break;
                         if (!(m.statusAttributions && m.statusAttributions.length))
                             m.statusAttributions = [];
-                        m.statusAttributions.push($root.StatusAttributions.StatusAttribution.decode(r, r.uint32(), $undefined, q + 1));
+                        m.statusAttributions.push($root.StatusAttributions.StatusAttribution.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 case 66: {
@@ -8102,13 +8102,13 @@ export const E2E = $root.E2E = (() => {
                 case 68: {
                         if (u !== 2)
                             break;
-                        m.questionReplyQuotedMessage = $root.E2E.ContextInfo.QuestionReplyQuotedMessage.decode(r, r.uint32(), $undefined, q + 1, m.questionReplyQuotedMessage);
+                        m.questionReplyQuotedMessage = $root.E2E.ContextInfo.QuestionReplyQuotedMessage.decode(r, r.size(), $undefined, q + 1, m.questionReplyQuotedMessage);
                         continue;
                     }
                 case 69: {
                         if (u !== 2)
                             break;
-                        m.statusAudienceMetadata = $root.E2E.ContextInfo.StatusAudienceMetadata.decode(r, r.uint32(), $undefined, q + 1, m.statusAudienceMetadata);
+                        m.statusAudienceMetadata = $root.E2E.ContextInfo.StatusAudienceMetadata.decode(r, r.size(), $undefined, q + 1, m.statusAudienceMetadata);
                         continue;
                     }
                 case 70: {
@@ -8132,7 +8132,7 @@ export const E2E = $root.E2E = (() => {
                 case 72: {
                         if (u !== 2)
                             break;
-                        m.botMessageSharingInfo = $root.AICommon.BotMessageSharingInfo.decode(r, r.uint32(), $undefined, q + 1, m.botMessageSharingInfo);
+                        m.botMessageSharingInfo = $root.AICommon.BotMessageSharingInfo.decode(r, r.size(), $undefined, q + 1, m.botMessageSharingInfo);
                         continue;
                     }
                 case 73: {
@@ -8144,13 +8144,13 @@ export const E2E = $root.E2E = (() => {
                 case 74: {
                         if (u !== 2)
                             break;
-                        m.mediaDomainInfo = $root.E2E.MediaDomainInfo.decode(r, r.uint32(), $undefined, q + 1, m.mediaDomainInfo);
+                        m.mediaDomainInfo = $root.E2E.MediaDomainInfo.decode(r, r.size(), $undefined, q + 1, m.mediaDomainInfo);
                         continue;
                     }
                 case 75: {
                         if (u !== 2)
                             break;
-                        m.partiallySelectedContent = $root.E2E.ContextInfo.PartiallySelectedContent.decode(r, r.uint32(), $undefined, q + 1, m.partiallySelectedContent);
+                        m.partiallySelectedContent = $root.E2E.ContextInfo.PartiallySelectedContent.decode(r, r.size(), $undefined, q + 1, m.partiallySelectedContent);
                         continue;
                     }
                 case 76: {
@@ -8174,7 +8174,7 @@ export const E2E = $root.E2E = (() => {
                 case 78: {
                         if (u !== 2)
                             break;
-                        m.businessInteractionPills = $root.E2E.ContextInfo.BusinessInteractionPills.decode(r, r.uint32(), $undefined, q + 1, m.businessInteractionPills);
+                        m.businessInteractionPills = $root.E2E.ContextInfo.BusinessInteractionPills.decode(r, r.size(), $undefined, q + 1, m.businessInteractionPills);
                         continue;
                     }
                 case 79: {
@@ -8186,13 +8186,13 @@ export const E2E = $root.E2E = (() => {
                 case 80: {
                         if (u !== 2)
                             break;
-                        m.instagramThreadLink = $root.E2E.ContextInfo.InstagramThreadLink.decode(r, r.uint32(), $undefined, q + 1, m.instagramThreadLink);
+                        m.instagramThreadLink = $root.E2E.ContextInfo.InstagramThreadLink.decode(r, r.size(), $undefined, q + 1, m.instagramThreadLink);
                         continue;
                     }
                 case 81: {
                         if (u !== 2)
                             break;
-                        m.aiProvenance = $root.AICommon.AIProvenance.decode(r, r.uint32(), $undefined, q + 1, m.aiProvenance);
+                        m.aiProvenance = $root.AICommon.AIProvenance.decode(r, r.size(), $undefined, q + 1, m.aiProvenance);
                         continue;
                     }
                 case 82: {
@@ -9290,7 +9290,7 @@ export const E2E = $root.E2E = (() => {
                                 break;
                             if (!(m.pills && m.pills.length))
                                 m.pills = [];
-                            m.pills.push($root.E2E.ContextInfo.BusinessInteractionPills.Pill.decode(r, r.uint32(), $undefined, q + 1));
+                            m.pills.push($root.E2E.ContextInfo.BusinessInteractionPills.Pill.decode(r, r.size(), $undefined, q + 1));
                             continue;
                         }
                     case 3: {
@@ -9314,13 +9314,13 @@ export const E2E = $root.E2E = (() => {
                     case 5: {
                             if (u !== 2)
                                 break;
-                            m.signatureEnvelope = $root.AICommon.BotSignatureVerificationMetadata.decode(r, r.uint32(), $undefined, q + 1, m.signatureEnvelope);
+                            m.signatureEnvelope = $root.AICommon.BotSignatureVerificationMetadata.decode(r, r.size(), $undefined, q + 1, m.signatureEnvelope);
                             continue;
                         }
                     case 6: {
                             if (u !== 2)
                                 break;
-                            m.unauthenticatedBusinessMetadata = $root.E2E.ContextInfo.BusinessInteractionPills.UnauthenticatedBusinessMetadata.decode(r, r.uint32(), $undefined, q + 1, m.unauthenticatedBusinessMetadata);
+                            m.unauthenticatedBusinessMetadata = $root.E2E.ContextInfo.BusinessInteractionPills.UnauthenticatedBusinessMetadata.decode(r, r.size(), $undefined, q + 1, m.unauthenticatedBusinessMetadata);
                             continue;
                         }
                     }
@@ -9770,7 +9770,7 @@ export const E2E = $root.E2E = (() => {
                                     break;
                                 if (!(m.pills && m.pills.length))
                                     m.pills = [];
-                                m.pills.push($root.E2E.ContextInfo.BusinessInteractionPills.Pill.decode(r, r.uint32(), $undefined, q + 1));
+                                m.pills.push($root.E2E.ContextInfo.BusinessInteractionPills.Pill.decode(r, r.size(), $undefined, q + 1));
                                 continue;
                             }
                         }
@@ -10268,7 +10268,7 @@ export const E2E = $root.E2E = (() => {
                                 break;
                             if (!(m.parameters && m.parameters.length))
                                 m.parameters = [];
-                            m.parameters.push($root.E2E.ContextInfo.DataSharingContext.Parameters.decode(r, r.uint32(), $undefined, q + 1));
+                            m.parameters.push($root.E2E.ContextInfo.DataSharingContext.Parameters.decode(r, r.size(), $undefined, q + 1));
                             continue;
                         }
                     case 4: {
@@ -10473,7 +10473,7 @@ export const E2E = $root.E2E = (() => {
                         case 5: {
                                 if (u !== 2)
                                     break;
-                                m.contents = $root.E2E.ContextInfo.DataSharingContext.Parameters.decode(r, r.uint32(), $undefined, q + 1, m.contents);
+                                m.contents = $root.E2E.ContextInfo.DataSharingContext.Parameters.decode(r, r.size(), $undefined, q + 1, m.contents);
                                 continue;
                             }
                         }
@@ -12201,13 +12201,13 @@ export const E2E = $root.E2E = (() => {
                     case 2: {
                             if (u !== 2)
                                 break;
-                            m.quotedQuestion = $root.E2E.Message.decode(r, r.uint32(), $undefined, q + 1, m.quotedQuestion);
+                            m.quotedQuestion = $root.E2E.Message.decode(r, r.size(), $undefined, q + 1, m.quotedQuestion);
                             continue;
                         }
                     case 3: {
                             if (u !== 2)
                                 break;
-                            m.quotedResponse = $root.E2E.Message.decode(r, r.uint32(), $undefined, q + 1, m.quotedResponse);
+                            m.quotedResponse = $root.E2E.Message.decode(r, r.size(), $undefined, q + 1, m.quotedResponse);
                             continue;
                         }
                     }
@@ -13226,697 +13226,697 @@ export const E2E = $root.E2E = (() => {
                 case 2: {
                         if (u !== 2)
                             break;
-                        m.senderKeyDistributionMessage = $root.E2E.Message.SenderKeyDistributionMessage.decode(r, r.uint32(), $undefined, q + 1, m.senderKeyDistributionMessage);
+                        m.senderKeyDistributionMessage = $root.E2E.Message.SenderKeyDistributionMessage.decode(r, r.size(), $undefined, q + 1, m.senderKeyDistributionMessage);
                         continue;
                     }
                 case 3: {
                         if (u !== 2)
                             break;
-                        m.imageMessage = $root.E2E.Message.ImageMessage.decode(r, r.uint32(), $undefined, q + 1, m.imageMessage);
+                        m.imageMessage = $root.E2E.Message.ImageMessage.decode(r, r.size(), $undefined, q + 1, m.imageMessage);
                         continue;
                     }
                 case 4: {
                         if (u !== 2)
                             break;
-                        m.contactMessage = $root.E2E.Message.ContactMessage.decode(r, r.uint32(), $undefined, q + 1, m.contactMessage);
+                        m.contactMessage = $root.E2E.Message.ContactMessage.decode(r, r.size(), $undefined, q + 1, m.contactMessage);
                         continue;
                     }
                 case 5: {
                         if (u !== 2)
                             break;
-                        m.locationMessage = $root.E2E.Message.LocationMessage.decode(r, r.uint32(), $undefined, q + 1, m.locationMessage);
+                        m.locationMessage = $root.E2E.Message.LocationMessage.decode(r, r.size(), $undefined, q + 1, m.locationMessage);
                         continue;
                     }
                 case 6: {
                         if (u !== 2)
                             break;
-                        m.extendedTextMessage = $root.E2E.Message.ExtendedTextMessage.decode(r, r.uint32(), $undefined, q + 1, m.extendedTextMessage);
+                        m.extendedTextMessage = $root.E2E.Message.ExtendedTextMessage.decode(r, r.size(), $undefined, q + 1, m.extendedTextMessage);
                         continue;
                     }
                 case 7: {
                         if (u !== 2)
                             break;
-                        m.documentMessage = $root.E2E.Message.DocumentMessage.decode(r, r.uint32(), $undefined, q + 1, m.documentMessage);
+                        m.documentMessage = $root.E2E.Message.DocumentMessage.decode(r, r.size(), $undefined, q + 1, m.documentMessage);
                         continue;
                     }
                 case 8: {
                         if (u !== 2)
                             break;
-                        m.audioMessage = $root.E2E.Message.AudioMessage.decode(r, r.uint32(), $undefined, q + 1, m.audioMessage);
+                        m.audioMessage = $root.E2E.Message.AudioMessage.decode(r, r.size(), $undefined, q + 1, m.audioMessage);
                         continue;
                     }
                 case 9: {
                         if (u !== 2)
                             break;
-                        m.videoMessage = $root.E2E.Message.VideoMessage.decode(r, r.uint32(), $undefined, q + 1, m.videoMessage);
+                        m.videoMessage = $root.E2E.Message.VideoMessage.decode(r, r.size(), $undefined, q + 1, m.videoMessage);
                         continue;
                     }
                 case 10: {
                         if (u !== 2)
                             break;
-                        m.call = $root.E2E.Message.Call.decode(r, r.uint32(), $undefined, q + 1, m.call);
+                        m.call = $root.E2E.Message.Call.decode(r, r.size(), $undefined, q + 1, m.call);
                         continue;
                     }
                 case 11: {
                         if (u !== 2)
                             break;
-                        m.chat = $root.E2E.Message.Chat.decode(r, r.uint32(), $undefined, q + 1, m.chat);
+                        m.chat = $root.E2E.Message.Chat.decode(r, r.size(), $undefined, q + 1, m.chat);
                         continue;
                     }
                 case 12: {
                         if (u !== 2)
                             break;
-                        m.protocolMessage = $root.E2E.Message.ProtocolMessage.decode(r, r.uint32(), $undefined, q + 1, m.protocolMessage);
+                        m.protocolMessage = $root.E2E.Message.ProtocolMessage.decode(r, r.size(), $undefined, q + 1, m.protocolMessage);
                         continue;
                     }
                 case 13: {
                         if (u !== 2)
                             break;
-                        m.contactsArrayMessage = $root.E2E.Message.ContactsArrayMessage.decode(r, r.uint32(), $undefined, q + 1, m.contactsArrayMessage);
+                        m.contactsArrayMessage = $root.E2E.Message.ContactsArrayMessage.decode(r, r.size(), $undefined, q + 1, m.contactsArrayMessage);
                         continue;
                     }
                 case 14: {
                         if (u !== 2)
                             break;
-                        m.highlyStructuredMessage = $root.E2E.Message.HighlyStructuredMessage.decode(r, r.uint32(), $undefined, q + 1, m.highlyStructuredMessage);
+                        m.highlyStructuredMessage = $root.E2E.Message.HighlyStructuredMessage.decode(r, r.size(), $undefined, q + 1, m.highlyStructuredMessage);
                         continue;
                     }
                 case 15: {
                         if (u !== 2)
                             break;
-                        m.fastRatchetKeySenderKeyDistributionMessage = $root.E2E.Message.SenderKeyDistributionMessage.decode(r, r.uint32(), $undefined, q + 1, m.fastRatchetKeySenderKeyDistributionMessage);
+                        m.fastRatchetKeySenderKeyDistributionMessage = $root.E2E.Message.SenderKeyDistributionMessage.decode(r, r.size(), $undefined, q + 1, m.fastRatchetKeySenderKeyDistributionMessage);
                         continue;
                     }
                 case 16: {
                         if (u !== 2)
                             break;
-                        m.sendPaymentMessage = $root.E2E.Message.SendPaymentMessage.decode(r, r.uint32(), $undefined, q + 1, m.sendPaymentMessage);
+                        m.sendPaymentMessage = $root.E2E.Message.SendPaymentMessage.decode(r, r.size(), $undefined, q + 1, m.sendPaymentMessage);
                         continue;
                     }
                 case 18: {
                         if (u !== 2)
                             break;
-                        m.liveLocationMessage = $root.E2E.Message.LiveLocationMessage.decode(r, r.uint32(), $undefined, q + 1, m.liveLocationMessage);
+                        m.liveLocationMessage = $root.E2E.Message.LiveLocationMessage.decode(r, r.size(), $undefined, q + 1, m.liveLocationMessage);
                         continue;
                     }
                 case 22: {
                         if (u !== 2)
                             break;
-                        m.requestPaymentMessage = $root.E2E.Message.RequestPaymentMessage.decode(r, r.uint32(), $undefined, q + 1, m.requestPaymentMessage);
+                        m.requestPaymentMessage = $root.E2E.Message.RequestPaymentMessage.decode(r, r.size(), $undefined, q + 1, m.requestPaymentMessage);
                         continue;
                     }
                 case 23: {
                         if (u !== 2)
                             break;
-                        m.declinePaymentRequestMessage = $root.E2E.Message.DeclinePaymentRequestMessage.decode(r, r.uint32(), $undefined, q + 1, m.declinePaymentRequestMessage);
+                        m.declinePaymentRequestMessage = $root.E2E.Message.DeclinePaymentRequestMessage.decode(r, r.size(), $undefined, q + 1, m.declinePaymentRequestMessage);
                         continue;
                     }
                 case 24: {
                         if (u !== 2)
                             break;
-                        m.cancelPaymentRequestMessage = $root.E2E.Message.CancelPaymentRequestMessage.decode(r, r.uint32(), $undefined, q + 1, m.cancelPaymentRequestMessage);
+                        m.cancelPaymentRequestMessage = $root.E2E.Message.CancelPaymentRequestMessage.decode(r, r.size(), $undefined, q + 1, m.cancelPaymentRequestMessage);
                         continue;
                     }
                 case 25: {
                         if (u !== 2)
                             break;
-                        m.templateMessage = $root.E2E.Message.TemplateMessage.decode(r, r.uint32(), $undefined, q + 1, m.templateMessage);
+                        m.templateMessage = $root.E2E.Message.TemplateMessage.decode(r, r.size(), $undefined, q + 1, m.templateMessage);
                         continue;
                     }
                 case 26: {
                         if (u !== 2)
                             break;
-                        m.stickerMessage = $root.E2E.Message.StickerMessage.decode(r, r.uint32(), $undefined, q + 1, m.stickerMessage);
+                        m.stickerMessage = $root.E2E.Message.StickerMessage.decode(r, r.size(), $undefined, q + 1, m.stickerMessage);
                         continue;
                     }
                 case 28: {
                         if (u !== 2)
                             break;
-                        m.groupInviteMessage = $root.E2E.Message.GroupInviteMessage.decode(r, r.uint32(), $undefined, q + 1, m.groupInviteMessage);
+                        m.groupInviteMessage = $root.E2E.Message.GroupInviteMessage.decode(r, r.size(), $undefined, q + 1, m.groupInviteMessage);
                         continue;
                     }
                 case 29: {
                         if (u !== 2)
                             break;
-                        m.templateButtonReplyMessage = $root.E2E.Message.TemplateButtonReplyMessage.decode(r, r.uint32(), $undefined, q + 1, m.templateButtonReplyMessage);
+                        m.templateButtonReplyMessage = $root.E2E.Message.TemplateButtonReplyMessage.decode(r, r.size(), $undefined, q + 1, m.templateButtonReplyMessage);
                         continue;
                     }
                 case 30: {
                         if (u !== 2)
                             break;
-                        m.productMessage = $root.E2E.Message.ProductMessage.decode(r, r.uint32(), $undefined, q + 1, m.productMessage);
+                        m.productMessage = $root.E2E.Message.ProductMessage.decode(r, r.size(), $undefined, q + 1, m.productMessage);
                         continue;
                     }
                 case 31: {
                         if (u !== 2)
                             break;
-                        m.deviceSentMessage = $root.E2E.Message.DeviceSentMessage.decode(r, r.uint32(), $undefined, q + 1, m.deviceSentMessage);
+                        m.deviceSentMessage = $root.E2E.Message.DeviceSentMessage.decode(r, r.size(), $undefined, q + 1, m.deviceSentMessage);
                         continue;
                     }
                 case 35: {
                         if (u !== 2)
                             break;
-                        m.messageContextInfo = $root.E2E.MessageContextInfo.decode(r, r.uint32(), $undefined, q + 1, m.messageContextInfo);
+                        m.messageContextInfo = $root.E2E.MessageContextInfo.decode(r, r.size(), $undefined, q + 1, m.messageContextInfo);
                         continue;
                     }
                 case 36: {
                         if (u !== 2)
                             break;
-                        m.listMessage = $root.E2E.Message.ListMessage.decode(r, r.uint32(), $undefined, q + 1, m.listMessage);
+                        m.listMessage = $root.E2E.Message.ListMessage.decode(r, r.size(), $undefined, q + 1, m.listMessage);
                         continue;
                     }
                 case 37: {
                         if (u !== 2)
                             break;
-                        m.viewOnceMessage = $root.E2E.Message.FutureProofMessage.decode(r, r.uint32(), $undefined, q + 1, m.viewOnceMessage);
+                        m.viewOnceMessage = $root.E2E.Message.FutureProofMessage.decode(r, r.size(), $undefined, q + 1, m.viewOnceMessage);
                         continue;
                     }
                 case 38: {
                         if (u !== 2)
                             break;
-                        m.orderMessage = $root.E2E.Message.OrderMessage.decode(r, r.uint32(), $undefined, q + 1, m.orderMessage);
+                        m.orderMessage = $root.E2E.Message.OrderMessage.decode(r, r.size(), $undefined, q + 1, m.orderMessage);
                         continue;
                     }
                 case 39: {
                         if (u !== 2)
                             break;
-                        m.listResponseMessage = $root.E2E.Message.ListResponseMessage.decode(r, r.uint32(), $undefined, q + 1, m.listResponseMessage);
+                        m.listResponseMessage = $root.E2E.Message.ListResponseMessage.decode(r, r.size(), $undefined, q + 1, m.listResponseMessage);
                         continue;
                     }
                 case 40: {
                         if (u !== 2)
                             break;
-                        m.ephemeralMessage = $root.E2E.Message.FutureProofMessage.decode(r, r.uint32(), $undefined, q + 1, m.ephemeralMessage);
+                        m.ephemeralMessage = $root.E2E.Message.FutureProofMessage.decode(r, r.size(), $undefined, q + 1, m.ephemeralMessage);
                         continue;
                     }
                 case 41: {
                         if (u !== 2)
                             break;
-                        m.invoiceMessage = $root.E2E.Message.InvoiceMessage.decode(r, r.uint32(), $undefined, q + 1, m.invoiceMessage);
+                        m.invoiceMessage = $root.E2E.Message.InvoiceMessage.decode(r, r.size(), $undefined, q + 1, m.invoiceMessage);
                         continue;
                     }
                 case 42: {
                         if (u !== 2)
                             break;
-                        m.buttonsMessage = $root.E2E.Message.ButtonsMessage.decode(r, r.uint32(), $undefined, q + 1, m.buttonsMessage);
+                        m.buttonsMessage = $root.E2E.Message.ButtonsMessage.decode(r, r.size(), $undefined, q + 1, m.buttonsMessage);
                         continue;
                     }
                 case 43: {
                         if (u !== 2)
                             break;
-                        m.buttonsResponseMessage = $root.E2E.Message.ButtonsResponseMessage.decode(r, r.uint32(), $undefined, q + 1, m.buttonsResponseMessage);
+                        m.buttonsResponseMessage = $root.E2E.Message.ButtonsResponseMessage.decode(r, r.size(), $undefined, q + 1, m.buttonsResponseMessage);
                         continue;
                     }
                 case 44: {
                         if (u !== 2)
                             break;
-                        m.paymentInviteMessage = $root.E2E.Message.PaymentInviteMessage.decode(r, r.uint32(), $undefined, q + 1, m.paymentInviteMessage);
+                        m.paymentInviteMessage = $root.E2E.Message.PaymentInviteMessage.decode(r, r.size(), $undefined, q + 1, m.paymentInviteMessage);
                         continue;
                     }
                 case 45: {
                         if (u !== 2)
                             break;
-                        m.interactiveMessage = $root.E2E.Message.InteractiveMessage.decode(r, r.uint32(), $undefined, q + 1, m.interactiveMessage);
+                        m.interactiveMessage = $root.E2E.Message.InteractiveMessage.decode(r, r.size(), $undefined, q + 1, m.interactiveMessage);
                         continue;
                     }
                 case 46: {
                         if (u !== 2)
                             break;
-                        m.reactionMessage = $root.E2E.Message.ReactionMessage.decode(r, r.uint32(), $undefined, q + 1, m.reactionMessage);
+                        m.reactionMessage = $root.E2E.Message.ReactionMessage.decode(r, r.size(), $undefined, q + 1, m.reactionMessage);
                         continue;
                     }
                 case 47: {
                         if (u !== 2)
                             break;
-                        m.stickerSyncRmrMessage = $root.E2E.Message.StickerSyncRMRMessage.decode(r, r.uint32(), $undefined, q + 1, m.stickerSyncRmrMessage);
+                        m.stickerSyncRmrMessage = $root.E2E.Message.StickerSyncRMRMessage.decode(r, r.size(), $undefined, q + 1, m.stickerSyncRmrMessage);
                         continue;
                     }
                 case 48: {
                         if (u !== 2)
                             break;
-                        m.interactiveResponseMessage = $root.E2E.Message.InteractiveResponseMessage.decode(r, r.uint32(), $undefined, q + 1, m.interactiveResponseMessage);
+                        m.interactiveResponseMessage = $root.E2E.Message.InteractiveResponseMessage.decode(r, r.size(), $undefined, q + 1, m.interactiveResponseMessage);
                         continue;
                     }
                 case 49: {
                         if (u !== 2)
                             break;
-                        m.pollCreationMessage = $root.E2E.Message.PollCreationMessage.decode(r, r.uint32(), $undefined, q + 1, m.pollCreationMessage);
+                        m.pollCreationMessage = $root.E2E.Message.PollCreationMessage.decode(r, r.size(), $undefined, q + 1, m.pollCreationMessage);
                         continue;
                     }
                 case 50: {
                         if (u !== 2)
                             break;
-                        m.pollUpdateMessage = $root.E2E.Message.PollUpdateMessage.decode(r, r.uint32(), $undefined, q + 1, m.pollUpdateMessage);
+                        m.pollUpdateMessage = $root.E2E.Message.PollUpdateMessage.decode(r, r.size(), $undefined, q + 1, m.pollUpdateMessage);
                         continue;
                     }
                 case 51: {
                         if (u !== 2)
                             break;
-                        m.keepInChatMessage = $root.E2E.Message.KeepInChatMessage.decode(r, r.uint32(), $undefined, q + 1, m.keepInChatMessage);
+                        m.keepInChatMessage = $root.E2E.Message.KeepInChatMessage.decode(r, r.size(), $undefined, q + 1, m.keepInChatMessage);
                         continue;
                     }
                 case 53: {
                         if (u !== 2)
                             break;
-                        m.documentWithCaptionMessage = $root.E2E.Message.FutureProofMessage.decode(r, r.uint32(), $undefined, q + 1, m.documentWithCaptionMessage);
+                        m.documentWithCaptionMessage = $root.E2E.Message.FutureProofMessage.decode(r, r.size(), $undefined, q + 1, m.documentWithCaptionMessage);
                         continue;
                     }
                 case 54: {
                         if (u !== 2)
                             break;
-                        m.requestPhoneNumberMessage = $root.E2E.Message.RequestPhoneNumberMessage.decode(r, r.uint32(), $undefined, q + 1, m.requestPhoneNumberMessage);
+                        m.requestPhoneNumberMessage = $root.E2E.Message.RequestPhoneNumberMessage.decode(r, r.size(), $undefined, q + 1, m.requestPhoneNumberMessage);
                         continue;
                     }
                 case 55: {
                         if (u !== 2)
                             break;
-                        m.viewOnceMessageV2 = $root.E2E.Message.FutureProofMessage.decode(r, r.uint32(), $undefined, q + 1, m.viewOnceMessageV2);
+                        m.viewOnceMessageV2 = $root.E2E.Message.FutureProofMessage.decode(r, r.size(), $undefined, q + 1, m.viewOnceMessageV2);
                         continue;
                     }
                 case 56: {
                         if (u !== 2)
                             break;
-                        m.encReactionMessage = $root.E2E.Message.EncReactionMessage.decode(r, r.uint32(), $undefined, q + 1, m.encReactionMessage);
+                        m.encReactionMessage = $root.E2E.Message.EncReactionMessage.decode(r, r.size(), $undefined, q + 1, m.encReactionMessage);
                         continue;
                     }
                 case 58: {
                         if (u !== 2)
                             break;
-                        m.editedMessage = $root.E2E.Message.FutureProofMessage.decode(r, r.uint32(), $undefined, q + 1, m.editedMessage);
+                        m.editedMessage = $root.E2E.Message.FutureProofMessage.decode(r, r.size(), $undefined, q + 1, m.editedMessage);
                         continue;
                     }
                 case 59: {
                         if (u !== 2)
                             break;
-                        m.viewOnceMessageV2Extension = $root.E2E.Message.FutureProofMessage.decode(r, r.uint32(), $undefined, q + 1, m.viewOnceMessageV2Extension);
+                        m.viewOnceMessageV2Extension = $root.E2E.Message.FutureProofMessage.decode(r, r.size(), $undefined, q + 1, m.viewOnceMessageV2Extension);
                         continue;
                     }
                 case 60: {
                         if (u !== 2)
                             break;
-                        m.pollCreationMessageV2 = $root.E2E.Message.PollCreationMessage.decode(r, r.uint32(), $undefined, q + 1, m.pollCreationMessageV2);
+                        m.pollCreationMessageV2 = $root.E2E.Message.PollCreationMessage.decode(r, r.size(), $undefined, q + 1, m.pollCreationMessageV2);
                         continue;
                     }
                 case 61: {
                         if (u !== 2)
                             break;
-                        m.scheduledCallCreationMessage = $root.E2E.Message.ScheduledCallCreationMessage.decode(r, r.uint32(), $undefined, q + 1, m.scheduledCallCreationMessage);
+                        m.scheduledCallCreationMessage = $root.E2E.Message.ScheduledCallCreationMessage.decode(r, r.size(), $undefined, q + 1, m.scheduledCallCreationMessage);
                         continue;
                     }
                 case 62: {
                         if (u !== 2)
                             break;
-                        m.groupMentionedMessage = $root.E2E.Message.FutureProofMessage.decode(r, r.uint32(), $undefined, q + 1, m.groupMentionedMessage);
+                        m.groupMentionedMessage = $root.E2E.Message.FutureProofMessage.decode(r, r.size(), $undefined, q + 1, m.groupMentionedMessage);
                         continue;
                     }
                 case 63: {
                         if (u !== 2)
                             break;
-                        m.pinInChatMessage = $root.E2E.Message.PinInChatMessage.decode(r, r.uint32(), $undefined, q + 1, m.pinInChatMessage);
+                        m.pinInChatMessage = $root.E2E.Message.PinInChatMessage.decode(r, r.size(), $undefined, q + 1, m.pinInChatMessage);
                         continue;
                     }
                 case 64: {
                         if (u !== 2)
                             break;
-                        m.pollCreationMessageV3 = $root.E2E.Message.PollCreationMessage.decode(r, r.uint32(), $undefined, q + 1, m.pollCreationMessageV3);
+                        m.pollCreationMessageV3 = $root.E2E.Message.PollCreationMessage.decode(r, r.size(), $undefined, q + 1, m.pollCreationMessageV3);
                         continue;
                     }
                 case 65: {
                         if (u !== 2)
                             break;
-                        m.scheduledCallEditMessage = $root.E2E.Message.ScheduledCallEditMessage.decode(r, r.uint32(), $undefined, q + 1, m.scheduledCallEditMessage);
+                        m.scheduledCallEditMessage = $root.E2E.Message.ScheduledCallEditMessage.decode(r, r.size(), $undefined, q + 1, m.scheduledCallEditMessage);
                         continue;
                     }
                 case 66: {
                         if (u !== 2)
                             break;
-                        m.ptvMessage = $root.E2E.Message.VideoMessage.decode(r, r.uint32(), $undefined, q + 1, m.ptvMessage);
+                        m.ptvMessage = $root.E2E.Message.VideoMessage.decode(r, r.size(), $undefined, q + 1, m.ptvMessage);
                         continue;
                     }
                 case 67: {
                         if (u !== 2)
                             break;
-                        m.botInvokeMessage = $root.E2E.Message.FutureProofMessage.decode(r, r.uint32(), $undefined, q + 1, m.botInvokeMessage);
+                        m.botInvokeMessage = $root.E2E.Message.FutureProofMessage.decode(r, r.size(), $undefined, q + 1, m.botInvokeMessage);
                         continue;
                     }
                 case 69: {
                         if (u !== 2)
                             break;
-                        m.callLogMesssage = $root.E2E.Message.CallLogMessage.decode(r, r.uint32(), $undefined, q + 1, m.callLogMesssage);
+                        m.callLogMesssage = $root.E2E.Message.CallLogMessage.decode(r, r.size(), $undefined, q + 1, m.callLogMesssage);
                         continue;
                     }
                 case 70: {
                         if (u !== 2)
                             break;
-                        m.messageHistoryBundle = $root.E2E.Message.MessageHistoryBundle.decode(r, r.uint32(), $undefined, q + 1, m.messageHistoryBundle);
+                        m.messageHistoryBundle = $root.E2E.Message.MessageHistoryBundle.decode(r, r.size(), $undefined, q + 1, m.messageHistoryBundle);
                         continue;
                     }
                 case 71: {
                         if (u !== 2)
                             break;
-                        m.encCommentMessage = $root.E2E.Message.EncCommentMessage.decode(r, r.uint32(), $undefined, q + 1, m.encCommentMessage);
+                        m.encCommentMessage = $root.E2E.Message.EncCommentMessage.decode(r, r.size(), $undefined, q + 1, m.encCommentMessage);
                         continue;
                     }
                 case 72: {
                         if (u !== 2)
                             break;
-                        m.bcallMessage = $root.E2E.Message.BCallMessage.decode(r, r.uint32(), $undefined, q + 1, m.bcallMessage);
+                        m.bcallMessage = $root.E2E.Message.BCallMessage.decode(r, r.size(), $undefined, q + 1, m.bcallMessage);
                         continue;
                     }
                 case 74: {
                         if (u !== 2)
                             break;
-                        m.lottieStickerMessage = $root.E2E.Message.FutureProofMessage.decode(r, r.uint32(), $undefined, q + 1, m.lottieStickerMessage);
+                        m.lottieStickerMessage = $root.E2E.Message.FutureProofMessage.decode(r, r.size(), $undefined, q + 1, m.lottieStickerMessage);
                         continue;
                     }
                 case 75: {
                         if (u !== 2)
                             break;
-                        m.eventMessage = $root.E2E.Message.EventMessage.decode(r, r.uint32(), $undefined, q + 1, m.eventMessage);
+                        m.eventMessage = $root.E2E.Message.EventMessage.decode(r, r.size(), $undefined, q + 1, m.eventMessage);
                         continue;
                     }
                 case 76: {
                         if (u !== 2)
                             break;
-                        m.encEventResponseMessage = $root.E2E.Message.EncEventResponseMessage.decode(r, r.uint32(), $undefined, q + 1, m.encEventResponseMessage);
+                        m.encEventResponseMessage = $root.E2E.Message.EncEventResponseMessage.decode(r, r.size(), $undefined, q + 1, m.encEventResponseMessage);
                         continue;
                     }
                 case 77: {
                         if (u !== 2)
                             break;
-                        m.commentMessage = $root.E2E.Message.CommentMessage.decode(r, r.uint32(), $undefined, q + 1, m.commentMessage);
+                        m.commentMessage = $root.E2E.Message.CommentMessage.decode(r, r.size(), $undefined, q + 1, m.commentMessage);
                         continue;
                     }
                 case 78: {
                         if (u !== 2)
                             break;
-                        m.newsletterAdminInviteMessage = $root.E2E.Message.NewsletterAdminInviteMessage.decode(r, r.uint32(), $undefined, q + 1, m.newsletterAdminInviteMessage);
+                        m.newsletterAdminInviteMessage = $root.E2E.Message.NewsletterAdminInviteMessage.decode(r, r.size(), $undefined, q + 1, m.newsletterAdminInviteMessage);
                         continue;
                     }
                 case 80: {
                         if (u !== 2)
                             break;
-                        m.placeholderMessage = $root.E2E.Message.PlaceholderMessage.decode(r, r.uint32(), $undefined, q + 1, m.placeholderMessage);
+                        m.placeholderMessage = $root.E2E.Message.PlaceholderMessage.decode(r, r.size(), $undefined, q + 1, m.placeholderMessage);
                         continue;
                     }
                 case 82: {
                         if (u !== 2)
                             break;
-                        m.secretEncryptedMessage = $root.E2E.Message.SecretEncryptedMessage.decode(r, r.uint32(), $undefined, q + 1, m.secretEncryptedMessage);
+                        m.secretEncryptedMessage = $root.E2E.Message.SecretEncryptedMessage.decode(r, r.size(), $undefined, q + 1, m.secretEncryptedMessage);
                         continue;
                     }
                 case 83: {
                         if (u !== 2)
                             break;
-                        m.albumMessage = $root.E2E.Message.AlbumMessage.decode(r, r.uint32(), $undefined, q + 1, m.albumMessage);
+                        m.albumMessage = $root.E2E.Message.AlbumMessage.decode(r, r.size(), $undefined, q + 1, m.albumMessage);
                         continue;
                     }
                 case 85: {
                         if (u !== 2)
                             break;
-                        m.eventCoverImage = $root.E2E.Message.FutureProofMessage.decode(r, r.uint32(), $undefined, q + 1, m.eventCoverImage);
+                        m.eventCoverImage = $root.E2E.Message.FutureProofMessage.decode(r, r.size(), $undefined, q + 1, m.eventCoverImage);
                         continue;
                     }
                 case 86: {
                         if (u !== 2)
                             break;
-                        m.stickerPackMessage = $root.E2E.Message.StickerPackMessage.decode(r, r.uint32(), $undefined, q + 1, m.stickerPackMessage);
+                        m.stickerPackMessage = $root.E2E.Message.StickerPackMessage.decode(r, r.size(), $undefined, q + 1, m.stickerPackMessage);
                         continue;
                     }
                 case 87: {
                         if (u !== 2)
                             break;
-                        m.statusMentionMessage = $root.E2E.Message.FutureProofMessage.decode(r, r.uint32(), $undefined, q + 1, m.statusMentionMessage);
+                        m.statusMentionMessage = $root.E2E.Message.FutureProofMessage.decode(r, r.size(), $undefined, q + 1, m.statusMentionMessage);
                         continue;
                     }
                 case 88: {
                         if (u !== 2)
                             break;
-                        m.pollResultSnapshotMessage = $root.E2E.Message.PollResultSnapshotMessage.decode(r, r.uint32(), $undefined, q + 1, m.pollResultSnapshotMessage);
+                        m.pollResultSnapshotMessage = $root.E2E.Message.PollResultSnapshotMessage.decode(r, r.size(), $undefined, q + 1, m.pollResultSnapshotMessage);
                         continue;
                     }
                 case 90: {
                         if (u !== 2)
                             break;
-                        m.pollCreationOptionImageMessage = $root.E2E.Message.FutureProofMessage.decode(r, r.uint32(), $undefined, q + 1, m.pollCreationOptionImageMessage);
+                        m.pollCreationOptionImageMessage = $root.E2E.Message.FutureProofMessage.decode(r, r.size(), $undefined, q + 1, m.pollCreationOptionImageMessage);
                         continue;
                     }
                 case 91: {
                         if (u !== 2)
                             break;
-                        m.associatedChildMessage = $root.E2E.Message.FutureProofMessage.decode(r, r.uint32(), $undefined, q + 1, m.associatedChildMessage);
+                        m.associatedChildMessage = $root.E2E.Message.FutureProofMessage.decode(r, r.size(), $undefined, q + 1, m.associatedChildMessage);
                         continue;
                     }
                 case 92: {
                         if (u !== 2)
                             break;
-                        m.groupStatusMentionMessage = $root.E2E.Message.FutureProofMessage.decode(r, r.uint32(), $undefined, q + 1, m.groupStatusMentionMessage);
+                        m.groupStatusMentionMessage = $root.E2E.Message.FutureProofMessage.decode(r, r.size(), $undefined, q + 1, m.groupStatusMentionMessage);
                         continue;
                     }
                 case 93: {
                         if (u !== 2)
                             break;
-                        m.pollCreationMessageV4 = $root.E2E.Message.FutureProofMessage.decode(r, r.uint32(), $undefined, q + 1, m.pollCreationMessageV4);
+                        m.pollCreationMessageV4 = $root.E2E.Message.FutureProofMessage.decode(r, r.size(), $undefined, q + 1, m.pollCreationMessageV4);
                         continue;
                     }
                 case 95: {
                         if (u !== 2)
                             break;
-                        m.statusAddYours = $root.E2E.Message.FutureProofMessage.decode(r, r.uint32(), $undefined, q + 1, m.statusAddYours);
+                        m.statusAddYours = $root.E2E.Message.FutureProofMessage.decode(r, r.size(), $undefined, q + 1, m.statusAddYours);
                         continue;
                     }
                 case 96: {
                         if (u !== 2)
                             break;
-                        m.groupStatusMessage = $root.E2E.Message.FutureProofMessage.decode(r, r.uint32(), $undefined, q + 1, m.groupStatusMessage);
+                        m.groupStatusMessage = $root.E2E.Message.FutureProofMessage.decode(r, r.size(), $undefined, q + 1, m.groupStatusMessage);
                         continue;
                     }
                 case 97: {
                         if (u !== 2)
                             break;
-                        m.richResponseMessage = $root.E2E.AIRichResponseMessage.decode(r, r.uint32(), $undefined, q + 1, m.richResponseMessage);
+                        m.richResponseMessage = $root.E2E.AIRichResponseMessage.decode(r, r.size(), $undefined, q + 1, m.richResponseMessage);
                         continue;
                     }
                 case 98: {
                         if (u !== 2)
                             break;
-                        m.statusNotificationMessage = $root.E2E.Message.StatusNotificationMessage.decode(r, r.uint32(), $undefined, q + 1, m.statusNotificationMessage);
+                        m.statusNotificationMessage = $root.E2E.Message.StatusNotificationMessage.decode(r, r.size(), $undefined, q + 1, m.statusNotificationMessage);
                         continue;
                     }
                 case 99: {
                         if (u !== 2)
                             break;
-                        m.limitSharingMessage = $root.E2E.Message.FutureProofMessage.decode(r, r.uint32(), $undefined, q + 1, m.limitSharingMessage);
+                        m.limitSharingMessage = $root.E2E.Message.FutureProofMessage.decode(r, r.size(), $undefined, q + 1, m.limitSharingMessage);
                         continue;
                     }
                 case 100: {
                         if (u !== 2)
                             break;
-                        m.botTaskMessage = $root.E2E.Message.FutureProofMessage.decode(r, r.uint32(), $undefined, q + 1, m.botTaskMessage);
+                        m.botTaskMessage = $root.E2E.Message.FutureProofMessage.decode(r, r.size(), $undefined, q + 1, m.botTaskMessage);
                         continue;
                     }
                 case 101: {
                         if (u !== 2)
                             break;
-                        m.questionMessage = $root.E2E.Message.FutureProofMessage.decode(r, r.uint32(), $undefined, q + 1, m.questionMessage);
+                        m.questionMessage = $root.E2E.Message.FutureProofMessage.decode(r, r.size(), $undefined, q + 1, m.questionMessage);
                         continue;
                     }
                 case 102: {
                         if (u !== 2)
                             break;
-                        m.messageHistoryNotice = $root.E2E.Message.MessageHistoryNotice.decode(r, r.uint32(), $undefined, q + 1, m.messageHistoryNotice);
+                        m.messageHistoryNotice = $root.E2E.Message.MessageHistoryNotice.decode(r, r.size(), $undefined, q + 1, m.messageHistoryNotice);
                         continue;
                     }
                 case 103: {
                         if (u !== 2)
                             break;
-                        m.groupStatusMessageV2 = $root.E2E.Message.FutureProofMessage.decode(r, r.uint32(), $undefined, q + 1, m.groupStatusMessageV2);
+                        m.groupStatusMessageV2 = $root.E2E.Message.FutureProofMessage.decode(r, r.size(), $undefined, q + 1, m.groupStatusMessageV2);
                         continue;
                     }
                 case 104: {
                         if (u !== 2)
                             break;
-                        m.botForwardedMessage = $root.E2E.Message.FutureProofMessage.decode(r, r.uint32(), $undefined, q + 1, m.botForwardedMessage);
+                        m.botForwardedMessage = $root.E2E.Message.FutureProofMessage.decode(r, r.size(), $undefined, q + 1, m.botForwardedMessage);
                         continue;
                     }
                 case 105: {
                         if (u !== 2)
                             break;
-                        m.statusQuestionAnswerMessage = $root.E2E.Message.StatusQuestionAnswerMessage.decode(r, r.uint32(), $undefined, q + 1, m.statusQuestionAnswerMessage);
+                        m.statusQuestionAnswerMessage = $root.E2E.Message.StatusQuestionAnswerMessage.decode(r, r.size(), $undefined, q + 1, m.statusQuestionAnswerMessage);
                         continue;
                     }
                 case 106: {
                         if (u !== 2)
                             break;
-                        m.questionReplyMessage = $root.E2E.Message.FutureProofMessage.decode(r, r.uint32(), $undefined, q + 1, m.questionReplyMessage);
+                        m.questionReplyMessage = $root.E2E.Message.FutureProofMessage.decode(r, r.size(), $undefined, q + 1, m.questionReplyMessage);
                         continue;
                     }
                 case 107: {
                         if (u !== 2)
                             break;
-                        m.questionResponseMessage = $root.E2E.Message.QuestionResponseMessage.decode(r, r.uint32(), $undefined, q + 1, m.questionResponseMessage);
+                        m.questionResponseMessage = $root.E2E.Message.QuestionResponseMessage.decode(r, r.size(), $undefined, q + 1, m.questionResponseMessage);
                         continue;
                     }
                 case 109: {
                         if (u !== 2)
                             break;
-                        m.statusQuotedMessage = $root.E2E.Message.StatusQuotedMessage.decode(r, r.uint32(), $undefined, q + 1, m.statusQuotedMessage);
+                        m.statusQuotedMessage = $root.E2E.Message.StatusQuotedMessage.decode(r, r.size(), $undefined, q + 1, m.statusQuotedMessage);
                         continue;
                     }
                 case 110: {
                         if (u !== 2)
                             break;
-                        m.statusStickerInteractionMessage = $root.E2E.Message.StatusStickerInteractionMessage.decode(r, r.uint32(), $undefined, q + 1, m.statusStickerInteractionMessage);
+                        m.statusStickerInteractionMessage = $root.E2E.Message.StatusStickerInteractionMessage.decode(r, r.size(), $undefined, q + 1, m.statusStickerInteractionMessage);
                         continue;
                     }
                 case 111: {
                         if (u !== 2)
                             break;
-                        m.pollCreationMessageV5 = $root.E2E.Message.PollCreationMessage.decode(r, r.uint32(), $undefined, q + 1, m.pollCreationMessageV5);
+                        m.pollCreationMessageV5 = $root.E2E.Message.PollCreationMessage.decode(r, r.size(), $undefined, q + 1, m.pollCreationMessageV5);
                         continue;
                     }
                 case 113: {
                         if (u !== 2)
                             break;
-                        m.newsletterFollowerInviteMessageV2 = $root.E2E.Message.NewsletterFollowerInviteMessage.decode(r, r.uint32(), $undefined, q + 1, m.newsletterFollowerInviteMessageV2);
+                        m.newsletterFollowerInviteMessageV2 = $root.E2E.Message.NewsletterFollowerInviteMessage.decode(r, r.size(), $undefined, q + 1, m.newsletterFollowerInviteMessageV2);
                         continue;
                     }
                 case 115: {
                         if (u !== 2)
                             break;
-                        m.pollResultSnapshotMessageV3 = $root.E2E.Message.PollResultSnapshotMessage.decode(r, r.uint32(), $undefined, q + 1, m.pollResultSnapshotMessageV3);
+                        m.pollResultSnapshotMessageV3 = $root.E2E.Message.PollResultSnapshotMessage.decode(r, r.size(), $undefined, q + 1, m.pollResultSnapshotMessageV3);
                         continue;
                     }
                 case 116: {
                         if (u !== 2)
                             break;
-                        m.newsletterAdminProfileMessage = $root.E2E.Message.FutureProofMessage.decode(r, r.uint32(), $undefined, q + 1, m.newsletterAdminProfileMessage);
+                        m.newsletterAdminProfileMessage = $root.E2E.Message.FutureProofMessage.decode(r, r.size(), $undefined, q + 1, m.newsletterAdminProfileMessage);
                         continue;
                     }
                 case 118: {
                         if (u !== 2)
                             break;
-                        m.spoilerMessage = $root.E2E.Message.FutureProofMessage.decode(r, r.uint32(), $undefined, q + 1, m.spoilerMessage);
+                        m.spoilerMessage = $root.E2E.Message.FutureProofMessage.decode(r, r.size(), $undefined, q + 1, m.spoilerMessage);
                         continue;
                     }
                 case 119: {
                         if (u !== 2)
                             break;
-                        m.pollCreationMessageV6 = $root.E2E.Message.PollCreationMessage.decode(r, r.uint32(), $undefined, q + 1, m.pollCreationMessageV6);
+                        m.pollCreationMessageV6 = $root.E2E.Message.PollCreationMessage.decode(r, r.size(), $undefined, q + 1, m.pollCreationMessageV6);
                         continue;
                     }
                 case 120: {
                         if (u !== 2)
                             break;
-                        m.conditionalRevealMessage = $root.E2E.Message.ConditionalRevealMessage.decode(r, r.uint32(), $undefined, q + 1, m.conditionalRevealMessage);
+                        m.conditionalRevealMessage = $root.E2E.Message.ConditionalRevealMessage.decode(r, r.size(), $undefined, q + 1, m.conditionalRevealMessage);
                         continue;
                     }
                 case 121: {
                         if (u !== 2)
                             break;
-                        m.pollAddOptionMessage = $root.E2E.Message.PollAddOptionMessage.decode(r, r.uint32(), $undefined, q + 1, m.pollAddOptionMessage);
+                        m.pollAddOptionMessage = $root.E2E.Message.PollAddOptionMessage.decode(r, r.size(), $undefined, q + 1, m.pollAddOptionMessage);
                         continue;
                     }
                 case 122: {
                         if (u !== 2)
                             break;
-                        m.eventInviteMessage = $root.E2E.Message.EventInviteMessage.decode(r, r.uint32(), $undefined, q + 1, m.eventInviteMessage);
+                        m.eventInviteMessage = $root.E2E.Message.EventInviteMessage.decode(r, r.size(), $undefined, q + 1, m.eventInviteMessage);
                         continue;
                     }
                 case 123: {
                         if (u !== 2)
                             break;
-                        m.groupRootKeyShare = $root.E2E.GroupRootKeyShare.decode(r, r.uint32(), $undefined, q + 1, m.groupRootKeyShare);
+                        m.groupRootKeyShare = $root.E2E.GroupRootKeyShare.decode(r, r.size(), $undefined, q + 1, m.groupRootKeyShare);
                         continue;
                     }
                 case 124: {
                         if (u !== 2)
                             break;
-                        m.paymentReminderMessage = $root.E2E.Message.PaymentReminderMessage.decode(r, r.uint32(), $undefined, q + 1, m.paymentReminderMessage);
+                        m.paymentReminderMessage = $root.E2E.Message.PaymentReminderMessage.decode(r, r.size(), $undefined, q + 1, m.paymentReminderMessage);
                         continue;
                     }
                 case 125: {
                         if (u !== 2)
                             break;
-                        m.splitPaymentMessage = $root.E2E.Message.SplitPaymentMessage.decode(r, r.uint32(), $undefined, q + 1, m.splitPaymentMessage);
+                        m.splitPaymentMessage = $root.E2E.Message.SplitPaymentMessage.decode(r, r.size(), $undefined, q + 1, m.splitPaymentMessage);
                         continue;
                     }
                 case 126: {
                         if (u !== 2)
                             break;
-                        m.newsletterAdminProfileStatusMessage = $root.E2E.Message.FutureProofMessage.decode(r, r.uint32(), $undefined, q + 1, m.newsletterAdminProfileStatusMessage);
+                        m.newsletterAdminProfileStatusMessage = $root.E2E.Message.FutureProofMessage.decode(r, r.size(), $undefined, q + 1, m.newsletterAdminProfileStatusMessage);
                         continue;
                     }
                 case 127: {
                         if (u !== 2)
                             break;
-                        m.rootSecretDistributeMessage = $root.E2E.Message.RootSecretDistributeMessage.decode(r, r.uint32(), $undefined, q + 1, m.rootSecretDistributeMessage);
+                        m.rootSecretDistributeMessage = $root.E2E.Message.RootSecretDistributeMessage.decode(r, r.size(), $undefined, q + 1, m.rootSecretDistributeMessage);
                         continue;
                     }
                 case 128: {
                         if (u !== 2)
                             break;
-                        m.splitPaymentUpdateMessage = $root.E2E.Message.SplitPaymentUpdateMessage.decode(r, r.uint32(), $undefined, q + 1, m.splitPaymentUpdateMessage);
+                        m.splitPaymentUpdateMessage = $root.E2E.Message.SplitPaymentUpdateMessage.decode(r, r.size(), $undefined, q + 1, m.splitPaymentUpdateMessage);
                         continue;
                     }
                 case 129: {
                         if (u !== 2)
                             break;
-                        m.musicMessage = $root.E2E.Message.MusicMessage.decode(r, r.uint32(), $undefined, q + 1, m.musicMessage);
+                        m.musicMessage = $root.E2E.Message.MusicMessage.decode(r, r.size(), $undefined, q + 1, m.musicMessage);
                         continue;
                     }
                 case 130: {
                         if (u !== 2)
                             break;
-                        m.statusLinkPreviewMetadata = $root.E2E.Message.StatusLinkPreviewMetadata.decode(r, r.uint32(), $undefined, q + 1, m.statusLinkPreviewMetadata);
+                        m.statusLinkPreviewMetadata = $root.E2E.Message.StatusLinkPreviewMetadata.decode(r, r.size(), $undefined, q + 1, m.statusLinkPreviewMetadata);
                         continue;
                     }
                 case 131: {
                         if (u !== 2)
                             break;
-                        m.botPlatformRegistrationSuccessMessage = $root.E2E.Message.FutureProofMessage.decode(r, r.uint32(), $undefined, q + 1, m.botPlatformRegistrationSuccessMessage);
+                        m.botPlatformRegistrationSuccessMessage = $root.E2E.Message.FutureProofMessage.decode(r, r.size(), $undefined, q + 1, m.botPlatformRegistrationSuccessMessage);
                         continue;
                     }
                 case 132: {
                         if (u !== 2)
                             break;
-                        m.newsletterScheduledMessage = $root.E2E.Message.FutureProofMessage.decode(r, r.uint32(), $undefined, q + 1, m.newsletterScheduledMessage);
+                        m.newsletterScheduledMessage = $root.E2E.Message.FutureProofMessage.decode(r, r.size(), $undefined, q + 1, m.newsletterScheduledMessage);
                         continue;
                     }
                 case 133: {
                         if (u !== 2)
                             break;
-                        m.acp2SettingMessage = $root.E2E.Message.FutureProofMessage.decode(r, r.uint32(), $undefined, q + 1, m.acp2SettingMessage);
+                        m.acp2SettingMessage = $root.E2E.Message.FutureProofMessage.decode(r, r.size(), $undefined, q + 1, m.acp2SettingMessage);
                         continue;
                     }
                 case 134: {
                         if (u !== 2)
                             break;
-                        m.audioStickerMessage = $root.E2E.Message.FutureProofMessage.decode(r, r.uint32(), $undefined, q + 1, m.audioStickerMessage);
+                        m.audioStickerMessage = $root.E2E.Message.FutureProofMessage.decode(r, r.size(), $undefined, q + 1, m.audioStickerMessage);
                         continue;
                     }
                 case 135: {
                         if (u !== 2)
                             break;
-                        m.instantImageMessage = $root.E2E.Message.ImageMessage.decode(r, r.uint32(), $undefined, q + 1, m.instantImageMessage);
+                        m.instantImageMessage = $root.E2E.Message.ImageMessage.decode(r, r.size(), $undefined, q + 1, m.instantImageMessage);
                         continue;
                     }
                 case 136: {
                         if (u !== 2)
                             break;
-                        m.requestLocationMessage = $root.E2E.Message.RequestLocationMessage.decode(r, r.uint32(), $undefined, q + 1, m.requestLocationMessage);
+                        m.requestLocationMessage = $root.E2E.Message.RequestLocationMessage.decode(r, r.size(), $undefined, q + 1, m.requestLocationMessage);
                         continue;
                     }
                 case 137: {
                         if (u !== 2)
                             break;
-                        m.botGroupParticipantMessage = $root.E2E.Message.FutureProofMessage.decode(r, r.uint32(), $undefined, q + 1, m.botGroupParticipantMessage);
+                        m.botGroupParticipantMessage = $root.E2E.Message.FutureProofMessage.decode(r, r.size(), $undefined, q + 1, m.botGroupParticipantMessage);
                         continue;
                     }
                 case 138: {
                         if (u !== 2)
                             break;
-                        m.requestLocationUpdateMessage = $root.E2E.Message.RequestLocationUpdateMessage.decode(r, r.uint32(), $undefined, q + 1, m.requestLocationUpdateMessage);
+                        m.requestLocationUpdateMessage = $root.E2E.Message.RequestLocationUpdateMessage.decode(r, r.size(), $undefined, q + 1, m.requestLocationUpdateMessage);
                         continue;
                     }
                 }
@@ -15101,7 +15101,7 @@ export const E2E = $root.E2E = (() => {
                     case 17: {
                             if (u !== 2)
                                 break;
-                            m.contextInfo = $root.E2E.ContextInfo.decode(r, r.uint32(), $undefined, q + 1, m.contextInfo);
+                            m.contextInfo = $root.E2E.ContextInfo.decode(r, r.size(), $undefined, q + 1, m.contextInfo);
                             continue;
                         }
                     }
@@ -15419,13 +15419,13 @@ export const E2E = $root.E2E = (() => {
                     case 1: {
                             if (u !== 2)
                                 break;
-                            m.keyId = $root.E2E.Message.AppStateSyncKeyId.decode(r, r.uint32(), $undefined, q + 1, m.keyId);
+                            m.keyId = $root.E2E.Message.AppStateSyncKeyId.decode(r, r.size(), $undefined, q + 1, m.keyId);
                             continue;
                         }
                     case 2: {
                             if (u !== 2)
                                 break;
-                            m.keyData = $root.E2E.Message.AppStateSyncKeyData.decode(r, r.uint32(), $undefined, q + 1, m.keyData);
+                            m.keyData = $root.E2E.Message.AppStateSyncKeyData.decode(r, r.size(), $undefined, q + 1, m.keyData);
                             continue;
                         }
                     }
@@ -15574,7 +15574,7 @@ export const E2E = $root.E2E = (() => {
                     case 2: {
                             if (u !== 2)
                                 break;
-                            m.fingerprint = $root.E2E.Message.AppStateSyncKeyFingerprint.decode(r, r.uint32(), $undefined, q + 1, m.fingerprint);
+                            m.fingerprint = $root.E2E.Message.AppStateSyncKeyFingerprint.decode(r, r.size(), $undefined, q + 1, m.fingerprint);
                             continue;
                         }
                     case 3: {
@@ -16065,7 +16065,7 @@ export const E2E = $root.E2E = (() => {
                                 break;
                             if (!(m.keyIds && m.keyIds.length))
                                 m.keyIds = [];
-                            m.keyIds.push($root.E2E.Message.AppStateSyncKeyId.decode(r, r.uint32(), $undefined, q + 1));
+                            m.keyIds.push($root.E2E.Message.AppStateSyncKeyId.decode(r, r.size(), $undefined, q + 1));
                             continue;
                         }
                     }
@@ -16206,7 +16206,7 @@ export const E2E = $root.E2E = (() => {
                                 break;
                             if (!(m.keys && m.keys.length))
                                 m.keys = [];
-                            m.keys.push($root.E2E.Message.AppStateSyncKey.decode(r, r.uint32(), $undefined, q + 1));
+                            m.keys.push($root.E2E.Message.AppStateSyncKey.decode(r, r.size(), $undefined, q + 1));
                             continue;
                         }
                     }
@@ -16447,7 +16447,7 @@ export const E2E = $root.E2E = (() => {
                     case 17: {
                             if (u !== 2)
                                 break;
-                            m.contextInfo = $root.E2E.ContextInfo.decode(r, r.uint32(), $undefined, q + 1, m.contextInfo);
+                            m.contextInfo = $root.E2E.ContextInfo.decode(r, r.size(), $undefined, q + 1, m.contextInfo);
                             continue;
                         }
                     case 18: {
@@ -17019,7 +17019,7 @@ export const E2E = $root.E2E = (() => {
                                 break;
                             if (!(m.historyShareMessages && m.historyShareMessages.length))
                                 m.historyShareMessages = [];
-                            m.historyShareMessages.push($root.E2E.Message.HistoryShareMessageEntry.decode(r, r.uint32(), $undefined, q + 1));
+                            m.historyShareMessages.push($root.E2E.Message.HistoryShareMessageEntry.decode(r, r.size(), $undefined, q + 1));
                             continue;
                         }
                     }
@@ -17236,7 +17236,7 @@ export const E2E = $root.E2E = (() => {
                     case 8: {
                             if (u !== 2)
                                 break;
-                            m.contextInfo = $root.E2E.ContextInfo.decode(r, r.uint32(), $undefined, q + 1, m.contextInfo);
+                            m.contextInfo = $root.E2E.ContextInfo.decode(r, r.size(), $undefined, q + 1, m.contextInfo);
                             continue;
                         }
                     case 9: {
@@ -17244,7 +17244,7 @@ export const E2E = $root.E2E = (() => {
                                 break;
                             if (!(m.buttons && m.buttons.length))
                                 m.buttons = [];
-                            m.buttons.push($root.E2E.Message.ButtonsMessage.Button.decode(r, r.uint32(), $undefined, q + 1));
+                            m.buttons.push($root.E2E.Message.ButtonsMessage.Button.decode(r, r.size(), $undefined, q + 1));
                             continue;
                         }
                     case 10: {
@@ -17269,28 +17269,28 @@ export const E2E = $root.E2E = (() => {
                     case 2: {
                             if (u !== 2)
                                 break;
-                            m.documentMessage = $root.E2E.Message.DocumentMessage.decode(r, r.uint32(), $undefined, q + 1, m.documentMessage);
+                            m.documentMessage = $root.E2E.Message.DocumentMessage.decode(r, r.size(), $undefined, q + 1, m.documentMessage);
                             m.header = "documentMessage";
                             continue;
                         }
                     case 3: {
                             if (u !== 2)
                                 break;
-                            m.imageMessage = $root.E2E.Message.ImageMessage.decode(r, r.uint32(), $undefined, q + 1, m.imageMessage);
+                            m.imageMessage = $root.E2E.Message.ImageMessage.decode(r, r.size(), $undefined, q + 1, m.imageMessage);
                             m.header = "imageMessage";
                             continue;
                         }
                     case 4: {
                             if (u !== 2)
                                 break;
-                            m.videoMessage = $root.E2E.Message.VideoMessage.decode(r, r.uint32(), $undefined, q + 1, m.videoMessage);
+                            m.videoMessage = $root.E2E.Message.VideoMessage.decode(r, r.size(), $undefined, q + 1, m.videoMessage);
                             m.header = "videoMessage";
                             continue;
                         }
                     case 5: {
                             if (u !== 2)
                                 break;
-                            m.locationMessage = $root.E2E.Message.LocationMessage.decode(r, r.uint32(), $undefined, q + 1, m.locationMessage);
+                            m.locationMessage = $root.E2E.Message.LocationMessage.decode(r, r.size(), $undefined, q + 1, m.locationMessage);
                             m.header = "locationMessage";
                             continue;
                         }
@@ -17547,7 +17547,7 @@ export const E2E = $root.E2E = (() => {
                         case 2: {
                                 if (u !== 2)
                                     break;
-                                m.buttonText = $root.E2E.Message.ButtonsMessage.Button.ButtonText.decode(r, r.uint32(), $undefined, q + 1, m.buttonText);
+                                m.buttonText = $root.E2E.Message.ButtonsMessage.Button.ButtonText.decode(r, r.size(), $undefined, q + 1, m.buttonText);
                                 continue;
                             }
                         case 3: {
@@ -17565,7 +17565,7 @@ export const E2E = $root.E2E = (() => {
                         case 4: {
                                 if (u !== 2)
                                     break;
-                                m.nativeFlowInfo = $root.E2E.Message.ButtonsMessage.Button.NativeFlowInfo.decode(r, r.uint32(), $undefined, q + 1, m.nativeFlowInfo);
+                                m.nativeFlowInfo = $root.E2E.Message.ButtonsMessage.Button.NativeFlowInfo.decode(r, r.size(), $undefined, q + 1, m.nativeFlowInfo);
                                 continue;
                             }
                         }
@@ -18041,7 +18041,7 @@ export const E2E = $root.E2E = (() => {
                     case 3: {
                             if (u !== 2)
                                 break;
-                            m.contextInfo = $root.E2E.ContextInfo.decode(r, r.uint32(), $undefined, q + 1, m.contextInfo);
+                            m.contextInfo = $root.E2E.ContextInfo.decode(r, r.size(), $undefined, q + 1, m.contextInfo);
                             continue;
                         }
                     case 4: {
@@ -18294,7 +18294,7 @@ export const E2E = $root.E2E = (() => {
                     case 7: {
                             if (u !== 2)
                                 break;
-                            m.contextInfo = $root.E2E.ContextInfo.decode(r, r.uint32(), $undefined, q + 1, m.contextInfo);
+                            m.contextInfo = $root.E2E.ContextInfo.decode(r, r.size(), $undefined, q + 1, m.contextInfo);
                             continue;
                         }
                     case 8: {
@@ -18312,7 +18312,7 @@ export const E2E = $root.E2E = (() => {
                     case 10: {
                             if (u !== 2)
                                 break;
-                            m.messageContextInfo = $root.E2E.MessageContextInfo.decode(r, r.uint32(), $undefined, q + 1, m.messageContextInfo);
+                            m.messageContextInfo = $root.E2E.MessageContextInfo.decode(r, r.size(), $undefined, q + 1, m.messageContextInfo);
                             continue;
                         }
                     case 11: {
@@ -18611,7 +18611,7 @@ export const E2E = $root.E2E = (() => {
                                 break;
                             if (!(m.participants && m.participants.length))
                                 m.participants = [];
-                            m.participants.push($root.E2E.Message.CallLogMessage.CallParticipant.decode(r, r.uint32(), $undefined, q + 1));
+                            m.participants.push($root.E2E.Message.CallLogMessage.CallParticipant.decode(r, r.size(), $undefined, q + 1));
                             continue;
                         }
                     }
@@ -19038,7 +19038,7 @@ export const E2E = $root.E2E = (() => {
                     case 1: {
                             if (u !== 2)
                                 break;
-                            m.key = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.uint32(), $undefined, q + 1, m.key);
+                            m.key = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.size(), $undefined, q + 1, m.key);
                             continue;
                         }
                     }
@@ -20171,35 +20171,35 @@ export const E2E = $root.E2E = (() => {
                     case 10: {
                             if (u !== 2)
                                 break;
-                            m.defaultWallpaper = $root.E2E.Message.ChatDefaultWallpaper.decode(r, r.uint32(), $undefined, q + 1, m.defaultWallpaper);
+                            m.defaultWallpaper = $root.E2E.Message.ChatDefaultWallpaper.decode(r, r.size(), $undefined, q + 1, m.defaultWallpaper);
                             m.wallpaper = "defaultWallpaper";
                             continue;
                         }
                     case 11: {
                             if (u !== 2)
                                 break;
-                            m.solidColor = $root.E2E.Message.ChatSolidColorWallpaper.decode(r, r.uint32(), $undefined, q + 1, m.solidColor);
+                            m.solidColor = $root.E2E.Message.ChatSolidColorWallpaper.decode(r, r.size(), $undefined, q + 1, m.solidColor);
                             m.wallpaper = "solidColor";
                             continue;
                         }
                     case 12: {
                             if (u !== 2)
                                 break;
-                            m.stockImage = $root.E2E.Message.ChatStockImageWallpaper.decode(r, r.uint32(), $undefined, q + 1, m.stockImage);
+                            m.stockImage = $root.E2E.Message.ChatStockImageWallpaper.decode(r, r.size(), $undefined, q + 1, m.stockImage);
                             m.wallpaper = "stockImage";
                             continue;
                         }
                     case 13: {
                             if (u !== 2)
                                 break;
-                            m.customImage = $root.E2E.Message.ChatCustomImageWallpaper.decode(r, r.uint32(), $undefined, q + 1, m.customImage);
+                            m.customImage = $root.E2E.Message.ChatCustomImageWallpaper.decode(r, r.size(), $undefined, q + 1, m.customImage);
                             m.wallpaper = "customImage";
                             continue;
                         }
                     case 14: {
                             if (u !== 2)
                                 break;
-                            m.animatedWallpaper = $root.E2E.Message.ChatAnimatedWallpaper.decode(r, r.uint32(), $undefined, q + 1, m.animatedWallpaper);
+                            m.animatedWallpaper = $root.E2E.Message.ChatAnimatedWallpaper.decode(r, r.size(), $undefined, q + 1, m.animatedWallpaper);
                             m.wallpaper = "animatedWallpaper";
                             continue;
                         }
@@ -20451,7 +20451,7 @@ export const E2E = $root.E2E = (() => {
                     case 5: {
                             if (u !== 2)
                                 break;
-                            m.notificationContent = $root.E2E.Message.CloudAPIThreadControlNotification.CloudAPIThreadControlNotificationContent.decode(r, r.uint32(), $undefined, q + 1, m.notificationContent);
+                            m.notificationContent = $root.E2E.Message.CloudAPIThreadControlNotification.CloudAPIThreadControlNotificationContent.decode(r, r.size(), $undefined, q + 1, m.notificationContent);
                             continue;
                         }
                     case 6: {
@@ -20964,13 +20964,13 @@ export const E2E = $root.E2E = (() => {
                     case 1: {
                             if (u !== 2)
                                 break;
-                            m.message = $root.E2E.Message.decode(r, r.uint32(), $undefined, q + 1, m.message);
+                            m.message = $root.E2E.Message.decode(r, r.size(), $undefined, q + 1, m.message);
                             continue;
                         }
                     case 2: {
                             if (u !== 2)
                                 break;
-                            m.targetMessageKey = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.uint32(), $undefined, q + 1, m.targetMessageKey);
+                            m.targetMessageKey = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.size(), $undefined, q + 1, m.targetMessageKey);
                             continue;
                         }
                     }
@@ -21341,7 +21341,7 @@ export const E2E = $root.E2E = (() => {
                     case 17: {
                             if (u !== 2)
                                 break;
-                            m.contextInfo = $root.E2E.ContextInfo.decode(r, r.uint32(), $undefined, q + 1, m.contextInfo);
+                            m.contextInfo = $root.E2E.ContextInfo.decode(r, r.size(), $undefined, q + 1, m.contextInfo);
                             continue;
                         }
                     case 18: {
@@ -21513,13 +21513,13 @@ export const E2E = $root.E2E = (() => {
                                 break;
                             if (!(m.contacts && m.contacts.length))
                                 m.contacts = [];
-                            m.contacts.push($root.E2E.Message.ContactMessage.decode(r, r.uint32(), $undefined, q + 1));
+                            m.contacts.push($root.E2E.Message.ContactMessage.decode(r, r.size(), $undefined, q + 1));
                             continue;
                         }
                     case 17: {
                             if (u !== 2)
                                 break;
-                            m.contextInfo = $root.E2E.ContextInfo.decode(r, r.uint32(), $undefined, q + 1, m.contextInfo);
+                            m.contextInfo = $root.E2E.ContextInfo.decode(r, r.size(), $undefined, q + 1, m.contextInfo);
                             continue;
                         }
                     }
@@ -21673,7 +21673,7 @@ export const E2E = $root.E2E = (() => {
                     case 1: {
                             if (u !== 2)
                                 break;
-                            m.key = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.uint32(), $undefined, q + 1, m.key);
+                            m.key = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.size(), $undefined, q + 1, m.key);
                             continue;
                         }
                     }
@@ -21813,7 +21813,7 @@ export const E2E = $root.E2E = (() => {
                     case 2: {
                             if (u !== 2)
                                 break;
-                            m.message = $root.E2E.Message.decode(r, r.uint32(), $undefined, q + 1, m.message);
+                            m.message = $root.E2E.Message.decode(r, r.size(), $undefined, q + 1, m.message);
                             continue;
                         }
                     case 3: {
@@ -22117,7 +22117,7 @@ export const E2E = $root.E2E = (() => {
                     case 17: {
                             if (u !== 2)
                                 break;
-                            m.contextInfo = $root.E2E.ContextInfo.decode(r, r.uint32(), $undefined, q + 1, m.contextInfo);
+                            m.contextInfo = $root.E2E.ContextInfo.decode(r, r.size(), $undefined, q + 1, m.contextInfo);
                             continue;
                         }
                     case 18: {
@@ -22501,7 +22501,7 @@ export const E2E = $root.E2E = (() => {
                     case 1: {
                             if (u !== 2)
                                 break;
-                            m.targetMessageKey = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.uint32(), $undefined, q + 1, m.targetMessageKey);
+                            m.targetMessageKey = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.size(), $undefined, q + 1, m.targetMessageKey);
                             continue;
                         }
                     case 2: {
@@ -22679,7 +22679,7 @@ export const E2E = $root.E2E = (() => {
                     case 1: {
                             if (u !== 2)
                                 break;
-                            m.eventCreationMessageKey = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.uint32(), $undefined, q + 1, m.eventCreationMessageKey);
+                            m.eventCreationMessageKey = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.size(), $undefined, q + 1, m.eventCreationMessageKey);
                             continue;
                         }
                     case 2: {
@@ -22857,7 +22857,7 @@ export const E2E = $root.E2E = (() => {
                     case 1: {
                             if (u !== 2)
                                 break;
-                            m.targetMessageKey = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.uint32(), $undefined, q + 1, m.targetMessageKey);
+                            m.targetMessageKey = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.size(), $undefined, q + 1, m.targetMessageKey);
                             continue;
                         }
                     case 2: {
@@ -23065,7 +23065,7 @@ export const E2E = $root.E2E = (() => {
                     case 1: {
                             if (u !== 2)
                                 break;
-                            m.contextInfo = $root.E2E.ContextInfo.decode(r, r.uint32(), $undefined, q + 1, m.contextInfo);
+                            m.contextInfo = $root.E2E.ContextInfo.decode(r, r.size(), $undefined, q + 1, m.contextInfo);
                             continue;
                         }
                     case 2: {
@@ -23485,7 +23485,7 @@ export const E2E = $root.E2E = (() => {
                     case 1: {
                             if (u !== 2)
                                 break;
-                            m.contextInfo = $root.E2E.ContextInfo.decode(r, r.uint32(), $undefined, q + 1, m.contextInfo);
+                            m.contextInfo = $root.E2E.ContextInfo.decode(r, r.size(), $undefined, q + 1, m.contextInfo);
                             continue;
                         }
                     case 2: {
@@ -23509,7 +23509,7 @@ export const E2E = $root.E2E = (() => {
                     case 5: {
                             if (u !== 2)
                                 break;
-                            m.location = $root.E2E.Message.LocationMessage.decode(r, r.uint32(), $undefined, q + 1, m.location);
+                            m.location = $root.E2E.Message.LocationMessage.decode(r, r.size(), $undefined, q + 1, m.location);
                             continue;
                         }
                     case 6: {
@@ -24173,7 +24173,7 @@ export const E2E = $root.E2E = (() => {
                     case 17: {
                             if (u !== 2)
                                 break;
-                            m.contextInfo = $root.E2E.ContextInfo.decode(r, r.uint32(), $undefined, q + 1, m.contextInfo);
+                            m.contextInfo = $root.E2E.ContextInfo.decode(r, r.size(), $undefined, q + 1, m.contextInfo);
                             continue;
                         }
                     case 18: {
@@ -24281,19 +24281,19 @@ export const E2E = $root.E2E = (() => {
                     case 33: {
                             if (u !== 2)
                                 break;
-                            m.faviconMmsMetadata = $root.E2E.Message.MMSThumbnailMetadata.decode(r, r.uint32(), $undefined, q + 1, m.faviconMmsMetadata);
+                            m.faviconMmsMetadata = $root.E2E.Message.MMSThumbnailMetadata.decode(r, r.size(), $undefined, q + 1, m.faviconMmsMetadata);
                             continue;
                         }
                     case 34: {
                             if (u !== 2)
                                 break;
-                            m.linkPreviewMetadata = $root.E2E.Message.LinkPreviewMetadata.decode(r, r.uint32(), $undefined, q + 1, m.linkPreviewMetadata);
+                            m.linkPreviewMetadata = $root.E2E.Message.LinkPreviewMetadata.decode(r, r.size(), $undefined, q + 1, m.linkPreviewMetadata);
                             continue;
                         }
                     case 35: {
                             if (u !== 2)
                                 break;
-                            m.paymentLinkMetadata = $root.E2E.Message.PaymentLinkMetadata.decode(r, r.uint32(), $undefined, q + 1, m.paymentLinkMetadata);
+                            m.paymentLinkMetadata = $root.E2E.Message.PaymentLinkMetadata.decode(r, r.size(), $undefined, q + 1, m.paymentLinkMetadata);
                             continue;
                         }
                     case 36: {
@@ -24301,7 +24301,7 @@ export const E2E = $root.E2E = (() => {
                                 break;
                             if (!(m.endCardTiles && m.endCardTiles.length))
                                 m.endCardTiles = [];
-                            m.endCardTiles.push($root.E2E.Message.VideoEndCard.decode(r, r.uint32(), $undefined, q + 1));
+                            m.endCardTiles.push($root.E2E.Message.VideoEndCard.decode(r, r.size(), $undefined, q + 1));
                             continue;
                         }
                     case 37: {
@@ -24313,13 +24313,13 @@ export const E2E = $root.E2E = (() => {
                     case 38: {
                             if (u !== 2)
                                 break;
-                            m.musicMetadata = $root.E2E.EmbeddedMusic.decode(r, r.uint32(), $undefined, q + 1, m.musicMetadata);
+                            m.musicMetadata = $root.E2E.EmbeddedMusic.decode(r, r.size(), $undefined, q + 1, m.musicMetadata);
                             continue;
                         }
                     case 39: {
                             if (u !== 2)
                                 break;
-                            m.paymentExtendedMetadata = $root.E2E.Message.PaymentExtendedMetadata.decode(r, r.uint32(), $undefined, q + 1, m.paymentExtendedMetadata);
+                            m.paymentExtendedMetadata = $root.E2E.Message.PaymentExtendedMetadata.decode(r, r.size(), $undefined, q + 1, m.paymentExtendedMetadata);
                             continue;
                         }
                     }
@@ -25053,7 +25053,7 @@ export const E2E = $root.E2E = (() => {
                     case 4: {
                             if (u !== 2)
                                 break;
-                            m.connection = $root.E2E.Message.CoexConnectionDescriptor.decode(r, r.uint32(), $undefined, q + 1, m.connection);
+                            m.connection = $root.E2E.Message.CoexConnectionDescriptor.decode(r, r.size(), $undefined, q + 1, m.connection);
                             continue;
                         }
                     }
@@ -25211,7 +25211,7 @@ export const E2E = $root.E2E = (() => {
                     case 1: {
                             if (u !== 2)
                                 break;
-                            m.message = $root.E2E.Message.decode(r, r.uint32(), $undefined, q + 1, m.message);
+                            m.message = $root.E2E.Message.decode(r, r.size(), $undefined, q + 1, m.message);
                             continue;
                         }
                     }
@@ -25396,7 +25396,7 @@ export const E2E = $root.E2E = (() => {
                     case 7: {
                             if (u !== 2)
                                 break;
-                            m.contextInfo = $root.E2E.ContextInfo.decode(r, r.uint32(), $undefined, q + 1, m.contextInfo);
+                            m.contextInfo = $root.E2E.ContextInfo.decode(r, r.size(), $undefined, q + 1, m.contextInfo);
                             continue;
                         }
                     case 8: {
@@ -25689,7 +25689,7 @@ export const E2E = $root.E2E = (() => {
                                 break;
                             if (!(m.localizableParams && m.localizableParams.length))
                                 m.localizableParams = [];
-                            m.localizableParams.push($root.E2E.Message.HighlyStructuredMessage.HSMLocalizableParameter.decode(r, r.uint32(), $undefined, q + 1));
+                            m.localizableParams.push($root.E2E.Message.HighlyStructuredMessage.HSMLocalizableParameter.decode(r, r.size(), $undefined, q + 1));
                             continue;
                         }
                     case 7: {
@@ -25707,7 +25707,7 @@ export const E2E = $root.E2E = (() => {
                     case 9: {
                             if (u !== 2)
                                 break;
-                            m.hydratedHsm = $root.E2E.Message.TemplateMessage.decode(r, r.uint32(), $undefined, q + 1, m.hydratedHsm);
+                            m.hydratedHsm = $root.E2E.Message.TemplateMessage.decode(r, r.size(), $undefined, q + 1, m.hydratedHsm);
                             continue;
                         }
                     }
@@ -25927,14 +25927,14 @@ export const E2E = $root.E2E = (() => {
                         case 2: {
                                 if (u !== 2)
                                     break;
-                                m.currency = $root.E2E.Message.HighlyStructuredMessage.HSMLocalizableParameter.HSMCurrency.decode(r, r.uint32(), $undefined, q + 1, m.currency);
+                                m.currency = $root.E2E.Message.HighlyStructuredMessage.HSMLocalizableParameter.HSMCurrency.decode(r, r.size(), $undefined, q + 1, m.currency);
                                 m.paramOneof = "currency";
                                 continue;
                             }
                         case 3: {
                                 if (u !== 2)
                                     break;
-                                m.dateTime = $root.E2E.Message.HighlyStructuredMessage.HSMLocalizableParameter.HSMDateTime.decode(r, r.uint32(), $undefined, q + 1, m.dateTime);
+                                m.dateTime = $root.E2E.Message.HighlyStructuredMessage.HSMLocalizableParameter.HSMDateTime.decode(r, r.size(), $undefined, q + 1, m.dateTime);
                                 m.paramOneof = "dateTime";
                                 continue;
                             }
@@ -26246,14 +26246,14 @@ export const E2E = $root.E2E = (() => {
                             case 1: {
                                     if (u !== 2)
                                         break;
-                                    m.component = $root.E2E.Message.HighlyStructuredMessage.HSMLocalizableParameter.HSMDateTime.HSMDateTimeComponent.decode(r, r.uint32(), $undefined, q + 1, m.component);
+                                    m.component = $root.E2E.Message.HighlyStructuredMessage.HSMLocalizableParameter.HSMDateTime.HSMDateTimeComponent.decode(r, r.size(), $undefined, q + 1, m.component);
                                     m.datetimeOneof = "component";
                                     continue;
                                 }
                             case 2: {
                                     if (u !== 2)
                                         break;
-                                    m.unixEpoch = $root.E2E.Message.HighlyStructuredMessage.HSMLocalizableParameter.HSMDateTime.HSMDateTimeUnixEpoch.decode(r, r.uint32(), $undefined, q + 1, m.unixEpoch);
+                                    m.unixEpoch = $root.E2E.Message.HighlyStructuredMessage.HSMLocalizableParameter.HSMDateTime.HSMDateTimeUnixEpoch.decode(r, r.size(), $undefined, q + 1, m.unixEpoch);
                                     m.datetimeOneof = "unixEpoch";
                                     continue;
                                 }
@@ -27225,7 +27225,7 @@ export const E2E = $root.E2E = (() => {
                     case 13: {
                             if (u !== 2)
                                 break;
-                            m.fullHistorySyncOnDemandRequestMetadata = $root.E2E.Message.FullHistorySyncOnDemandRequestMetadata.decode(r, r.uint32(), $undefined, q + 1, m.fullHistorySyncOnDemandRequestMetadata);
+                            m.fullHistorySyncOnDemandRequestMetadata = $root.E2E.Message.FullHistorySyncOnDemandRequestMetadata.decode(r, r.size(), $undefined, q + 1, m.fullHistorySyncOnDemandRequestMetadata);
                             continue;
                         }
                     case 14: {
@@ -27237,7 +27237,7 @@ export const E2E = $root.E2E = (() => {
                     case 15: {
                             if (u !== 2)
                                 break;
-                            m.messageAccessStatus = $root.E2E.Message.HistorySyncMessageAccessStatus.decode(r, r.uint32(), $undefined, q + 1, m.messageAccessStatus);
+                            m.messageAccessStatus = $root.E2E.Message.HistorySyncMessageAccessStatus.decode(r, r.size(), $undefined, q + 1, m.messageAccessStatus);
                             continue;
                         }
                     }
@@ -27735,7 +27735,7 @@ export const E2E = $root.E2E = (() => {
                                 break;
                             if (!(m.interactiveAnnotations && m.interactiveAnnotations.length))
                                 m.interactiveAnnotations = [];
-                            m.interactiveAnnotations.push($root.E2E.InteractiveAnnotation.decode(r, r.uint32(), $undefined, q + 1));
+                            m.interactiveAnnotations.push($root.E2E.InteractiveAnnotation.decode(r, r.size(), $undefined, q + 1));
                             continue;
                         }
                     case 11: {
@@ -27759,7 +27759,7 @@ export const E2E = $root.E2E = (() => {
                     case 17: {
                             if (u !== 2)
                                 break;
-                            m.contextInfo = $root.E2E.ContextInfo.decode(r, r.uint32(), $undefined, q + 1, m.contextInfo);
+                            m.contextInfo = $root.E2E.ContextInfo.decode(r, r.size(), $undefined, q + 1, m.contextInfo);
                             continue;
                         }
                     case 18: {
@@ -27847,7 +27847,7 @@ export const E2E = $root.E2E = (() => {
                                 break;
                             if (!(m.annotations && m.annotations.length))
                                 m.annotations = [];
-                            m.annotations.push($root.E2E.InteractiveAnnotation.decode(r, r.uint32(), $undefined, q + 1));
+                            m.annotations.push($root.E2E.InteractiveAnnotation.decode(r, r.size(), $undefined, q + 1));
                             continue;
                         }
                     case 31: {
@@ -28549,64 +28549,64 @@ export const E2E = $root.E2E = (() => {
                     case 1: {
                             if (u !== 2)
                                 break;
-                            m.header = $root.E2E.Message.InteractiveMessage.Header.decode(r, r.uint32(), $undefined, q + 1, m.header);
+                            m.header = $root.E2E.Message.InteractiveMessage.Header.decode(r, r.size(), $undefined, q + 1, m.header);
                             continue;
                         }
                     case 2: {
                             if (u !== 2)
                                 break;
-                            m.body = $root.E2E.Message.InteractiveMessage.Body.decode(r, r.uint32(), $undefined, q + 1, m.body);
+                            m.body = $root.E2E.Message.InteractiveMessage.Body.decode(r, r.size(), $undefined, q + 1, m.body);
                             continue;
                         }
                     case 3: {
                             if (u !== 2)
                                 break;
-                            m.footer = $root.E2E.Message.InteractiveMessage.Footer.decode(r, r.uint32(), $undefined, q + 1, m.footer);
+                            m.footer = $root.E2E.Message.InteractiveMessage.Footer.decode(r, r.size(), $undefined, q + 1, m.footer);
                             continue;
                         }
                     case 8: {
                             if (u !== 2)
                                 break;
-                            m.bloksWidget = $root.E2E.Message.InteractiveMessage.BloksWidget.decode(r, r.uint32(), $undefined, q + 1, m.bloksWidget);
+                            m.bloksWidget = $root.E2E.Message.InteractiveMessage.BloksWidget.decode(r, r.size(), $undefined, q + 1, m.bloksWidget);
                             continue;
                         }
                     case 15: {
                             if (u !== 2)
                                 break;
-                            m.contextInfo = $root.E2E.ContextInfo.decode(r, r.uint32(), $undefined, q + 1, m.contextInfo);
+                            m.contextInfo = $root.E2E.ContextInfo.decode(r, r.size(), $undefined, q + 1, m.contextInfo);
                             continue;
                         }
                     case 16: {
                             if (u !== 2)
                                 break;
-                            m.urlTrackingMap = $root.E2E.UrlTrackingMap.decode(r, r.uint32(), $undefined, q + 1, m.urlTrackingMap);
+                            m.urlTrackingMap = $root.E2E.UrlTrackingMap.decode(r, r.size(), $undefined, q + 1, m.urlTrackingMap);
                             continue;
                         }
                     case 4: {
                             if (u !== 2)
                                 break;
-                            m.shopStorefrontMessage = $root.E2E.Message.InteractiveMessage.ShopMessage.decode(r, r.uint32(), $undefined, q + 1, m.shopStorefrontMessage);
+                            m.shopStorefrontMessage = $root.E2E.Message.InteractiveMessage.ShopMessage.decode(r, r.size(), $undefined, q + 1, m.shopStorefrontMessage);
                             m.interactiveMessage = "shopStorefrontMessage";
                             continue;
                         }
                     case 5: {
                             if (u !== 2)
                                 break;
-                            m.collectionMessage = $root.E2E.Message.InteractiveMessage.CollectionMessage.decode(r, r.uint32(), $undefined, q + 1, m.collectionMessage);
+                            m.collectionMessage = $root.E2E.Message.InteractiveMessage.CollectionMessage.decode(r, r.size(), $undefined, q + 1, m.collectionMessage);
                             m.interactiveMessage = "collectionMessage";
                             continue;
                         }
                     case 6: {
                             if (u !== 2)
                                 break;
-                            m.nativeFlowMessage = $root.E2E.Message.InteractiveMessage.NativeFlowMessage.decode(r, r.uint32(), $undefined, q + 1, m.nativeFlowMessage);
+                            m.nativeFlowMessage = $root.E2E.Message.InteractiveMessage.NativeFlowMessage.decode(r, r.size(), $undefined, q + 1, m.nativeFlowMessage);
                             m.interactiveMessage = "nativeFlowMessage";
                             continue;
                         }
                     case 7: {
                             if (u !== 2)
                                 break;
-                            m.carouselMessage = $root.E2E.Message.InteractiveMessage.CarouselMessage.decode(r, r.uint32(), $undefined, q + 1, m.carouselMessage);
+                            m.carouselMessage = $root.E2E.Message.InteractiveMessage.CarouselMessage.decode(r, r.size(), $undefined, q + 1, m.carouselMessage);
                             m.interactiveMessage = "carouselMessage";
                             continue;
                         }
@@ -29128,7 +29128,7 @@ export const E2E = $root.E2E = (() => {
                                     break;
                                 if (!(m.cards && m.cards.length))
                                     m.cards = [];
-                                m.cards.push($root.E2E.Message.InteractiveMessage.decode(r, r.uint32(), $undefined, q + 1));
+                                m.cards.push($root.E2E.Message.InteractiveMessage.decode(r, r.size(), $undefined, q + 1));
                                 continue;
                             }
                         case 2: {
@@ -29501,7 +29501,7 @@ export const E2E = $root.E2E = (() => {
                         case 2: {
                                 if (u !== 2)
                                     break;
-                                m.audioMessage = $root.E2E.Message.AudioMessage.decode(r, r.uint32(), $undefined, q + 1, m.audioMessage);
+                                m.audioMessage = $root.E2E.Message.AudioMessage.decode(r, r.size(), $undefined, q + 1, m.audioMessage);
                                 m.media = "audioMessage";
                                 continue;
                             }
@@ -29697,20 +29697,20 @@ export const E2E = $root.E2E = (() => {
                         case 10: {
                                 if (u !== 2)
                                     break;
-                                m.bloksWidget = $root.E2E.Message.InteractiveMessage.BloksWidget.decode(r, r.uint32(), $undefined, q + 1, m.bloksWidget);
+                                m.bloksWidget = $root.E2E.Message.InteractiveMessage.BloksWidget.decode(r, r.size(), $undefined, q + 1, m.bloksWidget);
                                 continue;
                             }
                         case 3: {
                                 if (u !== 2)
                                     break;
-                                m.documentMessage = $root.E2E.Message.DocumentMessage.decode(r, r.uint32(), $undefined, q + 1, m.documentMessage);
+                                m.documentMessage = $root.E2E.Message.DocumentMessage.decode(r, r.size(), $undefined, q + 1, m.documentMessage);
                                 m.media = "documentMessage";
                                 continue;
                             }
                         case 4: {
                                 if (u !== 2)
                                     break;
-                                m.imageMessage = $root.E2E.Message.ImageMessage.decode(r, r.uint32(), $undefined, q + 1, m.imageMessage);
+                                m.imageMessage = $root.E2E.Message.ImageMessage.decode(r, r.size(), $undefined, q + 1, m.imageMessage);
                                 m.media = "imageMessage";
                                 continue;
                             }
@@ -29724,21 +29724,21 @@ export const E2E = $root.E2E = (() => {
                         case 7: {
                                 if (u !== 2)
                                     break;
-                                m.videoMessage = $root.E2E.Message.VideoMessage.decode(r, r.uint32(), $undefined, q + 1, m.videoMessage);
+                                m.videoMessage = $root.E2E.Message.VideoMessage.decode(r, r.size(), $undefined, q + 1, m.videoMessage);
                                 m.media = "videoMessage";
                                 continue;
                             }
                         case 8: {
                                 if (u !== 2)
                                     break;
-                                m.locationMessage = $root.E2E.Message.LocationMessage.decode(r, r.uint32(), $undefined, q + 1, m.locationMessage);
+                                m.locationMessage = $root.E2E.Message.LocationMessage.decode(r, r.size(), $undefined, q + 1, m.locationMessage);
                                 m.media = "locationMessage";
                                 continue;
                             }
                         case 9: {
                                 if (u !== 2)
                                     break;
-                                m.productMessage = $root.E2E.Message.ProductMessage.decode(r, r.uint32(), $undefined, q + 1, m.productMessage);
+                                m.productMessage = $root.E2E.Message.ProductMessage.decode(r, r.size(), $undefined, q + 1, m.productMessage);
                                 m.media = "productMessage";
                                 continue;
                             }
@@ -29960,7 +29960,7 @@ export const E2E = $root.E2E = (() => {
                                     break;
                                 if (!(m.buttons && m.buttons.length))
                                     m.buttons = [];
-                                m.buttons.push($root.E2E.Message.InteractiveMessage.NativeFlowMessage.NativeFlowButton.decode(r, r.uint32(), $undefined, q + 1));
+                                m.buttons.push($root.E2E.Message.InteractiveMessage.NativeFlowMessage.NativeFlowButton.decode(r, r.size(), $undefined, q + 1));
                                 continue;
                             }
                         case 2: {
@@ -30471,19 +30471,19 @@ export const E2E = $root.E2E = (() => {
                     case 1: {
                             if (u !== 2)
                                 break;
-                            m.body = $root.E2E.Message.InteractiveResponseMessage.Body.decode(r, r.uint32(), $undefined, q + 1, m.body);
+                            m.body = $root.E2E.Message.InteractiveResponseMessage.Body.decode(r, r.size(), $undefined, q + 1, m.body);
                             continue;
                         }
                     case 15: {
                             if (u !== 2)
                                 break;
-                            m.contextInfo = $root.E2E.ContextInfo.decode(r, r.uint32(), $undefined, q + 1, m.contextInfo);
+                            m.contextInfo = $root.E2E.ContextInfo.decode(r, r.size(), $undefined, q + 1, m.contextInfo);
                             continue;
                         }
                     case 2: {
                             if (u !== 2)
                                 break;
-                            m.nativeFlowResponseMessage = $root.E2E.Message.InteractiveResponseMessage.NativeFlowResponseMessage.decode(r, r.uint32(), $undefined, q + 1, m.nativeFlowResponseMessage);
+                            m.nativeFlowResponseMessage = $root.E2E.Message.InteractiveResponseMessage.NativeFlowResponseMessage.decode(r, r.size(), $undefined, q + 1, m.nativeFlowResponseMessage);
                             m.interactiveResponseMessage = "nativeFlowResponseMessage";
                             continue;
                         }
@@ -31301,7 +31301,7 @@ export const E2E = $root.E2E = (() => {
                     case 1: {
                             if (u !== 2)
                                 break;
-                            m.key = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.uint32(), $undefined, q + 1, m.key);
+                            m.key = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.size(), $undefined, q + 1, m.key);
                             continue;
                         }
                     case 2: {
@@ -31513,13 +31513,13 @@ export const E2E = $root.E2E = (() => {
                     case 1: {
                             if (u !== 2)
                                 break;
-                            m.paymentLinkMetadata = $root.E2E.Message.PaymentLinkMetadata.decode(r, r.uint32(), $undefined, q + 1, m.paymentLinkMetadata);
+                            m.paymentLinkMetadata = $root.E2E.Message.PaymentLinkMetadata.decode(r, r.size(), $undefined, q + 1, m.paymentLinkMetadata);
                             continue;
                         }
                     case 2: {
                             if (u !== 2)
                                 break;
-                            m.urlMetadata = $root.E2E.Message.URLMetadata.decode(r, r.uint32(), $undefined, q + 1, m.urlMetadata);
+                            m.urlMetadata = $root.E2E.Message.URLMetadata.decode(r, r.size(), $undefined, q + 1, m.urlMetadata);
                             continue;
                         }
                     case 3: {
@@ -31561,7 +31561,7 @@ export const E2E = $root.E2E = (() => {
                     case 8: {
                             if (u !== 2)
                                 break;
-                            m.musicMetadata = $root.E2E.EmbeddedMusic.decode(r, r.uint32(), $undefined, q + 1, m.musicMetadata);
+                            m.musicMetadata = $root.E2E.EmbeddedMusic.decode(r, r.size(), $undefined, q + 1, m.musicMetadata);
                             continue;
                         }
                     case 9: {
@@ -31846,13 +31846,13 @@ export const E2E = $root.E2E = (() => {
                                 break;
                             if (!(m.sections && m.sections.length))
                                 m.sections = [];
-                            m.sections.push($root.E2E.Message.ListMessage.Section.decode(r, r.uint32(), $undefined, q + 1));
+                            m.sections.push($root.E2E.Message.ListMessage.Section.decode(r, r.size(), $undefined, q + 1));
                             continue;
                         }
                     case 6: {
                             if (u !== 2)
                                 break;
-                            m.productListInfo = $root.E2E.Message.ListMessage.ProductListInfo.decode(r, r.uint32(), $undefined, q + 1, m.productListInfo);
+                            m.productListInfo = $root.E2E.Message.ListMessage.ProductListInfo.decode(r, r.size(), $undefined, q + 1, m.productListInfo);
                             continue;
                         }
                     case 7: {
@@ -31864,7 +31864,7 @@ export const E2E = $root.E2E = (() => {
                     case 8: {
                             if (u !== 2)
                                 break;
-                            m.contextInfo = $root.E2E.ContextInfo.decode(r, r.uint32(), $undefined, q + 1, m.contextInfo);
+                            m.contextInfo = $root.E2E.ContextInfo.decode(r, r.size(), $undefined, q + 1, m.contextInfo);
                             continue;
                         }
                     }
@@ -32360,13 +32360,13 @@ export const E2E = $root.E2E = (() => {
                                     break;
                                 if (!(m.productSections && m.productSections.length))
                                     m.productSections = [];
-                                m.productSections.push($root.E2E.Message.ListMessage.ProductSection.decode(r, r.uint32(), $undefined, q + 1));
+                                m.productSections.push($root.E2E.Message.ListMessage.ProductSection.decode(r, r.size(), $undefined, q + 1));
                                 continue;
                             }
                         case 2: {
                                 if (u !== 2)
                                     break;
-                                m.headerImage = $root.E2E.Message.ListMessage.ProductListHeaderImage.decode(r, r.uint32(), $undefined, q + 1, m.headerImage);
+                                m.headerImage = $root.E2E.Message.ListMessage.ProductListHeaderImage.decode(r, r.size(), $undefined, q + 1, m.headerImage);
                                 continue;
                             }
                         case 3: {
@@ -32540,7 +32540,7 @@ export const E2E = $root.E2E = (() => {
                                     break;
                                 if (!(m.products && m.products.length))
                                     m.products = [];
-                                m.products.push($root.E2E.Message.ListMessage.Product.decode(r, r.uint32(), $undefined, q + 1));
+                                m.products.push($root.E2E.Message.ListMessage.Product.decode(r, r.size(), $undefined, q + 1));
                                 continue;
                             }
                         }
@@ -32857,7 +32857,7 @@ export const E2E = $root.E2E = (() => {
                                     break;
                                 if (!(m.rows && m.rows.length))
                                     m.rows = [];
-                                m.rows.push($root.E2E.Message.ListMessage.Row.decode(r, r.uint32(), $undefined, q + 1));
+                                m.rows.push($root.E2E.Message.ListMessage.Row.decode(r, r.size(), $undefined, q + 1));
                                 continue;
                             }
                         }
@@ -33035,13 +33035,13 @@ export const E2E = $root.E2E = (() => {
                     case 3: {
                             if (u !== 2)
                                 break;
-                            m.singleSelectReply = $root.E2E.Message.ListResponseMessage.SingleSelectReply.decode(r, r.uint32(), $undefined, q + 1, m.singleSelectReply);
+                            m.singleSelectReply = $root.E2E.Message.ListResponseMessage.SingleSelectReply.decode(r, r.size(), $undefined, q + 1, m.singleSelectReply);
                             continue;
                         }
                     case 4: {
                             if (u !== 2)
                                 break;
-                            m.contextInfo = $root.E2E.ContextInfo.decode(r, r.uint32(), $undefined, q + 1, m.contextInfo);
+                            m.contextInfo = $root.E2E.ContextInfo.decode(r, r.size(), $undefined, q + 1, m.contextInfo);
                             continue;
                         }
                     case 5: {
@@ -33427,7 +33427,7 @@ export const E2E = $root.E2E = (() => {
                     case 17: {
                             if (u !== 2)
                                 break;
-                            m.contextInfo = $root.E2E.ContextInfo.decode(r, r.uint32(), $undefined, q + 1, m.contextInfo);
+                            m.contextInfo = $root.E2E.ContextInfo.decode(r, r.size(), $undefined, q + 1, m.contextInfo);
                             continue;
                         }
                     }
@@ -33742,7 +33742,7 @@ export const E2E = $root.E2E = (() => {
                     case 17: {
                             if (u !== 2)
                                 break;
-                            m.contextInfo = $root.E2E.ContextInfo.decode(r, r.uint32(), $undefined, q + 1, m.contextInfo);
+                            m.contextInfo = $root.E2E.ContextInfo.decode(r, r.size(), $undefined, q + 1, m.contextInfo);
                             continue;
                         }
                     }
@@ -34477,13 +34477,13 @@ export const E2E = $root.E2E = (() => {
                     case 7: {
                             if (u !== 2)
                                 break;
-                            m.contextInfo = $root.E2E.ContextInfo.decode(r, r.uint32(), $undefined, q + 1, m.contextInfo);
+                            m.contextInfo = $root.E2E.ContextInfo.decode(r, r.size(), $undefined, q + 1, m.contextInfo);
                             continue;
                         }
                     case 8: {
                             if (u !== 2)
                                 break;
-                            m.messageHistoryMetadata = $root.E2E.Message.MessageHistoryMetadata.decode(r, r.uint32(), $undefined, q + 1, m.messageHistoryMetadata);
+                            m.messageHistoryMetadata = $root.E2E.Message.MessageHistoryMetadata.decode(r, r.size(), $undefined, q + 1, m.messageHistoryMetadata);
                             continue;
                         }
                     }
@@ -34993,19 +34993,19 @@ export const E2E = $root.E2E = (() => {
                     case 1: {
                             if (u !== 2)
                                 break;
-                            m.contextInfo = $root.E2E.ContextInfo.decode(r, r.uint32(), $undefined, q + 1, m.contextInfo);
+                            m.contextInfo = $root.E2E.ContextInfo.decode(r, r.size(), $undefined, q + 1, m.contextInfo);
                             continue;
                         }
                     case 2: {
                             if (u !== 2)
                                 break;
-                            m.messageHistoryMetadata = $root.E2E.Message.MessageHistoryMetadata.decode(r, r.uint32(), $undefined, q + 1, m.messageHistoryMetadata);
+                            m.messageHistoryMetadata = $root.E2E.Message.MessageHistoryMetadata.decode(r, r.size(), $undefined, q + 1, m.messageHistoryMetadata);
                             continue;
                         }
                     case 3: {
                             if (u !== 2)
                                 break;
-                            m.botHistoryShareSyncMetadata = $root.E2E.Message.BotHistoryShareSyncMetadata.decode(r, r.uint32(), $undefined, q + 1, m.botHistoryShareSyncMetadata);
+                            m.botHistoryShareSyncMetadata = $root.E2E.Message.BotHistoryShareSyncMetadata.decode(r, r.size(), $undefined, q + 1, m.botHistoryShareSyncMetadata);
                             continue;
                         }
                     }
@@ -35163,7 +35163,7 @@ export const E2E = $root.E2E = (() => {
                     case 1: {
                             if (u !== 2)
                                 break;
-                            m.embeddedMusic = $root.E2E.EmbeddedMusic.decode(r, r.uint32(), $undefined, q + 1, m.embeddedMusic);
+                            m.embeddedMusic = $root.E2E.EmbeddedMusic.decode(r, r.size(), $undefined, q + 1, m.embeddedMusic);
                             continue;
                         }
                     case 2: {
@@ -35187,7 +35187,7 @@ export const E2E = $root.E2E = (() => {
                     case 5: {
                             if (u !== 2)
                                 break;
-                            m.contextInfo = $root.E2E.ContextInfo.decode(r, r.uint32(), $undefined, q + 1, m.contextInfo);
+                            m.contextInfo = $root.E2E.ContextInfo.decode(r, r.size(), $undefined, q + 1, m.contextInfo);
                             continue;
                         }
                     }
@@ -35397,7 +35397,7 @@ export const E2E = $root.E2E = (() => {
                     case 6: {
                             if (u !== 2)
                                 break;
-                            m.contextInfo = $root.E2E.ContextInfo.decode(r, r.uint32(), $undefined, q + 1, m.contextInfo);
+                            m.contextInfo = $root.E2E.ContextInfo.decode(r, r.size(), $undefined, q + 1, m.contextInfo);
                             continue;
                         }
                     }
@@ -35621,7 +35621,7 @@ export const E2E = $root.E2E = (() => {
                     case 5: {
                             if (u !== 2)
                                 break;
-                            m.contextInfo = $root.E2E.ContextInfo.decode(r, r.uint32(), $undefined, q + 1, m.contextInfo);
+                            m.contextInfo = $root.E2E.ContextInfo.decode(r, r.size(), $undefined, q + 1, m.contextInfo);
                             continue;
                         }
                     }
@@ -35906,7 +35906,7 @@ export const E2E = $root.E2E = (() => {
                     case 17: {
                             if (u !== 2)
                                 break;
-                            m.contextInfo = $root.E2E.ContextInfo.decode(r, r.uint32(), $undefined, q + 1, m.contextInfo);
+                            m.contextInfo = $root.E2E.ContextInfo.decode(r, r.size(), $undefined, q + 1, m.contextInfo);
                             continue;
                         }
                     case 12: {
@@ -35918,7 +35918,7 @@ export const E2E = $root.E2E = (() => {
                     case 13: {
                             if (u !== 2)
                                 break;
-                            m.orderRequestMessageId = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.uint32(), $undefined, q + 1, m.orderRequestMessageId);
+                            m.orderRequestMessageId = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.size(), $undefined, q + 1, m.orderRequestMessageId);
                             continue;
                         }
                     case 15: {
@@ -36634,19 +36634,19 @@ export const E2E = $root.E2E = (() => {
                     case 1: {
                             if (u !== 2)
                                 break;
-                            m.button = $root.E2E.Message.PaymentLinkMetadata.PaymentLinkButton.decode(r, r.uint32(), $undefined, q + 1, m.button);
+                            m.button = $root.E2E.Message.PaymentLinkMetadata.PaymentLinkButton.decode(r, r.size(), $undefined, q + 1, m.button);
                             continue;
                         }
                     case 2: {
                             if (u !== 2)
                                 break;
-                            m.header = $root.E2E.Message.PaymentLinkMetadata.PaymentLinkHeader.decode(r, r.uint32(), $undefined, q + 1, m.header);
+                            m.header = $root.E2E.Message.PaymentLinkMetadata.PaymentLinkHeader.decode(r, r.size(), $undefined, q + 1, m.header);
                             continue;
                         }
                     case 3: {
                             if (u !== 2)
                                 break;
-                            m.provider = $root.E2E.Message.PaymentLinkMetadata.PaymentLinkProvider.decode(r, r.uint32(), $undefined, q + 1, m.provider);
+                            m.provider = $root.E2E.Message.PaymentLinkMetadata.PaymentLinkProvider.decode(r, r.size(), $undefined, q + 1, m.provider);
                             continue;
                         }
                     }
@@ -37275,7 +37275,7 @@ export const E2E = $root.E2E = (() => {
                     case 9: {
                             if (u !== 2)
                                 break;
-                            m.amount = $root.E2E.Money.decode(r, r.uint32(), $undefined, q + 1, m.amount);
+                            m.amount = $root.E2E.Money.decode(r, r.size(), $undefined, q + 1, m.amount);
                             continue;
                         }
                     }
@@ -37580,7 +37580,7 @@ export const E2E = $root.E2E = (() => {
                                 break;
                             if (!(m.requestStickerReupload && m.requestStickerReupload.length))
                                 m.requestStickerReupload = [];
-                            m.requestStickerReupload.push($root.E2E.Message.PeerDataOperationRequestMessage.RequestStickerReupload.decode(r, r.uint32(), $undefined, q + 1));
+                            m.requestStickerReupload.push($root.E2E.Message.PeerDataOperationRequestMessage.RequestStickerReupload.decode(r, r.size(), $undefined, q + 1));
                             continue;
                         }
                     case 3: {
@@ -37588,13 +37588,13 @@ export const E2E = $root.E2E = (() => {
                                 break;
                             if (!(m.requestUrlPreview && m.requestUrlPreview.length))
                                 m.requestUrlPreview = [];
-                            m.requestUrlPreview.push($root.E2E.Message.PeerDataOperationRequestMessage.RequestUrlPreview.decode(r, r.uint32(), $undefined, q + 1));
+                            m.requestUrlPreview.push($root.E2E.Message.PeerDataOperationRequestMessage.RequestUrlPreview.decode(r, r.size(), $undefined, q + 1));
                             continue;
                         }
                     case 4: {
                             if (u !== 2)
                                 break;
-                            m.historySyncOnDemandRequest = $root.E2E.Message.PeerDataOperationRequestMessage.HistorySyncOnDemandRequest.decode(r, r.uint32(), $undefined, q + 1, m.historySyncOnDemandRequest);
+                            m.historySyncOnDemandRequest = $root.E2E.Message.PeerDataOperationRequestMessage.HistorySyncOnDemandRequest.decode(r, r.size(), $undefined, q + 1, m.historySyncOnDemandRequest);
                             continue;
                         }
                     case 5: {
@@ -37602,49 +37602,49 @@ export const E2E = $root.E2E = (() => {
                                 break;
                             if (!(m.placeholderMessageResendRequest && m.placeholderMessageResendRequest.length))
                                 m.placeholderMessageResendRequest = [];
-                            m.placeholderMessageResendRequest.push($root.E2E.Message.PeerDataOperationRequestMessage.PlaceholderMessageResendRequest.decode(r, r.uint32(), $undefined, q + 1));
+                            m.placeholderMessageResendRequest.push($root.E2E.Message.PeerDataOperationRequestMessage.PlaceholderMessageResendRequest.decode(r, r.size(), $undefined, q + 1));
                             continue;
                         }
                     case 6: {
                             if (u !== 2)
                                 break;
-                            m.fullHistorySyncOnDemandRequest = $root.E2E.Message.PeerDataOperationRequestMessage.FullHistorySyncOnDemandRequest.decode(r, r.uint32(), $undefined, q + 1, m.fullHistorySyncOnDemandRequest);
+                            m.fullHistorySyncOnDemandRequest = $root.E2E.Message.PeerDataOperationRequestMessage.FullHistorySyncOnDemandRequest.decode(r, r.size(), $undefined, q + 1, m.fullHistorySyncOnDemandRequest);
                             continue;
                         }
                     case 7: {
                             if (u !== 2)
                                 break;
-                            m.syncdCollectionFatalRecoveryRequest = $root.E2E.Message.PeerDataOperationRequestMessage.SyncDCollectionFatalRecoveryRequest.decode(r, r.uint32(), $undefined, q + 1, m.syncdCollectionFatalRecoveryRequest);
+                            m.syncdCollectionFatalRecoveryRequest = $root.E2E.Message.PeerDataOperationRequestMessage.SyncDCollectionFatalRecoveryRequest.decode(r, r.size(), $undefined, q + 1, m.syncdCollectionFatalRecoveryRequest);
                             continue;
                         }
                     case 8: {
                             if (u !== 2)
                                 break;
-                            m.historySyncChunkRetryRequest = $root.E2E.Message.PeerDataOperationRequestMessage.HistorySyncChunkRetryRequest.decode(r, r.uint32(), $undefined, q + 1, m.historySyncChunkRetryRequest);
+                            m.historySyncChunkRetryRequest = $root.E2E.Message.PeerDataOperationRequestMessage.HistorySyncChunkRetryRequest.decode(r, r.size(), $undefined, q + 1, m.historySyncChunkRetryRequest);
                             continue;
                         }
                     case 9: {
                             if (u !== 2)
                                 break;
-                            m.galaxyFlowAction = $root.E2E.Message.PeerDataOperationRequestMessage.GalaxyFlowAction.decode(r, r.uint32(), $undefined, q + 1, m.galaxyFlowAction);
+                            m.galaxyFlowAction = $root.E2E.Message.PeerDataOperationRequestMessage.GalaxyFlowAction.decode(r, r.size(), $undefined, q + 1, m.galaxyFlowAction);
                             continue;
                         }
                     case 10: {
                             if (u !== 2)
                                 break;
-                            m.companionCanonicalUserNonceFetchRequest = $root.E2E.Message.PeerDataOperationRequestMessage.CompanionCanonicalUserNonceFetchRequest.decode(r, r.uint32(), $undefined, q + 1, m.companionCanonicalUserNonceFetchRequest);
+                            m.companionCanonicalUserNonceFetchRequest = $root.E2E.Message.PeerDataOperationRequestMessage.CompanionCanonicalUserNonceFetchRequest.decode(r, r.size(), $undefined, q + 1, m.companionCanonicalUserNonceFetchRequest);
                             continue;
                         }
                     case 11: {
                             if (u !== 2)
                                 break;
-                            m.bizBroadcastInsightsContactListRequest = $root.E2E.Message.PeerDataOperationRequestMessage.BizBroadcastInsightsContactListRequest.decode(r, r.uint32(), $undefined, q + 1, m.bizBroadcastInsightsContactListRequest);
+                            m.bizBroadcastInsightsContactListRequest = $root.E2E.Message.PeerDataOperationRequestMessage.BizBroadcastInsightsContactListRequest.decode(r, r.size(), $undefined, q + 1, m.bizBroadcastInsightsContactListRequest);
                             continue;
                         }
                     case 12: {
                             if (u !== 2)
                                 break;
-                            m.bizBroadcastInsightsRefreshRequest = $root.E2E.Message.PeerDataOperationRequestMessage.BizBroadcastInsightsRefreshRequest.decode(r, r.uint32(), $undefined, q + 1, m.bizBroadcastInsightsRefreshRequest);
+                            m.bizBroadcastInsightsRefreshRequest = $root.E2E.Message.PeerDataOperationRequestMessage.BizBroadcastInsightsRefreshRequest.decode(r, r.size(), $undefined, q + 1, m.bizBroadcastInsightsRefreshRequest);
                             continue;
                         }
                     }
@@ -38336,19 +38336,19 @@ export const E2E = $root.E2E = (() => {
                         case 1: {
                                 if (u !== 2)
                                     break;
-                                m.requestMetadata = $root.E2E.Message.FullHistorySyncOnDemandRequestMetadata.decode(r, r.uint32(), $undefined, q + 1, m.requestMetadata);
+                                m.requestMetadata = $root.E2E.Message.FullHistorySyncOnDemandRequestMetadata.decode(r, r.size(), $undefined, q + 1, m.requestMetadata);
                                 continue;
                             }
                         case 2: {
                                 if (u !== 2)
                                     break;
-                                m.historySyncConfig = $root.CompanionReg.DeviceProps.HistorySyncConfig.decode(r, r.uint32(), $undefined, q + 1, m.historySyncConfig);
+                                m.historySyncConfig = $root.CompanionReg.DeviceProps.HistorySyncConfig.decode(r, r.size(), $undefined, q + 1, m.historySyncConfig);
                                 continue;
                             }
                         case 3: {
                                 if (u !== 2)
                                     break;
-                                m.fullHistorySyncOnDemandConfig = $root.E2E.Message.FullHistorySyncOnDemandConfig.decode(r, r.uint32(), $undefined, q + 1, m.fullHistorySyncOnDemandConfig);
+                                m.fullHistorySyncOnDemandConfig = $root.E2E.Message.FullHistorySyncOnDemandConfig.decode(r, r.size(), $undefined, q + 1, m.fullHistorySyncOnDemandConfig);
                                 continue;
                             }
                         }
@@ -39159,7 +39159,7 @@ export const E2E = $root.E2E = (() => {
                         case 1: {
                                 if (u !== 2)
                                     break;
-                                m.messageKey = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.uint32(), $undefined, q + 1, m.messageKey);
+                                m.messageKey = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.size(), $undefined, q + 1, m.messageKey);
                                 continue;
                             }
                         }
@@ -39745,7 +39745,7 @@ export const E2E = $root.E2E = (() => {
                                 break;
                             if (!(m.peerDataOperationResult && m.peerDataOperationResult.length))
                                 m.peerDataOperationResult = [];
-                            m.peerDataOperationResult.push($root.E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.decode(r, r.uint32(), $undefined, q + 1));
+                            m.peerDataOperationResult.push($root.E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.decode(r, r.size(), $undefined, q + 1));
                             continue;
                         }
                     }
@@ -40002,73 +40002,73 @@ export const E2E = $root.E2E = (() => {
                         case 2: {
                                 if (u !== 2)
                                     break;
-                                m.stickerMessage = $root.E2E.Message.StickerMessage.decode(r, r.uint32(), $undefined, q + 1, m.stickerMessage);
+                                m.stickerMessage = $root.E2E.Message.StickerMessage.decode(r, r.size(), $undefined, q + 1, m.stickerMessage);
                                 continue;
                             }
                         case 3: {
                                 if (u !== 2)
                                     break;
-                                m.linkPreviewResponse = $root.E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.LinkPreviewResponse.decode(r, r.uint32(), $undefined, q + 1, m.linkPreviewResponse);
+                                m.linkPreviewResponse = $root.E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.LinkPreviewResponse.decode(r, r.size(), $undefined, q + 1, m.linkPreviewResponse);
                                 continue;
                             }
                         case 4: {
                                 if (u !== 2)
                                     break;
-                                m.placeholderMessageResendResponse = $root.E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.PlaceholderMessageResendResponse.decode(r, r.uint32(), $undefined, q + 1, m.placeholderMessageResendResponse);
+                                m.placeholderMessageResendResponse = $root.E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.PlaceholderMessageResendResponse.decode(r, r.size(), $undefined, q + 1, m.placeholderMessageResendResponse);
                                 continue;
                             }
                         case 5: {
                                 if (u !== 2)
                                     break;
-                                m.waffleNonceFetchRequestResponse = $root.E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.WaffleNonceFetchResponse.decode(r, r.uint32(), $undefined, q + 1, m.waffleNonceFetchRequestResponse);
+                                m.waffleNonceFetchRequestResponse = $root.E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.WaffleNonceFetchResponse.decode(r, r.size(), $undefined, q + 1, m.waffleNonceFetchRequestResponse);
                                 continue;
                             }
                         case 6: {
                                 if (u !== 2)
                                     break;
-                                m.fullHistorySyncOnDemandRequestResponse = $root.E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.FullHistorySyncOnDemandRequestResponse.decode(r, r.uint32(), $undefined, q + 1, m.fullHistorySyncOnDemandRequestResponse);
+                                m.fullHistorySyncOnDemandRequestResponse = $root.E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.FullHistorySyncOnDemandRequestResponse.decode(r, r.size(), $undefined, q + 1, m.fullHistorySyncOnDemandRequestResponse);
                                 continue;
                             }
                         case 7: {
                                 if (u !== 2)
                                     break;
-                                m.companionMetaNonceFetchRequestResponse = $root.E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.CompanionMetaNonceFetchResponse.decode(r, r.uint32(), $undefined, q + 1, m.companionMetaNonceFetchRequestResponse);
+                                m.companionMetaNonceFetchRequestResponse = $root.E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.CompanionMetaNonceFetchResponse.decode(r, r.size(), $undefined, q + 1, m.companionMetaNonceFetchRequestResponse);
                                 continue;
                             }
                         case 8: {
                                 if (u !== 2)
                                     break;
-                                m.syncdSnapshotFatalRecoveryResponse = $root.E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.SyncDSnapshotFatalRecoveryResponse.decode(r, r.uint32(), $undefined, q + 1, m.syncdSnapshotFatalRecoveryResponse);
+                                m.syncdSnapshotFatalRecoveryResponse = $root.E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.SyncDSnapshotFatalRecoveryResponse.decode(r, r.size(), $undefined, q + 1, m.syncdSnapshotFatalRecoveryResponse);
                                 continue;
                             }
                         case 9: {
                                 if (u !== 2)
                                     break;
-                                m.companionCanonicalUserNonceFetchRequestResponse = $root.E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.CompanionCanonicalUserNonceFetchResponse.decode(r, r.uint32(), $undefined, q + 1, m.companionCanonicalUserNonceFetchRequestResponse);
+                                m.companionCanonicalUserNonceFetchRequestResponse = $root.E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.CompanionCanonicalUserNonceFetchResponse.decode(r, r.size(), $undefined, q + 1, m.companionCanonicalUserNonceFetchRequestResponse);
                                 continue;
                             }
                         case 10: {
                                 if (u !== 2)
                                     break;
-                                m.historySyncChunkRetryResponse = $root.E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.HistorySyncChunkRetryResponse.decode(r, r.uint32(), $undefined, q + 1, m.historySyncChunkRetryResponse);
+                                m.historySyncChunkRetryResponse = $root.E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.HistorySyncChunkRetryResponse.decode(r, r.size(), $undefined, q + 1, m.historySyncChunkRetryResponse);
                                 continue;
                             }
                         case 11: {
                                 if (u !== 2)
                                     break;
-                                m.flowResponsesCsvBundle = $root.E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.FlowResponsesCsvBundle.decode(r, r.uint32(), $undefined, q + 1, m.flowResponsesCsvBundle);
+                                m.flowResponsesCsvBundle = $root.E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.FlowResponsesCsvBundle.decode(r, r.size(), $undefined, q + 1, m.flowResponsesCsvBundle);
                                 continue;
                             }
                         case 12: {
                                 if (u !== 2)
                                     break;
-                                m.bizBroadcastInsightsContactListResponse = $root.E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.BizBroadcastInsightsContactListResponse.decode(r, r.uint32(), $undefined, q + 1, m.bizBroadcastInsightsContactListResponse);
+                                m.bizBroadcastInsightsContactListResponse = $root.E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.BizBroadcastInsightsContactListResponse.decode(r, r.size(), $undefined, q + 1, m.bizBroadcastInsightsContactListResponse);
                                 continue;
                             }
                         case 13: {
                                 if (u !== 2)
                                     break;
-                                m.contactRefreshResponse = $root.E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse.decode(r, r.uint32(), $undefined, q + 1, m.contactRefreshResponse);
+                                m.contactRefreshResponse = $root.E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse.decode(r, r.size(), $undefined, q + 1, m.contactRefreshResponse);
                                 continue;
                             }
                         }
@@ -40338,7 +40338,7 @@ export const E2E = $root.E2E = (() => {
                                         break;
                                     if (!(m.contacts && m.contacts.length))
                                         m.contacts = [];
-                                    m.contacts.push($root.E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.BizBroadcastInsightsContactState.decode(r, r.uint32(), $undefined, q + 1));
+                                    m.contacts.push($root.E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.BizBroadcastInsightsContactState.decode(r, r.size(), $undefined, q + 1));
                                     continue;
                                 }
                             }
@@ -41511,7 +41511,7 @@ export const E2E = $root.E2E = (() => {
                             case 1: {
                                     if (u !== 2)
                                         break;
-                                    m.requestMetadata = $root.E2E.Message.FullHistorySyncOnDemandRequestMetadata.decode(r, r.uint32(), $undefined, q + 1, m.requestMetadata);
+                                    m.requestMetadata = $root.E2E.Message.FullHistorySyncOnDemandRequestMetadata.decode(r, r.size(), $undefined, q + 1, m.requestMetadata);
                                     continue;
                                 }
                             case 2: {
@@ -42033,13 +42033,13 @@ export const E2E = $root.E2E = (() => {
                             case 8: {
                                     if (u !== 2)
                                         break;
-                                    m.hqThumbnail = $root.E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.LinkPreviewResponse.LinkPreviewHighQualityThumbnail.decode(r, r.uint32(), $undefined, q + 1, m.hqThumbnail);
+                                    m.hqThumbnail = $root.E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.LinkPreviewResponse.LinkPreviewHighQualityThumbnail.decode(r, r.size(), $undefined, q + 1, m.hqThumbnail);
                                     continue;
                                 }
                             case 9: {
                                     if (u !== 2)
                                         break;
-                                    m.previewMetadata = $root.E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.LinkPreviewResponse.PaymentLinkPreviewMetadata.decode(r, r.uint32(), $undefined, q + 1, m.previewMetadata);
+                                    m.previewMetadata = $root.E2E.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.LinkPreviewResponse.PaymentLinkPreviewMetadata.decode(r, r.size(), $undefined, q + 1, m.previewMetadata);
                                     continue;
                                 }
                             }
@@ -43124,7 +43124,7 @@ export const E2E = $root.E2E = (() => {
                     case 1: {
                             if (u !== 2)
                                 break;
-                            m.key = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.uint32(), $undefined, q + 1, m.key);
+                            m.key = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.size(), $undefined, q + 1, m.key);
                             continue;
                         }
                     case 2: {
@@ -43468,19 +43468,19 @@ export const E2E = $root.E2E = (() => {
                     case 1: {
                             if (u !== 2)
                                 break;
-                            m.pollCreationMessageKey = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.uint32(), $undefined, q + 1, m.pollCreationMessageKey);
+                            m.pollCreationMessageKey = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.size(), $undefined, q + 1, m.pollCreationMessageKey);
                             continue;
                         }
                     case 2: {
                             if (u !== 2)
                                 break;
-                            m.addOption = $root.E2E.Message.PollCreationMessage.Option.decode(r, r.uint32(), $undefined, q + 1, m.addOption);
+                            m.addOption = $root.E2E.Message.PollCreationMessage.Option.decode(r, r.size(), $undefined, q + 1, m.addOption);
                             continue;
                         }
                     case 3: {
                             if (u !== 2)
                                 break;
-                            m.metadata = $root.E2E.Message.PollUpdateMessageMetadata.decode(r, r.uint32(), $undefined, q + 1, m.metadata);
+                            m.metadata = $root.E2E.Message.PollUpdateMessageMetadata.decode(r, r.size(), $undefined, q + 1, m.metadata);
                             continue;
                         }
                     }
@@ -43681,7 +43681,7 @@ export const E2E = $root.E2E = (() => {
                                 break;
                             if (!(m.options && m.options.length))
                                 m.options = [];
-                            m.options.push($root.E2E.Message.PollCreationMessage.Option.decode(r, r.uint32(), $undefined, q + 1));
+                            m.options.push($root.E2E.Message.PollCreationMessage.Option.decode(r, r.size(), $undefined, q + 1));
                             continue;
                         }
                     case 4: {
@@ -43693,7 +43693,7 @@ export const E2E = $root.E2E = (() => {
                     case 5: {
                             if (u !== 2)
                                 break;
-                            m.contextInfo = $root.E2E.ContextInfo.decode(r, r.uint32(), $undefined, q + 1, m.contextInfo);
+                            m.contextInfo = $root.E2E.ContextInfo.decode(r, r.size(), $undefined, q + 1, m.contextInfo);
                             continue;
                         }
                     case 6: {
@@ -43723,7 +43723,7 @@ export const E2E = $root.E2E = (() => {
                     case 8: {
                             if (u !== 2)
                                 break;
-                            m.correctAnswer = $root.E2E.Message.PollCreationMessage.Option.decode(r, r.uint32(), $undefined, q + 1, m.correctAnswer);
+                            m.correctAnswer = $root.E2E.Message.PollCreationMessage.Option.decode(r, r.size(), $undefined, q + 1, m.correctAnswer);
                             continue;
                         }
                     case 9: {
@@ -44320,13 +44320,13 @@ export const E2E = $root.E2E = (() => {
                                 break;
                             if (!(m.pollVotes && m.pollVotes.length))
                                 m.pollVotes = [];
-                            m.pollVotes.push($root.E2E.Message.PollResultSnapshotMessage.PollVote.decode(r, r.uint32(), $undefined, q + 1));
+                            m.pollVotes.push($root.E2E.Message.PollResultSnapshotMessage.PollVote.decode(r, r.size(), $undefined, q + 1));
                             continue;
                         }
                     case 3: {
                             if (u !== 2)
                                 break;
-                            m.contextInfo = $root.E2E.ContextInfo.decode(r, r.uint32(), $undefined, q + 1, m.contextInfo);
+                            m.contextInfo = $root.E2E.ContextInfo.decode(r, r.size(), $undefined, q + 1, m.contextInfo);
                             continue;
                         }
                     case 4: {
@@ -44681,19 +44681,19 @@ export const E2E = $root.E2E = (() => {
                     case 1: {
                             if (u !== 2)
                                 break;
-                            m.pollCreationMessageKey = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.uint32(), $undefined, q + 1, m.pollCreationMessageKey);
+                            m.pollCreationMessageKey = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.size(), $undefined, q + 1, m.pollCreationMessageKey);
                             continue;
                         }
                     case 2: {
                             if (u !== 2)
                                 break;
-                            m.vote = $root.E2E.Message.PollEncValue.decode(r, r.uint32(), $undefined, q + 1, m.vote);
+                            m.vote = $root.E2E.Message.PollEncValue.decode(r, r.size(), $undefined, q + 1, m.vote);
                             continue;
                         }
                     case 3: {
                             if (u !== 2)
                                 break;
-                            m.metadata = $root.E2E.Message.PollUpdateMessageMetadata.decode(r, r.uint32(), $undefined, q + 1, m.metadata);
+                            m.metadata = $root.E2E.Message.PollUpdateMessageMetadata.decode(r, r.size(), $undefined, q + 1, m.metadata);
                             continue;
                         }
                     case 4: {
@@ -45176,7 +45176,7 @@ export const E2E = $root.E2E = (() => {
                     case 1: {
                             if (u !== 2)
                                 break;
-                            m.product = $root.E2E.Message.ProductMessage.ProductSnapshot.decode(r, r.uint32(), $undefined, q + 1, m.product);
+                            m.product = $root.E2E.Message.ProductMessage.ProductSnapshot.decode(r, r.size(), $undefined, q + 1, m.product);
                             continue;
                         }
                     case 2: {
@@ -45188,7 +45188,7 @@ export const E2E = $root.E2E = (() => {
                     case 4: {
                             if (u !== 2)
                                 break;
-                            m.catalog = $root.E2E.Message.ProductMessage.CatalogSnapshot.decode(r, r.uint32(), $undefined, q + 1, m.catalog);
+                            m.catalog = $root.E2E.Message.ProductMessage.CatalogSnapshot.decode(r, r.size(), $undefined, q + 1, m.catalog);
                             continue;
                         }
                     case 5: {
@@ -45206,7 +45206,7 @@ export const E2E = $root.E2E = (() => {
                     case 17: {
                             if (u !== 2)
                                 break;
-                            m.contextInfo = $root.E2E.ContextInfo.decode(r, r.uint32(), $undefined, q + 1, m.contextInfo);
+                            m.contextInfo = $root.E2E.ContextInfo.decode(r, r.size(), $undefined, q + 1, m.contextInfo);
                             continue;
                         }
                     }
@@ -45376,7 +45376,7 @@ export const E2E = $root.E2E = (() => {
                         case 1: {
                                 if (u !== 2)
                                     break;
-                                m.catalogImage = $root.E2E.Message.ImageMessage.decode(r, r.uint32(), $undefined, q + 1, m.catalogImage);
+                                m.catalogImage = $root.E2E.Message.ImageMessage.decode(r, r.size(), $undefined, q + 1, m.catalogImage);
                                 continue;
                             }
                         case 2: {
@@ -45563,7 +45563,7 @@ export const E2E = $root.E2E = (() => {
                         case 1: {
                                 if (u !== 2)
                                     break;
-                                m.productImage = $root.E2E.Message.ImageMessage.decode(r, r.uint32(), $undefined, q + 1, m.productImage);
+                                m.productImage = $root.E2E.Message.ImageMessage.decode(r, r.size(), $undefined, q + 1, m.productImage);
                                 continue;
                             }
                         case 2: {
@@ -45971,7 +45971,7 @@ export const E2E = $root.E2E = (() => {
                     case 1: {
                             if (u !== 2)
                                 break;
-                            m.key = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.uint32(), $undefined, q + 1, m.key);
+                            m.key = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.size(), $undefined, q + 1, m.key);
                             continue;
                         }
                     case 2: {
@@ -46001,43 +46001,43 @@ export const E2E = $root.E2E = (() => {
                     case 6: {
                             if (u !== 2)
                                 break;
-                            m.historySyncNotification = $root.E2E.Message.HistorySyncNotification.decode(r, r.uint32(), $undefined, q + 1, m.historySyncNotification);
+                            m.historySyncNotification = $root.E2E.Message.HistorySyncNotification.decode(r, r.size(), $undefined, q + 1, m.historySyncNotification);
                             continue;
                         }
                     case 7: {
                             if (u !== 2)
                                 break;
-                            m.appStateSyncKeyShare = $root.E2E.Message.AppStateSyncKeyShare.decode(r, r.uint32(), $undefined, q + 1, m.appStateSyncKeyShare);
+                            m.appStateSyncKeyShare = $root.E2E.Message.AppStateSyncKeyShare.decode(r, r.size(), $undefined, q + 1, m.appStateSyncKeyShare);
                             continue;
                         }
                     case 8: {
                             if (u !== 2)
                                 break;
-                            m.appStateSyncKeyRequest = $root.E2E.Message.AppStateSyncKeyRequest.decode(r, r.uint32(), $undefined, q + 1, m.appStateSyncKeyRequest);
+                            m.appStateSyncKeyRequest = $root.E2E.Message.AppStateSyncKeyRequest.decode(r, r.size(), $undefined, q + 1, m.appStateSyncKeyRequest);
                             continue;
                         }
                     case 9: {
                             if (u !== 2)
                                 break;
-                            m.initialSecurityNotificationSettingSync = $root.E2E.Message.InitialSecurityNotificationSettingSync.decode(r, r.uint32(), $undefined, q + 1, m.initialSecurityNotificationSettingSync);
+                            m.initialSecurityNotificationSettingSync = $root.E2E.Message.InitialSecurityNotificationSettingSync.decode(r, r.size(), $undefined, q + 1, m.initialSecurityNotificationSettingSync);
                             continue;
                         }
                     case 10: {
                             if (u !== 2)
                                 break;
-                            m.appStateFatalExceptionNotification = $root.E2E.Message.AppStateFatalExceptionNotification.decode(r, r.uint32(), $undefined, q + 1, m.appStateFatalExceptionNotification);
+                            m.appStateFatalExceptionNotification = $root.E2E.Message.AppStateFatalExceptionNotification.decode(r, r.size(), $undefined, q + 1, m.appStateFatalExceptionNotification);
                             continue;
                         }
                     case 11: {
                             if (u !== 2)
                                 break;
-                            m.disappearingMode = $root.E2E.DisappearingMode.decode(r, r.uint32(), $undefined, q + 1, m.disappearingMode);
+                            m.disappearingMode = $root.E2E.DisappearingMode.decode(r, r.size(), $undefined, q + 1, m.disappearingMode);
                             continue;
                         }
                     case 14: {
                             if (u !== 2)
                                 break;
-                            m.editedMessage = $root.E2E.Message.decode(r, r.uint32(), $undefined, q + 1, m.editedMessage);
+                            m.editedMessage = $root.E2E.Message.decode(r, r.size(), $undefined, q + 1, m.editedMessage);
                             continue;
                         }
                     case 15: {
@@ -46049,19 +46049,19 @@ export const E2E = $root.E2E = (() => {
                     case 16: {
                             if (u !== 2)
                                 break;
-                            m.peerDataOperationRequestMessage = $root.E2E.Message.PeerDataOperationRequestMessage.decode(r, r.uint32(), $undefined, q + 1, m.peerDataOperationRequestMessage);
+                            m.peerDataOperationRequestMessage = $root.E2E.Message.PeerDataOperationRequestMessage.decode(r, r.size(), $undefined, q + 1, m.peerDataOperationRequestMessage);
                             continue;
                         }
                     case 17: {
                             if (u !== 2)
                                 break;
-                            m.peerDataOperationRequestResponseMessage = $root.E2E.Message.PeerDataOperationRequestResponseMessage.decode(r, r.uint32(), $undefined, q + 1, m.peerDataOperationRequestResponseMessage);
+                            m.peerDataOperationRequestResponseMessage = $root.E2E.Message.PeerDataOperationRequestResponseMessage.decode(r, r.size(), $undefined, q + 1, m.peerDataOperationRequestResponseMessage);
                             continue;
                         }
                     case 18: {
                             if (u !== 2)
                                 break;
-                            m.botFeedbackMessage = $root.AICommon.BotFeedbackMessage.decode(r, r.uint32(), $undefined, q + 1, m.botFeedbackMessage);
+                            m.botFeedbackMessage = $root.AICommon.BotFeedbackMessage.decode(r, r.size(), $undefined, q + 1, m.botFeedbackMessage);
                             continue;
                         }
                     case 19: {
@@ -46073,31 +46073,31 @@ export const E2E = $root.E2E = (() => {
                     case 20: {
                             if (u !== 2)
                                 break;
-                            m.requestWelcomeMessageMetadata = $root.E2E.Message.RequestWelcomeMessageMetadata.decode(r, r.uint32(), $undefined, q + 1, m.requestWelcomeMessageMetadata);
+                            m.requestWelcomeMessageMetadata = $root.E2E.Message.RequestWelcomeMessageMetadata.decode(r, r.size(), $undefined, q + 1, m.requestWelcomeMessageMetadata);
                             continue;
                         }
                     case 21: {
                             if (u !== 2)
                                 break;
-                            m.mediaNotifyMessage = $root.E2E.MediaNotifyMessage.decode(r, r.uint32(), $undefined, q + 1, m.mediaNotifyMessage);
+                            m.mediaNotifyMessage = $root.E2E.MediaNotifyMessage.decode(r, r.size(), $undefined, q + 1, m.mediaNotifyMessage);
                             continue;
                         }
                     case 22: {
                             if (u !== 2)
                                 break;
-                            m.cloudApiThreadControlNotification = $root.E2E.Message.CloudAPIThreadControlNotification.decode(r, r.uint32(), $undefined, q + 1, m.cloudApiThreadControlNotification);
+                            m.cloudApiThreadControlNotification = $root.E2E.Message.CloudAPIThreadControlNotification.decode(r, r.size(), $undefined, q + 1, m.cloudApiThreadControlNotification);
                             continue;
                         }
                     case 23: {
                             if (u !== 2)
                                 break;
-                            m.lidMigrationMappingSyncMessage = $root.E2E.LIDMigrationMappingSyncMessage.decode(r, r.uint32(), $undefined, q + 1, m.lidMigrationMappingSyncMessage);
+                            m.lidMigrationMappingSyncMessage = $root.E2E.LIDMigrationMappingSyncMessage.decode(r, r.size(), $undefined, q + 1, m.lidMigrationMappingSyncMessage);
                             continue;
                         }
                     case 24: {
                             if (u !== 2)
                                 break;
-                            m.limitSharing = $root.Protocol.LimitSharing.decode(r, r.uint32(), $undefined, q + 1, m.limitSharing);
+                            m.limitSharing = $root.Protocol.LimitSharing.decode(r, r.size(), $undefined, q + 1, m.limitSharing);
                             continue;
                         }
                     case 25: {
@@ -46109,19 +46109,19 @@ export const E2E = $root.E2E = (() => {
                     case 26: {
                             if (u !== 2)
                                 break;
-                            m.aiQueryFanout = $root.E2E.AIQueryFanout.decode(r, r.uint32(), $undefined, q + 1, m.aiQueryFanout);
+                            m.aiQueryFanout = $root.E2E.AIQueryFanout.decode(r, r.size(), $undefined, q + 1, m.aiQueryFanout);
                             continue;
                         }
                     case 27: {
                             if (u !== 2)
                                 break;
-                            m.memberLabel = $root.E2E.MemberLabel.decode(r, r.uint32(), $undefined, q + 1, m.memberLabel);
+                            m.memberLabel = $root.E2E.MemberLabel.decode(r, r.size(), $undefined, q + 1, m.memberLabel);
                             continue;
                         }
                     case 28: {
                             if (u !== 2)
                                 break;
-                            m.aiMediaCollectionMessage = $root.AICommon.AIMediaCollectionMessage.decode(r, r.uint32(), $undefined, q + 1, m.aiMediaCollectionMessage);
+                            m.aiMediaCollectionMessage = $root.AICommon.AIMediaCollectionMessage.decode(r, r.size(), $undefined, q + 1, m.aiMediaCollectionMessage);
                             continue;
                         }
                     case 29: {
@@ -46133,43 +46133,43 @@ export const E2E = $root.E2E = (() => {
                     case 30: {
                             if (u !== 2)
                                 break;
-                            m.chatThemeSetting = $root.E2E.Message.ChatThemeSetting.decode(r, r.uint32(), $undefined, q + 1, m.chatThemeSetting);
+                            m.chatThemeSetting = $root.E2E.Message.ChatThemeSetting.decode(r, r.size(), $undefined, q + 1, m.chatThemeSetting);
                             continue;
                         }
                     case 31: {
                             if (u !== 2)
                                 break;
-                            m.aiMetadataOperation = $root.AICommon.AIMetadataOperation.decode(r, r.uint32(), $undefined, q + 1, m.aiMetadataOperation);
+                            m.aiMetadataOperation = $root.AICommon.AIMetadataOperation.decode(r, r.size(), $undefined, q + 1, m.aiMetadataOperation);
                             continue;
                         }
                     case 32: {
                             if (u !== 2)
                                 break;
-                            m.markAsVerifiedAction = $root.E2E.Message.MarkAsVerifiedAction.decode(r, r.uint32(), $undefined, q + 1, m.markAsVerifiedAction);
+                            m.markAsVerifiedAction = $root.E2E.Message.MarkAsVerifiedAction.decode(r, r.size(), $undefined, q + 1, m.markAsVerifiedAction);
                             continue;
                         }
                     case 33: {
                             if (u !== 2)
                                 break;
-                            m.coexStateSync = $root.ServerSync.CoexStateSync.decode(r, r.uint32(), $undefined, q + 1, m.coexStateSync);
+                            m.coexStateSync = $root.ServerSync.CoexStateSync.decode(r, r.size(), $undefined, q + 1, m.coexStateSync);
                             continue;
                         }
                     case 35: {
                             if (u !== 2)
                                 break;
-                            m.acp2Setting = $root.Protocol.ACP2Setting.decode(r, r.uint32(), $undefined, q + 1, m.acp2Setting);
+                            m.acp2Setting = $root.Protocol.ACP2Setting.decode(r, r.size(), $undefined, q + 1, m.acp2Setting);
                             continue;
                         }
                     case 36: {
                             if (u !== 2)
                                 break;
-                            m.sharedDeviceContactHashKeyShare = $root.E2E.Message.SharedDeviceContactHashKeyShare.decode(r, r.uint32(), $undefined, q + 1, m.sharedDeviceContactHashKeyShare);
+                            m.sharedDeviceContactHashKeyShare = $root.E2E.Message.SharedDeviceContactHashKeyShare.decode(r, r.size(), $undefined, q + 1, m.sharedDeviceContactHashKeyShare);
                             continue;
                         }
                     case 37: {
                             if (u !== 2)
                                 break;
-                            m.sharedDeviceContactHashKeyRequest = $root.E2E.Message.SharedDeviceContactHashKeyRequest.decode(r, r.uint32(), $undefined, q + 1, m.sharedDeviceContactHashKeyRequest);
+                            m.sharedDeviceContactHashKeyRequest = $root.E2E.Message.SharedDeviceContactHashKeyRequest.decode(r, r.size(), $undefined, q + 1, m.sharedDeviceContactHashKeyRequest);
                             continue;
                         }
                     case 38: {
@@ -46820,7 +46820,7 @@ export const E2E = $root.E2E = (() => {
                     case 1: {
                             if (u !== 2)
                                 break;
-                            m.key = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.uint32(), $undefined, q + 1, m.key);
+                            m.key = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.size(), $undefined, q + 1, m.key);
                             continue;
                         }
                     case 2: {
@@ -46970,7 +46970,7 @@ export const E2E = $root.E2E = (() => {
                     case 1: {
                             if (u !== 2)
                                 break;
-                            m.key = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.uint32(), $undefined, q + 1, m.key);
+                            m.key = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.size(), $undefined, q + 1, m.key);
                             continue;
                         }
                     case 2: {
@@ -47153,7 +47153,7 @@ export const E2E = $root.E2E = (() => {
                     case 1: {
                             if (u !== 2)
                                 break;
-                            m.contextInfo = $root.E2E.ContextInfo.decode(r, r.uint32(), $undefined, q + 1, m.contextInfo);
+                            m.contextInfo = $root.E2E.ContextInfo.decode(r, r.size(), $undefined, q + 1, m.contextInfo);
                             continue;
                         }
                     }
@@ -47287,7 +47287,7 @@ export const E2E = $root.E2E = (() => {
                     case 1: {
                             if (u !== 2)
                                 break;
-                            m.key = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.uint32(), $undefined, q + 1, m.key);
+                            m.key = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.size(), $undefined, q + 1, m.key);
                             continue;
                         }
                     case 2: {
@@ -47496,7 +47496,7 @@ export const E2E = $root.E2E = (() => {
                     case 4: {
                             if (u !== 2)
                                 break;
-                            m.noteMessage = $root.E2E.Message.decode(r, r.uint32(), $undefined, q + 1, m.noteMessage);
+                            m.noteMessage = $root.E2E.Message.decode(r, r.size(), $undefined, q + 1, m.noteMessage);
                             continue;
                         }
                     case 1: {
@@ -47526,13 +47526,13 @@ export const E2E = $root.E2E = (() => {
                     case 6: {
                             if (u !== 2)
                                 break;
-                            m.amount = $root.E2E.Money.decode(r, r.uint32(), $undefined, q + 1, m.amount);
+                            m.amount = $root.E2E.Money.decode(r, r.size(), $undefined, q + 1, m.amount);
                             continue;
                         }
                     case 7: {
                             if (u !== 2)
                                 break;
-                            m.background = $root.E2E.PaymentBackground.decode(r, r.uint32(), $undefined, q + 1, m.background);
+                            m.background = $root.E2E.PaymentBackground.decode(r, r.size(), $undefined, q + 1, m.background);
                             continue;
                         }
                     }
@@ -47738,7 +47738,7 @@ export const E2E = $root.E2E = (() => {
                     case 1: {
                             if (u !== 2)
                                 break;
-                            m.contextInfo = $root.E2E.ContextInfo.decode(r, r.uint32(), $undefined, q + 1, m.contextInfo);
+                            m.contextInfo = $root.E2E.ContextInfo.decode(r, r.size(), $undefined, q + 1, m.contextInfo);
                             continue;
                         }
                     }
@@ -47896,7 +47896,7 @@ export const E2E = $root.E2E = (() => {
                     case 3: {
                             if (u !== 2)
                                 break;
-                            m.botAgentMetadata = $root.AICommon.BotAgentMetadata.decode(r, r.uint32(), $undefined, q + 1, m.botAgentMetadata);
+                            m.botAgentMetadata = $root.AICommon.BotAgentMetadata.decode(r, r.size(), $undefined, q + 1, m.botAgentMetadata);
                             continue;
                         }
                     }
@@ -48397,7 +48397,7 @@ export const E2E = $root.E2E = (() => {
                     case 1: {
                             if (u !== 2)
                                 break;
-                            m.key = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.uint32(), $undefined, q + 1, m.key);
+                            m.key = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.size(), $undefined, q + 1, m.key);
                             continue;
                         }
                     case 2: {
@@ -48571,7 +48571,7 @@ export const E2E = $root.E2E = (() => {
                     case 1: {
                             if (u !== 2)
                                 break;
-                            m.targetMessageKey = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.uint32(), $undefined, q + 1, m.targetMessageKey);
+                            m.targetMessageKey = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.size(), $undefined, q + 1, m.targetMessageKey);
                             continue;
                         }
                     case 2: {
@@ -48819,19 +48819,19 @@ export const E2E = $root.E2E = (() => {
                     case 2: {
                             if (u !== 2)
                                 break;
-                            m.noteMessage = $root.E2E.Message.decode(r, r.uint32(), $undefined, q + 1, m.noteMessage);
+                            m.noteMessage = $root.E2E.Message.decode(r, r.size(), $undefined, q + 1, m.noteMessage);
                             continue;
                         }
                     case 3: {
                             if (u !== 2)
                                 break;
-                            m.requestMessageKey = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.uint32(), $undefined, q + 1, m.requestMessageKey);
+                            m.requestMessageKey = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.size(), $undefined, q + 1, m.requestMessageKey);
                             continue;
                         }
                     case 4: {
                             if (u !== 2)
                                 break;
-                            m.background = $root.E2E.PaymentBackground.decode(r, r.uint32(), $undefined, q + 1, m.background);
+                            m.background = $root.E2E.PaymentBackground.decode(r, r.size(), $undefined, q + 1, m.background);
                             continue;
                         }
                     case 5: {
@@ -49465,7 +49465,7 @@ export const E2E = $root.E2E = (() => {
                                 break;
                             if (!(m.keys && m.keys.length))
                                 m.keys = [];
-                            m.keys.push($root.E2E.Message.SharedDeviceContactHashKey.decode(r, r.uint32(), $undefined, q + 1));
+                            m.keys.push($root.E2E.Message.SharedDeviceContactHashKey.decode(r, r.size(), $undefined, q + 1));
                             continue;
                         }
                     }
@@ -49628,7 +49628,7 @@ export const E2E = $root.E2E = (() => {
                     case 2: {
                             if (u !== 2)
                                 break;
-                            m.totalAmount = $root.E2E.Money.decode(r, r.uint32(), $undefined, q + 1, m.totalAmount);
+                            m.totalAmount = $root.E2E.Money.decode(r, r.size(), $undefined, q + 1, m.totalAmount);
                             continue;
                         }
                     case 3: {
@@ -49648,7 +49648,7 @@ export const E2E = $root.E2E = (() => {
                                 break;
                             if (!(m.participants && m.participants.length))
                                 m.participants = [];
-                            m.participants.push($root.E2E.Message.SplitPaymentParticipant.decode(r, r.uint32(), $undefined, q + 1));
+                            m.participants.push($root.E2E.Message.SplitPaymentParticipant.decode(r, r.size(), $undefined, q + 1));
                             continue;
                         }
                     case 6: {
@@ -49660,7 +49660,7 @@ export const E2E = $root.E2E = (() => {
                     case 17: {
                             if (u !== 2)
                                 break;
-                            m.contextInfo = $root.E2E.ContextInfo.decode(r, r.uint32(), $undefined, q + 1, m.contextInfo);
+                            m.contextInfo = $root.E2E.ContextInfo.decode(r, r.size(), $undefined, q + 1, m.contextInfo);
                             continue;
                         }
                     }
@@ -49872,7 +49872,7 @@ export const E2E = $root.E2E = (() => {
                     case 2: {
                             if (u !== 2)
                                 break;
-                            m.amount = $root.E2E.Money.decode(r, r.uint32(), $undefined, q + 1, m.amount);
+                            m.amount = $root.E2E.Money.decode(r, r.size(), $undefined, q + 1, m.amount);
                             continue;
                         }
                     case 3: {
@@ -50346,13 +50346,13 @@ export const E2E = $root.E2E = (() => {
                     case 1: {
                             if (u !== 2)
                                 break;
-                            m.responseMessageKey = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.uint32(), $undefined, q + 1, m.responseMessageKey);
+                            m.responseMessageKey = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.size(), $undefined, q + 1, m.responseMessageKey);
                             continue;
                         }
                     case 2: {
                             if (u !== 2)
                                 break;
-                            m.originalMessageKey = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.uint32(), $undefined, q + 1, m.originalMessageKey);
+                            m.originalMessageKey = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.size(), $undefined, q + 1, m.originalMessageKey);
                             continue;
                         }
                     case 3: {
@@ -50541,7 +50541,7 @@ export const E2E = $root.E2E = (() => {
                     case 1: {
                             if (u !== 2)
                                 break;
-                            m.key = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.uint32(), $undefined, q + 1, m.key);
+                            m.key = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.size(), $undefined, q + 1, m.key);
                             continue;
                         }
                     case 2: {
@@ -50715,7 +50715,7 @@ export const E2E = $root.E2E = (() => {
                     case 4: {
                             if (u !== 2)
                                 break;
-                            m.originalStatusId = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.uint32(), $undefined, q + 1, m.originalStatusId);
+                            m.originalStatusId = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.size(), $undefined, q + 1, m.originalStatusId);
                             continue;
                         }
                     }
@@ -50889,7 +50889,7 @@ export const E2E = $root.E2E = (() => {
                     case 1: {
                             if (u !== 2)
                                 break;
-                            m.key = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.uint32(), $undefined, q + 1, m.key);
+                            m.key = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.size(), $undefined, q + 1, m.key);
                             continue;
                         }
                     case 2: {
@@ -51221,7 +51221,7 @@ export const E2E = $root.E2E = (() => {
                     case 17: {
                             if (u !== 2)
                                 break;
-                            m.contextInfo = $root.E2E.ContextInfo.decode(r, r.uint32(), $undefined, q + 1, m.contextInfo);
+                            m.contextInfo = $root.E2E.ContextInfo.decode(r, r.size(), $undefined, q + 1, m.contextInfo);
                             continue;
                         }
                     case 18: {
@@ -51269,7 +51269,7 @@ export const E2E = $root.E2E = (() => {
                     case 26: {
                             if (u !== 2)
                                 break;
-                            m.audioMessage = $root.E2E.Message.AudioMessage.decode(r, r.uint32(), $undefined, q + 1, m.audioMessage);
+                            m.audioMessage = $root.E2E.Message.AudioMessage.decode(r, r.size(), $undefined, q + 1, m.audioMessage);
                             m.audio = "audioMessage";
                             continue;
                         }
@@ -51734,7 +51734,7 @@ export const E2E = $root.E2E = (() => {
                                 break;
                             if (!(m.stickers && m.stickers.length))
                                 m.stickers = [];
-                            m.stickers.push($root.E2E.Message.StickerPackMessage.Sticker.decode(r, r.uint32(), $undefined, q + 1));
+                            m.stickers.push($root.E2E.Message.StickerPackMessage.Sticker.decode(r, r.size(), $undefined, q + 1));
                             continue;
                         }
                     case 5: {
@@ -51776,7 +51776,7 @@ export const E2E = $root.E2E = (() => {
                     case 11: {
                             if (u !== 2)
                                 break;
-                            m.contextInfo = $root.E2E.ContextInfo.decode(r, r.uint32(), $undefined, q + 1, m.contextInfo);
+                            m.contextInfo = $root.E2E.ContextInfo.decode(r, r.size(), $undefined, q + 1, m.contextInfo);
                             continue;
                         }
                     case 12: {
@@ -52698,7 +52698,7 @@ export const E2E = $root.E2E = (() => {
                     case 3: {
                             if (u !== 2)
                                 break;
-                            m.contextInfo = $root.E2E.ContextInfo.decode(r, r.uint32(), $undefined, q + 1, m.contextInfo);
+                            m.contextInfo = $root.E2E.ContextInfo.decode(r, r.size(), $undefined, q + 1, m.contextInfo);
                             continue;
                         }
                     case 4: {
@@ -52888,13 +52888,13 @@ export const E2E = $root.E2E = (() => {
                     case 3: {
                             if (u !== 2)
                                 break;
-                            m.contextInfo = $root.E2E.ContextInfo.decode(r, r.uint32(), $undefined, q + 1, m.contextInfo);
+                            m.contextInfo = $root.E2E.ContextInfo.decode(r, r.size(), $undefined, q + 1, m.contextInfo);
                             continue;
                         }
                     case 4: {
                             if (u !== 2)
                                 break;
-                            m.hydratedTemplate = $root.E2E.Message.TemplateMessage.HydratedFourRowTemplate.decode(r, r.uint32(), $undefined, q + 1, m.hydratedTemplate);
+                            m.hydratedTemplate = $root.E2E.Message.TemplateMessage.HydratedFourRowTemplate.decode(r, r.size(), $undefined, q + 1, m.hydratedTemplate);
                             continue;
                         }
                     case 9: {
@@ -52906,21 +52906,21 @@ export const E2E = $root.E2E = (() => {
                     case 1: {
                             if (u !== 2)
                                 break;
-                            m.fourRowTemplate = $root.E2E.Message.TemplateMessage.FourRowTemplate.decode(r, r.uint32(), $undefined, q + 1, m.fourRowTemplate);
+                            m.fourRowTemplate = $root.E2E.Message.TemplateMessage.FourRowTemplate.decode(r, r.size(), $undefined, q + 1, m.fourRowTemplate);
                             m.format = "fourRowTemplate";
                             continue;
                         }
                     case 2: {
                             if (u !== 2)
                                 break;
-                            m.hydratedFourRowTemplate = $root.E2E.Message.TemplateMessage.HydratedFourRowTemplate.decode(r, r.uint32(), $undefined, q + 1, m.hydratedFourRowTemplate);
+                            m.hydratedFourRowTemplate = $root.E2E.Message.TemplateMessage.HydratedFourRowTemplate.decode(r, r.size(), $undefined, q + 1, m.hydratedFourRowTemplate);
                             m.format = "hydratedFourRowTemplate";
                             continue;
                         }
                     case 5: {
                             if (u !== 2)
                                 break;
-                            m.interactiveMessageTemplate = $root.E2E.Message.InteractiveMessage.decode(r, r.uint32(), $undefined, q + 1, m.interactiveMessageTemplate);
+                            m.interactiveMessageTemplate = $root.E2E.Message.InteractiveMessage.decode(r, r.size(), $undefined, q + 1, m.interactiveMessageTemplate);
                             m.format = "interactiveMessageTemplate";
                             continue;
                         }
@@ -53123,13 +53123,13 @@ export const E2E = $root.E2E = (() => {
                         case 6: {
                                 if (u !== 2)
                                     break;
-                                m.content = $root.E2E.Message.HighlyStructuredMessage.decode(r, r.uint32(), $undefined, q + 1, m.content);
+                                m.content = $root.E2E.Message.HighlyStructuredMessage.decode(r, r.size(), $undefined, q + 1, m.content);
                                 continue;
                             }
                         case 7: {
                                 if (u !== 2)
                                     break;
-                                m.footer = $root.E2E.Message.HighlyStructuredMessage.decode(r, r.uint32(), $undefined, q + 1, m.footer);
+                                m.footer = $root.E2E.Message.HighlyStructuredMessage.decode(r, r.size(), $undefined, q + 1, m.footer);
                                 continue;
                             }
                         case 8: {
@@ -53137,41 +53137,41 @@ export const E2E = $root.E2E = (() => {
                                     break;
                                 if (!(m.buttons && m.buttons.length))
                                     m.buttons = [];
-                                m.buttons.push($root.E2E.TemplateButton.decode(r, r.uint32(), $undefined, q + 1));
+                                m.buttons.push($root.E2E.TemplateButton.decode(r, r.size(), $undefined, q + 1));
                                 continue;
                             }
                         case 1: {
                                 if (u !== 2)
                                     break;
-                                m.documentMessage = $root.E2E.Message.DocumentMessage.decode(r, r.uint32(), $undefined, q + 1, m.documentMessage);
+                                m.documentMessage = $root.E2E.Message.DocumentMessage.decode(r, r.size(), $undefined, q + 1, m.documentMessage);
                                 m.title = "documentMessage";
                                 continue;
                             }
                         case 2: {
                                 if (u !== 2)
                                     break;
-                                m.highlyStructuredMessage = $root.E2E.Message.HighlyStructuredMessage.decode(r, r.uint32(), $undefined, q + 1, m.highlyStructuredMessage);
+                                m.highlyStructuredMessage = $root.E2E.Message.HighlyStructuredMessage.decode(r, r.size(), $undefined, q + 1, m.highlyStructuredMessage);
                                 m.title = "highlyStructuredMessage";
                                 continue;
                             }
                         case 3: {
                                 if (u !== 2)
                                     break;
-                                m.imageMessage = $root.E2E.Message.ImageMessage.decode(r, r.uint32(), $undefined, q + 1, m.imageMessage);
+                                m.imageMessage = $root.E2E.Message.ImageMessage.decode(r, r.size(), $undefined, q + 1, m.imageMessage);
                                 m.title = "imageMessage";
                                 continue;
                             }
                         case 4: {
                                 if (u !== 2)
                                     break;
-                                m.videoMessage = $root.E2E.Message.VideoMessage.decode(r, r.uint32(), $undefined, q + 1, m.videoMessage);
+                                m.videoMessage = $root.E2E.Message.VideoMessage.decode(r, r.size(), $undefined, q + 1, m.videoMessage);
                                 m.title = "videoMessage";
                                 continue;
                             }
                         case 5: {
                                 if (u !== 2)
                                     break;
-                                m.locationMessage = $root.E2E.Message.LocationMessage.decode(r, r.uint32(), $undefined, q + 1, m.locationMessage);
+                                m.locationMessage = $root.E2E.Message.LocationMessage.decode(r, r.size(), $undefined, q + 1, m.locationMessage);
                                 m.title = "locationMessage";
                                 continue;
                             }
@@ -53429,7 +53429,7 @@ export const E2E = $root.E2E = (() => {
                                     break;
                                 if (!(m.hydratedButtons && m.hydratedButtons.length))
                                     m.hydratedButtons = [];
-                                m.hydratedButtons.push($root.E2E.HydratedTemplateButton.decode(r, r.uint32(), $undefined, q + 1));
+                                m.hydratedButtons.push($root.E2E.HydratedTemplateButton.decode(r, r.size(), $undefined, q + 1));
                                 continue;
                             }
                         case 9: {
@@ -53447,7 +53447,7 @@ export const E2E = $root.E2E = (() => {
                         case 1: {
                                 if (u !== 2)
                                     break;
-                                m.documentMessage = $root.E2E.Message.DocumentMessage.decode(r, r.uint32(), $undefined, q + 1, m.documentMessage);
+                                m.documentMessage = $root.E2E.Message.DocumentMessage.decode(r, r.size(), $undefined, q + 1, m.documentMessage);
                                 m.title = "documentMessage";
                                 continue;
                             }
@@ -53461,21 +53461,21 @@ export const E2E = $root.E2E = (() => {
                         case 3: {
                                 if (u !== 2)
                                     break;
-                                m.imageMessage = $root.E2E.Message.ImageMessage.decode(r, r.uint32(), $undefined, q + 1, m.imageMessage);
+                                m.imageMessage = $root.E2E.Message.ImageMessage.decode(r, r.size(), $undefined, q + 1, m.imageMessage);
                                 m.title = "imageMessage";
                                 continue;
                             }
                         case 4: {
                                 if (u !== 2)
                                     break;
-                                m.videoMessage = $root.E2E.Message.VideoMessage.decode(r, r.uint32(), $undefined, q + 1, m.videoMessage);
+                                m.videoMessage = $root.E2E.Message.VideoMessage.decode(r, r.size(), $undefined, q + 1, m.videoMessage);
                                 m.title = "videoMessage";
                                 continue;
                             }
                         case 5: {
                                 if (u !== 2)
                                     break;
-                                m.locationMessage = $root.E2E.Message.LocationMessage.decode(r, r.uint32(), $undefined, q + 1, m.locationMessage);
+                                m.locationMessage = $root.E2E.Message.LocationMessage.decode(r, r.size(), $undefined, q + 1, m.locationMessage);
                                 m.title = "locationMessage";
                                 continue;
                             }
@@ -54167,7 +54167,7 @@ export const E2E = $root.E2E = (() => {
                                 break;
                             if (!(m.interactiveAnnotations && m.interactiveAnnotations.length))
                                 m.interactiveAnnotations = [];
-                            m.interactiveAnnotations.push($root.E2E.InteractiveAnnotation.decode(r, r.uint32(), $undefined, q + 1));
+                            m.interactiveAnnotations.push($root.E2E.InteractiveAnnotation.decode(r, r.size(), $undefined, q + 1));
                             continue;
                         }
                     case 13: {
@@ -54191,7 +54191,7 @@ export const E2E = $root.E2E = (() => {
                     case 17: {
                             if (u !== 2)
                                 break;
-                            m.contextInfo = $root.E2E.ContextInfo.decode(r, r.uint32(), $undefined, q + 1, m.contextInfo);
+                            m.contextInfo = $root.E2E.ContextInfo.decode(r, r.size(), $undefined, q + 1, m.contextInfo);
                             continue;
                         }
                     case 18: {
@@ -54247,7 +54247,7 @@ export const E2E = $root.E2E = (() => {
                                 break;
                             if (!(m.annotations && m.annotations.length))
                                 m.annotations = [];
-                            m.annotations.push($root.E2E.InteractiveAnnotation.decode(r, r.uint32(), $undefined, q + 1));
+                            m.annotations.push($root.E2E.InteractiveAnnotation.decode(r, r.size(), $undefined, q + 1));
                             continue;
                         }
                     case 26: {
@@ -54261,7 +54261,7 @@ export const E2E = $root.E2E = (() => {
                                 break;
                             if (!(m.processedVideos && m.processedVideos.length))
                                 m.processedVideos = [];
-                            m.processedVideos.push($root.E2E.ProcessedVideo.decode(r, r.uint32(), $undefined, q + 1));
+                            m.processedVideos.push($root.E2E.ProcessedVideo.decode(r, r.size(), $undefined, q + 1));
                             continue;
                         }
                     case 28: {
@@ -54885,7 +54885,7 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                             break;
                         if (!(m.senderKeyStates && m.senderKeyStates.length))
                             m.senderKeyStates = [];
-                        m.senderKeyStates.push($root.SignalLocalStorageProtocol.SenderKeyStateStructure.decode(r, r.uint32(), $undefined, q + 1));
+                        m.senderKeyStates.push($root.SignalLocalStorageProtocol.SenderKeyStateStructure.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 }
@@ -55039,13 +55039,13 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                 case 2: {
                         if (u !== 2)
                             break;
-                        m.senderChainKey = $root.SignalLocalStorageProtocol.SenderKeyStateStructure.SenderChainKey.decode(r, r.uint32(), $undefined, q + 1, m.senderChainKey);
+                        m.senderChainKey = $root.SignalLocalStorageProtocol.SenderKeyStateStructure.SenderChainKey.decode(r, r.size(), $undefined, q + 1, m.senderChainKey);
                         continue;
                     }
                 case 3: {
                         if (u !== 2)
                             break;
-                        m.senderSigningKey = $root.SignalLocalStorageProtocol.SenderKeyStateStructure.SenderSigningKey.decode(r, r.uint32(), $undefined, q + 1, m.senderSigningKey);
+                        m.senderSigningKey = $root.SignalLocalStorageProtocol.SenderKeyStateStructure.SenderSigningKey.decode(r, r.size(), $undefined, q + 1, m.senderSigningKey);
                         continue;
                     }
                 case 4: {
@@ -55053,7 +55053,7 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                             break;
                         if (!(m.senderMessageKeys && m.senderMessageKeys.length))
                             m.senderMessageKeys = [];
-                        m.senderMessageKeys.push($root.SignalLocalStorageProtocol.SenderKeyStateStructure.SenderMessageKey.decode(r, r.uint32(), $undefined, q + 1));
+                        m.senderMessageKeys.push($root.SignalLocalStorageProtocol.SenderKeyStateStructure.SenderMessageKey.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 }
@@ -56253,7 +56253,7 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                 case 1: {
                         if (u !== 2)
                             break;
-                        m.currentSession = $root.SignalLocalStorageProtocol.SessionStructure.decode(r, r.uint32(), $undefined, q + 1, m.currentSession);
+                        m.currentSession = $root.SignalLocalStorageProtocol.SessionStructure.decode(r, r.size(), $undefined, q + 1, m.currentSession);
                         continue;
                     }
                 case 2: {
@@ -56261,7 +56261,7 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                             break;
                         if (!(m.previousSessions && m.previousSessions.length))
                             m.previousSessions = [];
-                        m.previousSessions.push($root.SignalLocalStorageProtocol.SessionStructure.decode(r, r.uint32(), $undefined, q + 1));
+                        m.previousSessions.push($root.SignalLocalStorageProtocol.SessionStructure.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 }
@@ -56477,7 +56477,7 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                 case 6: {
                         if (u !== 2)
                             break;
-                        m.senderChain = $root.SignalLocalStorageProtocol.SessionStructure.Chain.decode(r, r.uint32(), $undefined, q + 1, m.senderChain);
+                        m.senderChain = $root.SignalLocalStorageProtocol.SessionStructure.Chain.decode(r, r.size(), $undefined, q + 1, m.senderChain);
                         continue;
                     }
                 case 7: {
@@ -56485,19 +56485,19 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                             break;
                         if (!(m.receiverChains && m.receiverChains.length))
                             m.receiverChains = [];
-                        m.receiverChains.push($root.SignalLocalStorageProtocol.SessionStructure.Chain.decode(r, r.uint32(), $undefined, q + 1));
+                        m.receiverChains.push($root.SignalLocalStorageProtocol.SessionStructure.Chain.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 case 8: {
                         if (u !== 2)
                             break;
-                        m.pendingKeyExchange = $root.SignalLocalStorageProtocol.SessionStructure.PendingKeyExchange.decode(r, r.uint32(), $undefined, q + 1, m.pendingKeyExchange);
+                        m.pendingKeyExchange = $root.SignalLocalStorageProtocol.SessionStructure.PendingKeyExchange.decode(r, r.size(), $undefined, q + 1, m.pendingKeyExchange);
                         continue;
                     }
                 case 9: {
                         if (u !== 2)
                             break;
-                        m.pendingPreKey = $root.SignalLocalStorageProtocol.SessionStructure.PendingPreKey.decode(r, r.uint32(), $undefined, q + 1, m.pendingPreKey);
+                        m.pendingPreKey = $root.SignalLocalStorageProtocol.SessionStructure.PendingPreKey.decode(r, r.size(), $undefined, q + 1, m.pendingPreKey);
                         continue;
                     }
                 case 10: {
@@ -56806,7 +56806,7 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                     case 3: {
                             if (u !== 2)
                                 break;
-                            m.chainKey = $root.SignalLocalStorageProtocol.SessionStructure.Chain.ChainKey.decode(r, r.uint32(), $undefined, q + 1, m.chainKey);
+                            m.chainKey = $root.SignalLocalStorageProtocol.SessionStructure.Chain.ChainKey.decode(r, r.size(), $undefined, q + 1, m.chainKey);
                             continue;
                         }
                     case 4: {
@@ -56814,7 +56814,7 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                                 break;
                             if (!(m.messageKeys && m.messageKeys.length))
                                 m.messageKeys = [];
-                            m.messageKeys.push($root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.uint32(), $undefined, q + 1));
+                            m.messageKeys.push($root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.size(), $undefined, q + 1));
                             continue;
                         }
                     }
@@ -57878,7 +57878,7 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                 case 2: {
                         if (u !== 2)
                             break;
-                        m.gridImageMetadata = $root.AICommonDeprecated.AIRichResponseGridImageMetadata.decode(r, r.uint32(), $undefined, q + 1, m.gridImageMetadata);
+                        m.gridImageMetadata = $root.AICommonDeprecated.AIRichResponseGridImageMetadata.decode(r, r.size(), $undefined, q + 1, m.gridImageMetadata);
                         continue;
                     }
                 case 3: {
@@ -57890,43 +57890,43 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                 case 4: {
                         if (u !== 2)
                             break;
-                        m.imageMetadata = $root.AICommonDeprecated.AIRichResponseInlineImageMetadata.decode(r, r.uint32(), $undefined, q + 1, m.imageMetadata);
+                        m.imageMetadata = $root.AICommonDeprecated.AIRichResponseInlineImageMetadata.decode(r, r.size(), $undefined, q + 1, m.imageMetadata);
                         continue;
                     }
                 case 5: {
                         if (u !== 2)
                             break;
-                        m.codeMetadata = $root.AICommonDeprecated.AIRichResponseCodeMetadata.decode(r, r.uint32(), $undefined, q + 1, m.codeMetadata);
+                        m.codeMetadata = $root.AICommonDeprecated.AIRichResponseCodeMetadata.decode(r, r.size(), $undefined, q + 1, m.codeMetadata);
                         continue;
                     }
                 case 6: {
                         if (u !== 2)
                             break;
-                        m.tableMetadata = $root.AICommonDeprecated.AIRichResponseTableMetadata.decode(r, r.uint32(), $undefined, q + 1, m.tableMetadata);
+                        m.tableMetadata = $root.AICommonDeprecated.AIRichResponseTableMetadata.decode(r, r.size(), $undefined, q + 1, m.tableMetadata);
                         continue;
                     }
                 case 7: {
                         if (u !== 2)
                             break;
-                        m.dynamicMetadata = $root.AICommonDeprecated.AIRichResponseDynamicMetadata.decode(r, r.uint32(), $undefined, q + 1, m.dynamicMetadata);
+                        m.dynamicMetadata = $root.AICommonDeprecated.AIRichResponseDynamicMetadata.decode(r, r.size(), $undefined, q + 1, m.dynamicMetadata);
                         continue;
                     }
                 case 8: {
                         if (u !== 2)
                             break;
-                        m.latexMetadata = $root.AICommonDeprecated.AIRichResponseLatexMetadata.decode(r, r.uint32(), $undefined, q + 1, m.latexMetadata);
+                        m.latexMetadata = $root.AICommonDeprecated.AIRichResponseLatexMetadata.decode(r, r.size(), $undefined, q + 1, m.latexMetadata);
                         continue;
                     }
                 case 9: {
                         if (u !== 2)
                             break;
-                        m.mapMetadata = $root.AICommonDeprecated.AIRichResponseMapMetadata.decode(r, r.uint32(), $undefined, q + 1, m.mapMetadata);
+                        m.mapMetadata = $root.AICommonDeprecated.AIRichResponseMapMetadata.decode(r, r.size(), $undefined, q + 1, m.mapMetadata);
                         continue;
                     }
                 case 10: {
                         if (u !== 2)
                             break;
-                        m.contentItemsMetadata = $root.AICommonDeprecated.AIRichResponseContentItemsMetadata.decode(r, r.uint32(), $undefined, q + 1, m.contentItemsMetadata);
+                        m.contentItemsMetadata = $root.AICommonDeprecated.AIRichResponseContentItemsMetadata.decode(r, r.size(), $undefined, q + 1, m.contentItemsMetadata);
                         continue;
                     }
                 }
@@ -58179,7 +58179,7 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                             break;
                         if (!(m.itemsMetadata && m.itemsMetadata.length))
                             m.itemsMetadata = [];
-                        m.itemsMetadata.push($root.AICommonDeprecated.AIRichResponseContentItemsMetadata.AIRichResponseContentItemMetadata.decode(r, r.uint32(), $undefined, q + 1));
+                        m.itemsMetadata.push($root.AICommonDeprecated.AIRichResponseContentItemsMetadata.AIRichResponseContentItemMetadata.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 case 2: {
@@ -58348,7 +58348,7 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                     case 1: {
                             if (u !== 2)
                                 break;
-                            m.reelItem = $root.AICommonDeprecated.AIRichResponseContentItemsMetadata.AIRichResponseReelItem.decode(r, r.uint32(), $undefined, q + 1, m.reelItem);
+                            m.reelItem = $root.AICommonDeprecated.AIRichResponseContentItemsMetadata.AIRichResponseReelItem.decode(r, r.size(), $undefined, q + 1, m.reelItem);
                             m.aiRichResponseContentItem = "reelItem";
                             continue;
                         }
@@ -58704,7 +58704,7 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                             break;
                         if (!(m.annotations && m.annotations.length))
                             m.annotations = [];
-                        m.annotations.push($root.AICommonDeprecated.AIRichResponseMapMetadata.AIRichResponseMapAnnotation.decode(r, r.uint32(), $undefined, q + 1));
+                        m.annotations.push($root.AICommonDeprecated.AIRichResponseMapMetadata.AIRichResponseMapAnnotation.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 case 6: {
@@ -59087,7 +59087,7 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                             break;
                         if (!(m.expressions && m.expressions.length))
                             m.expressions = [];
-                        m.expressions.push($root.AICommonDeprecated.AIRichResponseLatexMetadata.AIRichResponseLatexExpression.decode(r, r.uint32(), $undefined, q + 1));
+                        m.expressions.push($root.AICommonDeprecated.AIRichResponseLatexMetadata.AIRichResponseLatexExpression.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 }
@@ -59710,7 +59710,7 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                             break;
                         if (!(m.rows && m.rows.length))
                             m.rows = [];
-                        m.rows.push($root.AICommonDeprecated.AIRichResponseTableMetadata.AIRichResponseTableRow.decode(r, r.uint32(), $undefined, q + 1));
+                        m.rows.push($root.AICommonDeprecated.AIRichResponseTableMetadata.AIRichResponseTableRow.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 case 2: {
@@ -60032,7 +60032,7 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                             break;
                         if (!(m.codeBlocks && m.codeBlocks.length))
                             m.codeBlocks = [];
-                        m.codeBlocks.push($root.AICommonDeprecated.AIRichResponseCodeMetadata.AIRichResponseCodeBlock.decode(r, r.uint32(), $undefined, q + 1));
+                        m.codeBlocks.push($root.AICommonDeprecated.AIRichResponseCodeMetadata.AIRichResponseCodeBlock.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 }
@@ -60369,7 +60369,7 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                 case 1: {
                         if (u !== 2)
                             break;
-                        m.imageUrl = $root.AICommonDeprecated.AIRichResponseImageURL.decode(r, r.uint32(), $undefined, q + 1, m.imageUrl);
+                        m.imageUrl = $root.AICommonDeprecated.AIRichResponseImageURL.decode(r, r.size(), $undefined, q + 1, m.imageUrl);
                         continue;
                     }
                 case 2: {
@@ -60568,7 +60568,7 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                 case 1: {
                         if (u !== 2)
                             break;
-                        m.gridImageUrl = $root.AICommonDeprecated.AIRichResponseImageURL.decode(r, r.uint32(), $undefined, q + 1, m.gridImageUrl);
+                        m.gridImageUrl = $root.AICommonDeprecated.AIRichResponseImageURL.decode(r, r.size(), $undefined, q + 1, m.gridImageUrl);
                         continue;
                     }
                 case 2: {
@@ -60576,7 +60576,7 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                             break;
                         if (!(m.imageUrls && m.imageUrls.length))
                             m.imageUrls = [];
-                        m.imageUrls.push($root.AICommonDeprecated.AIRichResponseImageURL.decode(r, r.uint32(), $undefined, q + 1));
+                        m.imageUrls.push($root.AICommonDeprecated.AIRichResponseImageURL.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 }
@@ -60917,7 +60917,7 @@ export const AICommon = $root.AICommon = (() => {
                 case 1: {
                         if (u !== 2)
                             break;
-                        m.serverEvent = $root.AICommon.BizAIMetadataSync.ServerEvent.decode(r, r.uint32(), $undefined, q + 1, m.serverEvent);
+                        m.serverEvent = $root.AICommon.BizAIMetadataSync.ServerEvent.decode(r, r.size(), $undefined, q + 1, m.serverEvent);
                         m.operation = "serverEvent";
                         continue;
                     }
@@ -61065,7 +61065,7 @@ export const AICommon = $root.AICommon = (() => {
                     case 2: {
                             if (u !== 2)
                                 break;
-                            m.agentOnboardingStarted = $root.AICommon.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted.decode(r, r.uint32(), $undefined, q + 1, m.agentOnboardingStarted);
+                            m.agentOnboardingStarted = $root.AICommon.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted.decode(r, r.size(), $undefined, q + 1, m.agentOnboardingStarted);
                             m.event = "agentOnboardingStarted";
                             continue;
                         }
@@ -61364,13 +61364,13 @@ export const AICommon = $root.AICommon = (() => {
                 case 1: {
                         if (u !== 2)
                             break;
-                        m.c2PaMetadata = $root.AICommon.AIProvenance.Metadata.decode(r, r.uint32(), $undefined, q + 1, m.c2PaMetadata);
+                        m.c2PaMetadata = $root.AICommon.AIProvenance.Metadata.decode(r, r.size(), $undefined, q + 1, m.c2PaMetadata);
                         continue;
                     }
                 case 2: {
                         if (u !== 2)
                             break;
-                        m.iptcMetadata = $root.AICommon.AIProvenance.Metadata.decode(r, r.uint32(), $undefined, q + 1, m.iptcMetadata);
+                        m.iptcMetadata = $root.AICommon.AIProvenance.Metadata.decode(r, r.size(), $undefined, q + 1, m.iptcMetadata);
                         continue;
                     }
                 }
@@ -61800,7 +61800,7 @@ export const AICommon = $root.AICommon = (() => {
                 case 1: {
                         if (u !== 2)
                             break;
-                        m.deepLinkMetadata = $root.AICommon.BotAgentDeepLinkMetadata.decode(r, r.uint32(), $undefined, q + 1, m.deepLinkMetadata);
+                        m.deepLinkMetadata = $root.AICommon.BotAgentDeepLinkMetadata.decode(r, r.size(), $undefined, q + 1, m.deepLinkMetadata);
                         continue;
                     }
                 }
@@ -62142,7 +62142,7 @@ export const AICommon = $root.AICommon = (() => {
                             break;
                         if (!(m.capabilityOptions && m.capabilityOptions.length))
                             m.capabilityOptions = [];
-                        m.capabilityOptions.push($root.AICommon.AIHomeState.AIHomeOption.decode(r, r.uint32(), $undefined, q + 1));
+                        m.capabilityOptions.push($root.AICommon.AIHomeState.AIHomeOption.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 case 3: {
@@ -62150,7 +62150,7 @@ export const AICommon = $root.AICommon = (() => {
                             break;
                         if (!(m.conversationOptions && m.conversationOptions.length))
                             m.conversationOptions = [];
-                        m.conversationOptions.push($root.AICommon.AIHomeState.AIHomeOption.decode(r, r.uint32(), $undefined, q + 1));
+                        m.conversationOptions.push($root.AICommon.AIHomeState.AIHomeOption.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 }
@@ -62929,7 +62929,7 @@ export const AICommon = $root.AICommon = (() => {
                 case 1: {
                         if (u !== 2)
                             break;
-                        m.messageKey = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.uint32(), $undefined, q + 1, m.messageKey);
+                        m.messageKey = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.size(), $undefined, q + 1, m.messageKey);
                         continue;
                     }
                 case 2: {
@@ -63745,7 +63745,7 @@ export const AICommon = $root.AICommon = (() => {
                 case 1: {
                         if (u !== 2)
                             break;
-                        m.messageKey = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.uint32(), $undefined, q + 1, m.messageKey);
+                        m.messageKey = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.size(), $undefined, q + 1, m.messageKey);
                         continue;
                     }
                 case 2: {
@@ -63793,7 +63793,7 @@ export const AICommon = $root.AICommon = (() => {
                 case 7: {
                         if (u !== 2)
                             break;
-                        m.sideBySideSurveyMetadata = $root.AICommon.BotFeedbackMessage.SideBySideSurveyMetadata.decode(r, r.uint32(), $undefined, q + 1, m.sideBySideSurveyMetadata);
+                        m.sideBySideSurveyMetadata = $root.AICommon.BotFeedbackMessage.SideBySideSurveyMetadata.decode(r, r.size(), $undefined, q + 1, m.sideBySideSurveyMetadata);
                         continue;
                     }
                 }
@@ -64175,13 +64175,13 @@ export const AICommon = $root.AICommon = (() => {
                     case 8: {
                             if (u !== 2)
                                 break;
-                            m.analyticsData = $root.AICommon.BotFeedbackMessage.SideBySideSurveyMetadata.SideBySideSurveyAnalyticsData.decode(r, r.uint32(), $undefined, q + 1, m.analyticsData);
+                            m.analyticsData = $root.AICommon.BotFeedbackMessage.SideBySideSurveyMetadata.SideBySideSurveyAnalyticsData.decode(r, r.size(), $undefined, q + 1, m.analyticsData);
                             continue;
                         }
                     case 9: {
                             if (u !== 2)
                                 break;
-                            m.metaAiAnalyticsData = $root.AICommon.BotFeedbackMessage.SideBySideSurveyMetadata.SidebySideSurveyMetaAiAnalyticsData.decode(r, r.uint32(), $undefined, q + 1, m.metaAiAnalyticsData);
+                            m.metaAiAnalyticsData = $root.AICommon.BotFeedbackMessage.SideBySideSurveyMetadata.SidebySideSurveyMetaAiAnalyticsData.decode(r, r.size(), $undefined, q + 1, m.metaAiAnalyticsData);
                             continue;
                         }
                     }
@@ -64570,31 +64570,31 @@ export const AICommon = $root.AICommon = (() => {
                         case 5: {
                                 if (u !== 2)
                                     break;
-                                m.ctaImpressionEvent = $root.AICommon.BotFeedbackMessage.SideBySideSurveyMetadata.SidebySideSurveyMetaAiAnalyticsData.SideBySideSurveyCTAImpressionEventData.decode(r, r.uint32(), $undefined, q + 1, m.ctaImpressionEvent);
+                                m.ctaImpressionEvent = $root.AICommon.BotFeedbackMessage.SideBySideSurveyMetadata.SidebySideSurveyMetaAiAnalyticsData.SideBySideSurveyCTAImpressionEventData.decode(r, r.size(), $undefined, q + 1, m.ctaImpressionEvent);
                                 continue;
                             }
                         case 6: {
                                 if (u !== 2)
                                     break;
-                                m.ctaClickEvent = $root.AICommon.BotFeedbackMessage.SideBySideSurveyMetadata.SidebySideSurveyMetaAiAnalyticsData.SideBySideSurveyCTAClickEventData.decode(r, r.uint32(), $undefined, q + 1, m.ctaClickEvent);
+                                m.ctaClickEvent = $root.AICommon.BotFeedbackMessage.SideBySideSurveyMetadata.SidebySideSurveyMetaAiAnalyticsData.SideBySideSurveyCTAClickEventData.decode(r, r.size(), $undefined, q + 1, m.ctaClickEvent);
                                 continue;
                             }
                         case 7: {
                                 if (u !== 2)
                                     break;
-                                m.cardImpressionEvent = $root.AICommon.SideBySideSurveyCardImpressionEventData.decode(r, r.uint32(), $undefined, q + 1, m.cardImpressionEvent);
+                                m.cardImpressionEvent = $root.AICommon.SideBySideSurveyCardImpressionEventData.decode(r, r.size(), $undefined, q + 1, m.cardImpressionEvent);
                                 continue;
                             }
                         case 8: {
                                 if (u !== 2)
                                     break;
-                                m.responseEvent = $root.AICommon.BotFeedbackMessage.SideBySideSurveyMetadata.SidebySideSurveyMetaAiAnalyticsData.SideBySideSurveyResponseEventData.decode(r, r.uint32(), $undefined, q + 1, m.responseEvent);
+                                m.responseEvent = $root.AICommon.BotFeedbackMessage.SideBySideSurveyMetadata.SidebySideSurveyMetaAiAnalyticsData.SideBySideSurveyResponseEventData.decode(r, r.size(), $undefined, q + 1, m.responseEvent);
                                 continue;
                             }
                         case 9: {
                                 if (u !== 2)
                                     break;
-                                m.abandonEvent = $root.AICommon.BotFeedbackMessage.SideBySideSurveyMetadata.SidebySideSurveyMetaAiAnalyticsData.SideBySideSurveyAbandonEventData.decode(r, r.uint32(), $undefined, q + 1, m.abandonEvent);
+                                m.abandonEvent = $root.AICommon.BotFeedbackMessage.SideBySideSurveyMetadata.SidebySideSurveyMetaAiAnalyticsData.SideBySideSurveyAbandonEventData.decode(r, r.size(), $undefined, q + 1, m.abandonEvent);
                                 continue;
                             }
                         }
@@ -65601,7 +65601,7 @@ export const AICommon = $root.AICommon = (() => {
                             break;
                         if (!(m.participantsMetadata && m.participantsMetadata.length))
                             m.participantsMetadata = [];
-                        m.participantsMetadata.push($root.AICommon.BotGroupParticipantMetadata.decode(r, r.uint32(), $undefined, q + 1));
+                        m.participantsMetadata.push($root.AICommon.BotGroupParticipantMetadata.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 }
@@ -65742,7 +65742,7 @@ export const AICommon = $root.AICommon = (() => {
                             break;
                         if (!(m.participantsMetadata && m.participantsMetadata.length))
                             m.participantsMetadata = [];
-                        m.participantsMetadata.push($root.AICommon.BotGroupParticipantMetadata.decode(r, r.uint32(), $undefined, q + 1));
+                        m.participantsMetadata.push($root.AICommon.BotGroupParticipantMetadata.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 }
@@ -66161,13 +66161,13 @@ export const AICommon = $root.AICommon = (() => {
                 case 3: {
                         if (u !== 2)
                             break;
-                        m.pluginMetadata = $root.AICommon.BotPluginMetadata.decode(r, r.uint32(), $undefined, q + 1, m.pluginMetadata);
+                        m.pluginMetadata = $root.AICommon.BotPluginMetadata.decode(r, r.size(), $undefined, q + 1, m.pluginMetadata);
                         continue;
                     }
                 case 4: {
                         if (u !== 2)
                             break;
-                        m.suggestedPromptMetadata = $root.AICommon.BotSuggestedPromptMetadata.decode(r, r.uint32(), $undefined, q + 1, m.suggestedPromptMetadata);
+                        m.suggestedPromptMetadata = $root.AICommon.BotSuggestedPromptMetadata.decode(r, r.size(), $undefined, q + 1, m.suggestedPromptMetadata);
                         continue;
                     }
                 case 5: {
@@ -66179,13 +66179,13 @@ export const AICommon = $root.AICommon = (() => {
                 case 6: {
                         if (u !== 2)
                             break;
-                        m.sessionMetadata = $root.AICommon.BotSessionMetadata.decode(r, r.uint32(), $undefined, q + 1, m.sessionMetadata);
+                        m.sessionMetadata = $root.AICommon.BotSessionMetadata.decode(r, r.size(), $undefined, q + 1, m.sessionMetadata);
                         continue;
                     }
                 case 7: {
                         if (u !== 2)
                             break;
-                        m.memuMetadata = $root.AICommon.BotMemuMetadata.decode(r, r.uint32(), $undefined, q + 1, m.memuMetadata);
+                        m.memuMetadata = $root.AICommon.BotMemuMetadata.decode(r, r.size(), $undefined, q + 1, m.memuMetadata);
                         continue;
                     }
                 case 8: {
@@ -66197,13 +66197,13 @@ export const AICommon = $root.AICommon = (() => {
                 case 9: {
                         if (u !== 2)
                             break;
-                        m.reminderMetadata = $root.AICommon.BotReminderMetadata.decode(r, r.uint32(), $undefined, q + 1, m.reminderMetadata);
+                        m.reminderMetadata = $root.AICommon.BotReminderMetadata.decode(r, r.size(), $undefined, q + 1, m.reminderMetadata);
                         continue;
                     }
                 case 10: {
                         if (u !== 2)
                             break;
-                        m.modelMetadata = $root.AICommon.BotModelMetadata.decode(r, r.uint32(), $undefined, q + 1, m.modelMetadata);
+                        m.modelMetadata = $root.AICommon.BotModelMetadata.decode(r, r.size(), $undefined, q + 1, m.modelMetadata);
                         continue;
                     }
                 case 11: {
@@ -66215,49 +66215,49 @@ export const AICommon = $root.AICommon = (() => {
                 case 12: {
                         if (u !== 2)
                             break;
-                        m.progressIndicatorMetadata = $root.AICommon.BotProgressIndicatorMetadata.decode(r, r.uint32(), $undefined, q + 1, m.progressIndicatorMetadata);
+                        m.progressIndicatorMetadata = $root.AICommon.BotProgressIndicatorMetadata.decode(r, r.size(), $undefined, q + 1, m.progressIndicatorMetadata);
                         continue;
                     }
                 case 13: {
                         if (u !== 2)
                             break;
-                        m.capabilityMetadata = $root.AICommon.BotCapabilityMetadata.decode(r, r.uint32(), $undefined, q + 1, m.capabilityMetadata);
+                        m.capabilityMetadata = $root.AICommon.BotCapabilityMetadata.decode(r, r.size(), $undefined, q + 1, m.capabilityMetadata);
                         continue;
                     }
                 case 14: {
                         if (u !== 2)
                             break;
-                        m.imagineMetadata = $root.AICommon.BotImagineMetadata.decode(r, r.uint32(), $undefined, q + 1, m.imagineMetadata);
+                        m.imagineMetadata = $root.AICommon.BotImagineMetadata.decode(r, r.size(), $undefined, q + 1, m.imagineMetadata);
                         continue;
                     }
                 case 15: {
                         if (u !== 2)
                             break;
-                        m.memoryMetadata = $root.AICommon.BotMemoryMetadata.decode(r, r.uint32(), $undefined, q + 1, m.memoryMetadata);
+                        m.memoryMetadata = $root.AICommon.BotMemoryMetadata.decode(r, r.size(), $undefined, q + 1, m.memoryMetadata);
                         continue;
                     }
                 case 16: {
                         if (u !== 2)
                             break;
-                        m.renderingMetadata = $root.AICommon.BotRenderingMetadata.decode(r, r.uint32(), $undefined, q + 1, m.renderingMetadata);
+                        m.renderingMetadata = $root.AICommon.BotRenderingMetadata.decode(r, r.size(), $undefined, q + 1, m.renderingMetadata);
                         continue;
                     }
                 case 17: {
                         if (u !== 2)
                             break;
-                        m.botMetricsMetadata = $root.AICommon.BotMetricsMetadata.decode(r, r.uint32(), $undefined, q + 1, m.botMetricsMetadata);
+                        m.botMetricsMetadata = $root.AICommon.BotMetricsMetadata.decode(r, r.size(), $undefined, q + 1, m.botMetricsMetadata);
                         continue;
                     }
                 case 18: {
                         if (u !== 2)
                             break;
-                        m.botLinkedAccountsMetadata = $root.AICommon.BotLinkedAccountsMetadata.decode(r, r.uint32(), $undefined, q + 1, m.botLinkedAccountsMetadata);
+                        m.botLinkedAccountsMetadata = $root.AICommon.BotLinkedAccountsMetadata.decode(r, r.size(), $undefined, q + 1, m.botLinkedAccountsMetadata);
                         continue;
                     }
                 case 19: {
                         if (u !== 2)
                             break;
-                        m.richResponseSourcesMetadata = $root.AICommon.BotSourcesMetadata.decode(r, r.uint32(), $undefined, q + 1, m.richResponseSourcesMetadata);
+                        m.richResponseSourcesMetadata = $root.AICommon.BotSourcesMetadata.decode(r, r.size(), $undefined, q + 1, m.richResponseSourcesMetadata);
                         continue;
                     }
                 case 20: {
@@ -66269,25 +66269,25 @@ export const AICommon = $root.AICommon = (() => {
                 case 21: {
                         if (u !== 2)
                             break;
-                        m.botPromotionMessageMetadata = $root.AICommon.BotPromotionMessageMetadata.decode(r, r.uint32(), $undefined, q + 1, m.botPromotionMessageMetadata);
+                        m.botPromotionMessageMetadata = $root.AICommon.BotPromotionMessageMetadata.decode(r, r.size(), $undefined, q + 1, m.botPromotionMessageMetadata);
                         continue;
                     }
                 case 22: {
                         if (u !== 2)
                             break;
-                        m.botModeSelectionMetadata = $root.AICommon.BotModeSelectionMetadata.decode(r, r.uint32(), $undefined, q + 1, m.botModeSelectionMetadata);
+                        m.botModeSelectionMetadata = $root.AICommon.BotModeSelectionMetadata.decode(r, r.size(), $undefined, q + 1, m.botModeSelectionMetadata);
                         continue;
                     }
                 case 23: {
                         if (u !== 2)
                             break;
-                        m.botQuotaMetadata = $root.AICommon.BotQuotaMetadata.decode(r, r.uint32(), $undefined, q + 1, m.botQuotaMetadata);
+                        m.botQuotaMetadata = $root.AICommon.BotQuotaMetadata.decode(r, r.size(), $undefined, q + 1, m.botQuotaMetadata);
                         continue;
                     }
                 case 24: {
                         if (u !== 2)
                             break;
-                        m.botAgeCollectionMetadata = $root.AICommon.BotAgeCollectionMetadata.decode(r, r.uint32(), $undefined, q + 1, m.botAgeCollectionMetadata);
+                        m.botAgeCollectionMetadata = $root.AICommon.BotAgeCollectionMetadata.decode(r, r.size(), $undefined, q + 1, m.botAgeCollectionMetadata);
                         continue;
                     }
                 case 25: {
@@ -66305,103 +66305,103 @@ export const AICommon = $root.AICommon = (() => {
                 case 27: {
                         if (u !== 2)
                             break;
-                        m.verificationMetadata = $root.AICommon.BotSignatureVerificationMetadata.decode(r, r.uint32(), $undefined, q + 1, m.verificationMetadata);
+                        m.verificationMetadata = $root.AICommon.BotSignatureVerificationMetadata.decode(r, r.size(), $undefined, q + 1, m.verificationMetadata);
                         continue;
                     }
                 case 28: {
                         if (u !== 2)
                             break;
-                        m.unifiedResponseMutation = $root.AICommon.BotUnifiedResponseMutation.decode(r, r.uint32(), $undefined, q + 1, m.unifiedResponseMutation);
+                        m.unifiedResponseMutation = $root.AICommon.BotUnifiedResponseMutation.decode(r, r.size(), $undefined, q + 1, m.unifiedResponseMutation);
                         continue;
                     }
                 case 29: {
                         if (u !== 2)
                             break;
-                        m.botMessageOriginMetadata = $root.AICommon.BotMessageOriginMetadata.decode(r, r.uint32(), $undefined, q + 1, m.botMessageOriginMetadata);
+                        m.botMessageOriginMetadata = $root.AICommon.BotMessageOriginMetadata.decode(r, r.size(), $undefined, q + 1, m.botMessageOriginMetadata);
                         continue;
                     }
                 case 30: {
                         if (u !== 2)
                             break;
-                        m.inThreadSurveyMetadata = $root.AICommon.InThreadSurveyMetadata.decode(r, r.uint32(), $undefined, q + 1, m.inThreadSurveyMetadata);
+                        m.inThreadSurveyMetadata = $root.AICommon.InThreadSurveyMetadata.decode(r, r.size(), $undefined, q + 1, m.inThreadSurveyMetadata);
                         continue;
                     }
                 case 31: {
                         if (u !== 2)
                             break;
-                        m.botThreadInfo = $root.AICommon.AIThreadInfo.decode(r, r.uint32(), $undefined, q + 1, m.botThreadInfo);
+                        m.botThreadInfo = $root.AICommon.AIThreadInfo.decode(r, r.size(), $undefined, q + 1, m.botThreadInfo);
                         continue;
                     }
                 case 32: {
                         if (u !== 2)
                             break;
-                        m.regenerateMetadata = $root.AICommon.AIRegenerateMetadata.decode(r, r.uint32(), $undefined, q + 1, m.regenerateMetadata);
+                        m.regenerateMetadata = $root.AICommon.AIRegenerateMetadata.decode(r, r.size(), $undefined, q + 1, m.regenerateMetadata);
                         continue;
                     }
                 case 33: {
                         if (u !== 2)
                             break;
-                        m.sessionTransparencyMetadata = $root.AICommon.SessionTransparencyMetadata.decode(r, r.uint32(), $undefined, q + 1, m.sessionTransparencyMetadata);
+                        m.sessionTransparencyMetadata = $root.AICommon.SessionTransparencyMetadata.decode(r, r.size(), $undefined, q + 1, m.sessionTransparencyMetadata);
                         continue;
                     }
                 case 34: {
                         if (u !== 2)
                             break;
-                        m.botDocumentMessageMetadata = $root.AICommon.BotDocumentMessageMetadata.decode(r, r.uint32(), $undefined, q + 1, m.botDocumentMessageMetadata);
+                        m.botDocumentMessageMetadata = $root.AICommon.BotDocumentMessageMetadata.decode(r, r.size(), $undefined, q + 1, m.botDocumentMessageMetadata);
                         continue;
                     }
                 case 35: {
                         if (u !== 2)
                             break;
-                        m.botGroupMetadata = $root.AICommon.BotGroupMetadata.decode(r, r.uint32(), $undefined, q + 1, m.botGroupMetadata);
+                        m.botGroupMetadata = $root.AICommon.BotGroupMetadata.decode(r, r.size(), $undefined, q + 1, m.botGroupMetadata);
                         continue;
                     }
                 case 36: {
                         if (u !== 2)
                             break;
-                        m.botRenderingConfigMetadata = $root.AICommon.BotRenderingConfigMetadata.decode(r, r.uint32(), $undefined, q + 1, m.botRenderingConfigMetadata);
+                        m.botRenderingConfigMetadata = $root.AICommon.BotRenderingConfigMetadata.decode(r, r.size(), $undefined, q + 1, m.botRenderingConfigMetadata);
                         continue;
                     }
                 case 37: {
                         if (u !== 2)
                             break;
-                        m.botInfrastructureDiagnostics = $root.AICommon.BotInfrastructureDiagnostics.decode(r, r.uint32(), $undefined, q + 1, m.botInfrastructureDiagnostics);
+                        m.botInfrastructureDiagnostics = $root.AICommon.BotInfrastructureDiagnostics.decode(r, r.size(), $undefined, q + 1, m.botInfrastructureDiagnostics);
                         continue;
                     }
                 case 38: {
                         if (u !== 2)
                             break;
-                        m.aiMediaCollectionMetadata = $root.AICommon.AIMediaCollectionMetadata.decode(r, r.uint32(), $undefined, q + 1, m.aiMediaCollectionMetadata);
+                        m.aiMediaCollectionMetadata = $root.AICommon.AIMediaCollectionMetadata.decode(r, r.size(), $undefined, q + 1, m.aiMediaCollectionMetadata);
                         continue;
                     }
                 case 39: {
                         if (u !== 2)
                             break;
-                        m.commandMetadata = $root.AICommon.BotCommandMetadata.decode(r, r.uint32(), $undefined, q + 1, m.commandMetadata);
+                        m.commandMetadata = $root.AICommon.BotCommandMetadata.decode(r, r.size(), $undefined, q + 1, m.commandMetadata);
                         continue;
                     }
                 case 40: {
                         if (u !== 2)
                             break;
-                        m.resolvedToolCallMetadata = $root.AICommon.BotResolvedToolCallMetadata.decode(r, r.uint32(), $undefined, q + 1, m.resolvedToolCallMetadata);
+                        m.resolvedToolCallMetadata = $root.AICommon.BotResolvedToolCallMetadata.decode(r, r.size(), $undefined, q + 1, m.resolvedToolCallMetadata);
                         continue;
                     }
                 case 41: {
                         if (u !== 2)
                             break;
-                        m.subscriptionUpsellMetadata = $root.AICommon.AISubscriptionUpsellMetadata.decode(r, r.uint32(), $undefined, q + 1, m.subscriptionUpsellMetadata);
+                        m.subscriptionUpsellMetadata = $root.AICommon.AISubscriptionUpsellMetadata.decode(r, r.size(), $undefined, q + 1, m.subscriptionUpsellMetadata);
                         continue;
                     }
                 case 42: {
                         if (u !== 2)
                             break;
-                        m.pttPromptMetadata = $root.AICommon.BotPttPromptMetadata.decode(r, r.uint32(), $undefined, q + 1, m.pttPromptMetadata);
+                        m.pttPromptMetadata = $root.AICommon.BotPttPromptMetadata.decode(r, r.size(), $undefined, q + 1, m.pttPromptMetadata);
                         continue;
                     }
                 case 43: {
                         if (u !== 2)
                             break;
-                        m.botHistoryShareMetadata = $root.AICommon.BotHistoryShareMetadata.decode(r, r.uint32(), $undefined, q + 1, m.botHistoryShareMetadata);
+                        m.botHistoryShareMetadata = $root.AICommon.BotHistoryShareMetadata.decode(r, r.size(), $undefined, q + 1, m.botHistoryShareMetadata);
                         continue;
                     }
                 case 44: {
@@ -67357,13 +67357,13 @@ export const AICommon = $root.AICommon = (() => {
                 case 1: {
                         if (u !== 2)
                             break;
-                        m.hatchMetadataSync = $root.AICommon.HatchMetadataSync.decode(r, r.uint32(), $undefined, q + 1, m.hatchMetadataSync);
+                        m.hatchMetadataSync = $root.AICommon.HatchMetadataSync.decode(r, r.size(), $undefined, q + 1, m.hatchMetadataSync);
                         continue;
                     }
                 case 2: {
                         if (u !== 2)
                             break;
-                        m.bizAiMetadataSync = $root.AICommon.BizAIMetadataSync.decode(r, r.uint32(), $undefined, q + 1, m.bizAiMetadataSync);
+                        m.bizAiMetadataSync = $root.AICommon.BizAIMetadataSync.decode(r, r.size(), $undefined, q + 1, m.bizAiMetadataSync);
                         continue;
                     }
                 }
@@ -67986,13 +67986,13 @@ export const AICommon = $root.AICommon = (() => {
                 case 1: {
                         if (u !== 2)
                             break;
-                        m.serverInfo = $root.AICommon.AIThreadInfo.AIThreadServerInfo.decode(r, r.uint32(), $undefined, q + 1, m.serverInfo);
+                        m.serverInfo = $root.AICommon.AIThreadInfo.AIThreadServerInfo.decode(r, r.size(), $undefined, q + 1, m.serverInfo);
                         continue;
                     }
                 case 2: {
                         if (u !== 2)
                             break;
-                        m.clientInfo = $root.AICommon.AIThreadInfo.AIThreadClientInfo.decode(r, r.uint32(), $undefined, q + 1, m.clientInfo);
+                        m.clientInfo = $root.AICommon.AIThreadInfo.AIThreadClientInfo.decode(r, r.size(), $undefined, q + 1, m.clientInfo);
                         continue;
                     }
                 }
@@ -68439,7 +68439,7 @@ export const AICommon = $root.AICommon = (() => {
                 case 1: {
                         if (u !== 2)
                             break;
-                        m.sbsMetadata = $root.AICommon.BotUnifiedResponseMutation.SideBySideMetadata.decode(r, r.uint32(), $undefined, q + 1, m.sbsMetadata);
+                        m.sbsMetadata = $root.AICommon.BotUnifiedResponseMutation.SideBySideMetadata.decode(r, r.size(), $undefined, q + 1, m.sbsMetadata);
                         continue;
                     }
                 case 2: {
@@ -68447,7 +68447,7 @@ export const AICommon = $root.AICommon = (() => {
                             break;
                         if (!(m.mediaDetailsMetadataList && m.mediaDetailsMetadataList.length))
                             m.mediaDetailsMetadataList = [];
-                        m.mediaDetailsMetadataList.push($root.AICommon.BotUnifiedResponseMutation.MediaDetailsMetadata.decode(r, r.uint32(), $undefined, q + 1));
+                        m.mediaDetailsMetadataList.push($root.AICommon.BotUnifiedResponseMutation.MediaDetailsMetadata.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 }
@@ -68603,13 +68603,13 @@ export const AICommon = $root.AICommon = (() => {
                     case 2: {
                             if (u !== 2)
                                 break;
-                            m.highResMedia = $root.AICommon.BotMediaMetadata.decode(r, r.uint32(), $undefined, q + 1, m.highResMedia);
+                            m.highResMedia = $root.AICommon.BotMediaMetadata.decode(r, r.size(), $undefined, q + 1, m.highResMedia);
                             continue;
                         }
                     case 3: {
                             if (u !== 2)
                                 break;
-                            m.previewMedia = $root.AICommon.BotMediaMetadata.decode(r, r.uint32(), $undefined, q + 1, m.previewMedia);
+                            m.previewMedia = $root.AICommon.BotMediaMetadata.decode(r, r.size(), $undefined, q + 1, m.previewMedia);
                             continue;
                         }
                     }
@@ -69045,7 +69045,7 @@ export const AICommon = $root.AICommon = (() => {
                             break;
                         if (!(m.origins && m.origins.length))
                             m.origins = [];
-                        m.origins.push($root.AICommon.BotMessageOrigin.decode(r, r.uint32(), $undefined, q + 1));
+                        m.origins.push($root.AICommon.BotMessageOrigin.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 }
@@ -69306,7 +69306,7 @@ export const AICommon = $root.AICommon = (() => {
                             break;
                         if (!(m.questions && m.questions.length))
                             m.questions = [];
-                        m.questions.push($root.AICommon.InThreadSurveyMetadata.InThreadSurveyQuestion.decode(r, r.uint32(), $undefined, q + 1));
+                        m.questions.push($root.AICommon.InThreadSurveyMetadata.InThreadSurveyQuestion.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 case 13: {
@@ -69332,7 +69332,7 @@ export const AICommon = $root.AICommon = (() => {
                             break;
                         if (!(m.privacyStatementParts && m.privacyStatementParts.length))
                             m.privacyStatementParts = [];
-                        m.privacyStatementParts.push($root.AICommon.InThreadSurveyMetadata.InThreadSurveyPrivacyStatementPart.decode(r, r.uint32(), $undefined, q + 1));
+                        m.privacyStatementParts.push($root.AICommon.InThreadSurveyMetadata.InThreadSurveyPrivacyStatementPart.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 case 17: {
@@ -69931,7 +69931,7 @@ export const AICommon = $root.AICommon = (() => {
                                 break;
                             if (!(m.questionOptions && m.questionOptions.length))
                                 m.questionOptions = [];
-                            m.questionOptions.push($root.AICommon.InThreadSurveyMetadata.InThreadSurveyOption.decode(r, r.uint32(), $undefined, q + 1));
+                            m.questionOptions.push($root.AICommon.InThreadSurveyMetadata.InThreadSurveyOption.decode(r, r.size(), $undefined, q + 1));
                             continue;
                         }
                     }
@@ -70091,7 +70091,7 @@ export const AICommon = $root.AICommon = (() => {
                             break;
                         if (!(m.sources && m.sources.length))
                             m.sources = [];
-                        m.sources.push($root.AICommon.BotSourcesMetadata.BotSourceItem.decode(r, r.uint32(), $undefined, q + 1));
+                        m.sources.push($root.AICommon.BotSourcesMetadata.BotSourceItem.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 }
@@ -70847,7 +70847,7 @@ export const AICommon = $root.AICommon = (() => {
                             break;
                         if (!(m.botFeatureQuotaMetadata && m.botFeatureQuotaMetadata.length))
                             m.botFeatureQuotaMetadata = [];
-                        m.botFeatureQuotaMetadata.push($root.AICommon.BotQuotaMetadata.BotFeatureQuotaMetadata.decode(r, r.uint32(), $undefined, q + 1));
+                        m.botFeatureQuotaMetadata.push($root.AICommon.BotQuotaMetadata.BotFeatureQuotaMetadata.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 }
@@ -71186,7 +71186,7 @@ export const AICommon = $root.AICommon = (() => {
                 switch (t >>>= 3) {
                 case 1: {
                         if (u === 2) {
-                            var c2 = r.uint32() + r.pos;
+                            var c2 = r.size() + r.pos;
                             if (c2 > r.len)
                                 throw $RangeError("index out of range");
                             r.len = c2;
@@ -71399,7 +71399,7 @@ export const AICommon = $root.AICommon = (() => {
                 switch (t >>>= 3) {
                 case 1: {
                         if (u === 2) {
-                            var c2 = r.uint32() + r.pos;
+                            var c2 = r.size() + r.pos;
                             if (c2 > r.len)
                                 throw $RangeError("index out of range");
                             r.len = c2;
@@ -71998,7 +71998,7 @@ export const AICommon = $root.AICommon = (() => {
                             break;
                         if (!(m.stepsMetadata && m.stepsMetadata.length))
                             m.stepsMetadata = [];
-                        m.stepsMetadata.push($root.AICommon.BotProgressIndicatorMetadata.BotPlanningStepMetadata.decode(r, r.uint32(), $undefined, q + 1));
+                        m.stepsMetadata.push($root.AICommon.BotProgressIndicatorMetadata.BotPlanningStepMetadata.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 case 3: {
@@ -72207,7 +72207,7 @@ export const AICommon = $root.AICommon = (() => {
                                 break;
                             if (!(m.sourcesMetadata && m.sourcesMetadata.length))
                                 m.sourcesMetadata = [];
-                            m.sourcesMetadata.push($root.AICommon.BotProgressIndicatorMetadata.BotPlanningStepMetadata.BotPlanningSearchSourcesMetadata.decode(r, r.uint32(), $undefined, q + 1));
+                            m.sourcesMetadata.push($root.AICommon.BotProgressIndicatorMetadata.BotPlanningStepMetadata.BotPlanningSearchSourcesMetadata.decode(r, r.size(), $undefined, q + 1));
                             continue;
                         }
                     case 4: {
@@ -72239,7 +72239,7 @@ export const AICommon = $root.AICommon = (() => {
                                 break;
                             if (!(m.sections && m.sections.length))
                                 m.sections = [];
-                            m.sections.push($root.AICommon.BotProgressIndicatorMetadata.BotPlanningStepMetadata.BotPlanningStepSectionMetadata.decode(r, r.uint32(), $undefined, q + 1));
+                            m.sections.push($root.AICommon.BotProgressIndicatorMetadata.BotPlanningStepMetadata.BotPlanningStepSectionMetadata.decode(r, r.size(), $undefined, q + 1));
                             continue;
                         }
                     }
@@ -72850,7 +72850,7 @@ export const AICommon = $root.AICommon = (() => {
                                     break;
                                 if (!(m.sourcesMetadata && m.sourcesMetadata.length))
                                     m.sourcesMetadata = [];
-                                m.sourcesMetadata.push($root.AICommon.BotProgressIndicatorMetadata.BotPlanningStepMetadata.BotPlanningSearchSourceMetadata.decode(r, r.uint32(), $undefined, q + 1));
+                                m.sourcesMetadata.push($root.AICommon.BotProgressIndicatorMetadata.BotPlanningStepMetadata.BotPlanningSearchSourceMetadata.decode(r, r.size(), $undefined, q + 1));
                                 continue;
                             }
                         }
@@ -73248,7 +73248,7 @@ export const AICommon = $root.AICommon = (() => {
                 case 1: {
                         if (u !== 2)
                             break;
-                        m.requestMessageKey = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.uint32(), $undefined, q + 1, m.requestMessageKey);
+                        m.requestMessageKey = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.size(), $undefined, q + 1, m.requestMessageKey);
                         continue;
                     }
                 case 2: {
@@ -73516,7 +73516,7 @@ export const AICommon = $root.AICommon = (() => {
                             break;
                         if (!(m.faceImages && m.faceImages.length))
                             m.faceImages = [];
-                        m.faceImages.push($root.AICommon.BotMediaMetadata.decode(r, r.uint32(), $undefined, q + 1));
+                        m.faceImages.push($root.AICommon.BotMediaMetadata.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 }
@@ -74491,7 +74491,7 @@ export const AICommon = $root.AICommon = (() => {
                             break;
                         if (!(m.keywords && m.keywords.length))
                             m.keywords = [];
-                        m.keywords.push($root.AICommon.BotRenderingMetadata.Keyword.decode(r, r.uint32(), $undefined, q + 1));
+                        m.keywords.push($root.AICommon.BotRenderingMetadata.Keyword.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 }
@@ -75004,7 +75004,7 @@ export const AICommon = $root.AICommon = (() => {
                             break;
                         if (!(m.certificateChainSki && m.certificateChainSki.length))
                             m.certificateChainSki = [];
-                        m.certificateChainSki.push($root.AICommon.BotSignatureVerificationUseCaseProof.CertificateSKI.decode(r, r.uint32(), $undefined, q + 1));
+                        m.certificateChainSki.push($root.AICommon.BotSignatureVerificationUseCaseProof.CertificateSKI.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 }
@@ -75411,7 +75411,7 @@ export const AICommon = $root.AICommon = (() => {
                             break;
                         if (!(m.proofs && m.proofs.length))
                             m.proofs = [];
-                        m.proofs.push($root.AICommon.BotSignatureVerificationUseCaseProof.decode(r, r.uint32(), $undefined, q + 1));
+                        m.proofs.push($root.AICommon.BotSignatureVerificationUseCaseProof.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 }
@@ -75703,7 +75703,7 @@ export const AICommon = $root.AICommon = (() => {
                             break;
                         if (!(m.addedFacts && m.addedFacts.length))
                             m.addedFacts = [];
-                        m.addedFacts.push($root.AICommon.BotMemoryFact.decode(r, r.uint32(), $undefined, q + 1));
+                        m.addedFacts.push($root.AICommon.BotMemoryFact.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 case 2: {
@@ -75711,7 +75711,7 @@ export const AICommon = $root.AICommon = (() => {
                             break;
                         if (!(m.removedFacts && m.removedFacts.length))
                             m.removedFacts = [];
-                        m.removedFacts.push($root.AICommon.BotMemoryFact.decode(r, r.uint32(), $undefined, q + 1));
+                        m.removedFacts.push($root.AICommon.BotMemoryFact.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 case 3: {
@@ -76032,7 +76032,7 @@ export const AICommon = $root.AICommon = (() => {
                             break;
                         if (!(m.accounts && m.accounts.length))
                             m.accounts = [];
-                        m.accounts.push($root.AICommon.BotLinkedAccount.decode(r, r.uint32(), $undefined, q + 1));
+                        m.accounts.push($root.AICommon.BotLinkedAccount.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 case 2: {
@@ -76352,7 +76352,7 @@ export const AICommon = $root.AICommon = (() => {
                             break;
                         if (!(m.suggestions && m.suggestions.length))
                             m.suggestions = [];
-                        m.suggestions.push($root.AICommon.BotPromptSuggestion.decode(r, r.uint32(), $undefined, q + 1));
+                        m.suggestions.push($root.AICommon.BotPromptSuggestion.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 }
@@ -76514,7 +76514,7 @@ export const AICommon = $root.AICommon = (() => {
                 case 3: {
                         if (u !== 2)
                             break;
-                        m.promptSuggestions = $root.AICommon.BotPromptSuggestions.decode(r, r.uint32(), $undefined, q + 1, m.promptSuggestions);
+                        m.promptSuggestions = $root.AICommon.BotPromptSuggestions.decode(r, r.size(), $undefined, q + 1, m.promptSuggestions);
                         continue;
                     }
                 case 4: {
@@ -76772,7 +76772,7 @@ export const AICommon = $root.AICommon = (() => {
                 case 10: {
                         if (u !== 2)
                             break;
-                        m.parentPluginMessageKey = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.uint32(), $undefined, q + 1, m.parentPluginMessageKey);
+                        m.parentPluginMessageKey = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.size(), $undefined, q + 1, m.parentPluginMessageKey);
                         continue;
                     }
                 case 11: {
@@ -79182,42 +79182,42 @@ export const StatusAttributions = $root.StatusAttributions = (() => {
                 case 3: {
                         if (u !== 2)
                             break;
-                        m.statusReshare = $root.StatusAttributions.StatusAttribution.StatusReshare.decode(r, r.uint32(), $undefined, q + 1, m.statusReshare);
+                        m.statusReshare = $root.StatusAttributions.StatusAttribution.StatusReshare.decode(r, r.size(), $undefined, q + 1, m.statusReshare);
                         m.attributionData = "statusReshare";
                         continue;
                     }
                 case 4: {
                         if (u !== 2)
                             break;
-                        m.externalShare = $root.StatusAttributions.StatusAttribution.ExternalShare.decode(r, r.uint32(), $undefined, q + 1, m.externalShare);
+                        m.externalShare = $root.StatusAttributions.StatusAttribution.ExternalShare.decode(r, r.size(), $undefined, q + 1, m.externalShare);
                         m.attributionData = "externalShare";
                         continue;
                     }
                 case 5: {
                         if (u !== 2)
                             break;
-                        m.music = $root.StatusAttributions.StatusAttribution.Music.decode(r, r.uint32(), $undefined, q + 1, m.music);
+                        m.music = $root.StatusAttributions.StatusAttribution.Music.decode(r, r.size(), $undefined, q + 1, m.music);
                         m.attributionData = "music";
                         continue;
                     }
                 case 6: {
                         if (u !== 2)
                             break;
-                        m.groupStatus = $root.StatusAttributions.StatusAttribution.GroupStatus.decode(r, r.uint32(), $undefined, q + 1, m.groupStatus);
+                        m.groupStatus = $root.StatusAttributions.StatusAttribution.GroupStatus.decode(r, r.size(), $undefined, q + 1, m.groupStatus);
                         m.attributionData = "groupStatus";
                         continue;
                     }
                 case 7: {
                         if (u !== 2)
                             break;
-                        m.rlAttribution = $root.StatusAttributions.StatusAttribution.RLAttribution.decode(r, r.uint32(), $undefined, q + 1, m.rlAttribution);
+                        m.rlAttribution = $root.StatusAttributions.StatusAttribution.RLAttribution.decode(r, r.size(), $undefined, q + 1, m.rlAttribution);
                         m.attributionData = "rlAttribution";
                         continue;
                     }
                 case 8: {
                         if (u !== 2)
                             break;
-                        m.aiCreatedAttribution = $root.StatusAttributions.StatusAttribution.AiCreatedAttribution.decode(r, r.uint32(), $undefined, q + 1, m.aiCreatedAttribution);
+                        m.aiCreatedAttribution = $root.StatusAttributions.StatusAttribution.AiCreatedAttribution.decode(r, r.size(), $undefined, q + 1, m.aiCreatedAttribution);
                         m.attributionData = "aiCreatedAttribution";
                         continue;
                     }
@@ -80366,7 +80366,7 @@ export const StatusAttributions = $root.StatusAttributions = (() => {
                     case 2: {
                             if (u !== 2)
                                 break;
-                            m.metadata = $root.StatusAttributions.StatusAttribution.StatusReshare.Metadata.decode(r, r.uint32(), $undefined, q + 1, m.metadata);
+                            m.metadata = $root.StatusAttributions.StatusAttribution.StatusReshare.Metadata.decode(r, r.size(), $undefined, q + 1, m.metadata);
                             continue;
                         }
                     }
@@ -81462,7 +81462,7 @@ export const CompanionReg = $root.CompanionReg = (() => {
                 case 2: {
                         if (u !== 2)
                             break;
-                        m.commitment = $root.CompanionReg.CompanionCommitment.decode(r, r.uint32(), $undefined, q + 1, m.commitment);
+                        m.commitment = $root.CompanionReg.CompanionCommitment.decode(r, r.size(), $undefined, q + 1, m.commitment);
                         continue;
                     }
                 }
@@ -82052,7 +82052,7 @@ export const CompanionReg = $root.CompanionReg = (() => {
                 case 2: {
                         if (u !== 2)
                             break;
-                        m.version = $root.CompanionReg.DeviceProps.AppVersion.decode(r, r.uint32(), $undefined, q + 1, m.version);
+                        m.version = $root.CompanionReg.DeviceProps.AppVersion.decode(r, r.size(), $undefined, q + 1, m.version);
                         continue;
                     }
                 case 3: {
@@ -82076,7 +82076,7 @@ export const CompanionReg = $root.CompanionReg = (() => {
                 case 5: {
                         if (u !== 2)
                             break;
-                        m.historySyncConfig = $root.CompanionReg.DeviceProps.HistorySyncConfig.decode(r, r.uint32(), $undefined, q + 1, m.historySyncConfig);
+                        m.historySyncConfig = $root.CompanionReg.DeviceProps.HistorySyncConfig.decode(r, r.size(), $undefined, q + 1, m.historySyncConfig);
                         continue;
                     }
                 }
@@ -83495,7 +83495,7 @@ export const ServerSync = $root.ServerSync = (() => {
                             break;
                         if (!(m.collectionMutations && m.collectionMutations.length))
                             m.collectionMutations = [];
-                        m.collectionMutations.push($root.ServerSync.CoexStateSync.CollectionMutations.decode(r, r.uint32(), $undefined, q + 1));
+                        m.collectionMutations.push($root.ServerSync.CoexStateSync.CollectionMutations.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 }
@@ -83642,7 +83642,7 @@ export const ServerSync = $root.ServerSync = (() => {
                                 break;
                             if (!(m.mutations && m.mutations.length))
                                 m.mutations = [];
-                            m.mutations.push($root.ServerSync.CoexStateSync.Mutation.decode(r, r.uint32(), $undefined, q + 1));
+                            m.mutations.push($root.ServerSync.CoexStateSync.Mutation.decode(r, r.size(), $undefined, q + 1));
                             continue;
                         }
                     }
@@ -83796,13 +83796,13 @@ export const ServerSync = $root.ServerSync = (() => {
                     case 1: {
                             if (u !== 2)
                                 break;
-                            m.index = $root.ServerSync.SyncdIndex.decode(r, r.uint32(), $undefined, q + 1, m.index);
+                            m.index = $root.ServerSync.SyncdIndex.decode(r, r.size(), $undefined, q + 1, m.index);
                             continue;
                         }
                     case 2: {
                             if (u !== 2)
                                 break;
-                            m.value = $root.ServerSync.SyncdValue.decode(r, r.uint32(), $undefined, q + 1, m.value);
+                            m.value = $root.ServerSync.SyncdValue.decode(r, r.size(), $undefined, q + 1, m.value);
                             continue;
                         }
                     case 3: {
@@ -84025,7 +84025,7 @@ export const ServerSync = $root.ServerSync = (() => {
                 case 1: {
                         if (u !== 2)
                             break;
-                        m.version = $root.ServerSync.SyncdVersion.decode(r, r.uint32(), $undefined, q + 1, m.version);
+                        m.version = $root.ServerSync.SyncdVersion.decode(r, r.size(), $undefined, q + 1, m.version);
                         continue;
                     }
                 case 2: {
@@ -84033,13 +84033,13 @@ export const ServerSync = $root.ServerSync = (() => {
                             break;
                         if (!(m.mutations && m.mutations.length))
                             m.mutations = [];
-                        m.mutations.push($root.ServerSync.SyncdMutation.decode(r, r.uint32(), $undefined, q + 1));
+                        m.mutations.push($root.ServerSync.SyncdMutation.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 case 3: {
                         if (u !== 2)
                             break;
-                        m.externalMutations = $root.ServerSync.ExternalBlobReference.decode(r, r.uint32(), $undefined, q + 1, m.externalMutations);
+                        m.externalMutations = $root.ServerSync.ExternalBlobReference.decode(r, r.size(), $undefined, q + 1, m.externalMutations);
                         continue;
                     }
                 case 4: {
@@ -84057,13 +84057,13 @@ export const ServerSync = $root.ServerSync = (() => {
                 case 6: {
                         if (u !== 2)
                             break;
-                        m.keyId = $root.ServerSync.KeyId.decode(r, r.uint32(), $undefined, q + 1, m.keyId);
+                        m.keyId = $root.ServerSync.KeyId.decode(r, r.size(), $undefined, q + 1, m.keyId);
                         continue;
                     }
                 case 7: {
                         if (u !== 2)
                             break;
-                        m.exitCode = $root.ServerSync.ExitCode.decode(r, r.uint32(), $undefined, q + 1, m.exitCode);
+                        m.exitCode = $root.ServerSync.ExitCode.decode(r, r.size(), $undefined, q + 1, m.exitCode);
                         continue;
                     }
                 case 8: {
@@ -84319,7 +84319,7 @@ export const ServerSync = $root.ServerSync = (() => {
                 case 2: {
                         if (u !== 2)
                             break;
-                        m.record = $root.ServerSync.SyncdRecord.decode(r, r.uint32(), $undefined, q + 1, m.record);
+                        m.record = $root.ServerSync.SyncdRecord.decode(r, r.size(), $undefined, q + 1, m.record);
                         continue;
                     }
                 }
@@ -84474,7 +84474,7 @@ export const ServerSync = $root.ServerSync = (() => {
                             break;
                         if (!(m.mutations && m.mutations.length))
                             m.mutations = [];
-                        m.mutations.push($root.ServerSync.SyncdMutation.decode(r, r.uint32(), $undefined, q + 1));
+                        m.mutations.push($root.ServerSync.SyncdMutation.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 }
@@ -84622,7 +84622,7 @@ export const ServerSync = $root.ServerSync = (() => {
                 case 1: {
                         if (u !== 2)
                             break;
-                        m.version = $root.ServerSync.SyncdVersion.decode(r, r.uint32(), $undefined, q + 1, m.version);
+                        m.version = $root.ServerSync.SyncdVersion.decode(r, r.size(), $undefined, q + 1, m.version);
                         continue;
                     }
                 case 2: {
@@ -84630,7 +84630,7 @@ export const ServerSync = $root.ServerSync = (() => {
                             break;
                         if (!(m.records && m.records.length))
                             m.records = [];
-                        m.records.push($root.ServerSync.SyncdRecord.decode(r, r.uint32(), $undefined, q + 1));
+                        m.records.push($root.ServerSync.SyncdRecord.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 case 3: {
@@ -84642,7 +84642,7 @@ export const ServerSync = $root.ServerSync = (() => {
                 case 4: {
                         if (u !== 2)
                             break;
-                        m.keyId = $root.ServerSync.KeyId.decode(r, r.uint32(), $undefined, q + 1, m.keyId);
+                        m.keyId = $root.ServerSync.KeyId.decode(r, r.size(), $undefined, q + 1, m.keyId);
                         continue;
                     }
                 }
@@ -85069,19 +85069,19 @@ export const ServerSync = $root.ServerSync = (() => {
                 case 1: {
                         if (u !== 2)
                             break;
-                        m.index = $root.ServerSync.SyncdIndex.decode(r, r.uint32(), $undefined, q + 1, m.index);
+                        m.index = $root.ServerSync.SyncdIndex.decode(r, r.size(), $undefined, q + 1, m.index);
                         continue;
                     }
                 case 2: {
                         if (u !== 2)
                             break;
-                        m.value = $root.ServerSync.SyncdValue.decode(r, r.uint32(), $undefined, q + 1, m.value);
+                        m.value = $root.ServerSync.SyncdValue.decode(r, r.size(), $undefined, q + 1, m.value);
                         continue;
                     }
                 case 3: {
                         if (u !== 2)
                             break;
-                        m.keyId = $root.ServerSync.KeyId.decode(r, r.uint32(), $undefined, q + 1, m.keyId);
+                        m.keyId = $root.ServerSync.KeyId.decode(r, r.size(), $undefined, q + 1, m.keyId);
                         continue;
                     }
                 }

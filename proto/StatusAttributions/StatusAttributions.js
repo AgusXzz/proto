@@ -153,42 +153,42 @@ export const StatusAttributions = $root.StatusAttributions = (() => {
                 case 3: {
                         if (u !== 2)
                             break;
-                        m.statusReshare = $root.StatusAttributions.StatusAttribution.StatusReshare.decode(r, r.uint32(), $undefined, q + 1, m.statusReshare);
+                        m.statusReshare = $root.StatusAttributions.StatusAttribution.StatusReshare.decode(r, r.size(), $undefined, q + 1, m.statusReshare);
                         m.attributionData = "statusReshare";
                         continue;
                     }
                 case 4: {
                         if (u !== 2)
                             break;
-                        m.externalShare = $root.StatusAttributions.StatusAttribution.ExternalShare.decode(r, r.uint32(), $undefined, q + 1, m.externalShare);
+                        m.externalShare = $root.StatusAttributions.StatusAttribution.ExternalShare.decode(r, r.size(), $undefined, q + 1, m.externalShare);
                         m.attributionData = "externalShare";
                         continue;
                     }
                 case 5: {
                         if (u !== 2)
                             break;
-                        m.music = $root.StatusAttributions.StatusAttribution.Music.decode(r, r.uint32(), $undefined, q + 1, m.music);
+                        m.music = $root.StatusAttributions.StatusAttribution.Music.decode(r, r.size(), $undefined, q + 1, m.music);
                         m.attributionData = "music";
                         continue;
                     }
                 case 6: {
                         if (u !== 2)
                             break;
-                        m.groupStatus = $root.StatusAttributions.StatusAttribution.GroupStatus.decode(r, r.uint32(), $undefined, q + 1, m.groupStatus);
+                        m.groupStatus = $root.StatusAttributions.StatusAttribution.GroupStatus.decode(r, r.size(), $undefined, q + 1, m.groupStatus);
                         m.attributionData = "groupStatus";
                         continue;
                     }
                 case 7: {
                         if (u !== 2)
                             break;
-                        m.rlAttribution = $root.StatusAttributions.StatusAttribution.RLAttribution.decode(r, r.uint32(), $undefined, q + 1, m.rlAttribution);
+                        m.rlAttribution = $root.StatusAttributions.StatusAttribution.RLAttribution.decode(r, r.size(), $undefined, q + 1, m.rlAttribution);
                         m.attributionData = "rlAttribution";
                         continue;
                     }
                 case 8: {
                         if (u !== 2)
                             break;
-                        m.aiCreatedAttribution = $root.StatusAttributions.StatusAttribution.AiCreatedAttribution.decode(r, r.uint32(), $undefined, q + 1, m.aiCreatedAttribution);
+                        m.aiCreatedAttribution = $root.StatusAttributions.StatusAttribution.AiCreatedAttribution.decode(r, r.size(), $undefined, q + 1, m.aiCreatedAttribution);
                         m.attributionData = "aiCreatedAttribution";
                         continue;
                     }
@@ -1337,7 +1337,7 @@ export const StatusAttributions = $root.StatusAttributions = (() => {
                     case 2: {
                             if (u !== 2)
                                 break;
-                            m.metadata = $root.StatusAttributions.StatusAttribution.StatusReshare.Metadata.decode(r, r.uint32(), $undefined, q + 1, m.metadata);
+                            m.metadata = $root.StatusAttributions.StatusAttribution.StatusReshare.Metadata.decode(r, r.size(), $undefined, q + 1, m.metadata);
                             continue;
                         }
                     }

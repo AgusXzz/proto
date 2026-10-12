@@ -149,19 +149,19 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                 case 2: {
                         if (u !== 2)
                             break;
-                        m.lidMigration = $root.DeviceCapabilities.DeviceCapabilities.LIDMigration.decode(r, r.uint32(), $undefined, q + 1, m.lidMigration);
+                        m.lidMigration = $root.DeviceCapabilities.DeviceCapabilities.LIDMigration.decode(r, r.size(), $undefined, q + 1, m.lidMigration);
                         continue;
                     }
                 case 3: {
                         if (u !== 2)
                             break;
-                        m.businessBroadcast = $root.DeviceCapabilities.DeviceCapabilities.BusinessBroadcast.decode(r, r.uint32(), $undefined, q + 1, m.businessBroadcast);
+                        m.businessBroadcast = $root.DeviceCapabilities.DeviceCapabilities.BusinessBroadcast.decode(r, r.size(), $undefined, q + 1, m.businessBroadcast);
                         continue;
                     }
                 case 4: {
                         if (u !== 2)
                             break;
-                        m.userHasAvatar = $root.DeviceCapabilities.DeviceCapabilities.UserHasAvatar.decode(r, r.uint32(), $undefined, q + 1, m.userHasAvatar);
+                        m.userHasAvatar = $root.DeviceCapabilities.DeviceCapabilities.UserHasAvatar.decode(r, r.size(), $undefined, q + 1, m.userHasAvatar);
                         continue;
                     }
                 case 5: {
@@ -179,37 +179,37 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                 case 6: {
                         if (u !== 2)
                             break;
-                        m.aiThread = $root.DeviceCapabilities.DeviceCapabilities.AiThread.decode(r, r.uint32(), $undefined, q + 1, m.aiThread);
+                        m.aiThread = $root.DeviceCapabilities.DeviceCapabilities.AiThread.decode(r, r.size(), $undefined, q + 1, m.aiThread);
                         continue;
                     }
                 case 7: {
                         if (u !== 2)
                             break;
-                        m.aiFbidMigration = $root.DeviceCapabilities.DeviceCapabilities.AiFbidMigration.decode(r, r.uint32(), $undefined, q + 1, m.aiFbidMigration);
+                        m.aiFbidMigration = $root.DeviceCapabilities.DeviceCapabilities.AiFbidMigration.decode(r, r.size(), $undefined, q + 1, m.aiFbidMigration);
                         continue;
                     }
                 case 8: {
                         if (u !== 2)
                             break;
-                        m.bizAiSettingsSync = $root.DeviceCapabilities.DeviceCapabilities.BizAiSettingsSync.decode(r, r.uint32(), $undefined, q + 1, m.bizAiSettingsSync);
+                        m.bizAiSettingsSync = $root.DeviceCapabilities.DeviceCapabilities.BizAiSettingsSync.decode(r, r.size(), $undefined, q + 1, m.bizAiSettingsSync);
                         continue;
                     }
                 case 9: {
                         if (u !== 2)
                             break;
-                        m.contactRefresh = $root.DeviceCapabilities.DeviceCapabilities.ContactRefresh.decode(r, r.uint32(), $undefined, q + 1, m.contactRefresh);
+                        m.contactRefresh = $root.DeviceCapabilities.DeviceCapabilities.ContactRefresh.decode(r, r.size(), $undefined, q + 1, m.contactRefresh);
                         continue;
                     }
                 case 10: {
                         if (u !== 2)
                             break;
-                        m.reverseHistorySync = $root.DeviceCapabilities.DeviceCapabilities.ReverseHistorySync.decode(r, r.uint32(), $undefined, q + 1, m.reverseHistorySync);
+                        m.reverseHistorySync = $root.DeviceCapabilities.DeviceCapabilities.ReverseHistorySync.decode(r, r.size(), $undefined, q + 1, m.reverseHistorySync);
                         continue;
                     }
                 case 11: {
                         if (u !== 2)
                             break;
-                        m.newsletterChatsMigration = $root.DeviceCapabilities.DeviceCapabilities.NewsletterChatsMigration.decode(r, r.uint32(), $undefined, q + 1, m.newsletterChatsMigration);
+                        m.newsletterChatsMigration = $root.DeviceCapabilities.DeviceCapabilities.NewsletterChatsMigration.decode(r, r.size(), $undefined, q + 1, m.newsletterChatsMigration);
                         continue;
                     }
                 }
@@ -1546,7 +1546,7 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                     switch (t >>>= 3) {
                     case 1: {
                             if (u === 2) {
-                                var c2 = r.uint32() + r.pos;
+                                var c2 = r.size() + r.pos;
                                 if (c2 > r.len)
                                     throw $RangeError("index out of range");
                                 r.len = c2;

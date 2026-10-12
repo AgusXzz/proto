@@ -364,7 +364,7 @@ export const MdStorageMsgRowOpaqueData = $root.MdStorageMsgRowOpaqueData = (() =
                             break;
                         if (!(m.pollOptions && m.pollOptions.length))
                             m.pollOptions = [];
-                        m.pollOptions.push($root.MdStorageMsgRowOpaqueData.MsgOpaqueData.PollOption.decode(r, r.uint32(), $undefined, q + 1));
+                        m.pollOptions.push($root.MdStorageMsgRowOpaqueData.MsgOpaqueData.PollOption.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 case 20: {
@@ -400,7 +400,7 @@ export const MdStorageMsgRowOpaqueData = $root.MdStorageMsgRowOpaqueData = (() =
                 case 24: {
                         if (u !== 2)
                             break;
-                        m.encPollVote = $root.MdStorageMsgRowOpaqueData.PollEncValue.decode(r, r.uint32(), $undefined, q + 1, m.encPollVote);
+                        m.encPollVote = $root.MdStorageMsgRowOpaqueData.PollEncValue.decode(r, r.size(), $undefined, q + 1, m.encPollVote);
                         continue;
                     }
                 case 28: {
@@ -442,7 +442,7 @@ export const MdStorageMsgRowOpaqueData = $root.MdStorageMsgRowOpaqueData = (() =
                 case 41: {
                         if (u !== 2)
                             break;
-                        m.pollVotesSnapshot = $root.MdStorageMsgRowOpaqueData.MsgOpaqueData.PollVotesSnapshot.decode(r, r.uint32(), $undefined, q + 1, m.pollVotesSnapshot);
+                        m.pollVotesSnapshot = $root.MdStorageMsgRowOpaqueData.MsgOpaqueData.PollVotesSnapshot.decode(r, r.size(), $undefined, q + 1, m.pollVotesSnapshot);
                         continue;
                     }
                 case 25: {
@@ -520,7 +520,7 @@ export const MdStorageMsgRowOpaqueData = $root.MdStorageMsgRowOpaqueData = (() =
                 case 38: {
                         if (u !== 2)
                             break;
-                        m.eventLocation = $root.MdStorageMsgRowOpaqueData.MsgOpaqueData.EventLocation.decode(r, r.uint32(), $undefined, q + 1, m.eventLocation);
+                        m.eventLocation = $root.MdStorageMsgRowOpaqueData.MsgOpaqueData.EventLocation.decode(r, r.size(), $undefined, q + 1, m.eventLocation);
                         continue;
                     }
                 case 40: {
@@ -1749,7 +1749,7 @@ export const MdStorageMsgRowOpaqueData = $root.MdStorageMsgRowOpaqueData = (() =
                     case 1: {
                             if (u !== 2)
                                 break;
-                            m.option = $root.MdStorageMsgRowOpaqueData.MsgOpaqueData.PollOption.decode(r, r.uint32(), $undefined, q + 1, m.option);
+                            m.option = $root.MdStorageMsgRowOpaqueData.MsgOpaqueData.PollOption.decode(r, r.size(), $undefined, q + 1, m.option);
                             continue;
                         }
                     case 2: {
@@ -1895,7 +1895,7 @@ export const MdStorageMsgRowOpaqueData = $root.MdStorageMsgRowOpaqueData = (() =
                                 break;
                             if (!(m.pollVotes && m.pollVotes.length))
                                 m.pollVotes = [];
-                            m.pollVotes.push($root.MdStorageMsgRowOpaqueData.MsgOpaqueData.PollVoteSnapshot.decode(r, r.uint32(), $undefined, q + 1));
+                            m.pollVotes.push($root.MdStorageMsgRowOpaqueData.MsgOpaqueData.PollVoteSnapshot.decode(r, r.size(), $undefined, q + 1));
                             continue;
                         }
                     }
@@ -2197,13 +2197,13 @@ export const MdStorageMsgRowOpaqueData = $root.MdStorageMsgRowOpaqueData = (() =
                 case 1: {
                         if (u !== 2)
                             break;
-                        m.currentMsg = $root.MdStorageMsgRowOpaqueData.MsgOpaqueData.decode(r, r.uint32(), $undefined, q + 1, m.currentMsg);
+                        m.currentMsg = $root.MdStorageMsgRowOpaqueData.MsgOpaqueData.decode(r, r.size(), $undefined, q + 1, m.currentMsg);
                         continue;
                     }
                 case 2: {
                         if (u !== 2)
                             break;
-                        m.quotedMsg = $root.MdStorageMsgRowOpaqueData.MsgOpaqueData.decode(r, r.uint32(), $undefined, q + 1, m.quotedMsg);
+                        m.quotedMsg = $root.MdStorageMsgRowOpaqueData.MsgOpaqueData.decode(r, r.size(), $undefined, q + 1, m.quotedMsg);
                         continue;
                     }
                 }

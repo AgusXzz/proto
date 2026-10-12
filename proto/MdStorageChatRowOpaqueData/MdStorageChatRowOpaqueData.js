@@ -107,7 +107,7 @@ export const MdStorageChatRowOpaqueData = $root.MdStorageChatRowOpaqueData = (()
                 case 1: {
                         if (u !== 2)
                             break;
-                        m.draftMessage = $root.MdStorageChatRowOpaqueData.ChatRowOpaqueData.DraftMessage.decode(r, r.uint32(), $undefined, q + 1, m.draftMessage);
+                        m.draftMessage = $root.MdStorageChatRowOpaqueData.ChatRowOpaqueData.DraftMessage.decode(r, r.size(), $undefined, q + 1, m.draftMessage);
                         continue;
                     }
                 }
@@ -256,13 +256,13 @@ export const MdStorageChatRowOpaqueData = $root.MdStorageChatRowOpaqueData = (()
                     case 3: {
                             if (u !== 2)
                                 break;
-                            m.ctwaContextLinkData = $root.MdStorageChatRowOpaqueData.ChatRowOpaqueData.DraftMessage.CtwaContextLinkData.decode(r, r.uint32(), $undefined, q + 1, m.ctwaContextLinkData);
+                            m.ctwaContextLinkData = $root.MdStorageChatRowOpaqueData.ChatRowOpaqueData.DraftMessage.CtwaContextLinkData.decode(r, r.size(), $undefined, q + 1, m.ctwaContextLinkData);
                             continue;
                         }
                     case 4: {
                             if (u !== 2)
                                 break;
-                            m.ctwaContext = $root.MdStorageChatRowOpaqueData.ChatRowOpaqueData.DraftMessage.CtwaContextData.decode(r, r.uint32(), $undefined, q + 1, m.ctwaContext);
+                            m.ctwaContext = $root.MdStorageChatRowOpaqueData.ChatRowOpaqueData.DraftMessage.CtwaContextData.decode(r, r.size(), $undefined, q + 1, m.ctwaContext);
                             continue;
                         }
                     case 5: {

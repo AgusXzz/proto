@@ -145,7 +145,7 @@ export const UserPassword = $root.UserPassword = (() => {
                             break;
                         if (!(m.transformerArg && m.transformerArg.length))
                             m.transformerArg = [];
-                        m.transformerArg.push($root.UserPassword.UserPassword.TransformerArg.decode(r, r.uint32(), $undefined, q + 1));
+                        m.transformerArg.push($root.UserPassword.UserPassword.TransformerArg.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 case 4: {
@@ -360,7 +360,7 @@ export const UserPassword = $root.UserPassword = (() => {
                     case 2: {
                             if (u !== 2)
                                 break;
-                            m.value = $root.UserPassword.UserPassword.TransformerArg.Value.decode(r, r.uint32(), $undefined, q + 1, m.value);
+                            m.value = $root.UserPassword.UserPassword.TransformerArg.Value.decode(r, r.size(), $undefined, q + 1, m.value);
                             continue;
                         }
                     }

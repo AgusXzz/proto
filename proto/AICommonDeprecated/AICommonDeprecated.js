@@ -146,7 +146,7 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                 case 2: {
                         if (u !== 2)
                             break;
-                        m.gridImageMetadata = $root.AICommonDeprecated.AIRichResponseGridImageMetadata.decode(r, r.uint32(), $undefined, q + 1, m.gridImageMetadata);
+                        m.gridImageMetadata = $root.AICommonDeprecated.AIRichResponseGridImageMetadata.decode(r, r.size(), $undefined, q + 1, m.gridImageMetadata);
                         continue;
                     }
                 case 3: {
@@ -158,43 +158,43 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                 case 4: {
                         if (u !== 2)
                             break;
-                        m.imageMetadata = $root.AICommonDeprecated.AIRichResponseInlineImageMetadata.decode(r, r.uint32(), $undefined, q + 1, m.imageMetadata);
+                        m.imageMetadata = $root.AICommonDeprecated.AIRichResponseInlineImageMetadata.decode(r, r.size(), $undefined, q + 1, m.imageMetadata);
                         continue;
                     }
                 case 5: {
                         if (u !== 2)
                             break;
-                        m.codeMetadata = $root.AICommonDeprecated.AIRichResponseCodeMetadata.decode(r, r.uint32(), $undefined, q + 1, m.codeMetadata);
+                        m.codeMetadata = $root.AICommonDeprecated.AIRichResponseCodeMetadata.decode(r, r.size(), $undefined, q + 1, m.codeMetadata);
                         continue;
                     }
                 case 6: {
                         if (u !== 2)
                             break;
-                        m.tableMetadata = $root.AICommonDeprecated.AIRichResponseTableMetadata.decode(r, r.uint32(), $undefined, q + 1, m.tableMetadata);
+                        m.tableMetadata = $root.AICommonDeprecated.AIRichResponseTableMetadata.decode(r, r.size(), $undefined, q + 1, m.tableMetadata);
                         continue;
                     }
                 case 7: {
                         if (u !== 2)
                             break;
-                        m.dynamicMetadata = $root.AICommonDeprecated.AIRichResponseDynamicMetadata.decode(r, r.uint32(), $undefined, q + 1, m.dynamicMetadata);
+                        m.dynamicMetadata = $root.AICommonDeprecated.AIRichResponseDynamicMetadata.decode(r, r.size(), $undefined, q + 1, m.dynamicMetadata);
                         continue;
                     }
                 case 8: {
                         if (u !== 2)
                             break;
-                        m.latexMetadata = $root.AICommonDeprecated.AIRichResponseLatexMetadata.decode(r, r.uint32(), $undefined, q + 1, m.latexMetadata);
+                        m.latexMetadata = $root.AICommonDeprecated.AIRichResponseLatexMetadata.decode(r, r.size(), $undefined, q + 1, m.latexMetadata);
                         continue;
                     }
                 case 9: {
                         if (u !== 2)
                             break;
-                        m.mapMetadata = $root.AICommonDeprecated.AIRichResponseMapMetadata.decode(r, r.uint32(), $undefined, q + 1, m.mapMetadata);
+                        m.mapMetadata = $root.AICommonDeprecated.AIRichResponseMapMetadata.decode(r, r.size(), $undefined, q + 1, m.mapMetadata);
                         continue;
                     }
                 case 10: {
                         if (u !== 2)
                             break;
-                        m.contentItemsMetadata = $root.AICommonDeprecated.AIRichResponseContentItemsMetadata.decode(r, r.uint32(), $undefined, q + 1, m.contentItemsMetadata);
+                        m.contentItemsMetadata = $root.AICommonDeprecated.AIRichResponseContentItemsMetadata.decode(r, r.size(), $undefined, q + 1, m.contentItemsMetadata);
                         continue;
                     }
                 }
@@ -447,7 +447,7 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                             break;
                         if (!(m.itemsMetadata && m.itemsMetadata.length))
                             m.itemsMetadata = [];
-                        m.itemsMetadata.push($root.AICommonDeprecated.AIRichResponseContentItemsMetadata.AIRichResponseContentItemMetadata.decode(r, r.uint32(), $undefined, q + 1));
+                        m.itemsMetadata.push($root.AICommonDeprecated.AIRichResponseContentItemsMetadata.AIRichResponseContentItemMetadata.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 case 2: {
@@ -616,7 +616,7 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                     case 1: {
                             if (u !== 2)
                                 break;
-                            m.reelItem = $root.AICommonDeprecated.AIRichResponseContentItemsMetadata.AIRichResponseReelItem.decode(r, r.uint32(), $undefined, q + 1, m.reelItem);
+                            m.reelItem = $root.AICommonDeprecated.AIRichResponseContentItemsMetadata.AIRichResponseReelItem.decode(r, r.size(), $undefined, q + 1, m.reelItem);
                             m.aiRichResponseContentItem = "reelItem";
                             continue;
                         }
@@ -972,7 +972,7 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                             break;
                         if (!(m.annotations && m.annotations.length))
                             m.annotations = [];
-                        m.annotations.push($root.AICommonDeprecated.AIRichResponseMapMetadata.AIRichResponseMapAnnotation.decode(r, r.uint32(), $undefined, q + 1));
+                        m.annotations.push($root.AICommonDeprecated.AIRichResponseMapMetadata.AIRichResponseMapAnnotation.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 case 6: {
@@ -1355,7 +1355,7 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                             break;
                         if (!(m.expressions && m.expressions.length))
                             m.expressions = [];
-                        m.expressions.push($root.AICommonDeprecated.AIRichResponseLatexMetadata.AIRichResponseLatexExpression.decode(r, r.uint32(), $undefined, q + 1));
+                        m.expressions.push($root.AICommonDeprecated.AIRichResponseLatexMetadata.AIRichResponseLatexExpression.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 }
@@ -1978,7 +1978,7 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                             break;
                         if (!(m.rows && m.rows.length))
                             m.rows = [];
-                        m.rows.push($root.AICommonDeprecated.AIRichResponseTableMetadata.AIRichResponseTableRow.decode(r, r.uint32(), $undefined, q + 1));
+                        m.rows.push($root.AICommonDeprecated.AIRichResponseTableMetadata.AIRichResponseTableRow.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 case 2: {
@@ -2300,7 +2300,7 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                             break;
                         if (!(m.codeBlocks && m.codeBlocks.length))
                             m.codeBlocks = [];
-                        m.codeBlocks.push($root.AICommonDeprecated.AIRichResponseCodeMetadata.AIRichResponseCodeBlock.decode(r, r.uint32(), $undefined, q + 1));
+                        m.codeBlocks.push($root.AICommonDeprecated.AIRichResponseCodeMetadata.AIRichResponseCodeBlock.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 }
@@ -2637,7 +2637,7 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                 case 1: {
                         if (u !== 2)
                             break;
-                        m.imageUrl = $root.AICommonDeprecated.AIRichResponseImageURL.decode(r, r.uint32(), $undefined, q + 1, m.imageUrl);
+                        m.imageUrl = $root.AICommonDeprecated.AIRichResponseImageURL.decode(r, r.size(), $undefined, q + 1, m.imageUrl);
                         continue;
                     }
                 case 2: {
@@ -2836,7 +2836,7 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                 case 1: {
                         if (u !== 2)
                             break;
-                        m.gridImageUrl = $root.AICommonDeprecated.AIRichResponseImageURL.decode(r, r.uint32(), $undefined, q + 1, m.gridImageUrl);
+                        m.gridImageUrl = $root.AICommonDeprecated.AIRichResponseImageURL.decode(r, r.size(), $undefined, q + 1, m.gridImageUrl);
                         continue;
                     }
                 case 2: {
@@ -2844,7 +2844,7 @@ export const AICommonDeprecated = $root.AICommonDeprecated = (() => {
                             break;
                         if (!(m.imageUrls && m.imageUrls.length))
                             m.imageUrls = [];
-                        m.imageUrls.push($root.AICommonDeprecated.AIRichResponseImageURL.decode(r, r.uint32(), $undefined, q + 1));
+                        m.imageUrls.push($root.AICommonDeprecated.AIRichResponseImageURL.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 }
@@ -3185,7 +3185,7 @@ export const AICommon = $root.AICommon = (() => {
                 case 1: {
                         if (u !== 2)
                             break;
-                        m.serverEvent = $root.AICommon.BizAIMetadataSync.ServerEvent.decode(r, r.uint32(), $undefined, q + 1, m.serverEvent);
+                        m.serverEvent = $root.AICommon.BizAIMetadataSync.ServerEvent.decode(r, r.size(), $undefined, q + 1, m.serverEvent);
                         m.operation = "serverEvent";
                         continue;
                     }
@@ -3333,7 +3333,7 @@ export const AICommon = $root.AICommon = (() => {
                     case 2: {
                             if (u !== 2)
                                 break;
-                            m.agentOnboardingStarted = $root.AICommon.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted.decode(r, r.uint32(), $undefined, q + 1, m.agentOnboardingStarted);
+                            m.agentOnboardingStarted = $root.AICommon.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted.decode(r, r.size(), $undefined, q + 1, m.agentOnboardingStarted);
                             m.event = "agentOnboardingStarted";
                             continue;
                         }
@@ -3632,13 +3632,13 @@ export const AICommon = $root.AICommon = (() => {
                 case 1: {
                         if (u !== 2)
                             break;
-                        m.c2PaMetadata = $root.AICommon.AIProvenance.Metadata.decode(r, r.uint32(), $undefined, q + 1, m.c2PaMetadata);
+                        m.c2PaMetadata = $root.AICommon.AIProvenance.Metadata.decode(r, r.size(), $undefined, q + 1, m.c2PaMetadata);
                         continue;
                     }
                 case 2: {
                         if (u !== 2)
                             break;
-                        m.iptcMetadata = $root.AICommon.AIProvenance.Metadata.decode(r, r.uint32(), $undefined, q + 1, m.iptcMetadata);
+                        m.iptcMetadata = $root.AICommon.AIProvenance.Metadata.decode(r, r.size(), $undefined, q + 1, m.iptcMetadata);
                         continue;
                     }
                 }
@@ -4068,7 +4068,7 @@ export const AICommon = $root.AICommon = (() => {
                 case 1: {
                         if (u !== 2)
                             break;
-                        m.deepLinkMetadata = $root.AICommon.BotAgentDeepLinkMetadata.decode(r, r.uint32(), $undefined, q + 1, m.deepLinkMetadata);
+                        m.deepLinkMetadata = $root.AICommon.BotAgentDeepLinkMetadata.decode(r, r.size(), $undefined, q + 1, m.deepLinkMetadata);
                         continue;
                     }
                 }
@@ -4410,7 +4410,7 @@ export const AICommon = $root.AICommon = (() => {
                             break;
                         if (!(m.capabilityOptions && m.capabilityOptions.length))
                             m.capabilityOptions = [];
-                        m.capabilityOptions.push($root.AICommon.AIHomeState.AIHomeOption.decode(r, r.uint32(), $undefined, q + 1));
+                        m.capabilityOptions.push($root.AICommon.AIHomeState.AIHomeOption.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 case 3: {
@@ -4418,7 +4418,7 @@ export const AICommon = $root.AICommon = (() => {
                             break;
                         if (!(m.conversationOptions && m.conversationOptions.length))
                             m.conversationOptions = [];
-                        m.conversationOptions.push($root.AICommon.AIHomeState.AIHomeOption.decode(r, r.uint32(), $undefined, q + 1));
+                        m.conversationOptions.push($root.AICommon.AIHomeState.AIHomeOption.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 }
@@ -5197,7 +5197,7 @@ export const AICommon = $root.AICommon = (() => {
                 case 1: {
                         if (u !== 2)
                             break;
-                        m.messageKey = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.uint32(), $undefined, q + 1, m.messageKey);
+                        m.messageKey = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.size(), $undefined, q + 1, m.messageKey);
                         continue;
                     }
                 case 2: {
@@ -6013,7 +6013,7 @@ export const AICommon = $root.AICommon = (() => {
                 case 1: {
                         if (u !== 2)
                             break;
-                        m.messageKey = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.uint32(), $undefined, q + 1, m.messageKey);
+                        m.messageKey = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.size(), $undefined, q + 1, m.messageKey);
                         continue;
                     }
                 case 2: {
@@ -6061,7 +6061,7 @@ export const AICommon = $root.AICommon = (() => {
                 case 7: {
                         if (u !== 2)
                             break;
-                        m.sideBySideSurveyMetadata = $root.AICommon.BotFeedbackMessage.SideBySideSurveyMetadata.decode(r, r.uint32(), $undefined, q + 1, m.sideBySideSurveyMetadata);
+                        m.sideBySideSurveyMetadata = $root.AICommon.BotFeedbackMessage.SideBySideSurveyMetadata.decode(r, r.size(), $undefined, q + 1, m.sideBySideSurveyMetadata);
                         continue;
                     }
                 }
@@ -6443,13 +6443,13 @@ export const AICommon = $root.AICommon = (() => {
                     case 8: {
                             if (u !== 2)
                                 break;
-                            m.analyticsData = $root.AICommon.BotFeedbackMessage.SideBySideSurveyMetadata.SideBySideSurveyAnalyticsData.decode(r, r.uint32(), $undefined, q + 1, m.analyticsData);
+                            m.analyticsData = $root.AICommon.BotFeedbackMessage.SideBySideSurveyMetadata.SideBySideSurveyAnalyticsData.decode(r, r.size(), $undefined, q + 1, m.analyticsData);
                             continue;
                         }
                     case 9: {
                             if (u !== 2)
                                 break;
-                            m.metaAiAnalyticsData = $root.AICommon.BotFeedbackMessage.SideBySideSurveyMetadata.SidebySideSurveyMetaAiAnalyticsData.decode(r, r.uint32(), $undefined, q + 1, m.metaAiAnalyticsData);
+                            m.metaAiAnalyticsData = $root.AICommon.BotFeedbackMessage.SideBySideSurveyMetadata.SidebySideSurveyMetaAiAnalyticsData.decode(r, r.size(), $undefined, q + 1, m.metaAiAnalyticsData);
                             continue;
                         }
                     }
@@ -6838,31 +6838,31 @@ export const AICommon = $root.AICommon = (() => {
                         case 5: {
                                 if (u !== 2)
                                     break;
-                                m.ctaImpressionEvent = $root.AICommon.BotFeedbackMessage.SideBySideSurveyMetadata.SidebySideSurveyMetaAiAnalyticsData.SideBySideSurveyCTAImpressionEventData.decode(r, r.uint32(), $undefined, q + 1, m.ctaImpressionEvent);
+                                m.ctaImpressionEvent = $root.AICommon.BotFeedbackMessage.SideBySideSurveyMetadata.SidebySideSurveyMetaAiAnalyticsData.SideBySideSurveyCTAImpressionEventData.decode(r, r.size(), $undefined, q + 1, m.ctaImpressionEvent);
                                 continue;
                             }
                         case 6: {
                                 if (u !== 2)
                                     break;
-                                m.ctaClickEvent = $root.AICommon.BotFeedbackMessage.SideBySideSurveyMetadata.SidebySideSurveyMetaAiAnalyticsData.SideBySideSurveyCTAClickEventData.decode(r, r.uint32(), $undefined, q + 1, m.ctaClickEvent);
+                                m.ctaClickEvent = $root.AICommon.BotFeedbackMessage.SideBySideSurveyMetadata.SidebySideSurveyMetaAiAnalyticsData.SideBySideSurveyCTAClickEventData.decode(r, r.size(), $undefined, q + 1, m.ctaClickEvent);
                                 continue;
                             }
                         case 7: {
                                 if (u !== 2)
                                     break;
-                                m.cardImpressionEvent = $root.AICommon.SideBySideSurveyCardImpressionEventData.decode(r, r.uint32(), $undefined, q + 1, m.cardImpressionEvent);
+                                m.cardImpressionEvent = $root.AICommon.SideBySideSurveyCardImpressionEventData.decode(r, r.size(), $undefined, q + 1, m.cardImpressionEvent);
                                 continue;
                             }
                         case 8: {
                                 if (u !== 2)
                                     break;
-                                m.responseEvent = $root.AICommon.BotFeedbackMessage.SideBySideSurveyMetadata.SidebySideSurveyMetaAiAnalyticsData.SideBySideSurveyResponseEventData.decode(r, r.uint32(), $undefined, q + 1, m.responseEvent);
+                                m.responseEvent = $root.AICommon.BotFeedbackMessage.SideBySideSurveyMetadata.SidebySideSurveyMetaAiAnalyticsData.SideBySideSurveyResponseEventData.decode(r, r.size(), $undefined, q + 1, m.responseEvent);
                                 continue;
                             }
                         case 9: {
                                 if (u !== 2)
                                     break;
-                                m.abandonEvent = $root.AICommon.BotFeedbackMessage.SideBySideSurveyMetadata.SidebySideSurveyMetaAiAnalyticsData.SideBySideSurveyAbandonEventData.decode(r, r.uint32(), $undefined, q + 1, m.abandonEvent);
+                                m.abandonEvent = $root.AICommon.BotFeedbackMessage.SideBySideSurveyMetadata.SidebySideSurveyMetaAiAnalyticsData.SideBySideSurveyAbandonEventData.decode(r, r.size(), $undefined, q + 1, m.abandonEvent);
                                 continue;
                             }
                         }
@@ -7869,7 +7869,7 @@ export const AICommon = $root.AICommon = (() => {
                             break;
                         if (!(m.participantsMetadata && m.participantsMetadata.length))
                             m.participantsMetadata = [];
-                        m.participantsMetadata.push($root.AICommon.BotGroupParticipantMetadata.decode(r, r.uint32(), $undefined, q + 1));
+                        m.participantsMetadata.push($root.AICommon.BotGroupParticipantMetadata.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 }
@@ -8010,7 +8010,7 @@ export const AICommon = $root.AICommon = (() => {
                             break;
                         if (!(m.participantsMetadata && m.participantsMetadata.length))
                             m.participantsMetadata = [];
-                        m.participantsMetadata.push($root.AICommon.BotGroupParticipantMetadata.decode(r, r.uint32(), $undefined, q + 1));
+                        m.participantsMetadata.push($root.AICommon.BotGroupParticipantMetadata.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 }
@@ -8429,13 +8429,13 @@ export const AICommon = $root.AICommon = (() => {
                 case 3: {
                         if (u !== 2)
                             break;
-                        m.pluginMetadata = $root.AICommon.BotPluginMetadata.decode(r, r.uint32(), $undefined, q + 1, m.pluginMetadata);
+                        m.pluginMetadata = $root.AICommon.BotPluginMetadata.decode(r, r.size(), $undefined, q + 1, m.pluginMetadata);
                         continue;
                     }
                 case 4: {
                         if (u !== 2)
                             break;
-                        m.suggestedPromptMetadata = $root.AICommon.BotSuggestedPromptMetadata.decode(r, r.uint32(), $undefined, q + 1, m.suggestedPromptMetadata);
+                        m.suggestedPromptMetadata = $root.AICommon.BotSuggestedPromptMetadata.decode(r, r.size(), $undefined, q + 1, m.suggestedPromptMetadata);
                         continue;
                     }
                 case 5: {
@@ -8447,13 +8447,13 @@ export const AICommon = $root.AICommon = (() => {
                 case 6: {
                         if (u !== 2)
                             break;
-                        m.sessionMetadata = $root.AICommon.BotSessionMetadata.decode(r, r.uint32(), $undefined, q + 1, m.sessionMetadata);
+                        m.sessionMetadata = $root.AICommon.BotSessionMetadata.decode(r, r.size(), $undefined, q + 1, m.sessionMetadata);
                         continue;
                     }
                 case 7: {
                         if (u !== 2)
                             break;
-                        m.memuMetadata = $root.AICommon.BotMemuMetadata.decode(r, r.uint32(), $undefined, q + 1, m.memuMetadata);
+                        m.memuMetadata = $root.AICommon.BotMemuMetadata.decode(r, r.size(), $undefined, q + 1, m.memuMetadata);
                         continue;
                     }
                 case 8: {
@@ -8465,13 +8465,13 @@ export const AICommon = $root.AICommon = (() => {
                 case 9: {
                         if (u !== 2)
                             break;
-                        m.reminderMetadata = $root.AICommon.BotReminderMetadata.decode(r, r.uint32(), $undefined, q + 1, m.reminderMetadata);
+                        m.reminderMetadata = $root.AICommon.BotReminderMetadata.decode(r, r.size(), $undefined, q + 1, m.reminderMetadata);
                         continue;
                     }
                 case 10: {
                         if (u !== 2)
                             break;
-                        m.modelMetadata = $root.AICommon.BotModelMetadata.decode(r, r.uint32(), $undefined, q + 1, m.modelMetadata);
+                        m.modelMetadata = $root.AICommon.BotModelMetadata.decode(r, r.size(), $undefined, q + 1, m.modelMetadata);
                         continue;
                     }
                 case 11: {
@@ -8483,49 +8483,49 @@ export const AICommon = $root.AICommon = (() => {
                 case 12: {
                         if (u !== 2)
                             break;
-                        m.progressIndicatorMetadata = $root.AICommon.BotProgressIndicatorMetadata.decode(r, r.uint32(), $undefined, q + 1, m.progressIndicatorMetadata);
+                        m.progressIndicatorMetadata = $root.AICommon.BotProgressIndicatorMetadata.decode(r, r.size(), $undefined, q + 1, m.progressIndicatorMetadata);
                         continue;
                     }
                 case 13: {
                         if (u !== 2)
                             break;
-                        m.capabilityMetadata = $root.AICommon.BotCapabilityMetadata.decode(r, r.uint32(), $undefined, q + 1, m.capabilityMetadata);
+                        m.capabilityMetadata = $root.AICommon.BotCapabilityMetadata.decode(r, r.size(), $undefined, q + 1, m.capabilityMetadata);
                         continue;
                     }
                 case 14: {
                         if (u !== 2)
                             break;
-                        m.imagineMetadata = $root.AICommon.BotImagineMetadata.decode(r, r.uint32(), $undefined, q + 1, m.imagineMetadata);
+                        m.imagineMetadata = $root.AICommon.BotImagineMetadata.decode(r, r.size(), $undefined, q + 1, m.imagineMetadata);
                         continue;
                     }
                 case 15: {
                         if (u !== 2)
                             break;
-                        m.memoryMetadata = $root.AICommon.BotMemoryMetadata.decode(r, r.uint32(), $undefined, q + 1, m.memoryMetadata);
+                        m.memoryMetadata = $root.AICommon.BotMemoryMetadata.decode(r, r.size(), $undefined, q + 1, m.memoryMetadata);
                         continue;
                     }
                 case 16: {
                         if (u !== 2)
                             break;
-                        m.renderingMetadata = $root.AICommon.BotRenderingMetadata.decode(r, r.uint32(), $undefined, q + 1, m.renderingMetadata);
+                        m.renderingMetadata = $root.AICommon.BotRenderingMetadata.decode(r, r.size(), $undefined, q + 1, m.renderingMetadata);
                         continue;
                     }
                 case 17: {
                         if (u !== 2)
                             break;
-                        m.botMetricsMetadata = $root.AICommon.BotMetricsMetadata.decode(r, r.uint32(), $undefined, q + 1, m.botMetricsMetadata);
+                        m.botMetricsMetadata = $root.AICommon.BotMetricsMetadata.decode(r, r.size(), $undefined, q + 1, m.botMetricsMetadata);
                         continue;
                     }
                 case 18: {
                         if (u !== 2)
                             break;
-                        m.botLinkedAccountsMetadata = $root.AICommon.BotLinkedAccountsMetadata.decode(r, r.uint32(), $undefined, q + 1, m.botLinkedAccountsMetadata);
+                        m.botLinkedAccountsMetadata = $root.AICommon.BotLinkedAccountsMetadata.decode(r, r.size(), $undefined, q + 1, m.botLinkedAccountsMetadata);
                         continue;
                     }
                 case 19: {
                         if (u !== 2)
                             break;
-                        m.richResponseSourcesMetadata = $root.AICommon.BotSourcesMetadata.decode(r, r.uint32(), $undefined, q + 1, m.richResponseSourcesMetadata);
+                        m.richResponseSourcesMetadata = $root.AICommon.BotSourcesMetadata.decode(r, r.size(), $undefined, q + 1, m.richResponseSourcesMetadata);
                         continue;
                     }
                 case 20: {
@@ -8537,25 +8537,25 @@ export const AICommon = $root.AICommon = (() => {
                 case 21: {
                         if (u !== 2)
                             break;
-                        m.botPromotionMessageMetadata = $root.AICommon.BotPromotionMessageMetadata.decode(r, r.uint32(), $undefined, q + 1, m.botPromotionMessageMetadata);
+                        m.botPromotionMessageMetadata = $root.AICommon.BotPromotionMessageMetadata.decode(r, r.size(), $undefined, q + 1, m.botPromotionMessageMetadata);
                         continue;
                     }
                 case 22: {
                         if (u !== 2)
                             break;
-                        m.botModeSelectionMetadata = $root.AICommon.BotModeSelectionMetadata.decode(r, r.uint32(), $undefined, q + 1, m.botModeSelectionMetadata);
+                        m.botModeSelectionMetadata = $root.AICommon.BotModeSelectionMetadata.decode(r, r.size(), $undefined, q + 1, m.botModeSelectionMetadata);
                         continue;
                     }
                 case 23: {
                         if (u !== 2)
                             break;
-                        m.botQuotaMetadata = $root.AICommon.BotQuotaMetadata.decode(r, r.uint32(), $undefined, q + 1, m.botQuotaMetadata);
+                        m.botQuotaMetadata = $root.AICommon.BotQuotaMetadata.decode(r, r.size(), $undefined, q + 1, m.botQuotaMetadata);
                         continue;
                     }
                 case 24: {
                         if (u !== 2)
                             break;
-                        m.botAgeCollectionMetadata = $root.AICommon.BotAgeCollectionMetadata.decode(r, r.uint32(), $undefined, q + 1, m.botAgeCollectionMetadata);
+                        m.botAgeCollectionMetadata = $root.AICommon.BotAgeCollectionMetadata.decode(r, r.size(), $undefined, q + 1, m.botAgeCollectionMetadata);
                         continue;
                     }
                 case 25: {
@@ -8573,103 +8573,103 @@ export const AICommon = $root.AICommon = (() => {
                 case 27: {
                         if (u !== 2)
                             break;
-                        m.verificationMetadata = $root.AICommon.BotSignatureVerificationMetadata.decode(r, r.uint32(), $undefined, q + 1, m.verificationMetadata);
+                        m.verificationMetadata = $root.AICommon.BotSignatureVerificationMetadata.decode(r, r.size(), $undefined, q + 1, m.verificationMetadata);
                         continue;
                     }
                 case 28: {
                         if (u !== 2)
                             break;
-                        m.unifiedResponseMutation = $root.AICommon.BotUnifiedResponseMutation.decode(r, r.uint32(), $undefined, q + 1, m.unifiedResponseMutation);
+                        m.unifiedResponseMutation = $root.AICommon.BotUnifiedResponseMutation.decode(r, r.size(), $undefined, q + 1, m.unifiedResponseMutation);
                         continue;
                     }
                 case 29: {
                         if (u !== 2)
                             break;
-                        m.botMessageOriginMetadata = $root.AICommon.BotMessageOriginMetadata.decode(r, r.uint32(), $undefined, q + 1, m.botMessageOriginMetadata);
+                        m.botMessageOriginMetadata = $root.AICommon.BotMessageOriginMetadata.decode(r, r.size(), $undefined, q + 1, m.botMessageOriginMetadata);
                         continue;
                     }
                 case 30: {
                         if (u !== 2)
                             break;
-                        m.inThreadSurveyMetadata = $root.AICommon.InThreadSurveyMetadata.decode(r, r.uint32(), $undefined, q + 1, m.inThreadSurveyMetadata);
+                        m.inThreadSurveyMetadata = $root.AICommon.InThreadSurveyMetadata.decode(r, r.size(), $undefined, q + 1, m.inThreadSurveyMetadata);
                         continue;
                     }
                 case 31: {
                         if (u !== 2)
                             break;
-                        m.botThreadInfo = $root.AICommon.AIThreadInfo.decode(r, r.uint32(), $undefined, q + 1, m.botThreadInfo);
+                        m.botThreadInfo = $root.AICommon.AIThreadInfo.decode(r, r.size(), $undefined, q + 1, m.botThreadInfo);
                         continue;
                     }
                 case 32: {
                         if (u !== 2)
                             break;
-                        m.regenerateMetadata = $root.AICommon.AIRegenerateMetadata.decode(r, r.uint32(), $undefined, q + 1, m.regenerateMetadata);
+                        m.regenerateMetadata = $root.AICommon.AIRegenerateMetadata.decode(r, r.size(), $undefined, q + 1, m.regenerateMetadata);
                         continue;
                     }
                 case 33: {
                         if (u !== 2)
                             break;
-                        m.sessionTransparencyMetadata = $root.AICommon.SessionTransparencyMetadata.decode(r, r.uint32(), $undefined, q + 1, m.sessionTransparencyMetadata);
+                        m.sessionTransparencyMetadata = $root.AICommon.SessionTransparencyMetadata.decode(r, r.size(), $undefined, q + 1, m.sessionTransparencyMetadata);
                         continue;
                     }
                 case 34: {
                         if (u !== 2)
                             break;
-                        m.botDocumentMessageMetadata = $root.AICommon.BotDocumentMessageMetadata.decode(r, r.uint32(), $undefined, q + 1, m.botDocumentMessageMetadata);
+                        m.botDocumentMessageMetadata = $root.AICommon.BotDocumentMessageMetadata.decode(r, r.size(), $undefined, q + 1, m.botDocumentMessageMetadata);
                         continue;
                     }
                 case 35: {
                         if (u !== 2)
                             break;
-                        m.botGroupMetadata = $root.AICommon.BotGroupMetadata.decode(r, r.uint32(), $undefined, q + 1, m.botGroupMetadata);
+                        m.botGroupMetadata = $root.AICommon.BotGroupMetadata.decode(r, r.size(), $undefined, q + 1, m.botGroupMetadata);
                         continue;
                     }
                 case 36: {
                         if (u !== 2)
                             break;
-                        m.botRenderingConfigMetadata = $root.AICommon.BotRenderingConfigMetadata.decode(r, r.uint32(), $undefined, q + 1, m.botRenderingConfigMetadata);
+                        m.botRenderingConfigMetadata = $root.AICommon.BotRenderingConfigMetadata.decode(r, r.size(), $undefined, q + 1, m.botRenderingConfigMetadata);
                         continue;
                     }
                 case 37: {
                         if (u !== 2)
                             break;
-                        m.botInfrastructureDiagnostics = $root.AICommon.BotInfrastructureDiagnostics.decode(r, r.uint32(), $undefined, q + 1, m.botInfrastructureDiagnostics);
+                        m.botInfrastructureDiagnostics = $root.AICommon.BotInfrastructureDiagnostics.decode(r, r.size(), $undefined, q + 1, m.botInfrastructureDiagnostics);
                         continue;
                     }
                 case 38: {
                         if (u !== 2)
                             break;
-                        m.aiMediaCollectionMetadata = $root.AICommon.AIMediaCollectionMetadata.decode(r, r.uint32(), $undefined, q + 1, m.aiMediaCollectionMetadata);
+                        m.aiMediaCollectionMetadata = $root.AICommon.AIMediaCollectionMetadata.decode(r, r.size(), $undefined, q + 1, m.aiMediaCollectionMetadata);
                         continue;
                     }
                 case 39: {
                         if (u !== 2)
                             break;
-                        m.commandMetadata = $root.AICommon.BotCommandMetadata.decode(r, r.uint32(), $undefined, q + 1, m.commandMetadata);
+                        m.commandMetadata = $root.AICommon.BotCommandMetadata.decode(r, r.size(), $undefined, q + 1, m.commandMetadata);
                         continue;
                     }
                 case 40: {
                         if (u !== 2)
                             break;
-                        m.resolvedToolCallMetadata = $root.AICommon.BotResolvedToolCallMetadata.decode(r, r.uint32(), $undefined, q + 1, m.resolvedToolCallMetadata);
+                        m.resolvedToolCallMetadata = $root.AICommon.BotResolvedToolCallMetadata.decode(r, r.size(), $undefined, q + 1, m.resolvedToolCallMetadata);
                         continue;
                     }
                 case 41: {
                         if (u !== 2)
                             break;
-                        m.subscriptionUpsellMetadata = $root.AICommon.AISubscriptionUpsellMetadata.decode(r, r.uint32(), $undefined, q + 1, m.subscriptionUpsellMetadata);
+                        m.subscriptionUpsellMetadata = $root.AICommon.AISubscriptionUpsellMetadata.decode(r, r.size(), $undefined, q + 1, m.subscriptionUpsellMetadata);
                         continue;
                     }
                 case 42: {
                         if (u !== 2)
                             break;
-                        m.pttPromptMetadata = $root.AICommon.BotPttPromptMetadata.decode(r, r.uint32(), $undefined, q + 1, m.pttPromptMetadata);
+                        m.pttPromptMetadata = $root.AICommon.BotPttPromptMetadata.decode(r, r.size(), $undefined, q + 1, m.pttPromptMetadata);
                         continue;
                     }
                 case 43: {
                         if (u !== 2)
                             break;
-                        m.botHistoryShareMetadata = $root.AICommon.BotHistoryShareMetadata.decode(r, r.uint32(), $undefined, q + 1, m.botHistoryShareMetadata);
+                        m.botHistoryShareMetadata = $root.AICommon.BotHistoryShareMetadata.decode(r, r.size(), $undefined, q + 1, m.botHistoryShareMetadata);
                         continue;
                     }
                 case 44: {
@@ -9625,13 +9625,13 @@ export const AICommon = $root.AICommon = (() => {
                 case 1: {
                         if (u !== 2)
                             break;
-                        m.hatchMetadataSync = $root.AICommon.HatchMetadataSync.decode(r, r.uint32(), $undefined, q + 1, m.hatchMetadataSync);
+                        m.hatchMetadataSync = $root.AICommon.HatchMetadataSync.decode(r, r.size(), $undefined, q + 1, m.hatchMetadataSync);
                         continue;
                     }
                 case 2: {
                         if (u !== 2)
                             break;
-                        m.bizAiMetadataSync = $root.AICommon.BizAIMetadataSync.decode(r, r.uint32(), $undefined, q + 1, m.bizAiMetadataSync);
+                        m.bizAiMetadataSync = $root.AICommon.BizAIMetadataSync.decode(r, r.size(), $undefined, q + 1, m.bizAiMetadataSync);
                         continue;
                     }
                 }
@@ -10254,13 +10254,13 @@ export const AICommon = $root.AICommon = (() => {
                 case 1: {
                         if (u !== 2)
                             break;
-                        m.serverInfo = $root.AICommon.AIThreadInfo.AIThreadServerInfo.decode(r, r.uint32(), $undefined, q + 1, m.serverInfo);
+                        m.serverInfo = $root.AICommon.AIThreadInfo.AIThreadServerInfo.decode(r, r.size(), $undefined, q + 1, m.serverInfo);
                         continue;
                     }
                 case 2: {
                         if (u !== 2)
                             break;
-                        m.clientInfo = $root.AICommon.AIThreadInfo.AIThreadClientInfo.decode(r, r.uint32(), $undefined, q + 1, m.clientInfo);
+                        m.clientInfo = $root.AICommon.AIThreadInfo.AIThreadClientInfo.decode(r, r.size(), $undefined, q + 1, m.clientInfo);
                         continue;
                     }
                 }
@@ -10707,7 +10707,7 @@ export const AICommon = $root.AICommon = (() => {
                 case 1: {
                         if (u !== 2)
                             break;
-                        m.sbsMetadata = $root.AICommon.BotUnifiedResponseMutation.SideBySideMetadata.decode(r, r.uint32(), $undefined, q + 1, m.sbsMetadata);
+                        m.sbsMetadata = $root.AICommon.BotUnifiedResponseMutation.SideBySideMetadata.decode(r, r.size(), $undefined, q + 1, m.sbsMetadata);
                         continue;
                     }
                 case 2: {
@@ -10715,7 +10715,7 @@ export const AICommon = $root.AICommon = (() => {
                             break;
                         if (!(m.mediaDetailsMetadataList && m.mediaDetailsMetadataList.length))
                             m.mediaDetailsMetadataList = [];
-                        m.mediaDetailsMetadataList.push($root.AICommon.BotUnifiedResponseMutation.MediaDetailsMetadata.decode(r, r.uint32(), $undefined, q + 1));
+                        m.mediaDetailsMetadataList.push($root.AICommon.BotUnifiedResponseMutation.MediaDetailsMetadata.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 }
@@ -10871,13 +10871,13 @@ export const AICommon = $root.AICommon = (() => {
                     case 2: {
                             if (u !== 2)
                                 break;
-                            m.highResMedia = $root.AICommon.BotMediaMetadata.decode(r, r.uint32(), $undefined, q + 1, m.highResMedia);
+                            m.highResMedia = $root.AICommon.BotMediaMetadata.decode(r, r.size(), $undefined, q + 1, m.highResMedia);
                             continue;
                         }
                     case 3: {
                             if (u !== 2)
                                 break;
-                            m.previewMedia = $root.AICommon.BotMediaMetadata.decode(r, r.uint32(), $undefined, q + 1, m.previewMedia);
+                            m.previewMedia = $root.AICommon.BotMediaMetadata.decode(r, r.size(), $undefined, q + 1, m.previewMedia);
                             continue;
                         }
                     }
@@ -11313,7 +11313,7 @@ export const AICommon = $root.AICommon = (() => {
                             break;
                         if (!(m.origins && m.origins.length))
                             m.origins = [];
-                        m.origins.push($root.AICommon.BotMessageOrigin.decode(r, r.uint32(), $undefined, q + 1));
+                        m.origins.push($root.AICommon.BotMessageOrigin.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 }
@@ -11574,7 +11574,7 @@ export const AICommon = $root.AICommon = (() => {
                             break;
                         if (!(m.questions && m.questions.length))
                             m.questions = [];
-                        m.questions.push($root.AICommon.InThreadSurveyMetadata.InThreadSurveyQuestion.decode(r, r.uint32(), $undefined, q + 1));
+                        m.questions.push($root.AICommon.InThreadSurveyMetadata.InThreadSurveyQuestion.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 case 13: {
@@ -11600,7 +11600,7 @@ export const AICommon = $root.AICommon = (() => {
                             break;
                         if (!(m.privacyStatementParts && m.privacyStatementParts.length))
                             m.privacyStatementParts = [];
-                        m.privacyStatementParts.push($root.AICommon.InThreadSurveyMetadata.InThreadSurveyPrivacyStatementPart.decode(r, r.uint32(), $undefined, q + 1));
+                        m.privacyStatementParts.push($root.AICommon.InThreadSurveyMetadata.InThreadSurveyPrivacyStatementPart.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 case 17: {
@@ -12199,7 +12199,7 @@ export const AICommon = $root.AICommon = (() => {
                                 break;
                             if (!(m.questionOptions && m.questionOptions.length))
                                 m.questionOptions = [];
-                            m.questionOptions.push($root.AICommon.InThreadSurveyMetadata.InThreadSurveyOption.decode(r, r.uint32(), $undefined, q + 1));
+                            m.questionOptions.push($root.AICommon.InThreadSurveyMetadata.InThreadSurveyOption.decode(r, r.size(), $undefined, q + 1));
                             continue;
                         }
                     }
@@ -12359,7 +12359,7 @@ export const AICommon = $root.AICommon = (() => {
                             break;
                         if (!(m.sources && m.sources.length))
                             m.sources = [];
-                        m.sources.push($root.AICommon.BotSourcesMetadata.BotSourceItem.decode(r, r.uint32(), $undefined, q + 1));
+                        m.sources.push($root.AICommon.BotSourcesMetadata.BotSourceItem.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 }
@@ -13115,7 +13115,7 @@ export const AICommon = $root.AICommon = (() => {
                             break;
                         if (!(m.botFeatureQuotaMetadata && m.botFeatureQuotaMetadata.length))
                             m.botFeatureQuotaMetadata = [];
-                        m.botFeatureQuotaMetadata.push($root.AICommon.BotQuotaMetadata.BotFeatureQuotaMetadata.decode(r, r.uint32(), $undefined, q + 1));
+                        m.botFeatureQuotaMetadata.push($root.AICommon.BotQuotaMetadata.BotFeatureQuotaMetadata.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 }
@@ -13454,7 +13454,7 @@ export const AICommon = $root.AICommon = (() => {
                 switch (t >>>= 3) {
                 case 1: {
                         if (u === 2) {
-                            var c2 = r.uint32() + r.pos;
+                            var c2 = r.size() + r.pos;
                             if (c2 > r.len)
                                 throw $RangeError("index out of range");
                             r.len = c2;
@@ -13667,7 +13667,7 @@ export const AICommon = $root.AICommon = (() => {
                 switch (t >>>= 3) {
                 case 1: {
                         if (u === 2) {
-                            var c2 = r.uint32() + r.pos;
+                            var c2 = r.size() + r.pos;
                             if (c2 > r.len)
                                 throw $RangeError("index out of range");
                             r.len = c2;
@@ -14266,7 +14266,7 @@ export const AICommon = $root.AICommon = (() => {
                             break;
                         if (!(m.stepsMetadata && m.stepsMetadata.length))
                             m.stepsMetadata = [];
-                        m.stepsMetadata.push($root.AICommon.BotProgressIndicatorMetadata.BotPlanningStepMetadata.decode(r, r.uint32(), $undefined, q + 1));
+                        m.stepsMetadata.push($root.AICommon.BotProgressIndicatorMetadata.BotPlanningStepMetadata.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 case 3: {
@@ -14475,7 +14475,7 @@ export const AICommon = $root.AICommon = (() => {
                                 break;
                             if (!(m.sourcesMetadata && m.sourcesMetadata.length))
                                 m.sourcesMetadata = [];
-                            m.sourcesMetadata.push($root.AICommon.BotProgressIndicatorMetadata.BotPlanningStepMetadata.BotPlanningSearchSourcesMetadata.decode(r, r.uint32(), $undefined, q + 1));
+                            m.sourcesMetadata.push($root.AICommon.BotProgressIndicatorMetadata.BotPlanningStepMetadata.BotPlanningSearchSourcesMetadata.decode(r, r.size(), $undefined, q + 1));
                             continue;
                         }
                     case 4: {
@@ -14507,7 +14507,7 @@ export const AICommon = $root.AICommon = (() => {
                                 break;
                             if (!(m.sections && m.sections.length))
                                 m.sections = [];
-                            m.sections.push($root.AICommon.BotProgressIndicatorMetadata.BotPlanningStepMetadata.BotPlanningStepSectionMetadata.decode(r, r.uint32(), $undefined, q + 1));
+                            m.sections.push($root.AICommon.BotProgressIndicatorMetadata.BotPlanningStepMetadata.BotPlanningStepSectionMetadata.decode(r, r.size(), $undefined, q + 1));
                             continue;
                         }
                     }
@@ -15118,7 +15118,7 @@ export const AICommon = $root.AICommon = (() => {
                                     break;
                                 if (!(m.sourcesMetadata && m.sourcesMetadata.length))
                                     m.sourcesMetadata = [];
-                                m.sourcesMetadata.push($root.AICommon.BotProgressIndicatorMetadata.BotPlanningStepMetadata.BotPlanningSearchSourceMetadata.decode(r, r.uint32(), $undefined, q + 1));
+                                m.sourcesMetadata.push($root.AICommon.BotProgressIndicatorMetadata.BotPlanningStepMetadata.BotPlanningSearchSourceMetadata.decode(r, r.size(), $undefined, q + 1));
                                 continue;
                             }
                         }
@@ -15516,7 +15516,7 @@ export const AICommon = $root.AICommon = (() => {
                 case 1: {
                         if (u !== 2)
                             break;
-                        m.requestMessageKey = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.uint32(), $undefined, q + 1, m.requestMessageKey);
+                        m.requestMessageKey = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.size(), $undefined, q + 1, m.requestMessageKey);
                         continue;
                     }
                 case 2: {
@@ -15784,7 +15784,7 @@ export const AICommon = $root.AICommon = (() => {
                             break;
                         if (!(m.faceImages && m.faceImages.length))
                             m.faceImages = [];
-                        m.faceImages.push($root.AICommon.BotMediaMetadata.decode(r, r.uint32(), $undefined, q + 1));
+                        m.faceImages.push($root.AICommon.BotMediaMetadata.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 }
@@ -16759,7 +16759,7 @@ export const AICommon = $root.AICommon = (() => {
                             break;
                         if (!(m.keywords && m.keywords.length))
                             m.keywords = [];
-                        m.keywords.push($root.AICommon.BotRenderingMetadata.Keyword.decode(r, r.uint32(), $undefined, q + 1));
+                        m.keywords.push($root.AICommon.BotRenderingMetadata.Keyword.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 }
@@ -17272,7 +17272,7 @@ export const AICommon = $root.AICommon = (() => {
                             break;
                         if (!(m.certificateChainSki && m.certificateChainSki.length))
                             m.certificateChainSki = [];
-                        m.certificateChainSki.push($root.AICommon.BotSignatureVerificationUseCaseProof.CertificateSKI.decode(r, r.uint32(), $undefined, q + 1));
+                        m.certificateChainSki.push($root.AICommon.BotSignatureVerificationUseCaseProof.CertificateSKI.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 }
@@ -17679,7 +17679,7 @@ export const AICommon = $root.AICommon = (() => {
                             break;
                         if (!(m.proofs && m.proofs.length))
                             m.proofs = [];
-                        m.proofs.push($root.AICommon.BotSignatureVerificationUseCaseProof.decode(r, r.uint32(), $undefined, q + 1));
+                        m.proofs.push($root.AICommon.BotSignatureVerificationUseCaseProof.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 }
@@ -17971,7 +17971,7 @@ export const AICommon = $root.AICommon = (() => {
                             break;
                         if (!(m.addedFacts && m.addedFacts.length))
                             m.addedFacts = [];
-                        m.addedFacts.push($root.AICommon.BotMemoryFact.decode(r, r.uint32(), $undefined, q + 1));
+                        m.addedFacts.push($root.AICommon.BotMemoryFact.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 case 2: {
@@ -17979,7 +17979,7 @@ export const AICommon = $root.AICommon = (() => {
                             break;
                         if (!(m.removedFacts && m.removedFacts.length))
                             m.removedFacts = [];
-                        m.removedFacts.push($root.AICommon.BotMemoryFact.decode(r, r.uint32(), $undefined, q + 1));
+                        m.removedFacts.push($root.AICommon.BotMemoryFact.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 case 3: {
@@ -18300,7 +18300,7 @@ export const AICommon = $root.AICommon = (() => {
                             break;
                         if (!(m.accounts && m.accounts.length))
                             m.accounts = [];
-                        m.accounts.push($root.AICommon.BotLinkedAccount.decode(r, r.uint32(), $undefined, q + 1));
+                        m.accounts.push($root.AICommon.BotLinkedAccount.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 case 2: {
@@ -18620,7 +18620,7 @@ export const AICommon = $root.AICommon = (() => {
                             break;
                         if (!(m.suggestions && m.suggestions.length))
                             m.suggestions = [];
-                        m.suggestions.push($root.AICommon.BotPromptSuggestion.decode(r, r.uint32(), $undefined, q + 1));
+                        m.suggestions.push($root.AICommon.BotPromptSuggestion.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 }
@@ -18782,7 +18782,7 @@ export const AICommon = $root.AICommon = (() => {
                 case 3: {
                         if (u !== 2)
                             break;
-                        m.promptSuggestions = $root.AICommon.BotPromptSuggestions.decode(r, r.uint32(), $undefined, q + 1, m.promptSuggestions);
+                        m.promptSuggestions = $root.AICommon.BotPromptSuggestions.decode(r, r.size(), $undefined, q + 1, m.promptSuggestions);
                         continue;
                     }
                 case 4: {
@@ -19040,7 +19040,7 @@ export const AICommon = $root.AICommon = (() => {
                 case 10: {
                         if (u !== 2)
                             break;
-                        m.parentPluginMessageKey = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.uint32(), $undefined, q + 1, m.parentPluginMessageKey);
+                        m.parentPluginMessageKey = $root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.size(), $undefined, q + 1, m.parentPluginMessageKey);
                         continue;
                     }
                 case 11: {
@@ -19546,7 +19546,7 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                             break;
                         if (!(m.senderKeyStates && m.senderKeyStates.length))
                             m.senderKeyStates = [];
-                        m.senderKeyStates.push($root.SignalLocalStorageProtocol.SenderKeyStateStructure.decode(r, r.uint32(), $undefined, q + 1));
+                        m.senderKeyStates.push($root.SignalLocalStorageProtocol.SenderKeyStateStructure.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 }
@@ -19700,13 +19700,13 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                 case 2: {
                         if (u !== 2)
                             break;
-                        m.senderChainKey = $root.SignalLocalStorageProtocol.SenderKeyStateStructure.SenderChainKey.decode(r, r.uint32(), $undefined, q + 1, m.senderChainKey);
+                        m.senderChainKey = $root.SignalLocalStorageProtocol.SenderKeyStateStructure.SenderChainKey.decode(r, r.size(), $undefined, q + 1, m.senderChainKey);
                         continue;
                     }
                 case 3: {
                         if (u !== 2)
                             break;
-                        m.senderSigningKey = $root.SignalLocalStorageProtocol.SenderKeyStateStructure.SenderSigningKey.decode(r, r.uint32(), $undefined, q + 1, m.senderSigningKey);
+                        m.senderSigningKey = $root.SignalLocalStorageProtocol.SenderKeyStateStructure.SenderSigningKey.decode(r, r.size(), $undefined, q + 1, m.senderSigningKey);
                         continue;
                     }
                 case 4: {
@@ -19714,7 +19714,7 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                             break;
                         if (!(m.senderMessageKeys && m.senderMessageKeys.length))
                             m.senderMessageKeys = [];
-                        m.senderMessageKeys.push($root.SignalLocalStorageProtocol.SenderKeyStateStructure.SenderMessageKey.decode(r, r.uint32(), $undefined, q + 1));
+                        m.senderMessageKeys.push($root.SignalLocalStorageProtocol.SenderKeyStateStructure.SenderMessageKey.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 }
@@ -20914,7 +20914,7 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                 case 1: {
                         if (u !== 2)
                             break;
-                        m.currentSession = $root.SignalLocalStorageProtocol.SessionStructure.decode(r, r.uint32(), $undefined, q + 1, m.currentSession);
+                        m.currentSession = $root.SignalLocalStorageProtocol.SessionStructure.decode(r, r.size(), $undefined, q + 1, m.currentSession);
                         continue;
                     }
                 case 2: {
@@ -20922,7 +20922,7 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                             break;
                         if (!(m.previousSessions && m.previousSessions.length))
                             m.previousSessions = [];
-                        m.previousSessions.push($root.SignalLocalStorageProtocol.SessionStructure.decode(r, r.uint32(), $undefined, q + 1));
+                        m.previousSessions.push($root.SignalLocalStorageProtocol.SessionStructure.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 }
@@ -21138,7 +21138,7 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                 case 6: {
                         if (u !== 2)
                             break;
-                        m.senderChain = $root.SignalLocalStorageProtocol.SessionStructure.Chain.decode(r, r.uint32(), $undefined, q + 1, m.senderChain);
+                        m.senderChain = $root.SignalLocalStorageProtocol.SessionStructure.Chain.decode(r, r.size(), $undefined, q + 1, m.senderChain);
                         continue;
                     }
                 case 7: {
@@ -21146,19 +21146,19 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                             break;
                         if (!(m.receiverChains && m.receiverChains.length))
                             m.receiverChains = [];
-                        m.receiverChains.push($root.SignalLocalStorageProtocol.SessionStructure.Chain.decode(r, r.uint32(), $undefined, q + 1));
+                        m.receiverChains.push($root.SignalLocalStorageProtocol.SessionStructure.Chain.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 case 8: {
                         if (u !== 2)
                             break;
-                        m.pendingKeyExchange = $root.SignalLocalStorageProtocol.SessionStructure.PendingKeyExchange.decode(r, r.uint32(), $undefined, q + 1, m.pendingKeyExchange);
+                        m.pendingKeyExchange = $root.SignalLocalStorageProtocol.SessionStructure.PendingKeyExchange.decode(r, r.size(), $undefined, q + 1, m.pendingKeyExchange);
                         continue;
                     }
                 case 9: {
                         if (u !== 2)
                             break;
-                        m.pendingPreKey = $root.SignalLocalStorageProtocol.SessionStructure.PendingPreKey.decode(r, r.uint32(), $undefined, q + 1, m.pendingPreKey);
+                        m.pendingPreKey = $root.SignalLocalStorageProtocol.SessionStructure.PendingPreKey.decode(r, r.size(), $undefined, q + 1, m.pendingPreKey);
                         continue;
                     }
                 case 10: {
@@ -21467,7 +21467,7 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                     case 3: {
                             if (u !== 2)
                                 break;
-                            m.chainKey = $root.SignalLocalStorageProtocol.SessionStructure.Chain.ChainKey.decode(r, r.uint32(), $undefined, q + 1, m.chainKey);
+                            m.chainKey = $root.SignalLocalStorageProtocol.SessionStructure.Chain.ChainKey.decode(r, r.size(), $undefined, q + 1, m.chainKey);
                             continue;
                         }
                     case 4: {
@@ -21475,7 +21475,7 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                                 break;
                             if (!(m.messageKeys && m.messageKeys.length))
                                 m.messageKeys = [];
-                            m.messageKeys.push($root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.uint32(), $undefined, q + 1));
+                            m.messageKeys.push($root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.size(), $undefined, q + 1));
                             continue;
                         }
                     }

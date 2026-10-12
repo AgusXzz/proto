@@ -140,7 +140,7 @@ export const VnameCert = $root.VnameCert = (() => {
                 case 2: {
                         if (u !== 2)
                             break;
-                        m.vnameCert = $root.VnameCert.VerifiedNameCertificate.decode(r, r.uint32(), $undefined, q + 1, m.vnameCert);
+                        m.vnameCert = $root.VnameCert.VerifiedNameCertificate.decode(r, r.size(), $undefined, q + 1, m.vnameCert);
                         continue;
                     }
                 case 3: {
@@ -709,7 +709,7 @@ export const VnameCert = $root.VnameCert = (() => {
                 case 1: {
                         if (u !== 2)
                             break;
-                        m.vnameCert = $root.VnameCert.VerifiedNameCertificate.decode(r, r.uint32(), $undefined, q + 1, m.vnameCert);
+                        m.vnameCert = $root.VnameCert.VerifiedNameCertificate.decode(r, r.size(), $undefined, q + 1, m.vnameCert);
                         continue;
                     }
                 case 2: {
@@ -1076,7 +1076,7 @@ export const VnameCert = $root.VnameCert = (() => {
                                 break;
                             if (!(m.localizedNames && m.localizedNames.length))
                                 m.localizedNames = [];
-                            m.localizedNames.push($root.VnameCert.LocalizedName.decode(r, r.uint32(), $undefined, q + 1));
+                            m.localizedNames.push($root.VnameCert.LocalizedName.decode(r, r.size(), $undefined, q + 1));
                             continue;
                         }
                     case 10: {

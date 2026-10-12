@@ -112,7 +112,7 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                             break;
                         if (!(m.senderKeyStates && m.senderKeyStates.length))
                             m.senderKeyStates = [];
-                        m.senderKeyStates.push($root.SignalLocalStorageProtocol.SenderKeyStateStructure.decode(r, r.uint32(), $undefined, q + 1));
+                        m.senderKeyStates.push($root.SignalLocalStorageProtocol.SenderKeyStateStructure.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 }
@@ -266,13 +266,13 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                 case 2: {
                         if (u !== 2)
                             break;
-                        m.senderChainKey = $root.SignalLocalStorageProtocol.SenderKeyStateStructure.SenderChainKey.decode(r, r.uint32(), $undefined, q + 1, m.senderChainKey);
+                        m.senderChainKey = $root.SignalLocalStorageProtocol.SenderKeyStateStructure.SenderChainKey.decode(r, r.size(), $undefined, q + 1, m.senderChainKey);
                         continue;
                     }
                 case 3: {
                         if (u !== 2)
                             break;
-                        m.senderSigningKey = $root.SignalLocalStorageProtocol.SenderKeyStateStructure.SenderSigningKey.decode(r, r.uint32(), $undefined, q + 1, m.senderSigningKey);
+                        m.senderSigningKey = $root.SignalLocalStorageProtocol.SenderKeyStateStructure.SenderSigningKey.decode(r, r.size(), $undefined, q + 1, m.senderSigningKey);
                         continue;
                     }
                 case 4: {
@@ -280,7 +280,7 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                             break;
                         if (!(m.senderMessageKeys && m.senderMessageKeys.length))
                             m.senderMessageKeys = [];
-                        m.senderMessageKeys.push($root.SignalLocalStorageProtocol.SenderKeyStateStructure.SenderMessageKey.decode(r, r.uint32(), $undefined, q + 1));
+                        m.senderMessageKeys.push($root.SignalLocalStorageProtocol.SenderKeyStateStructure.SenderMessageKey.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 }
@@ -1480,7 +1480,7 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                 case 1: {
                         if (u !== 2)
                             break;
-                        m.currentSession = $root.SignalLocalStorageProtocol.SessionStructure.decode(r, r.uint32(), $undefined, q + 1, m.currentSession);
+                        m.currentSession = $root.SignalLocalStorageProtocol.SessionStructure.decode(r, r.size(), $undefined, q + 1, m.currentSession);
                         continue;
                     }
                 case 2: {
@@ -1488,7 +1488,7 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                             break;
                         if (!(m.previousSessions && m.previousSessions.length))
                             m.previousSessions = [];
-                        m.previousSessions.push($root.SignalLocalStorageProtocol.SessionStructure.decode(r, r.uint32(), $undefined, q + 1));
+                        m.previousSessions.push($root.SignalLocalStorageProtocol.SessionStructure.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 }
@@ -1704,7 +1704,7 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                 case 6: {
                         if (u !== 2)
                             break;
-                        m.senderChain = $root.SignalLocalStorageProtocol.SessionStructure.Chain.decode(r, r.uint32(), $undefined, q + 1, m.senderChain);
+                        m.senderChain = $root.SignalLocalStorageProtocol.SessionStructure.Chain.decode(r, r.size(), $undefined, q + 1, m.senderChain);
                         continue;
                     }
                 case 7: {
@@ -1712,19 +1712,19 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                             break;
                         if (!(m.receiverChains && m.receiverChains.length))
                             m.receiverChains = [];
-                        m.receiverChains.push($root.SignalLocalStorageProtocol.SessionStructure.Chain.decode(r, r.uint32(), $undefined, q + 1));
+                        m.receiverChains.push($root.SignalLocalStorageProtocol.SessionStructure.Chain.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 case 8: {
                         if (u !== 2)
                             break;
-                        m.pendingKeyExchange = $root.SignalLocalStorageProtocol.SessionStructure.PendingKeyExchange.decode(r, r.uint32(), $undefined, q + 1, m.pendingKeyExchange);
+                        m.pendingKeyExchange = $root.SignalLocalStorageProtocol.SessionStructure.PendingKeyExchange.decode(r, r.size(), $undefined, q + 1, m.pendingKeyExchange);
                         continue;
                     }
                 case 9: {
                         if (u !== 2)
                             break;
-                        m.pendingPreKey = $root.SignalLocalStorageProtocol.SessionStructure.PendingPreKey.decode(r, r.uint32(), $undefined, q + 1, m.pendingPreKey);
+                        m.pendingPreKey = $root.SignalLocalStorageProtocol.SessionStructure.PendingPreKey.decode(r, r.size(), $undefined, q + 1, m.pendingPreKey);
                         continue;
                     }
                 case 10: {
@@ -2033,7 +2033,7 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                     case 3: {
                             if (u !== 2)
                                 break;
-                            m.chainKey = $root.SignalLocalStorageProtocol.SessionStructure.Chain.ChainKey.decode(r, r.uint32(), $undefined, q + 1, m.chainKey);
+                            m.chainKey = $root.SignalLocalStorageProtocol.SessionStructure.Chain.ChainKey.decode(r, r.size(), $undefined, q + 1, m.chainKey);
                             continue;
                         }
                     case 4: {
@@ -2041,7 +2041,7 @@ export const SignalLocalStorageProtocol = $root.SignalLocalStorageProtocol = (()
                                 break;
                             if (!(m.messageKeys && m.messageKeys.length))
                                 m.messageKeys = [];
-                            m.messageKeys.push($root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.uint32(), $undefined, q + 1));
+                            m.messageKeys.push($root.SignalLocalStorageProtocol.SessionStructure.Chain.MessageKey.decode(r, r.size(), $undefined, q + 1));
                             continue;
                         }
                     }
