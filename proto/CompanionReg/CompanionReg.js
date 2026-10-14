@@ -1296,6 +1296,10 @@ export const CompanionReg = $root.CompanionReg = (() => {
             case 29:
                 m.deviceType = 29;
                 break;
+            case "AUTOMOTIVE":
+            case 30:
+                m.deviceType = 30;
+                break;
             default:
             }
             if (d.ref != null) {
@@ -1608,6 +1612,10 @@ export const CompanionReg = $root.CompanionReg = (() => {
             case "WAIL_ALEXA":
             case 29:
                 m.platformType = 29;
+                break;
+            case "AUTOMOTIVE":
+            case 30:
+                m.platformType = 30;
                 break;
             default:
             }
@@ -2444,6 +2452,7 @@ export const CompanionReg = $root.CompanionReg = (() => {
             values[valuesById[27] = "BUSINESS_BACK_OFFICE"] = 27;
             values[valuesById[28] = "WAIL_WAI"] = 28;
             values[valuesById[29] = "WAIL_ALEXA"] = 29;
+            values[valuesById[30] = "AUTOMOTIVE"] = 30;
             return values;
         })();
 

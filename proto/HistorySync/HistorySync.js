@@ -88085,6 +88085,10 @@ export const CompanionReg = $root.CompanionReg = (() => {
             case 29:
                 m.deviceType = 29;
                 break;
+            case "AUTOMOTIVE":
+            case 30:
+                m.deviceType = 30;
+                break;
             default:
             }
             if (d.ref != null) {
@@ -88397,6 +88401,10 @@ export const CompanionReg = $root.CompanionReg = (() => {
             case "WAIL_ALEXA":
             case 29:
                 m.platformType = 29;
+                break;
+            case "AUTOMOTIVE":
+            case 30:
+                m.platformType = 30;
                 break;
             default:
             }
@@ -89233,6 +89241,7 @@ export const CompanionReg = $root.CompanionReg = (() => {
             values[valuesById[27] = "BUSINESS_BACK_OFFICE"] = 27;
             values[valuesById[28] = "WAIL_WAI"] = 28;
             values[valuesById[29] = "WAIL_ALEXA"] = 29;
+            values[valuesById[30] = "AUTOMOTIVE"] = 30;
             return values;
         })();
 
@@ -101535,6 +101544,10 @@ export const Web = $root.Web = (() => {
             case 271:
                 m.messageStubType = 271;
                 break;
+            case "BB_PRO_BROADCAST_CHAT_CARD":
+            case 272:
+                m.messageStubType = 272;
+                break;
             case "CHAT_WITH_BUSINESS_IN_DIRECTORY":
             case 283:
                 m.messageStubType = 283;
@@ -102590,6 +102603,7 @@ export const Web = $root.Web = (() => {
             values[valuesById[267] = "CAMEO_CHAT_EXPIRED"] = 267;
             values[valuesById[270] = "GROUP_PUSHNAME_SHARED"] = 270;
             values[valuesById[271] = "BIZ_POST_SEND_OPT_OUT"] = 271;
+            values[valuesById[272] = "BB_PRO_BROADCAST_CHAT_CARD"] = 272;
             values[valuesById[283] = "CHAT_WITH_BUSINESS_IN_DIRECTORY"] = 283;
             values[valuesById[284] = "META_AI_THREAD_CREATED"] = 284;
             values[valuesById[285] = "META_AI_CONNECTOR_LINKED"] = 285;
