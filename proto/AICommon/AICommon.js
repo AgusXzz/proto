@@ -2664,6 +2664,10 @@ export const AICommon = $root.AICommon = (() => {
             case 58:
                 m.botEntryPointOrigin = 58;
                 break;
+            case "SHARE":
+            case 59:
+                m.botEntryPointOrigin = 59;
+                break;
             default:
             }
             if (d.forwardScore != null) {
@@ -10991,6 +10995,10 @@ export const AICommon = $root.AICommon = (() => {
                     case 81:
                         m.capabilities[m.capabilities.length] = 81;
                         break;
+                    case "AI_STUDY_QUIZ_ENABLED":
+                    case 82:
+                        m.capabilities[m.capabilities.length] = 82;
+                        break;
                     default:
                     }
                 }
@@ -11112,6 +11120,7 @@ export const AICommon = $root.AICommon = (() => {
             values[valuesById[79] = "HATCH_ARTIFACT_CARD_ENABLED"] = 79;
             values[valuesById[80] = "AI_STUDY_CENTER_ENABLED"] = 80;
             values[valuesById[81] = "AI_MUSE_JARVIS_SCHEMA_ENABLED"] = 81;
+            values[valuesById[82] = "AI_STUDY_QUIZ_ENABLED"] = 82;
             return values;
         })();
 
@@ -13556,6 +13565,10 @@ export const AICommon = $root.AICommon = (() => {
             case "NEW_3P_AGENT_CREATION":
             case 58:
                 m.destinationEntryPoint = 58;
+                break;
+            case "SHARE":
+            case 59:
+                m.destinationEntryPoint = 59;
                 break;
             default:
             }
@@ -16304,6 +16317,7 @@ export const AICommon = $root.AICommon = (() => {
         values[valuesById[56] = "NEW_CHAT_LIST"] = 56;
         values[valuesById[57] = "CONTACTS_TAB"] = 57;
         values[valuesById[58] = "NEW_3P_AGENT_CREATION"] = 58;
+        values[valuesById[59] = "SHARE"] = 59;
         return values;
     })();
 
