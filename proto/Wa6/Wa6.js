@@ -2228,6 +2228,10 @@ export const Wa6 = $root.Wa6 = (() => {
                 case 40:
                     m.platform = 40;
                     break;
+                case "AUTOMOTIVE":
+                case 41:
+                    m.platform = 41;
+                    break;
                 default:
                 }
                 if (d.appVersion != null) {
@@ -2678,6 +2682,7 @@ export const Wa6 = $root.Wa6 = (() => {
                 values[valuesById[38] = "WAIL"] = 38;
                 values[valuesById[39] = "WORK_ANDROID"] = 39;
                 values[valuesById[40] = "WORK_IOS"] = 40;
+                values[valuesById[41] = "AUTOMOTIVE"] = 41;
                 return values;
             })();
 

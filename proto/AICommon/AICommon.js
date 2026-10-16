@@ -8140,6 +8140,10 @@ export const AICommon = $root.AICommon = (() => {
             case 0:
                 m.type = 0;
                 break;
+            case "BOT_MESSAGE_ORIGIN_TYPE_META_AI_THREAD_WELCOME":
+            case 1:
+                m.type = 1;
+                break;
             default:
             }
             return m;
@@ -8175,6 +8179,7 @@ export const AICommon = $root.AICommon = (() => {
         BotMessageOrigin.BotMessageOriginType = (function() {
             const valuesById = $Object.create(null), values = $Object.create(valuesById);
             values[valuesById[0] = "BOT_MESSAGE_ORIGIN_TYPE_AI_INITIATED"] = 0;
+            values[valuesById[1] = "BOT_MESSAGE_ORIGIN_TYPE_META_AI_THREAD_WELCOME"] = 1;
             return values;
         })();
 
