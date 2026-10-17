@@ -114,6 +114,7 @@ export const MdStorageMsgRowOpaqueData = $root.MdStorageMsgRowOpaqueData = (() =
         MsgOpaqueData.prototype.sharableEventInviteCallLink = "";
         MsgOpaqueData.prototype.mediaPngThumbnail = "";
         MsgOpaqueData.prototype.qrUrl = "";
+        MsgOpaqueData.prototype.musicData = null;
 
         MsgOpaqueData.create = function(properties) {
             return new MsgOpaqueData(properties);
@@ -242,6 +243,8 @@ export const MdStorageMsgRowOpaqueData = $root.MdStorageMsgRowOpaqueData = (() =
                 w.uint32(490).string(m.mediaPngThumbnail);
             if (m.qrUrl != null && $Object.hasOwnProperty.call(m, "qrUrl"))
                 w.uint32(498).string(m.qrUrl);
+            if (m.musicData != null && $Object.hasOwnProperty.call(m, "musicData"))
+                $root.MdStorageMsgRowOpaqueData.MsgOpaqueData.MusicData.encode(m.musicData, w.uint32(506).fork(), q + 1).ldelim();
             if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                 for (var i = 0; i < m.$unknowns.length; ++i)
                     w.raw(m.$unknowns[i]);
@@ -631,6 +634,12 @@ export const MdStorageMsgRowOpaqueData = $root.MdStorageMsgRowOpaqueData = (() =
                         m.qrUrl = r.string();
                         continue;
                     }
+                case 63: {
+                        if (u !== 2)
+                            break;
+                        m.musicData = $root.MdStorageMsgRowOpaqueData.MsgOpaqueData.MusicData.decode(r, r.size(), $undefined, q + 1, m.musicData);
+                        continue;
+                    }
                 }
                 r.skipType(u, q, t);
                 if (!r.discardUnknown) {
@@ -931,6 +940,11 @@ export const MdStorageMsgRowOpaqueData = $root.MdStorageMsgRowOpaqueData = (() =
             if (d.qrUrl != null) {
                 m.qrUrl = $String(d.qrUrl);
             }
+            if (d.musicData != null) {
+                if (!$util.isObject(d.musicData))
+                    throw $TypeError(".MdStorageMsgRowOpaqueData.MsgOpaqueData.musicData: object expected");
+                m.musicData = $root.MdStorageMsgRowOpaqueData.MsgOpaqueData.MusicData.fromObject(d.musicData, q + 1);
+            }
             return m;
         };
 
@@ -1080,6 +1094,7 @@ export const MdStorageMsgRowOpaqueData = $root.MdStorageMsgRowOpaqueData = (() =
                 d.sharableEventInviteCallLink = "";
                 d.mediaPngThumbnail = "";
                 d.qrUrl = "";
+                d.musicData = null;
             }
             if (m.body != null && $Object.hasOwnProperty.call(m, "body")) {
                 d.body = m.body;
@@ -1284,6 +1299,9 @@ export const MdStorageMsgRowOpaqueData = $root.MdStorageMsgRowOpaqueData = (() =
             }
             if (m.qrUrl != null && $Object.hasOwnProperty.call(m, "qrUrl")) {
                 d.qrUrl = m.qrUrl;
+            }
+            if (m.musicData != null && $Object.hasOwnProperty.call(m, "musicData")) {
+                d.musicData = $root.MdStorageMsgRowOpaqueData.MsgOpaqueData.MusicData.toObject(m.musicData, o, q + 1);
             }
             return d;
         };
@@ -1511,6 +1529,456 @@ export const MdStorageMsgRowOpaqueData = $root.MdStorageMsgRowOpaqueData = (() =
             };
 
             return EventLocation;
+        })();
+
+        MsgOpaqueData.MusicData = (function() {
+
+            const MusicData = function (p) {
+                if (p)
+                    for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                        if (p[ks[i]] != null && ks[i] !== "__proto__")
+                            this[ks[i]] = p[ks[i]];
+            };
+
+            MusicData.prototype.musicContentMediaId = "";
+            MusicData.prototype.songId = "";
+            MusicData.prototype.author = "";
+            MusicData.prototype.title = "";
+            MusicData.prototype.songUri = "";
+            MusicData.prototype.artworkUri = "";
+            MusicData.prototype.style = 0;
+            MusicData.prototype.songStartTimeMs = 0;
+            MusicData.prototype.clipDurationMs = 0;
+            MusicData.prototype.isExplicit = false;
+            MusicData.prototype.countryBlocklist = $util.newBuffer([]);
+            MusicData.prototype.artistAttribution = "";
+            MusicData.prototype.artworkDirectPath = "";
+            MusicData.prototype.artworkSha256 = $util.newBuffer([]);
+            MusicData.prototype.artworkEncSha256 = $util.newBuffer([]);
+            MusicData.prototype.artworkMediaKey = $util.newBuffer([]);
+            MusicData.prototype.consumptionCheckedAtS = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+            MusicData.prototype.isAvailableForConsumption = false;
+
+            MusicData.create = function(properties) {
+                return new MusicData(properties);
+            };
+
+            MusicData.encode = function (m, w, q) {
+                if (!w)
+                    w = $Writer.create();
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                if (m.musicContentMediaId != null && $Object.hasOwnProperty.call(m, "musicContentMediaId"))
+                    w.uint32(10).string(m.musicContentMediaId);
+                if (m.songId != null && $Object.hasOwnProperty.call(m, "songId"))
+                    w.uint32(18).string(m.songId);
+                if (m.author != null && $Object.hasOwnProperty.call(m, "author"))
+                    w.uint32(26).string(m.author);
+                if (m.title != null && $Object.hasOwnProperty.call(m, "title"))
+                    w.uint32(34).string(m.title);
+                if (m.songUri != null && $Object.hasOwnProperty.call(m, "songUri"))
+                    w.uint32(42).string(m.songUri);
+                if (m.artworkUri != null && $Object.hasOwnProperty.call(m, "artworkUri"))
+                    w.uint32(50).string(m.artworkUri);
+                if (m.style != null && $Object.hasOwnProperty.call(m, "style"))
+                    w.uint32(56).int32(m.style);
+                if (m.songStartTimeMs != null && $Object.hasOwnProperty.call(m, "songStartTimeMs"))
+                    w.uint32(64).int32(m.songStartTimeMs);
+                if (m.clipDurationMs != null && $Object.hasOwnProperty.call(m, "clipDurationMs"))
+                    w.uint32(72).int32(m.clipDurationMs);
+                if (m.isExplicit != null && $Object.hasOwnProperty.call(m, "isExplicit"))
+                    w.uint32(80).bool(m.isExplicit);
+                if (m.countryBlocklist != null && $Object.hasOwnProperty.call(m, "countryBlocklist"))
+                    w.uint32(90).bytes(m.countryBlocklist);
+                if (m.artistAttribution != null && $Object.hasOwnProperty.call(m, "artistAttribution"))
+                    w.uint32(98).string(m.artistAttribution);
+                if (m.artworkDirectPath != null && $Object.hasOwnProperty.call(m, "artworkDirectPath"))
+                    w.uint32(106).string(m.artworkDirectPath);
+                if (m.artworkSha256 != null && $Object.hasOwnProperty.call(m, "artworkSha256"))
+                    w.uint32(114).bytes(m.artworkSha256);
+                if (m.artworkEncSha256 != null && $Object.hasOwnProperty.call(m, "artworkEncSha256"))
+                    w.uint32(122).bytes(m.artworkEncSha256);
+                if (m.artworkMediaKey != null && $Object.hasOwnProperty.call(m, "artworkMediaKey"))
+                    w.uint32(130).bytes(m.artworkMediaKey);
+                if (m.consumptionCheckedAtS != null && $Object.hasOwnProperty.call(m, "consumptionCheckedAtS"))
+                    w.uint32(136).int64(m.consumptionCheckedAtS);
+                if (m.isAvailableForConsumption != null && $Object.hasOwnProperty.call(m, "isAvailableForConsumption"))
+                    w.uint32(144).bool(m.isAvailableForConsumption);
+                if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                    for (var i = 0; i < m.$unknowns.length; ++i)
+                        w.raw(m.$unknowns[i]);
+                return w;
+            };
+
+            MusicData.decode = function (r, l, z, q, g) {
+                if (!(r instanceof $Reader))
+                    r = $Reader.create(r);
+                if (q === $undefined)
+                    q = 0;
+                if (q > $Reader.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.MdStorageMsgRowOpaqueData.MsgOpaqueData.MusicData();
+                while (r.pos < c) {
+                    var s = r.pos;
+                    var t = r.tag();
+                    if (t === z) {
+                        z = $undefined;
+                        break;
+                    }
+                    var u = t & 7;
+                    switch (t >>>= 3) {
+                    case 1: {
+                            if (u !== 2)
+                                break;
+                            m.musicContentMediaId = r.string();
+                            continue;
+                        }
+                    case 2: {
+                            if (u !== 2)
+                                break;
+                            m.songId = r.string();
+                            continue;
+                        }
+                    case 3: {
+                            if (u !== 2)
+                                break;
+                            m.author = r.string();
+                            continue;
+                        }
+                    case 4: {
+                            if (u !== 2)
+                                break;
+                            m.title = r.string();
+                            continue;
+                        }
+                    case 5: {
+                            if (u !== 2)
+                                break;
+                            m.songUri = r.string();
+                            continue;
+                        }
+                    case 6: {
+                            if (u !== 2)
+                                break;
+                            m.artworkUri = r.string();
+                            continue;
+                        }
+                    case 7: {
+                            if (u !== 0)
+                                break;
+                            m.style = r.int32();
+                            continue;
+                        }
+                    case 8: {
+                            if (u !== 0)
+                                break;
+                            m.songStartTimeMs = r.int32();
+                            continue;
+                        }
+                    case 9: {
+                            if (u !== 0)
+                                break;
+                            m.clipDurationMs = r.int32();
+                            continue;
+                        }
+                    case 10: {
+                            if (u !== 0)
+                                break;
+                            m.isExplicit = r.bool();
+                            continue;
+                        }
+                    case 11: {
+                            if (u !== 2)
+                                break;
+                            m.countryBlocklist = r.bytes();
+                            continue;
+                        }
+                    case 12: {
+                            if (u !== 2)
+                                break;
+                            m.artistAttribution = r.string();
+                            continue;
+                        }
+                    case 13: {
+                            if (u !== 2)
+                                break;
+                            m.artworkDirectPath = r.string();
+                            continue;
+                        }
+                    case 14: {
+                            if (u !== 2)
+                                break;
+                            m.artworkSha256 = r.bytes();
+                            continue;
+                        }
+                    case 15: {
+                            if (u !== 2)
+                                break;
+                            m.artworkEncSha256 = r.bytes();
+                            continue;
+                        }
+                    case 16: {
+                            if (u !== 2)
+                                break;
+                            m.artworkMediaKey = r.bytes();
+                            continue;
+                        }
+                    case 17: {
+                            if (u !== 0)
+                                break;
+                            m.consumptionCheckedAtS = r.int64();
+                            continue;
+                        }
+                    case 18: {
+                            if (u !== 0)
+                                break;
+                            m.isAvailableForConsumption = r.bool();
+                            continue;
+                        }
+                    }
+                    r.skipType(u, q, t);
+                    if (!r.discardUnknown) {
+                        $util.makeProp(m, "$unknowns", false);
+                        (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                    }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
+                }
+                if (z !== $undefined)
+                    throw $Error("missing end group");
+                return m;
+            };
+
+            MusicData.fromObject = function (d, q) {
+                if (d instanceof $root.MdStorageMsgRowOpaqueData.MsgOpaqueData.MusicData)
+                    return d;
+                if (!$util.isObject(d))
+                    throw $TypeError(".MdStorageMsgRowOpaqueData.MsgOpaqueData.MusicData: object expected");
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var m = new $root.MdStorageMsgRowOpaqueData.MsgOpaqueData.MusicData();
+                if (d.musicContentMediaId != null) {
+                    m.musicContentMediaId = $String(d.musicContentMediaId);
+                }
+                if (d.songId != null) {
+                    m.songId = $String(d.songId);
+                }
+                if (d.author != null) {
+                    m.author = $String(d.author);
+                }
+                if (d.title != null) {
+                    m.title = $String(d.title);
+                }
+                if (d.songUri != null) {
+                    m.songUri = $String(d.songUri);
+                }
+                if (d.artworkUri != null) {
+                    m.artworkUri = $String(d.artworkUri);
+                }
+                if (d.style != null) {
+                    m.style = d.style | 0;
+                }
+                if (d.songStartTimeMs != null) {
+                    m.songStartTimeMs = d.songStartTimeMs | 0;
+                }
+                if (d.clipDurationMs != null) {
+                    m.clipDurationMs = d.clipDurationMs | 0;
+                }
+                if (d.isExplicit != null) {
+                    m.isExplicit = $Boolean(d.isExplicit);
+                }
+                if (d.countryBlocklist != null) {
+                    if (typeof d.countryBlocklist === "string")
+                        $util.base64.decode(d.countryBlocklist, m.countryBlocklist = $util.newBuffer($util.base64.length(d.countryBlocklist)), 0);
+                    else if (d.countryBlocklist.length >= 0)
+                        m.countryBlocklist = d.countryBlocklist;
+                }
+                if (d.artistAttribution != null) {
+                    m.artistAttribution = $String(d.artistAttribution);
+                }
+                if (d.artworkDirectPath != null) {
+                    m.artworkDirectPath = $String(d.artworkDirectPath);
+                }
+                if (d.artworkSha256 != null) {
+                    if (typeof d.artworkSha256 === "string")
+                        $util.base64.decode(d.artworkSha256, m.artworkSha256 = $util.newBuffer($util.base64.length(d.artworkSha256)), 0);
+                    else if (d.artworkSha256.length >= 0)
+                        m.artworkSha256 = d.artworkSha256;
+                }
+                if (d.artworkEncSha256 != null) {
+                    if (typeof d.artworkEncSha256 === "string")
+                        $util.base64.decode(d.artworkEncSha256, m.artworkEncSha256 = $util.newBuffer($util.base64.length(d.artworkEncSha256)), 0);
+                    else if (d.artworkEncSha256.length >= 0)
+                        m.artworkEncSha256 = d.artworkEncSha256;
+                }
+                if (d.artworkMediaKey != null) {
+                    if (typeof d.artworkMediaKey === "string")
+                        $util.base64.decode(d.artworkMediaKey, m.artworkMediaKey = $util.newBuffer($util.base64.length(d.artworkMediaKey)), 0);
+                    else if (d.artworkMediaKey.length >= 0)
+                        m.artworkMediaKey = d.artworkMediaKey;
+                }
+                if (d.consumptionCheckedAtS != null) {
+                    if ($util.Long)
+                        m.consumptionCheckedAtS = $util.Long.fromValue(d.consumptionCheckedAtS, false);
+                    else if (typeof d.consumptionCheckedAtS === "string")
+                        m.consumptionCheckedAtS = $parseInt(d.consumptionCheckedAtS, 10);
+                    else if (typeof d.consumptionCheckedAtS === "number")
+                        m.consumptionCheckedAtS = d.consumptionCheckedAtS;
+                    else if (typeof d.consumptionCheckedAtS === "object")
+                        m.consumptionCheckedAtS = new $util.LongBits(d.consumptionCheckedAtS.low >>> 0, d.consumptionCheckedAtS.high >>> 0).toNumber();
+                }
+                if (d.isAvailableForConsumption != null) {
+                    m.isAvailableForConsumption = $Boolean(d.isAvailableForConsumption);
+                }
+                return m;
+            };
+
+            MusicData.toObject = function (m, o, q) {
+                if (!o)
+                    o = {};
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var d = {};
+                if (o.defaults) {
+                    d.musicContentMediaId = "";
+                    d.songId = "";
+                    d.author = "";
+                    d.title = "";
+                    d.songUri = "";
+                    d.artworkUri = "";
+                    d.style = 0;
+                    d.songStartTimeMs = 0;
+                    d.clipDurationMs = 0;
+                    d.isExplicit = false;
+                    if (o.bytes === $String)
+                        d.countryBlocklist = "";
+                    else {
+                        d.countryBlocklist = [];
+                        if (o.bytes !== $Array)
+                            d.countryBlocklist = $util.newBuffer(d.countryBlocklist);
+                    }
+                    d.artistAttribution = "";
+                    d.artworkDirectPath = "";
+                    if (o.bytes === $String)
+                        d.artworkSha256 = "";
+                    else {
+                        d.artworkSha256 = [];
+                        if (o.bytes !== $Array)
+                            d.artworkSha256 = $util.newBuffer(d.artworkSha256);
+                    }
+                    if (o.bytes === $String)
+                        d.artworkEncSha256 = "";
+                    else {
+                        d.artworkEncSha256 = [];
+                        if (o.bytes !== $Array)
+                            d.artworkEncSha256 = $util.newBuffer(d.artworkEncSha256);
+                    }
+                    if (o.bytes === $String)
+                        d.artworkMediaKey = "";
+                    else {
+                        d.artworkMediaKey = [];
+                        if (o.bytes !== $Array)
+                            d.artworkMediaKey = $util.newBuffer(d.artworkMediaKey);
+                    }
+                    if ($util.Long) {
+                        var n = new $util.Long(0, 0, false);
+                        d.consumptionCheckedAtS = o.longs === $String ? n.toString() : o.longs === $Number ? n.toNumber() : typeof $BigInt !== "undefined" && o.longs === $BigInt ? n.toBigInt() : n;
+                    } else
+                        d.consumptionCheckedAtS = o.longs === $String ? "0" : typeof $BigInt !== "undefined" && o.longs === $BigInt ? $BigInt("0") : 0;
+                    d.isAvailableForConsumption = false;
+                }
+                if (m.musicContentMediaId != null && $Object.hasOwnProperty.call(m, "musicContentMediaId")) {
+                    d.musicContentMediaId = m.musicContentMediaId;
+                }
+                if (m.songId != null && $Object.hasOwnProperty.call(m, "songId")) {
+                    d.songId = m.songId;
+                }
+                if (m.author != null && $Object.hasOwnProperty.call(m, "author")) {
+                    d.author = m.author;
+                }
+                if (m.title != null && $Object.hasOwnProperty.call(m, "title")) {
+                    d.title = m.title;
+                }
+                if (m.songUri != null && $Object.hasOwnProperty.call(m, "songUri")) {
+                    d.songUri = m.songUri;
+                }
+                if (m.artworkUri != null && $Object.hasOwnProperty.call(m, "artworkUri")) {
+                    d.artworkUri = m.artworkUri;
+                }
+                if (m.style != null && $Object.hasOwnProperty.call(m, "style")) {
+                    d.style = m.style;
+                }
+                if (m.songStartTimeMs != null && $Object.hasOwnProperty.call(m, "songStartTimeMs")) {
+                    d.songStartTimeMs = m.songStartTimeMs;
+                }
+                if (m.clipDurationMs != null && $Object.hasOwnProperty.call(m, "clipDurationMs")) {
+                    d.clipDurationMs = m.clipDurationMs;
+                }
+                if (m.isExplicit != null && $Object.hasOwnProperty.call(m, "isExplicit")) {
+                    d.isExplicit = m.isExplicit;
+                }
+                if (m.countryBlocklist != null && $Object.hasOwnProperty.call(m, "countryBlocklist")) {
+                    d.countryBlocklist = o.bytes === $String ? $util.base64.encode(m.countryBlocklist, 0, m.countryBlocklist.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.countryBlocklist) : m.countryBlocklist;
+                }
+                if (m.artistAttribution != null && $Object.hasOwnProperty.call(m, "artistAttribution")) {
+                    d.artistAttribution = m.artistAttribution;
+                }
+                if (m.artworkDirectPath != null && $Object.hasOwnProperty.call(m, "artworkDirectPath")) {
+                    d.artworkDirectPath = m.artworkDirectPath;
+                }
+                if (m.artworkSha256 != null && $Object.hasOwnProperty.call(m, "artworkSha256")) {
+                    d.artworkSha256 = o.bytes === $String ? $util.base64.encode(m.artworkSha256, 0, m.artworkSha256.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.artworkSha256) : m.artworkSha256;
+                }
+                if (m.artworkEncSha256 != null && $Object.hasOwnProperty.call(m, "artworkEncSha256")) {
+                    d.artworkEncSha256 = o.bytes === $String ? $util.base64.encode(m.artworkEncSha256, 0, m.artworkEncSha256.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.artworkEncSha256) : m.artworkEncSha256;
+                }
+                if (m.artworkMediaKey != null && $Object.hasOwnProperty.call(m, "artworkMediaKey")) {
+                    d.artworkMediaKey = o.bytes === $String ? $util.base64.encode(m.artworkMediaKey, 0, m.artworkMediaKey.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.artworkMediaKey) : m.artworkMediaKey;
+                }
+                if (m.consumptionCheckedAtS != null && $Object.hasOwnProperty.call(m, "consumptionCheckedAtS")) {
+                    if (typeof $BigInt !== "undefined" && o.longs === $BigInt)
+                        d.consumptionCheckedAtS = typeof m.consumptionCheckedAtS === "number" ? $BigInt(m.consumptionCheckedAtS) : $util.Long.fromBits(m.consumptionCheckedAtS.low >>> 0, m.consumptionCheckedAtS.high >>> 0, false).toBigInt();
+                    else if (typeof m.consumptionCheckedAtS === "number")
+                        d.consumptionCheckedAtS = o.longs === $String ? $String(m.consumptionCheckedAtS) : m.consumptionCheckedAtS;
+                    else
+                        d.consumptionCheckedAtS = o.longs === String ? longToString(m.consumptionCheckedAtS) : o.longs === Number ? longToNumber(m.consumptionCheckedAtS) : m.consumptionCheckedAtS;
+                }
+                if (m.isAvailableForConsumption != null && $Object.hasOwnProperty.call(m, "isAvailableForConsumption")) {
+                    d.isAvailableForConsumption = m.isAvailableForConsumption;
+                }
+                return d;
+            };
+
+            MusicData.prototype.toJSON = function() {
+                return MusicData.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            MusicData.getTypeUrl = function(prefix) {
+                if (prefix === $undefined)
+                    prefix = "type.googleapis.com";
+                return prefix + "/MdStorageMsgRowOpaqueData.MsgOpaqueData.MusicData";
+            };
+
+            return MusicData;
         })();
 
         MsgOpaqueData.PollContentType = (function() {
