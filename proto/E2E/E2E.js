@@ -6524,6 +6524,7 @@ export const E2E = $root.E2E = (() => {
         MessageContextInfo.prototype.associatedPrimaryIdentityKey = $util.newBuffer([]);
         MessageContextInfo.prototype.teeContextAnchorMessageId = "";
         MessageContextInfo.prototype.acp2Setting = null;
+        MessageContextInfo.prototype.lightE2Ee = false;
 
         MessageContextInfo.create = function(properties) {
             return new MessageContextInfo(properties);
@@ -6580,6 +6581,8 @@ export const E2E = $root.E2E = (() => {
                 w.uint32(162).string(m.teeContextAnchorMessageId);
             if (m.acp2Setting != null && $Object.hasOwnProperty.call(m, "acp2Setting"))
                 $root.Protocol.ACP2Setting.encode(m.acp2Setting, w.uint32(170).fork(), q + 1).ldelim();
+            if (m.lightE2Ee != null && $Object.hasOwnProperty.call(m, "lightE2Ee"))
+                w.uint32(176).bool(m.lightE2Ee);
             if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                 for (var i = 0; i < m.$unknowns.length; ++i)
                     w.raw(m.$unknowns[i]);
@@ -6753,6 +6756,12 @@ export const E2E = $root.E2E = (() => {
                         m.acp2Setting = $root.Protocol.ACP2Setting.decode(r, r.size(), $undefined, q + 1, m.acp2Setting);
                         continue;
                     }
+                case 22: {
+                        if (u !== 0)
+                            break;
+                        m.lightE2Ee = r.bool();
+                        continue;
+                    }
                 }
                 r.skipType(u, q, t);
                 if (!r.discardUnknown) {
@@ -6895,6 +6904,9 @@ export const E2E = $root.E2E = (() => {
                     throw $TypeError(".E2E.MessageContextInfo.acp2Setting: object expected");
                 m.acp2Setting = $root.Protocol.ACP2Setting.fromObject(d.acp2Setting, q + 1);
             }
+            if (d.lightE2Ee != null) {
+                m.lightE2Ee = $Boolean(d.lightE2Ee);
+            }
             return m;
         };
 
@@ -6960,6 +6972,7 @@ export const E2E = $root.E2E = (() => {
                 }
                 d.teeContextAnchorMessageId = "";
                 d.acp2Setting = null;
+                d.lightE2Ee = false;
             }
             if (m.deviceListMetadata != null && $Object.hasOwnProperty.call(m, "deviceListMetadata")) {
                 d.deviceListMetadata = $root.E2E.DeviceListMetadata.toObject(m.deviceListMetadata, o, q + 1);
@@ -7026,6 +7039,9 @@ export const E2E = $root.E2E = (() => {
             }
             if (m.acp2Setting != null && $Object.hasOwnProperty.call(m, "acp2Setting")) {
                 d.acp2Setting = $root.Protocol.ACP2Setting.toObject(m.acp2Setting, o, q + 1);
+            }
+            if (m.lightE2Ee != null && $Object.hasOwnProperty.call(m, "lightE2Ee")) {
+                d.lightE2Ee = m.lightE2Ee;
             }
             return d;
         };
@@ -7585,6 +7601,7 @@ export const E2E = $root.E2E = (() => {
         ContextInfo.prototype.aiProvenance = null;
         ContextInfo.prototype.experienceIds = $util.emptyArray;
         ContextInfo.prototype.partnerDeepLinkToken = "";
+        ContextInfo.prototype.sourceExperienceId = 0;
 
         ContextInfo.create = function(properties) {
             return new ContextInfo(properties);
@@ -7736,6 +7753,8 @@ export const E2E = $root.E2E = (() => {
             }
             if (m.partnerDeepLinkToken != null && $Object.hasOwnProperty.call(m, "partnerDeepLinkToken"))
                 w.uint32(666).string(m.partnerDeepLinkToken);
+            if (m.sourceExperienceId != null && $Object.hasOwnProperty.call(m, "sourceExperienceId"))
+                w.uint32(672).uint32(m.sourceExperienceId);
             if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                 for (var i = 0; i < m.$unknowns.length; ++i)
                     w.raw(m.$unknowns[i]);
@@ -8215,6 +8234,12 @@ export const E2E = $root.E2E = (() => {
                         m.partnerDeepLinkToken = r.string();
                         continue;
                     }
+                case 84: {
+                        if (u !== 0)
+                            break;
+                        m.sourceExperienceId = r.uint32();
+                        continue;
+                    }
                 }
                 r.skipType(u, q, t);
                 if (!r.discardUnknown) {
@@ -8664,6 +8689,9 @@ export const E2E = $root.E2E = (() => {
             if (d.partnerDeepLinkToken != null) {
                 m.partnerDeepLinkToken = $String(d.partnerDeepLinkToken);
             }
+            if (d.sourceExperienceId != null) {
+                m.sourceExperienceId = d.sourceExperienceId >>> 0;
+            }
             return m;
         };
 
@@ -8766,6 +8794,7 @@ export const E2E = $root.E2E = (() => {
                 d.instagramThreadLink = null;
                 d.aiProvenance = null;
                 d.partnerDeepLinkToken = "";
+                d.sourceExperienceId = 0;
             }
             if (m.stanzaId != null && $Object.hasOwnProperty.call(m, "stanzaId")) {
                 d.stanzaId = m.stanzaId;
@@ -8981,6 +9010,9 @@ export const E2E = $root.E2E = (() => {
             }
             if (m.partnerDeepLinkToken != null && $Object.hasOwnProperty.call(m, "partnerDeepLinkToken")) {
                 d.partnerDeepLinkToken = m.partnerDeepLinkToken;
+            }
+            if (m.sourceExperienceId != null && $Object.hasOwnProperty.call(m, "sourceExperienceId")) {
+                d.sourceExperienceId = m.sourceExperienceId;
             }
             return d;
         };
@@ -12320,6 +12352,7 @@ export const E2E = $root.E2E = (() => {
             StatusAudienceMetadata.prototype.audienceType = 0;
             StatusAudienceMetadata.prototype.listName = "";
             StatusAudienceMetadata.prototype.listEmoji = "";
+            StatusAudienceMetadata.prototype.networkId = "";
 
             StatusAudienceMetadata.create = function(properties) {
                 return new StatusAudienceMetadata(properties);
@@ -12338,6 +12371,8 @@ export const E2E = $root.E2E = (() => {
                     w.uint32(18).string(m.listName);
                 if (m.listEmoji != null && $Object.hasOwnProperty.call(m, "listEmoji"))
                     w.uint32(26).string(m.listEmoji);
+                if (m.networkId != null && $Object.hasOwnProperty.call(m, "networkId"))
+                    w.uint32(34).string(m.networkId);
                 if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                     for (var i = 0; i < m.$unknowns.length; ++i)
                         w.raw(m.$unknowns[i]);
@@ -12395,6 +12430,12 @@ export const E2E = $root.E2E = (() => {
                             m.listEmoji = r.string();
                             continue;
                         }
+                    case 4: {
+                            if (u !== 2)
+                                break;
+                            m.networkId = r.string();
+                            continue;
+                        }
                     }
                     r.skipType(u, q, t);
                     if (!r.discardUnknown) {
@@ -12431,6 +12472,14 @@ export const E2E = $root.E2E = (() => {
                 case 1:
                     m.audienceType = 1;
                     break;
+                case "CUSTOM_LIST":
+                case 2:
+                    m.audienceType = 2;
+                    break;
+                case "NETWORK":
+                case 3:
+                    m.audienceType = 3;
+                    break;
                 default:
                 }
                 if (d.listName != null) {
@@ -12438,6 +12487,9 @@ export const E2E = $root.E2E = (() => {
                 }
                 if (d.listEmoji != null) {
                     m.listEmoji = $String(d.listEmoji);
+                }
+                if (d.networkId != null) {
+                    m.networkId = $String(d.networkId);
                 }
                 return m;
             };
@@ -12454,6 +12506,7 @@ export const E2E = $root.E2E = (() => {
                     d.audienceType = o.enums === $String ? "UNKNOWN" : 0;
                     d.listName = "";
                     d.listEmoji = "";
+                    d.networkId = "";
                 }
                 if (m.audienceType != null && $Object.hasOwnProperty.call(m, "audienceType")) {
                     d.audienceType = o.enums === $String ? $root.E2E.ContextInfo.StatusAudienceMetadata.AudienceType[m.audienceType] === $undefined ? m.audienceType : $root.E2E.ContextInfo.StatusAudienceMetadata.AudienceType[m.audienceType] : m.audienceType;
@@ -12463,6 +12516,9 @@ export const E2E = $root.E2E = (() => {
                 }
                 if (m.listEmoji != null && $Object.hasOwnProperty.call(m, "listEmoji")) {
                     d.listEmoji = m.listEmoji;
+                }
+                if (m.networkId != null && $Object.hasOwnProperty.call(m, "networkId")) {
+                    d.networkId = m.networkId;
                 }
                 return d;
             };
@@ -12481,6 +12537,8 @@ export const E2E = $root.E2E = (() => {
                 const valuesById = $Object.create(null), values = $Object.create(valuesById);
                 values[valuesById[0] = "UNKNOWN"] = 0;
                 values[valuesById[1] = "CLOSE_FRIENDS"] = 1;
+                values[valuesById[2] = "CUSTOM_LIST"] = 2;
+                values[valuesById[3] = "NETWORK"] = 3;
                 return values;
             })();
 
@@ -27335,6 +27393,10 @@ export const E2E = $root.E2E = (() => {
                 case 8:
                     m.syncType = 8;
                     break;
+                case "RECENT_CONVERSATIONS_ON_DEMAND":
+                case 9:
+                    m.syncType = 9;
+                    break;
                 default:
                 }
                 if (d.chunkOrder != null) {
@@ -27520,6 +27582,7 @@ export const E2E = $root.E2E = (() => {
             values[valuesById[6] = "ON_DEMAND"] = 6;
             values[valuesById[7] = "NO_HISTORY"] = 7;
             values[valuesById[8] = "MESSAGE_ACCESS_STATUS"] = 8;
+            values[valuesById[9] = "RECENT_CONVERSATIONS_ON_DEMAND"] = 9;
             return values;
         })();
 
@@ -37490,6 +37553,7 @@ export const E2E = $root.E2E = (() => {
             PeerDataOperationRequestMessage.prototype.companionCanonicalUserNonceFetchRequest = null;
             PeerDataOperationRequestMessage.prototype.bizBroadcastInsightsContactListRequest = null;
             PeerDataOperationRequestMessage.prototype.bizBroadcastInsightsRefreshRequest = null;
+            PeerDataOperationRequestMessage.prototype.recentConversationsOnDemandRequest = null;
 
             PeerDataOperationRequestMessage.create = function(properties) {
                 return new PeerDataOperationRequestMessage(properties);
@@ -37532,6 +37596,8 @@ export const E2E = $root.E2E = (() => {
                     $root.E2E.Message.PeerDataOperationRequestMessage.BizBroadcastInsightsContactListRequest.encode(m.bizBroadcastInsightsContactListRequest, w.uint32(90).fork(), q + 1).ldelim();
                 if (m.bizBroadcastInsightsRefreshRequest != null && $Object.hasOwnProperty.call(m, "bizBroadcastInsightsRefreshRequest"))
                     $root.E2E.Message.PeerDataOperationRequestMessage.BizBroadcastInsightsRefreshRequest.encode(m.bizBroadcastInsightsRefreshRequest, w.uint32(98).fork(), q + 1).ldelim();
+                if (m.recentConversationsOnDemandRequest != null && $Object.hasOwnProperty.call(m, "recentConversationsOnDemandRequest"))
+                    $root.E2E.Message.PeerDataOperationRequestMessage.RecentConversationsOnDemandRequest.encode(m.recentConversationsOnDemandRequest, w.uint32(106).fork(), q + 1).ldelim();
                 if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                     for (var i = 0; i < m.$unknowns.length; ++i)
                         w.raw(m.$unknowns[i]);
@@ -37649,6 +37715,12 @@ export const E2E = $root.E2E = (() => {
                             m.bizBroadcastInsightsRefreshRequest = $root.E2E.Message.PeerDataOperationRequestMessage.BizBroadcastInsightsRefreshRequest.decode(r, r.size(), $undefined, q + 1, m.bizBroadcastInsightsRefreshRequest);
                             continue;
                         }
+                    case 13: {
+                            if (u !== 2)
+                                break;
+                            m.recentConversationsOnDemandRequest = $root.E2E.Message.PeerDataOperationRequestMessage.RecentConversationsOnDemandRequest.decode(r, r.size(), $undefined, q + 1, m.recentConversationsOnDemandRequest);
+                            continue;
+                        }
                     }
                     r.skipType(u, q, t);
                     if (!r.discardUnknown) {
@@ -37737,6 +37809,10 @@ export const E2E = $root.E2E = (() => {
                 case 14:
                     m.peerDataOperationRequestType = 14;
                     break;
+                case "RECENT_CONVERSATIONS_ON_DEMAND_REQUEST":
+                case 15:
+                    m.peerDataOperationRequestType = 15;
+                    break;
                 default:
                 }
                 if (d.requestStickerReupload) {
@@ -37809,6 +37885,11 @@ export const E2E = $root.E2E = (() => {
                         throw $TypeError(".E2E.Message.PeerDataOperationRequestMessage.bizBroadcastInsightsRefreshRequest: object expected");
                     m.bizBroadcastInsightsRefreshRequest = $root.E2E.Message.PeerDataOperationRequestMessage.BizBroadcastInsightsRefreshRequest.fromObject(d.bizBroadcastInsightsRefreshRequest, q + 1);
                 }
+                if (d.recentConversationsOnDemandRequest != null) {
+                    if (!$util.isObject(d.recentConversationsOnDemandRequest))
+                        throw $TypeError(".E2E.Message.PeerDataOperationRequestMessage.recentConversationsOnDemandRequest: object expected");
+                    m.recentConversationsOnDemandRequest = $root.E2E.Message.PeerDataOperationRequestMessage.RecentConversationsOnDemandRequest.fromObject(d.recentConversationsOnDemandRequest, q + 1);
+                }
                 return m;
             };
 
@@ -37835,6 +37916,7 @@ export const E2E = $root.E2E = (() => {
                     d.companionCanonicalUserNonceFetchRequest = null;
                     d.bizBroadcastInsightsContactListRequest = null;
                     d.bizBroadcastInsightsRefreshRequest = null;
+                    d.recentConversationsOnDemandRequest = null;
                 }
                 if (m.peerDataOperationRequestType != null && $Object.hasOwnProperty.call(m, "peerDataOperationRequestType")) {
                     d.peerDataOperationRequestType = o.enums === $String ? $root.E2E.Message.PeerDataOperationRequestType[m.peerDataOperationRequestType] === $undefined ? m.peerDataOperationRequestType : $root.E2E.Message.PeerDataOperationRequestType[m.peerDataOperationRequestType] : m.peerDataOperationRequestType;
@@ -37880,6 +37962,9 @@ export const E2E = $root.E2E = (() => {
                 }
                 if (m.bizBroadcastInsightsRefreshRequest != null && $Object.hasOwnProperty.call(m, "bizBroadcastInsightsRefreshRequest")) {
                     d.bizBroadcastInsightsRefreshRequest = $root.E2E.Message.PeerDataOperationRequestMessage.BizBroadcastInsightsRefreshRequest.toObject(m.bizBroadcastInsightsRefreshRequest, o, q + 1);
+                }
+                if (m.recentConversationsOnDemandRequest != null && $Object.hasOwnProperty.call(m, "recentConversationsOnDemandRequest")) {
+                    d.recentConversationsOnDemandRequest = $root.E2E.Message.PeerDataOperationRequestMessage.RecentConversationsOnDemandRequest.toObject(m.recentConversationsOnDemandRequest, o, q + 1);
                 }
                 return d;
             };
@@ -38807,6 +38892,10 @@ export const E2E = $root.E2E = (() => {
                     case 8:
                         m.syncType = 8;
                         break;
+                    case "RECENT_CONVERSATIONS_ON_DEMAND":
+                    case 9:
+                        m.syncType = 9;
+                        break;
                     default:
                     }
                     if (d.chunkOrder != null) {
@@ -39227,6 +39316,148 @@ export const E2E = $root.E2E = (() => {
                 };
 
                 return PlaceholderMessageResendRequest;
+            })();
+
+            PeerDataOperationRequestMessage.RecentConversationsOnDemandRequest = (function() {
+
+                const RecentConversationsOnDemandRequest = function (p) {
+                    if (p)
+                        for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                            if (p[ks[i]] != null && ks[i] !== "__proto__")
+                                this[ks[i]] = p[ks[i]];
+                };
+
+                RecentConversationsOnDemandRequest.prototype.conversationCount = 0;
+                RecentConversationsOnDemandRequest.prototype.messagesPerConversation = 0;
+
+                RecentConversationsOnDemandRequest.create = function(properties) {
+                    return new RecentConversationsOnDemandRequest(properties);
+                };
+
+                RecentConversationsOnDemandRequest.encode = function (m, w, q) {
+                    if (!w)
+                        w = $Writer.create();
+                    if (q === $undefined)
+                        q = 0;
+                    if (q > $util.recursionLimit)
+                        throw $Error("max depth exceeded");
+                    if (m.conversationCount != null && $Object.hasOwnProperty.call(m, "conversationCount"))
+                        w.uint32(8).uint32(m.conversationCount);
+                    if (m.messagesPerConversation != null && $Object.hasOwnProperty.call(m, "messagesPerConversation"))
+                        w.uint32(16).uint32(m.messagesPerConversation);
+                    if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                        for (var i = 0; i < m.$unknowns.length; ++i)
+                            w.raw(m.$unknowns[i]);
+                    return w;
+                };
+
+                RecentConversationsOnDemandRequest.decode = function (r, l, z, q, g) {
+                    if (!(r instanceof $Reader))
+                        r = $Reader.create(r);
+                    if (q === $undefined)
+                        q = 0;
+                    if (q > $Reader.recursionLimit)
+                        throw $Error("max depth exceeded");
+                    var c, m;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.E2E.Message.PeerDataOperationRequestMessage.RecentConversationsOnDemandRequest();
+                    while (r.pos < c) {
+                        var s = r.pos;
+                        var t = r.tag();
+                        if (t === z) {
+                            z = $undefined;
+                            break;
+                        }
+                        var u = t & 7;
+                        switch (t >>>= 3) {
+                        case 1: {
+                                if (u !== 0)
+                                    break;
+                                m.conversationCount = r.uint32();
+                                continue;
+                            }
+                        case 2: {
+                                if (u !== 0)
+                                    break;
+                                m.messagesPerConversation = r.uint32();
+                                continue;
+                            }
+                        }
+                        r.skipType(u, q, t);
+                        if (!r.discardUnknown) {
+                            $util.makeProp(m, "$unknowns", false);
+                            (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                        }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
+                    }
+                    if (z !== $undefined)
+                        throw $Error("missing end group");
+                    return m;
+                };
+
+                RecentConversationsOnDemandRequest.fromObject = function (d, q) {
+                    if (d instanceof $root.E2E.Message.PeerDataOperationRequestMessage.RecentConversationsOnDemandRequest)
+                        return d;
+                    if (!$util.isObject(d))
+                        throw $TypeError(".E2E.Message.PeerDataOperationRequestMessage.RecentConversationsOnDemandRequest: object expected");
+                    if (q === $undefined)
+                        q = 0;
+                    if (q > $util.recursionLimit)
+                        throw $Error("max depth exceeded");
+                    var m = new $root.E2E.Message.PeerDataOperationRequestMessage.RecentConversationsOnDemandRequest();
+                    if (d.conversationCount != null) {
+                        m.conversationCount = d.conversationCount >>> 0;
+                    }
+                    if (d.messagesPerConversation != null) {
+                        m.messagesPerConversation = d.messagesPerConversation >>> 0;
+                    }
+                    return m;
+                };
+
+                RecentConversationsOnDemandRequest.toObject = function (m, o, q) {
+                    if (!o)
+                        o = {};
+                    if (q === $undefined)
+                        q = 0;
+                    if (q > $util.recursionLimit)
+                        throw $Error("max depth exceeded");
+                    var d = {};
+                    if (o.defaults) {
+                        d.conversationCount = 0;
+                        d.messagesPerConversation = 0;
+                    }
+                    if (m.conversationCount != null && $Object.hasOwnProperty.call(m, "conversationCount")) {
+                        d.conversationCount = m.conversationCount;
+                    }
+                    if (m.messagesPerConversation != null && $Object.hasOwnProperty.call(m, "messagesPerConversation")) {
+                        d.messagesPerConversation = m.messagesPerConversation;
+                    }
+                    return d;
+                };
+
+                RecentConversationsOnDemandRequest.prototype.toJSON = function() {
+                    return RecentConversationsOnDemandRequest.toObject(this, $protobuf.util.toJSONOptions);
+                };
+
+                RecentConversationsOnDemandRequest.getTypeUrl = function(prefix) {
+                    if (prefix === $undefined)
+                        prefix = "type.googleapis.com";
+                    return prefix + "/E2E.Message.PeerDataOperationRequestMessage.RecentConversationsOnDemandRequest";
+                };
+
+                return RecentConversationsOnDemandRequest;
             })();
 
             PeerDataOperationRequestMessage.RequestStickerReupload = (function() {
@@ -39837,6 +40068,10 @@ export const E2E = $root.E2E = (() => {
                 case "CONTACT_REFRESH_REQUEST":
                 case 14:
                     m.peerDataOperationRequestType = 14;
+                    break;
+                case "RECENT_CONVERSATIONS_ON_DEMAND_REQUEST":
+                case 15:
+                    m.peerDataOperationRequestType = 15;
                     break;
                 default:
                 }
@@ -41820,6 +42055,10 @@ export const E2E = $root.E2E = (() => {
                         case 8:
                             m.syncType = 8;
                             break;
+                        case "RECENT_CONVERSATIONS_ON_DEMAND":
+                        case 9:
+                            m.syncType = 9;
+                            break;
                         default:
                         }
                         if (d.chunkOrder != null) {
@@ -43057,6 +43296,7 @@ export const E2E = $root.E2E = (() => {
             values[valuesById[12] = "BUSINESS_BROADCAST_INSIGHTS_DELIVERED_TO"] = 12;
             values[valuesById[13] = "BUSINESS_BROADCAST_INSIGHTS_REFRESH"] = 13;
             values[valuesById[14] = "CONTACT_REFRESH_REQUEST"] = 14;
+            values[valuesById[15] = "RECENT_CONVERSATIONS_ON_DEMAND_REQUEST"] = 15;
             return values;
         })();
 
