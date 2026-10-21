@@ -115,6 +115,7 @@ export const MdStorageMsgRowOpaqueData = $root.MdStorageMsgRowOpaqueData = (() =
         MsgOpaqueData.prototype.mediaPngThumbnail = "";
         MsgOpaqueData.prototype.qrUrl = "";
         MsgOpaqueData.prototype.musicData = null;
+        MsgOpaqueData.prototype.pollAddedOptionName = "";
 
         MsgOpaqueData.create = function(properties) {
             return new MsgOpaqueData(properties);
@@ -245,6 +246,8 @@ export const MdStorageMsgRowOpaqueData = $root.MdStorageMsgRowOpaqueData = (() =
                 w.uint32(498).string(m.qrUrl);
             if (m.musicData != null && $Object.hasOwnProperty.call(m, "musicData"))
                 $root.MdStorageMsgRowOpaqueData.MsgOpaqueData.MusicData.encode(m.musicData, w.uint32(506).fork(), q + 1).ldelim();
+            if (m.pollAddedOptionName != null && $Object.hasOwnProperty.call(m, "pollAddedOptionName"))
+                w.uint32(514).string(m.pollAddedOptionName);
             if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                 for (var i = 0; i < m.$unknowns.length; ++i)
                     w.raw(m.$unknowns[i]);
@@ -640,6 +643,12 @@ export const MdStorageMsgRowOpaqueData = $root.MdStorageMsgRowOpaqueData = (() =
                         m.musicData = $root.MdStorageMsgRowOpaqueData.MsgOpaqueData.MusicData.decode(r, r.size(), $undefined, q + 1, m.musicData);
                         continue;
                     }
+                case 64: {
+                        if (u !== 2)
+                            break;
+                        m.pollAddedOptionName = r.string();
+                        continue;
+                    }
                 }
                 r.skipType(u, q, t);
                 if (!r.discardUnknown) {
@@ -945,6 +954,9 @@ export const MdStorageMsgRowOpaqueData = $root.MdStorageMsgRowOpaqueData = (() =
                     throw $TypeError(".MdStorageMsgRowOpaqueData.MsgOpaqueData.musicData: object expected");
                 m.musicData = $root.MdStorageMsgRowOpaqueData.MsgOpaqueData.MusicData.fromObject(d.musicData, q + 1);
             }
+            if (d.pollAddedOptionName != null) {
+                m.pollAddedOptionName = $String(d.pollAddedOptionName);
+            }
             return m;
         };
 
@@ -1095,6 +1107,7 @@ export const MdStorageMsgRowOpaqueData = $root.MdStorageMsgRowOpaqueData = (() =
                 d.mediaPngThumbnail = "";
                 d.qrUrl = "";
                 d.musicData = null;
+                d.pollAddedOptionName = "";
             }
             if (m.body != null && $Object.hasOwnProperty.call(m, "body")) {
                 d.body = m.body;
@@ -1302,6 +1315,9 @@ export const MdStorageMsgRowOpaqueData = $root.MdStorageMsgRowOpaqueData = (() =
             }
             if (m.musicData != null && $Object.hasOwnProperty.call(m, "musicData")) {
                 d.musicData = $root.MdStorageMsgRowOpaqueData.MsgOpaqueData.MusicData.toObject(m.musicData, o, q + 1);
+            }
+            if (m.pollAddedOptionName != null && $Object.hasOwnProperty.call(m, "pollAddedOptionName")) {
+                d.pollAddedOptionName = m.pollAddedOptionName;
             }
             return d;
         };
