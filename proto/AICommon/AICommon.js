@@ -8049,6 +8049,7 @@ export const AICommon = $root.AICommon = (() => {
         };
 
         BotMessageOrigin.prototype.type = 0;
+        BotMessageOrigin.prototype.proactiveMessageCampaignId = "";
 
         BotMessageOrigin.create = function(properties) {
             return new BotMessageOrigin(properties);
@@ -8063,6 +8064,8 @@ export const AICommon = $root.AICommon = (() => {
                 throw $Error("max depth exceeded");
             if (m.type != null && $Object.hasOwnProperty.call(m, "type"))
                 w.uint32(8).int32(m.type);
+            if (m.proactiveMessageCampaignId != null && $Object.hasOwnProperty.call(m, "proactiveMessageCampaignId"))
+                w.uint32(18).string(m.proactiveMessageCampaignId);
             if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                 for (var i = 0; i < m.$unknowns.length; ++i)
                     w.raw(m.$unknowns[i]);
@@ -8108,6 +8111,12 @@ export const AICommon = $root.AICommon = (() => {
                         }
                         continue;
                     }
+                case 2: {
+                        if (u !== 2)
+                            break;
+                        m.proactiveMessageCampaignId = r.string();
+                        continue;
+                    }
                 }
                 r.skipType(u, q, t);
                 if (!r.discardUnknown) {
@@ -8146,6 +8155,9 @@ export const AICommon = $root.AICommon = (() => {
                 break;
             default:
             }
+            if (d.proactiveMessageCampaignId != null) {
+                m.proactiveMessageCampaignId = $String(d.proactiveMessageCampaignId);
+            }
             return m;
         };
 
@@ -8159,9 +8171,13 @@ export const AICommon = $root.AICommon = (() => {
             var d = {};
             if (o.defaults) {
                 d.type = o.enums === $String ? "BOT_MESSAGE_ORIGIN_TYPE_AI_INITIATED" : 0;
+                d.proactiveMessageCampaignId = "";
             }
             if (m.type != null && $Object.hasOwnProperty.call(m, "type")) {
                 d.type = o.enums === $String ? $root.AICommon.BotMessageOrigin.BotMessageOriginType[m.type] === $undefined ? m.type : $root.AICommon.BotMessageOrigin.BotMessageOriginType[m.type] : m.type;
+            }
+            if (m.proactiveMessageCampaignId != null && $Object.hasOwnProperty.call(m, "proactiveMessageCampaignId")) {
+                d.proactiveMessageCampaignId = m.proactiveMessageCampaignId;
             }
             return d;
         };

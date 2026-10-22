@@ -18518,7 +18518,7 @@ export const E2E = $root.E2E = (() => {
             StatusAudienceMetadata.prototype.audienceType = 0;
             StatusAudienceMetadata.prototype.listName = "";
             StatusAudienceMetadata.prototype.listEmoji = "";
-            StatusAudienceMetadata.prototype.networkId = "";
+            StatusAudienceMetadata.prototype.orgId = "";
 
             StatusAudienceMetadata.create = function(properties) {
                 return new StatusAudienceMetadata(properties);
@@ -18537,8 +18537,8 @@ export const E2E = $root.E2E = (() => {
                     w.uint32(18).string(m.listName);
                 if (m.listEmoji != null && $Object.hasOwnProperty.call(m, "listEmoji"))
                     w.uint32(26).string(m.listEmoji);
-                if (m.networkId != null && $Object.hasOwnProperty.call(m, "networkId"))
-                    w.uint32(34).string(m.networkId);
+                if (m.orgId != null && $Object.hasOwnProperty.call(m, "orgId"))
+                    w.uint32(34).string(m.orgId);
                 if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                     for (var i = 0; i < m.$unknowns.length; ++i)
                         w.raw(m.$unknowns[i]);
@@ -18599,7 +18599,7 @@ export const E2E = $root.E2E = (() => {
                     case 4: {
                             if (u !== 2)
                                 break;
-                            m.networkId = r.string();
+                            m.orgId = r.string();
                             continue;
                         }
                     }
@@ -18642,7 +18642,7 @@ export const E2E = $root.E2E = (() => {
                 case 2:
                     m.audienceType = 2;
                     break;
-                case "NETWORK":
+                case "ORG":
                 case 3:
                     m.audienceType = 3;
                     break;
@@ -18654,8 +18654,8 @@ export const E2E = $root.E2E = (() => {
                 if (d.listEmoji != null) {
                     m.listEmoji = $String(d.listEmoji);
                 }
-                if (d.networkId != null) {
-                    m.networkId = $String(d.networkId);
+                if (d.orgId != null) {
+                    m.orgId = $String(d.orgId);
                 }
                 return m;
             };
@@ -18672,7 +18672,7 @@ export const E2E = $root.E2E = (() => {
                     d.audienceType = o.enums === $String ? "UNKNOWN" : 0;
                     d.listName = "";
                     d.listEmoji = "";
-                    d.networkId = "";
+                    d.orgId = "";
                 }
                 if (m.audienceType != null && $Object.hasOwnProperty.call(m, "audienceType")) {
                     d.audienceType = o.enums === $String ? $root.E2E.ContextInfo.StatusAudienceMetadata.AudienceType[m.audienceType] === $undefined ? m.audienceType : $root.E2E.ContextInfo.StatusAudienceMetadata.AudienceType[m.audienceType] : m.audienceType;
@@ -18683,8 +18683,8 @@ export const E2E = $root.E2E = (() => {
                 if (m.listEmoji != null && $Object.hasOwnProperty.call(m, "listEmoji")) {
                     d.listEmoji = m.listEmoji;
                 }
-                if (m.networkId != null && $Object.hasOwnProperty.call(m, "networkId")) {
-                    d.networkId = m.networkId;
+                if (m.orgId != null && $Object.hasOwnProperty.call(m, "orgId")) {
+                    d.orgId = m.orgId;
                 }
                 return d;
             };
@@ -18704,7 +18704,7 @@ export const E2E = $root.E2E = (() => {
                 values[valuesById[0] = "UNKNOWN"] = 0;
                 values[valuesById[1] = "CLOSE_FRIENDS"] = 1;
                 values[valuesById[2] = "CUSTOM_LIST"] = 2;
-                values[valuesById[3] = "NETWORK"] = 3;
+                values[valuesById[3] = "ORG"] = 3;
                 return values;
             })();
 
@@ -75260,6 +75260,7 @@ export const AICommon = $root.AICommon = (() => {
         };
 
         BotMessageOrigin.prototype.type = 0;
+        BotMessageOrigin.prototype.proactiveMessageCampaignId = "";
 
         BotMessageOrigin.create = function(properties) {
             return new BotMessageOrigin(properties);
@@ -75274,6 +75275,8 @@ export const AICommon = $root.AICommon = (() => {
                 throw $Error("max depth exceeded");
             if (m.type != null && $Object.hasOwnProperty.call(m, "type"))
                 w.uint32(8).int32(m.type);
+            if (m.proactiveMessageCampaignId != null && $Object.hasOwnProperty.call(m, "proactiveMessageCampaignId"))
+                w.uint32(18).string(m.proactiveMessageCampaignId);
             if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                 for (var i = 0; i < m.$unknowns.length; ++i)
                     w.raw(m.$unknowns[i]);
@@ -75319,6 +75322,12 @@ export const AICommon = $root.AICommon = (() => {
                         }
                         continue;
                     }
+                case 2: {
+                        if (u !== 2)
+                            break;
+                        m.proactiveMessageCampaignId = r.string();
+                        continue;
+                    }
                 }
                 r.skipType(u, q, t);
                 if (!r.discardUnknown) {
@@ -75357,6 +75366,9 @@ export const AICommon = $root.AICommon = (() => {
                 break;
             default:
             }
+            if (d.proactiveMessageCampaignId != null) {
+                m.proactiveMessageCampaignId = $String(d.proactiveMessageCampaignId);
+            }
             return m;
         };
 
@@ -75370,9 +75382,13 @@ export const AICommon = $root.AICommon = (() => {
             var d = {};
             if (o.defaults) {
                 d.type = o.enums === $String ? "BOT_MESSAGE_ORIGIN_TYPE_AI_INITIATED" : 0;
+                d.proactiveMessageCampaignId = "";
             }
             if (m.type != null && $Object.hasOwnProperty.call(m, "type")) {
                 d.type = o.enums === $String ? $root.AICommon.BotMessageOrigin.BotMessageOriginType[m.type] === $undefined ? m.type : $root.AICommon.BotMessageOrigin.BotMessageOriginType[m.type] : m.type;
+            }
+            if (m.proactiveMessageCampaignId != null && $Object.hasOwnProperty.call(m, "proactiveMessageCampaignId")) {
+                d.proactiveMessageCampaignId = m.proactiveMessageCampaignId;
             }
             return d;
         };
@@ -123034,6 +123050,7 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
         DeviceCapabilities.prototype.reverseHistorySync = null;
         DeviceCapabilities.prototype.newsletterChatsMigration = null;
         DeviceCapabilities.prototype.hostWriteMutationSupport = null;
+        DeviceCapabilities.prototype.bizAiWebOnboarding = null;
 
         DeviceCapabilities.create = function(properties) {
             return new DeviceCapabilities(properties);
@@ -123070,6 +123087,8 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                 $root.DeviceCapabilities.DeviceCapabilities.NewsletterChatsMigration.encode(m.newsletterChatsMigration, w.uint32(90).fork(), q + 1).ldelim();
             if (m.hostWriteMutationSupport != null && $Object.hasOwnProperty.call(m, "hostWriteMutationSupport"))
                 $root.DeviceCapabilities.DeviceCapabilities.HostWriteMutationSupport.encode(m.hostWriteMutationSupport, w.uint32(98).fork(), q + 1).ldelim();
+            if (m.bizAiWebOnboarding != null && $Object.hasOwnProperty.call(m, "bizAiWebOnboarding"))
+                $root.DeviceCapabilities.DeviceCapabilities.BizAiWebOnboarding.encode(m.bizAiWebOnboarding, w.uint32(106).fork(), q + 1).ldelim();
             if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                 for (var i = 0; i < m.$unknowns.length; ++i)
                     w.raw(m.$unknowns[i]);
@@ -123187,6 +123206,12 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                         m.hostWriteMutationSupport = $root.DeviceCapabilities.DeviceCapabilities.HostWriteMutationSupport.decode(r, r.size(), $undefined, q + 1, m.hostWriteMutationSupport);
                         continue;
                     }
+                case 13: {
+                        if (u !== 2)
+                            break;
+                        m.bizAiWebOnboarding = $root.DeviceCapabilities.DeviceCapabilities.BizAiWebOnboarding.decode(r, r.size(), $undefined, q + 1, m.bizAiWebOnboarding);
+                        continue;
+                    }
                 }
                 r.skipType(u, q, t);
                 if (!r.discardUnknown) {
@@ -123294,6 +123319,11 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                     throw $TypeError(".DeviceCapabilities.DeviceCapabilities.hostWriteMutationSupport: object expected");
                 m.hostWriteMutationSupport = $root.DeviceCapabilities.DeviceCapabilities.HostWriteMutationSupport.fromObject(d.hostWriteMutationSupport, q + 1);
             }
+            if (d.bizAiWebOnboarding != null) {
+                if (!$util.isObject(d.bizAiWebOnboarding))
+                    throw $TypeError(".DeviceCapabilities.DeviceCapabilities.bizAiWebOnboarding: object expected");
+                m.bizAiWebOnboarding = $root.DeviceCapabilities.DeviceCapabilities.BizAiWebOnboarding.fromObject(d.bizAiWebOnboarding, q + 1);
+            }
             return m;
         };
 
@@ -123318,6 +123348,7 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                 d.reverseHistorySync = null;
                 d.newsletterChatsMigration = null;
                 d.hostWriteMutationSupport = null;
+                d.bizAiWebOnboarding = null;
             }
             if (m.chatLockSupportLevel != null && $Object.hasOwnProperty.call(m, "chatLockSupportLevel")) {
                 d.chatLockSupportLevel = o.enums === $String ? $root.DeviceCapabilities.DeviceCapabilities.ChatLockSupportLevel[m.chatLockSupportLevel] === $undefined ? m.chatLockSupportLevel : $root.DeviceCapabilities.DeviceCapabilities.ChatLockSupportLevel[m.chatLockSupportLevel] : m.chatLockSupportLevel;
@@ -123354,6 +123385,9 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
             }
             if (m.hostWriteMutationSupport != null && $Object.hasOwnProperty.call(m, "hostWriteMutationSupport")) {
                 d.hostWriteMutationSupport = $root.DeviceCapabilities.DeviceCapabilities.HostWriteMutationSupport.toObject(m.hostWriteMutationSupport, o, q + 1);
+            }
+            if (m.bizAiWebOnboarding != null && $Object.hasOwnProperty.call(m, "bizAiWebOnboarding")) {
+                d.bizAiWebOnboarding = $root.DeviceCapabilities.DeviceCapabilities.BizAiWebOnboarding.toObject(m.bizAiWebOnboarding, o, q + 1);
             }
             return d;
         };
@@ -123802,6 +123836,132 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
             };
 
             return BizAiSettingsSync;
+        })();
+
+        DeviceCapabilities.BizAiWebOnboarding = (function() {
+
+            const BizAiWebOnboarding = function (p) {
+                if (p)
+                    for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                        if (p[ks[i]] != null && ks[i] !== "__proto__")
+                            this[ks[i]] = p[ks[i]];
+            };
+
+            BizAiWebOnboarding.prototype.version = 0;
+
+            BizAiWebOnboarding.create = function(properties) {
+                return new BizAiWebOnboarding(properties);
+            };
+
+            BizAiWebOnboarding.encode = function (m, w, q) {
+                if (!w)
+                    w = $Writer.create();
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                if (m.version != null && $Object.hasOwnProperty.call(m, "version"))
+                    w.uint32(8).uint32(m.version);
+                if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                    for (var i = 0; i < m.$unknowns.length; ++i)
+                        w.raw(m.$unknowns[i]);
+                return w;
+            };
+
+            BizAiWebOnboarding.decode = function (r, l, z, q, g) {
+                if (!(r instanceof $Reader))
+                    r = $Reader.create(r);
+                if (q === $undefined)
+                    q = 0;
+                if (q > $Reader.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.DeviceCapabilities.DeviceCapabilities.BizAiWebOnboarding();
+                while (r.pos < c) {
+                    var s = r.pos;
+                    var t = r.tag();
+                    if (t === z) {
+                        z = $undefined;
+                        break;
+                    }
+                    var u = t & 7;
+                    switch (t >>>= 3) {
+                    case 1: {
+                            if (u !== 0)
+                                break;
+                            m.version = r.uint32();
+                            continue;
+                        }
+                    }
+                    r.skipType(u, q, t);
+                    if (!r.discardUnknown) {
+                        $util.makeProp(m, "$unknowns", false);
+                        (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                    }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
+                }
+                if (z !== $undefined)
+                    throw $Error("missing end group");
+                return m;
+            };
+
+            BizAiWebOnboarding.fromObject = function (d, q) {
+                if (d instanceof $root.DeviceCapabilities.DeviceCapabilities.BizAiWebOnboarding)
+                    return d;
+                if (!$util.isObject(d))
+                    throw $TypeError(".DeviceCapabilities.DeviceCapabilities.BizAiWebOnboarding: object expected");
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var m = new $root.DeviceCapabilities.DeviceCapabilities.BizAiWebOnboarding();
+                if (d.version != null) {
+                    m.version = d.version >>> 0;
+                }
+                return m;
+            };
+
+            BizAiWebOnboarding.toObject = function (m, o, q) {
+                if (!o)
+                    o = {};
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var d = {};
+                if (o.defaults) {
+                    d.version = 0;
+                }
+                if (m.version != null && $Object.hasOwnProperty.call(m, "version")) {
+                    d.version = m.version;
+                }
+                return d;
+            };
+
+            BizAiWebOnboarding.prototype.toJSON = function() {
+                return BizAiWebOnboarding.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            BizAiWebOnboarding.getTypeUrl = function(prefix) {
+                if (prefix === $undefined)
+                    prefix = "type.googleapis.com";
+                return prefix + "/DeviceCapabilities.DeviceCapabilities.BizAiWebOnboarding";
+            };
+
+            return BizAiWebOnboarding;
         })();
 
         DeviceCapabilities.BusinessBroadcast = (function() {

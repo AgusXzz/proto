@@ -401,6 +401,7 @@ export const VnameCert = $root.VnameCert = (() => {
         BizAccountLinkInfo.prototype.issueTime = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
         BizAccountLinkInfo.prototype.hostStorage = 0;
         BizAccountLinkInfo.prototype.accountType = 0;
+        BizAccountLinkInfo.prototype.whatsappAcctEmail = "";
 
         BizAccountLinkInfo.create = function(properties) {
             return new BizAccountLinkInfo(properties);
@@ -423,6 +424,8 @@ export const VnameCert = $root.VnameCert = (() => {
                 w.uint32(32).int32(m.hostStorage);
             if (m.accountType != null && $Object.hasOwnProperty.call(m, "accountType"))
                 w.uint32(40).int32(m.accountType);
+            if (m.whatsappAcctEmail != null && $Object.hasOwnProperty.call(m, "whatsappAcctEmail"))
+                w.uint32(50).string(m.whatsappAcctEmail);
             if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                 for (var i = 0; i < m.$unknowns.length; ++i)
                     w.raw(m.$unknowns[i]);
@@ -498,6 +501,12 @@ export const VnameCert = $root.VnameCert = (() => {
                         }
                         continue;
                     }
+                case 6: {
+                        if (u !== 2)
+                            break;
+                        m.whatsappAcctEmail = r.string();
+                        continue;
+                    }
                 }
                 r.skipType(u, q, t);
                 if (!r.discardUnknown) {
@@ -566,6 +575,9 @@ export const VnameCert = $root.VnameCert = (() => {
                 break;
             default:
             }
+            if (d.whatsappAcctEmail != null) {
+                m.whatsappAcctEmail = $String(d.whatsappAcctEmail);
+            }
             return m;
         };
 
@@ -591,6 +603,7 @@ export const VnameCert = $root.VnameCert = (() => {
                     d.issueTime = o.longs === $String ? "0" : typeof $BigInt !== "undefined" && o.longs === $BigInt ? $BigInt("0") : 0;
                 d.hostStorage = o.enums === $String ? "ON_PREMISE" : 0;
                 d.accountType = o.enums === $String ? "ENTERPRISE" : 0;
+                d.whatsappAcctEmail = "";
             }
             if (m.whatsappBizAcctFbid != null && $Object.hasOwnProperty.call(m, "whatsappBizAcctFbid")) {
                 if (typeof $BigInt !== "undefined" && o.longs === $BigInt)
@@ -616,6 +629,9 @@ export const VnameCert = $root.VnameCert = (() => {
             }
             if (m.accountType != null && $Object.hasOwnProperty.call(m, "accountType")) {
                 d.accountType = o.enums === $String ? $root.VnameCert.BizAccountLinkInfo.AccountType[m.accountType] === $undefined ? m.accountType : $root.VnameCert.BizAccountLinkInfo.AccountType[m.accountType] : m.accountType;
+            }
+            if (m.whatsappAcctEmail != null && $Object.hasOwnProperty.call(m, "whatsappAcctEmail")) {
+                d.whatsappAcctEmail = m.whatsappAcctEmail;
             }
             return d;
         };

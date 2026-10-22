@@ -68,6 +68,7 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
         DeviceCapabilities.prototype.reverseHistorySync = null;
         DeviceCapabilities.prototype.newsletterChatsMigration = null;
         DeviceCapabilities.prototype.hostWriteMutationSupport = null;
+        DeviceCapabilities.prototype.bizAiWebOnboarding = null;
 
         DeviceCapabilities.create = function(properties) {
             return new DeviceCapabilities(properties);
@@ -104,6 +105,8 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                 $root.DeviceCapabilities.DeviceCapabilities.NewsletterChatsMigration.encode(m.newsletterChatsMigration, w.uint32(90).fork(), q + 1).ldelim();
             if (m.hostWriteMutationSupport != null && $Object.hasOwnProperty.call(m, "hostWriteMutationSupport"))
                 $root.DeviceCapabilities.DeviceCapabilities.HostWriteMutationSupport.encode(m.hostWriteMutationSupport, w.uint32(98).fork(), q + 1).ldelim();
+            if (m.bizAiWebOnboarding != null && $Object.hasOwnProperty.call(m, "bizAiWebOnboarding"))
+                $root.DeviceCapabilities.DeviceCapabilities.BizAiWebOnboarding.encode(m.bizAiWebOnboarding, w.uint32(106).fork(), q + 1).ldelim();
             if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                 for (var i = 0; i < m.$unknowns.length; ++i)
                     w.raw(m.$unknowns[i]);
@@ -221,6 +224,12 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                         m.hostWriteMutationSupport = $root.DeviceCapabilities.DeviceCapabilities.HostWriteMutationSupport.decode(r, r.size(), $undefined, q + 1, m.hostWriteMutationSupport);
                         continue;
                     }
+                case 13: {
+                        if (u !== 2)
+                            break;
+                        m.bizAiWebOnboarding = $root.DeviceCapabilities.DeviceCapabilities.BizAiWebOnboarding.decode(r, r.size(), $undefined, q + 1, m.bizAiWebOnboarding);
+                        continue;
+                    }
                 }
                 r.skipType(u, q, t);
                 if (!r.discardUnknown) {
@@ -328,6 +337,11 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                     throw $TypeError(".DeviceCapabilities.DeviceCapabilities.hostWriteMutationSupport: object expected");
                 m.hostWriteMutationSupport = $root.DeviceCapabilities.DeviceCapabilities.HostWriteMutationSupport.fromObject(d.hostWriteMutationSupport, q + 1);
             }
+            if (d.bizAiWebOnboarding != null) {
+                if (!$util.isObject(d.bizAiWebOnboarding))
+                    throw $TypeError(".DeviceCapabilities.DeviceCapabilities.bizAiWebOnboarding: object expected");
+                m.bizAiWebOnboarding = $root.DeviceCapabilities.DeviceCapabilities.BizAiWebOnboarding.fromObject(d.bizAiWebOnboarding, q + 1);
+            }
             return m;
         };
 
@@ -352,6 +366,7 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
                 d.reverseHistorySync = null;
                 d.newsletterChatsMigration = null;
                 d.hostWriteMutationSupport = null;
+                d.bizAiWebOnboarding = null;
             }
             if (m.chatLockSupportLevel != null && $Object.hasOwnProperty.call(m, "chatLockSupportLevel")) {
                 d.chatLockSupportLevel = o.enums === $String ? $root.DeviceCapabilities.DeviceCapabilities.ChatLockSupportLevel[m.chatLockSupportLevel] === $undefined ? m.chatLockSupportLevel : $root.DeviceCapabilities.DeviceCapabilities.ChatLockSupportLevel[m.chatLockSupportLevel] : m.chatLockSupportLevel;
@@ -388,6 +403,9 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
             }
             if (m.hostWriteMutationSupport != null && $Object.hasOwnProperty.call(m, "hostWriteMutationSupport")) {
                 d.hostWriteMutationSupport = $root.DeviceCapabilities.DeviceCapabilities.HostWriteMutationSupport.toObject(m.hostWriteMutationSupport, o, q + 1);
+            }
+            if (m.bizAiWebOnboarding != null && $Object.hasOwnProperty.call(m, "bizAiWebOnboarding")) {
+                d.bizAiWebOnboarding = $root.DeviceCapabilities.DeviceCapabilities.BizAiWebOnboarding.toObject(m.bizAiWebOnboarding, o, q + 1);
             }
             return d;
         };
@@ -836,6 +854,132 @@ export const DeviceCapabilities = $root.DeviceCapabilities = (() => {
             };
 
             return BizAiSettingsSync;
+        })();
+
+        DeviceCapabilities.BizAiWebOnboarding = (function() {
+
+            const BizAiWebOnboarding = function (p) {
+                if (p)
+                    for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                        if (p[ks[i]] != null && ks[i] !== "__proto__")
+                            this[ks[i]] = p[ks[i]];
+            };
+
+            BizAiWebOnboarding.prototype.version = 0;
+
+            BizAiWebOnboarding.create = function(properties) {
+                return new BizAiWebOnboarding(properties);
+            };
+
+            BizAiWebOnboarding.encode = function (m, w, q) {
+                if (!w)
+                    w = $Writer.create();
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                if (m.version != null && $Object.hasOwnProperty.call(m, "version"))
+                    w.uint32(8).uint32(m.version);
+                if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                    for (var i = 0; i < m.$unknowns.length; ++i)
+                        w.raw(m.$unknowns[i]);
+                return w;
+            };
+
+            BizAiWebOnboarding.decode = function (r, l, z, q, g) {
+                if (!(r instanceof $Reader))
+                    r = $Reader.create(r);
+                if (q === $undefined)
+                    q = 0;
+                if (q > $Reader.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.DeviceCapabilities.DeviceCapabilities.BizAiWebOnboarding();
+                while (r.pos < c) {
+                    var s = r.pos;
+                    var t = r.tag();
+                    if (t === z) {
+                        z = $undefined;
+                        break;
+                    }
+                    var u = t & 7;
+                    switch (t >>>= 3) {
+                    case 1: {
+                            if (u !== 0)
+                                break;
+                            m.version = r.uint32();
+                            continue;
+                        }
+                    }
+                    r.skipType(u, q, t);
+                    if (!r.discardUnknown) {
+                        $util.makeProp(m, "$unknowns", false);
+                        (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                    }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
+                }
+                if (z !== $undefined)
+                    throw $Error("missing end group");
+                return m;
+            };
+
+            BizAiWebOnboarding.fromObject = function (d, q) {
+                if (d instanceof $root.DeviceCapabilities.DeviceCapabilities.BizAiWebOnboarding)
+                    return d;
+                if (!$util.isObject(d))
+                    throw $TypeError(".DeviceCapabilities.DeviceCapabilities.BizAiWebOnboarding: object expected");
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var m = new $root.DeviceCapabilities.DeviceCapabilities.BizAiWebOnboarding();
+                if (d.version != null) {
+                    m.version = d.version >>> 0;
+                }
+                return m;
+            };
+
+            BizAiWebOnboarding.toObject = function (m, o, q) {
+                if (!o)
+                    o = {};
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var d = {};
+                if (o.defaults) {
+                    d.version = 0;
+                }
+                if (m.version != null && $Object.hasOwnProperty.call(m, "version")) {
+                    d.version = m.version;
+                }
+                return d;
+            };
+
+            BizAiWebOnboarding.prototype.toJSON = function() {
+                return BizAiWebOnboarding.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            BizAiWebOnboarding.getTypeUrl = function(prefix) {
+                if (prefix === $undefined)
+                    prefix = "type.googleapis.com";
+                return prefix + "/DeviceCapabilities.DeviceCapabilities.BizAiWebOnboarding";
+            };
+
+            return BizAiWebOnboarding;
         })();
 
         DeviceCapabilities.BusinessBroadcast = (function() {

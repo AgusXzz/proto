@@ -12352,7 +12352,7 @@ export const E2E = $root.E2E = (() => {
             StatusAudienceMetadata.prototype.audienceType = 0;
             StatusAudienceMetadata.prototype.listName = "";
             StatusAudienceMetadata.prototype.listEmoji = "";
-            StatusAudienceMetadata.prototype.networkId = "";
+            StatusAudienceMetadata.prototype.orgId = "";
 
             StatusAudienceMetadata.create = function(properties) {
                 return new StatusAudienceMetadata(properties);
@@ -12371,8 +12371,8 @@ export const E2E = $root.E2E = (() => {
                     w.uint32(18).string(m.listName);
                 if (m.listEmoji != null && $Object.hasOwnProperty.call(m, "listEmoji"))
                     w.uint32(26).string(m.listEmoji);
-                if (m.networkId != null && $Object.hasOwnProperty.call(m, "networkId"))
-                    w.uint32(34).string(m.networkId);
+                if (m.orgId != null && $Object.hasOwnProperty.call(m, "orgId"))
+                    w.uint32(34).string(m.orgId);
                 if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                     for (var i = 0; i < m.$unknowns.length; ++i)
                         w.raw(m.$unknowns[i]);
@@ -12433,7 +12433,7 @@ export const E2E = $root.E2E = (() => {
                     case 4: {
                             if (u !== 2)
                                 break;
-                            m.networkId = r.string();
+                            m.orgId = r.string();
                             continue;
                         }
                     }
@@ -12476,7 +12476,7 @@ export const E2E = $root.E2E = (() => {
                 case 2:
                     m.audienceType = 2;
                     break;
-                case "NETWORK":
+                case "ORG":
                 case 3:
                     m.audienceType = 3;
                     break;
@@ -12488,8 +12488,8 @@ export const E2E = $root.E2E = (() => {
                 if (d.listEmoji != null) {
                     m.listEmoji = $String(d.listEmoji);
                 }
-                if (d.networkId != null) {
-                    m.networkId = $String(d.networkId);
+                if (d.orgId != null) {
+                    m.orgId = $String(d.orgId);
                 }
                 return m;
             };
@@ -12506,7 +12506,7 @@ export const E2E = $root.E2E = (() => {
                     d.audienceType = o.enums === $String ? "UNKNOWN" : 0;
                     d.listName = "";
                     d.listEmoji = "";
-                    d.networkId = "";
+                    d.orgId = "";
                 }
                 if (m.audienceType != null && $Object.hasOwnProperty.call(m, "audienceType")) {
                     d.audienceType = o.enums === $String ? $root.E2E.ContextInfo.StatusAudienceMetadata.AudienceType[m.audienceType] === $undefined ? m.audienceType : $root.E2E.ContextInfo.StatusAudienceMetadata.AudienceType[m.audienceType] : m.audienceType;
@@ -12517,8 +12517,8 @@ export const E2E = $root.E2E = (() => {
                 if (m.listEmoji != null && $Object.hasOwnProperty.call(m, "listEmoji")) {
                     d.listEmoji = m.listEmoji;
                 }
-                if (m.networkId != null && $Object.hasOwnProperty.call(m, "networkId")) {
-                    d.networkId = m.networkId;
+                if (m.orgId != null && $Object.hasOwnProperty.call(m, "orgId")) {
+                    d.orgId = m.orgId;
                 }
                 return d;
             };
@@ -12538,7 +12538,7 @@ export const E2E = $root.E2E = (() => {
                 values[valuesById[0] = "UNKNOWN"] = 0;
                 values[valuesById[1] = "CLOSE_FRIENDS"] = 1;
                 values[valuesById[2] = "CUSTOM_LIST"] = 2;
-                values[valuesById[3] = "NETWORK"] = 3;
+                values[valuesById[3] = "ORG"] = 3;
                 return values;
             })();
 
@@ -69094,6 +69094,7 @@ export const AICommon = $root.AICommon = (() => {
         };
 
         BotMessageOrigin.prototype.type = 0;
+        BotMessageOrigin.prototype.proactiveMessageCampaignId = "";
 
         BotMessageOrigin.create = function(properties) {
             return new BotMessageOrigin(properties);
@@ -69108,6 +69109,8 @@ export const AICommon = $root.AICommon = (() => {
                 throw $Error("max depth exceeded");
             if (m.type != null && $Object.hasOwnProperty.call(m, "type"))
                 w.uint32(8).int32(m.type);
+            if (m.proactiveMessageCampaignId != null && $Object.hasOwnProperty.call(m, "proactiveMessageCampaignId"))
+                w.uint32(18).string(m.proactiveMessageCampaignId);
             if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                 for (var i = 0; i < m.$unknowns.length; ++i)
                     w.raw(m.$unknowns[i]);
@@ -69153,6 +69156,12 @@ export const AICommon = $root.AICommon = (() => {
                         }
                         continue;
                     }
+                case 2: {
+                        if (u !== 2)
+                            break;
+                        m.proactiveMessageCampaignId = r.string();
+                        continue;
+                    }
                 }
                 r.skipType(u, q, t);
                 if (!r.discardUnknown) {
@@ -69191,6 +69200,9 @@ export const AICommon = $root.AICommon = (() => {
                 break;
             default:
             }
+            if (d.proactiveMessageCampaignId != null) {
+                m.proactiveMessageCampaignId = $String(d.proactiveMessageCampaignId);
+            }
             return m;
         };
 
@@ -69204,9 +69216,13 @@ export const AICommon = $root.AICommon = (() => {
             var d = {};
             if (o.defaults) {
                 d.type = o.enums === $String ? "BOT_MESSAGE_ORIGIN_TYPE_AI_INITIATED" : 0;
+                d.proactiveMessageCampaignId = "";
             }
             if (m.type != null && $Object.hasOwnProperty.call(m, "type")) {
                 d.type = o.enums === $String ? $root.AICommon.BotMessageOrigin.BotMessageOriginType[m.type] === $undefined ? m.type : $root.AICommon.BotMessageOrigin.BotMessageOriginType[m.type] : m.type;
+            }
+            if (m.proactiveMessageCampaignId != null && $Object.hasOwnProperty.call(m, "proactiveMessageCampaignId")) {
+                d.proactiveMessageCampaignId = m.proactiveMessageCampaignId;
             }
             return d;
         };
