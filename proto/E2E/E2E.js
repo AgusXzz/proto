@@ -35168,6 +35168,7 @@ export const E2E = $root.E2E = (() => {
             MusicMessage.prototype.artworkUri = "";
             MusicMessage.prototype.style = 0;
             MusicMessage.prototype.contextInfo = null;
+            MusicMessage.prototype.lyrics = null;
 
             MusicMessage.create = function(properties) {
                 return new MusicMessage(properties);
@@ -35190,6 +35191,8 @@ export const E2E = $root.E2E = (() => {
                     w.uint32(32).int32(m.style);
                 if (m.contextInfo != null && $Object.hasOwnProperty.call(m, "contextInfo"))
                     $root.E2E.ContextInfo.encode(m.contextInfo, w.uint32(42).fork(), q + 1).ldelim();
+                if (m.lyrics != null && $Object.hasOwnProperty.call(m, "lyrics"))
+                    $root.E2E.Message.MusicMessage.Lyrics.encode(m.lyrics, w.uint32(50).fork(), q + 1).ldelim();
                 if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                     for (var i = 0; i < m.$unknowns.length; ++i)
                         w.raw(m.$unknowns[i]);
@@ -35253,6 +35256,12 @@ export const E2E = $root.E2E = (() => {
                             m.contextInfo = $root.E2E.ContextInfo.decode(r, r.size(), $undefined, q + 1, m.contextInfo);
                             continue;
                         }
+                    case 6: {
+                            if (u !== 2)
+                                break;
+                            m.lyrics = $root.E2E.Message.MusicMessage.Lyrics.decode(r, r.size(), $undefined, q + 1, m.lyrics);
+                            continue;
+                        }
                     }
                     r.skipType(u, q, t);
                     if (!r.discardUnknown) {
@@ -35299,6 +35308,11 @@ export const E2E = $root.E2E = (() => {
                         throw $TypeError(".E2E.Message.MusicMessage.contextInfo: object expected");
                     m.contextInfo = $root.E2E.ContextInfo.fromObject(d.contextInfo, q + 1);
                 }
+                if (d.lyrics != null) {
+                    if (!$util.isObject(d.lyrics))
+                        throw $TypeError(".E2E.Message.MusicMessage.lyrics: object expected");
+                    m.lyrics = $root.E2E.Message.MusicMessage.Lyrics.fromObject(d.lyrics, q + 1);
+                }
                 return m;
             };
 
@@ -35316,6 +35330,7 @@ export const E2E = $root.E2E = (() => {
                     d.artworkUri = "";
                     d.style = 0;
                     d.contextInfo = null;
+                    d.lyrics = null;
                 }
                 if (m.embeddedMusic != null && $Object.hasOwnProperty.call(m, "embeddedMusic")) {
                     d.embeddedMusic = $root.E2E.EmbeddedMusic.toObject(m.embeddedMusic, o, q + 1);
@@ -35332,6 +35347,9 @@ export const E2E = $root.E2E = (() => {
                 if (m.contextInfo != null && $Object.hasOwnProperty.call(m, "contextInfo")) {
                     d.contextInfo = $root.E2E.ContextInfo.toObject(m.contextInfo, o, q + 1);
                 }
+                if (m.lyrics != null && $Object.hasOwnProperty.call(m, "lyrics")) {
+                    d.lyrics = $root.E2E.Message.MusicMessage.Lyrics.toObject(m.lyrics, o, q + 1);
+                }
                 return d;
             };
 
@@ -35344,6 +35362,337 @@ export const E2E = $root.E2E = (() => {
                     prefix = "type.googleapis.com";
                 return prefix + "/E2E.Message.MusicMessage";
             };
+
+            MusicMessage.Lyrics = (function() {
+
+                const Lyrics = function (p) {
+                    this.lines = [];
+                    if (p)
+                        for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                            if (p[ks[i]] != null && ks[i] !== "__proto__")
+                                this[ks[i]] = p[ks[i]];
+                };
+
+                Lyrics.prototype.lines = $util.emptyArray;
+
+                Lyrics.create = function(properties) {
+                    return new Lyrics(properties);
+                };
+
+                Lyrics.encode = function (m, w, q) {
+                    if (!w)
+                        w = $Writer.create();
+                    if (q === $undefined)
+                        q = 0;
+                    if (q > $util.recursionLimit)
+                        throw $Error("max depth exceeded");
+                    if (m.lines != null && m.lines.length) {
+                        for (var i = 0; i < m.lines.length; ++i)
+                            $root.E2E.Message.MusicMessage.Lyrics.Line.encode(m.lines[i], w.uint32(10).fork(), q + 1).ldelim();
+                    }
+                    if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                        for (var i = 0; i < m.$unknowns.length; ++i)
+                            w.raw(m.$unknowns[i]);
+                    return w;
+                };
+
+                Lyrics.decode = function (r, l, z, q, g) {
+                    if (!(r instanceof $Reader))
+                        r = $Reader.create(r);
+                    if (q === $undefined)
+                        q = 0;
+                    if (q > $Reader.recursionLimit)
+                        throw $Error("max depth exceeded");
+                    var c, m;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.E2E.Message.MusicMessage.Lyrics();
+                    while (r.pos < c) {
+                        var s = r.pos;
+                        var t = r.tag();
+                        if (t === z) {
+                            z = $undefined;
+                            break;
+                        }
+                        var u = t & 7;
+                        switch (t >>>= 3) {
+                        case 1: {
+                                if (u !== 2)
+                                    break;
+                                if (!(m.lines && m.lines.length))
+                                    m.lines = [];
+                                m.lines.push($root.E2E.Message.MusicMessage.Lyrics.Line.decode(r, r.size(), $undefined, q + 1));
+                                continue;
+                            }
+                        }
+                        r.skipType(u, q, t);
+                        if (!r.discardUnknown) {
+                            $util.makeProp(m, "$unknowns", false);
+                            (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                        }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
+                    }
+                    if (z !== $undefined)
+                        throw $Error("missing end group");
+                    return m;
+                };
+
+                Lyrics.fromObject = function (d, q) {
+                    if (d instanceof $root.E2E.Message.MusicMessage.Lyrics)
+                        return d;
+                    if (!$util.isObject(d))
+                        throw $TypeError(".E2E.Message.MusicMessage.Lyrics: object expected");
+                    if (q === $undefined)
+                        q = 0;
+                    if (q > $util.recursionLimit)
+                        throw $Error("max depth exceeded");
+                    var m = new $root.E2E.Message.MusicMessage.Lyrics();
+                    if (d.lines) {
+                        if (!$Array.isArray(d.lines))
+                            throw $TypeError(".E2E.Message.MusicMessage.Lyrics.lines: array expected");
+                        m.lines = $Array(d.lines.length);
+                        for (var i = 0; i < d.lines.length; ++i) {
+                            if (!$util.isObject(d.lines[i]))
+                                throw $TypeError(".E2E.Message.MusicMessage.Lyrics.lines: object expected");
+                            m.lines[i] = $root.E2E.Message.MusicMessage.Lyrics.Line.fromObject(d.lines[i], q + 1);
+                        }
+                    }
+                    return m;
+                };
+
+                Lyrics.toObject = function (m, o, q) {
+                    if (!o)
+                        o = {};
+                    if (q === $undefined)
+                        q = 0;
+                    if (q > $util.recursionLimit)
+                        throw $Error("max depth exceeded");
+                    var d = {};
+                    if (o.arrays || o.defaults) {
+                        d.lines = [];
+                    }
+                    if (m.lines && m.lines.length) {
+                        d.lines = $Array(m.lines.length);
+                        for (var j = 0; j < m.lines.length; ++j) {
+                            d.lines[j] = $root.E2E.Message.MusicMessage.Lyrics.Line.toObject(m.lines[j], o, q + 1);
+                        }
+                    }
+                    return d;
+                };
+
+                Lyrics.prototype.toJSON = function() {
+                    return Lyrics.toObject(this, $protobuf.util.toJSONOptions);
+                };
+
+                Lyrics.getTypeUrl = function(prefix) {
+                    if (prefix === $undefined)
+                        prefix = "type.googleapis.com";
+                    return prefix + "/E2E.Message.MusicMessage.Lyrics";
+                };
+
+                Lyrics.Line = (function() {
+
+                    const Line = function (p) {
+                        if (p)
+                            for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                                if (p[ks[i]] != null && ks[i] !== "__proto__")
+                                    this[ks[i]] = p[ks[i]];
+                    };
+
+                    Line.prototype.startTimeInMs = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+                    Line.prototype.endTimeInMs = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+                    Line.prototype.text = "";
+
+                    Line.create = function(properties) {
+                        return new Line(properties);
+                    };
+
+                    Line.encode = function (m, w, q) {
+                        if (!w)
+                            w = $Writer.create();
+                        if (q === $undefined)
+                            q = 0;
+                        if (q > $util.recursionLimit)
+                            throw $Error("max depth exceeded");
+                        if (m.startTimeInMs != null && $Object.hasOwnProperty.call(m, "startTimeInMs"))
+                            w.uint32(8).int64(m.startTimeInMs);
+                        if (m.endTimeInMs != null && $Object.hasOwnProperty.call(m, "endTimeInMs"))
+                            w.uint32(16).int64(m.endTimeInMs);
+                        if (m.text != null && $Object.hasOwnProperty.call(m, "text"))
+                            w.uint32(26).string(m.text);
+                        if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                            for (var i = 0; i < m.$unknowns.length; ++i)
+                                w.raw(m.$unknowns[i]);
+                        return w;
+                    };
+
+                    Line.decode = function (r, l, z, q, g) {
+                        if (!(r instanceof $Reader))
+                            r = $Reader.create(r);
+                        if (q === $undefined)
+                            q = 0;
+                        if (q > $Reader.recursionLimit)
+                            throw $Error("max depth exceeded");
+                        var c, m;
+                        if (l === $undefined)
+                            c = r.len;
+                        else {
+                            c = r.pos + l;
+                            if (c > r.len)
+                                throw $RangeError("index out of range");
+                            l = r.len;
+                            r.len = c;
+                        }
+                        m = g || new $root.E2E.Message.MusicMessage.Lyrics.Line();
+                        while (r.pos < c) {
+                            var s = r.pos;
+                            var t = r.tag();
+                            if (t === z) {
+                                z = $undefined;
+                                break;
+                            }
+                            var u = t & 7;
+                            switch (t >>>= 3) {
+                            case 1: {
+                                    if (u !== 0)
+                                        break;
+                                    m.startTimeInMs = r.int64();
+                                    continue;
+                                }
+                            case 2: {
+                                    if (u !== 0)
+                                        break;
+                                    m.endTimeInMs = r.int64();
+                                    continue;
+                                }
+                            case 3: {
+                                    if (u !== 2)
+                                        break;
+                                    m.text = r.string();
+                                    continue;
+                                }
+                            }
+                            r.skipType(u, q, t);
+                            if (!r.discardUnknown) {
+                                $util.makeProp(m, "$unknowns", false);
+                                (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                            }
+                        }
+                        if (l !== $undefined) {
+                            if (r.pos !== c)
+                                throw $RangeError("index out of range");
+                            r.len = l;
+                        }
+                        if (z !== $undefined)
+                            throw $Error("missing end group");
+                        return m;
+                    };
+
+                    Line.fromObject = function (d, q) {
+                        if (d instanceof $root.E2E.Message.MusicMessage.Lyrics.Line)
+                            return d;
+                        if (!$util.isObject(d))
+                            throw $TypeError(".E2E.Message.MusicMessage.Lyrics.Line: object expected");
+                        if (q === $undefined)
+                            q = 0;
+                        if (q > $util.recursionLimit)
+                            throw $Error("max depth exceeded");
+                        var m = new $root.E2E.Message.MusicMessage.Lyrics.Line();
+                        if (d.startTimeInMs != null) {
+                            if ($util.Long)
+                                m.startTimeInMs = $util.Long.fromValue(d.startTimeInMs, false);
+                            else if (typeof d.startTimeInMs === "string")
+                                m.startTimeInMs = $parseInt(d.startTimeInMs, 10);
+                            else if (typeof d.startTimeInMs === "number")
+                                m.startTimeInMs = d.startTimeInMs;
+                            else if (typeof d.startTimeInMs === "object")
+                                m.startTimeInMs = new $util.LongBits(d.startTimeInMs.low >>> 0, d.startTimeInMs.high >>> 0).toNumber();
+                        }
+                        if (d.endTimeInMs != null) {
+                            if ($util.Long)
+                                m.endTimeInMs = $util.Long.fromValue(d.endTimeInMs, false);
+                            else if (typeof d.endTimeInMs === "string")
+                                m.endTimeInMs = $parseInt(d.endTimeInMs, 10);
+                            else if (typeof d.endTimeInMs === "number")
+                                m.endTimeInMs = d.endTimeInMs;
+                            else if (typeof d.endTimeInMs === "object")
+                                m.endTimeInMs = new $util.LongBits(d.endTimeInMs.low >>> 0, d.endTimeInMs.high >>> 0).toNumber();
+                        }
+                        if (d.text != null) {
+                            m.text = $String(d.text);
+                        }
+                        return m;
+                    };
+
+                    Line.toObject = function (m, o, q) {
+                        if (!o)
+                            o = {};
+                        if (q === $undefined)
+                            q = 0;
+                        if (q > $util.recursionLimit)
+                            throw $Error("max depth exceeded");
+                        var d = {};
+                        if (o.defaults) {
+                            if ($util.Long) {
+                                var n = new $util.Long(0, 0, false);
+                                d.startTimeInMs = o.longs === $String ? n.toString() : o.longs === $Number ? n.toNumber() : typeof $BigInt !== "undefined" && o.longs === $BigInt ? n.toBigInt() : n;
+                            } else
+                                d.startTimeInMs = o.longs === $String ? "0" : typeof $BigInt !== "undefined" && o.longs === $BigInt ? $BigInt("0") : 0;
+                            if ($util.Long) {
+                                var n = new $util.Long(0, 0, false);
+                                d.endTimeInMs = o.longs === $String ? n.toString() : o.longs === $Number ? n.toNumber() : typeof $BigInt !== "undefined" && o.longs === $BigInt ? n.toBigInt() : n;
+                            } else
+                                d.endTimeInMs = o.longs === $String ? "0" : typeof $BigInt !== "undefined" && o.longs === $BigInt ? $BigInt("0") : 0;
+                            d.text = "";
+                        }
+                        if (m.startTimeInMs != null && $Object.hasOwnProperty.call(m, "startTimeInMs")) {
+                            if (typeof $BigInt !== "undefined" && o.longs === $BigInt)
+                                d.startTimeInMs = typeof m.startTimeInMs === "number" ? $BigInt(m.startTimeInMs) : $util.Long.fromBits(m.startTimeInMs.low >>> 0, m.startTimeInMs.high >>> 0, false).toBigInt();
+                            else if (typeof m.startTimeInMs === "number")
+                                d.startTimeInMs = o.longs === $String ? $String(m.startTimeInMs) : m.startTimeInMs;
+                            else
+                                d.startTimeInMs = o.longs === String ? longToString(m.startTimeInMs) : o.longs === Number ? longToNumber(m.startTimeInMs) : m.startTimeInMs;
+                        }
+                        if (m.endTimeInMs != null && $Object.hasOwnProperty.call(m, "endTimeInMs")) {
+                            if (typeof $BigInt !== "undefined" && o.longs === $BigInt)
+                                d.endTimeInMs = typeof m.endTimeInMs === "number" ? $BigInt(m.endTimeInMs) : $util.Long.fromBits(m.endTimeInMs.low >>> 0, m.endTimeInMs.high >>> 0, false).toBigInt();
+                            else if (typeof m.endTimeInMs === "number")
+                                d.endTimeInMs = o.longs === $String ? $String(m.endTimeInMs) : m.endTimeInMs;
+                            else
+                                d.endTimeInMs = o.longs === String ? longToString(m.endTimeInMs) : o.longs === Number ? longToNumber(m.endTimeInMs) : m.endTimeInMs;
+                        }
+                        if (m.text != null && $Object.hasOwnProperty.call(m, "text")) {
+                            d.text = m.text;
+                        }
+                        return d;
+                    };
+
+                    Line.prototype.toJSON = function() {
+                        return Line.toObject(this, $protobuf.util.toJSONOptions);
+                    };
+
+                    Line.getTypeUrl = function(prefix) {
+                        if (prefix === $undefined)
+                            prefix = "type.googleapis.com";
+                        return prefix + "/E2E.Message.MusicMessage.Lyrics.Line";
+                    };
+
+                    return Line;
+                })();
+
+                return Lyrics;
+            })();
 
             MusicMessage.MusicMessageStyle = (function() {
                 const valuesById = $Object.create(null), values = $Object.create(valuesById);
@@ -80965,6 +81314,7 @@ export const CompanionReg = $root.CompanionReg = (() => {
         ClientPairingProps.prototype.isHsThumbnailSyncEnabled = false;
         ClientPairingProps.prototype.subscriptionSyncPayload = $util.newBuffer([]);
         ClientPairingProps.prototype.isBotJidDbMigrated = false;
+        ClientPairingProps.prototype.companionAddPeerPayload = $util.newBuffer([]);
 
         ClientPairingProps.create = function(properties) {
             return new ClientPairingProps(properties);
@@ -80989,6 +81339,8 @@ export const CompanionReg = $root.CompanionReg = (() => {
                 w.uint32(42).bytes(m.subscriptionSyncPayload);
             if (m.isBotJidDbMigrated != null && $Object.hasOwnProperty.call(m, "isBotJidDbMigrated"))
                 w.uint32(48).bool(m.isBotJidDbMigrated);
+            if (m.companionAddPeerPayload != null && $Object.hasOwnProperty.call(m, "companionAddPeerPayload"))
+                w.uint32(58).bytes(m.companionAddPeerPayload);
             if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                 for (var i = 0; i < m.$unknowns.length; ++i)
                     w.raw(m.$unknowns[i]);
@@ -81058,6 +81410,12 @@ export const CompanionReg = $root.CompanionReg = (() => {
                         m.isBotJidDbMigrated = r.bool();
                         continue;
                     }
+                case 7: {
+                        if (u !== 2)
+                            break;
+                        m.companionAddPeerPayload = r.bytes();
+                        continue;
+                    }
                 }
                 r.skipType(u, q, t);
                 if (!r.discardUnknown) {
@@ -81106,6 +81464,12 @@ export const CompanionReg = $root.CompanionReg = (() => {
             if (d.isBotJidDbMigrated != null) {
                 m.isBotJidDbMigrated = $Boolean(d.isBotJidDbMigrated);
             }
+            if (d.companionAddPeerPayload != null) {
+                if (typeof d.companionAddPeerPayload === "string")
+                    $util.base64.decode(d.companionAddPeerPayload, m.companionAddPeerPayload = $util.newBuffer($util.base64.length(d.companionAddPeerPayload)), 0);
+                else if (d.companionAddPeerPayload.length >= 0)
+                    m.companionAddPeerPayload = d.companionAddPeerPayload;
+            }
             return m;
         };
 
@@ -81130,6 +81494,13 @@ export const CompanionReg = $root.CompanionReg = (() => {
                         d.subscriptionSyncPayload = $util.newBuffer(d.subscriptionSyncPayload);
                 }
                 d.isBotJidDbMigrated = false;
+                if (o.bytes === $String)
+                    d.companionAddPeerPayload = "";
+                else {
+                    d.companionAddPeerPayload = [];
+                    if (o.bytes !== $Array)
+                        d.companionAddPeerPayload = $util.newBuffer(d.companionAddPeerPayload);
+                }
             }
             if (m.isChatDbLidMigrated != null && $Object.hasOwnProperty.call(m, "isChatDbLidMigrated")) {
                 d.isChatDbLidMigrated = m.isChatDbLidMigrated;
@@ -81148,6 +81519,9 @@ export const CompanionReg = $root.CompanionReg = (() => {
             }
             if (m.isBotJidDbMigrated != null && $Object.hasOwnProperty.call(m, "isBotJidDbMigrated")) {
                 d.isBotJidDbMigrated = m.isBotJidDbMigrated;
+            }
+            if (m.companionAddPeerPayload != null && $Object.hasOwnProperty.call(m, "companionAddPeerPayload")) {
+                d.companionAddPeerPayload = o.bytes === $String ? $util.base64.encode(m.companionAddPeerPayload, 0, m.companionAddPeerPayload.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.companionAddPeerPayload) : m.companionAddPeerPayload;
             }
             return d;
         };
@@ -82802,7 +83176,7 @@ export const CompanionReg = $root.CompanionReg = (() => {
             HistorySyncConfig.prototype.supportInlineContacts = false;
             HistorySyncConfig.prototype.supportNewsletter = false;
             HistorySyncConfig.prototype.supportUniversalReachChat = false;
-            HistorySyncConfig.prototype.supportOmittedConversationIndex = false;
+            HistorySyncConfig.prototype.supportOmittedConversationMetadata = false;
 
             HistorySyncConfig.create = function(properties) {
                 return new HistorySyncConfig(properties);
@@ -82869,8 +83243,8 @@ export const CompanionReg = $root.CompanionReg = (() => {
                     w.uint32(200).bool(m.supportNewsletter);
                 if (m.supportUniversalReachChat != null && $Object.hasOwnProperty.call(m, "supportUniversalReachChat"))
                     w.uint32(208).bool(m.supportUniversalReachChat);
-                if (m.supportOmittedConversationIndex != null && $Object.hasOwnProperty.call(m, "supportOmittedConversationIndex"))
-                    w.uint32(216).bool(m.supportOmittedConversationIndex);
+                if (m.supportOmittedConversationMetadata != null && $Object.hasOwnProperty.call(m, "supportOmittedConversationMetadata"))
+                    w.uint32(224).bool(m.supportOmittedConversationMetadata);
                 if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                     for (var i = 0; i < m.$unknowns.length; ++i)
                         w.raw(m.$unknowns[i]);
@@ -83062,10 +83436,10 @@ export const CompanionReg = $root.CompanionReg = (() => {
                             m.supportUniversalReachChat = r.bool();
                             continue;
                         }
-                    case 27: {
+                    case 28: {
                             if (u !== 0)
                                 break;
-                            m.supportOmittedConversationIndex = r.bool();
+                            m.supportOmittedConversationMetadata = r.bool();
                             continue;
                         }
                     }
@@ -83178,8 +83552,8 @@ export const CompanionReg = $root.CompanionReg = (() => {
                 if (d.supportUniversalReachChat != null) {
                     m.supportUniversalReachChat = $Boolean(d.supportUniversalReachChat);
                 }
-                if (d.supportOmittedConversationIndex != null) {
-                    m.supportOmittedConversationIndex = $Boolean(d.supportOmittedConversationIndex);
+                if (d.supportOmittedConversationMetadata != null) {
+                    m.supportOmittedConversationMetadata = $Boolean(d.supportOmittedConversationMetadata);
                 }
                 return m;
             };
@@ -83221,7 +83595,7 @@ export const CompanionReg = $root.CompanionReg = (() => {
                     d.supportInlineContacts = false;
                     d.supportNewsletter = false;
                     d.supportUniversalReachChat = false;
-                    d.supportOmittedConversationIndex = false;
+                    d.supportOmittedConversationMetadata = false;
                 }
                 if (m.fullSyncDaysLimit != null && $Object.hasOwnProperty.call(m, "fullSyncDaysLimit")) {
                     d.fullSyncDaysLimit = m.fullSyncDaysLimit;
@@ -83304,8 +83678,8 @@ export const CompanionReg = $root.CompanionReg = (() => {
                 if (m.supportUniversalReachChat != null && $Object.hasOwnProperty.call(m, "supportUniversalReachChat")) {
                     d.supportUniversalReachChat = m.supportUniversalReachChat;
                 }
-                if (m.supportOmittedConversationIndex != null && $Object.hasOwnProperty.call(m, "supportOmittedConversationIndex")) {
-                    d.supportOmittedConversationIndex = m.supportOmittedConversationIndex;
+                if (m.supportOmittedConversationMetadata != null && $Object.hasOwnProperty.call(m, "supportOmittedConversationMetadata")) {
+                    d.supportOmittedConversationMetadata = m.supportOmittedConversationMetadata;
                 }
                 return d;
             };

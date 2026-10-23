@@ -4598,40 +4598,55 @@ export const HistorySync = $root.HistorySync = (() => {
         return Conversation;
     })();
 
-    HistorySync.RecoverableHistoryConversation = (function() {
+    HistorySync.OmittedConversationMetadata = (function() {
 
-        const RecoverableHistoryConversation = function (p) {
+        const OmittedConversationMetadata = function (p) {
+            this.conversations = [];
             if (p)
                 for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
                     if (p[ks[i]] != null && ks[i] !== "__proto__")
                         this[ks[i]] = p[ks[i]];
         };
 
-        RecoverableHistoryConversation.prototype.historyChatId = "";
-        RecoverableHistoryConversation.prototype.accountLid = "";
+        OmittedConversationMetadata.prototype.snapshotId = "";
+        OmittedConversationMetadata.prototype.snapshotTimestampMs = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+        OmittedConversationMetadata.prototype.batchIndex = 0;
+        OmittedConversationMetadata.prototype.batchCount = 0;
+        OmittedConversationMetadata.prototype.complete = false;
+        OmittedConversationMetadata.prototype.conversations = $util.emptyArray;
 
-        RecoverableHistoryConversation.create = function(properties) {
-            return new RecoverableHistoryConversation(properties);
+        OmittedConversationMetadata.create = function(properties) {
+            return new OmittedConversationMetadata(properties);
         };
 
-        RecoverableHistoryConversation.encode = function (m, w, q) {
+        OmittedConversationMetadata.encode = function (m, w, q) {
             if (!w)
                 w = $Writer.create();
             if (q === $undefined)
                 q = 0;
             if (q > $util.recursionLimit)
                 throw $Error("max depth exceeded");
-            if (m.historyChatId != null && $Object.hasOwnProperty.call(m, "historyChatId"))
-                w.uint32(10).string(m.historyChatId);
-            if (m.accountLid != null && $Object.hasOwnProperty.call(m, "accountLid"))
-                w.uint32(18).string(m.accountLid);
+            if (m.snapshotId != null && $Object.hasOwnProperty.call(m, "snapshotId"))
+                w.uint32(10).string(m.snapshotId);
+            if (m.snapshotTimestampMs != null && $Object.hasOwnProperty.call(m, "snapshotTimestampMs"))
+                w.uint32(16).uint64(m.snapshotTimestampMs);
+            if (m.batchIndex != null && $Object.hasOwnProperty.call(m, "batchIndex"))
+                w.uint32(24).uint32(m.batchIndex);
+            if (m.batchCount != null && $Object.hasOwnProperty.call(m, "batchCount"))
+                w.uint32(32).uint32(m.batchCount);
+            if (m.complete != null && $Object.hasOwnProperty.call(m, "complete"))
+                w.uint32(40).bool(m.complete);
+            if (m.conversations != null && m.conversations.length) {
+                for (var i = 0; i < m.conversations.length; ++i)
+                    $root.HistorySync.Conversation.encode(m.conversations[i], w.uint32(50).fork(), q + 1).ldelim();
+            }
             if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                 for (var i = 0; i < m.$unknowns.length; ++i)
                     w.raw(m.$unknowns[i]);
             return w;
         };
 
-        RecoverableHistoryConversation.decode = function (r, l, z, q, g) {
+        OmittedConversationMetadata.decode = function (r, l, z, q, g) {
             if (!(r instanceof $Reader))
                 r = $Reader.create(r);
             if (q === $undefined)
@@ -4648,7 +4663,7 @@ export const HistorySync = $root.HistorySync = (() => {
                 l = r.len;
                 r.len = c;
             }
-            m = g || new $root.HistorySync.RecoverableHistoryConversation();
+            m = g || new $root.HistorySync.OmittedConversationMetadata();
             while (r.pos < c) {
                 var s = r.pos;
                 var t = r.tag();
@@ -4661,13 +4676,39 @@ export const HistorySync = $root.HistorySync = (() => {
                 case 1: {
                         if (u !== 2)
                             break;
-                        m.historyChatId = r.string();
+                        m.snapshotId = r.string();
                         continue;
                     }
                 case 2: {
+                        if (u !== 0)
+                            break;
+                        m.snapshotTimestampMs = r.uint64();
+                        continue;
+                    }
+                case 3: {
+                        if (u !== 0)
+                            break;
+                        m.batchIndex = r.uint32();
+                        continue;
+                    }
+                case 4: {
+                        if (u !== 0)
+                            break;
+                        m.batchCount = r.uint32();
+                        continue;
+                    }
+                case 5: {
+                        if (u !== 0)
+                            break;
+                        m.complete = r.bool();
+                        continue;
+                    }
+                case 6: {
                         if (u !== 2)
                             break;
-                        m.accountLid = r.string();
+                        if (!(m.conversations && m.conversations.length))
+                            m.conversations = [];
+                        m.conversations.push($root.HistorySync.Conversation.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
                 }
@@ -4687,26 +4728,52 @@ export const HistorySync = $root.HistorySync = (() => {
             return m;
         };
 
-        RecoverableHistoryConversation.fromObject = function (d, q) {
-            if (d instanceof $root.HistorySync.RecoverableHistoryConversation)
+        OmittedConversationMetadata.fromObject = function (d, q) {
+            if (d instanceof $root.HistorySync.OmittedConversationMetadata)
                 return d;
             if (!$util.isObject(d))
-                throw $TypeError(".HistorySync.RecoverableHistoryConversation: object expected");
+                throw $TypeError(".HistorySync.OmittedConversationMetadata: object expected");
             if (q === $undefined)
                 q = 0;
             if (q > $util.recursionLimit)
                 throw $Error("max depth exceeded");
-            var m = new $root.HistorySync.RecoverableHistoryConversation();
-            if (d.historyChatId != null) {
-                m.historyChatId = $String(d.historyChatId);
+            var m = new $root.HistorySync.OmittedConversationMetadata();
+            if (d.snapshotId != null) {
+                m.snapshotId = $String(d.snapshotId);
             }
-            if (d.accountLid != null) {
-                m.accountLid = $String(d.accountLid);
+            if (d.snapshotTimestampMs != null) {
+                if ($util.Long)
+                    m.snapshotTimestampMs = $util.Long.fromValue(d.snapshotTimestampMs, true);
+                else if (typeof d.snapshotTimestampMs === "string")
+                    m.snapshotTimestampMs = $parseInt(d.snapshotTimestampMs, 10);
+                else if (typeof d.snapshotTimestampMs === "number")
+                    m.snapshotTimestampMs = d.snapshotTimestampMs;
+                else if (typeof d.snapshotTimestampMs === "object")
+                    m.snapshotTimestampMs = new $util.LongBits(d.snapshotTimestampMs.low >>> 0, d.snapshotTimestampMs.high >>> 0).toNumber(true);
+            }
+            if (d.batchIndex != null) {
+                m.batchIndex = d.batchIndex >>> 0;
+            }
+            if (d.batchCount != null) {
+                m.batchCount = d.batchCount >>> 0;
+            }
+            if (d.complete != null) {
+                m.complete = $Boolean(d.complete);
+            }
+            if (d.conversations) {
+                if (!$Array.isArray(d.conversations))
+                    throw $TypeError(".HistorySync.OmittedConversationMetadata.conversations: array expected");
+                m.conversations = $Array(d.conversations.length);
+                for (var i = 0; i < d.conversations.length; ++i) {
+                    if (!$util.isObject(d.conversations[i]))
+                        throw $TypeError(".HistorySync.OmittedConversationMetadata.conversations: object expected");
+                    m.conversations[i] = $root.HistorySync.Conversation.fromObject(d.conversations[i], q + 1);
+                }
             }
             return m;
         };
 
-        RecoverableHistoryConversation.toObject = function (m, o, q) {
+        OmittedConversationMetadata.toObject = function (m, o, q) {
             if (!o)
                 o = {};
             if (q === $undefined)
@@ -4714,30 +4781,60 @@ export const HistorySync = $root.HistorySync = (() => {
             if (q > $util.recursionLimit)
                 throw $Error("max depth exceeded");
             var d = {};
+            if (o.arrays || o.defaults) {
+                d.conversations = [];
+            }
             if (o.defaults) {
-                d.historyChatId = "";
-                d.accountLid = "";
+                d.snapshotId = "";
+                if ($util.Long) {
+                    var n = new $util.Long(0, 0, true);
+                    d.snapshotTimestampMs = o.longs === $String ? n.toString() : o.longs === $Number ? n.toNumber() : typeof $BigInt !== "undefined" && o.longs === $BigInt ? n.toBigInt() : n;
+                } else
+                    d.snapshotTimestampMs = o.longs === $String ? "0" : typeof $BigInt !== "undefined" && o.longs === $BigInt ? $BigInt("0") : 0;
+                d.batchIndex = 0;
+                d.batchCount = 0;
+                d.complete = false;
             }
-            if (m.historyChatId != null && $Object.hasOwnProperty.call(m, "historyChatId")) {
-                d.historyChatId = m.historyChatId;
+            if (m.snapshotId != null && $Object.hasOwnProperty.call(m, "snapshotId")) {
+                d.snapshotId = m.snapshotId;
             }
-            if (m.accountLid != null && $Object.hasOwnProperty.call(m, "accountLid")) {
-                d.accountLid = m.accountLid;
+            if (m.snapshotTimestampMs != null && $Object.hasOwnProperty.call(m, "snapshotTimestampMs")) {
+                if (typeof $BigInt !== "undefined" && o.longs === $BigInt)
+                    d.snapshotTimestampMs = typeof m.snapshotTimestampMs === "number" ? $BigInt(m.snapshotTimestampMs) : $util.Long.fromBits(m.snapshotTimestampMs.low >>> 0, m.snapshotTimestampMs.high >>> 0, true).toBigInt();
+                else if (typeof m.snapshotTimestampMs === "number")
+                    d.snapshotTimestampMs = o.longs === $String ? $String(m.snapshotTimestampMs) : m.snapshotTimestampMs;
+                else
+                    d.snapshotTimestampMs = o.longs === String ? longToString(m.snapshotTimestampMs, true) : o.longs === Number ? longToNumber(m.snapshotTimestampMs, true) : m.snapshotTimestampMs;
+            }
+            if (m.batchIndex != null && $Object.hasOwnProperty.call(m, "batchIndex")) {
+                d.batchIndex = m.batchIndex;
+            }
+            if (m.batchCount != null && $Object.hasOwnProperty.call(m, "batchCount")) {
+                d.batchCount = m.batchCount;
+            }
+            if (m.complete != null && $Object.hasOwnProperty.call(m, "complete")) {
+                d.complete = m.complete;
+            }
+            if (m.conversations && m.conversations.length) {
+                d.conversations = $Array(m.conversations.length);
+                for (var j = 0; j < m.conversations.length; ++j) {
+                    d.conversations[j] = $root.HistorySync.Conversation.toObject(m.conversations[j], o, q + 1);
+                }
             }
             return d;
         };
 
-        RecoverableHistoryConversation.prototype.toJSON = function() {
-            return RecoverableHistoryConversation.toObject(this, $protobuf.util.toJSONOptions);
+        OmittedConversationMetadata.prototype.toJSON = function() {
+            return OmittedConversationMetadata.toObject(this, $protobuf.util.toJSONOptions);
         };
 
-        RecoverableHistoryConversation.getTypeUrl = function(prefix) {
+        OmittedConversationMetadata.getTypeUrl = function(prefix) {
             if (prefix === $undefined)
                 prefix = "type.googleapis.com";
-            return prefix + "/HistorySync.RecoverableHistoryConversation";
+            return prefix + "/HistorySync.OmittedConversationMetadata";
         };
 
-        return RecoverableHistoryConversation;
+        return OmittedConversationMetadata;
     })();
 
     HistorySync.HistorySync = (function() {
@@ -4753,7 +4850,6 @@ export const HistorySync = $root.HistorySync = (() => {
             this.accounts = [];
             this.inlineContacts = [];
             this.favoriteStickers = [];
-            this.omittedConversations = [];
             if (p)
                 for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
                     if (p[ks[i]] != null && ks[i] !== "__proto__")
@@ -4781,8 +4877,8 @@ export const HistorySync = $root.HistorySync = (() => {
         HistorySync.prototype.inlineContacts = $util.emptyArray;
         HistorySync.prototype.inlineContactsProvided = false;
         HistorySync.prototype.favoriteStickers = $util.emptyArray;
-        HistorySync.prototype.omittedConversations = $util.emptyArray;
-        HistorySync.prototype.omittedConversationsProvided = false;
+        HistorySync.prototype.omittedConversationMetadata = null;
+        HistorySync.prototype.omittedConversationMetadataSnapshotId = "";
 
         HistorySync.create = function(properties) {
             return new HistorySync(properties);
@@ -4856,12 +4952,10 @@ export const HistorySync = $root.HistorySync = (() => {
                 for (var i = 0; i < m.favoriteStickers.length; ++i)
                     $root.HistorySync.StickerMetadata.encode(m.favoriteStickers[i], w.uint32(178).fork(), q + 1).ldelim();
             }
-            if (m.omittedConversations != null && m.omittedConversations.length) {
-                for (var i = 0; i < m.omittedConversations.length; ++i)
-                    $root.HistorySync.RecoverableHistoryConversation.encode(m.omittedConversations[i], w.uint32(186).fork(), q + 1).ldelim();
-            }
-            if (m.omittedConversationsProvided != null && $Object.hasOwnProperty.call(m, "omittedConversationsProvided"))
-                w.uint32(192).bool(m.omittedConversationsProvided);
+            if (m.omittedConversationMetadata != null && $Object.hasOwnProperty.call(m, "omittedConversationMetadata"))
+                $root.HistorySync.OmittedConversationMetadata.encode(m.omittedConversationMetadata, w.uint32(202).fork(), q + 1).ldelim();
+            if (m.omittedConversationMetadataSnapshotId != null && $Object.hasOwnProperty.call(m, "omittedConversationMetadataSnapshotId"))
+                w.uint32(210).string(m.omittedConversationMetadataSnapshotId);
             if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                 for (var i = 0; i < m.$unknowns.length; ++i)
                     w.raw(m.$unknowns[i]);
@@ -5053,18 +5147,16 @@ export const HistorySync = $root.HistorySync = (() => {
                         m.favoriteStickers.push($root.HistorySync.StickerMetadata.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
-                case 23: {
+                case 25: {
                         if (u !== 2)
                             break;
-                        if (!(m.omittedConversations && m.omittedConversations.length))
-                            m.omittedConversations = [];
-                        m.omittedConversations.push($root.HistorySync.RecoverableHistoryConversation.decode(r, r.size(), $undefined, q + 1));
+                        m.omittedConversationMetadata = $root.HistorySync.OmittedConversationMetadata.decode(r, r.size(), $undefined, q + 1, m.omittedConversationMetadata);
                         continue;
                     }
-                case 24: {
-                        if (u !== 0)
+                case 26: {
+                        if (u !== 2)
                             break;
-                        m.omittedConversationsProvided = r.bool();
+                        m.omittedConversationMetadataSnapshotId = r.string();
                         continue;
                     }
                 }
@@ -5280,18 +5372,13 @@ export const HistorySync = $root.HistorySync = (() => {
                     m.favoriteStickers[i] = $root.HistorySync.StickerMetadata.fromObject(d.favoriteStickers[i], q + 1);
                 }
             }
-            if (d.omittedConversations) {
-                if (!$Array.isArray(d.omittedConversations))
-                    throw $TypeError(".HistorySync.HistorySync.omittedConversations: array expected");
-                m.omittedConversations = $Array(d.omittedConversations.length);
-                for (var i = 0; i < d.omittedConversations.length; ++i) {
-                    if (!$util.isObject(d.omittedConversations[i]))
-                        throw $TypeError(".HistorySync.HistorySync.omittedConversations: object expected");
-                    m.omittedConversations[i] = $root.HistorySync.RecoverableHistoryConversation.fromObject(d.omittedConversations[i], q + 1);
-                }
+            if (d.omittedConversationMetadata != null) {
+                if (!$util.isObject(d.omittedConversationMetadata))
+                    throw $TypeError(".HistorySync.HistorySync.omittedConversationMetadata: object expected");
+                m.omittedConversationMetadata = $root.HistorySync.OmittedConversationMetadata.fromObject(d.omittedConversationMetadata, q + 1);
             }
-            if (d.omittedConversationsProvided != null) {
-                m.omittedConversationsProvided = $Boolean(d.omittedConversationsProvided);
+            if (d.omittedConversationMetadataSnapshotId != null) {
+                m.omittedConversationMetadataSnapshotId = $String(d.omittedConversationMetadataSnapshotId);
             }
             return m;
         };
@@ -5315,7 +5402,6 @@ export const HistorySync = $root.HistorySync = (() => {
                 d.accounts = [];
                 d.inlineContacts = [];
                 d.favoriteStickers = [];
-                d.omittedConversations = [];
             }
             if (o.defaults) {
                 d.syncType = o.enums === $String ? "INITIAL_BOOTSTRAP" : 0;
@@ -5347,7 +5433,8 @@ export const HistorySync = $root.HistorySync = (() => {
                         d.nctSalt = $util.newBuffer(d.nctSalt);
                 }
                 d.inlineContactsProvided = false;
-                d.omittedConversationsProvided = false;
+                d.omittedConversationMetadata = null;
+                d.omittedConversationMetadataSnapshotId = "";
             }
             if (m.syncType != null && $Object.hasOwnProperty.call(m, "syncType")) {
                 d.syncType = o.enums === $String ? $root.HistorySync.HistorySync.HistorySyncType[m.syncType] === $undefined ? m.syncType : $root.HistorySync.HistorySync.HistorySyncType[m.syncType] : m.syncType;
@@ -5442,14 +5529,11 @@ export const HistorySync = $root.HistorySync = (() => {
                     d.favoriteStickers[j] = $root.HistorySync.StickerMetadata.toObject(m.favoriteStickers[j], o, q + 1);
                 }
             }
-            if (m.omittedConversations && m.omittedConversations.length) {
-                d.omittedConversations = $Array(m.omittedConversations.length);
-                for (var j = 0; j < m.omittedConversations.length; ++j) {
-                    d.omittedConversations[j] = $root.HistorySync.RecoverableHistoryConversation.toObject(m.omittedConversations[j], o, q + 1);
-                }
+            if (m.omittedConversationMetadata != null && $Object.hasOwnProperty.call(m, "omittedConversationMetadata")) {
+                d.omittedConversationMetadata = $root.HistorySync.OmittedConversationMetadata.toObject(m.omittedConversationMetadata, o, q + 1);
             }
-            if (m.omittedConversationsProvided != null && $Object.hasOwnProperty.call(m, "omittedConversationsProvided")) {
-                d.omittedConversationsProvided = m.omittedConversationsProvided;
+            if (m.omittedConversationMetadataSnapshotId != null && $Object.hasOwnProperty.call(m, "omittedConversationMetadataSnapshotId")) {
+                d.omittedConversationMetadataSnapshotId = m.omittedConversationMetadataSnapshotId;
             }
             return d;
         };
@@ -41334,6 +41418,7 @@ export const E2E = $root.E2E = (() => {
             MusicMessage.prototype.artworkUri = "";
             MusicMessage.prototype.style = 0;
             MusicMessage.prototype.contextInfo = null;
+            MusicMessage.prototype.lyrics = null;
 
             MusicMessage.create = function(properties) {
                 return new MusicMessage(properties);
@@ -41356,6 +41441,8 @@ export const E2E = $root.E2E = (() => {
                     w.uint32(32).int32(m.style);
                 if (m.contextInfo != null && $Object.hasOwnProperty.call(m, "contextInfo"))
                     $root.E2E.ContextInfo.encode(m.contextInfo, w.uint32(42).fork(), q + 1).ldelim();
+                if (m.lyrics != null && $Object.hasOwnProperty.call(m, "lyrics"))
+                    $root.E2E.Message.MusicMessage.Lyrics.encode(m.lyrics, w.uint32(50).fork(), q + 1).ldelim();
                 if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                     for (var i = 0; i < m.$unknowns.length; ++i)
                         w.raw(m.$unknowns[i]);
@@ -41419,6 +41506,12 @@ export const E2E = $root.E2E = (() => {
                             m.contextInfo = $root.E2E.ContextInfo.decode(r, r.size(), $undefined, q + 1, m.contextInfo);
                             continue;
                         }
+                    case 6: {
+                            if (u !== 2)
+                                break;
+                            m.lyrics = $root.E2E.Message.MusicMessage.Lyrics.decode(r, r.size(), $undefined, q + 1, m.lyrics);
+                            continue;
+                        }
                     }
                     r.skipType(u, q, t);
                     if (!r.discardUnknown) {
@@ -41465,6 +41558,11 @@ export const E2E = $root.E2E = (() => {
                         throw $TypeError(".E2E.Message.MusicMessage.contextInfo: object expected");
                     m.contextInfo = $root.E2E.ContextInfo.fromObject(d.contextInfo, q + 1);
                 }
+                if (d.lyrics != null) {
+                    if (!$util.isObject(d.lyrics))
+                        throw $TypeError(".E2E.Message.MusicMessage.lyrics: object expected");
+                    m.lyrics = $root.E2E.Message.MusicMessage.Lyrics.fromObject(d.lyrics, q + 1);
+                }
                 return m;
             };
 
@@ -41482,6 +41580,7 @@ export const E2E = $root.E2E = (() => {
                     d.artworkUri = "";
                     d.style = 0;
                     d.contextInfo = null;
+                    d.lyrics = null;
                 }
                 if (m.embeddedMusic != null && $Object.hasOwnProperty.call(m, "embeddedMusic")) {
                     d.embeddedMusic = $root.E2E.EmbeddedMusic.toObject(m.embeddedMusic, o, q + 1);
@@ -41498,6 +41597,9 @@ export const E2E = $root.E2E = (() => {
                 if (m.contextInfo != null && $Object.hasOwnProperty.call(m, "contextInfo")) {
                     d.contextInfo = $root.E2E.ContextInfo.toObject(m.contextInfo, o, q + 1);
                 }
+                if (m.lyrics != null && $Object.hasOwnProperty.call(m, "lyrics")) {
+                    d.lyrics = $root.E2E.Message.MusicMessage.Lyrics.toObject(m.lyrics, o, q + 1);
+                }
                 return d;
             };
 
@@ -41510,6 +41612,337 @@ export const E2E = $root.E2E = (() => {
                     prefix = "type.googleapis.com";
                 return prefix + "/E2E.Message.MusicMessage";
             };
+
+            MusicMessage.Lyrics = (function() {
+
+                const Lyrics = function (p) {
+                    this.lines = [];
+                    if (p)
+                        for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                            if (p[ks[i]] != null && ks[i] !== "__proto__")
+                                this[ks[i]] = p[ks[i]];
+                };
+
+                Lyrics.prototype.lines = $util.emptyArray;
+
+                Lyrics.create = function(properties) {
+                    return new Lyrics(properties);
+                };
+
+                Lyrics.encode = function (m, w, q) {
+                    if (!w)
+                        w = $Writer.create();
+                    if (q === $undefined)
+                        q = 0;
+                    if (q > $util.recursionLimit)
+                        throw $Error("max depth exceeded");
+                    if (m.lines != null && m.lines.length) {
+                        for (var i = 0; i < m.lines.length; ++i)
+                            $root.E2E.Message.MusicMessage.Lyrics.Line.encode(m.lines[i], w.uint32(10).fork(), q + 1).ldelim();
+                    }
+                    if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                        for (var i = 0; i < m.$unknowns.length; ++i)
+                            w.raw(m.$unknowns[i]);
+                    return w;
+                };
+
+                Lyrics.decode = function (r, l, z, q, g) {
+                    if (!(r instanceof $Reader))
+                        r = $Reader.create(r);
+                    if (q === $undefined)
+                        q = 0;
+                    if (q > $Reader.recursionLimit)
+                        throw $Error("max depth exceeded");
+                    var c, m;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.E2E.Message.MusicMessage.Lyrics();
+                    while (r.pos < c) {
+                        var s = r.pos;
+                        var t = r.tag();
+                        if (t === z) {
+                            z = $undefined;
+                            break;
+                        }
+                        var u = t & 7;
+                        switch (t >>>= 3) {
+                        case 1: {
+                                if (u !== 2)
+                                    break;
+                                if (!(m.lines && m.lines.length))
+                                    m.lines = [];
+                                m.lines.push($root.E2E.Message.MusicMessage.Lyrics.Line.decode(r, r.size(), $undefined, q + 1));
+                                continue;
+                            }
+                        }
+                        r.skipType(u, q, t);
+                        if (!r.discardUnknown) {
+                            $util.makeProp(m, "$unknowns", false);
+                            (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                        }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
+                    }
+                    if (z !== $undefined)
+                        throw $Error("missing end group");
+                    return m;
+                };
+
+                Lyrics.fromObject = function (d, q) {
+                    if (d instanceof $root.E2E.Message.MusicMessage.Lyrics)
+                        return d;
+                    if (!$util.isObject(d))
+                        throw $TypeError(".E2E.Message.MusicMessage.Lyrics: object expected");
+                    if (q === $undefined)
+                        q = 0;
+                    if (q > $util.recursionLimit)
+                        throw $Error("max depth exceeded");
+                    var m = new $root.E2E.Message.MusicMessage.Lyrics();
+                    if (d.lines) {
+                        if (!$Array.isArray(d.lines))
+                            throw $TypeError(".E2E.Message.MusicMessage.Lyrics.lines: array expected");
+                        m.lines = $Array(d.lines.length);
+                        for (var i = 0; i < d.lines.length; ++i) {
+                            if (!$util.isObject(d.lines[i]))
+                                throw $TypeError(".E2E.Message.MusicMessage.Lyrics.lines: object expected");
+                            m.lines[i] = $root.E2E.Message.MusicMessage.Lyrics.Line.fromObject(d.lines[i], q + 1);
+                        }
+                    }
+                    return m;
+                };
+
+                Lyrics.toObject = function (m, o, q) {
+                    if (!o)
+                        o = {};
+                    if (q === $undefined)
+                        q = 0;
+                    if (q > $util.recursionLimit)
+                        throw $Error("max depth exceeded");
+                    var d = {};
+                    if (o.arrays || o.defaults) {
+                        d.lines = [];
+                    }
+                    if (m.lines && m.lines.length) {
+                        d.lines = $Array(m.lines.length);
+                        for (var j = 0; j < m.lines.length; ++j) {
+                            d.lines[j] = $root.E2E.Message.MusicMessage.Lyrics.Line.toObject(m.lines[j], o, q + 1);
+                        }
+                    }
+                    return d;
+                };
+
+                Lyrics.prototype.toJSON = function() {
+                    return Lyrics.toObject(this, $protobuf.util.toJSONOptions);
+                };
+
+                Lyrics.getTypeUrl = function(prefix) {
+                    if (prefix === $undefined)
+                        prefix = "type.googleapis.com";
+                    return prefix + "/E2E.Message.MusicMessage.Lyrics";
+                };
+
+                Lyrics.Line = (function() {
+
+                    const Line = function (p) {
+                        if (p)
+                            for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                                if (p[ks[i]] != null && ks[i] !== "__proto__")
+                                    this[ks[i]] = p[ks[i]];
+                    };
+
+                    Line.prototype.startTimeInMs = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+                    Line.prototype.endTimeInMs = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+                    Line.prototype.text = "";
+
+                    Line.create = function(properties) {
+                        return new Line(properties);
+                    };
+
+                    Line.encode = function (m, w, q) {
+                        if (!w)
+                            w = $Writer.create();
+                        if (q === $undefined)
+                            q = 0;
+                        if (q > $util.recursionLimit)
+                            throw $Error("max depth exceeded");
+                        if (m.startTimeInMs != null && $Object.hasOwnProperty.call(m, "startTimeInMs"))
+                            w.uint32(8).int64(m.startTimeInMs);
+                        if (m.endTimeInMs != null && $Object.hasOwnProperty.call(m, "endTimeInMs"))
+                            w.uint32(16).int64(m.endTimeInMs);
+                        if (m.text != null && $Object.hasOwnProperty.call(m, "text"))
+                            w.uint32(26).string(m.text);
+                        if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                            for (var i = 0; i < m.$unknowns.length; ++i)
+                                w.raw(m.$unknowns[i]);
+                        return w;
+                    };
+
+                    Line.decode = function (r, l, z, q, g) {
+                        if (!(r instanceof $Reader))
+                            r = $Reader.create(r);
+                        if (q === $undefined)
+                            q = 0;
+                        if (q > $Reader.recursionLimit)
+                            throw $Error("max depth exceeded");
+                        var c, m;
+                        if (l === $undefined)
+                            c = r.len;
+                        else {
+                            c = r.pos + l;
+                            if (c > r.len)
+                                throw $RangeError("index out of range");
+                            l = r.len;
+                            r.len = c;
+                        }
+                        m = g || new $root.E2E.Message.MusicMessage.Lyrics.Line();
+                        while (r.pos < c) {
+                            var s = r.pos;
+                            var t = r.tag();
+                            if (t === z) {
+                                z = $undefined;
+                                break;
+                            }
+                            var u = t & 7;
+                            switch (t >>>= 3) {
+                            case 1: {
+                                    if (u !== 0)
+                                        break;
+                                    m.startTimeInMs = r.int64();
+                                    continue;
+                                }
+                            case 2: {
+                                    if (u !== 0)
+                                        break;
+                                    m.endTimeInMs = r.int64();
+                                    continue;
+                                }
+                            case 3: {
+                                    if (u !== 2)
+                                        break;
+                                    m.text = r.string();
+                                    continue;
+                                }
+                            }
+                            r.skipType(u, q, t);
+                            if (!r.discardUnknown) {
+                                $util.makeProp(m, "$unknowns", false);
+                                (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                            }
+                        }
+                        if (l !== $undefined) {
+                            if (r.pos !== c)
+                                throw $RangeError("index out of range");
+                            r.len = l;
+                        }
+                        if (z !== $undefined)
+                            throw $Error("missing end group");
+                        return m;
+                    };
+
+                    Line.fromObject = function (d, q) {
+                        if (d instanceof $root.E2E.Message.MusicMessage.Lyrics.Line)
+                            return d;
+                        if (!$util.isObject(d))
+                            throw $TypeError(".E2E.Message.MusicMessage.Lyrics.Line: object expected");
+                        if (q === $undefined)
+                            q = 0;
+                        if (q > $util.recursionLimit)
+                            throw $Error("max depth exceeded");
+                        var m = new $root.E2E.Message.MusicMessage.Lyrics.Line();
+                        if (d.startTimeInMs != null) {
+                            if ($util.Long)
+                                m.startTimeInMs = $util.Long.fromValue(d.startTimeInMs, false);
+                            else if (typeof d.startTimeInMs === "string")
+                                m.startTimeInMs = $parseInt(d.startTimeInMs, 10);
+                            else if (typeof d.startTimeInMs === "number")
+                                m.startTimeInMs = d.startTimeInMs;
+                            else if (typeof d.startTimeInMs === "object")
+                                m.startTimeInMs = new $util.LongBits(d.startTimeInMs.low >>> 0, d.startTimeInMs.high >>> 0).toNumber();
+                        }
+                        if (d.endTimeInMs != null) {
+                            if ($util.Long)
+                                m.endTimeInMs = $util.Long.fromValue(d.endTimeInMs, false);
+                            else if (typeof d.endTimeInMs === "string")
+                                m.endTimeInMs = $parseInt(d.endTimeInMs, 10);
+                            else if (typeof d.endTimeInMs === "number")
+                                m.endTimeInMs = d.endTimeInMs;
+                            else if (typeof d.endTimeInMs === "object")
+                                m.endTimeInMs = new $util.LongBits(d.endTimeInMs.low >>> 0, d.endTimeInMs.high >>> 0).toNumber();
+                        }
+                        if (d.text != null) {
+                            m.text = $String(d.text);
+                        }
+                        return m;
+                    };
+
+                    Line.toObject = function (m, o, q) {
+                        if (!o)
+                            o = {};
+                        if (q === $undefined)
+                            q = 0;
+                        if (q > $util.recursionLimit)
+                            throw $Error("max depth exceeded");
+                        var d = {};
+                        if (o.defaults) {
+                            if ($util.Long) {
+                                var n = new $util.Long(0, 0, false);
+                                d.startTimeInMs = o.longs === $String ? n.toString() : o.longs === $Number ? n.toNumber() : typeof $BigInt !== "undefined" && o.longs === $BigInt ? n.toBigInt() : n;
+                            } else
+                                d.startTimeInMs = o.longs === $String ? "0" : typeof $BigInt !== "undefined" && o.longs === $BigInt ? $BigInt("0") : 0;
+                            if ($util.Long) {
+                                var n = new $util.Long(0, 0, false);
+                                d.endTimeInMs = o.longs === $String ? n.toString() : o.longs === $Number ? n.toNumber() : typeof $BigInt !== "undefined" && o.longs === $BigInt ? n.toBigInt() : n;
+                            } else
+                                d.endTimeInMs = o.longs === $String ? "0" : typeof $BigInt !== "undefined" && o.longs === $BigInt ? $BigInt("0") : 0;
+                            d.text = "";
+                        }
+                        if (m.startTimeInMs != null && $Object.hasOwnProperty.call(m, "startTimeInMs")) {
+                            if (typeof $BigInt !== "undefined" && o.longs === $BigInt)
+                                d.startTimeInMs = typeof m.startTimeInMs === "number" ? $BigInt(m.startTimeInMs) : $util.Long.fromBits(m.startTimeInMs.low >>> 0, m.startTimeInMs.high >>> 0, false).toBigInt();
+                            else if (typeof m.startTimeInMs === "number")
+                                d.startTimeInMs = o.longs === $String ? $String(m.startTimeInMs) : m.startTimeInMs;
+                            else
+                                d.startTimeInMs = o.longs === String ? longToString(m.startTimeInMs) : o.longs === Number ? longToNumber(m.startTimeInMs) : m.startTimeInMs;
+                        }
+                        if (m.endTimeInMs != null && $Object.hasOwnProperty.call(m, "endTimeInMs")) {
+                            if (typeof $BigInt !== "undefined" && o.longs === $BigInt)
+                                d.endTimeInMs = typeof m.endTimeInMs === "number" ? $BigInt(m.endTimeInMs) : $util.Long.fromBits(m.endTimeInMs.low >>> 0, m.endTimeInMs.high >>> 0, false).toBigInt();
+                            else if (typeof m.endTimeInMs === "number")
+                                d.endTimeInMs = o.longs === $String ? $String(m.endTimeInMs) : m.endTimeInMs;
+                            else
+                                d.endTimeInMs = o.longs === String ? longToString(m.endTimeInMs) : o.longs === Number ? longToNumber(m.endTimeInMs) : m.endTimeInMs;
+                        }
+                        if (m.text != null && $Object.hasOwnProperty.call(m, "text")) {
+                            d.text = m.text;
+                        }
+                        return d;
+                    };
+
+                    Line.prototype.toJSON = function() {
+                        return Line.toObject(this, $protobuf.util.toJSONOptions);
+                    };
+
+                    Line.getTypeUrl = function(prefix) {
+                        if (prefix === $undefined)
+                            prefix = "type.googleapis.com";
+                        return prefix + "/E2E.Message.MusicMessage.Lyrics.Line";
+                    };
+
+                    return Line;
+                })();
+
+                return Lyrics;
+            })();
 
             MusicMessage.MusicMessageStyle = (function() {
                 const valuesById = $Object.create(null), values = $Object.create(valuesById);
@@ -87131,6 +87564,7 @@ export const CompanionReg = $root.CompanionReg = (() => {
         ClientPairingProps.prototype.isHsThumbnailSyncEnabled = false;
         ClientPairingProps.prototype.subscriptionSyncPayload = $util.newBuffer([]);
         ClientPairingProps.prototype.isBotJidDbMigrated = false;
+        ClientPairingProps.prototype.companionAddPeerPayload = $util.newBuffer([]);
 
         ClientPairingProps.create = function(properties) {
             return new ClientPairingProps(properties);
@@ -87155,6 +87589,8 @@ export const CompanionReg = $root.CompanionReg = (() => {
                 w.uint32(42).bytes(m.subscriptionSyncPayload);
             if (m.isBotJidDbMigrated != null && $Object.hasOwnProperty.call(m, "isBotJidDbMigrated"))
                 w.uint32(48).bool(m.isBotJidDbMigrated);
+            if (m.companionAddPeerPayload != null && $Object.hasOwnProperty.call(m, "companionAddPeerPayload"))
+                w.uint32(58).bytes(m.companionAddPeerPayload);
             if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                 for (var i = 0; i < m.$unknowns.length; ++i)
                     w.raw(m.$unknowns[i]);
@@ -87224,6 +87660,12 @@ export const CompanionReg = $root.CompanionReg = (() => {
                         m.isBotJidDbMigrated = r.bool();
                         continue;
                     }
+                case 7: {
+                        if (u !== 2)
+                            break;
+                        m.companionAddPeerPayload = r.bytes();
+                        continue;
+                    }
                 }
                 r.skipType(u, q, t);
                 if (!r.discardUnknown) {
@@ -87272,6 +87714,12 @@ export const CompanionReg = $root.CompanionReg = (() => {
             if (d.isBotJidDbMigrated != null) {
                 m.isBotJidDbMigrated = $Boolean(d.isBotJidDbMigrated);
             }
+            if (d.companionAddPeerPayload != null) {
+                if (typeof d.companionAddPeerPayload === "string")
+                    $util.base64.decode(d.companionAddPeerPayload, m.companionAddPeerPayload = $util.newBuffer($util.base64.length(d.companionAddPeerPayload)), 0);
+                else if (d.companionAddPeerPayload.length >= 0)
+                    m.companionAddPeerPayload = d.companionAddPeerPayload;
+            }
             return m;
         };
 
@@ -87296,6 +87744,13 @@ export const CompanionReg = $root.CompanionReg = (() => {
                         d.subscriptionSyncPayload = $util.newBuffer(d.subscriptionSyncPayload);
                 }
                 d.isBotJidDbMigrated = false;
+                if (o.bytes === $String)
+                    d.companionAddPeerPayload = "";
+                else {
+                    d.companionAddPeerPayload = [];
+                    if (o.bytes !== $Array)
+                        d.companionAddPeerPayload = $util.newBuffer(d.companionAddPeerPayload);
+                }
             }
             if (m.isChatDbLidMigrated != null && $Object.hasOwnProperty.call(m, "isChatDbLidMigrated")) {
                 d.isChatDbLidMigrated = m.isChatDbLidMigrated;
@@ -87314,6 +87769,9 @@ export const CompanionReg = $root.CompanionReg = (() => {
             }
             if (m.isBotJidDbMigrated != null && $Object.hasOwnProperty.call(m, "isBotJidDbMigrated")) {
                 d.isBotJidDbMigrated = m.isBotJidDbMigrated;
+            }
+            if (m.companionAddPeerPayload != null && $Object.hasOwnProperty.call(m, "companionAddPeerPayload")) {
+                d.companionAddPeerPayload = o.bytes === $String ? $util.base64.encode(m.companionAddPeerPayload, 0, m.companionAddPeerPayload.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.companionAddPeerPayload) : m.companionAddPeerPayload;
             }
             return d;
         };
@@ -88968,7 +89426,7 @@ export const CompanionReg = $root.CompanionReg = (() => {
             HistorySyncConfig.prototype.supportInlineContacts = false;
             HistorySyncConfig.prototype.supportNewsletter = false;
             HistorySyncConfig.prototype.supportUniversalReachChat = false;
-            HistorySyncConfig.prototype.supportOmittedConversationIndex = false;
+            HistorySyncConfig.prototype.supportOmittedConversationMetadata = false;
 
             HistorySyncConfig.create = function(properties) {
                 return new HistorySyncConfig(properties);
@@ -89035,8 +89493,8 @@ export const CompanionReg = $root.CompanionReg = (() => {
                     w.uint32(200).bool(m.supportNewsletter);
                 if (m.supportUniversalReachChat != null && $Object.hasOwnProperty.call(m, "supportUniversalReachChat"))
                     w.uint32(208).bool(m.supportUniversalReachChat);
-                if (m.supportOmittedConversationIndex != null && $Object.hasOwnProperty.call(m, "supportOmittedConversationIndex"))
-                    w.uint32(216).bool(m.supportOmittedConversationIndex);
+                if (m.supportOmittedConversationMetadata != null && $Object.hasOwnProperty.call(m, "supportOmittedConversationMetadata"))
+                    w.uint32(224).bool(m.supportOmittedConversationMetadata);
                 if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                     for (var i = 0; i < m.$unknowns.length; ++i)
                         w.raw(m.$unknowns[i]);
@@ -89228,10 +89686,10 @@ export const CompanionReg = $root.CompanionReg = (() => {
                             m.supportUniversalReachChat = r.bool();
                             continue;
                         }
-                    case 27: {
+                    case 28: {
                             if (u !== 0)
                                 break;
-                            m.supportOmittedConversationIndex = r.bool();
+                            m.supportOmittedConversationMetadata = r.bool();
                             continue;
                         }
                     }
@@ -89344,8 +89802,8 @@ export const CompanionReg = $root.CompanionReg = (() => {
                 if (d.supportUniversalReachChat != null) {
                     m.supportUniversalReachChat = $Boolean(d.supportUniversalReachChat);
                 }
-                if (d.supportOmittedConversationIndex != null) {
-                    m.supportOmittedConversationIndex = $Boolean(d.supportOmittedConversationIndex);
+                if (d.supportOmittedConversationMetadata != null) {
+                    m.supportOmittedConversationMetadata = $Boolean(d.supportOmittedConversationMetadata);
                 }
                 return m;
             };
@@ -89387,7 +89845,7 @@ export const CompanionReg = $root.CompanionReg = (() => {
                     d.supportInlineContacts = false;
                     d.supportNewsletter = false;
                     d.supportUniversalReachChat = false;
-                    d.supportOmittedConversationIndex = false;
+                    d.supportOmittedConversationMetadata = false;
                 }
                 if (m.fullSyncDaysLimit != null && $Object.hasOwnProperty.call(m, "fullSyncDaysLimit")) {
                     d.fullSyncDaysLimit = m.fullSyncDaysLimit;
@@ -89470,8 +89928,8 @@ export const CompanionReg = $root.CompanionReg = (() => {
                 if (m.supportUniversalReachChat != null && $Object.hasOwnProperty.call(m, "supportUniversalReachChat")) {
                     d.supportUniversalReachChat = m.supportUniversalReachChat;
                 }
-                if (m.supportOmittedConversationIndex != null && $Object.hasOwnProperty.call(m, "supportOmittedConversationIndex")) {
-                    d.supportOmittedConversationIndex = m.supportOmittedConversationIndex;
+                if (m.supportOmittedConversationMetadata != null && $Object.hasOwnProperty.call(m, "supportOmittedConversationMetadata")) {
+                    d.supportOmittedConversationMetadata = m.supportOmittedConversationMetadata;
                 }
                 return d;
             };

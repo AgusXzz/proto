@@ -2017,6 +2017,8 @@ export const MdStorageMsgRowOpaqueData = $root.MdStorageMsgRowOpaqueData = (() =
             PollOption.prototype.name = "";
             PollOption.prototype.hash = "";
             PollOption.prototype.addOptionMsgKey = "";
+            PollOption.prototype.localId = 0;
+            PollOption.prototype.addOptionMsgT = 0;
 
             PollOption.create = function(properties) {
                 return new PollOption(properties);
@@ -2035,6 +2037,10 @@ export const MdStorageMsgRowOpaqueData = $root.MdStorageMsgRowOpaqueData = (() =
                     w.uint32(18).string(m.hash);
                 if (m.addOptionMsgKey != null && $Object.hasOwnProperty.call(m, "addOptionMsgKey"))
                     w.uint32(26).string(m.addOptionMsgKey);
+                if (m.localId != null && $Object.hasOwnProperty.call(m, "localId"))
+                    w.uint32(32).uint32(m.localId);
+                if (m.addOptionMsgT != null && $Object.hasOwnProperty.call(m, "addOptionMsgT"))
+                    w.uint32(40).uint32(m.addOptionMsgT);
                 if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                     for (var i = 0; i < m.$unknowns.length; ++i)
                         w.raw(m.$unknowns[i]);
@@ -2086,6 +2092,18 @@ export const MdStorageMsgRowOpaqueData = $root.MdStorageMsgRowOpaqueData = (() =
                             m.addOptionMsgKey = r.string();
                             continue;
                         }
+                    case 4: {
+                            if (u !== 0)
+                                break;
+                            m.localId = r.uint32();
+                            continue;
+                        }
+                    case 5: {
+                            if (u !== 0)
+                                break;
+                            m.addOptionMsgT = r.uint32();
+                            continue;
+                        }
                     }
                     r.skipType(u, q, t);
                     if (!r.discardUnknown) {
@@ -2122,6 +2140,12 @@ export const MdStorageMsgRowOpaqueData = $root.MdStorageMsgRowOpaqueData = (() =
                 if (d.addOptionMsgKey != null) {
                     m.addOptionMsgKey = $String(d.addOptionMsgKey);
                 }
+                if (d.localId != null) {
+                    m.localId = d.localId >>> 0;
+                }
+                if (d.addOptionMsgT != null) {
+                    m.addOptionMsgT = d.addOptionMsgT >>> 0;
+                }
                 return m;
             };
 
@@ -2137,6 +2161,8 @@ export const MdStorageMsgRowOpaqueData = $root.MdStorageMsgRowOpaqueData = (() =
                     d.name = "";
                     d.hash = "";
                     d.addOptionMsgKey = "";
+                    d.localId = 0;
+                    d.addOptionMsgT = 0;
                 }
                 if (m.name != null && $Object.hasOwnProperty.call(m, "name")) {
                     d.name = m.name;
@@ -2146,6 +2172,12 @@ export const MdStorageMsgRowOpaqueData = $root.MdStorageMsgRowOpaqueData = (() =
                 }
                 if (m.addOptionMsgKey != null && $Object.hasOwnProperty.call(m, "addOptionMsgKey")) {
                     d.addOptionMsgKey = m.addOptionMsgKey;
+                }
+                if (m.localId != null && $Object.hasOwnProperty.call(m, "localId")) {
+                    d.localId = m.localId;
+                }
+                if (m.addOptionMsgT != null && $Object.hasOwnProperty.call(m, "addOptionMsgT")) {
+                    d.addOptionMsgT = m.addOptionMsgT;
                 }
                 return d;
             };

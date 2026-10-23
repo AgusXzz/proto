@@ -62,6 +62,7 @@ export const CompanionReg = $root.CompanionReg = (() => {
         ClientPairingProps.prototype.isHsThumbnailSyncEnabled = false;
         ClientPairingProps.prototype.subscriptionSyncPayload = $util.newBuffer([]);
         ClientPairingProps.prototype.isBotJidDbMigrated = false;
+        ClientPairingProps.prototype.companionAddPeerPayload = $util.newBuffer([]);
 
         ClientPairingProps.create = function(properties) {
             return new ClientPairingProps(properties);
@@ -86,6 +87,8 @@ export const CompanionReg = $root.CompanionReg = (() => {
                 w.uint32(42).bytes(m.subscriptionSyncPayload);
             if (m.isBotJidDbMigrated != null && $Object.hasOwnProperty.call(m, "isBotJidDbMigrated"))
                 w.uint32(48).bool(m.isBotJidDbMigrated);
+            if (m.companionAddPeerPayload != null && $Object.hasOwnProperty.call(m, "companionAddPeerPayload"))
+                w.uint32(58).bytes(m.companionAddPeerPayload);
             if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                 for (var i = 0; i < m.$unknowns.length; ++i)
                     w.raw(m.$unknowns[i]);
@@ -155,6 +158,12 @@ export const CompanionReg = $root.CompanionReg = (() => {
                         m.isBotJidDbMigrated = r.bool();
                         continue;
                     }
+                case 7: {
+                        if (u !== 2)
+                            break;
+                        m.companionAddPeerPayload = r.bytes();
+                        continue;
+                    }
                 }
                 r.skipType(u, q, t);
                 if (!r.discardUnknown) {
@@ -203,6 +212,12 @@ export const CompanionReg = $root.CompanionReg = (() => {
             if (d.isBotJidDbMigrated != null) {
                 m.isBotJidDbMigrated = $Boolean(d.isBotJidDbMigrated);
             }
+            if (d.companionAddPeerPayload != null) {
+                if (typeof d.companionAddPeerPayload === "string")
+                    $util.base64.decode(d.companionAddPeerPayload, m.companionAddPeerPayload = $util.newBuffer($util.base64.length(d.companionAddPeerPayload)), 0);
+                else if (d.companionAddPeerPayload.length >= 0)
+                    m.companionAddPeerPayload = d.companionAddPeerPayload;
+            }
             return m;
         };
 
@@ -227,6 +242,13 @@ export const CompanionReg = $root.CompanionReg = (() => {
                         d.subscriptionSyncPayload = $util.newBuffer(d.subscriptionSyncPayload);
                 }
                 d.isBotJidDbMigrated = false;
+                if (o.bytes === $String)
+                    d.companionAddPeerPayload = "";
+                else {
+                    d.companionAddPeerPayload = [];
+                    if (o.bytes !== $Array)
+                        d.companionAddPeerPayload = $util.newBuffer(d.companionAddPeerPayload);
+                }
             }
             if (m.isChatDbLidMigrated != null && $Object.hasOwnProperty.call(m, "isChatDbLidMigrated")) {
                 d.isChatDbLidMigrated = m.isChatDbLidMigrated;
@@ -245,6 +267,9 @@ export const CompanionReg = $root.CompanionReg = (() => {
             }
             if (m.isBotJidDbMigrated != null && $Object.hasOwnProperty.call(m, "isBotJidDbMigrated")) {
                 d.isBotJidDbMigrated = m.isBotJidDbMigrated;
+            }
+            if (m.companionAddPeerPayload != null && $Object.hasOwnProperty.call(m, "companionAddPeerPayload")) {
+                d.companionAddPeerPayload = o.bytes === $String ? $util.base64.encode(m.companionAddPeerPayload, 0, m.companionAddPeerPayload.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.companionAddPeerPayload) : m.companionAddPeerPayload;
             }
             return d;
         };
@@ -1899,7 +1924,7 @@ export const CompanionReg = $root.CompanionReg = (() => {
             HistorySyncConfig.prototype.supportInlineContacts = false;
             HistorySyncConfig.prototype.supportNewsletter = false;
             HistorySyncConfig.prototype.supportUniversalReachChat = false;
-            HistorySyncConfig.prototype.supportOmittedConversationIndex = false;
+            HistorySyncConfig.prototype.supportOmittedConversationMetadata = false;
 
             HistorySyncConfig.create = function(properties) {
                 return new HistorySyncConfig(properties);
@@ -1966,8 +1991,8 @@ export const CompanionReg = $root.CompanionReg = (() => {
                     w.uint32(200).bool(m.supportNewsletter);
                 if (m.supportUniversalReachChat != null && $Object.hasOwnProperty.call(m, "supportUniversalReachChat"))
                     w.uint32(208).bool(m.supportUniversalReachChat);
-                if (m.supportOmittedConversationIndex != null && $Object.hasOwnProperty.call(m, "supportOmittedConversationIndex"))
-                    w.uint32(216).bool(m.supportOmittedConversationIndex);
+                if (m.supportOmittedConversationMetadata != null && $Object.hasOwnProperty.call(m, "supportOmittedConversationMetadata"))
+                    w.uint32(224).bool(m.supportOmittedConversationMetadata);
                 if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                     for (var i = 0; i < m.$unknowns.length; ++i)
                         w.raw(m.$unknowns[i]);
@@ -2159,10 +2184,10 @@ export const CompanionReg = $root.CompanionReg = (() => {
                             m.supportUniversalReachChat = r.bool();
                             continue;
                         }
-                    case 27: {
+                    case 28: {
                             if (u !== 0)
                                 break;
-                            m.supportOmittedConversationIndex = r.bool();
+                            m.supportOmittedConversationMetadata = r.bool();
                             continue;
                         }
                     }
@@ -2275,8 +2300,8 @@ export const CompanionReg = $root.CompanionReg = (() => {
                 if (d.supportUniversalReachChat != null) {
                     m.supportUniversalReachChat = $Boolean(d.supportUniversalReachChat);
                 }
-                if (d.supportOmittedConversationIndex != null) {
-                    m.supportOmittedConversationIndex = $Boolean(d.supportOmittedConversationIndex);
+                if (d.supportOmittedConversationMetadata != null) {
+                    m.supportOmittedConversationMetadata = $Boolean(d.supportOmittedConversationMetadata);
                 }
                 return m;
             };
@@ -2318,7 +2343,7 @@ export const CompanionReg = $root.CompanionReg = (() => {
                     d.supportInlineContacts = false;
                     d.supportNewsletter = false;
                     d.supportUniversalReachChat = false;
-                    d.supportOmittedConversationIndex = false;
+                    d.supportOmittedConversationMetadata = false;
                 }
                 if (m.fullSyncDaysLimit != null && $Object.hasOwnProperty.call(m, "fullSyncDaysLimit")) {
                     d.fullSyncDaysLimit = m.fullSyncDaysLimit;
@@ -2401,8 +2426,8 @@ export const CompanionReg = $root.CompanionReg = (() => {
                 if (m.supportUniversalReachChat != null && $Object.hasOwnProperty.call(m, "supportUniversalReachChat")) {
                     d.supportUniversalReachChat = m.supportUniversalReachChat;
                 }
-                if (m.supportOmittedConversationIndex != null && $Object.hasOwnProperty.call(m, "supportOmittedConversationIndex")) {
-                    d.supportOmittedConversationIndex = m.supportOmittedConversationIndex;
+                if (m.supportOmittedConversationMetadata != null && $Object.hasOwnProperty.call(m, "supportOmittedConversationMetadata")) {
+                    d.supportOmittedConversationMetadata = m.supportOmittedConversationMetadata;
                 }
                 return d;
             };
