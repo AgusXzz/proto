@@ -13779,6 +13779,7 @@ export const E2E = $root.E2E = (() => {
             this.groupMentions = [];
             this.statusAttributions = [];
             this.experienceIds = [];
+            this.sourceExperienceIds = [];
             if (p)
                 for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
                     if (p[ks[i]] != null && ks[i] !== "__proto__")
@@ -13852,6 +13853,7 @@ export const E2E = $root.E2E = (() => {
         ContextInfo.prototype.experienceIds = $util.emptyArray;
         ContextInfo.prototype.partnerDeepLinkToken = "";
         ContextInfo.prototype.sourceExperienceId = 0;
+        ContextInfo.prototype.sourceExperienceIds = $util.emptyArray;
 
         ContextInfo.create = function(properties) {
             return new ContextInfo(properties);
@@ -14005,6 +14007,9 @@ export const E2E = $root.E2E = (() => {
                 w.uint32(666).string(m.partnerDeepLinkToken);
             if (m.sourceExperienceId != null && $Object.hasOwnProperty.call(m, "sourceExperienceId"))
                 w.uint32(672).uint32(m.sourceExperienceId);
+            if (m.sourceExperienceIds != null && m.sourceExperienceIds.length) {
+                w.uint32(682).uint32s(m.sourceExperienceIds);
+            }
             if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                 for (var i = 0; i < m.$unknowns.length; ++i)
                     w.raw(m.$unknowns[i]);
@@ -14490,6 +14495,20 @@ export const E2E = $root.E2E = (() => {
                         m.sourceExperienceId = r.uint32();
                         continue;
                     }
+                case 85: {
+                        if (u === 2) {
+                            if (!(m.sourceExperienceIds && m.sourceExperienceIds.length))
+                                m.sourceExperienceIds = [];
+                            r.uint32s(m.sourceExperienceIds);
+                            continue;
+                        }
+                        if (u !== 0)
+                            break;
+                        if (!(m.sourceExperienceIds && m.sourceExperienceIds.length))
+                            m.sourceExperienceIds = [];
+                        m.sourceExperienceIds.push(r.uint32());
+                        continue;
+                    }
                 }
                 r.skipType(u, q, t);
                 if (!r.discardUnknown) {
@@ -14942,6 +14961,14 @@ export const E2E = $root.E2E = (() => {
             if (d.sourceExperienceId != null) {
                 m.sourceExperienceId = d.sourceExperienceId >>> 0;
             }
+            if (d.sourceExperienceIds) {
+                if (!$Array.isArray(d.sourceExperienceIds))
+                    throw $TypeError(".E2E.ContextInfo.sourceExperienceIds: array expected");
+                m.sourceExperienceIds = $Array(d.sourceExperienceIds.length);
+                for (var i = 0; i < d.sourceExperienceIds.length; ++i) {
+                    m.sourceExperienceIds[i] = d.sourceExperienceIds[i] >>> 0;
+                }
+            }
             return m;
         };
 
@@ -14958,6 +14985,7 @@ export const E2E = $root.E2E = (() => {
                 d.groupMentions = [];
                 d.statusAttributions = [];
                 d.experienceIds = [];
+                d.sourceExperienceIds = [];
             }
             if (o.defaults) {
                 d.stanzaId = "";
@@ -15263,6 +15291,12 @@ export const E2E = $root.E2E = (() => {
             }
             if (m.sourceExperienceId != null && $Object.hasOwnProperty.call(m, "sourceExperienceId")) {
                 d.sourceExperienceId = m.sourceExperienceId;
+            }
+            if (m.sourceExperienceIds && m.sourceExperienceIds.length) {
+                d.sourceExperienceIds = $Array(m.sourceExperienceIds.length);
+                for (var j = 0; j < m.sourceExperienceIds.length; ++j) {
+                    d.sourceExperienceIds[j] = m.sourceExperienceIds[j];
+                }
             }
             return d;
         };
@@ -41754,6 +41788,7 @@ export const E2E = $root.E2E = (() => {
                 Lyrics.Line = (function() {
 
                     const Line = function (p) {
+                        this.wordOffsets = [];
                         if (p)
                             for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
                                 if (p[ks[i]] != null && ks[i] !== "__proto__")
@@ -41763,6 +41798,7 @@ export const E2E = $root.E2E = (() => {
                     Line.prototype.startTimeInMs = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
                     Line.prototype.endTimeInMs = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
                     Line.prototype.text = "";
+                    Line.prototype.wordOffsets = $util.emptyArray;
 
                     Line.create = function(properties) {
                         return new Line(properties);
@@ -41781,6 +41817,10 @@ export const E2E = $root.E2E = (() => {
                             w.uint32(16).int64(m.endTimeInMs);
                         if (m.text != null && $Object.hasOwnProperty.call(m, "text"))
                             w.uint32(26).string(m.text);
+                        if (m.wordOffsets != null && m.wordOffsets.length) {
+                            for (var i = 0; i < m.wordOffsets.length; ++i)
+                                $root.E2E.Message.MusicMessage.Lyrics.Line.WordOffset.encode(m.wordOffsets[i], w.uint32(34).fork(), q + 1).ldelim();
+                        }
                         if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                             for (var i = 0; i < m.$unknowns.length; ++i)
                                 w.raw(m.$unknowns[i]);
@@ -41830,6 +41870,14 @@ export const E2E = $root.E2E = (() => {
                                     if (u !== 2)
                                         break;
                                     m.text = r.string();
+                                    continue;
+                                }
+                            case 4: {
+                                    if (u !== 2)
+                                        break;
+                                    if (!(m.wordOffsets && m.wordOffsets.length))
+                                        m.wordOffsets = [];
+                                    m.wordOffsets.push($root.E2E.Message.MusicMessage.Lyrics.Line.WordOffset.decode(r, r.size(), $undefined, q + 1));
                                     continue;
                                 }
                             }
@@ -41882,6 +41930,16 @@ export const E2E = $root.E2E = (() => {
                         if (d.text != null) {
                             m.text = $String(d.text);
                         }
+                        if (d.wordOffsets) {
+                            if (!$Array.isArray(d.wordOffsets))
+                                throw $TypeError(".E2E.Message.MusicMessage.Lyrics.Line.wordOffsets: array expected");
+                            m.wordOffsets = $Array(d.wordOffsets.length);
+                            for (var i = 0; i < d.wordOffsets.length; ++i) {
+                                if (!$util.isObject(d.wordOffsets[i]))
+                                    throw $TypeError(".E2E.Message.MusicMessage.Lyrics.Line.wordOffsets: object expected");
+                                m.wordOffsets[i] = $root.E2E.Message.MusicMessage.Lyrics.Line.WordOffset.fromObject(d.wordOffsets[i], q + 1);
+                            }
+                        }
                         return m;
                     };
 
@@ -41893,6 +41951,9 @@ export const E2E = $root.E2E = (() => {
                         if (q > $util.recursionLimit)
                             throw $Error("max depth exceeded");
                         var d = {};
+                        if (o.arrays || o.defaults) {
+                            d.wordOffsets = [];
+                        }
                         if (o.defaults) {
                             if ($util.Long) {
                                 var n = new $util.Long(0, 0, false);
@@ -41925,6 +41986,12 @@ export const E2E = $root.E2E = (() => {
                         if (m.text != null && $Object.hasOwnProperty.call(m, "text")) {
                             d.text = m.text;
                         }
+                        if (m.wordOffsets && m.wordOffsets.length) {
+                            d.wordOffsets = $Array(m.wordOffsets.length);
+                            for (var j = 0; j < m.wordOffsets.length; ++j) {
+                                d.wordOffsets[j] = $root.E2E.Message.MusicMessage.Lyrics.Line.WordOffset.toObject(m.wordOffsets[j], o, q + 1);
+                            }
+                        }
                         return d;
                     };
 
@@ -41937,6 +42004,212 @@ export const E2E = $root.E2E = (() => {
                             prefix = "type.googleapis.com";
                         return prefix + "/E2E.Message.MusicMessage.Lyrics.Line";
                     };
+
+                    Line.WordOffset = (function() {
+
+                        const WordOffset = function (p) {
+                            if (p)
+                                for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                                    if (p[ks[i]] != null && ks[i] !== "__proto__")
+                                        this[ks[i]] = p[ks[i]];
+                        };
+
+                        WordOffset.prototype.startIndex = 0;
+                        WordOffset.prototype.endIndex = 0;
+                        WordOffset.prototype.startOffsetMs = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+                        WordOffset.prototype.endOffsetMs = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+
+                        WordOffset.create = function(properties) {
+                            return new WordOffset(properties);
+                        };
+
+                        WordOffset.encode = function (m, w, q) {
+                            if (!w)
+                                w = $Writer.create();
+                            if (q === $undefined)
+                                q = 0;
+                            if (q > $util.recursionLimit)
+                                throw $Error("max depth exceeded");
+                            if (m.startIndex != null && $Object.hasOwnProperty.call(m, "startIndex"))
+                                w.uint32(8).int32(m.startIndex);
+                            if (m.endIndex != null && $Object.hasOwnProperty.call(m, "endIndex"))
+                                w.uint32(16).int32(m.endIndex);
+                            if (m.startOffsetMs != null && $Object.hasOwnProperty.call(m, "startOffsetMs"))
+                                w.uint32(24).int64(m.startOffsetMs);
+                            if (m.endOffsetMs != null && $Object.hasOwnProperty.call(m, "endOffsetMs"))
+                                w.uint32(32).int64(m.endOffsetMs);
+                            if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                                for (var i = 0; i < m.$unknowns.length; ++i)
+                                    w.raw(m.$unknowns[i]);
+                            return w;
+                        };
+
+                        WordOffset.decode = function (r, l, z, q, g) {
+                            if (!(r instanceof $Reader))
+                                r = $Reader.create(r);
+                            if (q === $undefined)
+                                q = 0;
+                            if (q > $Reader.recursionLimit)
+                                throw $Error("max depth exceeded");
+                            var c, m;
+                            if (l === $undefined)
+                                c = r.len;
+                            else {
+                                c = r.pos + l;
+                                if (c > r.len)
+                                    throw $RangeError("index out of range");
+                                l = r.len;
+                                r.len = c;
+                            }
+                            m = g || new $root.E2E.Message.MusicMessage.Lyrics.Line.WordOffset();
+                            while (r.pos < c) {
+                                var s = r.pos;
+                                var t = r.tag();
+                                if (t === z) {
+                                    z = $undefined;
+                                    break;
+                                }
+                                var u = t & 7;
+                                switch (t >>>= 3) {
+                                case 1: {
+                                        if (u !== 0)
+                                            break;
+                                        m.startIndex = r.int32();
+                                        continue;
+                                    }
+                                case 2: {
+                                        if (u !== 0)
+                                            break;
+                                        m.endIndex = r.int32();
+                                        continue;
+                                    }
+                                case 3: {
+                                        if (u !== 0)
+                                            break;
+                                        m.startOffsetMs = r.int64();
+                                        continue;
+                                    }
+                                case 4: {
+                                        if (u !== 0)
+                                            break;
+                                        m.endOffsetMs = r.int64();
+                                        continue;
+                                    }
+                                }
+                                r.skipType(u, q, t);
+                                if (!r.discardUnknown) {
+                                    $util.makeProp(m, "$unknowns", false);
+                                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                                }
+                            }
+                            if (l !== $undefined) {
+                                if (r.pos !== c)
+                                    throw $RangeError("index out of range");
+                                r.len = l;
+                            }
+                            if (z !== $undefined)
+                                throw $Error("missing end group");
+                            return m;
+                        };
+
+                        WordOffset.fromObject = function (d, q) {
+                            if (d instanceof $root.E2E.Message.MusicMessage.Lyrics.Line.WordOffset)
+                                return d;
+                            if (!$util.isObject(d))
+                                throw $TypeError(".E2E.Message.MusicMessage.Lyrics.Line.WordOffset: object expected");
+                            if (q === $undefined)
+                                q = 0;
+                            if (q > $util.recursionLimit)
+                                throw $Error("max depth exceeded");
+                            var m = new $root.E2E.Message.MusicMessage.Lyrics.Line.WordOffset();
+                            if (d.startIndex != null) {
+                                m.startIndex = d.startIndex | 0;
+                            }
+                            if (d.endIndex != null) {
+                                m.endIndex = d.endIndex | 0;
+                            }
+                            if (d.startOffsetMs != null) {
+                                if ($util.Long)
+                                    m.startOffsetMs = $util.Long.fromValue(d.startOffsetMs, false);
+                                else if (typeof d.startOffsetMs === "string")
+                                    m.startOffsetMs = $parseInt(d.startOffsetMs, 10);
+                                else if (typeof d.startOffsetMs === "number")
+                                    m.startOffsetMs = d.startOffsetMs;
+                                else if (typeof d.startOffsetMs === "object")
+                                    m.startOffsetMs = new $util.LongBits(d.startOffsetMs.low >>> 0, d.startOffsetMs.high >>> 0).toNumber();
+                            }
+                            if (d.endOffsetMs != null) {
+                                if ($util.Long)
+                                    m.endOffsetMs = $util.Long.fromValue(d.endOffsetMs, false);
+                                else if (typeof d.endOffsetMs === "string")
+                                    m.endOffsetMs = $parseInt(d.endOffsetMs, 10);
+                                else if (typeof d.endOffsetMs === "number")
+                                    m.endOffsetMs = d.endOffsetMs;
+                                else if (typeof d.endOffsetMs === "object")
+                                    m.endOffsetMs = new $util.LongBits(d.endOffsetMs.low >>> 0, d.endOffsetMs.high >>> 0).toNumber();
+                            }
+                            return m;
+                        };
+
+                        WordOffset.toObject = function (m, o, q) {
+                            if (!o)
+                                o = {};
+                            if (q === $undefined)
+                                q = 0;
+                            if (q > $util.recursionLimit)
+                                throw $Error("max depth exceeded");
+                            var d = {};
+                            if (o.defaults) {
+                                d.startIndex = 0;
+                                d.endIndex = 0;
+                                if ($util.Long) {
+                                    var n = new $util.Long(0, 0, false);
+                                    d.startOffsetMs = o.longs === $String ? n.toString() : o.longs === $Number ? n.toNumber() : typeof $BigInt !== "undefined" && o.longs === $BigInt ? n.toBigInt() : n;
+                                } else
+                                    d.startOffsetMs = o.longs === $String ? "0" : typeof $BigInt !== "undefined" && o.longs === $BigInt ? $BigInt("0") : 0;
+                                if ($util.Long) {
+                                    var n = new $util.Long(0, 0, false);
+                                    d.endOffsetMs = o.longs === $String ? n.toString() : o.longs === $Number ? n.toNumber() : typeof $BigInt !== "undefined" && o.longs === $BigInt ? n.toBigInt() : n;
+                                } else
+                                    d.endOffsetMs = o.longs === $String ? "0" : typeof $BigInt !== "undefined" && o.longs === $BigInt ? $BigInt("0") : 0;
+                            }
+                            if (m.startIndex != null && $Object.hasOwnProperty.call(m, "startIndex")) {
+                                d.startIndex = m.startIndex;
+                            }
+                            if (m.endIndex != null && $Object.hasOwnProperty.call(m, "endIndex")) {
+                                d.endIndex = m.endIndex;
+                            }
+                            if (m.startOffsetMs != null && $Object.hasOwnProperty.call(m, "startOffsetMs")) {
+                                if (typeof $BigInt !== "undefined" && o.longs === $BigInt)
+                                    d.startOffsetMs = typeof m.startOffsetMs === "number" ? $BigInt(m.startOffsetMs) : $util.Long.fromBits(m.startOffsetMs.low >>> 0, m.startOffsetMs.high >>> 0, false).toBigInt();
+                                else if (typeof m.startOffsetMs === "number")
+                                    d.startOffsetMs = o.longs === $String ? $String(m.startOffsetMs) : m.startOffsetMs;
+                                else
+                                    d.startOffsetMs = o.longs === String ? longToString(m.startOffsetMs) : o.longs === Number ? longToNumber(m.startOffsetMs) : m.startOffsetMs;
+                            }
+                            if (m.endOffsetMs != null && $Object.hasOwnProperty.call(m, "endOffsetMs")) {
+                                if (typeof $BigInt !== "undefined" && o.longs === $BigInt)
+                                    d.endOffsetMs = typeof m.endOffsetMs === "number" ? $BigInt(m.endOffsetMs) : $util.Long.fromBits(m.endOffsetMs.low >>> 0, m.endOffsetMs.high >>> 0, false).toBigInt();
+                                else if (typeof m.endOffsetMs === "number")
+                                    d.endOffsetMs = o.longs === $String ? $String(m.endOffsetMs) : m.endOffsetMs;
+                                else
+                                    d.endOffsetMs = o.longs === String ? longToString(m.endOffsetMs) : o.longs === Number ? longToNumber(m.endOffsetMs) : m.endOffsetMs;
+                            }
+                            return d;
+                        };
+
+                        WordOffset.prototype.toJSON = function() {
+                            return WordOffset.toObject(this, $protobuf.util.toJSONOptions);
+                        };
+
+                        WordOffset.getTypeUrl = function(prefix) {
+                            if (prefix === $undefined)
+                                prefix = "type.googleapis.com";
+                            return prefix + "/E2E.Message.MusicMessage.Lyrics.Line.WordOffset";
+                        };
+
+                        return WordOffset;
+                    })();
 
                     return Line;
                 })();
@@ -45567,6 +45840,7 @@ export const E2E = $root.E2E = (() => {
                 HistorySyncOnDemandRequest.prototype.oldestMsgTimestampMs = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
                 HistorySyncOnDemandRequest.prototype.accountLid = "";
                 HistorySyncOnDemandRequest.prototype.supportInlineResponse = false;
+                HistorySyncOnDemandRequest.prototype.mode = 0;
 
                 HistorySyncOnDemandRequest.create = function(properties) {
                     return new HistorySyncOnDemandRequest(properties);
@@ -45593,6 +45867,8 @@ export const E2E = $root.E2E = (() => {
                         w.uint32(50).string(m.accountLid);
                     if (m.supportInlineResponse != null && $Object.hasOwnProperty.call(m, "supportInlineResponse"))
                         w.uint32(56).bool(m.supportInlineResponse);
+                    if (m.mode != null && $Object.hasOwnProperty.call(m, "mode"))
+                        w.uint32(64).int32(m.mode);
                     if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                         for (var i = 0; i < m.$unknowns.length; ++i)
                             w.raw(m.$unknowns[i]);
@@ -45606,7 +45882,7 @@ export const E2E = $root.E2E = (() => {
                         q = 0;
                     if (q > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var c, m;
+                    var c, m, v;
                     if (l === $undefined)
                         c = r.len;
                     else {
@@ -45668,6 +45944,18 @@ export const E2E = $root.E2E = (() => {
                                 m.supportInlineResponse = r.bool();
                                 continue;
                             }
+                        case 8: {
+                                if (u !== 0)
+                                    break;
+                                v = r.int32();
+                                if ($root.E2E.Message.PeerDataOperationRequestMessage.HistorySyncOnDemandRequest.Mode[v] !== $undefined) {
+                                    m.mode = v;
+                                } else if (!r.discardUnknown) {
+                                    $util.makeProp(m, "$unknowns", false);
+                                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                                }
+                                continue;
+                            }
                         }
                         r.skipType(u, q, t);
                         if (!r.discardUnknown) {
@@ -45723,6 +46011,17 @@ export const E2E = $root.E2E = (() => {
                     if (d.supportInlineResponse != null) {
                         m.supportInlineResponse = $Boolean(d.supportInlineResponse);
                     }
+                    switch (d.mode) {
+                    case "MODE_UNSPECIFIED":
+                    case 0:
+                        m.mode = 0;
+                        break;
+                    case "INITIAL_REVERSE_HISTORY":
+                    case 1:
+                        m.mode = 1;
+                        break;
+                    default:
+                    }
                     return m;
                 };
 
@@ -45746,6 +46045,7 @@ export const E2E = $root.E2E = (() => {
                             d.oldestMsgTimestampMs = o.longs === $String ? "0" : typeof $BigInt !== "undefined" && o.longs === $BigInt ? $BigInt("0") : 0;
                         d.accountLid = "";
                         d.supportInlineResponse = false;
+                        d.mode = o.enums === $String ? "MODE_UNSPECIFIED" : 0;
                     }
                     if (m.chatJid != null && $Object.hasOwnProperty.call(m, "chatJid")) {
                         d.chatJid = m.chatJid;
@@ -45773,6 +46073,9 @@ export const E2E = $root.E2E = (() => {
                     if (m.supportInlineResponse != null && $Object.hasOwnProperty.call(m, "supportInlineResponse")) {
                         d.supportInlineResponse = m.supportInlineResponse;
                     }
+                    if (m.mode != null && $Object.hasOwnProperty.call(m, "mode")) {
+                        d.mode = o.enums === $String ? $root.E2E.Message.PeerDataOperationRequestMessage.HistorySyncOnDemandRequest.Mode[m.mode] === $undefined ? m.mode : $root.E2E.Message.PeerDataOperationRequestMessage.HistorySyncOnDemandRequest.Mode[m.mode] : m.mode;
+                    }
                     return d;
                 };
 
@@ -45785,6 +46088,13 @@ export const E2E = $root.E2E = (() => {
                         prefix = "type.googleapis.com";
                     return prefix + "/E2E.Message.PeerDataOperationRequestMessage.HistorySyncOnDemandRequest";
                 };
+
+                HistorySyncOnDemandRequest.Mode = (function() {
+                    const valuesById = $Object.create(null), values = $Object.create(valuesById);
+                    values[valuesById[0] = "MODE_UNSPECIFIED"] = 0;
+                    values[valuesById[1] = "INITIAL_REVERSE_HISTORY"] = 1;
+                    return values;
+                })();
 
                 return HistorySyncOnDemandRequest;
             })();
@@ -72863,6 +73173,7 @@ export const AICommon = $root.AICommon = (() => {
         BotMetadata.prototype.pttPromptMetadata = null;
         BotMetadata.prototype.botHistoryShareMetadata = null;
         BotMetadata.prototype.responseStoppedByUser = false;
+        BotMetadata.prototype.interjectionMetadata = null;
         BotMetadata.prototype.internalMetadata = $util.newBuffer([]);
 
         BotMetadata.create = function(properties) {
@@ -72962,6 +73273,8 @@ export const AICommon = $root.AICommon = (() => {
                 $root.AICommon.BotHistoryShareMetadata.encode(m.botHistoryShareMetadata, w.uint32(346).fork(), q + 1).ldelim();
             if (m.responseStoppedByUser != null && $Object.hasOwnProperty.call(m, "responseStoppedByUser"))
                 w.uint32(352).bool(m.responseStoppedByUser);
+            if (m.interjectionMetadata != null && $Object.hasOwnProperty.call(m, "interjectionMetadata"))
+                $root.AICommon.BotInterjectionMetadata.encode(m.interjectionMetadata, w.uint32(362).fork(), q + 1).ldelim();
             if (m.internalMetadata != null && $Object.hasOwnProperty.call(m, "internalMetadata"))
                 w.uint32(7994).bytes(m.internalMetadata);
             if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
@@ -73255,6 +73568,12 @@ export const AICommon = $root.AICommon = (() => {
                         m.responseStoppedByUser = r.bool();
                         continue;
                     }
+                case 45: {
+                        if (u !== 2)
+                            break;
+                        m.interjectionMetadata = $root.AICommon.BotInterjectionMetadata.decode(r, r.size(), $undefined, q + 1, m.interjectionMetadata);
+                        continue;
+                    }
                 case 999: {
                         if (u !== 2)
                             break;
@@ -73490,6 +73809,11 @@ export const AICommon = $root.AICommon = (() => {
             if (d.responseStoppedByUser != null) {
                 m.responseStoppedByUser = $Boolean(d.responseStoppedByUser);
             }
+            if (d.interjectionMetadata != null) {
+                if (!$util.isObject(d.interjectionMetadata))
+                    throw $TypeError(".AICommon.BotMetadata.interjectionMetadata: object expected");
+                m.interjectionMetadata = $root.AICommon.BotInterjectionMetadata.fromObject(d.interjectionMetadata, q + 1);
+            }
             if (d.internalMetadata != null) {
                 if (typeof d.internalMetadata === "string")
                     $util.base64.decode(d.internalMetadata, m.internalMetadata = $util.newBuffer($util.base64.length(d.internalMetadata)), 0);
@@ -73557,6 +73881,7 @@ export const AICommon = $root.AICommon = (() => {
                 d.pttPromptMetadata = null;
                 d.botHistoryShareMetadata = null;
                 d.responseStoppedByUser = false;
+                d.interjectionMetadata = null;
                 if (o.bytes === $String)
                     d.internalMetadata = "";
                 else {
@@ -73694,6 +74019,9 @@ export const AICommon = $root.AICommon = (() => {
             if (m.responseStoppedByUser != null && $Object.hasOwnProperty.call(m, "responseStoppedByUser")) {
                 d.responseStoppedByUser = m.responseStoppedByUser;
             }
+            if (m.interjectionMetadata != null && $Object.hasOwnProperty.call(m, "interjectionMetadata")) {
+                d.interjectionMetadata = $root.AICommon.BotInterjectionMetadata.toObject(m.interjectionMetadata, o, q + 1);
+            }
             if (m.internalMetadata != null && $Object.hasOwnProperty.call(m, "internalMetadata")) {
                 d.internalMetadata = o.bytes === $String ? $util.base64.encode(m.internalMetadata, 0, m.internalMetadata.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.internalMetadata) : m.internalMetadata;
             }
@@ -73711,6 +74039,163 @@ export const AICommon = $root.AICommon = (() => {
         };
 
         return BotMetadata;
+    })();
+
+    AICommon.BotInterjectionMetadata = (function() {
+
+        const BotInterjectionMetadata = function (p) {
+            this.foldedPromptMessageIds = [];
+            if (p)
+                for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                    if (p[ks[i]] != null && ks[i] !== "__proto__")
+                        this[ks[i]] = p[ks[i]];
+        };
+
+        BotInterjectionMetadata.prototype.targetPromptMessageId = "";
+        BotInterjectionMetadata.prototype.foldedPromptMessageIds = $util.emptyArray;
+
+        BotInterjectionMetadata.create = function(properties) {
+            return new BotInterjectionMetadata(properties);
+        };
+
+        BotInterjectionMetadata.encode = function (m, w, q) {
+            if (!w)
+                w = $Writer.create();
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (m.targetPromptMessageId != null && $Object.hasOwnProperty.call(m, "targetPromptMessageId"))
+                w.uint32(10).string(m.targetPromptMessageId);
+            if (m.foldedPromptMessageIds != null && m.foldedPromptMessageIds.length) {
+                for (var i = 0; i < m.foldedPromptMessageIds.length; ++i)
+                    w.uint32(18).string(m.foldedPromptMessageIds[i]);
+            }
+            if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                for (var i = 0; i < m.$unknowns.length; ++i)
+                    w.raw(m.$unknowns[i]);
+            return w;
+        };
+
+        BotInterjectionMetadata.decode = function (r, l, z, q, g) {
+            if (!(r instanceof $Reader))
+                r = $Reader.create(r);
+            if (q === $undefined)
+                q = 0;
+            if (q > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotInterjectionMetadata();
+            while (r.pos < c) {
+                var s = r.pos;
+                var t = r.tag();
+                if (t === z) {
+                    z = $undefined;
+                    break;
+                }
+                var u = t & 7;
+                switch (t >>>= 3) {
+                case 1: {
+                        if (u !== 2)
+                            break;
+                        m.targetPromptMessageId = r.string();
+                        continue;
+                    }
+                case 2: {
+                        if (u !== 2)
+                            break;
+                        if (!(m.foldedPromptMessageIds && m.foldedPromptMessageIds.length))
+                            m.foldedPromptMessageIds = [];
+                        m.foldedPromptMessageIds.push(r.string());
+                        continue;
+                    }
+                }
+                r.skipType(u, q, t);
+                if (!r.discardUnknown) {
+                    $util.makeProp(m, "$unknowns", false);
+                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
+            }
+            if (z !== $undefined)
+                throw $Error("missing end group");
+            return m;
+        };
+
+        BotInterjectionMetadata.fromObject = function (d, q) {
+            if (d instanceof $root.AICommon.BotInterjectionMetadata)
+                return d;
+            if (!$util.isObject(d))
+                throw $TypeError(".AICommon.BotInterjectionMetadata: object expected");
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var m = new $root.AICommon.BotInterjectionMetadata();
+            if (d.targetPromptMessageId != null) {
+                m.targetPromptMessageId = $String(d.targetPromptMessageId);
+            }
+            if (d.foldedPromptMessageIds) {
+                if (!$Array.isArray(d.foldedPromptMessageIds))
+                    throw $TypeError(".AICommon.BotInterjectionMetadata.foldedPromptMessageIds: array expected");
+                m.foldedPromptMessageIds = $Array(d.foldedPromptMessageIds.length);
+                for (var i = 0; i < d.foldedPromptMessageIds.length; ++i) {
+                    m.foldedPromptMessageIds[i] = $String(d.foldedPromptMessageIds[i]);
+                }
+            }
+            return m;
+        };
+
+        BotInterjectionMetadata.toObject = function (m, o, q) {
+            if (!o)
+                o = {};
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var d = {};
+            if (o.arrays || o.defaults) {
+                d.foldedPromptMessageIds = [];
+            }
+            if (o.defaults) {
+                d.targetPromptMessageId = "";
+            }
+            if (m.targetPromptMessageId != null && $Object.hasOwnProperty.call(m, "targetPromptMessageId")) {
+                d.targetPromptMessageId = m.targetPromptMessageId;
+            }
+            if (m.foldedPromptMessageIds && m.foldedPromptMessageIds.length) {
+                d.foldedPromptMessageIds = $Array(m.foldedPromptMessageIds.length);
+                for (var j = 0; j < m.foldedPromptMessageIds.length; ++j) {
+                    d.foldedPromptMessageIds[j] = m.foldedPromptMessageIds[j];
+                }
+            }
+            return d;
+        };
+
+        BotInterjectionMetadata.prototype.toJSON = function() {
+            return BotInterjectionMetadata.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        BotInterjectionMetadata.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/AICommon.BotInterjectionMetadata";
+        };
+
+        return BotInterjectionMetadata;
     })();
 
     AICommon.BotPttPromptMetadata = (function() {
@@ -78664,6 +79149,10 @@ export const AICommon = $root.AICommon = (() => {
                     case 82:
                         m.capabilities[m.capabilities.length] = 82;
                         break;
+                    case "HATCH_CVM_ENABLED":
+                    case 83:
+                        m.capabilities[m.capabilities.length] = 83;
+                        break;
                     default:
                     }
                 }
@@ -78786,6 +79275,7 @@ export const AICommon = $root.AICommon = (() => {
             values[valuesById[80] = "AI_STUDY_CENTER_ENABLED"] = 80;
             values[valuesById[81] = "AI_MUSE_JARVIS_SCHEMA_ENABLED"] = 81;
             values[valuesById[82] = "AI_STUDY_QUIZ_ENABLED"] = 82;
+            values[valuesById[83] = "HATCH_CVM_ENABLED"] = 83;
             return values;
         })();
 

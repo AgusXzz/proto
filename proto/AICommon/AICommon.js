@@ -5219,6 +5219,7 @@ export const AICommon = $root.AICommon = (() => {
         BotMetadata.prototype.pttPromptMetadata = null;
         BotMetadata.prototype.botHistoryShareMetadata = null;
         BotMetadata.prototype.responseStoppedByUser = false;
+        BotMetadata.prototype.interjectionMetadata = null;
         BotMetadata.prototype.internalMetadata = $util.newBuffer([]);
 
         BotMetadata.create = function(properties) {
@@ -5318,6 +5319,8 @@ export const AICommon = $root.AICommon = (() => {
                 $root.AICommon.BotHistoryShareMetadata.encode(m.botHistoryShareMetadata, w.uint32(346).fork(), q + 1).ldelim();
             if (m.responseStoppedByUser != null && $Object.hasOwnProperty.call(m, "responseStoppedByUser"))
                 w.uint32(352).bool(m.responseStoppedByUser);
+            if (m.interjectionMetadata != null && $Object.hasOwnProperty.call(m, "interjectionMetadata"))
+                $root.AICommon.BotInterjectionMetadata.encode(m.interjectionMetadata, w.uint32(362).fork(), q + 1).ldelim();
             if (m.internalMetadata != null && $Object.hasOwnProperty.call(m, "internalMetadata"))
                 w.uint32(7994).bytes(m.internalMetadata);
             if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
@@ -5611,6 +5614,12 @@ export const AICommon = $root.AICommon = (() => {
                         m.responseStoppedByUser = r.bool();
                         continue;
                     }
+                case 45: {
+                        if (u !== 2)
+                            break;
+                        m.interjectionMetadata = $root.AICommon.BotInterjectionMetadata.decode(r, r.size(), $undefined, q + 1, m.interjectionMetadata);
+                        continue;
+                    }
                 case 999: {
                         if (u !== 2)
                             break;
@@ -5846,6 +5855,11 @@ export const AICommon = $root.AICommon = (() => {
             if (d.responseStoppedByUser != null) {
                 m.responseStoppedByUser = $Boolean(d.responseStoppedByUser);
             }
+            if (d.interjectionMetadata != null) {
+                if (!$util.isObject(d.interjectionMetadata))
+                    throw $TypeError(".AICommon.BotMetadata.interjectionMetadata: object expected");
+                m.interjectionMetadata = $root.AICommon.BotInterjectionMetadata.fromObject(d.interjectionMetadata, q + 1);
+            }
             if (d.internalMetadata != null) {
                 if (typeof d.internalMetadata === "string")
                     $util.base64.decode(d.internalMetadata, m.internalMetadata = $util.newBuffer($util.base64.length(d.internalMetadata)), 0);
@@ -5913,6 +5927,7 @@ export const AICommon = $root.AICommon = (() => {
                 d.pttPromptMetadata = null;
                 d.botHistoryShareMetadata = null;
                 d.responseStoppedByUser = false;
+                d.interjectionMetadata = null;
                 if (o.bytes === $String)
                     d.internalMetadata = "";
                 else {
@@ -6050,6 +6065,9 @@ export const AICommon = $root.AICommon = (() => {
             if (m.responseStoppedByUser != null && $Object.hasOwnProperty.call(m, "responseStoppedByUser")) {
                 d.responseStoppedByUser = m.responseStoppedByUser;
             }
+            if (m.interjectionMetadata != null && $Object.hasOwnProperty.call(m, "interjectionMetadata")) {
+                d.interjectionMetadata = $root.AICommon.BotInterjectionMetadata.toObject(m.interjectionMetadata, o, q + 1);
+            }
             if (m.internalMetadata != null && $Object.hasOwnProperty.call(m, "internalMetadata")) {
                 d.internalMetadata = o.bytes === $String ? $util.base64.encode(m.internalMetadata, 0, m.internalMetadata.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.internalMetadata) : m.internalMetadata;
             }
@@ -6067,6 +6085,163 @@ export const AICommon = $root.AICommon = (() => {
         };
 
         return BotMetadata;
+    })();
+
+    AICommon.BotInterjectionMetadata = (function() {
+
+        const BotInterjectionMetadata = function (p) {
+            this.foldedPromptMessageIds = [];
+            if (p)
+                for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                    if (p[ks[i]] != null && ks[i] !== "__proto__")
+                        this[ks[i]] = p[ks[i]];
+        };
+
+        BotInterjectionMetadata.prototype.targetPromptMessageId = "";
+        BotInterjectionMetadata.prototype.foldedPromptMessageIds = $util.emptyArray;
+
+        BotInterjectionMetadata.create = function(properties) {
+            return new BotInterjectionMetadata(properties);
+        };
+
+        BotInterjectionMetadata.encode = function (m, w, q) {
+            if (!w)
+                w = $Writer.create();
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (m.targetPromptMessageId != null && $Object.hasOwnProperty.call(m, "targetPromptMessageId"))
+                w.uint32(10).string(m.targetPromptMessageId);
+            if (m.foldedPromptMessageIds != null && m.foldedPromptMessageIds.length) {
+                for (var i = 0; i < m.foldedPromptMessageIds.length; ++i)
+                    w.uint32(18).string(m.foldedPromptMessageIds[i]);
+            }
+            if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                for (var i = 0; i < m.$unknowns.length; ++i)
+                    w.raw(m.$unknowns[i]);
+            return w;
+        };
+
+        BotInterjectionMetadata.decode = function (r, l, z, q, g) {
+            if (!(r instanceof $Reader))
+                r = $Reader.create(r);
+            if (q === $undefined)
+                q = 0;
+            if (q > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.AICommon.BotInterjectionMetadata();
+            while (r.pos < c) {
+                var s = r.pos;
+                var t = r.tag();
+                if (t === z) {
+                    z = $undefined;
+                    break;
+                }
+                var u = t & 7;
+                switch (t >>>= 3) {
+                case 1: {
+                        if (u !== 2)
+                            break;
+                        m.targetPromptMessageId = r.string();
+                        continue;
+                    }
+                case 2: {
+                        if (u !== 2)
+                            break;
+                        if (!(m.foldedPromptMessageIds && m.foldedPromptMessageIds.length))
+                            m.foldedPromptMessageIds = [];
+                        m.foldedPromptMessageIds.push(r.string());
+                        continue;
+                    }
+                }
+                r.skipType(u, q, t);
+                if (!r.discardUnknown) {
+                    $util.makeProp(m, "$unknowns", false);
+                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
+            }
+            if (z !== $undefined)
+                throw $Error("missing end group");
+            return m;
+        };
+
+        BotInterjectionMetadata.fromObject = function (d, q) {
+            if (d instanceof $root.AICommon.BotInterjectionMetadata)
+                return d;
+            if (!$util.isObject(d))
+                throw $TypeError(".AICommon.BotInterjectionMetadata: object expected");
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var m = new $root.AICommon.BotInterjectionMetadata();
+            if (d.targetPromptMessageId != null) {
+                m.targetPromptMessageId = $String(d.targetPromptMessageId);
+            }
+            if (d.foldedPromptMessageIds) {
+                if (!$Array.isArray(d.foldedPromptMessageIds))
+                    throw $TypeError(".AICommon.BotInterjectionMetadata.foldedPromptMessageIds: array expected");
+                m.foldedPromptMessageIds = $Array(d.foldedPromptMessageIds.length);
+                for (var i = 0; i < d.foldedPromptMessageIds.length; ++i) {
+                    m.foldedPromptMessageIds[i] = $String(d.foldedPromptMessageIds[i]);
+                }
+            }
+            return m;
+        };
+
+        BotInterjectionMetadata.toObject = function (m, o, q) {
+            if (!o)
+                o = {};
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var d = {};
+            if (o.arrays || o.defaults) {
+                d.foldedPromptMessageIds = [];
+            }
+            if (o.defaults) {
+                d.targetPromptMessageId = "";
+            }
+            if (m.targetPromptMessageId != null && $Object.hasOwnProperty.call(m, "targetPromptMessageId")) {
+                d.targetPromptMessageId = m.targetPromptMessageId;
+            }
+            if (m.foldedPromptMessageIds && m.foldedPromptMessageIds.length) {
+                d.foldedPromptMessageIds = $Array(m.foldedPromptMessageIds.length);
+                for (var j = 0; j < m.foldedPromptMessageIds.length; ++j) {
+                    d.foldedPromptMessageIds[j] = m.foldedPromptMessageIds[j];
+                }
+            }
+            return d;
+        };
+
+        BotInterjectionMetadata.prototype.toJSON = function() {
+            return BotInterjectionMetadata.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        BotInterjectionMetadata.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/AICommon.BotInterjectionMetadata";
+        };
+
+        return BotInterjectionMetadata;
     })();
 
     AICommon.BotPttPromptMetadata = (function() {
@@ -11020,6 +11195,10 @@ export const AICommon = $root.AICommon = (() => {
                     case 82:
                         m.capabilities[m.capabilities.length] = 82;
                         break;
+                    case "HATCH_CVM_ENABLED":
+                    case 83:
+                        m.capabilities[m.capabilities.length] = 83;
+                        break;
                     default:
                     }
                 }
@@ -11142,6 +11321,7 @@ export const AICommon = $root.AICommon = (() => {
             values[valuesById[80] = "AI_STUDY_CENTER_ENABLED"] = 80;
             values[valuesById[81] = "AI_MUSE_JARVIS_SCHEMA_ENABLED"] = 81;
             values[valuesById[82] = "AI_STUDY_QUIZ_ENABLED"] = 82;
+            values[valuesById[83] = "HATCH_CVM_ENABLED"] = 83;
             return values;
         })();
 
