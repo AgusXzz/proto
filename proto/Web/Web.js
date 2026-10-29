@@ -83508,6 +83508,10 @@ export const AICommon = $root.AICommon = (() => {
                     case 83:
                         m.capabilities[m.capabilities.length] = 83;
                         break;
+                    case "RICH_RESPONSE_SOCIAL_ENTITY_PREFETCH_SCHEDULER_ENABLED":
+                    case 84:
+                        m.capabilities[m.capabilities.length] = 84;
+                        break;
                     default:
                     }
                 }
@@ -83631,6 +83635,7 @@ export const AICommon = $root.AICommon = (() => {
             values[valuesById[81] = "AI_MUSE_JARVIS_SCHEMA_ENABLED"] = 81;
             values[valuesById[82] = "AI_STUDY_QUIZ_ENABLED"] = 82;
             values[valuesById[83] = "HATCH_CVM_ENABLED"] = 83;
+            values[valuesById[84] = "RICH_RESPONSE_SOCIAL_ENTITY_PREFETCH_SCHEDULER_ENABLED"] = 84;
             return values;
         })();
 
