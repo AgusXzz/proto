@@ -31,8 +31,8 @@ jobs:
           WA_VERSION=$(cat ../wa-logs.txt | perl -n -e'/Current version\: (.+)/ && print $1')
           echo "wa_version=$WA_VERSION" >> $GITHUB_OUTPUT
 
-      - name: Generate static JS from .proto
-        run: npm run generate
+      #- name: Generate static JS from .proto
+      # run: npm run generate
 
       - name: Commit and push
         run: |
